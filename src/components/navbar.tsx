@@ -62,7 +62,7 @@ const ListItem = React.forwardRef<
           href={href!}
           ref={ref}
           className={cn(
-            "group flex select-none items-start gap-4 space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "group flex select-none items-start gap-4 space-y-1 rounded-md p-4 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
@@ -135,14 +135,14 @@ export function Navbar() {
                     </NavigationMenuContent>
                 </>
              ) : (
-                <Link href={item.href} passHref legacyBehavior>
-                    <NavigationMenuLink
-                      className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
-                      onClick={onItemClick}
-                    >
-                      {item.icon && React.createElement(iconMap[item.icon], { className: "h-4 w-4 mr-2"})}
-                      {item.name}
-                    </NavigationMenuLink>
+                <Link href={item.href} passHref>
+                  <NavigationMenuLink
+                    className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
+                    onClick={onItemClick}
+                  >
+                    {item.icon && React.createElement(iconMap[item.icon], { className: "h-4 w-4 mr-2"})}
+                    {item.name}
+                  </NavigationMenuLink>
                 </Link>
              )}
            </NavigationMenuItem>

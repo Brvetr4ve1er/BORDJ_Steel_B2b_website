@@ -39,7 +39,8 @@ export const companyData = {
         "icon": "Newspaper",
         "children": [
             { "name": "Nos Projets", "href": "#portfolio", "description": "Découvrez nos réalisations et nos projets phares.", "icon": "Briefcase" },
-            { "name": "Articles de Presse", "href": "#news", "description": "Lisez les dernières actualités et articles nous concernant.", "icon": "FileText" }
+            { "name": "News", "href": "#news", "description": "Lisez les dernières actualités nous concernant.", "icon": "Newspaper" },
+            { "name": "Nos certifications", "href": "#approvals", "description": "Consultez nos agréments et certifications.", "icon": "Award" },
         ]
       },
       { "name": "Recrutement", "href": "#recruitment", "icon": "UserPlus" },
