@@ -9,11 +9,12 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { companyData } from '@/config/company-data';
 import { Logo } from './logo';
+import { ThemeToggle } from './theme-toggle';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { navigation, siteMetadata } = companyData;
+  const { navigation } = companyData;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,6 +54,7 @@ export function Navbar() {
       </Link>
       <div className="hidden md:flex items-center gap-8">
         <NavLinks className={cn(isScrolled ? 'text-foreground' : 'text-background')} />
+        <ThemeToggle />
       </div>
       <div className="md:hidden">
         <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -74,6 +76,9 @@ export function Navbar() {
             <div className="flex-1 p-6 flex flex-col justify-center items-center gap-8 relative">
                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/10 -z-10" />
               <NavLinks className="flex-col items-center gap-8 text-2xl text-foreground font-headline" onItemClick={() => setIsMobileMenuOpen(false)} />
+               <div className="absolute bottom-6">
+                <ThemeToggle />
+              </div>
             </div>
           </SheetContent>
         </Sheet>
