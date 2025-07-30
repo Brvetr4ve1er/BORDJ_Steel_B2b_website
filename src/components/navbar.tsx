@@ -119,12 +119,8 @@ const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?
                                     </NavigationMenuContent>
                                 </>
                             ) : (
-                                <Link
-                                    href={item.href}
-                                    passHref
-                                    legacyBehavior
-                                >
-                                  <NavigationMenuLink 
+                                <Link href={item.href} passHref>
+                                  <NavigationMenuLink
                                     active={isLinkActive(item.href)}
                                     className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent", effectiveIsScrolled ? 'text-foreground' : 'text-background')}
                                     onClick={onItemClick}
