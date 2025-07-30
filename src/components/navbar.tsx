@@ -10,6 +10,14 @@ import { cn } from '@/lib/utils';
 import { companyData } from '@/config/company-data';
 import { Logo } from './logo';
 import { ThemeToggle } from './theme-toggle';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
 
 const iconMap: { [key: string]: React.ElementType } = {
   Info,
@@ -61,6 +69,9 @@ export function Navbar() {
         isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32'
       )}
     >
+       <div className={cn("absolute top-2 left-1/2 -translate-x-1/2 z-50", isScrolled && "hidden")}>
+        <ThemeToggle />
+      </div>
       <div className="flex items-center h-full">
         <Link href="#" className="flex items-center h-full gap-2 group">
           <div className="relative h-full flex items-center overflow-hidden transition-transform duration-300 ease-out group-hover:scale-110">
@@ -81,7 +92,15 @@ export function Navbar() {
             <p className={cn('text-xs font-semibold uppercase tracking-wider', isScrolled ? 'text-primary' : 'text-white/80')}>{siteMetadata.slogan}</p>
             <p className={cn('font-cairo font-bold text-sm', isScrolled ? 'text-primary' : 'text-white/80')}>{siteMetadata.sloganArabic}</p>
           <div className="mt-1">
-            <ThemeToggle />
+             <Select defaultValue="fr">
+                <SelectTrigger className="w-[120px] bg-transparent text-white border-white/50">
+                    <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="fr">Français</SelectItem>
+                    <SelectItem value="en">English</SelectItem>
+                </SelectContent>
+            </Select>
           </div>
         </div>
         <div className="md:hidden">
@@ -104,10 +123,19 @@ export function Navbar() {
               <div className="flex-1 p-6 flex flex-col justify-center items-center gap-8 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/10 -z-10" />
                 <NavLinks className="flex-col items-center gap-8 text-2xl text-foreground font-headline" onItemClick={() => setIsMobileMenuOpen(false)} />
-                <div className="absolute bottom-6 flex flex-col items-center gap-2">
+                <div className="absolute bottom-6 flex flex-col items-center gap-4">
                    <p className="text-xs font-semibold uppercase tracking-wider text-primary">{siteMetadata.slogan}</p>
                    <p className="font-cairo font-bold text-sm text-primary">{siteMetadata.sloganArabic}</p>
                   <ThemeToggle />
+                   <Select defaultValue="fr">
+                        <SelectTrigger className="w-[120px]">
+                            <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="fr">Français</SelectItem>
+                            <SelectItem value="en">English</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
               </div>
             </SheetContent>
@@ -117,5 +145,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    
