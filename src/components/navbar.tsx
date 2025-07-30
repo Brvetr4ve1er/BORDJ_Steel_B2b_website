@@ -25,6 +25,12 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import * as React from 'react';
 
 const iconMap: { [key: string]: React.ElementType } = {
@@ -104,7 +110,7 @@ export function Navbar() {
                               {item.name}
                             </NavigationMenuTrigger>
                             <NavigationMenuContent>
-                              <ul className="grid w-[300px] gap-3 p-4 md:w-[400px] lg:w-[500px]">
+                              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] lg:w-[600px] ">
                                 {item.children.map((component) => (
                                   <ListItem
                                     key={component.name}
@@ -120,7 +126,7 @@ export function Navbar() {
                             </NavigationMenuContent>
                           </>
                       ) : (
-                        <Link href={item.href} passHref>
+                        <Link href={item.href} legacyBehavior passHref>
                           <NavigationMenuLink
                             className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
                             onClick={onItemClick}
@@ -193,34 +199,37 @@ export function Navbar() {
                 </Button>
               </div>
               <div className="flex-1 p-6 flex flex-col items-start gap-4 relative overflow-y-auto">
-                 {navigation.mainMenu.map((item) => {
-                  const Icon = iconMap[item.icon];
-                  return (
-                    <div key={item.name} className="w-full">
-                      {item.children ? (
-                        <div>
-                          <button className="w-full flex justify-between items-center py-2 font-headline text-lg">
-                             <span className="flex items-center gap-3">
-                              {Icon && <Icon className="h-5 w-5" />}
-                              {item.name}
-                            </span>
-                            <ChevronDown className="h-5 w-5" />
-                          </button>
-                          <div className="pl-8 flex flex-col items-start gap-2 mt-1">
-                            {item.children.map((child) => (
-                              <Link key={child.name} href={child.href} className="text-lg text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>{child.name}</Link>
-                            ))}
-                          </div>
-                        </div>
-                      ) : (
-                        <Link href={item.href} className="flex items-center gap-3 py-2 font-headline text-lg" onClick={() => setIsMobileMenuOpen(false)}>
-                           {Icon && <Icon className="h-5 w-5" />}
-                           {item.name}
-                        </Link>
-                      )}
-                    </div>
-                  )
-                })}
+                 <Accordion type="single" collapsible className="w-full">
+                   {navigation.mainMenu.map((item, index) => {
+                    const Icon = iconMap[item.icon];
+                    return (
+                      <div key={item.name} className="w-full">
+                        {item.children ? (
+                           <AccordionItem value={`item-${index}`} className="border-b-0">
+                            <AccordionTrigger className="w-full flex justify-between items-center py-2 font-headline text-lg hover:no-underline">
+                               <span className="flex items-center gap-3">
+                                {Icon && <Icon className="h-5 w-5" />}
+                                {item.name}
+                              </span>
+                            </AccordionTrigger>
+                            <AccordionContent>
+                              <div className="pl-8 flex flex-col items-start gap-2 mt-1">
+                                {item.children.map((child) => (
+                                  <Link key={child.name} href={child.href} className="text-lg text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>{child.name}</Link>
+                                ))}
+                              </div>
+                            </AccordionContent>
+                          </AccordionItem>
+                        ) : (
+                          <Link href={item.href} className="flex items-center gap-3 py-2 font-headline text-lg" onClick={() => setIsMobileMenuOpen(false)}>
+                             {Icon && <Icon className="h-5 w-5" />}
+                             {item.name}
+                          </Link>
+                        )}
+                      </div>
+                    )
+                  })}
+                 </Accordion>
               </div>
                <div className="p-6 border-t mt-auto">
                   <div className="flex flex-col items-center gap-4">

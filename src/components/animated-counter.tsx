@@ -7,8 +7,10 @@ export const AnimatedCounter = ({ end, duration = 2000, className }: { end: numb
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const [isInView, setIsInView] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -27,7 +29,7 @@ export const AnimatedCounter = ({ end, duration = 2000, className }: { end: numb
   }, []);
   
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || !isMounted) return;
     
     let start = 0;
     const startTime = Date.now();
@@ -45,7 +47,11 @@ export const AnimatedCounter = ({ end, duration = 2000, className }: { end: numb
     };
     
     requestAnimationFrame(animate);
-  }, [end, duration, isInView]);
+  }, [end, duration, isInView, isMounted]);
+
+  if (!isMounted) {
+    return <span ref={ref} className={className}>0</span>;
+  }
 
   return <span ref={ref} className={className}>{count.toLocaleString()}</span>;
 };
