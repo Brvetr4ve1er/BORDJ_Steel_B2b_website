@@ -154,10 +154,12 @@ export const companyData = {
       contactUs: "Contactez-Nous"
   },
   socials: {
-    twitter: "#",
+    x: "#",
     linkedin: "#",
-    github: "#"
+    github: "#",
+    facebook: "#",
+    instagram: "#",
+    tiktok: "#",
+    whatsapp: "#"
   },
 };
-
-    
