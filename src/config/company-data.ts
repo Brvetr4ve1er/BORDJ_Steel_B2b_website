@@ -33,7 +33,6 @@ export const companyData = {
         ]
       },
       { "name": "Références", "href": "#portfolio", "icon": "Briefcase" },
-      { "name": "Recrutement", "href": "#recruitment", "icon": "UserPlus" },
       { 
         "name": "Media Center", 
         "href": "#", 
@@ -43,6 +42,7 @@ export const companyData = {
             { "name": "Articles de Presse", "href": "#news", "description": "Lisez les dernières actualités et articles nous concernant.", "icon": "FileText" }
         ]
       },
+      { "name": "Recrutement", "href": "#recruitment", "icon": "UserPlus" },
       { "name": "Contact", "href": "#contact", "icon": "Mail" }
     ],
   },
