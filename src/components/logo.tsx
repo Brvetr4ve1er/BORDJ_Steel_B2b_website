@@ -5,7 +5,7 @@ export function Logo() {
       height="125"
       viewBox="0 0 200 125"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-auto h-auto"
+      className="w-auto h-full"
     >
       {/* Pentagon Roof */}
       <polygon points="100,0 25,40 175,40" fill="#C1272D" />

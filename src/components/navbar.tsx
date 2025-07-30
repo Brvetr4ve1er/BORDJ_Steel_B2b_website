@@ -61,10 +61,10 @@ export function Navbar() {
         isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32'
       )}
     >
-      <div className="flex items-center gap-6">
-        <Link href="#" className="flex items-center gap-2 group">
-          <div className="relative overflow-hidden transition-transform duration-300 ease-out group-hover:scale-110">
-            <div className={cn('transition-all duration-300', isScrolled ? 'w-32' : 'w-40')}>
+      <div className="flex items-center h-full">
+        <Link href="#" className="flex items-center h-full gap-2 group">
+          <div className="relative h-full flex items-center overflow-hidden transition-transform duration-300 ease-out group-hover:scale-110">
+            <div className={cn('relative transition-all duration-300', isScrolled ? 'h-20' : 'h-28')}>
               <Logo />
             </div>
             <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out group-hover:left-[100%]" />
