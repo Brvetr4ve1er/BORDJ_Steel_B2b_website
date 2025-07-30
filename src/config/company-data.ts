@@ -76,6 +76,16 @@ export const companyData = {
         }
       ]
     },
+    products: {
+      title: 'Nos Produits',
+      items: [
+        {
+          name: 'Tôles pour PEB',
+          description: 'Des tôles nervurées de haute qualité, idéales pour les structures de bâtiments préfabriqués (PEB), offrant durabilité et résistance.',
+          image: { src: 'https://placehold.co/800x600.png', aiHint: 'metal sheet' }
+        }
+      ]
+    },
     references: {
       slug: '/projets',
       title: 'Nos Références',
@@ -149,5 +159,3 @@ export const companyData = {
     github: "#"
   },
 };
-
-    
