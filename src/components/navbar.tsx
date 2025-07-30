@@ -56,14 +56,27 @@ const iconMap: { [key: string]: React.ElementType } = {
 const NewNavButtons = () => {
   const { navigation } = companyData;
   const [openMenu, setOpenMenu] = useState('');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleMenuClick = (menuName: string) => {
     setOpenMenu(openMenu === menuName ? '' : menuName);
   };
+  
+  const onItemClick = () => {
+    setOpenMenu('');
+  }
 
   return (
     <NavigationMenu value={openMenu} onValueChange={setOpenMenu} className="relative">
-      <NavigationMenuList className="flex items-center gap-2 bg-gray-900/50 p-2 rounded-lg backdrop-blur-sm">
+      <NavigationMenuList className="group flex flex-1 list-none items-center justify-center space-x-1 relative gap-2 bg-gray-900/50 p-2 rounded-lg backdrop-blur-sm">
         {navigation.mainMenu.map((item) => (
           <NavigationMenuItem key={item.name} value={item.name}>
             {item.children ? (
@@ -93,12 +106,15 @@ const NewNavButtons = () => {
                 </NavigationMenuContent>
               </>
             ) : (
-              <Link href={item.href} legacyBehavior passHref>
-                <NavigationMenuLink className="cursor-pointer bg-gray-800 relative inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-700 text-gray-300 hover:text-accent h-9 px-3">
-                   {item.icon && React.createElement(iconMap[item.icon], { className: "h-5 w-5" })}
+              <Link
+                  href={item.href}
+                  passHref
+                  className={cn(navigationMenuTriggerStyle(), "cursor-pointer bg-gray-800 relative inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-700 text-gray-300 hover:text-accent h-9 px-3")}
+                  onClick={onItemClick}
+                >
+                  {item.icon && React.createElement(iconMap[item.icon], { className: "h-5 w-5" })}
                   {item.name}
-                </NavigationMenuLink>
-              </Link>
+               </Link>
             )}
           </NavigationMenuItem>
         ))}
@@ -120,17 +136,17 @@ const ListItem = React.forwardRef<
           href={href!}
           ref={ref}
           className={cn(
-            "group flex select-none items-start gap-4 space-y-1 rounded-md p-4 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "group flex select-none items-start gap-4 space-y-1 rounded-md p-6 leading-none no-underline outline-none transition-colors bg-gray-800 text-gray-300 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-[220px]",
             className
           )}
           {...props}
         >
-          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-lg bg-background/80 transition-colors group-hover:bg-accent-foreground/10">
-            {Icon && <Icon className="h-6 w-6 text-primary transition-colors group-hover:text-accent-foreground" />}
+          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-lg bg-gray-700 transition-colors group-hover:bg-accent-foreground/10">
+            {Icon && <Icon className="h-6 w-6 text-accent transition-colors group-hover:text-accent-foreground" />}
           </div>
           <div className="flex-grow">
-            <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground group-hover:text-accent-foreground/80">
+            <div className="text-sm font-medium leading-none group-hover:text-white">{title}</div>
+            <p className="line-clamp-2 text-sm leading-snug text-gray-400 group-hover:text-accent-foreground/80">
               {children}
             </p>
           </div>
