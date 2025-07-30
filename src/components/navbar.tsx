@@ -81,9 +81,9 @@ const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?
                                 <>
                                     <NavigationMenuTrigger
                                         onClick={() => handleMenuClick(item.name)}
-                                        className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
+                                        className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent", isScrolled ? 'text-foreground' : 'text-background')}
                                     >
-                                        {Icon && <Icon className="h-4 w-4 mr-2" />}
+                                       {Icon && <Icon className="h-4 w-4 mr-2" />}
                                         {item.name}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
@@ -109,7 +109,7 @@ const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?
                             ) : (
                                 <Link
                                     href={item.href}
-                                    className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
+                                    className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent", isScrolled ? 'text-foreground' : 'text-background')}
                                     onClick={onItemClick}
                                 >
                                     <div className="flex items-center">
