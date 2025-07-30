@@ -57,22 +57,22 @@ export const companyData = {
         {
           title: 'Charpente Métallique',
           description: `Capacité de 1500 T/mois (25000 T/an) et PRS 3000 T/an. Nous produisons des hangars, pylônes, et supports publicitaires.`,
-          image: { src: 'https://placehold.co/600x400.png', aiHint: 'steel fabrication' }
+          image: { src: 'https://images.unsplash.com/photo-1738162837330-9257f938463c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzdGVlbCUyMGZhYnJpY2F0aW9ufGVufDB8fHx8MTc1Mzg3NjM3Mnww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'steel fabrication' }
         },
         {
           title: 'Panneaux Sandwichs',
           description: `Capacité de 5000 m²/jour. Gamme d'épaisseur de 30-200 mm pour couverture, bardage, et chambres froides.`,
-          image: { src: 'https://placehold.co/600x400.png', aiHint: 'sandwich panels' }
+          image: { src: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzYW5kd2ljaCUyMHBhbmVsc3xlbnwwfHx8fDE3NTM4NzYzNzJ8MA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'sandwich panels' }
         },
         {
           title: 'Galvanisation à Chaud',
           description: `Capacité de 60000 T/an avec un bain de 13m de long pour des pièces jusqu'à 15m.`,
-          image: { src: 'https://placehold.co/600x400.png', aiHint: 'hot-dip galvanization' }
+          image: { src: 'https://images.unsplash.com/photo-1531875506263-dfcc69e73475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxob3QtZGlwJTIwZ2FsdmFuaXphdGlvbnxlbnwwfHx8fDE3NTM4NzYzNzJ8MA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'hot-dip galvanization' }
         },
         {
           title: 'Chaudronnerie',
           description: `Notre unité de chaudronnerie est spécialisée dans la fabrication d'équipements sur mesure pour divers secteurs industriels.`,
-          image: { src: 'https://placehold.co/600x400.png', aiHint: 'boiler making' }
+          image: { src: 'https://images.unsplash.com/photo-1576933594479-01e95a61e959?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxib2lsZXIlMjBtYWtpbmd8ZW58MHx8fHwxNzUzODc2MzcyfDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'boiler making' }
         }
       ]
     },
@@ -149,3 +149,5 @@ export const companyData = {
     github: "#"
   },
 };
+
+    
