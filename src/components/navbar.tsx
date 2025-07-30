@@ -73,48 +73,54 @@ const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?
     return (
         <NavigationMenu value={openMenu} onValueChange={setOpenMenu}>
             <NavigationMenuList className={cn("flex items-center gap-2", className)}>
-                {navigation.mainMenu.map((item) => (
-                    <NavigationMenuItem key={item.name} value={item.name}>
-                        {item.children ? (
-                            <>
-                                <NavigationMenuTrigger
-                                    onClick={() => handleMenuClick(item.name)}
-                                    className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
-                                >
-                                    {item.name}
-                                </NavigationMenuTrigger>
-                                <NavigationMenuContent>
-                                    <ul className="grid w-max grid-cols-3 gap-3 p-4">
-                                        {item.children.map((component) => (
-                                            <ListItem
-                                                key={component.name}
-                                                title={component.name}
-                                                href={component.href}
-                                                icon={component.icon}
-                                                className="w-[220px]"
-                                                onClick={() => {
-                                                    onItemClick?.();
-                                                    setOpenMenu('');
-                                                }}
-                                            >
-                                                {component.description}
-                                            </ListItem>
-                                        ))}
-                                    </ul>
-                                </NavigationMenuContent>
-                            </>
-                        ) : (
-                             <Link href={item.href} passHref>
-                                <NavigationMenuLink
+                {navigation.mainMenu.map((item) => {
+                    const Icon = iconMap[item.icon];
+                    return (
+                        <NavigationMenuItem key={item.name} value={item.name}>
+                            {item.children ? (
+                                <>
+                                    <NavigationMenuTrigger
+                                        onClick={() => handleMenuClick(item.name)}
+                                        className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
+                                    >
+                                        {Icon && <Icon className="h-4 w-4 mr-2" />}
+                                        {item.name}
+                                    </NavigationMenuTrigger>
+                                    <NavigationMenuContent>
+                                        <ul className="grid w-max grid-cols-3 gap-3 p-4">
+                                            {item.children.map((component) => (
+                                                <ListItem
+                                                    key={component.name}
+                                                    title={component.name}
+                                                    href={component.href}
+                                                    icon={component.icon}
+                                                    className="w-[220px]"
+                                                    onClick={() => {
+                                                        onItemClick?.();
+                                                        setOpenMenu('');
+                                                    }}
+                                                >
+                                                    {component.description}
+                                                </ListItem>
+                                            ))}
+                                        </ul>
+                                    </NavigationMenuContent>
+                                </>
+                            ) : (
+                                <Link
+                                    href={item.href}
                                     className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
                                     onClick={onItemClick}
                                 >
-                                    {item.name}
-                                </NavigationMenuLink>
-                            </Link>
-                        )}
-                    </NavigationMenuItem>
-                ))}
+                                    <div className="flex items-center">
+                                      {Icon && <Icon className="h-4 w-4 mr-2" />}
+                                      {item.name}
+                                    </div>
+                                </Link>
+                            )}
+                        </NavigationMenuItem>
+                    )
+                })}
             </NavigationMenuList>
         </NavigationMenu>
     );
@@ -278,3 +284,5 @@ export function Navbar() {
     </header>
   );
 }
+
+    
