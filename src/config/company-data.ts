@@ -35,12 +35,14 @@ export const companyData = {
       { "name": "Références", "href": "#portfolio", "icon": "Briefcase" },
       { 
         "name": "Media Center", 
-        "href": "#", 
+        "href": "#recruitment", 
         "icon": "Newspaper",
         "children": [
             { "name": "Nos Projets", "href": "#portfolio", "description": "Découvrez nos réalisations et nos projets phares.", "icon": "Briefcase" },
             { "name": "News", "href": "#news", "description": "Lisez les dernières actualités nous concernant.", "icon": "Newspaper" },
             { "name": "Nos certifications", "href": "#approvals", "description": "Consultez nos agréments et certifications.", "icon": "Award" },
+            { "name": "Catalogue", "href": "/catalogue.pdf", "description": "Téléchargez notre catalogue complet.", "icon": "FileText" },
+            { "name": "Blog", "href": "#blog", "description": "Articles et actualités de l'industrie.", "icon": "BookOpen" },
         ]
       },
       { "name": "Recrutement", "href": "#recruitment", "icon": "UserPlus" },
@@ -225,4 +227,6 @@ export const companyData = {
 };
 
     
+    
+
     
