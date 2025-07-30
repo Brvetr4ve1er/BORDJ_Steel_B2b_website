@@ -24,7 +24,7 @@ const iconMap: { [key: string]: React.ElementType } = {
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { navigation } = companyData;
+  const { navigation, siteMetadata } = companyData;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,7 +77,8 @@ export function Navbar() {
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="hidden md:flex">
+        <div className="hidden md:flex flex-col items-end gap-1">
+          <p className={cn('text-xs font-semibold uppercase tracking-wider', isScrolled ? 'text-primary' : 'text-white/80')}>{siteMetadata.slogan}</p>
           <ThemeToggle />
         </div>
         <div className="md:hidden">
@@ -100,7 +101,8 @@ export function Navbar() {
               <div className="flex-1 p-6 flex flex-col justify-center items-center gap-8 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/10 -z-10" />
                 <NavLinks className="flex-col items-center gap-8 text-2xl text-foreground font-headline" onItemClick={() => setIsMobileMenuOpen(false)} />
-                <div className="absolute bottom-6">
+                <div className="absolute bottom-6 flex flex-col items-center gap-2">
+                   <p className="text-xs font-semibold uppercase tracking-wider text-primary">{siteMetadata.slogan}</p>
                   <ThemeToggle />
                 </div>
               </div>
