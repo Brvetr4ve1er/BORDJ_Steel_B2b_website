@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
+import { companyData } from '@/config/company-data';
 
 const AnimatedCounter = ({ end, duration = 2000 }: { end: number; duration?: number }) => {
   const [count, setCount] = useState(0);
@@ -52,47 +53,39 @@ const AnimatedCounter = ({ end, duration = 2000 }: { end: number; duration?: num
 };
 
 export function Hero() {
+  const { hero } = companyData;
+
   return (
     <section id="home" className="relative h-screen w-full p-0">
       <Image
-        src="https://placehold.co/1920x1080.png"
+        src={hero.image.src}
         alt="Steel factory background"
         layout="fill"
         objectFit="cover"
         className="z-0"
         priority
-        data-ai-hint="steel factory"
+        data-ai-hint={hero.image.aiHint}
       />
       <div className="absolute inset-0 bg-black/60 z-10" />
       <div className="relative z-20 flex h-full flex-col items-center justify-center text-center text-white">
         <AnimatedWrapper animation="zoom-in">
           <h1 className="font-headline text-5xl font-bold tracking-tight md:text-7xl lg:text-8xl">
-            BUILDING THE FUTURE
+            {hero.headline}
           </h1>
           <p className="mt-4 text-lg md:text-xl lg:text-2xl text-gray-300">
-            WITH STEEL AND PRECISION
+            {hero.subheadline}
           </p>
         </AnimatedWrapper>
         <div className="absolute bottom-10 left-0 right-0">
           <div className="container mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-            <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1}>
+            {hero.stats.map((stat, index) => (
+              <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index + 1}>
                 <div className="font-headline text-4xl font-bold text-accent">
-                    <AnimatedCounter end={25} />+
+                    <AnimatedCounter end={stat.value} />+
                 </div>
-                <p className="text-sm uppercase tracking-widest text-gray-300">Years of Experience</p>
-            </AnimatedWrapper>
-            <AnimatedWrapper animation="fade-in-stagger" staggerIndex={2}>
-                <div className="font-headline text-4xl font-bold text-accent">
-                    <AnimatedCounter end={500} />+
-                </div>
-                <p className="text-sm uppercase tracking-widest text-gray-300">Projects Completed</p>
-            </AnimatedWrapper>
-            <AnimatedWrapper animation="fade-in-stagger" staggerIndex={3}>
-                <div className="font-headline text-4xl font-bold text-accent">
-                    <AnimatedCounter end={120} />+
-                </div>
-                <p className="text-sm uppercase tracking-widest text-gray-300">Happy Clients</p>
-            </AnimatedWrapper>
+                <p className="text-sm uppercase tracking-widest text-gray-300">{stat.label}</p>
+              </AnimatedWrapper>
+            ))}
           </div>
         </div>
       </div>

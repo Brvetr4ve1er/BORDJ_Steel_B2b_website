@@ -1,26 +1,27 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Twitter } from 'lucide-react';
+import { companyData, navItems } from '@/config/company-data';
 
 export function Footer() {
-  const menuItems = ['Home', 'About', 'Services', 'Portfolio', 'Approvals', 'Clients', 'Contact'];
+  const { companyName, footer, socials, contact } = companyData;
 
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
-            <h3 className="font-headline text-2xl font-bold">BORDJ STEEL</h3>
-            <p className="mt-2 text-sm text-gray-300">Engineering the foundations of tomorrow.</p>
+            <h3 className="font-headline text-2xl font-bold">{companyName}</h3>
+            <p className="mt-2 text-sm text-gray-300">{footer.tagline}</p>
             <div className="flex space-x-4 mt-4">
-              <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10">
-                <Twitter className="h-5 w-5" />
+              <Button asChild variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10">
+                <Link href={socials.twitter} target="_blank"><Twitter className="h-5 w-5" /></Link>
               </Button>
-              <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10">
-                <Linkedin className="h-5 w-5" />
+              <Button asChild variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10">
+                <Link href={socials.linkedin} target="_blank"><Linkedin className="h-5 w-5" /></Link>
               </Button>
-              <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10">
-                <Github className="h-5 w-5" />
+              <Button asChild variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10">
+                <Link href={socials.github} target="_blank"><Github className="h-5 w-5" /></Link>
               </Button>
             </div>
           </div>
@@ -29,7 +30,7 @@ export function Footer() {
                 <div>
                     <h4 className="font-headline font-semibold tracking-wider uppercase">Site Links</h4>
                     <ul className="mt-4 space-y-2">
-                        {menuItems.map(item => (
+                        {navItems.map(item => (
                              <li key={item}>
                                 <Link href={`#${item.toLowerCase()}`} className="text-sm text-gray-300 hover:text-white transition-colors">
                                     {item}
@@ -48,16 +49,16 @@ export function Footer() {
                  <div>
                     <h4 className="font-headline font-semibold tracking-wider uppercase">Contact Us</h4>
                      <ul className="mt-4 space-y-2 text-sm text-gray-300">
-                        <li>123 Industrial Park Ave</li>
-                        <li>Steel City, ST 54321</li>
-                        <li>contact@bordjsteel.com</li>
+                        <li>{contact.address.split(',')[0]}</li>
+                        <li>{contact.address.split(',').slice(1).join(',').trim()}</li>
+                        <li>{contact.email}</li>
                      </ul>
                 </div>
              </div>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-primary-foreground/20 text-center text-sm text-gray-400">
-          <p>&copy; {new Date().getFullYear()} BORDJ STEEL. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {footer.copyright}</p>
         </div>
       </div>
     </footer>

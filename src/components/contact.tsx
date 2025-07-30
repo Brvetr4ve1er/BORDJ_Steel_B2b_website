@@ -4,8 +4,10 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { AnimatedWrapper } from './animated-wrapper';
+import { companyData } from '@/config/company-data';
 
 export function Contact() {
+  const { contact } = companyData;
   return (
     <section id="contact" className="bg-secondary">
       <div className="container mx-auto px-4">
@@ -24,15 +26,15 @@ export function Contact() {
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
                       <Phone className="h-5 w-5 text-accent" />
-                      <span>+1 (555) 123-4567</span>
+                      <span>{contact.phone}</span>
                     </div>
                     <div className="flex items-center gap-4">
                       <Mail className="h-5 w-5 text-accent" />
-                      <span>contact@bordjsteel.com</span>
+                      <span>{contact.email}</span>
                     </div>
                     <div className="flex items-start gap-4">
                       <MapPin className="h-5 w-5 text-accent mt-1" />
-                      <span>123 Industrial Park Avenue, Steel City, ST 54321, USA</span>
+                      <span>{contact.address}</span>
                     </div>
                   </div>
                 </div>

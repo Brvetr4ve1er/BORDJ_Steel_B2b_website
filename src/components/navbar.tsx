@@ -6,8 +6,7 @@ import { Globe, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
-
-const menuItems = ['Home', 'About', 'Services', 'Portfolio', 'Approvals', 'Clients', 'Contact'];
+import { companyData, navItems } from '@/config/company-data';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,7 +22,7 @@ export function Navbar() {
 
   const NavLinks = ({ className }: { className?: string }) => (
     <nav className={cn("flex items-center gap-6 text-sm font-medium", className)}>
-      {menuItems.map((item) => (
+      {navItems.map((item) => (
         <Link
           key={item}
           href={`#${item.toLowerCase()}`}
@@ -45,9 +44,9 @@ export function Navbar() {
     >
       <Link href="#" className="flex items-center gap-2">
         <div className="bg-primary text-primary-foreground p-2 rounded-md">
-          <span className="font-headline font-bold text-xl tracking-wider">BS</span>
+          <span className="font-headline font-bold text-xl tracking-wider">{companyData.companyNameShort}</span>
         </div>
-        <span className="font-headline font-bold text-2xl text-primary hidden sm:inline">BORDJ STEEL</span>
+        <span className="font-headline font-bold text-2xl text-primary hidden sm:inline">{companyData.companyName}</span>
       </Link>
       <div className="hidden md:flex items-center gap-8">
         <NavLinks className={cn(isScrolled ? 'text-foreground' : 'text-background')} />
@@ -67,7 +66,7 @@ export function Navbar() {
           <SheetContent side="right" className="w-[300px] bg-background">
             <div className="p-6">
               <div className="flex justify-between items-center mb-8">
-                <span className="font-headline font-bold text-2xl text-primary">BORDJ STEEL</span>
+                <span className="font-headline font-bold text-2xl text-primary">{companyData.companyName}</span>
                 <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
                   <X className="h-6 w-6 text-foreground" />
                 </Button>

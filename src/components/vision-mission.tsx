@@ -1,7 +1,9 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { AnimatedWrapper } from "./animated-wrapper";
+import { companyData } from "@/config/company-data";
 
 export function VisionMission() {
+  const { about } = companyData;
   return (
     <section id="about" className="bg-background">
       <div className="container mx-auto px-4">
@@ -13,7 +15,7 @@ export function VisionMission() {
               </CardHeader>
               <CardContent>
                 <p className="text-lg">
-                  To be the benchmark in the steel construction industry, recognized for our innovation, quality, and commitment to sustainable development, shaping a stronger and more resilient future.
+                  {about.vision}
                 </p>
               </CardContent>
             </Card>
@@ -25,7 +27,7 @@ export function VisionMission() {
               </CardHeader>
               <CardContent>
                 <p className="text-lg">
-                  To deliver exceptional steel solutions through cutting-edge technology, superior craftsmanship, and unwavering client focus, ensuring every project is built with precision, safety, and integrity.
+                  {about.mission}
                 </p>
               </CardContent>
             </Card>
