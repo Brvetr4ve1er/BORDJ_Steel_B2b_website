@@ -9,13 +9,13 @@ export const companyData = {
   },
   navigation: {
     mainMenu: [
-      { "name": "Qui sommes-nous", "href": "#about" },
-      { "name": "Unités", "href": "#services" },
-      { "name": "Produits", "href": "#products" },
-      { "name": "Références", "href": "#portfolio" },
-      { "name": "Recrutement", "href": "#recruitment" },
-      { "name": "Actualités", "href": "#news" },
-      { "name": "Contact", "href": "#contact" }
+      { "name": "Qui sommes-nous", "href": "#about", "icon": "Info" },
+      { "name": "Unités", "href": "#services", "icon": "Factory" },
+      { "name": "Produits", "href": "#products", "icon": "Package" },
+      { "name": "Références", "href": "#portfolio", "icon": "Briefcase" },
+      { "name": "Recrutement", "href": "#recruitment", "icon": "UserPlus" },
+      { "name": "Actualités", "href": "#news", "icon": "Newspaper" },
+      { "name": "Contact", "href": "#contact", "icon": "Mail" }
     ],
   },
   pages: {
