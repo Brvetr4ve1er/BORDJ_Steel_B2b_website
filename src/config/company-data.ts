@@ -4,7 +4,8 @@ export const companyData = {
     title: 'Bordj Steel – Construction métallique en Algérie',
     description: 'Complexe métallurgique Bordj Steel, filiale du groupe Condor, 4 unités de production, projets phares en Algérie.',
     language: 'fr',
-    slogan: 'Leader de la construction métallique',
+    slogan: 'NOUS DONONS DU STYLE A VOS PROJET',
+    sloganArabic: "نعطي الأناقة لمشاريعك",
     lastUpdated: '2025-07-30',
     totalPages: 7
   },
@@ -195,3 +196,5 @@ export const companyData = {
     whatsapp: "#"
   },
 };
+
+    

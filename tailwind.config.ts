@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -12,6 +13,7 @@ export default {
       fontFamily: {
         body: ['Roboto', 'sans-serif'],
         headline: ['Montserrat', 'sans-serif'],
+        cairo: ['Cairo', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
@@ -97,3 +99,5 @@ export default {
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
+
+    

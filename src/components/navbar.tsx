@@ -64,7 +64,7 @@ export function Navbar() {
       <div className="flex items-center h-full">
         <Link href="#" className="flex items-center h-full gap-2 group">
           <div className="relative h-full flex items-center overflow-hidden transition-transform duration-300 ease-out group-hover:scale-110">
-            <div className={cn('relative transition-all duration-300', isScrolled ? 'h-20' : 'h-28')}>
+            <div className={cn('relative transition-all duration-300 h-full py-4', isScrolled ? 'w-32' : 'w-40')}>
               <Logo />
             </div>
             <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out group-hover:left-[100%]" />
@@ -77,9 +77,12 @@ export function Navbar() {
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="hidden md:flex flex-col items-end gap-1">
-          <p className={cn('text-xs font-semibold uppercase tracking-wider', isScrolled ? 'text-primary' : 'text-white/80')}>{siteMetadata.slogan}</p>
-          <ThemeToggle />
+        <div className="hidden md:flex flex-col items-end gap-1 text-right">
+            <p className={cn('text-xs font-semibold uppercase tracking-wider', isScrolled ? 'text-primary' : 'text-white/80')}>{siteMetadata.slogan}</p>
+            <p className={cn('font-cairo font-bold text-sm', isScrolled ? 'text-primary' : 'text-white/80')}>{siteMetadata.sloganArabic}</p>
+          <div className="mt-1">
+            <ThemeToggle />
+          </div>
         </div>
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -103,6 +106,7 @@ export function Navbar() {
                 <NavLinks className="flex-col items-center gap-8 text-2xl text-foreground font-headline" onItemClick={() => setIsMobileMenuOpen(false)} />
                 <div className="absolute bottom-6 flex flex-col items-center gap-2">
                    <p className="text-xs font-semibold uppercase tracking-wider text-primary">{siteMetadata.slogan}</p>
+                   <p className="font-cairo font-bold text-sm text-primary">{siteMetadata.sloganArabic}</p>
                   <ThemeToggle />
                 </div>
               </div>
@@ -113,3 +117,5 @@ export function Navbar() {
     </header>
   );
 }
+
+    
