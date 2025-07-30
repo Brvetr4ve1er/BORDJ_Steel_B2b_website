@@ -119,14 +119,14 @@ export function Navbar() {
                         {item.name}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <ul className="flex gap-3 p-4" style={{width: 'max-content'}}>
+                      <ul className="grid grid-cols-3 gap-3 p-4">
                         {item.children.map((component) => (
                           <ListItem
                             key={component.name}
                             title={component.name}
                             href={component.href}
                             icon={component.icon}
-                            className="w-[200px]"
+                            className="w-[220px]"
                             onClick={() => {
                               onItemClick?.();
                               setOpenMenu('');
