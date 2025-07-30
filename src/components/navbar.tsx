@@ -43,8 +43,12 @@ export function Navbar() {
         isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm' : 'bg-transparent'
       )}
     >
-      <Link href="#" className="flex items-center gap-2">
+      <Link
+        href="#"
+        className="relative flex items-center gap-2 group overflow-hidden transition-transform duration-300 ease-out hover:scale-110"
+      >
         <Logo />
+        <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out group-hover:left-[100%]" />
       </Link>
       <div className="hidden md:flex items-center gap-8">
         <NavLinks className={cn(isScrolled ? 'text-foreground' : 'text-background')} />
