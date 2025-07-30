@@ -12,9 +12,9 @@ export const companyData = {
   navigation: {
     mainMenu: [
       { 
-        "name": "Qui sommes-nous", 
+        "name": "Home", 
         "href": "#about", 
-        "icon": "Info",
+        "icon": "Factory",
         "children": [
           { "name": "Notre Histoire", "href": "#about", "description": "Découvrez nos origines et notre parcours.", "icon": "Building2" },
           { "name": "Vision & Mission", "href": "#about", "description": "Nos valeurs et nos ambitions pour l'avenir.", "icon": "Award" },
