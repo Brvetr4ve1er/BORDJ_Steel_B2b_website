@@ -1,10 +1,22 @@
 
+"use client";
+
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedWrapper } from './animated-wrapper';
 import { companyData } from '@/config/company-data';
 import { Button } from './ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, HardHat, Layers, Cog, Anchor } from 'lucide-react';
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+
+const iconMap: { [key: string]: React.ElementType } = {
+  HardHat,
+  Layers,
+  Cog,
+  Anchor,
+};
+
 
 export function Facilities() {
   const { units } = companyData.pages;
@@ -15,30 +27,54 @@ export function Facilities() {
         <AnimatedWrapper animation="fade-in">
           <h2 className="font-headline text-4xl font-bold text-center text-primary mb-12">{units.title}</h2>
         </AnimatedWrapper>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {units.items.map((facility, index) => (
-            <AnimatedWrapper key={index} animation="slide-up">
-              <Card className="overflow-hidden shadow-xl transition-shadow hover:shadow-2xl group relative h-80">
-                <Image
-                  src={facility.image.src}
-                  alt={facility.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="transition-transform duration-300 group-hover:scale-105"
-                  data-ai-hint={facility.image.aiHint}
-                />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="font-headline text-2xl font-bold mb-2">{facility.title}</h3>
-                  <p className="text-sm mb-4">{facility.description}</p>
-                  <Button variant="destructive" className="mt-auto self-start group bg-accent hover:bg-accent/90 transition-all duration-300 ease-in-out transform group-hover:translate-y-0 translate-y-4">
-                    Lire la suite
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </Button>
-                </div>
-              </Card>
-            </AnimatedWrapper>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {units.items.map((facility, index) => {
+             const Icon = iconMap[facility.icon];
+             return (
+                <AnimatedWrapper key={index} animation="slide-up">
+                    <Card className="overflow-hidden shadow-xl transition-shadow hover:shadow-2xl group relative aspect-square">
+                        <Image
+                        src={facility.image.src}
+                        alt={facility.title}
+                        layout="fill"
+                        objectFit="cover"
+                        className="transition-transform duration-500 group-hover:scale-110"
+                        data-ai-hint={facility.image.aiHint}
+                        />
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        
+                        {/* Icon visible by default */}
+                        {Icon && (
+                            <div className={cn(
+                                "absolute inset-0 flex items-center justify-center transition-all duration-300",
+                                "group-hover:opacity-0 group-hover:scale-75"
+                            )}>
+                                <div className="bg-white/20 backdrop-blur-sm p-4 rounded-full">
+                                    <Icon className="h-12 w-12 text-white" />
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Text content fades in on hover */}
+                        <div className="absolute inset-0 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                           {Icon && (
+                                <div className="absolute top-6 left-6 transition-all duration-300 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0">
+                                   <Icon className="h-10 w-10 text-white" />
+                                </div>
+                           )}
+                           <div className="mt-auto">
+                                <h3 className="font-headline text-2xl font-bold mb-2">{facility.title}</h3>
+                                <p className="text-sm mb-4">{facility.description}</p>
+                                <Button variant="destructive" className="mt-auto self-start group bg-accent hover:bg-accent/90 transition-all duration-300 ease-in-out transform group-hover:translate-y-0 translate-y-4">
+                                    Lire la suite
+                                    <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                                </Button>
+                           </div>
+                        </div>
+                    </Card>
+                </AnimatedWrapper>
+             )
+          })}
         </div>
       </div>
     </section>
