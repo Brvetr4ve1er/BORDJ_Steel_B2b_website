@@ -93,59 +93,54 @@ export function Navbar() {
 
   const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?: () => void }) => (
      <nav className={cn("flex items-center", className)}>
-        {navigation.mainMenu.map((item) => (
-            <div key={item.name}>
-                <NavigationMenu>
-                    <NavigationMenuList>
-                        <NavigationMenuItem>
-                          {item.children ? (
-                              <>
-                                <NavigationMenuTrigger className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}>
-                                  {item.icon && React.createElement(iconMap[item.icon], { className: "h-4 w-4 mr-2" })}
-                                  {item.name}
-                                </NavigationMenuTrigger>
-                                <NavigationMenuContent>
-                                  <ul className="grid w-[300px] gap-3 p-4 md:w-[400px] lg:w-[500px]">
-                                    {item.children.map((component) => (
-                                      <ListItem
-                                        key={component.name}
-                                        title={component.name}
-                                        href={component.href}
-                                        icon={component.icon}
-                                        onClick={onItemClick}
-                                      >
-                                        {component.description}
-                                      </ListItem>
-                                    ))}
-                                  </ul>
-                                </NavigationMenuContent>
-                              </>
-                          ) : (
-                            <Link href={item.href} passHref>
-                              <NavigationMenuLink
-                                className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
-                                onClick={onItemClick}
-                                asChild
-                              >
-                                <a>
-                                  {item.icon && React.createElement(iconMap[item.icon], { className: "h-4 w-4 mr-2"})}
-                                  {item.name}
-                                </a>
-                              </NavigationMenuLink>
-                            </Link>
-                          )}
-                        </NavigationMenuItem>
-                    </NavigationMenuList>
-                </NavigationMenu>
-            </div>
-        ))}
+        <NavigationMenu>
+            <NavigationMenuList>
+                {navigation.mainMenu.map((item) => (
+                    <NavigationMenuItem key={item.name}>
+                      {item.children ? (
+                          <>
+                            <NavigationMenuTrigger className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}>
+                              {item.icon && React.createElement(iconMap[item.icon], { className: "h-4 w-4 mr-2" })}
+                              {item.name}
+                            </NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                              <ul className="grid w-[300px] gap-3 p-4 md:w-[400px] lg:w-[500px]">
+                                {item.children.map((component) => (
+                                  <ListItem
+                                    key={component.name}
+                                    title={component.name}
+                                    href={component.href}
+                                    icon={component.icon}
+                                    onClick={onItemClick}
+                                  >
+                                    {component.description}
+                                  </ListItem>
+                                ))}
+                              </ul>
+                            </NavigationMenuContent>
+                          </>
+                      ) : (
+                        <Link href={item.href} passHref>
+                          <NavigationMenuLink
+                            className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
+                            onClick={onItemClick}
+                          >
+                            {item.icon && React.createElement(iconMap[item.icon], { className: "h-4 w-4 mr-2"})}
+                            {item.name}
+                          </NavigationMenuLink>
+                        </Link>
+                      )}
+                    </NavigationMenuItem>
+                ))}
+            </NavigationMenuList>
+        </NavigationMenu>
       </nav>
   );
 
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 flex items-center px-4 md:px-8 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 transition-all duration-300',
         isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32'
       )}
     >
