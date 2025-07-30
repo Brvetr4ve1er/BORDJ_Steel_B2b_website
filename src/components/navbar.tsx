@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Briefcase, Factory, Info, Mail, Newspaper, Package, UserPlus, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View } from 'lucide-react';
+import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -39,7 +39,6 @@ const iconMap: { [key: string]: React.ElementType } = {
   Factory,
   Package,
   Briefcase,
-  UserPlus,
   Newspaper,
   Mail,
   Building2,
@@ -119,9 +118,9 @@ const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?
                                     </NavigationMenuContent>
                                 </>
                             ) : (
-                                <Link href={item.href} passHref>
-                                  <NavigationMenuLink
-                                    active={isLinkActive(item.href)}
+                                <NavigationMenuLink asChild>
+                                  <Link
+                                    href={item.href}
                                     className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent", effectiveIsScrolled ? 'text-foreground' : 'text-background')}
                                     onClick={onItemClick}
                                   >
@@ -129,8 +128,8 @@ const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?
                                         {Icon && <Icon className="h-4 w-4 mr-2" />}
                                         {item.name}
                                       </div>
-                                  </NavigationMenuLink>
-                                </Link>
+                                  </Link>
+                                </NavigationMenuLink>
                             )}
                         </NavigationMenuItem>
                     )
