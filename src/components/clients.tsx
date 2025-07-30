@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
+import { useLanguage } from '@/context/language-context';
 import { companyData } from '@/config/company-data';
 
 export function Clients() {
-  const { clients } = companyData;
+  const { language } = useLanguage();
+  const { clients } = companyData[language];
   return (
     <section id="clients" className="bg-background">
       <div className="container mx-auto px-4">

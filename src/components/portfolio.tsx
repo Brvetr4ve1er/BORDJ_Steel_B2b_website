@@ -1,10 +1,13 @@
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedWrapper } from './animated-wrapper';
+import { useLanguage } from '@/context/language-context';
 import { companyData } from '@/config/company-data';
 
 export function Portfolio() {
-  const { portfolio } = companyData;
+  const { language } = useLanguage();
+  const { portfolio } = companyData[language];
+
   return (
     <section id="portfolio" className="bg-background">
       <div className="container mx-auto px-4">

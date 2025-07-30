@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
+import { useLanguage } from '@/context/language-context';
 import { companyData } from '@/config/company-data';
 
 const AnimatedCounter = ({ end, duration = 2000 }: { end: number; duration?: number }) => {
@@ -53,7 +54,8 @@ const AnimatedCounter = ({ end, duration = 2000 }: { end: number; duration?: num
 };
 
 export function Hero() {
-  const { hero } = companyData;
+  const { language } = useLanguage();
+  const { hero } = companyData[language];
 
   return (
     <section id="home" className="relative h-screen w-full p-0">

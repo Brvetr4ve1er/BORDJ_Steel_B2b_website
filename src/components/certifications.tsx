@@ -1,9 +1,12 @@
 import { AnimatedWrapper } from './animated-wrapper';
 import { CheckCircle } from 'lucide-react';
+import { useLanguage } from '@/context/language-context';
 import { companyData } from '@/config/company-data';
 
 export function Certifications() {
-  const { certifications } = companyData;
+  const { language } = useLanguage();
+  const { certifications } = companyData[language];
+
   return (
     <section id="approvals" className="bg-secondary">
       <div className="container mx-auto px-4">

@@ -1,9 +1,12 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { AnimatedWrapper } from "./animated-wrapper";
-import { companyData } from "@/config/company-data";
+import { useLanguage } from '@/context/language-context';
+import { companyData } from '@/config/company-data';
 
 export function VisionMission() {
-  const { about } = companyData;
+  const { language } = useLanguage();
+  const { about } = companyData[language];
+
   return (
     <section id="about" className="bg-background">
       <div className="container mx-auto px-4">
@@ -11,7 +14,7 @@ export function VisionMission() {
           <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1}>
             <Card className="h-full border-2 border-primary/20 shadow-lg">
               <CardHeader>
-                <CardTitle className="font-headline text-3xl text-primary">Our Vision</CardTitle>
+                <CardTitle className="font-headline text-3xl text-primary">{about.visionTitle}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-lg">
@@ -23,7 +26,7 @@ export function VisionMission() {
           <AnimatedWrapper animation="fade-in-stagger" staggerIndex={2}>
             <Card className="h-full border-2 border-primary/20 shadow-lg">
               <CardHeader>
-                <CardTitle className="font-headline text-3xl text-primary">Our Mission</CardTitle>
+                <CardTitle className="font-headline text-3xl text-primary">{about.missionTitle}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-lg">

@@ -4,15 +4,18 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { AnimatedWrapper } from './animated-wrapper';
+import { useLanguage } from '@/context/language-context';
 import { companyData } from '@/config/company-data';
 
 export function Contact() {
-  const { contact } = companyData;
+  const { language } = useLanguage();
+  const { contact, contactCta } = companyData[language];
+
   return (
     <section id="contact" className="bg-secondary">
       <div className="container mx-auto px-4">
         <AnimatedWrapper animation="fade-in">
-          <h2 className="font-headline text-4xl font-bold text-center text-primary mb-12">Get In Touch</h2>
+          <h2 className="font-headline text-4xl font-bold text-center text-primary mb-12">{contactCta.title}</h2>
         </AnimatedWrapper>
         <Card className="shadow-2xl">
           <CardContent className="p-8 lg:p-12">
@@ -20,8 +23,8 @@ export function Contact() {
               <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1}>
                 <div className="space-y-8">
                   <div>
-                    <h3 className="font-headline text-2xl font-bold text-primary">Contact Information</h3>
-                    <p className="mt-2 text-muted-foreground">Fill up the form and our team will get back to you within 24 hours.</p>
+                    <h3 className="font-headline text-2xl font-bold text-primary">{contactCta.info.title}</h3>
+                    <p className="mt-2 text-muted-foreground">{contactCta.info.description}</p>
                   </div>
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
@@ -43,20 +46,20 @@ export function Contact() {
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="font-medium">Name</label>
-                      <Input id="name" placeholder="Your Name" />
+                      <label htmlFor="name" className="font-medium">{contactCta.form.name}</label>
+                      <Input id="name" placeholder={contactCta.form.namePlaceholder} />
                     </div>
                     <div className="space-y-2">
-                       <label htmlFor="email" className="font-medium">Email</label>
-                      <Input id="email" type="email" placeholder="Your Email" />
+                       <label htmlFor="email" className="font-medium">{contactCta.form.email}</label>
+                      <Input id="email" type="email" placeholder={contactCta.form.emailPlaceholder} />
                     </div>
                   </div>
                   <div className="space-y-2">
-                     <label htmlFor="message" className="font-medium">Message</label>
-                    <Textarea id="message" placeholder="Your Message" rows={5} />
+                     <label htmlFor="message" className="font-medium">{contactCta.form.message}</label>
+                    <Textarea id="message" placeholder={contactCta.form.messagePlaceholder} rows={5} />
                   </div>
                   <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90">
-                    Send Message
+                    {contactCta.form.button}
                   </Button>
                 </form>
               </AnimatedWrapper>

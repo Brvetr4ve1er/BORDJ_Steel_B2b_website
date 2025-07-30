@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Twitter } from 'lucide-react';
+import { useLanguage } from '@/context/language-context';
 import { companyData, navItems } from '@/config/company-data';
 
 export function Footer() {
-  const { companyName, footer, socials, contact } = companyData;
+  const { language } = useLanguage();
+  const { companyName, footer, socials, contact, legal, navItems } = companyData[language];
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -28,7 +30,7 @@ export function Footer() {
           <div className="md:col-span-3">
              <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
                 <div>
-                    <h4 className="font-headline font-semibold tracking-wider uppercase">Site Links</h4>
+                    <h4 className="font-headline font-semibold tracking-wider uppercase">{legal.siteLinks}</h4>
                     <ul className="mt-4 space-y-2">
                         {navItems.map(item => (
                              <li key={item}>
@@ -40,14 +42,14 @@ export function Footer() {
                     </ul>
                 </div>
                 <div>
-                    <h4 className="font-headline font-semibold tracking-wider uppercase">Legal</h4>
+                    <h4 className="font-headline font-semibold tracking-wider uppercase">{legal.title}</h4>
                      <ul className="mt-4 space-y-2">
-                        <li><Link href="#" className="text-sm text-gray-300 hover:text-white transition-colors">Privacy Policy</Link></li>
-                        <li><Link href="#" className="text-sm text-gray-300 hover:text-white transition-colors">Terms of Service</Link></li>
+                        <li><Link href="#" className="text-sm text-gray-300 hover:text-white transition-colors">{legal.privacy}</Link></li>
+                        <li><Link href="#" className="text-sm text-gray-300 hover:text-white transition-colors">{legal.terms}</Link></li>
                     </ul>
                 </div>
                  <div>
-                    <h4 className="font-headline font-semibold tracking-wider uppercase">Contact Us</h4>
+                    <h4 className="font-headline font-semibold tracking-wider uppercase">{legal.contactUs}</h4>
                      <ul className="mt-4 space-y-2 text-sm text-gray-300">
                         <li>{contact.address.split(',')[0]}</li>
                         <li>{contact.address.split(',').slice(1).join(',').trim()}</li>

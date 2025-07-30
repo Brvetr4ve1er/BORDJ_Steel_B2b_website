@@ -6,13 +6,16 @@ import { Globe, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
-import { companyData, navItems } from '@/config/company-data';
+import { companyData } from '@/config/company-data';
 import { Logo } from './logo';
+import { useLanguage } from '@/context/language-context';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
+  const { language, setLanguage } = useLanguage();
+  const { companyName, navItems, languageToggle } = companyData[language];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +24,10 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'fr' : 'en');
+  };
 
   const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?: () => void }) => (
     <nav className={cn("flex items-center gap-6 text-sm font-medium", className)}>
@@ -61,7 +68,7 @@ export function Navbar() {
           </SheetTrigger>
           <SheetContent side="right" className="w-full sm:max-w-md bg-background/95 backdrop-blur-sm p-0 flex flex-col">
             <div className="p-6 flex justify-between items-center border-b">
-              <span className="font-headline font-bold text-2xl text-primary">{companyData.companyName}</span>
+              <span className="font-headline font-bold text-2xl text-primary">{companyName}</span>
               <Button variant="ghost" size="icon" onClick={() => setIsDesktopMenuOpen(false)}>
                 <X className="h-6 w-6 text-foreground" />
               </Button>
@@ -71,9 +78,9 @@ export function Navbar() {
               <NavLinks className="flex-col items-center gap-8 text-2xl text-foreground font-headline" onItemClick={() => setIsDesktopMenuOpen(false)} />
             </div>
             <div className="p-6 border-t">
-              <Button variant="outline" className="w-full text-lg py-6">
+              <Button variant="outline" className="w-full text-lg py-6" onClick={toggleLanguage}>
                 <Globe className="mr-2 h-5 w-5" />
-                Language
+                {languageToggle}
               </Button>
             </div>
           </SheetContent>
@@ -89,7 +96,7 @@ export function Navbar() {
           </SheetTrigger>
           <SheetContent side="right" className="w-full h-full bg-background/95 backdrop-blur-sm p-0 flex flex-col">
             <div className="p-6 flex justify-between items-center border-b">
-              <span className="font-headline font-bold text-2xl text-primary">{companyData.companyName}</span>
+              <span className="font-headline font-bold text-2xl text-primary">{companyName}</span>
               <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
                 <X className="h-6 w-6 text-foreground" />
               </Button>
@@ -99,9 +106,9 @@ export function Navbar() {
               <NavLinks className="flex-col items-center gap-8 text-2xl text-foreground font-headline" onItemClick={() => setIsMobileMenuOpen(false)} />
             </div>
              <div className="p-6 border-t">
-                <Button variant="outline" className="w-full text-lg py-6">
+                <Button variant="outline" className="w-full text-lg py-6" onClick={toggleLanguage}>
                   <Globe className="mr-2 h-5 w-5" />
-                  Language
+                  {languageToggle}
                 </Button>
               </div>
           </SheetContent>

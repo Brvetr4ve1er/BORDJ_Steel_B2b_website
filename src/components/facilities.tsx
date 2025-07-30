@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedWrapper } from './animated-wrapper';
+import { useLanguage } from '@/context/language-context';
 import { companyData } from '@/config/company-data';
 
 export function Facilities() {
-  const { services } = companyData;
+  const { language } = useLanguage();
+  const { services } = companyData[language];
 
   return (
     <section id="services" className="bg-secondary">
