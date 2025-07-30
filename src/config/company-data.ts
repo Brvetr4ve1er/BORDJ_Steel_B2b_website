@@ -67,7 +67,7 @@ export const companyData = {
         {
           title: 'Galvanisation à Chaud',
           description: `Capacité de 60000 T/an avec un bain de 13m de long pour des pièces jusqu'à 15m.`,
-          image: { src: 'https://images.unsplash.com/photo-1531875506263-dfcc69e73475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxob3QtZGlwJTIwZ2FsdmFuaXphdGlvbnxlbnwwfHx8fDE3NTM4NzYzNzJ8MA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'hot-dip galvanization' }
+          image: { src: 'https://images.unsplash.com/photo-1569968201228-01aebb252e80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtZXRhbCUyMGZhY3Rvcnl8ZW58MHx8fHwxNzUzODc2NjczfDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'hot-dip galvanization' }
         },
         {
           title: 'Chaudronnerie',
