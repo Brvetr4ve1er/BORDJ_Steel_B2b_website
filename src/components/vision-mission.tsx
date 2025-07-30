@@ -24,10 +24,12 @@ export function VisionMission() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <AnimatedWrapper animation="zoom-in">
             <div className="relative aspect-square rounded-lg overflow-hidden shadow-2xl group">
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                layout="fill"
+                objectFit="cover"
+                className="transition-transform duration-500 group-hover:scale-110"
                 data-ai-hint={image.aiHint}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
