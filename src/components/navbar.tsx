@@ -63,20 +63,23 @@ export function Navbar() {
               <span className="sr-only">Open menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] bg-background">
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-8">
-                <span className="font-headline font-bold text-2xl text-primary">{companyData.companyName}</span>
-                <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
-                  <X className="h-6 w-6 text-foreground" />
-                </Button>
-              </div>
-              <NavLinks className="flex-col items-start gap-4 text-lg text-foreground" />
-              <Button variant="outline" className="w-full mt-8">
-                <Globe className="mr-2 h-5 w-5" />
-                Language
+          <SheetContent side="right" className="w-full h-full bg-background/95 backdrop-blur-sm p-0 flex flex-col">
+            <div className="p-6 flex justify-between items-center border-b">
+              <span className="font-headline font-bold text-2xl text-primary">{companyData.companyName}</span>
+              <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
+                <X className="h-6 w-6 text-foreground" />
               </Button>
             </div>
+            <div className="flex-1 p-6 flex flex-col justify-center items-center gap-8 relative">
+               <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/10 -z-10" />
+              <NavLinks className="flex-col items-center gap-8 text-2xl text-foreground font-headline" />
+            </div>
+             <div className="p-6 border-t">
+                <Button variant="outline" className="w-full text-lg py-6">
+                  <Globe className="mr-2 h-5 w-5" />
+                  Language
+                </Button>
+              </div>
           </SheetContent>
         </Sheet>
       </div>
