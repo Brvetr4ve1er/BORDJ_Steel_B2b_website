@@ -88,6 +88,21 @@ export const companyData = {
           name: 'Tôles pour PEB',
           description: 'Des tôles nervurées de haute qualité, idéales pour les structures de bâtiments préfabriqués (PEB), offrant durabilité et résistance.',
           image: { src: 'https://placehold.co/800x600.png', aiHint: 'metal sheet' }
+        },
+        {
+          name: 'Poutres et Profilés en Acier',
+          description: 'Une gamme complète de poutres et profilés pour des charpentes métalliques robustes et conformes aux normes.',
+          image: { src: 'https://placehold.co/800x600.png', aiHint: 'steel beams' }
+        },
+        {
+          name: 'Panneaux de Bardage',
+          description: 'Solutions de bardage esthétiques et isolantes pour façades de bâtiments industriels et commerciaux.',
+          image: { src: 'https://placehold.co/800x600.png', aiHint: 'cladding panels' }
+        },
+        {
+          name: 'Accessoires de Finition',
+          description: 'Tous les accessoires nécessaires pour une finition parfaite : gouttières, faîtages, et plus encore.',
+          image: { src: 'https://placehold.co/800x600.png', aiHint: 'metal accessories' }
         }
       ]
     },
