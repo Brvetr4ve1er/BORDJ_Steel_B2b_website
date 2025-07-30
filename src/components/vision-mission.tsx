@@ -21,13 +21,6 @@ export function VisionMission() {
   return (
     <section id="about" className="bg-background">
       <div className="container mx-auto px-4">
-        <AnimatedWrapper animation="fade-in" className="text-center mb-12">
-          <h2 className="font-headline text-4xl font-bold text-primary mb-4">
-            BORDJ <span className="text-accent">STEEL</span>
-          </h2>
-          <p className="text-lg max-w-3xl mx-auto text-muted-foreground">{history}</p>
-        </AnimatedWrapper>
-
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <AnimatedWrapper animation="zoom-in">
             <div className="relative aspect-square rounded-lg overflow-hidden shadow-2xl group">
@@ -55,6 +48,12 @@ export function VisionMission() {
           </AnimatedWrapper>
 
           <div className="space-y-10">
+             <AnimatedWrapper animation="fade-in" className="mb-12">
+                <h2 className="font-headline text-4xl font-bold text-primary mb-4">
+                    BORDJ <span className="text-accent">STEEL</span>
+                </h2>
+                <p className="text-lg text-muted-foreground">{history}</p>
+            </AnimatedWrapper>
             <AnimatedWrapper animation="slide-up" staggerIndex={1}>
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0 w-16 h-16 rounded-full bg-red-100 flex items-center justify-center border-4 border-accent/20">
