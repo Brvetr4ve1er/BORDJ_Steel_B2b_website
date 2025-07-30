@@ -19,13 +19,13 @@ export function Portfolio() {
               <div key={index} className="group">
                 <Card className="overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
                   <CardContent className="p-0">
-                    <div className="relative">
+                    <div className="relative aspect-square">
                       <Image
                         src={project.image.src}
                         alt={project.name}
-                        width={400}
-                        height={300}
-                        className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                        layout="fill"
+                        objectFit="cover"
+                        className="w-full h-full transition-transform duration-300 group-hover:scale-105"
                         data-ai-hint={project.image.aiHint}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
