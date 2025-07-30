@@ -72,7 +72,7 @@ export const companyData = {
         {
           title: 'Chaudronnerie',
           description: `Notre unité de chaudronnerie est spécialisée dans la fabrication d'équipements sur mesure pour divers secteurs industriels.`,
-          image: { src: 'https://images.unsplash.com/photo-1576933594479-01e95a61e959?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxib2lsZXIlMjBtYWtpbmd8ZW58MHx8fHwxNzUzODc2MzcyfDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'boiler making' }
+          image: { src: 'https://images.unsplash.com/photo-1510900767338-8bf61abf2562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMG1lbHRpbmclMjBmYWN0b3J5fGVufDB8fHx8MTc1Mzg3Njc2NXww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'boiler making' }
         }
       ]
     },
@@ -159,3 +159,5 @@ export const companyData = {
     github: "#"
   },
 };
+
+    
