@@ -35,7 +35,7 @@ export const companyData = {
       { "name": "Références", "href": "#portfolio", "icon": "Briefcase" },
       { 
         "name": "Media Center", 
-        "href": "#recruitment", 
+        "href": "#", 
         "icon": "Newspaper",
         "children": [
             { "name": "Nos Projets", "href": "#portfolio", "description": "Découvrez nos réalisations et nos projets phares.", "icon": "Briefcase" },
@@ -46,7 +46,6 @@ export const companyData = {
             { "name": "Video & 3D", "href": "#videos", "description": "Explorez nos produits en vidéos et modèles 3D.", "icon": "View" }
         ]
       },
-      { "name": "Recrutement", "href": "#recruitment", "icon": "UserPlus" },
       { "name": "Contact", "href": "#contact", "icon": "Mail" }
     ],
   },

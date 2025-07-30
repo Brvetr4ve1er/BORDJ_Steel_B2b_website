@@ -9,7 +9,6 @@ import { Certifications } from '@/components/certifications';
 import { Clients } from '@/components/clients';
 import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
-import { Recruitment } from '@/components/recruitment';
 
 export function HomePage() {
   return (
@@ -22,7 +21,6 @@ export function HomePage() {
         <Portfolio />
         <Certifications />
         <Clients />
-        <Recruitment />
         <Contact />
       </main>
       <Footer />
