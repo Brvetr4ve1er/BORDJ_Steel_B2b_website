@@ -21,10 +21,10 @@ export const companyData = {
           { "name": "Politique QSE", "href": "#about", "description": "Notre engagement pour la Qualité, Sécurité et Environnement.", "icon": "ShieldCheck" },
         ]
       },
-      { 
-        "name": "Services", 
-        "href": "#services", 
-        "icon": "Factory",
+      {
+        "name": "Produits",
+        "href": "#products",
+        "icon": "Package",
         "children": [
           { "name": "Charpente Métallique", "href": "#services", "description": "Solutions robustes pour tous types de bâtiments.", "icon": "HardHat" },
           { "name": "Panneaux Sandwichs", "href": "#services", "description": "Isolation thermique et acoustique performante.", "icon": "Package" },
@@ -32,7 +32,6 @@ export const companyData = {
           { "name": "Chaudronnerie", "href": "#services", "description": "Fabrication sur mesure d'équipements industriels.", "icon": "Anchor" },
         ]
       },
-      { "name": "Produits", "href": "#products", "icon": "Package" },
       { "name": "Références", "href": "#portfolio", "icon": "Briefcase" },
       { "name": "Recrutement", "href": "#recruitment", "icon": "UserPlus" },
       { 
@@ -224,4 +223,5 @@ export const companyData = {
   },
 };
 
+    
     
