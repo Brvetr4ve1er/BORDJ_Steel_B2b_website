@@ -23,7 +23,7 @@ export const companyData = {
       },
       {
         "name": "Produits",
-        "href": "#products",
+        "href": "/products",
         "icon": "Package",
         "children": [
           { "name": "Charpente Métallique", "href": "#services", "description": "Solutions robustes pour tous types de bâtiments.", "icon": "HardHat" },

@@ -4,7 +4,6 @@ import { Navbar } from '@/components/navbar';
 import { Hero } from '@/components/hero';
 import { VisionMission } from '@/components/vision-mission';
 import { Facilities } from '@/components/facilities';
-import { Products } from '@/components/products';
 import { Portfolio } from '@/components/portfolio';
 import { Certifications } from '@/components/certifications';
 import { Clients } from '@/components/clients';
@@ -20,7 +19,6 @@ export function HomePage() {
         <Hero />
         <VisionMission />
         <Facilities />
-        <Products />
         <Portfolio />
         <Certifications />
         <Clients />
