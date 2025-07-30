@@ -18,7 +18,7 @@ export const companyData = {
         "children": [
           { "name": "Notre Histoire", "href": "#about", "description": "Découvrez nos origines et notre parcours.", "icon": "Building2" },
           { "name": "Vision & Mission", "href": "#about", "description": "Nos valeurs et nos ambitions pour l'avenir.", "icon": "Award" },
-          { "name": "Politique QSE", "href": "#about", "description": "Notre engagement pour la Qualité, Sécurité et Environnement.", "icon": "ShieldCheck" },
+          { "name": "Politique QHSE", "href": "#about", "description": "Notre engagement pour la Qualité, Hygiène, Sécurité et Environnement.", "icon": "ShieldCheck" },
         ]
       },
       {
@@ -87,8 +87,8 @@ export const companyData = {
             icon: "Cog"
         },
         qsePolicy: {
-          title: "Politique QSE",
-          text: "Engagée dans une démarche d'excellence, BORDJ STEEL est certifiée ISO 9001:2015, ISO 14001:2015, et ISO 45001:2018. Notre politique Qualité, Sécurité, et Environnement, signée par le Directeur Général M. TRIRAT Samir, est le pilier de notre performance.",
+          title: "Politique QHSE",
+          text: "Engagée dans une démarche d'excellence, BORDJ STEEL est certifiée ISO 9001:2015, ISO 14001:2015, et ISO 45001:2018. Notre politique Qualité, Hygiène, Sécurité, et Environnement, signée par le Directeur Général M. TRIRAT Samir, est le pilier de notre performance.",
         },
         image: {
             src: 'https://images.unsplash.com/photo-1600683605785-d51d43138eee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c3RlZWwlMjBmYWN0b3J5fGVufDB8fHx8MTc1Mzg4MjMwMHww&ixlib=rb-4.1.0&q=80&w=1080',

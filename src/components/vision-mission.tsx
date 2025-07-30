@@ -75,7 +75,7 @@ export function VisionMission() {
                   <h3 className="font-headline text-3xl font-bold text-primary mb-2">{mission.title}</h3>
                   <p className="text-lg">{mission.text}</p>
                    <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90 mt-6 px-8 py-6 text-lg">
-                    En savoir plus sur notre politique QSE
+                    En savoir plus sur notre politique QHSE
                   </Button>
                 </div>
               </div>

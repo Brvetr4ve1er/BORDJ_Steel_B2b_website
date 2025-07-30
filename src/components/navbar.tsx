@@ -284,5 +284,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    
