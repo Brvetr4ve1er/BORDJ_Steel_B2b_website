@@ -35,7 +35,7 @@ export const companyData = {
       { "name": "Produits", "href": "#products", "icon": "Package" },
       { "name": "Références", "href": "#portfolio", "icon": "Briefcase" },
       { "name": "Recrutement", "href": "#recruitment", "icon": "UserPlus" },
-      { "name": "Actualités", "href": "#news", "icon": "Newspaper" },
+      { "name": "Media Center", "href": "#news", "icon": "Newspaper" },
       { "name": "Contact", "href": "#contact", "icon": "Mail" }
     ],
   },
