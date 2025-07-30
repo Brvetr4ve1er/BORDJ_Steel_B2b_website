@@ -35,7 +35,15 @@ export const companyData = {
       { "name": "Produits", "href": "#products", "icon": "Package" },
       { "name": "Références", "href": "#portfolio", "icon": "Briefcase" },
       { "name": "Recrutement", "href": "#recruitment", "icon": "UserPlus" },
-      { "name": "Media Center", "href": "#news", "icon": "Newspaper" },
+      { 
+        "name": "Media Center", 
+        "href": "#", 
+        "icon": "Newspaper",
+        "children": [
+            { "name": "Nos Projets", "href": "#portfolio", "description": "Découvrez nos réalisations et nos projets phares.", "icon": "Briefcase" },
+            { "name": "Articles de Presse", "href": "#news", "description": "Lisez les dernières actualités et articles nous concernant.", "icon": "FileText" }
+        ]
+      },
       { "name": "Contact", "href": "#contact", "icon": "Mail" }
     ],
   },
@@ -215,3 +223,5 @@ export const companyData = {
     whatsapp: "#"
   },
 };
+
+    
