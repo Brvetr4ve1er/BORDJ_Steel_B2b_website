@@ -42,6 +42,11 @@ export const companyData = {
     about: {
       slug: '/a-propos',
       title: 'Qui sommes-nous',
+      image: {
+        src: 'https://images.unsplash.com/photo-1576933594479-01e95a61e959?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxib2lsZXIlMjBtYWtpbmd8ZW58MHx8fHwxNzUzODc2MzcyfDA&ixlib=rb-4.1.0&q=80&w=1080',
+        aiHint: 'metal works'
+      },
+      completedProjects: 300,
       content: {
         history: 'Créée en 2012, BORDJ STEEL s\'étend sur une surface totale de 100 000 m² dont 25 000 m² couverts, affirmant son expertise dans le domaine de la construction métallique.',
         qsePolicy: {
