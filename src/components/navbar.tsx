@@ -56,15 +56,15 @@ const ListItem = React.forwardRef<
           href={href!}
           ref={ref}
           className={cn(
-            "flex select-none items-start gap-4 space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "group flex select-none items-start gap-4 space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
         >
-          {Icon && <Icon className="h-6 w-6 text-accent flex-shrink-0 mt-1" />}
+          {Icon && <Icon className="h-6 w-6 text-accent flex-shrink-0 mt-1 transition-opacity group-hover:opacity-0" />}
           <div className="flex-grow">
             <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground group-hover:text-accent-foreground/80">
               {children}
             </p>
           </div>
@@ -90,46 +90,49 @@ export function Navbar() {
   }, []);
 
   const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?: () => void }) => (
-    <NavigationMenu className={cn(className)}>
-      <NavigationMenuList className={cn(isScrolled ? 'text-foreground' : 'text-background', 'gap-2')}>
-        {navigation.mainMenu.map((item) => {
-           const Icon = iconMap[item.icon];
-           return item.children ? (
-            <NavigationMenuItem key={item.name}>
-              <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent">
-                 {Icon && <Icon className="h-4 w-4 mr-2" />}
-                {item.name}
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[300px] gap-3 p-4 md:w-[400px] lg:w-[500px]">
-                  {item.children.map((component) => (
-                    <ListItem
-                      key={component.name}
-                      title={component.name}
-                      href={component.href}
-                      icon={component.icon}
-                    >
-                      {component.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          ) : (
-            <NavigationMenuItem key={item.name}>
-               <Link href={item.href} passHref>
-                <NavigationMenuLink asChild>
-                  <a className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent")}>
-                    {Icon && <Icon className="h-4 w-4 mr-2" />}
+     <nav className={cn("flex items-center gap-2", className)}>
+        <NavigationMenu>
+          <NavigationMenuList>
+            {navigation.mainMenu.map((item) => {
+              const Icon = iconMap[item.icon];
+              return item.children ? (
+                <NavigationMenuItem key={item.name}>
+                  <NavigationMenuTrigger className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}>
+                     {Icon && <Icon className="h-4 w-4 mr-2" />}
                     {item.name}
-                  </a>
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          )
-        })}
-      </NavigationMenuList>
-    </NavigationMenu>
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[300px] gap-3 p-4 md:w-[400px] lg:w-[500px]">
+                      {item.children.map((component) => (
+                        <ListItem
+                          key={component.name}
+                          title={component.name}
+                          href={component.href}
+                          icon={component.icon}
+                          onClick={onItemClick}
+                        >
+                          {component.description}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              ) : (
+                <NavigationMenuItem key={item.name}>
+                   <Link href={item.href} passHref legacyBehavior>
+                    <NavigationMenuLink asChild>
+                       <a className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')} onClick={onItemClick}>
+                        {Icon && <Icon className="h-4 w-4 mr-2" />}
+                        {item.name}
+                      </a>
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              )
+            })}
+          </NavigationMenuList>
+        </NavigationMenu>
+      </nav>
   );
 
   return (
@@ -151,7 +154,7 @@ export function Navbar() {
       </div>
 
       <div className="hidden md:flex items-center gap-6">
-        <NavLinks />
+        <NavLinks className={cn(isScrolled ? 'text-foreground' : 'text-background')} />
       </div>
 
       <div className="flex items-center gap-4">
@@ -160,7 +163,7 @@ export function Navbar() {
             <p className={cn('font-cairo font-bold text-sm', isScrolled ? 'text-primary' : 'text-white/80')}>{siteMetadata.sloganArabic}</p>
           <div className="mt-1">
              <Select defaultValue="fr">
-                <SelectTrigger className="w-[120px] bg-transparent text-white border-white/50">
+                <SelectTrigger className={cn("w-[120px] bg-transparent border-white/50", isScrolled ? "text-primary border-primary/50" : "text-white")}>
                     <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
