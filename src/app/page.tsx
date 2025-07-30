@@ -13,6 +13,7 @@ import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
 import { useEffect } from 'react';
 import { companyData } from '@/config/company-data';
+import { Recruitment } from '@/components/recruitment';
 
 export default function Home() {
   const { title, description } = companyData.siteMetadata;
@@ -41,6 +42,7 @@ export default function Home() {
         <Portfolio />
         <Certifications />
         <Clients />
+        <Recruitment />
         <Contact />
       </main>
       <Footer />

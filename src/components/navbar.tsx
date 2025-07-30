@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Briefcase, Factory, Info, Mail, Newspaper, Package, UserPlus, Menu, X } from 'lucide-react';
+import { Briefcase, Factory, Info, Mail, Newspaper, Package, UserPlus, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -16,8 +16,17 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-
+} from "@/components/ui/select";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import * as React from 'react';
 
 const iconMap: { [key: string]: React.ElementType } = {
   Info,
@@ -27,7 +36,37 @@ const iconMap: { [key: string]: React.ElementType } = {
   UserPlus,
   Newspaper,
   Mail,
+  Building2,
+  HardHat,
+  ShieldCheck,
 };
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
+
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,23 +82,43 @@ export function Navbar() {
   }, []);
 
   const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?: () => void }) => (
-    <nav className={cn("flex items-center gap-6 text-sm font-medium", className)}>
-      {navigation.mainMenu.map((item) => {
-        const Icon = iconMap[item.icon];
-        return (
-          <Link
-            key={item.name}
-            href={item.href}
-            className="transition-colors hover:text-primary relative overflow-hidden group py-2 flex items-center gap-2"
-            onClick={onItemClick}
-          >
-            {Icon && <Icon className="h-4 w-4" />}
-            <span>{item.name}</span>
-            <div className="absolute bottom-0 left-[-100%] w-full h-0.5 bg-primary transition-all duration-300 ease-out group-hover:left-0" />
-          </Link>
-        )
-      })}
-    </nav>
+    <NavigationMenu className={cn(className)}>
+      <NavigationMenuList className={cn(isScrolled ? 'text-foreground' : 'text-background', 'gap-2')}>
+        {navigation.mainMenu.map((item) => {
+           const Icon = iconMap[item.icon];
+           return item.children ? (
+            <NavigationMenuItem key={item.name}>
+              <NavigationMenuTrigger className="bg-transparent hover:bg-accent/10 focus:bg-accent/10 data-[active]:bg-accent/10 data-[state=open]:bg-accent/10">
+                 {Icon && <Icon className="h-4 w-4 mr-2" />}
+                {item.name}
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                  {item.children.map((component) => (
+                    <ListItem
+                      key={component.name}
+                      title={component.name}
+                      href={component.href}
+                    >
+                      {component.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          ) : (
+            <NavigationMenuItem key={item.name}>
+               <Link href={item.href} legacyBehavior passHref>
+                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-accent/10 focus:bg-accent/10 data-[active]:bg-accent/10 data-[state=open]:bg-accent/10")}>
+                   {Icon && <Icon className="h-4 w-4 mr-2" />}
+                  {item.name}
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          )
+        })}
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 
   return (
@@ -69,7 +128,7 @@ export function Navbar() {
         isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32'
       )}
     >
-       <div className={cn("absolute top-2 left-1/2 -translate-x-1/2 z-50", isScrolled && "hidden")}>
+      <div className={cn("absolute top-2 left-1/2 -translate-x-1/2 z-50", isScrolled && "hidden")}>
         <ThemeToggle />
       </div>
       <div className="flex items-center h-full">
@@ -84,7 +143,7 @@ export function Navbar() {
       </div>
 
       <div className="hidden md:flex items-center gap-6">
-        <NavLinks className={cn(isScrolled ? 'text-foreground' : 'text-background')} />
+        <NavLinks />
       </div>
 
       <div className="flex items-center gap-4">
@@ -120,23 +179,51 @@ export function Navbar() {
                   <X className="h-6 w-6 text-foreground" />
                 </Button>
               </div>
-              <div className="flex-1 p-6 flex flex-col justify-center items-center gap-8 relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/10 -z-10" />
-                <NavLinks className="flex-col items-center gap-8 text-2xl text-foreground font-headline" onItemClick={() => setIsMobileMenuOpen(false)} />
-                <div className="absolute bottom-6 flex flex-col items-center gap-4">
-                   <p className="text-xs font-semibold uppercase tracking-wider text-primary">{siteMetadata.slogan}</p>
-                   <p className="font-cairo font-bold text-sm text-primary">{siteMetadata.sloganArabic}</p>
-                  <ThemeToggle />
-                   <Select defaultValue="fr">
-                        <SelectTrigger className="w-[120px]">
-                            <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="fr">Français</SelectItem>
-                            <SelectItem value="en">English</SelectItem>
-                        </SelectContent>
-                    </Select>
-                </div>
+              <div className="flex-1 p-6 flex flex-col items-start gap-4 relative overflow-y-auto">
+                 {navigation.mainMenu.map((item) => {
+                  const Icon = iconMap[item.icon];
+                  return (
+                    <div key={item.name} className="w-full">
+                      {item.children ? (
+                        <div>
+                          <button className="w-full flex justify-between items-center py-2 font-headline text-lg">
+                             <span className="flex items-center gap-3">
+                              {Icon && <Icon className="h-5 w-5" />}
+                              {item.name}
+                            </span>
+                            <ChevronDown className="h-5 w-5" />
+                          </button>
+                          <div className="pl-8 flex flex-col items-start gap-2 mt-1">
+                            {item.children.map((child) => (
+                              <Link key={child.name} href={child.href} className="text-lg text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>{child.name}</Link>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <Link href={item.href} className="flex items-center gap-3 py-2 font-headline text-lg" onClick={() => setIsMobileMenuOpen(false)}>
+                           {Icon && <Icon className="h-5 w-5" />}
+                           {item.name}
+                        </Link>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+               <div className="p-6 border-t mt-auto">
+                  <div className="flex flex-col items-center gap-4">
+                     <p className="text-xs font-semibold uppercase tracking-wider text-primary">{siteMetadata.slogan}</p>
+                     <p className="font-cairo font-bold text-sm text-primary">{siteMetadata.sloganArabic}</p>
+                    <ThemeToggle />
+                     <Select defaultValue="fr">
+                          <SelectTrigger className="w-[120px]">
+                              <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                              <SelectItem value="fr">Français</SelectItem>
+                              <SelectItem value="en">English</SelectItem>
+                          </SelectContent>
+                      </Select>
+                  </div>
               </div>
             </SheetContent>
           </Sheet>

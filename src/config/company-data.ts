@@ -11,8 +11,27 @@ export const companyData = {
   },
   navigation: {
     mainMenu: [
-      { "name": "Qui sommes-nous", "href": "#about", "icon": "Info" },
-      { "name": "Unités", "href": "#services", "icon": "Factory" },
+      { 
+        "name": "Qui sommes-nous", 
+        "href": "#about", 
+        "icon": "Info",
+        "children": [
+          { "name": "Notre Histoire", "href": "#about", "description": "Découvrez nos origines et notre parcours." },
+          { "name": "Vision & Mission", "href": "#about", "description": "Nos valeurs et nos ambitions pour l'avenir." },
+          { "name": "Politique QSE", "href": "#about", "description": "Notre engagement pour la Qualité, Sécurité et Environnement." },
+        ]
+      },
+      { 
+        "name": "Services", 
+        "href": "#services", 
+        "icon": "Factory",
+        "children": [
+          { "name": "Charpente Métallique", "href": "#services", "description": "Solutions robustes pour tous types de bâtiments." },
+          { "name": "Panneaux Sandwichs", "href": "#services", "description": "Isolation thermique et acoustique performante." },
+          { "name": "Galvanisation à Chaud", "href": "#services", "description": "Protection anti-corrosion durable pour vos aciers." },
+          { "name": "Chaudronnerie", "href": "#services", "description": "Fabrication sur mesure d'équipements industriels." },
+        ]
+      },
       { "name": "Produits", "href": "#products", "icon": "Package" },
       { "name": "Références", "href": "#portfolio", "icon": "Briefcase" },
       { "name": "Recrutement", "href": "#recruitment", "icon": "UserPlus" },
@@ -196,6 +215,3 @@ export const companyData = {
     whatsapp: "#"
   },
 };
-
-    
-    
