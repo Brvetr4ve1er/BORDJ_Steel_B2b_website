@@ -21,12 +21,12 @@ export function Portfolio() {
                   <CardContent className="p-0">
                     <div className="relative">
                       <Image
-                        src="https://placehold.co/400x300.png"
+                        src={project.image.src}
                         alt={project.name}
                         width={400}
                         height={300}
                         className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-                        data-ai-hint="industrial building"
+                        data-ai-hint={project.image.aiHint}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                       <div className="absolute bottom-0 left-0 p-4">

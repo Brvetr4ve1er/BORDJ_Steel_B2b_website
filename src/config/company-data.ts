@@ -80,12 +80,12 @@ export const companyData = {
       slug: '/projets',
       title: 'Nos Références',
       projects: [
-          { name: 'UTEC - Ain Oulmen', image: { src: 'https://placehold.co/400x300.png', aiHint: 'industrial warehouse' } },
-          { name: 'STAR GOOD - Oued Smar', image: { src: 'https://placehold.co/400x300.png', aiHint: 'commercial building' } },
-          { name: 'CFCE - Oran', image: { src: 'https://placehold.co/400x300.png', aiHint: 'exhibition center' } },
-          { name: 'Base Logistique CONDOR', image: { src: 'https://placehold.co/400x300.png', aiHint: 'logistics base' } },
-          { name: 'Softal - Boufarik', image: { src: 'https://placehold.co/400x300.png', aiHint: 'industrial factory' } },
-          { name: 'Duct & Piping (Bordj Steel)', image: { src: 'https://placehold.co/400x300.png', aiHint: 'piping system' } },
+          { name: 'UTEC - Ain Oulmen', image: { src: 'https://images.unsplash.com/photo-1684695749295-7ec9ff3b8164?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzUzODc2MjA2fDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'industrial warehouse' } },
+          { name: 'STAR GOOD - Oued Smar', image: { src: 'https://images.unsplash.com/photo-1565610222536-ef125c59da2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzUzODc2MjA2fDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'commercial building' } },
+          { name: 'CFCE - Oran', image: { src: 'https://images.unsplash.com/photo-1684695747624-0dd1b6412bc1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzUzODc2MjA2fDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'exhibition center' } },
+          { name: 'Base Logistique CONDOR', image: { src: 'https://images.unsplash.com/photo-1615797534094-7fde0a4861f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzUzODc2MjA2fDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'logistics base' } },
+          { name: 'Softal - Boufarik', image: { src: 'https://images.unsplash.com/photo-1615797534094-7fde0a4861f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzUzODc2MjA2fDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'industrial factory' } },
+          { name: 'Duct & Piping (Bordj Steel)', image: { src: 'https://images.unsplash.com/photo-1700156316467-7b78b47c2c9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aW5kdXN0cmlhbCUyMGJ1aWxkaW5nfGVufDB8fHx8MTc1Mzg3NjIwNnww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'piping system' } },
       ]
     },
     certifications: {
