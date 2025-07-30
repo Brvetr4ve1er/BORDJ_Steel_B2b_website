@@ -1,6 +1,5 @@
 export const companyData = {
   "companyName": "BORDJ STEEL",
-  "companyNameShort": "BS",
   "metadata": {
     "title": "BORDJ STEEL",
     "description": "Leading innovations in steel fabrication and construction."

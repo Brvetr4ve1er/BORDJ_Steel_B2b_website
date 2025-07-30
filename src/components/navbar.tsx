@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { companyData, navItems } from '@/config/company-data';
+import { Logo } from './logo';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,10 +44,7 @@ export function Navbar() {
       )}
     >
       <Link href="#" className="flex items-center gap-2">
-        <div className="bg-primary text-primary-foreground p-2 rounded-md">
-          <span className="font-headline font-bold text-xl tracking-wider">{companyData.companyNameShort}</span>
-        </div>
-        <span className="font-headline font-bold text-2xl text-primary hidden sm:inline">{companyData.companyName}</span>
+        <Logo />
       </Link>
       <div className="hidden md:flex items-center gap-8">
         <NavLinks className={cn(isScrolled ? 'text-foreground' : 'text-background')} />
