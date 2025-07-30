@@ -119,7 +119,7 @@ export function Navbar() {
                         {item.name}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <ul className="grid grid-cols-3 gap-3 p-4">
+                      <ul className="grid w-max grid-cols-3 gap-3 p-4">
                         {item.children.map((component) => (
                           <ListItem
                             key={component.name}
@@ -139,7 +139,7 @@ export function Navbar() {
                     </NavigationMenuContent>
                 </>
              ) : (
-                <Link href={item.href} legacyBehavior passHref>
+                <Link href={item.href} passHref>
                   <NavigationMenuLink
                     className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
                     onClick={onItemClick}
@@ -265,5 +265,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    
