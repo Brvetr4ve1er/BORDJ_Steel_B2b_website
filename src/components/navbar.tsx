@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Briefcase, Factory, Info, Mail, Newspaper, Package, UserPlus, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View } from 'lucide-react';
+import { Briefcase, Factory, Info, Mail, Newspaper, Package, UserPlus, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View, ArrowLeft, Rocket, StickyNote, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -32,6 +32,33 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import * as React from 'react';
+
+const NewNavButtons = () => {
+    return (
+      <div className="flex items-center gap-2 bg-gray-900/50 p-2 rounded-lg backdrop-blur-sm">
+        <button className="relative inline-flex items-center justify-center gap-2 text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gray-800 hover:bg-gray-700 text-gray-300 h-9 rounded-md px-3 group">
+            <ArrowLeft className="h-5 w-5" />
+            <span className="absolute left-full ml-2 origin-left scale-0 transition-transform group-hover:scale-100 bg-gray-800 p-2 rounded-md">Back</span>
+        </button>
+        <button className="cursor-pointer bg-gray-800 relative inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-700 text-gray-300 hover:text-cyan-400 h-9 px-3">
+          <Rocket className="h-5 w-5 text-cyan-500" />
+          Dashboard
+        </button>
+        <button className="cursor-pointer bg-gray-800 relative inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-700 text-gray-300 hover:text-blue-400 h-9 px-3">
+          <Newspaper className="h-5 w-5 text-blue-500" />
+          Articles
+        </button>
+        <button className="cursor-pointer bg-gray-800 relative inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-700 text-gray-300 hover:text-yellow-400 h-9 px-3">
+          <StickyNote className="h-5 w-5 text-yellow-500" />
+          Notes
+        </button>
+        <button className="cursor-pointer bg-gray-800 relative inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-700 text-gray-300 hover:text-orange-400 h-9 px-3">
+          <Star className="h-5 w-5 text-orange-500 fill-current" />
+          Reviews
+        </button>
+      </div>
+    );
+}
 
 const iconMap: { [key: string]: React.ElementType } = {
   Info,
@@ -139,14 +166,13 @@ export function Navbar() {
                     </NavigationMenuContent>
                 </>
              ) : (
-                <Link href={item.href} passHref>
-                  <NavigationMenuLink
-                    className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
-                    onClick={onItemClick}
-                  >
-                    {item.icon && React.createElement(iconMap[item.icon], { className: "h-4 w-4 mr-2"})}
-                    {item.name}
-                  </NavigationMenuLink>
+                <Link
+                  href={item.href}
+                  className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
+                  onClick={onItemClick}
+                >
+                  {item.icon && React.createElement(iconMap[item.icon], { className: "h-4 w-4 mr-2"})}
+                  {item.name}
                 </Link>
              )}
            </NavigationMenuItem>
@@ -174,7 +200,7 @@ export function Navbar() {
       </div>
 
       <div className="hidden md:flex flex-1 justify-center items-center">
-        <NavLinks className={cn(isScrolled ? 'text-foreground' : 'text-background')} />
+        <NewNavButtons />
       </div>
 
       <div className="flex items-center gap-4">
@@ -265,3 +291,5 @@ export function Navbar() {
     </header>
   );
 }
+
+    
