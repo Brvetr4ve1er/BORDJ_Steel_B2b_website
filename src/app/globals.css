@@ -17,6 +17,7 @@
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
     --accent: 358 66% 45.1%;
+    --accent-hover: 358 66% 35%;
     --accent-foreground: 0 0% 100%;
     --destructive: 358 66% 45.1%;
     --destructive-foreground: 0 0% 100%;
@@ -52,6 +53,7 @@
     --muted: 240 4% 16%;
     --muted-foreground: 240 5% 65%;
     --accent: 358 66% 45.1%;
+    --accent-hover: 358 66% 35%;
     --accent-foreground: 0 0% 100%;
     --destructive: 358 66% 45.1%;
     --destructive-foreground: 0 0% 100%;
