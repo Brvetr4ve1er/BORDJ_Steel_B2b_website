@@ -43,11 +43,12 @@ const iconMap: { [key: string]: React.ElementType } = {
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+>(({ className, title, children, href, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <Link
+          href={href!}
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
@@ -59,7 +60,7 @@ const ListItem = React.forwardRef<
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );
@@ -107,10 +108,12 @@ export function Navbar() {
             </NavigationMenuItem>
           ) : (
             <NavigationMenuItem key={item.name}>
-               <Link href={item.href} legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-accent hover:text-accent-foreground focus:bg-accent/10 data-[active]:bg-accent/10 data-[state=open]:bg-accent/10")}>
-                   {Icon && <Icon className="h-4 w-4 mr-2" />}
-                  {item.name}
+               <Link href={item.href} passHref>
+                <NavigationMenuLink asChild>
+                  <a className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-accent hover:text-accent-foreground focus:bg-accent/10 data-[active]:bg-accent/10 data-[state=open]:bg-accent/10")}>
+                    {Icon && <Icon className="h-4 w-4 mr-2" />}
+                    {item.name}
+                  </a>
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
