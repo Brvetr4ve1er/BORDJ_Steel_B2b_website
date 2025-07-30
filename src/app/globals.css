@@ -12,7 +12,7 @@
     --popover-foreground: 0 0% 29.4%;
     --primary: 214 52% 24%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 85.1%;
+    --secondary: 0 0% 96.1%;
     --secondary-foreground: 214 52% 24%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
@@ -40,15 +40,15 @@
   }
   .dark {
     --background: 0 0% 10.2%;
-    --foreground: 0 0% 85.1%;
+    --foreground: 0 0% 98%;
     --card: 0 0% 10.2%;
-    --card-foreground: 0 0% 85.1%;
+    --card-foreground: 0 0% 98%;
     --popover: 0 0% 10.2%;
-    --popover-foreground: 0 0% 85.1%;
+    --popover-foreground: 0 0% 98%;
     --primary: 214 52% 24%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 29.4%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
     --accent: 358 66% 45.1%;
@@ -83,5 +83,13 @@
   }
   section {
     @apply w-full py-16 md:py-24 lg:py-32;
+  }
+}
+
+@layer utilities {
+  @keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
   }
 }
