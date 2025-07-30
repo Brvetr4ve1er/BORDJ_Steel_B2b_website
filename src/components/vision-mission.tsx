@@ -1,57 +1,63 @@
 
-import Image from 'next/image';
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { AnimatedWrapper } from "./animated-wrapper";
 import { companyData } from '@/config/company-data';
-import { AnimatedCounter } from './animated-counter';
-import { Settings } from 'lucide-react';
+import { Award, Cog } from "lucide-react";
+import { Button } from "./ui/button";
+
+const iconMap: { [key: string]: React.ElementType } = {
+  Award: Award,
+  Cog: Cog,
+};
 
 export function VisionMission() {
   const { about } = companyData.pages;
+  const { vision, mission } = about.content;
+
+  const VisionIcon = iconMap[vision.icon];
+  const MissionIcon = iconMap[mission.icon];
 
   return (
     <section id="about" className="bg-background">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 max-w-4xl">
+        <AnimatedWrapper animation="fade-in">
+          <h2 className="font-headline text-4xl font-bold text-primary mb-4 text-center">{about.title}</h2>
+          <p className="text-lg mb-12 text-center text-muted-foreground">{about.content.history}</p>
+        </AnimatedWrapper>
+        
+        <div className="space-y-12">
           <AnimatedWrapper animation="slide-up">
-            <div className="relative">
-              <Image
-                src={about.image.src}
-                alt="Bordj Steel Factory"
-                width={600}
-                height={450}
-                className="rounded-lg shadow-2xl object-cover w-full h-auto"
-                data-ai-hint={about.image.aiHint}
-              />
-              <div className="absolute bottom-8 left-8 bg-accent text-accent-foreground p-6 rounded-lg shadow-lg w-48 text-center">
-                <Settings className="h-10 w-10 mx-auto mb-2" />
-                <div className="text-5xl font-bold">
-                  <AnimatedCounter end={about.completedProjects} />+
+            <div className="flex items-center gap-6 md:gap-8">
+              <div className="flex-shrink-0">
+                <div className="w-24 h-24 rounded-full bg-red-100 flex items-center justify-center">
+                  {VisionIcon && <VisionIcon className="w-12 h-12 text-accent" />}
                 </div>
-                <p className="text-sm font-semibold tracking-wider uppercase">Projets Réalisés</p>
+              </div>
+              <div>
+                <h3 className="font-headline text-3xl font-bold text-primary mb-2">{vision.title}</h3>
+                <p className="text-lg">{vision.text}</p>
               </div>
             </div>
           </AnimatedWrapper>
-          <AnimatedWrapper animation="fade-in">
-            <div>
-              <h2 className="font-headline text-4xl font-bold text-primary mb-4">{about.title}</h2>
-              <p className="text-lg mb-8">{about.content.history}</p>
-              
-              <Card className="border-2 border-primary/20 shadow-lg">
-                <CardHeader>
-                  <CardTitle className="font-headline text-2xl text-primary">{about.content.qsePolicy.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-base">
-                    {about.content.qsePolicy.text}
-                  </p>
-                </CardContent>
-              </Card>
+          
+          <AnimatedWrapper animation="slide-up">
+             <div className="flex items-center gap-6 md:gap-8">
+              <div className="flex-shrink-0">
+                <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center">
+                  {MissionIcon && <MissionIcon className="w-12 h-12 text-primary" />}
+                </div>
+              </div>
+              <div>
+                <h3 className="font-headline text-3xl font-bold text-primary mb-2">{mission.title}</h3>
+                <p className="text-lg">{mission.text}</p>
+              </div>
             </div>
           </AnimatedWrapper>
         </div>
-        <AnimatedWrapper animation="fade-in" className="mt-12 text-center">
-            <p className="text-xl max-w-4xl mx-auto">{companyData.pages.homepage.content.introduction}</p>
+
+        <AnimatedWrapper animation="fade-in" className="mt-16 text-center">
+            <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90">
+              En savoir plus
+            </Button>
         </AnimatedWrapper>
       </div>
     </section>
