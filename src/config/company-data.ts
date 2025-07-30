@@ -27,7 +27,7 @@ export const companyData = {
           headline: "BÂTIR L'AVENIR, ENSEMBLE",
           subheadline: 'Leader de la construction métallique en Algérie',
           image: {
-            src: 'https://placehold.co/1920x1080.png',
+            src: 'https://images.unsplash.com/photo-1598302936625-6075fbd98dd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtZXRhbCUyMGZhY3Rvcnl8ZW58MHx8fHwxNzUzODc2NjczfDA&ixlib=rb-4.1.0&q=80&w=1080',
             aiHint: 'steel factory'
           },
           stats: [
