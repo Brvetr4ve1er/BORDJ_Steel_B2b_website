@@ -16,9 +16,9 @@ export const companyData = {
         "href": "#about", 
         "icon": "Info",
         "children": [
-          { "name": "Notre Histoire", "href": "#about", "description": "Découvrez nos origines et notre parcours." },
-          { "name": "Vision & Mission", "href": "#about", "description": "Nos valeurs et nos ambitions pour l'avenir." },
-          { "name": "Politique QSE", "href": "#about", "description": "Notre engagement pour la Qualité, Sécurité et Environnement." },
+          { "name": "Notre Histoire", "href": "#about", "description": "Découvrez nos origines et notre parcours.", "icon": "Building2" },
+          { "name": "Vision & Mission", "href": "#about", "description": "Nos valeurs et nos ambitions pour l'avenir.", "icon": "Award" },
+          { "name": "Politique QSE", "href": "#about", "description": "Notre engagement pour la Qualité, Sécurité et Environnement.", "icon": "ShieldCheck" },
         ]
       },
       { 
@@ -26,10 +26,10 @@ export const companyData = {
         "href": "#services", 
         "icon": "Factory",
         "children": [
-          { "name": "Charpente Métallique", "href": "#services", "description": "Solutions robustes pour tous types de bâtiments." },
-          { "name": "Panneaux Sandwichs", "href": "#services", "description": "Isolation thermique et acoustique performante." },
-          { "name": "Galvanisation à Chaud", "href": "#services", "description": "Protection anti-corrosion durable pour vos aciers." },
-          { "name": "Chaudronnerie", "href": "#services", "description": "Fabrication sur mesure d'équipements industriels." },
+          { "name": "Charpente Métallique", "href": "#services", "description": "Solutions robustes pour tous types de bâtiments.", "icon": "HardHat" },
+          { "name": "Panneaux Sandwichs", "href": "#services", "description": "Isolation thermique et acoustique performante.", "icon": "Package" },
+          { "name": "Galvanisation à Chaud", "href": "#services", "description": "Protection anti-corrosion durable pour vos aciers.", "icon": "Cog" },
+          { "name": "Chaudronnerie", "href": "#services", "description": "Fabrication sur mesure d'équipements industriels.", "icon": "Anchor" },
         ]
       },
       { "name": "Produits", "href": "#products", "icon": "Package" },

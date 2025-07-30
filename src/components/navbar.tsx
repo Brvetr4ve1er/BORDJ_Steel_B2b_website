@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Briefcase, Factory, Info, Mail, Newspaper, Package, UserPlus, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown } from 'lucide-react';
+import { Briefcase, Factory, Info, Mail, Newspaper, Package, UserPlus, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -38,12 +38,17 @@ const iconMap: { [key: string]: React.ElementType } = {
   Building2,
   HardHat,
   ShieldCheck,
+  Award,
+  Cog,
+  FileText,
+  Anchor,
 };
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, href, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & { icon?: string }
+>(({ className, title, children, href, icon, ...props }, ref) => {
+  const Icon = icon ? iconMap[icon] : null;
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -51,15 +56,18 @@ const ListItem = React.forwardRef<
           href={href!}
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "flex select-none items-start gap-4 space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
+          {Icon && <Icon className="h-6 w-6 text-accent flex-shrink-0 mt-1" />}
+          <div className="flex-grow">
+            <div className="text-sm font-medium leading-none">{title}</div>
+            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+              {children}
+            </p>
+          </div>
         </Link>
       </NavigationMenuLink>
     </li>
@@ -93,12 +101,13 @@ export function Navbar() {
                 {item.name}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                <ul className="grid w-[300px] gap-3 p-4 md:w-[400px] lg:w-[500px]">
                   {item.children.map((component) => (
                     <ListItem
                       key={component.name}
                       title={component.name}
                       href={component.href}
+                      icon={component.icon}
                     >
                       {component.description}
                     </ListItem>
