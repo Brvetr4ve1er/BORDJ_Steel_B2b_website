@@ -88,9 +88,9 @@ export const companyData = {
           text: "Engagée dans une démarche d'excellence, BORDJ STEEL est certifiée ISO 9001:2015, ISO 14001:2015, et ISO 45001:2018. Notre politique Qualité, Sécurité, et Environnement, signée par le Directeur Général M. TRIRAT Samir, est le pilier de notre performance.",
         },
         image: {
-            src: 'https://images.unsplash.com/photo-1517976487-142104888828?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxpbmR1c3RyaWFsJTIwd29ya2VyfGVufDB8fHx8MTc1NDU4ODc1MHww&ixlib=rb-4.1.0&q=80&w=1080',
+            src: 'https://images.unsplash.com/photo-1469289759076-d1484757abc3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNHx8c3RlZWwlMjBmYWN0b3J5fGVufDB8fHx8MTc1Mzg4MjMwMHww&ixlib=rb-4.1.0&q=80&w=1080',
             alt: 'Ingénieur dans une usine sidérurgique',
-            aiHint: 'industrial worker'
+            aiHint: 'steel factory'
         },
         completedProjects: 300,
       },
