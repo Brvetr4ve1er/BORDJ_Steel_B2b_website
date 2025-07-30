@@ -75,7 +75,7 @@ export const companyData = {
       slug: '/a-propos',
       title: 'Qui sommes-nous',
       content: {
-        history: 'Créée en 2012, BORDJ STEEL s\'étend sur une surface totale de 100 000 m² dont 25 000 m² couverts, affirmant son expertise dans le domaine de la construction métallique.',
+        history: 'a été créée avec une mission claire : fournir des solutions en acier de haute qualité, conçues avec précision pour répondre aux exigences de l’industrie moderne. Aujourd’hui, nous sommes fiers d’être reconnus comme l’un des acteurs les plus fiables et respectés dans le domaine de la charpente métallique, de la galvanisation et des panneaux sandwichs isolants en Algérie. Grâce à notre engagement pour la durabilité, la performance technique et la satisfaction client, BordjSteel accompagne les usines, projets agricoles et promoteurs industriels à travers tout le territoire national et au-delà',
         vision: {
             title: "Notre Vision",
             text: "Investir et croître dans les relations avec les développeurs, les investisseurs et les prestataires de services.",
