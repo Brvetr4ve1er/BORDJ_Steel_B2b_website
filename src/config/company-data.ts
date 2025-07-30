@@ -62,7 +62,7 @@ export const companyData = {
         {
           title: 'Panneaux Sandwichs',
           description: `Capacité de 5000 m²/jour. Gamme d'épaisseur de 30-200 mm pour couverture, bardage, et chambres froides.`,
-          image: { src: 'https://images.unsplash.com/photo-1481070414801-51fd732d7184?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzYW5kd2ljaCUyMHBhbmVsc3xlbnwwfHx8fDE3NTM4NzYzNzJ8MA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'sandwich panels' }
+          image: { src: 'https://images.unsplash.com/photo-1585435582425-a0399930ee74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyMHx8JTIwbWV0YWwlMjBzaGVldCUyMHBhbmVsJTIwfGVufDB8fHx8MTc1Mzg3NjYwNHww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'sandwich panels' }
         },
         {
           title: 'Galvanisation à Chaud',
