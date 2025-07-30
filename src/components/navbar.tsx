@@ -61,7 +61,7 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          {Icon && <Icon className="h-6 w-6 text-accent flex-shrink-0 mt-1 transition-opacity group-hover:opacity-0" />}
+          {Icon && <Icon className="h-6 w-6 text-primary flex-shrink-0 mt-1 transition-colors group-hover:text-accent-foreground" />}
           <div className="flex-grow">
             <div className="text-sm font-medium leading-none">{title}</div>
             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground group-hover:text-accent-foreground/80">
@@ -138,7 +138,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 flex items-center px-4 md:px-8 transition-all duration-300',
         isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32'
       )}
     >
@@ -153,7 +153,7 @@ export function Navbar() {
         </Link>
       </div>
 
-      <div className="hidden md:flex items-center gap-6">
+      <div className="hidden md:flex flex-1 justify-center items-center gap-6">
         <NavLinks className={cn(isScrolled ? 'text-foreground' : 'text-background')} />
       </div>
 
