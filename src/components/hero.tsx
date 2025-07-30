@@ -1,9 +1,9 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
-import { useLanguage } from '@/context/language-context';
 import { companyData } from '@/config/company-data';
 
 const AnimatedCounter = ({ end, duration = 2000 }: { end: number; duration?: number }) => {
@@ -54,8 +54,7 @@ const AnimatedCounter = ({ end, duration = 2000 }: { end: number; duration?: num
 };
 
 export function Hero() {
-  const { language } = useLanguage();
-  const { hero } = companyData[language];
+  const { hero } = companyData.pages.homepage.content;
 
   return (
     <section id="home" className="relative h-screen w-full p-0">
@@ -83,7 +82,7 @@ export function Hero() {
             {hero.stats.map((stat, index) => (
               <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index + 1}>
                 <div className="font-headline text-4xl font-bold text-accent">
-                    <AnimatedCounter end={stat.value} />+
+                    <AnimatedCounter end={stat.value} />
                 </div>
                 <p className="text-sm uppercase tracking-widest text-gray-300">{stat.label}</p>
               </AnimatedWrapper>

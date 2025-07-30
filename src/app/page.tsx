@@ -10,21 +10,24 @@ import { Certifications } from '@/components/certifications';
 import { Clients } from '@/components/clients';
 import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
-import { useLanguage } from '@/context/language-context';
 import { useEffect } from 'react';
 import { companyData } from '@/config/company-data';
 
 export default function Home() {
-  const { language } = useLanguage();
-  const metadata = companyData[language].metadata;
+  const { title, description } = companyData.siteMetadata;
 
   useEffect(() => {
-    document.title = metadata.title;
+    document.title = title;
     const descriptionMeta = document.querySelector('meta[name="description"]');
     if (descriptionMeta) {
-      descriptionMeta.setAttribute('content', metadata.description);
+      descriptionMeta.setAttribute('content', description);
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = description;
+      document.head.appendChild(meta);
     }
-  }, [language, metadata]);
+  }, [title, description]);
 
   return (
     <div className="flex min-h-[100dvh] flex-col">

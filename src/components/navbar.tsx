@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -8,14 +9,11 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { companyData } from '@/config/company-data';
 import { Logo } from './logo';
-import { useLanguage } from '@/context/language-context';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
-  const { language, setLanguage } = useLanguage();
-  const { companyName, navItems, languageToggle } = companyData[language];
+  const { navigation, siteMetadata } = companyData;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,20 +23,16 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'fr' : 'en');
-  };
-
   const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?: () => void }) => (
     <nav className={cn("flex items-center gap-6 text-sm font-medium", className)}>
-      {navItems.map((item) => (
+      {navigation.mainMenu.map((item) => (
         <Link
-          key={item}
-          href={`#${item.toLowerCase()}`}
+          key={item.name}
+          href={item.href}
           className="transition-colors hover:text-primary"
           onClick={onItemClick}
         >
-          {item}
+          {item.name}
         </Link>
       ))}
     </nav>
@@ -59,44 +53,20 @@ export function Navbar() {
       </Link>
       <div className="hidden md:flex items-center gap-8">
         <NavLinks className={cn(isScrolled ? 'text-foreground' : 'text-background')} />
-        <Sheet open={isDesktopMenuOpen} onOpenChange={setIsDesktopMenuOpen}>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <Globe className={cn('h-5 w-5', isScrolled ? 'text-foreground' : 'text-background')} />
-              <span className="sr-only">Toggle language</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-full sm:max-w-md bg-background/95 backdrop-blur-sm p-0 flex flex-col">
-            <div className="p-6 flex justify-between items-center border-b">
-              <span className="font-headline font-bold text-2xl text-primary">{companyName}</span>
-              <Button variant="ghost" size="icon" onClick={() => setIsDesktopMenuOpen(false)}>
-                <X className="h-6 w-6 text-foreground" />
-              </Button>
-            </div>
-            <div className="flex-1 p-6 flex flex-col justify-center items-center gap-8 relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/10 -z-10" />
-              <NavLinks className="flex-col items-center gap-8 text-2xl text-foreground font-headline" onItemClick={() => setIsDesktopMenuOpen(false)} />
-            </div>
-            <div className="p-6 border-t">
-              <Button variant="outline" className="w-full text-lg py-6" onClick={toggleLanguage}>
-                <Globe className="mr-2 h-5 w-5" />
-                {languageToggle}
-              </Button>
-            </div>
-          </SheetContent>
-        </Sheet>
       </div>
       <div className="md:hidden">
         <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon">
               <Menu className={cn('h-6 w-6', isScrolled ? 'text-foreground' : 'text-background')} />
-              <span className="sr-only">Open menu</span>
+              <span className="sr-only">Ouvrir le menu</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-full h-full bg-background/95 backdrop-blur-sm p-0 flex flex-col">
             <div className="p-6 flex justify-between items-center border-b">
-              <span className="font-headline font-bold text-2xl text-primary">{companyName}</span>
+               <div className="w-32">
+                 <Logo />
+               </div>
               <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
                 <X className="h-6 w-6 text-foreground" />
               </Button>
@@ -105,12 +75,6 @@ export function Navbar() {
                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/10 -z-10" />
               <NavLinks className="flex-col items-center gap-8 text-2xl text-foreground font-headline" onItemClick={() => setIsMobileMenuOpen(false)} />
             </div>
-             <div className="p-6 border-t">
-                <Button variant="outline" className="w-full text-lg py-6" onClick={toggleLanguage}>
-                  <Globe className="mr-2 h-5 w-5" />
-                  {languageToggle}
-                </Button>
-              </div>
           </SheetContent>
         </Sheet>
       </div>

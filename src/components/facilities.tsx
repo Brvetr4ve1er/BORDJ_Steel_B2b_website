@@ -1,21 +1,20 @@
+
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedWrapper } from './animated-wrapper';
-import { useLanguage } from '@/context/language-context';
 import { companyData } from '@/config/company-data';
 
 export function Facilities() {
-  const { language } = useLanguage();
-  const { services } = companyData[language];
+  const { units } = companyData.pages;
 
   return (
     <section id="services" className="bg-secondary">
       <div className="container mx-auto px-4">
         <AnimatedWrapper animation="fade-in">
-          <h2 className="font-headline text-4xl font-bold text-center text-primary mb-12">{services.title}</h2>
+          <h2 className="font-headline text-4xl font-bold text-center text-primary mb-12">{units.title}</h2>
         </AnimatedWrapper>
         <div className="space-y-12">
-          {services.items.map((facility, index) => (
+          {units.items.map((facility, index) => (
             <AnimatedWrapper key={index} animation="slide-up">
               <Card className="overflow-hidden shadow-xl transition-shadow hover:shadow-2xl">
                 <CardContent className="p-0">
