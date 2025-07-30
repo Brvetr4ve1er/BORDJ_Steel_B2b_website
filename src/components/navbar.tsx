@@ -67,7 +67,7 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center">
+          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-lg bg-background/80 transition-colors group-hover:bg-accent-foreground/10">
             {Icon && <Icon className="h-6 w-6 text-primary transition-colors group-hover:text-accent-foreground" />}
           </div>
           <div className="flex-grow">
@@ -98,11 +98,12 @@ export function Navbar() {
   }, []);
 
   const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?: () => void }) => (
-     <nav className={cn("flex items-center", className)}>
-        <NavigationMenu>
-            <NavigationMenuList>
-                {navigation.mainMenu.map((item) => (
-                    <NavigationMenuItem key={item.name}>
+     <nav className={cn("flex items-center gap-2", className)}>
+        {navigation.mainMenu.map((item) => (
+           <div key={item.name}>
+             <NavigationMenu>
+                <NavigationMenuList>
+                    <NavigationMenuItem>
                       {item.children ? (
                           <>
                             <NavigationMenuTrigger className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}>
@@ -126,20 +127,21 @@ export function Navbar() {
                             </NavigationMenuContent>
                           </>
                       ) : (
-                        <Link href={item.href} legacyBehavior passHref>
-                          <NavigationMenuLink
-                            className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
-                            onClick={onItemClick}
-                          >
-                            {item.icon && React.createElement(iconMap[item.icon], { className: "h-4 w-4 mr-2"})}
-                            {item.name}
-                          </NavigationMenuLink>
-                        </Link>
+                          <Link href={item.href} legacyBehavior passHref>
+                              <NavigationMenuLink
+                                className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
+                                onClick={onItemClick}
+                              >
+                                {item.icon && React.createElement(iconMap[item.icon], { className: "h-4 w-4 mr-2"})}
+                                {item.name}
+                              </NavigationMenuLink>
+                          </Link>
                       )}
                     </NavigationMenuItem>
-                ))}
-            </NavigationMenuList>
-        </NavigationMenu>
+                </NavigationMenuList>
+            </NavigationMenu>
+           </div>
+        ))}
       </nav>
   );
 
