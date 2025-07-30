@@ -5,7 +5,7 @@ export const companyData = {
     description: 'Complexe métallurgique Bordj Steel, filiale du groupe Condor, 4 unités de production, projets phares en Algérie.',
     language: 'fr',
     slogan: 'NOUS DONONS DU STEEL A VOS PROJETS',
-    sloganArabic: "نعطي الأناقة لمشاريعك",
+    sloganArabic: "نمنح مشاريعكم صلابة الفولاذ",
     lastUpdated: '2025-07-30',
     totalPages: 7
   },
