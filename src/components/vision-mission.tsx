@@ -73,17 +73,14 @@ export function VisionMission() {
                 <div>
                   <h3 className="font-headline text-3xl font-bold text-primary mb-2">{mission.title}</h3>
                   <p className="text-lg">{mission.text}</p>
+                   <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90 mt-6 px-8 py-6 text-lg">
+                    En savoir plus sur notre politique QSE
+                  </Button>
                 </div>
               </div>
             </AnimatedWrapper>
           </div>
         </div>
-
-        <AnimatedWrapper animation="fade-in" className="mt-16 text-center">
-            <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90">
-              En savoir plus sur notre politique QSE
-            </Button>
-        </AnimatedWrapper>
       </div>
     </section>
   );
