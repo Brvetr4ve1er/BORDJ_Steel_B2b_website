@@ -42,7 +42,6 @@ export const companyData = {
     about: {
       slug: '/a-propos',
       title: 'Qui sommes-nous',
-      completedProjects: 300,
       content: {
         history: 'Créée en 2012, BORDJ STEEL s\'étend sur une surface totale de 100 000 m² dont 25 000 m² couverts, affirmant son expertise dans le domaine de la construction métallique.',
         vision: {
@@ -58,7 +57,13 @@ export const companyData = {
         qsePolicy: {
           title: "Politique QSE",
           text: "Engagée dans une démarche d'excellence, BORDJ STEEL est certifiée ISO 9001:2015, ISO 14001:2015, et ISO 45001:2018. Notre politique Qualité, Sécurité, et Environnement, signée par le Directeur Général M. TRIRAT Samir, est le pilier de notre performance.",
-        }
+        },
+        image: {
+            src: 'https://images.unsplash.com/photo-1517976487-142104888828?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxpbmR1c3RyaWFsJTIwd29ya2VyfGVufDB8fHx8MTc1NDU4ODc1MHww&ixlib=rb-4.1.0&q=80&w=1080',
+            alt: 'Ingénieur dans une usine sidérurgique',
+            aiHint: 'industrial worker'
+        },
+        completedProjects: 300,
       },
     },
     units: {

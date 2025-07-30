@@ -3,6 +3,8 @@ import { AnimatedWrapper } from "./animated-wrapper";
 import { companyData } from '@/config/company-data';
 import { Award, Cog } from "lucide-react";
 import { Button } from "./ui/button";
+import Image from "next/image";
+import { AnimatedCounter } from "./animated-counter";
 
 const iconMap: { [key: string]: React.ElementType } = {
   Award: Award,
@@ -11,52 +13,75 @@ const iconMap: { [key: string]: React.ElementType } = {
 
 export function VisionMission() {
   const { about } = companyData.pages;
-  const { vision, mission } = about.content;
+  const { vision, mission, history, image, completedProjects } = about.content;
 
   const VisionIcon = iconMap[vision.icon];
   const MissionIcon = iconMap[mission.icon];
 
   return (
     <section id="about" className="bg-background">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <AnimatedWrapper animation="fade-in">
-          <h2 className="font-headline text-4xl font-bold text-primary mb-4 text-center">{about.title}</h2>
-          <p className="text-lg mb-12 text-center text-muted-foreground">{about.content.history}</p>
+      <div className="container mx-auto px-4">
+        <AnimatedWrapper animation="fade-in" className="text-center mb-12">
+          <h2 className="font-headline text-4xl font-bold text-primary mb-4">{about.title}</h2>
+          <p className="text-lg max-w-3xl mx-auto text-muted-foreground">{history}</p>
         </AnimatedWrapper>
-        
-        <div className="space-y-12">
-          <AnimatedWrapper animation="slide-up">
-            <div className="flex items-center gap-6 md:gap-8">
-              <div className="flex-shrink-0">
-                <div className="w-24 h-24 rounded-full bg-red-100 flex items-center justify-center">
-                  {VisionIcon && <VisionIcon className="w-12 h-12 text-accent" />}
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <AnimatedWrapper animation="zoom-in">
+            <div className="relative aspect-square rounded-lg overflow-hidden shadow-2xl group">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                layout="fill"
+                objectFit="cover"
+                className="transition-transform duration-500 group-hover:scale-110"
+                data-ai-hint={image.aiHint}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative w-48 h-48">
+                    <div className="absolute inset-0 bg-accent/80 backdrop-blur-sm rounded-xl transform -rotate-6 transition-transform duration-300 group-hover:rotate-0" />
+                    <div className="relative text-white text-center flex flex-col justify-center h-full p-4">
+                        <div className="font-headline font-bold text-6xl">
+                            <AnimatedCounter end={completedProjects} />
+                        </div>
+                        <p className="font-semibold uppercase tracking-wider mt-2">Projets Réalisés</p>
+                    </div>
                 </div>
-              </div>
-              <div>
-                <h3 className="font-headline text-3xl font-bold text-primary mb-2">{vision.title}</h3>
-                <p className="text-lg">{vision.text}</p>
               </div>
             </div>
           </AnimatedWrapper>
-          
-          <AnimatedWrapper animation="slide-up">
-             <div className="flex items-center gap-6 md:gap-8">
-              <div className="flex-shrink-0">
-                <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center">
-                  {MissionIcon && <MissionIcon className="w-12 h-12 text-primary" />}
+
+          <div className="space-y-10">
+            <AnimatedWrapper animation="slide-up" staggerIndex={1}>
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-red-100 flex items-center justify-center border-4 border-accent/20">
+                    {VisionIcon && <VisionIcon className="w-8 h-8 text-accent" />}
+                </div>
+                <div>
+                  <h3 className="font-headline text-3xl font-bold text-primary mb-2">{vision.title}</h3>
+                  <p className="text-lg">{vision.text}</p>
                 </div>
               </div>
-              <div>
-                <h3 className="font-headline text-3xl font-bold text-primary mb-2">{mission.title}</h3>
-                <p className="text-lg">{mission.text}</p>
+            </AnimatedWrapper>
+
+            <AnimatedWrapper animation="slide-up" staggerIndex={2}>
+              <div className="flex items-start gap-6">
+                 <div className="flex-shrink-0 w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center border-4 border-primary/20">
+                    {MissionIcon && <MissionIcon className="w-8 h-8 text-primary" />}
+                </div>
+                <div>
+                  <h3 className="font-headline text-3xl font-bold text-primary mb-2">{mission.title}</h3>
+                  <p className="text-lg">{mission.text}</p>
+                </div>
               </div>
-            </div>
-          </AnimatedWrapper>
+            </AnimatedWrapper>
+          </div>
         </div>
 
         <AnimatedWrapper animation="fade-in" className="mt-16 text-center">
             <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90">
-              En savoir plus
+              En savoir plus sur notre politique QSE
             </Button>
         </AnimatedWrapper>
       </div>
