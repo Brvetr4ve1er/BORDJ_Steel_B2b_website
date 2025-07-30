@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Briefcase, Factory, Info, Mail, Newspaper, Package, UserPlus, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen } from 'lucide-react';
+import { Briefcase, Factory, Info, Mail, Newspaper, Package, UserPlus, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -49,6 +49,7 @@ const iconMap: { [key: string]: React.ElementType } = {
   FileText,
   Anchor,
   BookOpen,
+  Video
 };
 
 const ListItem = React.forwardRef<
@@ -262,7 +263,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    
-
-    
