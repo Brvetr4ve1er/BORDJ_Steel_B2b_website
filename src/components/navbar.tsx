@@ -121,13 +121,17 @@ export function Navbar() {
                                 </NavigationMenuContent>
                               </>
                           ) : (
-                            <Link href={item.href} passHref legacyBehavior>
-                                <NavigationMenuLink asChild>
-                                  <a className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')} onClick={onItemClick}>
-                                      {item.icon && React.createElement(iconMap[item.icon], { className: "h-4 w-4 mr-2"})}
-                                      {item.name}
-                                  </a>
-                                </NavigationMenuLink>
+                            <Link href={item.href} passHref>
+                              <NavigationMenuLink
+                                className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent", isScrolled ? 'text-foreground' : 'text-background')}
+                                onClick={onItemClick}
+                                asChild
+                              >
+                                <a>
+                                  {item.icon && React.createElement(iconMap[item.icon], { className: "h-4 w-4 mr-2"})}
+                                  {item.name}
+                                </a>
+                              </NavigationMenuLink>
                             </Link>
                           )}
                         </NavigationMenuItem>
