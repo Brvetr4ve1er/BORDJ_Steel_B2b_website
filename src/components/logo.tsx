@@ -1,75 +1,63 @@
 export function Logo() {
   return (
     <svg
-      width="150"
-      height="100"
-      viewBox="0 0 200 150"
+      width="200"
+      height="125"
+      viewBox="0 0 200 125"
       xmlns="http://www.w3.org/2000/svg"
       className="w-auto h-auto"
     >
-      <defs>
-        <clipPath id="clip-text">
-          <text
-            x="50%"
-            y="95"
-            dominantBaseline="middle"
-            textAnchor="middle"
-            fontSize="30"
-            fontWeight="bold"
-            fill="white"
-          >
-            STEEL
-          </text>
-        </clipPath>
-      </defs>
-
       {/* Pentagon Roof */}
-      <polygon points="100,10 25,50 175,50" fill="#C00000" />
+      <polygon points="100,0 25,40 175,40" fill="#C1272D" />
 
       {/* Top Gray Bar */}
-      <rect x="25" y="50" width="150" height="15" fill="#404040" />
+      <rect x="25" y="40" width="150" height="10" fill="#4B4B4B" />
 
-      {/* Bordj Text */}
+      {/* BORDJ Text */}
       <text
         x="50%"
-        y="80"
+        y="65"
         dominantBaseline="middle"
         textAnchor="middle"
-        fontSize="30"
+        fontSize="28"
         fontWeight="bold"
-        fill="#404040"
+        fill="#4B4B4B"
+        fontFamily="Montserrat, sans-serif"
       >
         BORDJ
       </text>
 
       {/* Red rectangle for STEEL */}
-      <rect x="25" y="90" width="150" height="25" fill="#C00000" />
+      <rect x="25" y="75" width="150" height="25" fill="#C1272D" />
 
-      {/* STEEL Text (clipped) */}
+      {/* STEEL Text */}
       <text
         x="50%"
-        y="102.5"
+        y="87.5"
         dominantBaseline="middle"
         textAnchor="middle"
-        fontSize="30"
+        fontSize="28"
         fontWeight="bold"
         fill="white"
+        fontFamily="Montserrat, sans-serif"
       >
         STEEL
       </text>
 
       {/* Bottom Gray Bar */}
-      <rect x="25" y="115" width="150" height="15" fill="#404040" />
+      <rect x="25" y="100" width="150" height="10" fill="#4B4B4B" />
+
       {/* Tagline */}
       <text
         x="50%"
-        y="122.5"
+        y="105"
         dominantBaseline="middle"
         textAnchor="middle"
-        fontSize="6"
+        fontSize="5.5"
         fontWeight="normal"
         fill="white"
         letterSpacing="0.5"
+        fontFamily="Roboto, sans-serif"
       >
         CENTRE DE SERVICE ACIER - LASER CUTTING - ENGINEERING
       </text>
