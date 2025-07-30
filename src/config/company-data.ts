@@ -157,12 +157,12 @@ export const companyData = {
       slug: '/projets',
       title: 'Nos Références',
       projects: [
-          { name: 'UTEC', location: 'Ain Oulmen', image: { src: 'https://images.unsplash.com/photo-1684695749295-7ec9ff3b8164?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzUzODc2MjA2fDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'industrial warehouse' } },
-          { name: 'STAR GOOD', location: 'Oued Smar', image: { src: 'https://images.unsplash.com/photo-1565610222536-ef125c59da2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzUzODc2MjA2fDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'commercial building' } },
-          { name: 'CFCE', location: 'Oran', image: { src: 'https://images.unsplash.com/photo-1684695747624-0dd1b6412bc1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzUzODc2MjA2fDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'exhibition center' } },
-          { name: 'Base Logistique CONDOR', location: '', image: { src: 'https://images.unsplash.com/photo-1615797534094-7fde0a4861f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzUzODc2MjA2fDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'logistics base' } },
-          { name: 'Softal', location: 'Boufarik', image: { src: 'https://images.unsplash.com/photo-1615797534094-7fde0a4861f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzUzODc2MjA2fDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'industrial factory' } },
-          { name: 'Duct & Piping', location: '(Bordj Steel)', image: { src: 'https://images.unsplash.com/photo-1700156316467-7b78b47c2c9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aW5kdXN0cmlhbCUyMGJ1aWxkaW5nfGVufDB8fHx8MTc1Mzg3NjIwNnww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'piping system' } },
+          { name: 'UTEC', location: 'Ain Oulmen', image: { src: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxpbmR1c3RyaWFsJTIwd2FyZWhvdXNlfGVufDB8fHx8MTc1MzkxMTMzN3ww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'industrial warehouse' } },
+          { name: 'STAR GOOD', location: 'Oued Smar', image: { src: 'https://images.unsplash.com/photo-1614969263964-f381e32b337d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjb21tZXJjaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzUzOTExMzM3fDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'commercial building' } },
+          { name: 'CFCE', location: 'Oran', image: { src: 'https://images.unsplash.com/photo-1723713670452-6265ad467b81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZXhoaWJpdGlvbiUyMGNlbnRlcnxlbnwwfHx8fDE3NTM5MTEzMzh8MA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'exhibition center' } },
+          { name: 'Base Logistique CONDOR', location: '', image: { src: 'https://images.unsplash.com/photo-1581813392843-159d8ddd3206?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsb2dpc3RpY3MlMjBiYXNlfGVufDB8fHx8MTc1MzkxMTMzN3ww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'logistics base' } },
+          { name: 'Softal', location: 'Boufarik', image: { src: 'https://images.unsplash.com/photo-1516937941344-00b4e0337589?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxpbmR1c3RyaWFsJTIwZmFjdG9yeXxlbnwwfHx8fDE3NTM5MTEzMzd8MA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'industrial factory' } },
+          { name: 'Duct & Piping', location: '(Bordj Steel)', image: { src: 'https://images.unsplash.com/photo-1467733238130-bb6846885316?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwaXBpbmclMjBzeXN0ZW18ZW58MHx8fHwxNzUzOTExMzM3fDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'piping system' } },
       ]
     },
     certifications: {
@@ -230,3 +230,5 @@ export const companyData = {
     whatsapp: "#"
   },
 };
+
+    
