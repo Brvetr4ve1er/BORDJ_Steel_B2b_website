@@ -114,12 +114,12 @@ export const companyData = {
     clients: {
       title: "Nos Précieux Clients",
       logos: [
-        { name: "Client 1", image: { "src": "https://placehold.co/150x80.png", "aiHint": "company logo" } },
-        { name: "Client 2", image: { "src": "https://placehold.co/150x80.png", "aiHint": "company logo" } },
-        { name: "Client 3", image: { "src": "https://placehold.co/150x80.png", "aiHint": "company logo" } },
-        { name: "Client 4", image: { "src": "https://placehold.co/150x80.png", "aiHint": "company logo" } },
-        { name: "Client 5", image: { "src": "https://placehold.co/150x80.png", "aiHint": "company logo" } },
-        { name: "Client 6", image: { "src": "https://placehold.co/150x80.png", "aiHint": "company logo" } }
+        { name: "Client 1", image: { "src": "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb21wYW55JTIwbG9nb3xlbnwwfHx8fDE3NTM4NzgyNzd8MA&ixlib=rb-4.1.0&q=80&w=1080", "aiHint": "company logo" } },
+        { name: "Client 2", image: { "src": "https://images.unsplash.com/photo-1622465911368-72162f8da3e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb21wYW55JTIwbG9nb3xlbnwwfHx8fDE3NTM4NzgyNzd8MA&ixlib=rb-4.1.0&q=80&w=1080", "aiHint": "company logo" } },
+        { name: "Client 3", image: { "src": "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb21wYW55JTIwbG9nb3xlbnwwfHx8fDE3NTM4NzgyNzd8MA&ixlib=rb-4.1.0&q=80&w=1080", "aiHint": "company logo" } },
+        { name: "Client 4", image: { "src": "https://images.unsplash.com/photo-1562783912-21ad31ee2a83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21wYW55JTIwbG9nb3xlbnwwfHx8fDE3NTM4NzgyNzd8MA&ixlib=rb-4.1.0&q=80&w=1080", "aiHint": "company logo" } },
+        { name: "Client 5", image: { "src": "https://images.unsplash.com/photo-1529612700005-e35377bf1415?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjb21wYW55JTIwbG9nb3xlbnwwfHx8fDE3NTM4NzgyNzd8MA&ixlib=rb-4.1.0&q=80&w=1080", "aiHint": "company logo" } },
+        { name: "Client 6", image: { "src": "https://images.unsplash.com/photo-1687523327554-fa9f50423489?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjb21wYW55JTIwbG9nb3xlbnwwfHx8fDE3NTM4NzgyNzd8MA&ixlib=rb-4.1.0&q=80&w=1080", "aiHint": "company logo" } }
       ]
     },
     contact: {
