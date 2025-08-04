@@ -34,13 +34,13 @@ export function Clients() {
             {clients.logos.map((client, index) => (
               <CarouselItem key={index} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6">
                  <div className="p-4">
-                    <div className="flex justify-center items-center h-20">
+                    <div className="flex justify-center items-center h-20 transition-transform duration-300 hover:scale-110">
                       <Image
                         src={client.image.src}
                         alt={client.name}
                         width={150}
                         height={80}
-                        className="grayscale opacity-60 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 hover:shadow-lg rounded-md"
+                        className="object-contain"
                         data-ai-hint={client.image.aiHint}
                       />
                     </div>
