@@ -94,7 +94,7 @@ export const productData = {
     title: '2-PANNEAUX SANDWICHS DE BARDAGE',
     subtitle: '(Fixations cachées et visibles)',
     image: {
-      src: 'https://images.unsplash.com/photo-1609220195883-b15fa2587ba0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNXx8ZmFjdG9yeSUyMHdhbGwlMjAlMjBtZXRhbHxlbnwwfHx8fDE3NTUwNzY5MDB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      src: 'https://images.unsplash.com/photo-1518718913060-947cd98c5550?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxOHx8ZmFjdG9yeSUyMGJ1aWxkaW5nJTIwJTIwc2FuZHdpc2glMjAlMjBwYW5uZWx8ZW58MHx8fHwxNzU1MDc3NDgwfDA&ixlib=rb-4.1.0&q=80&w=1080',
       aiHint: 'cladding panels',
     },
     features: {
