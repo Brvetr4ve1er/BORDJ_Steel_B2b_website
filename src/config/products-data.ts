@@ -264,7 +264,7 @@ export const productData = {
     title: '4-TÔLE NERVURÉE',
     subtitle: 'TOLE NERVURÉE TN40',
      image: {
-      src: 'https://images.unsplash.com/photo-1542901105-35363351a613?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyaWJiZWQlMjBzdGVlbCUyMHNoZWV0fGVufDB8fHx8MTc1NTE2MzU1NXww&ixlib=rb-4.1.0&q=80&w=1080',
+      src: 'https://images.unsplash.com/photo-1706029831375-c090c70c161d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtZXRhbCUyMHNoZWV0JTIwfGVufDB8fHx8MTc1NTA5MDY2OHww&ixlib=rb-4.1.0&q=80&w=1080',
       aiHint: 'ribbed steel sheet',
     },
     features: {
