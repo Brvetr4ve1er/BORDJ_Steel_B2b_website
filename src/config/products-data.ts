@@ -260,12 +260,12 @@ export const productData = {
     etancheite: "Les panneaux sandwichs de bardages présentent une rive mâle et une rive femelle permettant un assemblage par emboitement. Les nervures mâle et femelle sont fermées par une bande adhésive. Tous les panneaux bardage sont munis sur la nervure femelle d'un joint d'étanchéité à l'air; leurs parements pré-laqués sont protégés par un film adhésif à retirer à la pose.",
     sens: ''
   },
-  laineDeRoche: {
-    title: '4-PANNEAUX EN LAINE DE ROCHE',
+  toleNervuree: {
+    title: '4-TÔLE NERVURÉE',
     subtitle: '(Détails à venir)',
      image: {
       src: 'https://placehold.co/600x600.png',
-      aiHint: 'rock wool panels',
+      aiHint: 'ribbed steel sheet',
     },
     features: {
         utilisation: [],

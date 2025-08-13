@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Layers, Layers2, Layers3, ChevronsRight } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
-import { Card, CardContent } from './ui/card';
+import { Card, CardContent, CardDescription } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { productData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
@@ -35,7 +35,7 @@ export function SandwichPanelsPage() {
     { key: 'couverture', label: 'Panneaux de Couverture', icon: Layers },
     { key: 'bardage', label: 'Panneaux de Bardage', icon: Layers2 },
     { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: Layers3 },
-    { key: 'laineDeRoche', label: 'Laine de Roche', icon: ChevronsRight },
+    { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
   ];
 
   return (
@@ -95,6 +95,7 @@ export function SandwichPanelsPage() {
                                         {activeProduct.features.utilisation.map(item => <li key={item}>{item}</li>)}
                                     </ul>
                                 </div>
+                                {activeProduct.features.definition.acier && 
                                 <div>
                                     <SubSectionTitle>Définition</SubSectionTitle>
                                     <ProductFeature label="Identification d'acier:" value={activeProduct.features.definition.acier} />
@@ -110,26 +111,27 @@ export function SandwichPanelsPage() {
                                         <li>{activeProduct.features.definition.parementInterne.epaisseur}</li>
                                     </ul>
                                 </div>
-                                <div>
+                                }
+                                {activeProduct.features.revetement && <div>
                                     <SubSectionTitle>Revêtement</SubSectionTitle>
                                     <p>{activeProduct.features.revetement}</p>
-                                </div>
-                                 <div>
+                                </div>}
+                                 { activeProduct.features.ameIsolante.type && <div>
                                     <SubSectionTitle>Ame isolante</SubSectionTitle>
                                     <p>{activeProduct.features.ameIsolante.type}</p>
                                      <ProductFeature label="Conductivité thermique:" value={activeProduct.features.ameIsolante.conductivite} />
                                       <ProductFeature label="Densité:" value={activeProduct.features.ameIsolante.densite} />
-                                </div>
-                                <div>
+                                </div>}
+                                { activeProduct.features.reactionAuFeu && <div>
                                     <SubSectionTitle>Réaction au feu</SubSectionTitle>
                                     <p>{activeProduct.features.reactionAuFeu}</p>
-                                </div>
-                                <div>
+                                </div>}
+                                { activeProduct.features.tolerance.length > 0 && <div>
                                     <SubSectionTitle>Tolérance sur panneaux</SubSectionTitle>
                                      <ul className="list-disc pl-5 space-y-1">
                                         {activeProduct.features.tolerance.map(item => <li key={item}>{item}</li>)}
                                     </ul>
-                                </div>
+                                </div>}
                             </div>
 
                             <section className="mt-8">
@@ -212,6 +214,7 @@ export function SandwichPanelsPage() {
                             )}
                             </section>
 
+                            {activeProduct.pose.decoupage && 
                              <section className="mt-8">
                                 <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
                                 <div className="space-y-4 text-sm">
@@ -232,6 +235,7 @@ export function SandwichPanelsPage() {
                                     </div>}
                                 </div>
                             </section>
+                            }
                         </CardContent>
                     </Card>
                 </div>
