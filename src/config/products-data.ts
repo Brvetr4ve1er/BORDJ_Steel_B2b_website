@@ -68,9 +68,9 @@ export const productData = {
         title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)',
         subtitle: 'Tôle en acier épaisseur 0,5mm',
         headers: [
-            { title: 'Charge utile uniformément repartie', colspan: 2 },
-            { title: 'Epaisseur du panneau en mm (2 appuis)', colspan: 4 },
-            { title: 'Epaisseur du panneau en mm (3 appuis)', colspan: 4 },
+            { title: 'Charge utile uniformément repartie', colspan: 2, isGroup: true },
+            { title: 'Epaisseur du panneau en mm (2 appuis)', colspan: 4, isGroup: true },
+            { title: 'Epaisseur du panneau en mm (3 appuis)', colspan: 4, isGroup: true },
         ],
         subheaders: ['Kg/m²', 'daN/m²', '30', '35', '40', '60', '30', '35', '40', '60'],
         rows: [
@@ -150,11 +150,11 @@ export const productData = {
         title: 'Portées admissibles (m)', 
         subtitle: 'Charge uniformément répartie (daN/m²)',
         headers: [
-            { title: 'Épaisseur (mm)', colspan: 1 },
-            { title: '40', colspan: 1 },
-            { title: '60', colspan: 1 },
-            { title: '80', colspan: 1 },
-            { title: '100', colspan: 1 },
+            { title: 'Épaisseur (mm)', colspan: 1, isGroup: false },
+            { title: '40', colspan: 1, isGroup: false },
+            { title: '60', colspan: 1, isGroup: false },
+            { title: '80', colspan: 1, isGroup: false },
+            { title: '100', colspan: 1, isGroup: false },
         ],
         subheaders: [],
         rows: [
@@ -172,28 +172,93 @@ export const productData = {
     sens: "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. il est de type gauche dans le sens inverse."
   },
   frigorifique: {
-    title: '3-PANNEAUX SANDWICHS FRIGORIFIQUES',
-    subtitle: '(Détails à venir)',
-     image: {
-      src: 'https://placehold.co/600x600.png',
-      aiHint: 'refrigeration panels',
+    title: '3-PANNEAUX SANDWICHS FRIGORIFIQUE',
+    subtitle: '',
+    image: {
+        src: 'https://placehold.co/600x600.png',
+        aiHint: 'refrigeration panels',
     },
     features: {
-        utilisation: [],
-        definition: { acier: '', parementExterne: {profil: '', description: '', epaisseur: ''}, parementInterne: {profil: '', epaisseur: ''}},
-        revetement: '',
-        ameIsolante: { type: '', conductivite: '', densite: ''},
-        reactionAuFeu: '',
-        tolerance: [],
-      },
-      tables: {
-          isolation: { title: '', headers: [], rows: [] },
-          dimensionnement: { title: '', headers: [], rows: [] },
-          chargesPortees: { title: '', subtitle: '', headers: [], subheaders: [], rows: [] }
-      },
-      pose: { title: '', decoupage: '', fixation: ''},
-      etancheite: '',
-      sens: ''
+        utilisation: [
+            'Bâtiments industriels et modulaires',
+            'Ateliers de production',
+            'Entrepôts',
+            'Complexes sportifs',
+            'Centres commerciaux',
+            'Ensembles scolaires et universitaires',
+            'Chambres froides',
+            'Les structures agricoles & agro-alimentaires',
+        ],
+        definition: {
+            acier: 'Nuance S250, S280, S320',
+            parementExterne: { profil: 'Profil à nervurassions en faible profondeur, pour le type lisse pas de nervurassions.', description: '', epaisseur: 'Épaisseur: 0,5mm - 0,6 mm - 0,7 mm (Selon la demande du Client)' },
+            parementInterne: { profil: '', epaisseur: '' },
+        },
+        revetement: 'polyester pour la face extérieure : 25 µm, polyester pour la face intérieure: 7µm',
+        ameIsolante: {
+            type: 'Mousse polyurethane rigide sans CFC (avec du N-Pentane)',
+            conductivite: '0,023 W/m. °c',
+            densite: '38/41 kg/m³',
+        },
+        reactionAuFeu: 'B3: standard, B,S2-d0.',
+        tolerance: [
+            'Sur épaisseur ±3mm',
+            'Sur longueur ± 3mm',
+            'Sur largeur ± 3mm',
+            'Sur équerrage ± 3mm',
+        ],
+    },
+    tables: {
+        isolation: {
+            title: 'Coefficient d’isolation thermique',
+            headers: ['Épaisseur en mm', 'W/m²K', 'Kcal/m²h°c'],
+            rows: [
+                { 'Épaisseur en mm': 80, 'W/m²K': '0,26', 'Kcal/m²h°c': '0,23' },
+                { 'Épaisseur en mm': 100, 'W/m²K': '0,21', 'Kcal/m²h°c': '0,18' },
+                { 'Épaisseur en mm': 120, 'W/m²K': '0,18', 'Kcal/m²h°c': '0,15' },
+                { 'Épaisseur en mm': 150, 'W/m²K': '0,14', 'Kcal/m²h°c': '0,12' },
+                { 'Épaisseur en mm': 180, 'W/m²K': '0,12', 'Kcal/m²h°c': '0,10' },
+                { 'Épaisseur en mm': 200, 'W/m²K': '0,11', 'Kcal/m²h°c': '0,09' },
+            ],
+        },
+        dimensionnement: {
+            title: 'Dimensionnement du panneau',
+            headers: ['Type', 'Longueur (mm)', 'Largueur standard (mm)', 'Épaisseur (mm)', 'Poids Kg/m²'],
+            rows: [
+                { 'Type': 'LL80', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 80, 'Poids Kg/m²': 11.6 },
+                { 'Type': 'LL100', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 100, 'Poids Kg/m²': 12.40 },
+                { 'Type': 'LL120', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 120, 'Poids Kg/m²': 13.40 },
+                { 'Type': 'LL150', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 150, 'Poids Kg/m²': 10.40 },
+                { 'Type': 'LL180', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 180, 'Poids Kg/m²': 15.6 },
+                { 'Type': 'LL200', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 200, 'Poids Kg/m²': 16.4 },
+            ],
+        },
+        chargesPortees: {
+            title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m²)',
+            subtitle: 'Tôle en acier épaisseur 0,5mm',
+            headers: [
+                { title: 'Charge utile uniformément repartie', colspan: 2, isGroup: true },
+                { title: 'Epaisseur du panneau en mm', colspan: 6, isGroup: true },
+                { title: 'Epaisseur du panneau en mm', colspan: 6, isGroup: true },
+            ],
+            subheaders: ['Kg/m²', 'daN/m²', '80', '100', '120', '150', '180', '200', '80', '100', '120', '150', '180', '200'],
+            rows: [
+                { 'Kg/m²': 60, 'daN/m²': 58, c1_80: 545, c1_100: 635, c1_120: 715, c1_150: 790, c1_180: 845, c1_200: 870, c2_80: 620, c2_100: 725, c2_120: 805, c2_150: 905, c2_180: 975, c2_200: 1035 },
+                { 'Kg/m²': 80, 'daN/m²': 78, c1_80: 490, c1_100: 570, c1_120: 640, c1_150: 700, c1_180: 740, c1_200: 765, c2_80: 565, c2_100: 655, c2_120: 735, c2_150: 805, c2_180: 865, c2_200: 920 },
+                { 'Kg/m²': 100, 'daN/m²': 98, c1_80: 450, c1_100: 525, c1_120: 590, c1_150: 640, c1_180: 670, c1_200: 690, c2_80: 520, c2_100: 605, c2_120: 680, c2_150: 740, c2_180: 800, c2_200: 855 },
+                { 'Kg/m²': 120, 'daN/m²': 117, c1_80: 420, c1_100: 490, c1_120: 550, c1_150: 590, c1_180: 610, c1_200: 625, c2_80: 485, c2_100: 565, c2_120: 635, c2_150: 685, c2_180: 735, c2_200: 755 },
+                { 'Kg/m²': 140, 'daN/m²': 137, c1_80: 395, c1_100: 460, c1_120: 520, c1_150: 545, c1_180: 555, c1_200: 560, c2_80: 460, c2_100: 535, c2_120: 600, c2_150: 640, c2_180: 675, c2_200: 700 },
+                { 'Kg/m²': 160, 'daN/m²': 156, c1_80: 375, c1_100: 435, c1_120: 490, c1_150: 515, c1_180: 525, c1_200: 530, c2_80: 435, c2_100: 510, c2_120: 575, c2_150: 605, c2_180: 630, c2_200: 650 },
+            ]
+        }
+    },
+    pose: {
+        title: 'La pose de panneaux sandwichs',
+        decoupage: "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier.",
+        fixation: "Les panneaux doivent être fixés au sommet de chaque nervure sur les pannes d'extrémité, Sur les pannes intermédiaires. Lors de la pose, les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet, Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité, les chéneaux, les gouttières, les recouvrements."
+    },
+    etancheite: "Les panneaux sandwichs de bardages présentent une rive mâle et une rive femelle permettant un assemblage par emboitement. Les nervures mâle et femelle sont fermées par une bande adhésive. Tous les panneaux bardage sont munis sur la nervure femelle d'un joint d'étanchéité à l'air; leurs parements pré-laqués sont protégés par un film adhésif à retirer à la pose.",
+    sens: ''
   },
   laineDeRoche: {
     title: '4-PANNEAUX EN LAINE DE ROCHE',

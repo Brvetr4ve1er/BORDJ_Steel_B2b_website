@@ -101,7 +101,7 @@ export function SandwichPanelsPage() {
                                     <p className="font-semibold mt-2">Parement externe:</p>
                                     <ul className="list-disc pl-8">
                                         <li>{activeProduct.features.definition.parementExterne.profil}</li>
-                                        <li>{activeProduct.features.definition.parementExterne.description}</li>
+                                        {activeProduct.features.definition.parementExterne.description && <li>{activeProduct.features.definition.parementExterne.description}</li>}
                                         <li>{activeProduct.features.definition.parementExterne.epaisseur}</li>
                                     </ul>
                                     <p className="font-semibold mt-2">Parement interne:</p>
@@ -172,6 +172,44 @@ export function SandwichPanelsPage() {
                                         </Table>
                                     </div>
                                 )}
+                                {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows.length > 0 && (
+                                <div className="mb-8">
+                                    <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
+                                    {activeProduct.tables.chargesPortees.subtitle && <p className="text-sm text-muted-foreground mb-2">{activeProduct.tables.chargesPortees.subtitle}</p>}
+                                    <Table>
+                                        <TableHeader>
+                                            <TableRow className="bg-accent/10">
+                                                {activeProduct.tables.chargesPortees.headers.map((h, i) => (
+                                                    <TableHead key={i} colSpan={h.colspan} className="text-accent font-bold text-center">{h.title}</TableHead>
+                                                ))}
+                                            </TableRow>
+                                            {activeProduct.tables.chargesPortees.subheaders && activeProduct.tables.chargesPortees.subheaders.length > 0 && (
+                                                <TableRow className="bg-accent/10">
+                                                    {activeProduct.tables.chargesPortees.subheaders.map((sh, i) => (
+                                                        <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
+                                                    ))}
+                                                </TableRow>
+                                            )}
+                                        </TableHeader>
+                                        <TableBody>
+                                            {activeProduct.tables.chargesPortees.rows.map((row: any, i) => (
+                                                <TableRow key={i}>
+                                                {activeProduct.tables.chargesPortees.subheaders ? 
+                                                    activeProduct.tables.chargesPortees.subheaders.map((sh, j) => {
+                                                        const key = Object.keys(row)[j];
+                                                        return <TableCell key={j} className="text-center">{row[key]}</TableCell>
+                                                    })
+                                                    :
+                                                    Object.values(row).map((cell: any, j: number) => (
+                                                        <TableCell key={j} className="text-center">{cell}</TableCell>
+                                                    ))
+                                                }
+                                                </TableRow>
+                                            ))}
+                                        </TableBody>
+                                    </Table>
+                                </div>
+                            )}
                             </section>
 
                              <section className="mt-8">
@@ -188,10 +226,10 @@ export function SandwichPanelsPage() {
                                         <SubSectionTitle>Étanchéité des rives</SubSectionTitle>
                                         <p>{activeProduct.etancheite}</p>
                                     </div>
-                                     <div>
+                                     {activeProduct.sens && <div>
                                         <SubSectionTitle>Sens des panneaux</SubSectionTitle>
                                         <p>{activeProduct.sens}</p>
-                                    </div>
+                                    </div>}
                                 </div>
                             </section>
                         </CardContent>
