@@ -94,8 +94,8 @@ export const productData = {
     title: '2-PANNEAUX SANDWICHS DE BARDAGE',
     subtitle: '(Fixations cachées et visibles)',
     image: {
-      src: 'https://placehold.co/600x600.png',
-      aiHint: 'cladding panels',
+      src: 'https://images.unsplash.com/photo-1543623999-443735071a6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYWN0b3J5JTIwd2FsbCUyMG1ldGFsfGVufDB8fHx8MTc1NTA4MjE1Nnww&ixlib=rb-4.1.0&q=80&w=1080',
+      aiHint: 'factory wall metal',
     },
     features: {
       utilisation: [
@@ -146,19 +146,24 @@ export const productData = {
             { Type: 'TBN/L 140', 'Longueur (mm)': 8000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 100, 'Poids Kg/m²': 13.1 },
         ] 
       },
-      chargesPortees: { 
-        title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)', 
-        subtitle: 'Tôle en acier épaisseur 0,5mm',
+       chargesPortees: { 
+        title: 'Portées admissibles (m)', 
+        subtitle: 'Charge uniformément répartie (daN/m²)',
         headers: [
-            { title: 'Charge uniformément répartie (daN/m²)', colspan: 1 },
-            { title: 'Épaisseur du panneau en mm (3 appuis)', colspan: 6 },
+            { title: 'Épaisseur (mm)', colspan: 1 },
+            { title: '40', colspan: 1 },
+            { title: '60', colspan: 1 },
+            { title: '80', colspan: 1 },
+            { title: '100', colspan: 1 },
         ],
-        subheaders: ['daN/m²', '30', '40', '50', '60', '80', '100'],
+        subheaders: [],
         rows: [
-            { 'daN/m²': 40, '30': 3.10, '40': 3.40, '50': 3.60, '60': 3.80, '80': 4.30, '100': 4.70 },
-            { 'daN/m²': 60, '30': 2.70, '40': 3.00, '50': 3.20, '60': 3.40, '80': 3.80, '100': 4.20 },
-            { 'daN/m²': 80, '30': 2.50, '40': 2.70, '50': 2.90, '60': 3.10, '80': 3.50, '100': 3.90 },
-            { 'daN/m²': 100, '30': 2.30, '40': 2.50, '50': 2.70, '60': 2.90, '80': 3.30, '100': 3.60 },
+            { 'Épaisseur (mm)': 30, '40': 3.10, '60': 2.70, '80': 2.50, '100': 2.30},
+            { 'Épaisseur (mm)': 40, '40': 3.40, '60': 3.00, '80': 2.70, '100': 2.50},
+            { 'Épaisseur (mm)': 50, '40': 3.60, '60': 3.20, '80': 2.90, '100': 2.70},
+            { 'Épaisseur (mm)': 60, '40': 3.80, '60': 3.40, '80': 3.10, '100': 2.90},
+            { 'Épaisseur (mm)': 80, '40': 4.30, '60': 3.80, '80': 3.50, '100': 3.30},
+            { 'Épaisseur (mm)': 100, '40': 4.70, '60': 4.20, '80': 3.90, '100': 3.60},
         ] 
       }
     },
