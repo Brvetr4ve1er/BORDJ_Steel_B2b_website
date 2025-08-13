@@ -4,8 +4,8 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { companyData } from '@/config/company-data';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, TableCaption } from './ui/table';
+import { Card, CardContent } from './ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { cn } from '@/lib/utils';
 import { Square } from 'lucide-react';
 
@@ -44,10 +44,26 @@ export function SandwichPanelsPage() {
 
   return (
     <section id="product-details" className="bg-white py-20">
-      <div className="container mx-auto px-4 max-w-4xl">
+      <div className="container mx-auto px-4 max-w-7xl">
         <AnimatedWrapper animation="fade-in">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            {/* Image Column */}
+            <div className="flex items-start justify-center">
+                <div className="sticky top-32">
+                    <Image
+                        src={product.image.src}
+                        alt={product.title}
+                        width={600}
+                        height={600}
+                        className="rounded-lg shadow-2xl object-cover"
+                        data-ai-hint={product.image.aiHint}
+                    />
+                </div>
+            </div>
+
+            {/* Content Column */}
             <div className="space-y-12">
-                
                 {/* UNITÉ DE PRODUCTION */}
                 <Card className="border-none shadow-none">
                     <CardContent className="p-0">
@@ -123,6 +139,7 @@ export function SandwichPanelsPage() {
                     </CardContent>
                 </Card>
             </div>
+          </div>
         </AnimatedWrapper>
       </div>
     </section>
