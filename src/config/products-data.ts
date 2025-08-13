@@ -175,7 +175,7 @@ export const productData = {
     title: '3-PANNEAUX SANDWICHS FRIGORIFIQUE',
     subtitle: '',
     image: {
-        src: 'https://placehold.co/600x600.png',
+        src: 'https://images.unsplash.com/photo-1614356693127-b314f9e55d82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxGUkVFWkVSJTIwUk9PTVMlMjB8ZW58MHx8fHwxNzU1MDg4NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080',
         aiHint: 'refrigeration panels',
     },
     features: {
