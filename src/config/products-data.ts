@@ -238,8 +238,8 @@ export const productData = {
             subtitle: 'Tôle en acier épaisseur 0,5mm',
             headers: [
                 { title: 'Charge utile uniformément repartie', colspan: 2, isGroup: true },
-                { title: 'Epaisseur du panneau en mm', colspan: 6, isGroup: true },
-                { title: 'Epaisseur du panneau en mm', colspan: 6, isGroup: true },
+                { title: 'Epaisseur du panneau en mm (2 appuis)', colspan: 6, isGroup: true },
+                { title: 'Epaisseur du panneau en mm (3 appuis)', colspan: 6, isGroup: true },
             ],
             subheaders: ['Kg/m²', 'daN/m²', '80', '100', '120', '150', '180', '200', '80', '100', '120', '150', '180', '200'],
             rows: [
@@ -262,26 +262,70 @@ export const productData = {
   },
   toleNervuree: {
     title: '4-TÔLE NERVURÉE',
-    subtitle: '(Détails à venir)',
+    subtitle: 'TOLE NERVURÉE TN40',
      image: {
-      src: 'https://placehold.co/600x600.png',
+      src: 'https://images.unsplash.com/photo-1542901105-35363351a613?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyaWJiZWQlMjBzdGVlbCUyMHNoZWV0fGVufDB8fHx8MTc1NTE2MzU1NXww&ixlib=rb-4.1.0&q=80&w=1080',
       aiHint: 'ribbed steel sheet',
     },
     features: {
-        utilisation: [],
-        definition: { acier: '', parementExterne: {profil: '', description: '', epaisseur: ''}, parementInterne: {profil: '', epaisseur: ''}},
-        revetement: '',
-        ameIsolante: { type: '', conductivite: '', densite: ''},
-        reactionAuFeu: '',
-        tolerance: [],
+      utilisation: [
+        'Bâtiments industriels',
+        'Ateliers de production',
+        'Entrepôts agricoles',
+        'Centres commerciaux',
+      ],
+      definition: { acier: '', parementExterne: {profil: '', description: '', epaisseur: ''}, parementInterne: {profil: '', epaisseur: ''}},
+      revetement: 'Sans spécifications particulière les profils nervurés sont livrés en qualité standard. Galvanisé seul qualité Z200. Galvanisé pré-laqué, face extérieure finition laquée polyester ép. 25µ',
+      ameIsolante: { type: '', conductivite: '', densite: ''},
+      reactionAuFeu: 'Classement de réaction au feu M0',
+      tolerance: [],
+      miseEnOeuvre: {
+        title: "Mise en œuvre",
+        manutention: "Manutention : Les profils ne doivent pas être choqué ou griffés pour éviter toute mise à nu du métal."
       },
-      tables: {
-          isolation: { title: '', headers: [], rows: [] },
-          dimensionnement: { title: '', headers: [], rows: [] },
-          chargesPortees: { title: '', subtitle: '', headers: [], subheaders: [], rows: [] }
-      },
-      pose: { title: '', decoupage: '', fixation: ''},
-      etancheite: '',
-      sens: ''
+      caracteristiquesGeometriques: {
+        title: "Caractéristiques Géométriques",
+        image: {
+          src: '/diagrams/tole-nervuree-geometrie.png',
+          aiHint: 'geometric characteristics diagram'
+        }
+      }
+    },
+    tables: {
+        isolation: { title: '', headers: [], rows: [] },
+        dimensionnement: { 
+          title: '', 
+          headers: ['Type', 'Longueur (ml)', 'Largeur standard (mm)', 'Épaisseurs (mm)', 'Poids (kg/m²)', 'J (cm²/m)', 'W (cm³/m)', 'Système de revêtement'], 
+          rows: [
+            { type: 'TN 40', longueur: 1500, largeur: 1000, details: [
+              { epaisseur: 0.5, poids: 4.91, j: 12.3, w: 3.92, systeme: 'Galvanisée Pré laquée' },
+              { epaisseur: 0.6, poids: 5.90, j: 16.05, w: 5.30, systeme: 'Galvanisée Pré laquée' },
+              { epaisseur: 0.7, poids: 6.88, j: 18.72, w: 6.18, systeme: 'Galvanisée Pré laquée' },
+              { epaisseur: 1.0, poids: 9.81, j: 26.75, w: 8.83, systeme: 'Galvanisée Pré laquée' },
+            ]}
+          ] 
+        },
+        chargesPortees: { 
+            title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)',
+            subtitle: '',
+            headers: [
+              { title: 'EP (mm)', colspan: 1, isGroup: true },
+              { title: 'Portée (m)', colspan: 10, isGroup: true },
+            ],
+            subheaders: ['EP (mm)', '1,00', '1,25', '1,50', '1,75', '2,00', '2,25', '2,50', '2,75', '3', '3,25'],
+            rows: [
+              { type: '2 appuis', epaisseur: 0.5, '1,00': 439, '1,25': 281, '1,50': 185, '1,75': 143, '2,00': 109, '2,25': 86, '2,50': 63, '2,75': 47, '3': 36, '3,25': null },
+              { type: '2 appuis', epaisseur: 0.6, '1,00': 614, '1,25': 393, '1,50': 273, '1,75': 200, '2,00': 153, '2,25': 115, '2,50': 84, '2,75': 63, '3': 48, '3,25': 38 },
+              { type: '2 appuis', epaisseur: 0.7, '1,00': 716, '1,25': 458, '1,50': 318, '1,75': 234, '2,00': 179, '2,25': 135, '2,50': 98, '2,75': 73, '3': 57, '3,25': null },
+              { type: '3 appuis', epaisseur: 0.5, '1,00': 570, '1,25': 365, '1,50': 252, '1,75': 180, '2,00': 141, '2,25': 111, '2,50': 90, '2,75': 67, '3': 51, '3,25': 40 },
+              { type: '3 appuis', epaisseur: 0.6, '1,00': 768, '1,25': 491, '1,50': 341, '1,75': 251, '2,00': 192, '2,25': 152, '2,50': 123, '2,75': 101, '3': 81, '3,25': 64 },
+              { type: '3 appuis', epaisseur: 0.7, '1,00': 896, '1,25': 573, '1,50': 398, '1,75': 292, '2,00': 224, '2,25': 177, '2,50': 143, '2,75': 118, '3': 95, '3,25': 74 },
+              { type: '3 appuis', epaisseur: 1.0, '1,00': 1280, '1,25': 819, '1,50': 569, '1,75': 418, '2,00': 320, '2,25': 253, '2,50': 204, '2,75': 169, '3': 135, '3,25': 106 },
+            ]
+        }
+    },
+    pose: { title: '', decoupage: '', fixation: ''},
+    etancheite: '',
+    sens: ''
   },
 };

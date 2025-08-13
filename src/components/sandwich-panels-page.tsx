@@ -89,13 +89,15 @@ export function SandwichPanelsPage() {
                         <CardContent className="p-0">
                             <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
                             <div className="space-y-4 text-sm">
+                                {activeProduct.features.utilisation.length > 0 &&
                                 <div>
                                     <SubSectionTitle>Utilisation</SubSectionTitle>
                                     <ul className="list-disc pl-5 space-y-1">
                                         {activeProduct.features.utilisation.map(item => <li key={item}>{item}</li>)}
                                     </ul>
                                 </div>
-                                {activeProduct.features.definition.acier && 
+                                }
+                                {activeProduct.features.definition?.acier && 
                                 <div>
                                     <SubSectionTitle>Définition</SubSectionTitle>
                                     <ProductFeature label="Identification d'acier:" value={activeProduct.features.definition.acier} />
@@ -132,11 +134,15 @@ export function SandwichPanelsPage() {
                                         {activeProduct.features.tolerance.map(item => <li key={item}>{item}</li>)}
                                     </ul>
                                 </div>}
+                                { activeProduct.features.miseEnOeuvre && <div>
+                                    <SubSectionTitle>{activeProduct.features.miseEnOeuvre.title}</SubSectionTitle>
+                                    <p>{activeProduct.features.miseEnOeuvre.manutention}</p>
+                                </div>}
                             </div>
 
                             <section className="mt-8">
                                 <SectionTitle>TABLEAUX TECHNIQUES</SectionTitle>
-                                {activeProduct.tables.isolation.rows.length > 0 && (
+                                {activeProduct.tables.isolation?.rows.length > 0 && (
                                     <div className="mb-8">
                                         <SubSectionTitle>{activeProduct.tables.isolation.title}</SubSectionTitle>
                                         <Table>
@@ -155,7 +161,7 @@ export function SandwichPanelsPage() {
                                         </Table>
                                     </div>
                                 )}
-                                {activeProduct.tables.dimensionnement.rows.length > 0 && (
+                                {activeProduct.tables.dimensionnement?.rows.length > 0 && (
                                     <div className="mb-8">
                                         <SubSectionTitle>{activeProduct.tables.dimensionnement.title}</SubSectionTitle>
                                         <Table>
@@ -165,11 +171,28 @@ export function SandwichPanelsPage() {
                                                 </TableRow>
                                             </TableHeader>
                                             <TableBody>
-                                                {activeProduct.tables.dimensionnement.rows.map((row, i) => (
-                                                    <TableRow key={i}>
-                                                        {activeProduct.tables.dimensionnement.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row]}</TableCell>)}
-                                                    </TableRow>
-                                                ))}
+                                                {activeProductKey === 'toleNervuree' ? (
+                                                   activeProduct.tables.dimensionnement.rows.map((row: any, i) => (
+                                                        row.details.map((detail: any, j: number) => (
+                                                            <TableRow key={`${i}-${j}`}>
+                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.type}</TableCell>}
+                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.longueur}</TableCell>}
+                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.largeur}</TableCell>}
+                                                                <TableCell>{detail.epaisseur}</TableCell>
+                                                                <TableCell>{detail.poids}</TableCell>
+                                                                <TableCell>{detail.j}</TableCell>
+                                                                <TableCell>{detail.w}</TableCell>
+                                                                <TableCell>{detail.systeme}</TableCell>
+                                                            </TableRow>
+                                                        ))
+                                                    ))
+                                                ) : (
+                                                    activeProduct.tables.dimensionnement.rows.map((row, i) => (
+                                                        <TableRow key={i}>
+                                                            {activeProduct.tables.dimensionnement.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row]}</TableCell>)}
+                                                        </TableRow>
+                                                    ))
+                                                )}
                                             </TableBody>
                                         </Table>
                                     </div>
@@ -198,7 +221,16 @@ export function SandwichPanelsPage() {
                                                 <TableRow key={i}>
                                                 {activeProduct.tables.chargesPortees.subheaders ? 
                                                     activeProduct.tables.chargesPortees.subheaders.map((sh, j) => {
-                                                        const key = Object.keys(row)[j];
+                                                        let key = sh;
+                                                        if (activeProductKey === 'couverture' || activeProductKey === 'frigorifique') {
+                                                            const keys = Object.keys(row);
+                                                            key = keys[j];
+                                                        }
+                                                        if(activeProductKey === 'toleNervuree'){
+                                                            const key = activeProduct.tables.chargesPortees.subheaders[j];
+                                                            if (j === 0) return <TableCell key={j} className="text-center font-semibold">{row.type} | {row.epaisseur}</TableCell>;
+                                                            return <TableCell key={j} className="text-center">{row[key]}</TableCell>
+                                                        }
                                                         return <TableCell key={j} className="text-center">{row[key]}</TableCell>
                                                     })
                                                     :
@@ -213,8 +245,22 @@ export function SandwichPanelsPage() {
                                 </div>
                             )}
                             </section>
+                            
+                            {activeProduct.features.caracteristiquesGeometriques && (
+                                <section className="mt-8">
+                                    <SectionTitle>{activeProduct.features.caracteristiquesGeometriques.title}</SectionTitle>
+                                    <Image 
+                                        src={activeProduct.features.caracteristiquesGeometriques.image.src}
+                                        alt={activeProduct.features.caracteristiquesGeometriques.title}
+                                        width={800}
+                                        height={200}
+                                        className="w-full object-contain"
+                                        data-ai-hint={activeProduct.features.caracteristiquesGeometriques.image.aiHint}
+                                    />
+                                </section>
+                            )}
 
-                            {activeProduct.pose.decoupage && 
+                            {activeProduct.pose?.decoupage && 
                              <section className="mt-8">
                                 <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
                                 <div className="space-y-4 text-sm">
