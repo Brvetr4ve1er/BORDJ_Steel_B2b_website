@@ -2,6 +2,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedWrapper } from './animated-wrapper';
 import { companyData } from '@/config/company-data';
@@ -32,7 +33,8 @@ export function Facilities() {
              const Icon = iconMap[facility.icon];
              return (
                 <AnimatedWrapper key={index} animation="slide-up">
-                    <Card className="overflow-hidden shadow-xl transition-shadow hover:shadow-2xl group relative aspect-square">
+                  <Link href={facility.href || '#'} className="group block">
+                    <Card className="overflow-hidden shadow-xl transition-shadow hover:shadow-2xl relative aspect-square">
                         <Image
                         src={facility.image.src}
                         alt={facility.title}
@@ -65,13 +67,16 @@ export function Facilities() {
                            <div className="mt-auto">
                                 <h3 className="font-headline text-2xl font-bold mb-2">{facility.title}</h3>
                                 <p className="text-sm mb-4">{facility.description}</p>
-                                <Button variant="destructive" className="mt-auto self-start group bg-accent hover:bg-accent/90 transition-all duration-300 ease-in-out transform group-hover:translate-y-0 translate-y-4">
-                                    Lire la suite
-                                    <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                                <Button asChild variant="destructive" className="mt-auto self-start group bg-accent hover:bg-accent/90 transition-all duration-300 ease-in-out transform group-hover:translate-y-0 translate-y-4">
+                                    <span>
+                                      Lire la suite
+                                      <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                                    </span>
                                 </Button>
                            </div>
                         </div>
                     </Card>
+                    </Link>
                 </AnimatedWrapper>
              )
           })}

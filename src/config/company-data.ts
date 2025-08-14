@@ -26,10 +26,10 @@ export const companyData = {
         "href": "/products",
         "icon": "Package",
         "children": [
-          { "name": "Charpente Métallique", "href": "#services", "description": "Solutions robustes pour tous types de bâtiments.", "icon": "HardHat" },
+          { "name": "Charpente Métallique", "href": "/products/charpente-metallique", "description": "Solutions robustes pour tous types de bâtiments.", "icon": "HardHat" },
           { "name": "Panneaux Sandwichs", "href": "/products/sandwich-panels", "description": "Isolation thermique et acoustique performante.", "icon": "Package" },
-          { "name": "Galvanisation à Chaud", "href": "#services", "description": "Protection anti-corrosion durable pour vos aciers.", "icon": "Cog" },
-          { "name": "Chaudronnerie", "href": "#services", "description": "Fabrication sur mesure d'équipements industriels.", "icon": "Anchor" },
+          { "name": "Galvanisation à Chaud", "href": "/products/galvanisation-a-chaud", "description": "Protection anti-corrosion durable pour vos aciers.", "icon": "Cog" },
+          { "name": "Chaudronnerie", "href": "/products/chaudronnerie", "description": "Fabrication sur mesure d'équipements industriels.", "icon": "Anchor" },
         ]
       },
       { "name": "Références", "href": "#portfolio", "icon": "Briefcase" },
@@ -105,25 +105,29 @@ export const companyData = {
           title: 'Charpente Métallique',
           description: `Capacité de 1500 T/mois (25000 T/an) et PRS 3000 T/an. Nous produisons des hangars, pylônes, et supports publicitaires.`,
           image: { src: 'https://images.unsplash.com/photo-1738162837330-9257f938463c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzdGVlbCUyMGZhYnJpY2F0aW9ufGVufDB8fHx8MTc1Mzg3NjM3Mnww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'steel fabrication' },
-          icon: 'HardHat'
+          icon: 'HardHat',
+          href: '/products/charpente-metallique'
         },
         {
           title: 'Panneaux Sandwichs',
           description: `Capacité de 5000 m²/jour. Gamme d'épaisseur de 30-200 mm pour couverture, bardage, et chambres froides.`,
           image: { src: 'https://images.unsplash.com/photo-1585435582425-a03999930ee74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyMHx8JTIwbWV0YWwlMjBzaGVldCUyMHBhbmVsJTIwfGVufDB8fHx8MTc1Mzg3NjYwNHww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'sandwich panels' },
-          icon: 'Layers'
+          icon: 'Layers',
+          href: '/products/sandwich-panels'
         },
         {
           title: 'Galvanisation à Chaud',
           description: `Capacité de 60000 T/an avec un bain de 13m de long pour des pièces jusqu'à 15m.`,
           image: { src: 'https://images.unsplash.com/photo-1569968201228-01aebb252e80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtZXRhbCUyMGZhY3Rvcnl8ZW58MHx8fHwxNzUzODc2NjczfDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'hot-dip galvanization' },
-          icon: 'Cog'
+          icon: 'Cog',
+          href: '/products/galvanisation-a-chaud'
         },
         {
           title: 'Chaudronnerie',
           description: `Notre unité de chaudronnerie est spécialisée dans la fabrication d'équipements sur mesure pour divers secteurs industriels.`,
           image: { src: 'https://images.unsplash.com/photo-1510900767338-8bf61abf2562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMG1lbHRpbmclMjBmYWN0b3J5fGVufDB8fHx8MTc1Mzg3Njc2NXww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'boiler making' },
-          icon: 'Anchor'
+          icon: 'Anchor',
+          href: '/products/chaudronnerie'
         }
       ]
     },
