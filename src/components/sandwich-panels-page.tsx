@@ -84,7 +84,7 @@ export function SandwichPanelsPage() {
                     <p className="font-light">{activeProduct.subtitle}</p>
                 </div>
 
-                <div className="max-h-[calc(100vh-20rem)] overflow-y-auto pr-4 space-y-8">
+                <div className="space-y-8">
                     <Card className="border-none shadow-none p-0">
                         <CardContent className="p-0">
                             <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
