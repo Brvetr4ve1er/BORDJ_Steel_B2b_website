@@ -48,7 +48,7 @@ export function SandwichPanelsPage() {
             <div className="md:col-span-2">
               <Card className="rounded-lg overflow-hidden shadow-lg group">
                 <Image
-                  src="https://images.unsplash.com/photo-1585435582425-a03999930ee74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyMHx8JTIwbWV0YWwlMjBzaGVldCUyMHBhbmVsJTIwfGVufDB8fHx8MTc1Mzg3NjYwNHww&ixlib=rb-4.1.0&q=80&w=1080"
+                  src="https://images.unsplash.com/photo-1711873318272-ea1fd95ea950?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMHBhbmVsfGVufDB8fHx8MTc1NTUyNDE1MHww&ixlib=rb-4.1.0&q=80&w=1080"
                   alt="Panneaux Sandwichs PEB"
                   width={800}
                   height={600}
@@ -98,8 +98,8 @@ export function SandwichPanelsPage() {
 
             {/* Content Column */}
             <div className="col-span-7">
-                <div className="relative space-y-8 p-6 bg-gray-50 rounded-lg">
-                    <h2 className="font-headline text-4xl font-bold text-accent">{activeProduct.title}</h2>
+                <div className="relative">
+                     <h2 className="font-headline text-4xl font-bold text-accent mb-6">{activeProduct.title}</h2>
                     <Card className="border-none shadow-none p-0">
                         <CardContent className="p-0">
                             <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
