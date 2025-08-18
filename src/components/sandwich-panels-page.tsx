@@ -100,10 +100,9 @@ export function SandwichPanelsPage() {
             <div className="col-span-7">
                 <div className="bg-accent text-white p-4 rounded-t-lg sticky top-24 z-10">
                     <h2 className="font-headline text-4xl font-bold">{activeProduct.title}</h2>
-                    <p className="font-light text-lg">{activeProduct.subtitle}</p>
                 </div>
 
-                <div className="space-y-8 p-6 bg-gray-50 rounded-b-lg">
+                <div className="relative space-y-8 p-6 bg-gray-50 rounded-b-lg">
                     <Card className="border-none shadow-none p-0">
                         <CardContent className="p-0">
                             <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
@@ -311,5 +310,3 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
-
-    
