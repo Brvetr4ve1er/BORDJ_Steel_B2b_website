@@ -7,10 +7,11 @@ import { useState } from 'react';
 import { Layers, Layers2, Layers3, ChevronsRight } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
-import { Card, CardContent, CardDescription } from './ui/card';
+import { Card, CardContent } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { productData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
+import { ProductImageGallery } from './product-image-gallery';
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   <h3 className="font-headline text-xl font-bold text-primary mb-3">{children}</h3>
@@ -288,6 +289,9 @@ export function SandwichPanelsPage() {
             </div>
           </div>
         </AnimatedWrapper>
+
+        <ProductImageGallery />
+        
       </div>
     </section>
   );
