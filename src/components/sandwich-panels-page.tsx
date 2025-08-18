@@ -64,23 +64,14 @@ export function SandwichPanelsPage() {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             
-            {/* Image Column */}
-            <div className="flex items-start justify-center">
-              <div className="sticky top-32">
-                <Image
-                  src={activeProduct.image.src}
-                  alt={activeProduct.title}
-                  width={600}
-                  height={600}
-                  className="rounded-lg shadow-2xl object-cover"
-                  data-ai-hint={activeProduct.image.aiHint}
-                />
-              </div>
+            {/* Gallery Column */}
+            <div className="lg:sticky lg:top-32">
+              <ProductImageGallery />
             </div>
 
             {/* Content Column */}
             <div className="space-y-6">
-                <div className="bg-accent text-white p-4 rounded-t-lg">
+                <div className="bg-accent text-white p-4 rounded-t-lg sticky top-24 z-10">
                     <h2 className="font-headline text-2xl font-bold">{activeProduct.title}</h2>
                     <p className="font-light">{activeProduct.subtitle}</p>
                 </div>
@@ -289,10 +280,9 @@ export function SandwichPanelsPage() {
             </div>
           </div>
         </AnimatedWrapper>
-
-        <ProductImageGallery />
-        
       </div>
     </section>
   );
 }
+
+    

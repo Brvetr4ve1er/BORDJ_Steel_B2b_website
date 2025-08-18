@@ -20,7 +20,7 @@ const galleryImages = [
 
 export function ProductImageGallery() {
   return (
-    <section className="py-20">
+    <section>
       <AnimatedWrapper animation="fade-in">
         <h2 className="font-headline text-3xl font-bold text-center text-primary mb-12">Galerie d'images</h2>
       </AnimatedWrapper>
@@ -43,3 +43,5 @@ export function ProductImageGallery() {
     </section>
   );
 }
+
+    
