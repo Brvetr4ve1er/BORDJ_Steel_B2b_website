@@ -42,6 +42,31 @@ export function SandwichPanelsPage() {
   return (
     <section id="product-details" className="bg-white py-20">
       <div className="container mx-auto px-4 max-w-7xl">
+         {/* Parent Product Section */}
+        <AnimatedWrapper animation="fade-in">
+          <div className="grid md:grid-cols-5 gap-8 items-center mb-16">
+            <div className="md:col-span-2">
+              <Card className="rounded-lg overflow-hidden shadow-lg group">
+                <Image
+                  src="https://images.unsplash.com/photo-1585435582425-a03999930ee74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyMHx8JTIwbWV0YWwlMjBzaGVldCUyMHBhbmVsJTIwfGVufDB8fHx8MTc1Mzg3NjYwNHww&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="Panneaux Sandwichs PEB"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                  data-ai-hint="sandwich panels"
+                  priority
+                />
+              </Card>
+            </div>
+            <div className="md:col-span-3">
+              <h1 className="font-headline text-5xl font-bold text-primary mb-4">Panneaux Sandwichs Haute Performance</h1>
+              <p className="text-lg text-muted-foreground">
+                Découvrez notre gamme complète de panneaux sandwichs pour bâtiments préfabriqués (PEB). Conçus pour offrir une isolation thermique et acoustique supérieure, nos panneaux sont la solution idéale pour les toitures, les bardages et les chambres froides. Chaque variation est conçue avec précision pour répondre aux exigences spécifiques de votre projet, garantissant durabilité, efficacité énergétique et une finition esthétique impeccable.
+              </p>
+            </div>
+          </div>
+        </AnimatedWrapper>
+        
         <AnimatedWrapper animation="fade-in">
           {/* Product Variation Buttons */}
           <div className="mb-12 flex flex-wrap justify-center gap-4">
@@ -76,7 +101,7 @@ export function SandwichPanelsPage() {
                     <p className="font-light text-lg">{activeProduct.subtitle}</p>
                 </div>
 
-                <div className="space-y-8">
+                <div className="space-y-8 p-6 bg-gray-50 rounded-b-lg">
                     <Card className="border-none shadow-none p-0">
                         <CardContent className="p-0">
                             <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
