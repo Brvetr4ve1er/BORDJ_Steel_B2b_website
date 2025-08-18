@@ -41,7 +41,7 @@ export function SandwichPanelsPage() {
 
   return (
     <section id="product-details" className="bg-white py-20">
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-4 max-w-screen-2xl">
          {/* Parent Product Section */}
         <AnimatedWrapper animation="fade-in">
           <div className="grid md:grid-cols-5 gap-8 items-center mb-16">
@@ -87,15 +87,17 @@ export function SandwichPanelsPage() {
             ))}
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-10 gap-12">
             
             {/* Gallery Column */}
-            <div className="lg:sticky lg:top-32">
-               <ProductImageGallery mainImage={activeProduct.image} />
+            <div className="col-span-3">
+               <div className="lg:sticky lg:top-32">
+                 <ProductImageGallery mainImage={activeProduct.image} />
+               </div>
             </div>
 
             {/* Content Column */}
-            <div className="space-y-6">
+            <div className="col-span-7">
                 <div className="bg-accent text-white p-4 rounded-t-lg sticky top-24 z-10">
                     <h2 className="font-headline text-4xl font-bold">{activeProduct.title}</h2>
                     <p className="font-light text-lg">{activeProduct.subtitle}</p>
@@ -309,3 +311,5 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
+
+    
