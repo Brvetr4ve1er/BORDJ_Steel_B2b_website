@@ -21,9 +21,6 @@ const galleryImages = [
 export function ProductImageGallery() {
   return (
     <section>
-      <AnimatedWrapper animation="fade-in">
-        <h2 className="font-headline text-3xl font-bold text-center text-primary mb-12">Galerie d'images</h2>
-      </AnimatedWrapper>
       <div className="columns-2 gap-4 sm:gap-6">
         {galleryImages.map((image, index) => (
           <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
@@ -43,5 +40,3 @@ export function ProductImageGallery() {
     </section>
   );
 }
-
-    
