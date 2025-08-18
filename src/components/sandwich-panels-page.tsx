@@ -14,11 +14,11 @@ import { cn } from '@/lib/utils';
 import { ProductImageGallery, type ProductImage } from './product-image-gallery';
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="font-headline text-xl font-bold text-primary mb-3">{children}</h3>
+  <h3 className="font-headline text-3xl font-bold text-primary mb-3">{children}</h3>
 );
 
 const SubSectionTitle = ({ children }: { children: React.ReactNode }) => (
-    <h4 className="font-headline text-lg font-bold text-primary mt-4 mb-2">{children}</h4>
+    <h4 className="font-headline text-2xl font-bold text-primary mt-4 mb-2">{children}</h4>
 );
 
 const ProductFeature = ({ label, value }: { label: string; value: string }) => (
@@ -72,15 +72,15 @@ export function SandwichPanelsPage() {
             {/* Content Column */}
             <div className="space-y-6">
                 <div className="bg-accent text-white p-4 rounded-t-lg sticky top-24 z-10">
-                    <h2 className="font-headline text-2xl font-bold">{activeProduct.title}</h2>
-                    <p className="font-light">{activeProduct.subtitle}</p>
+                    <h2 className="font-headline text-4xl font-bold">{activeProduct.title}</h2>
+                    <p className="font-light text-lg">{activeProduct.subtitle}</p>
                 </div>
 
                 <div className="space-y-8">
                     <Card className="border-none shadow-none p-0">
                         <CardContent className="p-0">
                             <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
-                            <div className="space-y-4 text-sm">
+                            <div className="space-y-4 text-base">
                                 {activeProduct.features.utilisation.length > 0 &&
                                 <div>
                                     <SubSectionTitle>Utilisation</SubSectionTitle>
@@ -137,7 +137,7 @@ export function SandwichPanelsPage() {
                                 {activeProduct.tables.isolation?.rows.length > 0 && (
                                     <div className="mb-8">
                                         <SubSectionTitle>{activeProduct.tables.isolation.title}</SubSectionTitle>
-                                        <Table>
+                                        <Table className="text-base">
                                             <TableHeader>
                                                 <TableRow className="bg-accent/10">
                                                     {activeProduct.tables.isolation.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
@@ -156,7 +156,7 @@ export function SandwichPanelsPage() {
                                 {activeProduct.tables.dimensionnement?.rows.length > 0 && (
                                     <div className="mb-8">
                                         <SubSectionTitle>{activeProduct.tables.dimensionnement.title}</SubSectionTitle>
-                                        <Table>
+                                        <Table className="text-base">
                                             <TableHeader>
                                                 <TableRow className="bg-accent/10">
                                                     {activeProduct.tables.dimensionnement.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
@@ -192,8 +192,8 @@ export function SandwichPanelsPage() {
                                 {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows.length > 0 && (
                                 <div className="mb-8">
                                     <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
-                                    {activeProduct.tables.chargesPortees.subtitle && <p className="text-sm text-muted-foreground mb-2">{activeProduct.tables.chargesPortees.subtitle}</p>}
-                                    <Table>
+                                    {activeProduct.tables.chargesPortees.subtitle && <p className="text-base text-muted-foreground mb-2">{activeProduct.tables.chargesPortees.subtitle}</p>}
+                                    <Table className="text-base">
                                         <TableHeader>
                                             <TableRow className="bg-accent/10">
                                                 {activeProduct.tables.chargesPortees.headers.map((h, i) => (
@@ -255,7 +255,7 @@ export function SandwichPanelsPage() {
                             {activeProduct.pose?.decoupage && 
                              <section className="mt-8">
                                 <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
-                                <div className="space-y-4 text-sm">
+                                <div className="space-y-4 text-base">
                                     <div>
                                         <SubSectionTitle>La pose de panneaux sandwichs</SubSectionTitle>
                                         <p className="font-semibold">Découpage des panneaux:</p>
