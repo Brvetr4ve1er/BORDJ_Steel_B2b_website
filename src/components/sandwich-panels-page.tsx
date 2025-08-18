@@ -11,7 +11,7 @@ import { Card, CardContent } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { productData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
-import { ProductImageGallery } from './product-image-gallery';
+import { ProductImageGallery, type ProductImage } from './product-image-gallery';
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   <h3 className="font-headline text-xl font-bold text-primary mb-3">{children}</h3>
@@ -56,7 +56,7 @@ export function SandwichPanelsPage() {
                 )}
                 onClick={() => setActiveProductKey(key as keyof typeof productData)}
               >
-                <Icon className={cn("mr-3 h-5 w-5", key === 'toleNervuree' && "-rotate-90")} />
+                <Icon className={cn("mr-3 h-5 w-5", key === 'toleNervuree' && "rotate-[-90deg]")} />
                 {label}
               </Button>
             ))}
@@ -66,7 +66,7 @@ export function SandwichPanelsPage() {
             
             {/* Gallery Column */}
             <div className="lg:sticky lg:top-32">
-              <ProductImageGallery />
+               <ProductImageGallery mainImage={activeProduct.image} />
             </div>
 
             {/* Content Column */}
@@ -284,5 +284,3 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
-
-    
