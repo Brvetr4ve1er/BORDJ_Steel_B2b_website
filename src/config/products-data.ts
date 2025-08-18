@@ -4,7 +4,7 @@ export const productData = {
     title: '1-PANNEAUX SANDWICHS DE COUVERTURE',
     subtitle: '(à 05 ondes Ép de 30 mm jusqu\'au 60 mm)',
     image: {
-      src: 'https://images.unsplash.com/photo-1745434038429-3bb5a1a9a383?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNnx8ZmFjdG9yeSUyMHJvb2Z8ZW58MHx8fHwxNzU1MDc2MTYwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      src: 'https://images.unsplash.com/photo-1673157142067-1f64f0ae9047?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtZXRhbCUyMHNoZWV0c3xlbnwwfHx8fDE3NTU1MDE5ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
       aiHint: 'metal sheets',
     },
     features: {
