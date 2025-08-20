@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Card } from './ui/card';
+import { useState } from 'react';
 
 export type ProductImage = {
   src: string;
@@ -17,10 +18,12 @@ const galleryImages: ProductImage[] = [
 ];
 
 interface ProductImageGalleryProps {
-    mainImage: ProductImage;
+    images: ProductImage[];
 }
 
-export function ProductImageGallery({ mainImage }: ProductImageGalleryProps) {
+export function ProductImageGallery({ images }: ProductImageGalleryProps) {
+  const [mainImage, setMainImage] = useState(images[0]);
+
   return (
     <div className="space-y-4 sm:space-y-6">
         <AnimatedWrapper animation="fade-in">
@@ -37,10 +40,10 @@ export function ProductImageGallery({ mainImage }: ProductImageGalleryProps) {
             </Card>
         </AnimatedWrapper>
 
-        <div className="flex flex-col gap-4 sm:gap-6">
-            {galleryImages.map((image, index) => (
+        <div className="grid grid-cols-3 gap-4">
+            {images.map((image, index) => (
               <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                <Card className="break-inside-avoid rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                <Card className="break-inside-avoid rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl cursor-pointer" onClick={() => setMainImage(image)}>
                   <Image
                     src={image.src}
                     alt={image.alt}

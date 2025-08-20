@@ -1,4 +1,3 @@
-
 export const productData = {
   couverture: {
     title: '1-PANNEAUX SANDWICHS DE COUVERTURE',
@@ -7,6 +6,11 @@ export const productData = {
       src: 'https://images.unsplash.com/photo-1673157142067-1f64f0ae9047?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtZXRhbCUyMHNoZWV0c3xlbnwwfHx8fDE3NTU1MDE5ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
       aiHint: 'metal sheets',
     },
+    galleryImages: [
+      { src: 'https://images.unsplash.com/photo-1501664908582-764f9d0b23ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdGVlbCUyMHNoZWV0c3xlbnwwfHx8fDE3NTU1MDE5ODN8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Ribbed steel sheets stacked', aiHint: 'steel sheets' },
+      { src: 'https://images.unsplash.com/photo-1735044902465-fe2f3eafdf77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtZXRhbCUyMHJvb2Zpbmd8ZW58MHx8fHwxNzU1NTAxOTgzfDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Close-up of metal roofing sheets', aiHint: 'metal roofing' },
+      { src: 'https://images.unsplash.com/photo-1578776349090-de61da00ff1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmYWN0b3J5JTIwYnVpbGRpbmd8ZW58MHx8fHwxNzU1NTAxOTgzfDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Factory building with sandwich panel walls', aiHint: 'factory building' },
+    ],
     features: {
       utilisation: [
         'Bâtiments industriels et modulaires',
@@ -97,6 +101,11 @@ export const productData = {
       src: 'https://images.unsplash.com/photo-1518718913060-947cd98c5550?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxOHx8ZmFjdG9yeSUyMGJ1aWxkaW5nJTIwJTIwc2FuZHdpc2glMjAlMjBwYW5uZWx8ZW58MHx8fHwxNzU1MDc3NDgwfDA&ixlib=rb-4.1.0&q=80&w=1080',
       aiHint: 'cladding panels',
     },
+    galleryImages: [
+      { src: 'https://images.unsplash.com/photo-1501664908582-764f9d0b23ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdGVlbCUyMHNoZWV0c3xlbnwwfHx8fDE3NTU1MDE5ODN8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Ribbed steel sheets stacked', aiHint: 'steel sheets' },
+      { src: 'https://images.unsplash.com/photo-1735044902465-fe2f3eafdf77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtZXRhbCUyMHJvb2Zpbmd8ZW58MHx8fHwxNzU1NTAxOTgzfDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Close-up of metal roofing sheets', aiHint: 'metal roofing' },
+      { src: 'https://images.unsplash.com/photo-1578776349090-de61da00ff1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmYWN0b3J5JTIwYnVpbGRpbmd8ZW58MHx8fHwxNzU1NTAxOTgzfDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Factory building with sandwich panel walls', aiHint: 'factory building' },
+    ],
     features: {
       utilisation: [
         'Bâtiments industriels',
@@ -178,6 +187,11 @@ export const productData = {
         src: 'https://images.unsplash.com/photo-1614356693127-b314f9e55d82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxGUkVFWkVSJTIwUk9PTVMlMjB8ZW58MHx8fHwxNzU1MDg4NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080',
         aiHint: 'refrigeration panels',
     },
+    galleryImages: [
+      { src: 'https://images.unsplash.com/photo-1501664908582-764f9d0b23ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdGVlbCUyMHNoZWV0c3xlbnwwfHx8fDE3NTU1MDE5ODN8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Ribbed steel sheets stacked', aiHint: 'steel sheets' },
+      { src: 'https://images.unsplash.com/photo-1735044902465-fe2f3eafdf77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtZXRhbCUyMHJvb2Zpbmd8ZW58MHx8fHwxNzU1NTAxOTgzfDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Close-up of metal roofing sheets', aiHint: 'metal roofing' },
+      { src: 'https://images.unsplash.com/photo-1578776349090-de61da00ff1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmYWN0b3J5JTIwYnVpbGRpbmd8ZW58MHx8fHwxNzU1NTAxOTgzfDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Factory building with sandwich panel walls', aiHint: 'factory building' },
+    ],
     features: {
         utilisation: [
             'Bâtiments industriels et modulaires',
@@ -267,6 +281,11 @@ export const productData = {
       src: 'https://images.unsplash.com/photo-1706029831375-c090c70c161d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtZXRhbCUyMHNoZWV0JTIwfGVufDB8fHx8MTc1NTA5MDY2OHww&ixlib=rb-4.1.0&q=80&w=1080',
       aiHint: 'ribbed steel sheet',
     },
+    galleryImages: [
+      { src: 'https://images.unsplash.com/photo-1501664908582-764f9d0b23ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdGVlbCUyMHNoZWV0c3xlbnwwfHx8fDE3NTU1MDE5ODN8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Ribbed steel sheets stacked', aiHint: 'steel sheets' },
+      { src: 'https://images.unsplash.com/photo-1735044902465-fe2f3eafdf77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtZXRhbCUyMHJvb2Zpbmd8ZW58MHx8fHwxNzU1NTAxOTgzfDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Close-up of metal roofing sheets', aiHint: 'metal roofing' },
+      { src: 'https://images.unsplash.com/photo-1578776349090-de61da00ff1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmYWN0b3J5JTIwYnVpbGRpbmd8ZW58MHx8fHwxNzU1NTAxOTgzfDA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Factory building with sandwich panel walls', aiHint: 'factory building' },
+    ],
     features: {
       utilisation: [
         'Bâtiments industriels',
@@ -329,5 +348,3 @@ export const productData = {
     sens: ''
   },
 };
-
-    
