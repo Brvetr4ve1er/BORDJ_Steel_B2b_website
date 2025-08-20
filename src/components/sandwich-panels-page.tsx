@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -86,219 +87,217 @@ export function SandwichPanelsPage() {
             ))}
           </div>
           
-          <div className="grid grid-cols-10 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             
             {/* Gallery Column */}
-            <div className="col-span-3">
-               <div className="lg:sticky lg:top-32">
+            <div className="lg:col-span-1">
+              <div className="lg:sticky lg:top-32">
                  <ProductImageGallery images={activeProduct.galleryImages} />
-               </div>
+              </div>
             </div>
 
             {/* Content Column */}
-            <div className="col-span-7">
-                <div className="relative">
-                     <h2 className="font-headline text-4xl font-bold text-accent mb-6">{activeProduct.title}</h2>
-                    <Card className="border-none shadow-none p-0">
-                        <CardContent className="p-0">
-                            <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
-                            <div className="space-y-4 text-base">
-                                {activeProduct.features.utilisation.length > 0 &&
-                                <div>
-                                    <SubSectionTitle>Utilisation</SubSectionTitle>
-                                    <ul className="list-disc pl-5 space-y-1">
-                                        {activeProduct.features.utilisation.map(item => <li key={item}>{item}</li>)}
-                                    </ul>
-                                </div>
-                                }
-                                {activeProduct.features.definition?.acier && 
-                                <div>
-                                    <SubSectionTitle>Définition</SubSectionTitle>
-                                    <ProductFeature label="Identification d'acier:" value={activeProduct.features.definition.acier} />
-                                    <p className="font-semibold mt-2">Parement externe:</p>
-                                    <ul className="list-disc pl-8">
-                                        <li>{activeProduct.features.definition.parementExterne.profil}</li>
-                                        {activeProduct.features.definition.parementExterne.description && <li>{activeProduct.features.definition.parementExterne.description}</li>}
-                                        <li>{activeProduct.features.definition.parementExterne.epaisseur}</li>
-                                    </ul>
-                                    <p className="font-semibold mt-2">Parement interne:</p>
-                                     <ul className="list-disc pl-8">
-                                        <li>{activeProduct.features.definition.parementInterne.profil}</li>
-                                        <li>{activeProduct.features.definition.parementInterne.epaisseur}</li>
-                                    </ul>
-                                </div>
-                                }
-                                {activeProduct.features.revetement && <div>
-                                    <SubSectionTitle>Revêtement</SubSectionTitle>
-                                    <p>{activeProduct.features.revetement}</p>
-                                </div>}
-                                 { activeProduct.features.ameIsolante.type && <div>
-                                    <SubSectionTitle>Ame isolante</SubSectionTitle>
-                                    <p>{activeProduct.features.ameIsolante.type}</p>
-                                     <ProductFeature label="Conductivité thermique:" value={activeProduct.features.ameIsolante.conductivite} />
-                                      <ProductFeature label="Densité:" value={activeProduct.features.ameIsolante.densite} />
-                                </div>}
-                                { activeProduct.features.reactionAuFeu && <div>
-                                    <SubSectionTitle>Réaction au feu</SubSectionTitle>
-                                    <p>{activeProduct.features.reactionAuFeu}</p>
-                                </div>}
-                                { activeProduct.features.tolerance.length > 0 && <div>
-                                    <SubSectionTitle>Tolérance sur panneaux</SubSectionTitle>
-                                     <ul className="list-disc pl-5 space-y-1">
-                                        {activeProduct.features.tolerance.map(item => <li key={item}>{item}</li>)}
-                                    </ul>
-                                </div>}
-                                { activeProduct.features.miseEnOeuvre && <div>
-                                    <SubSectionTitle>{activeProduct.features.miseEnOeuvre.title}</SubSectionTitle>
-                                    <p>{activeProduct.features.miseEnOeuvre.manutention}</p>
-                                </div>}
+            <div className="lg:col-span-2">
+                <h2 className="font-headline text-4xl font-bold text-accent mb-6">{activeProduct.title}</h2>
+                <Card className="border-none shadow-none p-0">
+                    <CardContent className="p-0">
+                        <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
+                        <div className="space-y-4 text-base">
+                            {activeProduct.features.utilisation.length > 0 &&
+                            <div>
+                                <SubSectionTitle>Utilisation</SubSectionTitle>
+                                <ul className="list-disc pl-5 space-y-1">
+                                    {activeProduct.features.utilisation.map(item => <li key={item}>{item}</li>)}
+                                </ul>
                             </div>
+                            }
+                            {activeProduct.features.definition?.acier && 
+                            <div>
+                                <SubSectionTitle>Définition</SubSectionTitle>
+                                <ProductFeature label="Identification d'acier:" value={activeProduct.features.definition.acier} />
+                                <p className="font-semibold mt-2">Parement externe:</p>
+                                <ul className="list-disc pl-8">
+                                    <li>{activeProduct.features.definition.parementExterne.profil}</li>
+                                    {activeProduct.features.definition.parementExterne.description && <li>{activeProduct.features.definition.parementExterne.description}</li>}
+                                    <li>{activeProduct.features.definition.parementExterne.epaisseur}</li>
+                                </ul>
+                                <p className="font-semibold mt-2">Parement interne:</p>
+                                 <ul className="list-disc pl-8">
+                                    <li>{activeProduct.features.definition.parementInterne.profil}</li>
+                                    <li>{activeProduct.features.definition.parementInterne.epaisseur}</li>
+                                </ul>
+                            </div>
+                            }
+                            {activeProduct.features.revetement && <div>
+                                <SubSectionTitle>Revêtement</SubSectionTitle>
+                                <p>{activeProduct.features.revetement}</p>
+                            </div>}
+                             { activeProduct.features.ameIsolante.type && <div>
+                                <SubSectionTitle>Ame isolante</SubSectionTitle>
+                                <p>{activeProduct.features.ameIsolante.type}</p>
+                                 <ProductFeature label="Conductivité thermique:" value={activeProduct.features.ameIsolante.conductivite} />
+                                  <ProductFeature label="Densité:" value={activeProduct.features.ameIsolante.densite} />
+                            </div>}
+                            { activeProduct.features.reactionAuFeu && <div>
+                                <SubSectionTitle>Réaction au feu</SubSectionTitle>
+                                <p>{activeProduct.features.reactionAuFeu}</p>
+                            </div>}
+                            { activeProduct.features.tolerance.length > 0 && <div>
+                                <SubSectionTitle>Tolérance sur panneaux</SubSectionTitle>
+                                 <ul className="list-disc pl-5 space-y-1">
+                                    {activeProduct.features.tolerance.map(item => <li key={item}>{item}</li>)}
+                                </ul>
+                            </div>}
+                            { activeProduct.features.miseEnOeuvre && <div>
+                                <SubSectionTitle>{activeProduct.features.miseEnOeuvre.title}</SubSectionTitle>
+                                <p>{activeProduct.features.miseEnOeuvre.manutention}</p>
+                            </div>}
+                        </div>
 
-                            <section className="mt-8">
-                                <SectionTitle>TABLEAUX TECHNIQUES</SectionTitle>
-                                {activeProduct.tables.isolation?.rows.length > 0 && (
-                                    <div className="mb-8">
-                                        <SubSectionTitle>{activeProduct.tables.isolation.title}</SubSectionTitle>
-                                        <Table className="text-base">
-                                            <TableHeader>
-                                                <TableRow className="bg-accent/10">
-                                                    {activeProduct.tables.isolation.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
-                                                </TableRow>
-                                            </TableHeader>
-                                            <TableBody>
-                                                {activeProduct.tables.isolation.rows.map((row, i) => (
-                                                    <TableRow key={i}>
-                                                        {activeProduct.tables.isolation.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row]}</TableCell>)}
-                                                    </TableRow>
-                                                ))}
-                                            </TableBody>
-                                        </Table>
-                                    </div>
-                                )}
-                                {activeProduct.tables.dimensionnement?.rows.length > 0 && (
-                                    <div className="mb-8">
-                                        <SubSectionTitle>{activeProduct.tables.dimensionnement.title}</SubSectionTitle>
-                                        <Table className="text-base">
-                                            <TableHeader>
-                                                <TableRow className="bg-accent/10">
-                                                    {activeProduct.tables.dimensionnement.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
-                                                </TableRow>
-                                            </TableHeader>
-                                            <TableBody>
-                                                {activeProductKey === 'toleNervuree' ? (
-                                                   activeProduct.tables.dimensionnement.rows.map((row: any, i) => (
-                                                        row.details.map((detail: any, j: number) => (
-                                                            <TableRow key={`${i}-${j}`}>
-                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.type}</TableCell>}
-                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.longueur}</TableCell>}
-                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.largeur}</TableCell>}
-                                                                <TableCell>{detail.epaisseur}</TableCell>
-                                                                <TableCell>{detail.poids}</TableCell>
-                                                                <TableCell>{detail.j}</TableCell>
-                                                                <TableCell>{detail.w}</TableCell>
-                                                                <TableCell>{detail.systeme}</TableCell>
-                                                            </TableRow>
-                                                        ))
-                                                    ))
-                                                ) : (
-                                                    activeProduct.tables.dimensionnement.rows.map((row, i) => (
-                                                        <TableRow key={i}>
-                                                            {activeProduct.tables.dimensionnement.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row]}</TableCell>)}
-                                                        </TableRow>
-                                                    ))
-                                                )}
-                                            </TableBody>
-                                        </Table>
-                                    </div>
-                                )}
-                                {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows.length > 0 && (
+                        <section className="mt-8">
+                            <SectionTitle>TABLEAUX TECHNIQUES</SectionTitle>
+                            {activeProduct.tables.isolation?.rows.length > 0 && (
                                 <div className="mb-8">
-                                    <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
-                                    {activeProduct.tables.chargesPortees.subtitle && <p className="text-base text-muted-foreground mb-2">{activeProduct.tables.chargesPortees.subtitle}</p>}
+                                    <SubSectionTitle>{activeProduct.tables.isolation.title}</SubSectionTitle>
                                     <Table className="text-base">
                                         <TableHeader>
                                             <TableRow className="bg-accent/10">
-                                                {activeProduct.tables.chargesPortees.headers.map((h, i) => (
-                                                    <TableHead key={i} colSpan={h.colspan} className="text-accent font-bold text-center">{h.title}</TableHead>
-                                                ))}
+                                                {activeProduct.tables.isolation.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
                                             </TableRow>
-                                            {activeProduct.tables.chargesPortees.subheaders && activeProduct.tables.chargesPortees.subheaders.length > 0 && (
-                                                <TableRow className="bg-accent/10">
-                                                    {activeProduct.tables.chargesPortees.subheaders.map((sh, i) => (
-                                                        <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
-                                                    ))}
-                                                </TableRow>
-                                            )}
                                         </TableHeader>
                                         <TableBody>
-                                            {activeProduct.tables.chargesPortees.rows.map((row: any, i) => (
+                                            {activeProduct.tables.isolation.rows.map((row, i) => (
                                                 <TableRow key={i}>
-                                                {activeProduct.tables.chargesPortees.subheaders ? 
-                                                    activeProduct.tables.chargesPortees.subheaders.map((sh, j) => {
-                                                        let key = sh;
-                                                        if (activeProductKey === 'couverture' || activeProductKey === 'frigorifique') {
-                                                            const keys = Object.keys(row);
-                                                            key = keys[j];
-                                                        }
-                                                        if(activeProductKey === 'toleNervuree'){
-                                                            const key = activeProduct.tables.chargesPortees.subheaders[j];
-                                                            if (j === 0) return <TableCell key={j} className="text-center font-semibold">{row.type} | {row.epaisseur}</TableCell>;
-                                                            return <TableCell key={j} className="text-center">{row[key]}</TableCell>
-                                                        }
-                                                        return <TableCell key={j} className="text-center">{row[key]}</TableCell>
-                                                    })
-                                                    :
-                                                    Object.values(row).map((cell: any, j: number) => (
-                                                        <TableCell key={j} className="text-center">{cell}</TableCell>
-                                                    ))
-                                                }
+                                                    {activeProduct.tables.isolation.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row]}</TableCell>)}
                                                 </TableRow>
                                             ))}
                                         </TableBody>
                                     </Table>
                                 </div>
                             )}
-                            </section>
-                            
-                            {activeProduct.features.caracteristiquesGeometriques && (
-                                <section className="mt-8">
-                                    <SectionTitle>{activeProduct.features.caracteristiquesGeometriques.title}</SectionTitle>
-                                    <Image 
-                                        src={activeProduct.features.caracteristiquesGeometriques.image.src}
-                                        alt={activeProduct.features.caracteristiquesGeometriques.title}
-                                        width={800}
-                                        height={200}
-                                        className="w-full object-contain"
-                                        data-ai-hint={activeProduct.features.caracteristiquesGeometriques.image.aiHint}
-                                    />
-                                </section>
-                            )}
-
-                            {activeProduct.pose?.decoupage && 
-                             <section className="mt-8">
-                                <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
-                                <div className="space-y-4 text-base">
-                                    <div>
-                                        <SubSectionTitle>La pose de panneaux sandwichs</SubSectionTitle>
-                                        <p className="font-semibold">Découpage des panneaux:</p>
-                                        <p>{activeProduct.pose.decoupage}</p>
-                                        <p className="font-semibold mt-2">Fixation des panneaux:</p>
-                                        <p>{activeProduct.pose.fixation}</p>
-                                    </div>
-                                     <div>
-                                        <SubSectionTitle>Étanchéité des rives</SubSectionTitle>
-                                        <p>{activeProduct.etancheite}</p>
-                                    </div>
-                                     {activeProduct.sens && <div>
-                                        <SubSectionTitle>Sens des panneaux</SubSectionTitle>
-                                        <p>{activeProduct.sens}</p>
-                                    </div>}
+                            {activeProduct.tables.dimensionnement?.rows.length > 0 && (
+                                <div className="mb-8">
+                                    <SubSectionTitle>{activeProduct.tables.dimensionnement.title}</SubSectionTitle>
+                                    <Table className="text-base">
+                                        <TableHeader>
+                                            <TableRow className="bg-accent/10">
+                                                {activeProduct.tables.dimensionnement.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
+                                            </TableRow>
+                                        </TableHeader>
+                                        <TableBody>
+                                            {activeProductKey === 'toleNervuree' ? (
+                                               activeProduct.tables.dimensionnement.rows.map((row: any, i) => (
+                                                    row.details.map((detail: any, j: number) => (
+                                                        <TableRow key={`${i}-${j}`}>
+                                                            {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.type}</TableCell>}
+                                                            {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.longueur}</TableCell>}
+                                                            {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.largeur}</TableCell>}
+                                                            <TableCell>{detail.epaisseur}</TableCell>
+                                                            <TableCell>{detail.poids}</TableCell>
+                                                            <TableCell>{detail.j}</TableCell>
+                                                            <TableCell>{detail.w}</TableCell>
+                                                            <TableCell>{detail.systeme}</TableCell>
+                                                        </TableRow>
+                                                    ))
+                                                ))
+                                            ) : (
+                                                activeProduct.tables.dimensionnement.rows.map((row, i) => (
+                                                    <TableRow key={i}>
+                                                        {activeProduct.tables.dimensionnement.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row]}</TableCell>)}
+                                                    </TableRow>
+                                                ))
+                                            )}
+                                        </TableBody>
+                                    </Table>
                                 </div>
+                            )}
+                            {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows.length > 0 && (
+                            <div className="mb-8">
+                                <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
+                                {activeProduct.tables.chargesPortees.subtitle && <p className="text-base text-muted-foreground mb-2">{activeProduct.tables.chargesPortees.subtitle}</p>}
+                                <Table className="text-base">
+                                    <TableHeader>
+                                        <TableRow className="bg-accent/10">
+                                            {activeProduct.tables.chargesPortees.headers.map((h, i) => (
+                                                <TableHead key={i} colSpan={h.colspan} className="text-accent font-bold text-center">{h.title}</TableHead>
+                                            ))}
+                                        </TableRow>
+                                        {activeProduct.tables.chargesPortees.subheaders && activeProduct.tables.chargesPortees.subheaders.length > 0 && (
+                                            <TableRow className="bg-accent/10">
+                                                {activeProduct.tables.chargesPortees.subheaders.map((sh, i) => (
+                                                    <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
+                                                ))}
+                                            </TableRow>
+                                        )}
+                                    </TableHeader>
+                                    <TableBody>
+                                        {activeProduct.tables.chargesPortees.rows.map((row: any, i) => (
+                                            <TableRow key={i}>
+                                            {activeProduct.tables.chargesPortees.subheaders ? 
+                                                activeProduct.tables.chargesPortees.subheaders.map((sh, j) => {
+                                                    let key = sh;
+                                                    if (activeProductKey === 'couverture' || activeProductKey === 'frigorifique') {
+                                                        const keys = Object.keys(row);
+                                                        key = keys[j];
+                                                    }
+                                                    if(activeProductKey === 'toleNervuree'){
+                                                        const key = activeProduct.tables.chargesPortees.subheaders[j];
+                                                        if (j === 0) return <TableCell key={j} className="text-center font-semibold">{row.type} | {row.epaisseur}</TableCell>;
+                                                        return <TableCell key={j} className="text-center">{row[key]}</TableCell>
+                                                    }
+                                                    return <TableCell key={j} className="text-center">{row[key]}</TableCell>
+                                                })
+                                                :
+                                                Object.values(row).map((cell: any, j: number) => (
+                                                    <TableCell key={j} className="text-center">{cell}</TableCell>
+                                                ))
+                                            }
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </div>
+                        )}
+                        </section>
+                        
+                        {activeProduct.features.caracteristiquesGeometriques && (
+                            <section className="mt-8">
+                                <SectionTitle>{activeProduct.features.caracteristiquesGeometriques.title}</SectionTitle>
+                                <Image 
+                                    src={activeProduct.features.caracteristiquesGeometriques.image.src}
+                                    alt={activeProduct.features.caracteristiquesGeometriques.title}
+                                    width={800}
+                                    height={200}
+                                    className="w-full object-contain"
+                                    data-ai-hint={activeProduct.features.caracteristiquesGeometriques.image.aiHint}
+                                />
                             </section>
-                            }
-                        </CardContent>
-                    </Card>
-                </div>
+                        )}
+
+                        {activeProduct.pose?.decoupage && 
+                         <section className="mt-8">
+                            <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
+                            <div className="space-y-4 text-base">
+                                <div>
+                                    <SubSectionTitle>La pose de panneaux sandwichs</SubSectionTitle>
+                                    <p className="font-semibold">Découpage des panneaux:</p>
+                                    <p>{activeProduct.pose.decoupage}</p>
+                                    <p className="font-semibold mt-2">Fixation des panneaux:</p>
+                                    <p>{activeProduct.pose.fixation}</p>
+                                </div>
+                                 <div>
+                                    <SubSectionTitle>Étanchéité des rives</SubSectionTitle>
+                                    <p>{activeProduct.etancheite}</p>
+                                </div>
+                                 {activeProduct.sens && <div>
+                                    <SubSectionTitle>Sens des panneaux</SubSectionTitle>
+                                    <p>{activeProduct.sens}</p>
+                                </div>}
+                            </div>
+                        </section>
+                        }
+                    </CardContent>
+                </Card>
             </div>
           </div>
         </AnimatedWrapper>
