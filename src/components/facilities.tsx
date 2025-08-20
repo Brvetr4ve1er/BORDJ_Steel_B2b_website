@@ -67,7 +67,7 @@ export function Facilities() {
                            <div className="mt-auto">
                                 <h3 className="font-headline text-2xl font-bold mb-2">{facility.title}</h3>
                                 <p className="text-sm mb-4">{facility.description}</p>
-                                <Button asChild variant="destructive" className="mt-auto self-start group bg-accent hover:bg-accent/90 transition-all duration-300 ease-in-out transform group-hover:translate-y-0 translate-y-4">
+                                <Button asChild variant="destructive" className="mt-auto self-start bg-accent hover:bg-accent transition-all duration-300 ease-in-out transform group-hover:translate-y-0 translate-y-4">
                                     <span>
                                       Lire la suite
                                       <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
