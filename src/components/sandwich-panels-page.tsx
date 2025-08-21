@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -14,15 +13,15 @@ import { cn } from '@/lib/utils';
 import { ProductImageGallery } from './product-image-gallery';
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="font-headline text-4xl font-bold text-primary mb-4">{children}</h3>
+  <h3 className="font-headline text-2xl font-bold text-primary mb-4">{children}</h3>
 );
 
 const SubSectionTitle = ({ children }: { children: React.ReactNode }) => (
-    <h4 className="font-headline text-3xl font-bold text-primary mt-6 mb-3">{children}</h4>
+    <h4 className="font-headline text-xl font-bold text-primary mt-6 mb-3">{children}</h4>
 );
 
 const ProductFeature = ({ label, value }: { label: string; value: string }) => (
-    <div className="flex text-xl">
+    <div className="flex text-base">
         <p className="w-48 font-semibold">{label}</p>
         <p>{value}</p>
     </div>
@@ -59,8 +58,8 @@ export function SandwichPanelsPage() {
               </Card>
             </div>
             <div className="md:col-span-3">
-              <h1 className="font-headline text-7xl font-bold text-primary mb-4">Panneaux Sandwichs Haute Performance</h1>
-              <p className="text-xl text-muted-foreground">
+              <h1 className="font-headline text-5xl font-bold text-primary mb-4">Panneaux Sandwichs Haute Performance</h1>
+              <p className="text-lg text-muted-foreground">
                 Découvrez notre gamme complète de panneaux sandwichs pour bâtiments préfabriqués (PEB). Conçus pour offrir une isolation thermique et acoustique supérieure, nos panneaux sont la solution idéale pour les toitures, les bardages et les chambres froides. Chaque variation est conçue avec précision pour répondre aux exigences spécifiques de votre projet, garantissant durabilité, efficacité énergétique et une finition esthétique impeccable.
               </p>
             </div>
@@ -68,7 +67,7 @@ export function SandwichPanelsPage() {
         </AnimatedWrapper>
         
         <div className="grid lg:grid-cols-5 gap-12">
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 lg:sticky top-32 h-max">
                  <ProductImageGallery images={activeProduct.galleryImages} />
             </div>
 
@@ -82,27 +81,27 @@ export function SandwichPanelsPage() {
                       variant={activeProductKey === key ? 'destructive' : 'outline'}
                       size="lg"
                       className={cn(
-                          "transition-all duration-300 text-xl",
+                          "transition-all duration-300",
                           activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
                       )}
                       onClick={() => setActiveProductKey(key as keyof typeof productData)}
                     >
-                      <Icon className={cn("mr-3 h-6 w-6", key === 'toleNervuree' && "rotate-[-90deg]")} />
+                      <Icon className={cn("mr-2 h-5 w-5", key === 'toleNervuree' && "rotate-[-90deg]")} />
                       {label}
                     </Button>
                   ))}
                 </div>
 
                 <div>
-                    <h2 className="font-headline text-7xl font-bold text-accent mb-6">{activeProduct.title}</h2>
+                    <h2 className="font-headline text-5xl font-bold text-accent mb-6">{activeProduct.title}</h2>
                     <Card className="border-none shadow-none p-0">
                         <CardContent className="p-0">
                             <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
-                            <div className="space-y-4 text-xl">
+                            <div className="space-y-4">
                                 {activeProduct.features.utilisation.length > 0 &&
                                 <div>
                                     <SubSectionTitle>Utilisation</SubSectionTitle>
-                                    <ul className="list-disc pl-8 space-y-2">
+                                    <ul className="list-disc pl-6 space-y-1">
                                         {activeProduct.features.utilisation.map(item => <li key={item}>{item}</li>)}
                                     </ul>
                                 </div>
@@ -112,13 +111,13 @@ export function SandwichPanelsPage() {
                                     <SubSectionTitle>Définition</SubSectionTitle>
                                     <ProductFeature label="Identification d'acier:" value={activeProduct.features.definition.acier} />
                                     <p className="font-semibold mt-4">Parement externe:</p>
-                                    <ul className="list-disc pl-10">
+                                    <ul className="list-disc pl-8">
                                         <li>{activeProduct.features.definition.parementExterne.profil}</li>
                                         {activeProduct.features.definition.parementExterne.description && <li>{activeProduct.features.definition.parementExterne.description}</li>}
                                         <li>{activeProduct.features.definition.parementExterne.epaisseur}</li>
                                     </ul>
                                     <p className="font-semibold mt-4">Parement interne:</p>
-                                     <ul className="list-disc pl-10">
+                                     <ul className="list-disc pl-8">
                                         <li>{activeProduct.features.definition.parementInterne.profil}</li>
                                         <li>{activeProduct.features.definition.parementInterne.epaisseur}</li>
                                     </ul>
@@ -140,7 +139,7 @@ export function SandwichPanelsPage() {
                                 </div>}
                                 { activeProduct.features.tolerance.length > 0 && <div>
                                     <SubSectionTitle>Tolérance sur panneaux</SubSectionTitle>
-                                     <ul className="list-disc pl-8 space-y-2">
+                                     <ul className="list-disc pl-6 space-y-1">
                                         {activeProduct.features.tolerance.map(item => <li key={item}>{item}</li>)}
                                     </ul>
                                 </div>}
@@ -155,7 +154,7 @@ export function SandwichPanelsPage() {
                                 {activeProduct.tables.isolation?.rows.length > 0 && (
                                     <div className="mb-10">
                                         <SubSectionTitle>{activeProduct.tables.isolation.title}</SubSectionTitle>
-                                        <Table className="text-xl">
+                                        <Table>
                                             <TableHeader>
                                                 <TableRow className="bg-accent/10">
                                                     {activeProduct.tables.isolation.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
@@ -174,7 +173,7 @@ export function SandwichPanelsPage() {
                                 {activeProduct.tables.dimensionnement?.rows.length > 0 && (
                                     <div className="mb-10">
                                         <SubSectionTitle>{activeProduct.tables.dimensionnement.title}</SubSectionTitle>
-                                        <Table className="text-xl">
+                                        <Table>
                                             <TableHeader>
                                                 <TableRow className="bg-accent/10">
                                                     {activeProduct.tables.dimensionnement.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
@@ -210,8 +209,8 @@ export function SandwichPanelsPage() {
                                 {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows.length > 0 && (
                                 <div className="mb-10">
                                     <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
-                                    {activeProduct.tables.chargesPortees.subtitle && <p className="text-xl text-muted-foreground mb-3">{activeProduct.tables.chargesPortees.subtitle}</p>}
-                                    <Table className="text-xl">
+                                    {activeProduct.tables.chargesPortees.subtitle && <p className="text-muted-foreground mb-3">{activeProduct.tables.chargesPortees.subtitle}</p>}
+                                    <Table>
                                         <TableHeader>
                                             <TableRow className="bg-accent/10">
                                                 {activeProduct.tables.chargesPortees.headers.map((h, i) => (
@@ -273,7 +272,7 @@ export function SandwichPanelsPage() {
                             {activeProduct.pose?.decoupage && 
                              <section className="mt-10">
                                 <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
-                                <div className="space-y-6 text-xl">
+                                <div className="space-y-6">
                                     <div>
                                         <SubSectionTitle>La pose de panneaux sandwichs</SubSectionTitle>
                                         <p className="font-semibold">Découpage des panneaux:</p>
