@@ -87,24 +87,28 @@ export function SandwichPanelsPage() {
             ))}
           </div>
 
-          <div className="space-y-12">
-            {/* Main Image */}
-            <AnimatedWrapper animation="fade-in">
-                <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
-                  <Image
-                    src={activeProduct.galleryImages[0].src}
-                    alt={activeProduct.galleryImages[0].alt}
-                    width={800}
-                    height={600} 
-                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                    data-ai-hint={activeProduct.galleryImages[0].aiHint}
-                    priority
-                  />
-                </Card>
-            </AnimatedWrapper>
+          <div className="grid lg:grid-cols-5 gap-12">
+            {/* Image Gallery Column */}
+            <div className="lg:col-span-2">
+              <div className="space-y-6">
+                <AnimatedWrapper animation="fade-in">
+                    <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                      <Image
+                        src={activeProduct.galleryImages[0].src}
+                        alt={activeProduct.galleryImages[0].alt}
+                        width={800}
+                        height={600} 
+                        className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                        data-ai-hint={activeProduct.galleryImages[0].aiHint}
+                        priority
+                      />
+                    </Card>
+                </AnimatedWrapper>
+              </div>
+            </div>
 
             {/* Content Column */}
-            <div className="w-full">
+            <div className="lg:col-span-3">
                 <h2 className="font-headline text-4xl font-bold text-accent mb-6">{activeProduct.title}</h2>
                 <Card className="border-none shadow-none p-0">
                     <CardContent className="p-0">
@@ -306,27 +310,29 @@ export function SandwichPanelsPage() {
                     </CardContent>
                 </Card>
             </div>
-
-            {/* Secondary Gallery Images - at the bottom */}
-            <div className="w-full space-y-6 pt-12">
-                {activeProduct.galleryImages.slice(1).map((image, index) => (
-                  <AnimatedWrapper key={index} animation="slide-up" staggerIndex={index}>
-                    <Card className="break-inside-avoid rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        width={500}
-                        height={400}
-                        className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                        data-ai-hint={image.aiHint}
-                      />
-                    </Card>
-                  </AnimatedWrapper>
-                ))}
-            </div>
+          </div>
+            
+          {/* Secondary Gallery Images - at the bottom */}
+          <div className="w-full space-y-6 pt-12">
+              {activeProduct.galleryImages.slice(1).map((image, index) => (
+                <AnimatedWrapper key={index} animation="slide-up" staggerIndex={index}>
+                  <Card className="break-inside-avoid rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={500}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                      data-ai-hint={image.aiHint}
+                    />
+                  </Card>
+                </AnimatedWrapper>
+              ))}
           </div>
         </AnimatedWrapper>
       </div>
     </section>
   );
 }
+
+    
