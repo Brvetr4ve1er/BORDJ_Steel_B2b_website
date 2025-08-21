@@ -86,10 +86,11 @@ export function SandwichPanelsPage() {
               </Button>
             ))}
           </div>
-          
-          <div className="flex flex-col">
-            {/* Main Image */}
-            <div className="w-full mb-12">
+
+          <div className="grid lg:grid-cols-10 lg:gap-12">
+            {/* Left Sticky Column for Gallery */}
+            <div className="lg:col-span-4">
+              <div className="sticky top-28 space-y-6">
                 <AnimatedWrapper animation="fade-in">
                     <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
                       <Image
@@ -103,10 +104,29 @@ export function SandwichPanelsPage() {
                       />
                     </Card>
                 </AnimatedWrapper>
+
+                {/* Secondary Gallery Images - Revealed on Scroll */}
+                 <div className="w-full space-y-6">
+                    {activeProduct.galleryImages.slice(1).map((image, index) => (
+                      <AnimatedWrapper key={index} animation="slide-up" staggerIndex={index}>
+                        <Card className="break-inside-avoid rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            width={500}
+                            height={400}
+                            className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                            data-ai-hint={image.aiHint}
+                          />
+                        </Card>
+                      </AnimatedWrapper>
+                    ))}
+                </div>
+              </div>
             </div>
 
-            {/* Content Column */}
-            <div className="w-full">
+            {/* Right Scrollable Column for Content */}
+            <div className="lg:col-span-6 mt-12 lg:mt-0">
                 <h2 className="font-headline text-4xl font-bold text-accent mb-6">{activeProduct.title}</h2>
                 <Card className="border-none shadow-none p-0">
                     <CardContent className="p-0">
@@ -307,23 +327,6 @@ export function SandwichPanelsPage() {
                         }
                     </CardContent>
                 </Card>
-                 {/* Secondary Gallery Column */}
-                <div className="w-full mt-12 space-y-6">
-                    {activeProduct.galleryImages.slice(1).map((image, index) => (
-                      <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                        <Card className="break-inside-avoid rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            width={500}
-                            height={400}
-                            className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                            data-ai-hint={image.aiHint}
-                          />
-                        </Card>
-                      </AnimatedWrapper>
-                    ))}
-                </div>
             </div>
           </div>
         </AnimatedWrapper>
@@ -331,5 +334,3 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
-
-    
