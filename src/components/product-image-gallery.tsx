@@ -23,7 +23,7 @@ export function ProductImageGallery({ images }: ProductImageGalleryProps) {
   }, [images]);
 
   return (
-    <div className="space-y-4 sm:space-y-6">
+    <div className="space-y-4">
         <AnimatedWrapper animation="fade-in">
             <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
               <Image
@@ -38,7 +38,7 @@ export function ProductImageGallery({ images }: ProductImageGalleryProps) {
             </Card>
         </AnimatedWrapper>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="flex flex-col gap-4">
             {images.slice(1).map((image, index) => (
               <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
                 <Card className="break-inside-avoid rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl cursor-pointer" onClick={() => setMainImage(image)}>
