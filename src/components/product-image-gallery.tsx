@@ -37,23 +37,6 @@ export function ProductImageGallery({ images }: ProductImageGalleryProps) {
               />
             </Card>
         </AnimatedWrapper>
-
-        <div className="flex flex-col gap-4">
-            {images.slice(1).map((image, index) => (
-              <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                <Card className="break-inside-avoid rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl cursor-pointer" onClick={() => setMainImage(image)}>
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={500}
-                    height={400}
-                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                    data-ai-hint={image.aiHint}
-                  />
-                </Card>
-              </AnimatedWrapper>
-            ))}
-        </div>
     </div>
   );
 }
