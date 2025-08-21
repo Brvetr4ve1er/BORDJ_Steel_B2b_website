@@ -11,7 +11,7 @@ import { Card, CardContent } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { productData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
-import { ProductImageGallery, type ProductImage } from './product-image-gallery';
+import { ProductImageGallery } from './product-image-gallery';
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   <h3 className="font-headline text-4xl font-bold text-primary mb-4">{children}</h3>
@@ -31,11 +31,6 @@ const ProductFeature = ({ label, value }: { label: string; value: string }) => (
 export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
   const activeProduct = productData[activeProductKey];
-   const [mainImage, setMainImage] = useState(activeProduct.galleryImages[0]);
-
-   React.useEffect(() => {
-    setMainImage(activeProduct.galleryImages[0]);
-  }, [activeProduct]);
 
   const productButtons = [
     { key: 'couverture', label: 'Panneaux de Couverture', icon: Layers },
@@ -43,8 +38,6 @@ export function SandwichPanelsPage() {
     { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: Layers3 },
     { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
   ];
-
-  const secondaryImages = activeProduct.galleryImages.slice(1);
 
   return (
     <section id="product-details" className="bg-white py-20">
@@ -76,19 +69,7 @@ export function SandwichPanelsPage() {
         
         <div className="grid lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2">
-                 <AnimatedWrapper animation="fade-in">
-                    <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
-                    <Image
-                        src={mainImage.src}
-                        alt={mainImage.alt}
-                        width={800}
-                        height={600}
-                        className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                        data-ai-hint={mainImage.aiHint}
-                        priority
-                    />
-                    </Card>
-                </AnimatedWrapper>
+                 <ProductImageGallery images={activeProduct.galleryImages} />
             </div>
 
             <div className="lg:col-span-3">
@@ -312,22 +293,6 @@ export function SandwichPanelsPage() {
                             </section>
                             }
 
-                             <div className="space-y-4 sm:space-y-6 mt-12">
-                                {secondaryImages.map((image, index) => (
-                                <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                                    <Card className="break-inside-avoid rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl cursor-pointer" onClick={() => setMainImage(image)}>
-                                    <Image
-                                        src={image.src}
-                                        alt={image.alt}
-                                        width={500}
-                                        height={400}
-                                        className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                                        data-ai-hint={image.aiHint}
-                                    />
-                                    </Card>
-                                </AnimatedWrapper>
-                                ))}
-                            </div>
                         </CardContent>
                     </Card>
                 </div>
