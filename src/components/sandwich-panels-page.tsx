@@ -48,7 +48,7 @@ export function SandwichPanelsPage() {
             <div className="md:col-span-2">
               <Card className="rounded-lg overflow-hidden shadow-lg group">
                 <Image
-                  src={activeProduct.image.src}
+                  src="https://images.unsplash.com/photo-1711873318272-ea1fd95ea950?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMHBhbmVsfGVufDB8fHx8MTc1NTUyNDE1MHww&ixlib=rb-4.1.0&q=80&w=1080"
                   alt="Panneaux Sandwichs PEB"
                   width={800}
                   height={600}
@@ -87,17 +87,26 @@ export function SandwichPanelsPage() {
             ))}
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            
-            {/* Gallery Column */}
-            <div className="lg:col-span-1">
-              <div className="lg:sticky lg:top-32">
-                 <ProductImageGallery images={activeProduct.galleryImages} />
-              </div>
+          <div className="flex flex-col">
+            {/* Main Image */}
+            <div className="w-full mb-12">
+                <AnimatedWrapper animation="fade-in">
+                    <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                      <Image
+                        src={activeProduct.galleryImages[0].src}
+                        alt={activeProduct.galleryImages[0].alt}
+                        width={800}
+                        height={600} 
+                        className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                        data-ai-hint={activeProduct.galleryImages[0].aiHint}
+                        priority
+                      />
+                    </Card>
+                </AnimatedWrapper>
             </div>
 
             {/* Content Column */}
-            <div className="lg:col-span-2">
+            <div className="w-full">
                 <h2 className="font-headline text-4xl font-bold text-accent mb-6">{activeProduct.title}</h2>
                 <Card className="border-none shadow-none p-0">
                     <CardContent className="p-0">
@@ -298,6 +307,23 @@ export function SandwichPanelsPage() {
                         }
                     </CardContent>
                 </Card>
+                 {/* Secondary Gallery Column */}
+                <div className="w-full mt-12 space-y-6">
+                    {activeProduct.galleryImages.slice(1).map((image, index) => (
+                      <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                        <Card className="break-inside-avoid rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            width={500}
+                            height={400}
+                            className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                            data-ai-hint={image.aiHint}
+                          />
+                        </Card>
+                      </AnimatedWrapper>
+                    ))}
+                </div>
             </div>
           </div>
         </AnimatedWrapper>
@@ -305,3 +331,5 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
+
+    
