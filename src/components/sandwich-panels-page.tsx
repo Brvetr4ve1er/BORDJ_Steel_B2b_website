@@ -22,7 +22,7 @@ const SubSectionTitle = ({ children }: { children: React.ReactNode }) => (
 );
 
 const ProductFeature = ({ label, value }: { label: string; value: string }) => (
-    <div className="flex text-lg">
+    <div className="flex text-xl">
         <p className="w-48 font-semibold">{label}</p>
         <p>{value}</p>
     </div>
@@ -31,6 +31,11 @@ const ProductFeature = ({ label, value }: { label: string; value: string }) => (
 export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
   const activeProduct = productData[activeProductKey];
+   const [mainImage, setMainImage] = useState(activeProduct.galleryImages[0]);
+
+   React.useEffect(() => {
+    setMainImage(activeProduct.galleryImages[0]);
+  }, [activeProduct]);
 
   const productButtons = [
     { key: 'couverture', label: 'Panneaux de Couverture', icon: Layers },
@@ -38,6 +43,8 @@ export function SandwichPanelsPage() {
     { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: Layers3 },
     { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
   ];
+
+  const secondaryImages = activeProduct.galleryImages.slice(1);
 
   return (
     <section id="product-details" className="bg-white py-20">
@@ -68,8 +75,20 @@ export function SandwichPanelsPage() {
         </AnimatedWrapper>
         
         <div className="grid lg:grid-cols-5 gap-12">
-            <div className="lg:col-span-2 lg:sticky top-28 h-max">
-                <ProductImageGallery images={activeProduct.galleryImages} />
+            <div className="lg:col-span-2">
+                 <AnimatedWrapper animation="fade-in">
+                    <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                    <Image
+                        src={mainImage.src}
+                        alt={mainImage.alt}
+                        width={800}
+                        height={600}
+                        className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                        data-ai-hint={mainImage.aiHint}
+                        priority
+                    />
+                    </Card>
+                </AnimatedWrapper>
             </div>
 
             <div className="lg:col-span-3">
@@ -82,7 +101,7 @@ export function SandwichPanelsPage() {
                       variant={activeProductKey === key ? 'destructive' : 'outline'}
                       size="lg"
                       className={cn(
-                          "transition-all duration-300 text-lg",
+                          "transition-all duration-300 text-xl",
                           activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
                       )}
                       onClick={() => setActiveProductKey(key as keyof typeof productData)}
@@ -94,11 +113,11 @@ export function SandwichPanelsPage() {
                 </div>
 
                 <div>
-                    <h2 className="font-headline text-5xl font-bold text-accent mb-6">{activeProduct.title}</h2>
+                    <h2 className="font-headline text-7xl font-bold text-accent mb-6">{activeProduct.title}</h2>
                     <Card className="border-none shadow-none p-0">
                         <CardContent className="p-0">
                             <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
-                            <div className="space-y-4 text-lg">
+                            <div className="space-y-4 text-xl">
                                 {activeProduct.features.utilisation.length > 0 &&
                                 <div>
                                     <SubSectionTitle>Utilisation</SubSectionTitle>
@@ -155,7 +174,7 @@ export function SandwichPanelsPage() {
                                 {activeProduct.tables.isolation?.rows.length > 0 && (
                                     <div className="mb-10">
                                         <SubSectionTitle>{activeProduct.tables.isolation.title}</SubSectionTitle>
-                                        <Table className="text-lg">
+                                        <Table className="text-xl">
                                             <TableHeader>
                                                 <TableRow className="bg-accent/10">
                                                     {activeProduct.tables.isolation.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
@@ -174,7 +193,7 @@ export function SandwichPanelsPage() {
                                 {activeProduct.tables.dimensionnement?.rows.length > 0 && (
                                     <div className="mb-10">
                                         <SubSectionTitle>{activeProduct.tables.dimensionnement.title}</SubSectionTitle>
-                                        <Table className="text-lg">
+                                        <Table className="text-xl">
                                             <TableHeader>
                                                 <TableRow className="bg-accent/10">
                                                     {activeProduct.tables.dimensionnement.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
@@ -210,8 +229,8 @@ export function SandwichPanelsPage() {
                                 {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows.length > 0 && (
                                 <div className="mb-10">
                                     <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
-                                    {activeProduct.tables.chargesPortees.subtitle && <p className="text-lg text-muted-foreground mb-3">{activeProduct.tables.chargesPortees.subtitle}</p>}
-                                    <Table className="text-lg">
+                                    {activeProduct.tables.chargesPortees.subtitle && <p className="text-xl text-muted-foreground mb-3">{activeProduct.tables.chargesPortees.subtitle}</p>}
+                                    <Table className="text-xl">
                                         <TableHeader>
                                             <TableRow className="bg-accent/10">
                                                 {activeProduct.tables.chargesPortees.headers.map((h, i) => (
@@ -273,7 +292,7 @@ export function SandwichPanelsPage() {
                             {activeProduct.pose?.decoupage && 
                              <section className="mt-10">
                                 <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
-                                <div className="space-y-6 text-lg">
+                                <div className="space-y-6 text-xl">
                                     <div>
                                         <SubSectionTitle>La pose de panneaux sandwichs</SubSectionTitle>
                                         <p className="font-semibold">Découpage des panneaux:</p>
@@ -292,6 +311,23 @@ export function SandwichPanelsPage() {
                                 </div>
                             </section>
                             }
+
+                             <div className="space-y-4 sm:space-y-6 mt-12">
+                                {secondaryImages.map((image, index) => (
+                                <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                                    <Card className="break-inside-avoid rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl cursor-pointer" onClick={() => setMainImage(image)}>
+                                    <Image
+                                        src={image.src}
+                                        alt={image.alt}
+                                        width={500}
+                                        height={400}
+                                        className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                                        data-ai-hint={image.aiHint}
+                                    />
+                                    </Card>
+                                </AnimatedWrapper>
+                                ))}
+                            </div>
                         </CardContent>
                     </Card>
                 </div>
@@ -302,5 +338,3 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
-
-    
