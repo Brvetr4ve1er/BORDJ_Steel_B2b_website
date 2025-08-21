@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -10,18 +11,18 @@ import { Card, CardContent } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { productData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
-import { ProductImageGallery } from './product-image-gallery';
+import { ProductImageGallery, ProductImage } from './product-image-gallery';
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="font-headline text-2xl font-bold text-primary mb-4">{children}</h3>
+  <h3 className="font-headline text-3xl font-bold text-primary mb-4">{children}</h3>
 );
 
 const SubSectionTitle = ({ children }: { children: React.ReactNode }) => (
-    <h4 className="font-headline text-xl font-bold text-primary mt-6 mb-3">{children}</h4>
+    <h4 className="font-headline text-2xl font-bold text-primary mt-6 mb-3">{children}</h4>
 );
 
 const ProductFeature = ({ label, value }: { label: string; value: string }) => (
-    <div className="flex text-base">
+    <div className="flex text-xl">
         <p className="w-48 font-semibold">{label}</p>
         <p>{value}</p>
     </div>
@@ -37,6 +38,8 @@ export function SandwichPanelsPage() {
     { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: Layers3 },
     { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
   ];
+
+  const galleryImages = activeProduct.galleryImages.slice(1);
 
   return (
     <section id="product-details" className="bg-white py-20">
@@ -58,11 +61,32 @@ export function SandwichPanelsPage() {
               </Card>
             </div>
             <div className="md:col-span-3">
-              <h1 className="font-headline text-5xl font-bold text-primary mb-4">Panneaux Sandwichs Haute Performance</h1>
-              <p className="text-lg text-muted-foreground">
+              <h1 className="font-headline text-7xl font-bold text-primary mb-4">Panneaux Sandwichs Haute Performance</h1>
+              <p className="text-xl text-muted-foreground">
                 Découvrez notre gamme complète de panneaux sandwichs pour bâtiments préfabriqués (PEB). Conçus pour offrir une isolation thermique et acoustique supérieure, nos panneaux sont la solution idéale pour les toitures, les bardages et les chambres froides. Chaque variation est conçue avec précision pour répondre aux exigences spécifiques de votre projet, garantissant durabilité, efficacité énergétique et une finition esthétique impeccable.
               </p>
             </div>
+          </div>
+        </AnimatedWrapper>
+
+        {/* Product Variation Buttons */}
+        <AnimatedWrapper animation="fade-in">
+          <div className="mb-12 flex flex-wrap justify-center gap-4">
+            {productButtons.map(({ key, label, icon: Icon }) => (
+              <Button
+                key={key}
+                variant={activeProductKey === key ? 'destructive' : 'outline'}
+                size="lg"
+                className={cn(
+                    "transition-all duration-300",
+                    activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
+                )}
+                onClick={() => setActiveProductKey(key as keyof typeof productData)}
+              >
+                <Icon className={cn("mr-2 h-5 w-5", key === 'toleNervuree' && "rotate-[-90deg]")} />
+                {label}
+              </Button>
+            ))}
           </div>
         </AnimatedWrapper>
         
@@ -73,31 +97,12 @@ export function SandwichPanelsPage() {
 
             <div className="lg:col-span-3">
               <AnimatedWrapper animation="fade-in">
-                {/* Product Variation Buttons */}
-                <div className="mb-12 flex flex-wrap justify-center gap-4">
-                  {productButtons.map(({ key, label, icon: Icon }) => (
-                    <Button
-                      key={key}
-                      variant={activeProductKey === key ? 'destructive' : 'outline'}
-                      size="lg"
-                      className={cn(
-                          "transition-all duration-300",
-                          activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
-                      )}
-                      onClick={() => setActiveProductKey(key as keyof typeof productData)}
-                    >
-                      <Icon className={cn("mr-2 h-5 w-5", key === 'toleNervuree' && "rotate-[-90deg]")} />
-                      {label}
-                    </Button>
-                  ))}
-                </div>
-
                 <div>
-                    <h2 className="font-headline text-5xl font-bold text-accent mb-6">{activeProduct.title}</h2>
+                    <h2 className="font-headline text-7xl font-bold text-accent mb-6">{activeProduct.title}</h2>
                     <Card className="border-none shadow-none p-0">
                         <CardContent className="p-0">
                             <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
-                            <div className="space-y-4">
+                            <div className="space-y-4 text-xl">
                                 {activeProduct.features.utilisation.length > 0 &&
                                 <div>
                                     <SubSectionTitle>Utilisation</SubSectionTitle>
@@ -157,13 +162,13 @@ export function SandwichPanelsPage() {
                                         <Table>
                                             <TableHeader>
                                                 <TableRow className="bg-accent/10">
-                                                    {activeProduct.tables.isolation.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
+                                                    {activeProduct.tables.isolation.headers.map(h => <TableHead key={h} className="text-accent font-bold text-lg">{h}</TableHead>)}
                                                 </TableRow>
                                             </TableHeader>
                                             <TableBody>
                                                 {activeProduct.tables.isolation.rows.map((row, i) => (
                                                     <TableRow key={i}>
-                                                        {activeProduct.tables.isolation.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row]}</TableCell>)}
+                                                        {activeProduct.tables.isolation.headers.map(h => <TableCell className="text-lg" key={h}>{row[h as keyof typeof row]}</TableCell>)}
                                                     </TableRow>
                                                 ))}
                                             </TableBody>
@@ -176,7 +181,7 @@ export function SandwichPanelsPage() {
                                         <Table>
                                             <TableHeader>
                                                 <TableRow className="bg-accent/10">
-                                                    {activeProduct.tables.dimensionnement.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
+                                                    {activeProduct.tables.dimensionnement.headers.map(h => <TableHead key={h} className="text-accent font-bold text-lg">{h}</TableHead>)}
                                                 </TableRow>
                                             </TableHeader>
                                             <TableBody>
@@ -184,21 +189,21 @@ export function SandwichPanelsPage() {
                                                    activeProduct.tables.dimensionnement.rows.map((row: any, i) => (
                                                         row.details.map((detail: any, j: number) => (
                                                             <TableRow key={`${i}-${j}`}>
-                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.type}</TableCell>}
-                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.longueur}</TableCell>}
-                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.largeur}</TableCell>}
-                                                                <TableCell>{detail.epaisseur}</TableCell>
-                                                                <TableCell>{detail.poids}</TableCell>
-                                                                <TableCell>{detail.j}</TableCell>
-                                                                <TableCell>{detail.w}</TableCell>
-                                                                <TableCell>{detail.systeme}</TableCell>
+                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle text-lg">{row.type}</TableCell>}
+                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle text-lg">{row.longueur}</TableCell>}
+                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle text-lg">{row.largeur}</TableCell>}
+                                                                <TableCell className="text-lg">{detail.epaisseur}</TableCell>
+                                                                <TableCell className="text-lg">{detail.poids}</TableCell>
+                                                                <TableCell className="text-lg">{detail.j}</TableCell>
+                                                                <TableCell className="text-lg">{detail.w}</TableCell>
+                                                                <TableCell className="text-lg">{detail.systeme}</TableCell>
                                                             </TableRow>
                                                         ))
                                                     ))
                                                 ) : (
                                                     activeProduct.tables.dimensionnement.rows.map((row, i) => (
                                                         <TableRow key={i}>
-                                                            {activeProduct.tables.dimensionnement.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row]}</TableCell>)}
+                                                            {activeProduct.tables.dimensionnement.headers.map(h => <TableCell className="text-lg" key={h}>{row[h as keyof typeof row]}</TableCell>)}
                                                         </TableRow>
                                                     ))
                                                 )}
@@ -209,18 +214,18 @@ export function SandwichPanelsPage() {
                                 {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows.length > 0 && (
                                 <div className="mb-10">
                                     <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
-                                    {activeProduct.tables.chargesPortees.subtitle && <p className="text-muted-foreground mb-3">{activeProduct.tables.chargesPortees.subtitle}</p>}
+                                    {activeProduct.tables.chargesPortees.subtitle && <p className="text-muted-foreground mb-3 text-xl">{activeProduct.tables.chargesPortees.subtitle}</p>}
                                     <Table>
                                         <TableHeader>
                                             <TableRow className="bg-accent/10">
                                                 {activeProduct.tables.chargesPortees.headers.map((h, i) => (
-                                                    <TableHead key={i} colSpan={h.colspan} className="text-accent font-bold text-center">{h.title}</TableHead>
+                                                    <TableHead key={i} colSpan={h.colspan} className="text-accent font-bold text-center text-lg">{h.title}</TableHead>
                                                 ))}
                                             </TableRow>
                                             {activeProduct.tables.chargesPortees.subheaders && activeProduct.tables.chargesPortees.subheaders.length > 0 && (
                                                 <TableRow className="bg-accent/10">
                                                     {activeProduct.tables.chargesPortees.subheaders.map((sh, i) => (
-                                                        <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
+                                                        <TableHead key={i} className="text-accent font-bold text-center text-lg">{sh}</TableHead>
                                                     ))}
                                                 </TableRow>
                                             )}
@@ -237,14 +242,14 @@ export function SandwichPanelsPage() {
                                                         }
                                                         if(activeProductKey === 'toleNervuree'){
                                                             const key = activeProduct.tables.chargesPortees.subheaders[j];
-                                                            if (j === 0) return <TableCell key={j} className="text-center font-semibold">{row.type} | {row.epaisseur}</TableCell>;
-                                                            return <TableCell key={j} className="text-center">{row[key]}</TableCell>
+                                                            if (j === 0) return <TableCell key={j} className="text-center font-semibold text-lg">{row.type} | {row.epaisseur}</TableCell>;
+                                                            return <TableCell key={j} className="text-center text-lg">{row[key]}</TableCell>
                                                         }
-                                                        return <TableCell key={j} className="text-center">{row[key]}</TableCell>
+                                                        return <TableCell key={j} className="text-center text-lg">{row[key]}</TableCell>
                                                     })
                                                     :
                                                     Object.values(row).map((cell: any, j: number) => (
-                                                        <TableCell key={j} className="text-center">{cell}</TableCell>
+                                                        <TableCell key={j} className="text-center text-lg">{cell}</TableCell>
                                                     ))
                                                 }
                                                 </TableRow>
@@ -272,7 +277,7 @@ export function SandwichPanelsPage() {
                             {activeProduct.pose?.decoupage && 
                              <section className="mt-10">
                                 <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
-                                <div className="space-y-6">
+                                <div className="space-y-6 text-xl">
                                     <div>
                                         <SubSectionTitle>La pose de panneaux sandwichs</SubSectionTitle>
                                         <p className="font-semibold">Découpage des panneaux:</p>
@@ -302,3 +307,5 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
+
+    

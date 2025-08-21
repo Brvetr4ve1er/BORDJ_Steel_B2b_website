@@ -1,9 +1,9 @@
+
 "use client";
 
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Card } from './ui/card';
-import { useState, useEffect } from 'react';
 
 export type ProductImage = {
   src: string;
@@ -16,11 +16,7 @@ interface ProductImageGalleryProps {
 }
 
 export function ProductImageGallery({ images }: ProductImageGalleryProps) {
-  const [mainImage, setMainImage] = useState(images[0]);
-
-  useEffect(() => {
-    setMainImage(images[0]);
-  }, [images]);
+  const mainImage = images[0];
 
   return (
     <div className="space-y-4">
@@ -40,3 +36,5 @@ export function ProductImageGallery({ images }: ProductImageGalleryProps) {
     </div>
   );
 }
+
+    
