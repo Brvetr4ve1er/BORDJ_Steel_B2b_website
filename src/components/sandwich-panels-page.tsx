@@ -22,7 +22,7 @@ const SubSectionTitle = ({ children }: { children: React.ReactNode }) => (
 );
 
 const ProductFeature = ({ label, value }: { label: string; value: string }) => (
-    <div className="flex text-xl">
+    <div className="flex text-lg">
         <p className="w-48 font-semibold">{label}</p>
         <p>{value}</p>
     </div>
@@ -43,26 +43,11 @@ export function SandwichPanelsPage() {
     <section id="product-details" className="bg-white py-20">
       <div className="container mx-auto px-4 max-w-screen-2xl">
         <AnimatedWrapper animation="fade-in">
-            <div className="grid md:grid-cols-5 gap-12 items-center mb-20">
-                <div className="md:col-span-2">
-                <Card className="rounded-lg overflow-hidden shadow-lg group">
-                    <Image
-                    src="/images/product-imgaes/sandwich-panels/commercial-metal-roofing-hdr-img.jpg"
-                    alt="Panneaux Sandwichs PEB"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                    data-ai-hint="sandwich panels"
-                    priority
-                    />
-                </Card>
-                </div>
-                <div className="md:col-span-3">
+            <div className="text-center mb-20">
                 <h1 className="font-headline text-5xl font-bold text-primary mb-6">Panneaux Sandwichs Haute Performance</h1>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
                     Découvrez notre gamme complète de panneaux sandwichs pour bâtiments préfabriqués (PEB). Conçus pour offrir une isolation thermique et acoustique supérieure, nos panneaux sont la solution idéale pour les toitures, les bardages et les chambres froides. Chaque variation est conçue avec précision pour répondre aux exigences spécifiques de votre projet, garantissant durabilité, efficacité énergétique et une finition esthétique impeccable.
                 </p>
-                </div>
             </div>
         </AnimatedWrapper>
         
@@ -86,24 +71,22 @@ export function SandwichPanelsPage() {
           </div>
         </AnimatedWrapper>
         
-        <div className="grid lg:grid-cols-3 gap-x-16 gap-y-16">
-            <div className="lg:col-span-1">
-                <div className="h-max sticky top-28 space-y-8">
-                    <ProductImageGallery 
-                        galleryImages={activeProduct.galleryImages}
-                        implementationImages={activeProduct.implementationImages}
-                    />
-                </div>
+        <div className="grid lg:grid-cols-3 gap-x-24 gap-y-16">
+            <div className="lg:col-span-1 h-max space-y-8">
+                <ProductImageGallery 
+                    galleryImages={activeProduct.galleryImages}
+                    implementationImages={activeProduct.implementationImages}
+                />
             </div>
 
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 space-y-24">
               <AnimatedWrapper animation="fade-in">
                 <div>
-                    <h2 className="font-headline text-5xl font-bold text-accent mb-12">{activeProduct.title}</h2>
+                    <h2 className="font-headline text-5xl font-bold text-accent mb-16">{activeProduct.title}</h2>
                     <Card className="border-none shadow-none p-0">
                         <CardContent className="p-0">
                             <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
-                            <div className="space-y-8 text-lg">
+                            <div className="space-y-12 text-lg">
                                 {activeProduct.features.utilisation.length > 0 &&
                                 <div>
                                     <SubSectionTitle>Utilisation</SubSectionTitle>
@@ -155,10 +138,10 @@ export function SandwichPanelsPage() {
                                 </div>}
                             </div>
 
-                            <section className="mt-20">
+                            <section className="mt-24">
                                 <SectionTitle>TABLEAUX TECHNIQUES</SectionTitle>
                                 {activeProduct.tables.isolation?.rows.length > 0 && (
-                                    <div className="mb-12">
+                                    <div className="mb-16">
                                         <SubSectionTitle>{activeProduct.tables.isolation.title}</SubSectionTitle>
                                         <Table>
                                             <TableHeader>
@@ -177,7 +160,7 @@ export function SandwichPanelsPage() {
                                     </div>
                                 )}
                                 {activeProduct.tables.dimensionnement?.rows.length > 0 && (
-                                    <div className="mb-12">
+                                    <div className="mb-16">
                                         <SubSectionTitle>{activeProduct.tables.dimensionnement.title}</SubSectionTitle>
                                         <Table>
                                             <TableHeader>
@@ -213,7 +196,7 @@ export function SandwichPanelsPage() {
                                     </div>
                                 )}
                                 {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows.length > 0 && (
-                                <div className="mb-12">
+                                <div className="mb-16">
                                     <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
                                     {activeProduct.tables.chargesPortees.subtitle && <p className="text-muted-foreground mb-4">{activeProduct.tables.chargesPortees.subtitle}</p>}
                                     <Table>
@@ -262,7 +245,7 @@ export function SandwichPanelsPage() {
                             </section>
                             
                             {activeProduct.features.caracteristiquesGeometriques && (
-                                <section className="mt-20">
+                                <section className="mt-24">
                                     <SectionTitle>{activeProduct.features.caracteristiquesGeometriques.title}</SectionTitle>
                                     <Image 
                                         src={activeProduct.features.caracteristiquesGeometriques.image.src}
@@ -276,9 +259,9 @@ export function SandwichPanelsPage() {
                             )}
                            
                             {activeProduct.pose?.decoupage && 
-                            <section className="mt-20">
+                            <section className="mt-24">
                                 <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
-                                <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+                                <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
                                     <div className="space-y-8">
                                         <div>
                                             <SubSectionTitle>La pose de panneaux sandwichs</SubSectionTitle>

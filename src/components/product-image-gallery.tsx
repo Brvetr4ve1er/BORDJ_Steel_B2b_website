@@ -22,11 +22,31 @@ export function ProductImageGallery({ galleryImages, implementationImages }: Pro
     return null;
   }
 
-  const allImages = [...galleryImages, ...(implementationImages || [])];
+  const mainImage = galleryImages[0];
+  const secondaryImages = implementationImages || [];
 
   return (
     <div className="space-y-4">
-        {allImages.map((image, index) => (
+        {mainImage && (
+            <AnimatedWrapper animation="fade-in">
+                <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                <Image
+                    src={mainImage.src}
+                    alt={mainImage.alt}
+                    width={800}
+                    height={600} 
+                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                    data-ai-hint={mainImage.aiHint}
+                    priority
+                />
+                </Card>
+            </AnimatedWrapper>
+        )}
+        
+        {/* Large empty space */}
+        <div className="h-[800px] w-full" />
+
+        {secondaryImages.map((image, index) => (
             <AnimatedWrapper key={index} animation="fade-in">
                 <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
                 <Image
@@ -36,7 +56,6 @@ export function ProductImageGallery({ galleryImages, implementationImages }: Pro
                     height={600} 
                     className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                     data-ai-hint={image.aiHint}
-                    priority={index === 0}
                 />
                 </Card>
             </AnimatedWrapper>
