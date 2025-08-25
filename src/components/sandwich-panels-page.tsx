@@ -88,8 +88,11 @@ export function SandwichPanelsPage() {
         
         <div className="grid lg:grid-cols-3 gap-x-16 gap-y-16">
             <div className="lg:col-span-1">
-                <div className="h-max top-28">
-                    <ProductImageGallery images={activeProduct.galleryImages} />
+                <div className="h-max sticky top-28 space-y-8">
+                    <ProductImageGallery 
+                        galleryImages={activeProduct.galleryImages}
+                        implementationImages={activeProduct.implementationImages}
+                    />
                 </div>
             </div>
 
@@ -271,26 +274,7 @@ export function SandwichPanelsPage() {
                                     />
                                 </section>
                             )}
-
-                            {activeProduct.implementationImages && activeProduct.implementationImages.length > 0 && (
-                                <section className="mt-20">
-                                    <div className="space-y-8">
-                                        {activeProduct.implementationImages.map((image, index) => (
-                                            <Card key={index} className="rounded-lg overflow-hidden shadow-lg group">
-                                                <Image
-                                                    src={image.src}
-                                                    alt={image.alt}
-                                                    width={1000}
-                                                    height={600}
-                                                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                                                    data-ai-hint={image.aiHint}
-                                                />
-                                            </Card>
-                                        ))}
-                                    </div>
-                                </section>
-                            )}
-
+                           
                             {activeProduct.pose?.decoupage && 
                             <section className="mt-20">
                                 <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
