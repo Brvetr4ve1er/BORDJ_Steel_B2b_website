@@ -46,20 +46,39 @@ export function ProductImageGallery({ galleryImages, implementationImages }: Pro
         {/* Large empty space */}
         <div className="h-[800px] w-full" />
 
-        {secondaryImages.map((image, index) => (
-            <AnimatedWrapper key={index} animation="fade-in">
+        {secondaryImages.length > 0 && (
+            <AnimatedWrapper animation="fade-in">
                 <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
                 <Image
-                    src={image.src}
-                    alt={image.alt}
+                    src={secondaryImages[0].src}
+                    alt={secondaryImages[0].alt}
                     width={800}
                     height={600} 
                     className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                    data-ai-hint={image.aiHint}
+                    data-ai-hint={secondaryImages[0].aiHint}
                 />
                 </Card>
             </AnimatedWrapper>
-        ))}
+        )}
+
+        {secondaryImages.length > 1 && (
+            <>
+                {/* Large empty space */}
+                <div className="h-[800px] w-full" />
+                <AnimatedWrapper animation="fade-in">
+                    <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                    <Image
+                        src={secondaryImages[1].src}
+                        alt={secondaryImages[1].alt}
+                        width={800}
+                        height={600} 
+                        className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                        data-ai-hint={secondaryImages[1].aiHint}
+                    />
+                    </Card>
+                </AnimatedWrapper>
+            </>
+        )}
     </div>
   );
 }
