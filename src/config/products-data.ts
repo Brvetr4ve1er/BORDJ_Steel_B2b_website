@@ -86,6 +86,10 @@ export const productData = {
         ]
       }
     },
+    implementationImages: [
+        { src: '/diagrams/couverture-impl-1.png', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
+        { src: '/diagrams/couverture-impl-2.png', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
+    ],
     pose: {
       title: 'La pose de panneaux sandwichs',
       decoupage: "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier.",
@@ -130,6 +134,10 @@ export const productData = {
         'Sur équerrage ± 3mm',
       ],
     },
+    implementationImages: [
+        { src: '/diagrams/bardage-impl-1.png', alt: 'Implementation of cladding panels 1', aiHint: 'cladding panels implementation' },
+        { src: '/diagrams/bardage-impl-2.png', alt: 'Implementation of cladding panels 2', aiHint: 'cladding panels building' },
+    ],
     tables: {
       isolation: { 
         title: 'Coefficient d’isolation thermique', 
@@ -222,6 +230,7 @@ export const productData = {
             'Sur équerrage ± 3mm',
         ],
     },
+    implementationImages: [],
     tables: {
         isolation: {
             title: 'Coefficient d’isolation thermique',
@@ -310,6 +319,7 @@ export const productData = {
         }
       }
     },
+    implementationImages: [],
     tables: {
         isolation: { title: '', headers: [], rows: [] },
         dimensionnement: { 
