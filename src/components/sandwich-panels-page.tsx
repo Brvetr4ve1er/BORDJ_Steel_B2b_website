@@ -292,24 +292,28 @@ export function SandwichPanelsPage() {
                             )}
 
                             {activeProduct.pose?.decoupage && 
-                             <section className="mt-20">
+                            <section className="mt-20">
                                 <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
-                                <div className="space-y-8">
-                                    <div>
-                                        <SubSectionTitle>La pose de panneaux sandwichs</SubSectionTitle>
-                                        <p className="font-semibold text-lg">Découpage des panneaux:</p>
-                                        <p>{activeProduct.pose.decoupage}</p>
-                                        <p className="font-semibold mt-4 text-lg">Fixation des panneaux:</p>
-                                        <p>{activeProduct.pose.fixation}</p>
+                                <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+                                    <div className="space-y-8">
+                                        <div>
+                                            <SubSectionTitle>La pose de panneaux sandwichs</SubSectionTitle>
+                                            <p className="font-semibold text-lg">Découpage des panneaux:</p>
+                                            <p>{activeProduct.pose.decoupage}</p>
+                                            <p className="font-semibold mt-4 text-lg">Fixation des panneaux:</p>
+                                            <p>{activeProduct.pose.fixation}</p>
+                                        </div>
                                     </div>
-                                     <div>
-                                        <SubSectionTitle>Étanchéité des rives</SubSectionTitle>
-                                        <p>{activeProduct.etancheite}</p>
+                                    <div className="space-y-8">
+                                        <div>
+                                            <SubSectionTitle>Étanchéité des rives</SubSectionTitle>
+                                            <p>{activeProduct.etancheite}</p>
+                                        </div>
+                                        {activeProduct.sens && <div>
+                                            <SubSectionTitle>Sens des panneaux</SubSectionTitle>
+                                            <p>{activeProduct.sens}</p>
+                                        </div>}
                                     </div>
-                                     {activeProduct.sens && <div>
-                                        <SubSectionTitle>Sens des panneaux</SubSectionTitle>
-                                        <p>{activeProduct.sens}</p>
-                                    </div>}
                                 </div>
                             </section>
                             }
