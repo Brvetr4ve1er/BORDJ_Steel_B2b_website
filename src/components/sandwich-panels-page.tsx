@@ -79,7 +79,7 @@ export function SandwichPanelsPage() {
                 />
             </div>
 
-            <div className="lg:col-span-2 space-y-24">
+            <div className="lg:col-span-2">
               <AnimatedWrapper animation="fade-in">
                 <div>
                     <h2 className="font-headline text-5xl font-bold text-accent mb-16">{activeProduct.title}</h2>
