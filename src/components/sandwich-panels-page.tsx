@@ -47,7 +47,7 @@ export function SandwichPanelsPage() {
                 <div className="md:col-span-2">
                 <Card className="rounded-lg overflow-hidden shadow-lg group">
                     <Image
-                    src="https://images.unsplash.com/photo-1711873318272-ea1fd95ea950?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMHBhbmVsfGVufDB8fHx8MTc1NTUyNDE1MHww&ixlib=rb-4.1.0&q=80&w=1080"
+                    src="/images/product-imgaes/sandwich-panels/commercial-metal-roofing-hdr-img.jpg"
                     alt="Panneaux Sandwichs PEB"
                     width={800}
                     height={600}
