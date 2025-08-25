@@ -8,7 +8,7 @@ export const productData = {
       aiHint: 'metal sheets',
     },
     galleryImages: [
-      { src: '/images/product-imgaes/sandwich-panels/commercial-metal-roofing-hdr-img.jpg', alt: 'Commercial metal roofing', aiHint: 'commercial metal roofing' },
+      { src: '/media/couverture/couverture-main.png', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
     ],
     features: {
       utilisation: [
@@ -86,8 +86,8 @@ export const productData = {
       }
     },
     implementationImages: [
-        { src: '/diagrams/couverture-impl-1.png', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
-        { src: '/diagrams/couverture-impl-2.png', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
+        { src: '/media/couverture/couverture-impl-1.png', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
+        { src: '/media/couverture/couverture-impl-2.png', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
     ],
     pose: {
       title: 'La pose de panneaux sandwichs',
@@ -105,7 +105,7 @@ export const productData = {
       aiHint: 'cladding panels',
     },
     galleryImages: [
-      { src: '/images/product-imgaes/sandwich-panels/peb promo style  .png', alt: 'PEB promo style panel', aiHint: 'PEB promo style panel' },
+      { src: '/media/bardage/bardage-main.png', alt: 'Panneaux sandwichs de bardage', aiHint: 'cladding sandwich panels' },
     ],
     features: {
       utilisation: [
@@ -132,8 +132,8 @@ export const productData = {
       ],
     },
     implementationImages: [
-        { src: '/diagrams/bardage-impl-1.png', alt: 'Implementation of cladding panels 1', aiHint: 'cladding panels implementation' },
-        { src: '/diagrams/bardage-impl-2.png', alt: 'Implementation of cladding panels 2', aiHint: 'cladding panels building' },
+        { src: '/media/bardage/bardage-impl-1.png', alt: 'Implementation of cladding panels 1', aiHint: 'cladding panels implementation' },
+        { src: '/media/bardage/bardage-impl-2.png', alt: 'Implementation of cladding panels 2', aiHint: 'cladding panels building' },
     ],
     tables: {
       isolation: { 
@@ -193,7 +193,7 @@ export const productData = {
         aiHint: 'refrigeration panels',
     },
     galleryImages: [
-      { src: '/images/product-imgaes/sandwich-panels/sandwich pannel.png', alt: 'Sandwich panel', aiHint: 'Sandwich panel' },
+      { src: '/media/frigorifique/frigorifique-main.png', alt: 'Panneaux sandwichs frigorifiques', aiHint: 'refrigeration sandwich panels' },
     ],
     features: {
         utilisation: [
@@ -225,7 +225,10 @@ export const productData = {
             'Sur équerrage ± 3mm',
         ],
     },
-    implementationImages: [],
+    implementationImages: [
+        { src: '/media/frigorifique/frigorifique-impl-1.png', alt: 'Implementation of refrigeration panels 1', aiHint: 'refrigeration panels implementation' },
+        { src: '/media/frigorifique/frigorifique-impl-2.png', alt: 'Implementation of refrigeration panels 2', aiHint: 'refrigeration panels building' },
+    ],
     tables: {
         isolation: {
             title: 'Coefficient d’isolation thermique',
@@ -286,7 +289,7 @@ export const productData = {
       aiHint: 'ribbed steel sheet',
     },
     galleryImages: [
-      { src: 'https://images.unsplash.com/photo-1501664908582-764f9d0b23ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdGVlbCUyMHNoZWV0c3xlbnwwfHx8fDE3NTU1MDE5ODN8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Ribbed steel sheets stacked', aiHint: 'steel sheets' },
+      { src: '/media/tole-nervuree/tole-main.png', alt: 'Tôle nervurée', aiHint: 'ribbed steel sheet' },
     ],
     features: {
       utilisation: [
@@ -307,7 +310,7 @@ export const productData = {
       caracteristiquesGeometriques: {
         title: "Caractéristiques Géométriques",
         image: {
-          src: '/diagrams/tole-nervuree-geometrie.png',
+          src: '/media/tole-nervuree/tole-geometrie.png',
           aiHint: 'geometric characteristics diagram'
         }
       }
