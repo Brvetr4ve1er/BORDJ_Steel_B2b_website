@@ -8,7 +8,7 @@ export const productData = {
       aiHint: 'metal sheets',
     },
     galleryImages: [
-      { src: 'https://i.pinimg.com/736x/c3/61/d2/c361d28497591595e532f971a38e2010.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
+      { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
     ],
     features: {
       utilisation: [
@@ -358,4 +358,5 @@ export const productData = {
   },
 };
 
+    
     
