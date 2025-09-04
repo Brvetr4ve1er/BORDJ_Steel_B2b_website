@@ -87,7 +87,7 @@ export const productData = {
     },
     implementationImages: [
         { src: '/media/couverture/couverture-impl-1.png', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
-        { src: '/media/couverture/couverture-impl-2.png', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
+        { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
     ],
     pose: {
       title: 'La pose de panneaux sandwichs',
