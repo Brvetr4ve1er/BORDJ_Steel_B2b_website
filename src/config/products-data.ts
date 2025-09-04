@@ -359,5 +359,3 @@ export const productData = {
 };
 
     
-    
-    
