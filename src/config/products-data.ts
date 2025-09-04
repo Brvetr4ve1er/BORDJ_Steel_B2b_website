@@ -8,7 +8,7 @@ export const productData = {
       aiHint: 'metal sheets',
     },
     galleryImages: [
-      { src: 'https://i.pinimg.com/1200x/1f/2f/9e/1f2f9edc15af4de61c28ff9e0c78ec0e.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
+      { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
     ],
     features: {
       utilisation: [
@@ -98,7 +98,7 @@ export const productData = {
     sens: "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. il est de type gauche dans le sens inverse."
   },
   bardage: {
-    title: '2-PANNEAUX SANDWICHS DE BARDAGE',
+    title: '2-PANNAUX SANDWICHS DE BARDAGE',
     subtitle: '(Fixations cachées et visibles)',
     image: {
       src: '/images/product-imgaes/sandwich-panels/peb promo style  .png',
