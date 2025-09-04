@@ -8,7 +8,7 @@ export const productData = {
       aiHint: 'metal sheets',
     },
     galleryImages: [
-      { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
+      { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
     ],
     features: {
       utilisation: [
@@ -87,7 +87,7 @@ export const productData = {
     },
     implementationImages: [
         { src: '/media/couverture/couverture-impl-1.png', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
-        { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
+        { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
     ],
     pose: {
       title: 'La pose de panneaux sandwichs',
@@ -357,5 +357,7 @@ export const productData = {
     sens: ''
   },
 };
+
+    
 
     
