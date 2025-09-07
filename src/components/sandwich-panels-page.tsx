@@ -31,33 +31,28 @@ const ProductFeature = ({ label, value }: { label: string; value: string }) => (
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
         <rect x="4" y="4" width="16" height="16" rx="2" />
-        <line x1="9" y1="4" x2="9" y2="20" />
-        <line x1="15" y1="4" x2="15" y2="20" />
+        <line x1="10" y1="4" x2="10" y2="20" />
+        <line x1="16" y1="4" x2="16" y2="20" />
     </svg>
 );
 
 const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-      <path d="M9.5 14.5l1.5 1.5 1.5-1.5" />
-      <path d="M11 16V12" />
-      <path d="M8.5 12.5l-1-1" />
-      <path d="M13.5 12.5l1-1" />
-      <path d="M11 10.5l-1-1" />
-      <path d="M11 10.5l1-1" />
-      <path d="M8.5 10.5l-1 1" />
-      <path d="M13.5 10.5l1 1" />
+      <path d="M12 2L3 8v12h18V8L12 2z" />
+      <path d="M9 22V12h6v10" />
+      <path d="M9.5 10.5l1.5-1.5 1.5 1.5" />
+      <path d="M11 12V9" />
     </svg>
 );
 
 const FrigorifiqueIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M12 22a8 8 0 0 0-8-8h16a8 8 0 0 0-8 8z" />
-      <path d="M12 14v-4" />
-      <path d="M12 2v2" />
-      <path d="M12 12a5 5 0 0 1-5-5h10a5 5 0 0 1-5 5z" />
-      <path d="M12 7l-2 3h4l-2-3z" />
-      <path d="M4 14a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2" />
+      <path d="M12 2a5 5 0 0 0-5 5v2.5" />
+      <path d="M12 22a5 5 0 0 0 5-5v-2.5" />
+      <path d="M12 2v20" />
+      <path d="M17 2.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" transform="rotate(15 17 2.5)" />
+      <path d="M7 21.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" transform="rotate(-15 7 21.5)" />
+      <path d="M12 12l-2-2.5 4 0 -2 2.5" />
     </svg>
 );
 
@@ -88,7 +83,7 @@ export function SandwichPanelsPage() {
         <AnimatedWrapper animation="fade-in">
           <div className="mb-24 flex flex-wrap justify-center items-end gap-x-8 gap-y-12">
             {productButtons.map(({ key, label, icon: Icon }) => (
-               <div key={key} className="relative flex flex-col items-center cursor-pointer group w-max" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
+               <div key={key} className="flex flex-col items-center gap-4 cursor-pointer group w-max" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
                     <div className={cn(
                         "w-20 h-20 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
                         activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
@@ -102,7 +97,7 @@ export function SandwichPanelsPage() {
                     <Button
                         variant={activeProductKey === key ? 'destructive' : 'outline'}
                         className={cn(
-                            "h-auto mt-[-2.5rem] pt-12 pb-2 px-6 transition-all duration-300 text-center",
+                            "h-auto py-2 px-6 transition-all duration-300 text-center",
                             activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
                         )}
                     >
