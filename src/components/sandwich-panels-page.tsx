@@ -30,11 +30,9 @@ const ProductFeature = ({ label, value }: { label: string; value: string }) => (
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <path d="M4 18h16" />
-        <path d="M4 18v-8.373a2 2 0 0 1 .684-1.5l3.96-3.465a2 2 0 0 1 2.712 0l3.96 3.465a2 2 0 0 1 .684 1.5V18" />
-        <path d="M18 18v-4" />
-        <path d="M21 14h-6" />
-        <path d="M21 18h-6" />
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <line x1="9" y1="5" x2="9" y2="19" />
+        <line x1="15" y1="5" x2="15" y2="19" />
     </svg>
 );
 
