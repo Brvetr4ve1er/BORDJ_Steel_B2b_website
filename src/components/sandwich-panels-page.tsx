@@ -50,12 +50,13 @@ const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const FrigorifiqueIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <circle cx="12" cy="11.5" r="8.5" />
-      <rect x="9" y="20" width="6" height="2" rx="1" />
-      <line x1="12" y1="11.5" x2="12" y2="11.5" />
-      <path d="m10 13 4-3" />
-      <path d="m14 13-4-3" />
-      <path d="m12 9.5 v5" />
+      <path d="M12 2a5 5 0 0 0-5 5v2.5" />
+      <path d="M12 22a5 5 0 0 0 5-5v-2.5" />
+      <path d="M12 2a5 5 0 0 1 5 5v2.5" />
+      <path d="M12 22a5 5 0 0 1-5-5v-2.5" />
+      <path d="M7 9.5A5 5 0 0 0 2 12a5 5 0 0 0 5 2.5" />
+      <path d="M17 9.5A5 5 0 0 1 22 12a5 5 0 0 1-5 2.5" />
+      <circle cx="12" cy="12" r="2" />
     </svg>
 );
 
@@ -86,7 +87,7 @@ export function SandwichPanelsPage() {
         <AnimatedWrapper animation="fade-in">
           <div className="mb-24 flex flex-wrap justify-center items-end gap-x-8 gap-y-12">
             {productButtons.map(({ key, label, icon: Icon }) => (
-               <div key={key} className="relative flex flex-col items-center cursor-pointer w-48 group" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
+               <div key={key} className="relative flex flex-col items-center cursor-pointer group w-max" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
                     <div className={cn(
                         "absolute w-20 h-20 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
                         activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
@@ -100,7 +101,7 @@ export function SandwichPanelsPage() {
                     <Button
                         variant={activeProductKey === key ? 'destructive' : 'outline'}
                         className={cn(
-                            "h-auto mt-10 pt-12 pb-4 px-6 transition-all duration-300 text-center",
+                            "h-auto mt-10 pt-12 pb-2 px-6 transition-all duration-300 text-center",
                             activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
                         )}
                     >
@@ -335,5 +336,3 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
-
-    
