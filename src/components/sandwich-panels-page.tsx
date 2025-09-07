@@ -38,25 +38,23 @@ const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-        <line x1="12" y1="15" x2="12" y2="15" />
-        <line x1="12" y1="12" x2="10" y2="10" />
-        <line x1="12" y1="12" x2="14" y2="10" />
-        <line x1="12" y1="12" x2="10" y2="14" />
-        <line x1="12" y1="12" x2="14" y2="14" />
-        <line x1="10" y1="12" x2="14" y2="12" />
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <path d="M9 22V12h6v10" />
+      <path d="M12 11.23l-3.41 2.27" />
+      <path d="M12 11.23l3.41 2.27" />
+      <path d="M12 11.23V5.5" />
+      <path d="M8.59 13.5L12 15.77l3.41-2.27" />
     </svg>
 );
 
 const FrigorifiqueIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M12 2a5 5 0 0 0-5 5v2.5" />
-      <path d="M12 22a5 5 0 0 0 5-5v-2.5" />
-      <path d="M12 2a5 5 0 0 1 5 5v2.5" />
-      <path d="M12 22a5 5 0 0 1-5-5v-2.5" />
-      <path d="M7 9.5A5 5 0 0 0 2 12a5 5 0 0 0 5 2.5" />
-      <path d="M17 9.5A5 5 0 0 1 22 12a5 5 0 0 1-5 2.5" />
-      <circle cx="12" cy="12" r="2" />
+        <path d="M12 22a8 8 0 0 0-8-8h16a8 8 0 0 0-8 8z" />
+        <path d="M12 14v-4" />
+        <path d="M12 2v2" />
+        <path d="M12 12a5 5 0 0 1-5-5h10a5 5 0 0 1-5 5z" />
+        <path d="M12 7l-2 3h4l-2-3z" />
+        <path d="M4 14a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2" />
     </svg>
 );
 
@@ -89,7 +87,7 @@ export function SandwichPanelsPage() {
             {productButtons.map(({ key, label, icon: Icon }) => (
                <div key={key} className="relative flex flex-col items-center cursor-pointer group w-max" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
                     <div className={cn(
-                        "absolute w-20 h-20 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
+                        "w-20 h-20 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
                         activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
                     )}>
                         <Icon className={cn(
@@ -101,7 +99,7 @@ export function SandwichPanelsPage() {
                     <Button
                         variant={activeProductKey === key ? 'destructive' : 'outline'}
                         className={cn(
-                            "h-auto mt-10 pt-12 pb-2 px-6 transition-all duration-300 text-center",
+                            "h-auto mt-[-2.5rem] pt-12 pb-2 px-6 transition-all duration-300 text-center",
                             activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
                         )}
                     >
