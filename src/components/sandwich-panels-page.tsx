@@ -30,30 +30,32 @@ const ProductFeature = ({ label, value }: { label: string; value: string }) => (
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <rect x="3" y="5" width="18" height="14" rx="2" />
-        <line x1="9" y1="5" x2="9" y2="19" />
-        <line x1="15" y1="5" x2="15" y2="19" />
+        <rect x="4" y="4" width="16" height="16" rx="2" />
+        <line x1="9" y1="4" x2="9" y2="20" />
+        <line x1="15" y1="4" x2="15" y2="20" />
     </svg>
 );
 
 const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-        <polyline points="9 22 9 12 15 12 15 22" />
+        <line x1="12" y1="15" x2="12" y2="15" />
+        <line x1="12" y1="12" x2="10" y2="10" />
+        <line x1="12" y1="12" x2="14" y2="10" />
+        <line x1="12" y1="12" x2="10" y2="14" />
+        <line x1="12" y1="12" x2="14" y2="14" />
+        <line x1="10" y1="12" x2="14" y2="12" />
     </svg>
 );
 
 const FrigorifiqueIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-        <line x1="12" y1="12" x2="12" y2="16" />
-        <line x1="10" y1="14" x2="14" y2="14" />
-        <line x1="12" y1="9" x2="12" y2="9" />
-        <line x1="12" y1="19" x2="12" y2="19" />
-        <line x1="10" y1="11.5" x2="10" y2="11.5" />
-        <line x1="14" y1="11.5" x2="14" y2="11.5" />
-        <line x1="10" y1="16.5" x2="10" y2="16.5" />
-        <line x1="14" y1="16.5" x2="14" y2="16.5" />
+      <circle cx="12" cy="11.5" r="8.5" />
+      <rect x="9" y="20" width="6" height="2" rx="1" />
+      <line x1="12" y1="11.5" x2="12" y2="11.5" />
+      <path d="m10 13 4-3" />
+      <path d="m14 13-4-3" />
+      <path d="m12 9.5 v5" />
     </svg>
 );
 
@@ -86,7 +88,7 @@ export function SandwichPanelsPage() {
             {productButtons.map(({ key, label, icon: Icon }) => (
                <div key={key} className="relative flex flex-col items-center cursor-pointer w-48 group" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
                     <div className={cn(
-                        "w-20 h-20 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
+                        "absolute w-20 h-20 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
                         activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
                     )}>
                         <Icon className={cn(
@@ -98,7 +100,7 @@ export function SandwichPanelsPage() {
                     <Button
                         variant={activeProductKey === key ? 'destructive' : 'outline'}
                         className={cn(
-                            "h-auto mt-4 py-2 px-6 transition-all duration-300 text-center",
+                            "h-auto mt-10 pt-12 pb-4 px-6 transition-all duration-300 text-center",
                             activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
                         )}
                     >
