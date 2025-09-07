@@ -39,22 +39,25 @@ const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
       <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-      <path d="M9 22V12h6v10" />
-      <path d="M12 11.23l-3.41 2.27" />
-      <path d="M12 11.23l3.41 2.27" />
-      <path d="M12 11.23V5.5" />
-      <path d="M8.59 13.5L12 15.77l3.41-2.27" />
+      <path d="M9.5 14.5l1.5 1.5 1.5-1.5" />
+      <path d="M11 16V12" />
+      <path d="M8.5 12.5l-1-1" />
+      <path d="M13.5 12.5l1-1" />
+      <path d="M11 10.5l-1-1" />
+      <path d="M11 10.5l1-1" />
+      <path d="M8.5 10.5l-1 1" />
+      <path d="M13.5 10.5l1 1" />
     </svg>
 );
 
 const FrigorifiqueIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <path d="M12 22a8 8 0 0 0-8-8h16a8 8 0 0 0-8 8z" />
-        <path d="M12 14v-4" />
-        <path d="M12 2v2" />
-        <path d="M12 12a5 5 0 0 1-5-5h10a5 5 0 0 1-5 5z" />
-        <path d="M12 7l-2 3h4l-2-3z" />
-        <path d="M4 14a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2" />
+      <path d="M12 22a8 8 0 0 0-8-8h16a8 8 0 0 0-8 8z" />
+      <path d="M12 14v-4" />
+      <path d="M12 2v2" />
+      <path d="M12 12a5 5 0 0 1-5-5h10a5 5 0 0 1-5 5z" />
+      <path d="M12 7l-2 3h4l-2-3z" />
+      <path d="M4 14a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2" />
     </svg>
 );
 
