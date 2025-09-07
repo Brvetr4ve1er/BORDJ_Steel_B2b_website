@@ -63,21 +63,29 @@ export function SandwichPanelsPage() {
         </AnimatedWrapper>
         
         <AnimatedWrapper animation="fade-in">
-          <div className="mb-24 flex flex-wrap justify-center gap-4">
+          <div className="mb-24 flex flex-wrap justify-center items-end gap-x-8 gap-y-12">
             {productButtons.map(({ key, label, icon: Icon }) => (
-              <Button
-                key={key}
-                variant={activeProductKey === key ? 'destructive' : 'outline'}
-                size="lg"
-                className={cn(
-                    "transition-all duration-300 h-auto p-4 flex-col items-center gap-2",
-                    activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
-                )}
-                onClick={() => setActiveProductKey(key as keyof typeof productData)}
-              >
-                <Icon className={cn("h-8 w-8 mb-1", key === 'toleNervuree' && "rotate-[-90deg]")} />
-                <span className="text-center">{label}</span>
-              </Button>
+               <div key={key} className="relative flex flex-col items-center cursor-pointer w-48 group" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
+                    <div className={cn(
+                        "absolute -top-8 w-20 h-20 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
+                        activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
+                    )}>
+                        <Icon className={cn(
+                            "h-10 w-10 transition-colors duration-300",
+                            activeProductKey === key ? 'text-accent-foreground' : 'text-primary',
+                            key === 'toleNervuree' && "rotate-[-90deg]"
+                        )} />
+                    </div>
+                    <Button
+                        variant={activeProductKey === key ? 'destructive' : 'outline'}
+                        className={cn(
+                            "w-full h-auto pt-14 pb-4 transition-all duration-300 text-center",
+                            activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
+                        )}
+                    >
+                        <span className="text-center text-base font-semibold">{label}</span>
+                    </Button>
+              </div>
             ))}
           </div>
         </AnimatedWrapper>
