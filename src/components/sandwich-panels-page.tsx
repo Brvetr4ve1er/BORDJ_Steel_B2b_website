@@ -79,7 +79,7 @@ export function SandwichPanelsPage() {
                     <Button
                         variant={activeProductKey === key ? 'destructive' : 'outline'}
                         className={cn(
-                            "w-full h-auto pt-14 pb-4 transition-all duration-300 text-center",
+                            "h-auto pt-14 pb-4 px-6 transition-all duration-300 text-center",
                             activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
                         )}
                     >
