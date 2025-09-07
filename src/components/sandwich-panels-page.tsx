@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { useState } from 'react';
-import { Layers2, Layers3, ChevronsRight } from 'lucide-react';
+import { Layers3, ChevronsRight } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
@@ -36,6 +36,27 @@ const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
+const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+    </svg>
+);
+
+const FrigorifiqueIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <line x1="12" y1="12" x2="12" y2="16" />
+        <line x1="10" y1="14" x2="14" y2="14" />
+        <line x1="12" y1="9" x2="12" y2="9" />
+        <line x1="12" y1="19" x2="12" y2="19" />
+        <line x1="10" y1="11.5" x2="10" y2="11.5" />
+        <line x1="14" y1="11.5" x2="14" y2="11.5" />
+        <line x1="10" y1="16.5" x2="10" y2="16.5" />
+        <line x1="14" y1="16.5" x2="14" y2="16.5" />
+    </svg>
+);
+
 
 export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
@@ -43,8 +64,8 @@ export function SandwichPanelsPage() {
 
   const productButtons = [
     { key: 'couverture', label: 'Panneaux de Couverture', icon: CouvertureIcon },
-    { key: 'bardage', label: 'Panneaux de Bardage', icon: Layers2 },
-    { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: Layers3 },
+    { key: 'bardage', label: 'Panneaux de Bardage', icon: BardageIcon },
+    { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: FrigorifiqueIcon },
     { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
   ];
 
