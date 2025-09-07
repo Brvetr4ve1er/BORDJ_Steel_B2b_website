@@ -67,7 +67,7 @@ export function SandwichPanelsPage() {
             {productButtons.map(({ key, label, icon: Icon }) => (
                <div key={key} className="relative flex flex-col items-center cursor-pointer w-48 group" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
                     <div className={cn(
-                        "absolute -top-8 w-20 h-20 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
+                        "w-20 h-20 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
                         activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
                     )}>
                         <Icon className={cn(
@@ -79,7 +79,7 @@ export function SandwichPanelsPage() {
                     <Button
                         variant={activeProductKey === key ? 'destructive' : 'outline'}
                         className={cn(
-                            "h-auto pt-14 pb-4 px-6 transition-all duration-300 text-center",
+                            "h-auto mt-4 py-2 px-6 transition-all duration-300 text-center",
                             activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
                         )}
                     >
