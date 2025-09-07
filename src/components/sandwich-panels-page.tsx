@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { useState } from 'react';
-import { Layers, Layers2, Layers3, ChevronsRight } from 'lucide-react';
+import { Layers2, Layers3, ChevronsRight } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
@@ -28,12 +28,23 @@ const ProductFeature = ({ label, value }: { label: string; value: string }) => (
     </div>
 );
 
+const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        <path d="M4 18h16" />
+        <path d="M4 18v-8.373a2 2 0 0 1 .684-1.5l3.96-3.465a2 2 0 0 1 2.712 0l3.96 3.465a2 2 0 0 1 .684 1.5V18" />
+        <path d="M18 18v-4" />
+        <path d="M21 14h-6" />
+        <path d="M21 18h-6" />
+    </svg>
+);
+
+
 export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
   const activeProduct = productData[activeProductKey];
 
   const productButtons = [
-    { key: 'couverture', label: 'Panneaux de Couverture', icon: Layers },
+    { key: 'couverture', label: 'Panneaux de Couverture', icon: CouvertureIcon },
     { key: 'bardage', label: 'Panneaux de Bardage', icon: Layers2 },
     { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: Layers3 },
     { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
@@ -59,13 +70,13 @@ export function SandwichPanelsPage() {
                 variant={activeProductKey === key ? 'destructive' : 'outline'}
                 size="lg"
                 className={cn(
-                    "transition-all duration-300",
+                    "transition-all duration-300 h-auto p-4 flex-col items-center gap-2",
                     activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
                 )}
                 onClick={() => setActiveProductKey(key as keyof typeof productData)}
               >
-                <Icon className={cn("mr-2 h-5 w-5", key === 'toleNervuree' && "rotate-[-90deg]")} />
-                {label}
+                <Icon className={cn("h-8 w-8 mb-1", key === 'toleNervuree' && "rotate-[-90deg]")} />
+                <span className="text-center">{label}</span>
               </Button>
             ))}
           </div>
