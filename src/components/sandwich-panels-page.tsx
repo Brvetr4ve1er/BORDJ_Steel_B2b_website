@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { useState } from 'react';
-import { Layers3, ChevronsRight } from 'lucide-react';
+import { Layers3, ChevronsRight, Snowflake } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
@@ -38,24 +38,13 @@ const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M12 2L3 8v12h18V8L12 2z" />
-      <path d="M9 22V12h6v10" />
-      <path d="M9.5 10.5l1.5-1.5 1.5 1.5" />
-      <path d="M11 12V9" />
+        <path d="M4 4h16v16H4z" />
+        <path d="M4 9h16" />
+        <path d="M4 14h16" />
+        <path d="M9 4v16" />
+        <path d="M14 4v16" />
     </svg>
 );
-
-const FrigorifiqueIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M12 2a5 5 0 0 0-5 5v2.5" />
-      <path d="M12 22a5 5 0 0 0 5-5v-2.5" />
-      <path d="M12 2v20" />
-      <path d="M17 2.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" transform="rotate(15 17 2.5)" />
-      <path d="M7 21.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" transform="rotate(-15 7 21.5)" />
-      <path d="M12 12l-2-2.5 4 0 -2 2.5" />
-    </svg>
-);
-
 
 export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
@@ -64,7 +53,7 @@ export function SandwichPanelsPage() {
   const productButtons = [
     { key: 'couverture', label: 'Panneaux de Couverture', icon: CouvertureIcon },
     { key: 'bardage', label: 'Panneaux de Bardage', icon: BardageIcon },
-    { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: FrigorifiqueIcon },
+    { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: Snowflake },
     { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
   ];
 
@@ -332,3 +321,5 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
+
+    
