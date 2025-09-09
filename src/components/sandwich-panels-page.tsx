@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { useState } from 'react';
-import { Layers3, ChevronsRight, Snowflake } from 'lucide-react';
+import { ChevronsRight, Snowflake } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
@@ -37,14 +37,14 @@ const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <path d="M4 4h16v16H4z" />
-        <path d="M4 9h16" />
-        <path d="M4 14h16" />
-        <path d="M9 4v16" />
-        <path d="M14 4v16" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M4 4h16v16H4z" />
+      <path d="M4 8h16" />
+      <path d="M4 12h16" />
+      <path d="M4 16h16" />
     </svg>
 );
+
 
 export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
@@ -70,28 +70,28 @@ export function SandwichPanelsPage() {
         </AnimatedWrapper>
         
         <AnimatedWrapper animation="fade-in">
-          <div className="mb-24 flex flex-wrap justify-center items-end gap-x-8 gap-y-12">
+           <div className="mb-24 flex flex-wrap justify-center items-center gap-x-8 gap-y-12">
             {productButtons.map(({ key, label, icon: Icon }) => (
-               <div key={key} className="flex flex-col items-center gap-4 cursor-pointer group w-max" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
-                    <div className={cn(
-                        "w-20 h-20 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
-                        activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
-                    )}>
-                        <Icon className={cn(
-                            "h-10 w-10 transition-colors duration-300",
-                            activeProductKey === key ? 'text-accent-foreground' : 'text-primary',
-                            key === 'toleNervuree' && "rotate-[-90deg]"
-                        )} />
-                    </div>
-                    <Button
-                        variant={activeProductKey === key ? 'destructive' : 'outline'}
-                        className={cn(
-                            "h-auto py-2 px-6 transition-all duration-300 text-center",
-                            activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
-                        )}
-                    >
-                        <span className="text-center text-base font-semibold">{label}</span>
-                    </Button>
+              <div key={key} className="flex flex-col items-center gap-4 cursor-pointer group" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
+                <div className={cn(
+                    "w-24 h-24 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
+                    activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
+                )}>
+                    <Icon className={cn(
+                        "h-10 w-10 transition-colors duration-300",
+                        activeProductKey === key ? 'text-accent-foreground' : 'text-primary',
+                        key === 'toleNervuree' && "rotate-[-90deg]"
+                    )} />
+                </div>
+                <Button
+                    variant={activeProductKey === key ? 'destructive' : 'outline'}
+                    className={cn(
+                        "h-auto py-2 px-6 transition-all duration-300 text-center",
+                        activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
+                    )}
+                >
+                    <span className="text-center text-base font-semibold">{label}</span>
+                </Button>
               </div>
             ))}
           </div>
@@ -243,25 +243,23 @@ export function SandwichPanelsPage() {
                                         <TableBody>
                                             {activeProduct.tables.chargesPortees.rows.map((row: any, i) => (
                                                 <TableRow key={i}>
-                                                {activeProduct.tables.chargesPortees.subheaders ? 
-                                                    activeProduct.tables.chargesPortees.subheaders.map((sh, j) => {
-                                                        let key = sh;
-                                                        if (activeProductKey === 'couverture' || activeProductKey === 'frigorifique') {
-                                                            const keys = Object.keys(row);
-                                                            key = keys[j];
+                                                {(activeProduct.tables.chargesPortees.subheaders ?? Object.keys(row)).map((key: string, j: number) => {
+                                                    let cellValue;
+                                                    // Handle Tole Nervuree case which has nested structure
+                                                    if (activeProductKey === 'toleNervuree' && typeof row === 'object' && row !== null) {
+                                                        const subheaderKey = activeProduct.tables.chargesPortees.subheaders?.[j];
+                                                        if (j === 0) {
+                                                            return <TableCell key={j} className="text-center font-semibold">{row.type} | {row.epaisseur}</TableCell>;
                                                         }
-                                                        if(activeProductKey === 'toleNervuree'){
-                                                            const key = activeProduct.tables.chargesPortees.subheaders[j];
-                                                            if (j === 0) return <TableCell key={j} className="text-center font-semibold">{row.type} | {row.epaisseur}</TableCell>;
-                                                            return <TableCell key={j} className="text-center">{row[key]}</TableCell>
-                                                        }
-                                                        return <TableCell key={j} className="text-center">{row[key]}</TableCell>
-                                                    })
-                                                    :
-                                                    Object.values(row).map((cell: any, j: number) => (
-                                                        <TableCell key={j} className="text-center">{cell}</TableCell>
-                                                    ))
-                                                }
+                                                        cellValue = row[subheaderKey as keyof typeof row];
+                                                    }
+                                                    // Handle other products
+                                                    else if (typeof row === 'object' && row !== null) {
+                                                        const actualKey = activeProduct.tables.chargesPortees.subheaders ? Object.keys(row)[j] : key;
+                                                        cellValue = row[actualKey as keyof typeof row];
+                                                    }
+                                                    return <TableCell key={j} className="text-center">{cellValue}</TableCell>;
+                                                })}
                                                 </TableRow>
                                             ))}
                                         </TableBody>
@@ -321,5 +319,3 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
-
-    
