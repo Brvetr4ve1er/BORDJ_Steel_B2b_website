@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { useState } from 'react';
-import { ChevronsRight, Snowflake } from 'lucide-react';
+import { ChevronsRight, Snowflake, Layers } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
@@ -38,11 +38,7 @@ const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
-      <path d="M4 6h16" />
-      <path d="M4 10h16" />
-      <path d="M4 14h16" />
-      <path d="M4 18h16" />
-      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M3 2h18v4H3zM4 6h16v4H4zM4 10h16v4H4zM4 14h16v4H4zM3 18h18v4H3z" />
     </svg>
 );
 
@@ -129,17 +125,25 @@ export function SandwichPanelsPage() {
                                 <div>
                                     <SubSectionTitle>Définition</SubSectionTitle>
                                     <ProductFeature label="Identification d'acier:" value={activeProduct.features.definition.acier} />
-                                    <p className="font-semibold mt-6">Parement externe:</p>
-                                    <ul className="list-disc pl-8 mt-2 space-y-1">
-                                        <li>{activeProduct.features.definition.parementExterne.profil}</li>
-                                        {activeProduct.features.definition.parementExterne.description && <li>{activeProduct.features.definition.parementExterne.description}</li>}
-                                        <li>{activeProduct.features.definition.parementExterne.epaisseur}</li>
-                                    </ul>
+                                    {activeProduct.features.definition.parementExterne?.profil &&
+                                    <>
+                                        <p className="font-semibold mt-6">Parement externe:</p>
+                                        <ul className="list-disc pl-8 mt-2 space-y-1">
+                                            <li>{activeProduct.features.definition.parementExterne.profil}</li>
+                                            {activeProduct.features.definition.parementExterne.description && <li>{activeProduct.features.definition.parementExterne.description}</li>}
+                                            <li>{activeProduct.features.definition.parementExterne.epaisseur}</li>
+                                        </ul>
+                                    </>
+                                    }
+                                    {activeProduct.features.definition.parementInterne?.profil &&
+                                    <>
                                     <p className="font-semibold mt-6">Parement interne:</p>
                                      <ul className="list-disc pl-8 mt-2 space-y-1">
                                         <li>{activeProduct.features.definition.parementInterne.profil}</li>
                                         <li>{activeProduct.features.definition.parementInterne.epaisseur}</li>
                                     </ul>
+                                    </>
+                                    }
                                 </div>
                                 }
                                 {activeProduct.features.revetement && <div>
@@ -246,26 +250,27 @@ export function SandwichPanelsPage() {
                                         </TableHeader>
                                         <TableBody>
                                             {activeProduct.tables.chargesPortees.rows.map((row: any, i: number) => {
-                                                const subheaders = activeProduct.tables.chargesPortees.subheaders || [];
                                                 if (activeProductKey === 'toleNervuree') {
-                                                    // Special rendering for toleNervuree
+                                                    const subheaders = activeProduct.tables.chargesPortees.subheaders || [];
+                                                    const rowData = row as { 'EP (mm)': number; [key: string]: any };
                                                     return (
                                                         <TableRow key={i}>
-                                                            <TableCell className="text-center font-semibold">{row.epaisseur}</TableCell>
+                                                            <TableCell className="text-center font-semibold">{rowData['EP (mm)']}</TableCell>
                                                             {subheaders.slice(1).map((key: string, j: number) => (
                                                                 <TableCell key={`${i}-${j}`} className="text-center">
-                                                                    {row[key as keyof typeof row] ?? ''}
+                                                                    {rowData[key as keyof typeof rowData] ?? ''}
                                                                 </TableCell>
                                                             ))}
                                                         </TableRow>
                                                     );
                                                 } else {
-                                                    // Standard rendering for other products
+                                                    const rowData = row as { [key:string]: any};
+                                                    const subheaders = activeProduct.tables.chargesPortees.subheaders || [];
                                                     return (
                                                         <TableRow key={i}>
                                                             {subheaders.map((key: string, j: number) => (
                                                                 <TableCell key={`${i}-${j}`} className="text-center">
-                                                                    {row[key as keyof typeof row] ?? ''}
+                                                                    {rowData[key as keyof typeof rowData] ?? ''}
                                                                 </TableCell>
                                                             ))}
                                                         </TableRow>
@@ -329,3 +334,5 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
+
+    
