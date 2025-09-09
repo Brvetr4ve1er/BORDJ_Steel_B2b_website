@@ -113,7 +113,7 @@ export function SandwichPanelsPage() {
                         <CardContent className="p-0">
                             <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
                             <div className="space-y-12 text-lg">
-                                {activeProduct.features.utilisation.length > 0 &&
+                                {activeProduct.features.utilisation && activeProduct.features.utilisation.length > 0 &&
                                 <div>
                                     <SubSectionTitle>Utilisation</SubSectionTitle>
                                     <ul className="list-disc pl-6 space-y-2">
@@ -142,7 +142,7 @@ export function SandwichPanelsPage() {
                                     <SubSectionTitle>Revêtement</SubSectionTitle>
                                     <p>{activeProduct.features.revetement}</p>
                                 </div>}
-                                 { activeProduct.features.ameIsolante.type && <div>
+                                 { activeProduct.features.ameIsolante && activeProduct.features.ameIsolante.type && <div>
                                     <SubSectionTitle>Ame isolante</SubSectionTitle>
                                     <p className="mb-4">{activeProduct.features.ameIsolante.type}</p>
                                      <ProductFeature label="Conductivité thermique:" value={activeProduct.features.ameIsolante.conductivite} />
@@ -152,7 +152,7 @@ export function SandwichPanelsPage() {
                                     <SubSectionTitle>Réaction au feu</SubSectionTitle>
                                     <p>{activeProduct.features.reactionAuFeu}</p>
                                 </div>}
-                                { activeProduct.features.tolerance.length > 0 && <div>
+                                { activeProduct.features.tolerance && activeProduct.features.tolerance.length > 0 && <div>
                                     <SubSectionTitle>Tolérance sur panneaux</SubSectionTitle>
                                      <ul className="list-disc pl-6 space-y-2">
                                         {activeProduct.features.tolerance.map(item => <li key={item}>{item}</li>)}
@@ -166,7 +166,7 @@ export function SandwichPanelsPage() {
 
                             <section className="mt-24">
                                 <SectionTitle>TABLEAUX TECHNIQUES</SectionTitle>
-                                {activeProduct.tables.isolation?.rows.length > 0 && (
+                                {activeProduct.tables.isolation?.rows && activeProduct.tables.isolation.rows.length > 0 && (
                                     <div className="mb-16">
                                         <SubSectionTitle>{activeProduct.tables.isolation.title}</SubSectionTitle>
                                         <Table>
@@ -185,7 +185,7 @@ export function SandwichPanelsPage() {
                                         </Table>
                                     </div>
                                 )}
-                                {activeProduct.tables.dimensionnement?.rows.length > 0 && (
+                                {activeProduct.tables.dimensionnement?.rows && activeProduct.tables.dimensionnement.rows.length > 0 && (
                                     <div className="mb-16">
                                         <SubSectionTitle>{activeProduct.tables.dimensionnement.title}</SubSectionTitle>
                                         <Table>
@@ -197,7 +197,7 @@ export function SandwichPanelsPage() {
                                             <TableBody>
                                                 {activeProductKey === 'toleNervuree' ? (
                                                    activeProduct.tables.dimensionnement.rows.map((row: any, i) => (
-                                                        row.details.map((detail: any, j: number) => (
+                                                        row.details && Array.isArray(row.details) && row.details.map((detail: any, j: number) => (
                                                             <TableRow key={`${i}-${j}`}>
                                                                 {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.type}</TableCell>}
                                                                 {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.longueur}</TableCell>}
@@ -221,7 +221,7 @@ export function SandwichPanelsPage() {
                                         </Table>
                                     </div>
                                 )}
-                                {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows.length > 0 && (
+                                {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows && activeProduct.tables.chargesPortees.rows.length > 0 && (
                                 <div className="mb-16">
                                     <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
                                     {activeProduct.tables.chargesPortees.subtitle && <p className="text-muted-foreground mb-4">{activeProduct.tables.chargesPortees.subtitle}</p>}
@@ -241,25 +241,23 @@ export function SandwichPanelsPage() {
                                             )}
                                         </TableHeader>
                                         <TableBody>
-                                            {activeProduct.tables.chargesPortees.rows.map((row: any, i) => (
+                                            {activeProduct.tables.chargesPortees.rows.map((row: any, i: number) => (
                                                 <TableRow key={i}>
-                                                {(activeProduct.tables.chargesPortees.subheaders ?? Object.keys(row)).map((key: string, j: number) => {
-                                                    let cellValue;
-                                                    // Handle Tole Nervuree case which has nested structure
-                                                    if (activeProductKey === 'toleNervuree' && typeof row === 'object' && row !== null) {
-                                                        const subheaderKey = activeProduct.tables.chargesPortees.subheaders?.[j];
-                                                        if (j === 0) {
-                                                            return <TableCell key={j} className="text-center font-semibold">{row.type} | {row.epaisseur}</TableCell>;
+                                                    {(activeProduct.tables.chargesPortees.subheaders ?? (typeof row === 'object' && row ? Object.keys(row) : [])).map((key: string, j: number) => {
+                                                        let cellValue;
+                                                        if (activeProductKey === 'toleNervuree' && typeof row === 'object' && row !== null) {
+                                                            const subheaderKey = activeProduct.tables.chargesPortees.subheaders?.[j];
+                                                            if (j === 0) {
+                                                                return <TableCell key={j} className="text-center font-semibold">{row.epaisseur}</TableCell>;
+                                                            }
+                                                            cellValue = row[subheaderKey as keyof typeof row];
+                                                        } else if (typeof row === 'object' && row !== null) {
+                                                            const headers = activeProduct.tables.chargesPortees.subheaders;
+                                                            const currentHeader = headers ? headers[j] : Object.keys(row)[j];
+                                                            cellValue = row[currentHeader as keyof typeof row];
                                                         }
-                                                        cellValue = row[subheaderKey as keyof typeof row];
-                                                    }
-                                                    // Handle other products
-                                                    else if (typeof row === 'object' && row !== null) {
-                                                        const actualKey = activeProduct.tables.chargesPortees.subheaders ? Object.keys(row)[j] : key;
-                                                        cellValue = row[actualKey as keyof typeof row];
-                                                    }
-                                                    return <TableCell key={j} className="text-center">{cellValue}</TableCell>;
-                                                })}
+                                                        return <TableCell key={j} className="text-center">{cellValue}</TableCell>;
+                                                    })}
                                                 </TableRow>
                                             ))}
                                         </TableBody>
@@ -319,3 +317,5 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
+
+    

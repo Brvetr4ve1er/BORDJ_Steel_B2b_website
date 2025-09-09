@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export - Panneaux Sandwichs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&family=Cairo:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 0 0% 29.4%;
+            --card: 0 0% 100%;
+            --card-foreground: 0 0% 29.4%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 0 0% 29.4%;
+            --primary: 0 0% 29.4%;
+            --primary-foreground: 0 0% 100%;
+            --secondary: 0 0% 96.1%;
+            --secondary-foreground: 0 0% 29.4%;
+            --muted: 0 0% 96.1%;
+            --muted-foreground: 0 0% 45.1%;
+            --accent: 358 66% 45.1%;
+            --accent-hover: 358 66% 35%;
+            --accent-foreground: 0 0% 100%;
+            --destructive: 358 66% 45.1%;
+            --destructive-foreground: 0 0% 100%;
+            --border: 0 0% 89.8%;
+            --input: 0 0% 89.8%;
+            --ring: 0 0% 29.4%;
+            --radius: 0.5rem;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .font-headline {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+<section id="product-details" class="py-20">
+    <div class="container mx-auto px-4 max-w-screen-2xl">
+        <div class="text-center mb-20">
+            <h1 class="font-headline text-5xl font-bold text-primary mb-6" style="color: hsl(var(--primary));">Panneaux Sandwichs Haute Performance</h1>
+            <p class="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto" style="color: hsl(var(--muted-foreground));">
+                Découvrez notre gamme complète de panneaux sandwichs pour bâtiments préfabriqués (PEB). Conçus pour offrir une isolation thermique et acoustique supérieure, nos panneaux sont la solution idéale pour les toitures, les bardages et les chambres froides. Chaque variation est conçue avec précision pour répondre aux exigences spécifiques de votre projet, garantissant durabilité, efficacité énergétique et une finition esthétique impeccable.
+            </p>
+        </div>
+        
+        <div class="mb-24 flex flex-wrap justify-center items-center gap-x-8 gap-y-12">
+            <!-- Panneaux de Couverture -->
+            <div class="flex flex-col items-center gap-4 cursor-pointer group">
+                <div class="w-24 h-24 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110 bg-accent shadow-lg" style="background-color: hsl(var(--accent));">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 transition-colors duration-300 text-accent-foreground" style="color: hsl(var(--accent-foreground));">
+                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                        <line x1="10" y1="4" x2="10" y2="20"></line>
+                        <line x1="16" y1="4" x2="16" y2="20"></line>
+                    </svg>
+                </div>
+                <button class="h-auto py-2 px-6 transition-all duration-300 text-center bg-accent shadow-lg text-white rounded-md">
+                    <span class="text-center text-base font-semibold">Panneaux de Couverture</span>
+                </button>
+            </div>
+
+            <!-- Panneaux de Bardage -->
+            <div class="flex flex-col items-center gap-4 cursor-pointer group">
+                <div class="w-24 h-24 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110 bg-secondary" style="background-color: hsl(var(--secondary));">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 transition-colors duration-300 text-primary" style="color: hsl(var(--primary));">
+                        <path d="M3 8L12 2L21 8V21H3V8Z" stroke-width="1.5"></path>
+                        <path d="M12 11L12 21" stroke-width="1.5"></path>
+                        <path d="M8 7L16 7" stroke-width="1.5"></path>
+                    </svg>
+                </div>
+                <button class="h-auto py-2 px-6 transition-all duration-300 text-center bg-secondary text-primary hover:bg-accent/10 rounded-md border" style="background-color: hsl(var(--secondary)); color: hsl(var(--primary));">
+                    <span class="text-center text-base font-semibold">Panneaux de Bardage</span>
+                </button>
+            </div>
+
+            <!-- Panneaux Frigorifiques -->
+            <div class="flex flex-col items-center gap-4 cursor-pointer group">
+                <div class="w-24 h-24 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110 bg-secondary" style="background-color: hsl(var(--secondary));">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 transition-colors duration-300 text-primary" style="color: hsl(var(--primary));">
+                        <path d="M20 7.5a2.5 2.5 0 0 0-2.5-2.5c-1.38 0-2.5 1.12-2.5 2.5"></path>
+                        <path d="M17.5 5V2.5"></path><path d="M20 9.5a2.5 2.5 0 0 0-2.5-2.5c-1.38 0-2.5 1.12-2.5 2.5"></path>
+                        <path d="m22.5 12.5-1.5-1.5"></path><path d="M17.5 15c-1.38 0-2.5-1.12-2.5-2.5a2.5 2.5 0 0 1 5 0c0 1.38-1.12 2.5-2.5 2.5"></path>
+                        <path d="M17.5 15v2.5"></path><path d="M15 12.5a2.5 2.5 0 0 0-2.5-2.5c-1.38 0-2.5 1.12-2.5 2.5"></path>
+                        <path d="m4.5 12.5 1.5-1.5"></path><path d="M6.5 15c-1.38 0-2.5-1.12-2.5-2.5a2.5 2.5 0 0 1 5 0c0 1.38-1.12 2.5-2.5 2.5"></path>
+                        <path d="M12.5 10a2.5 2.5 0 0 0-2.5-2.5c-1.38 0-2.5 1.12-2.5 2.5"></path><path d="M12.5 15a2.5 2.5 0 0 0-2.5-2.5c-1.38 0-2.5 1.12-2.5 2.5"></path>
+                        <path d="M10 7.5a2.5 2.5 0 0 0-2.5-2.5C6.12 5 5 6.12 5 7.5"></path>
+                    </svg>
+                </div>
+                <button class="h-auto py-2 px-6 transition-all duration-300 text-center bg-secondary text-primary hover:bg-accent/10 rounded-md border" style="background-color: hsl(var(--secondary)); color: hsl(var(--primary));">
+                    <span class="text-center text-base font-semibold">Panneaux Frigorifiques</span>
+                </button>
+            </div>
+
+            <!-- Tôle Nervurée -->
+            <div class="flex flex-col items-center gap-4 cursor-pointer group">
+                <div class="w-24 h-24 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110 bg-secondary" style="background-color: hsl(var(--secondary));">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 transition-colors duration-300 text-primary rotate-[-90deg]" style="color: hsl(var(--primary));">
+                        <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.59a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                    </svg>
+                </div>
+                <button class="h-auto py-2 px-6 transition-all duration-300 text-center bg-secondary text-primary hover:bg-accent/10 rounded-md border" style="background-color: hsl(var(--secondary)); color: hsl(var(--primary));">
+                    <span class="text-center text-base font-semibold">Tôle Nervurée</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Dynamic Content Area -->
+        <div class="grid lg:grid-cols-3 gap-x-24 gap-y-16">
+            <div class="lg:col-span-1 h-max space-y-8">
+                <!-- Image Gallery -->
+                <div class="space-y-4">
+                    <div class="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                        <img src="https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg" alt="Panneaux sandwichs de couverture" width="800" height="600" class="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" data-ai-hint="roofing sandwich panels">
+                    </div>
+                    <div class="h-[800px] w-full"></div>
+                    <div class="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                        <img src="https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg" alt="Implementation of roofing panels 1" width="800" height="600" class="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" data-ai-hint="roofing panels implementation">
+                    </div>
+                    <div class="h-[800px] w-full"></div>
+                    <div class="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                        <img src="https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg" alt="Implementation of roofing panels 2" width="800" height="600" class="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" data-ai-hint="roofing panels building">
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2">
+                <!-- Product Details -->
+                <div>
+                    <h2 class="font-headline text-5xl font-bold text-accent mb-16" style="color: hsl(var(--accent));">1-PANNEAUX SANDWICHS DE COUVERTURE</h2>
+                    <div class="p-0">
+                        <h3 class="font-headline text-3xl font-bold text-primary mb-8" style="color: hsl(var(--primary));">CARACTÉRISTIQUE PRODUIT</h3>
+                        <div class="space-y-12 text-lg">
+                            <div>
+                                <h4 class="font-headline text-2xl font-bold text-primary mt-10 mb-6" style="color: hsl(var(--primary));">Utilisation</h4>
+                                <ul class="list-disc pl-6 space-y-2">
+                                    <li>Bâtiments industriels et modulaires</li>
+                                    <li>Ateliers de production</li>
+                                    <li>Entrepôts</li>
+                                    <li>Centres commerciaux</li>
+                                    <li>Complexes sportifs</li>
+                                    <li>Ensembles scolaires et universitaires</li>
+                                    <li>ainsi que dans toute autre construction nécessitant une isolation thermique</li>
+                                </ul>
+                            </div>
+                            <!-- More sections like definition, revetement, etc. would go here -->
+                        </div>
+
+                        <section class="mt-24">
+                            <h3 class="font-headline text-3xl font-bold text-primary mb-8" style="color: hsl(var(--primary));">TABLEAUX TECHNIQUES</h3>
+                            <!-- Tables would be rendered here -->
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
