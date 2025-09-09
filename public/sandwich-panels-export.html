@@ -3,234 +3,316 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Export - Panneaux Sandwichs</title>
-    <!-- 1. Include Tailwind CSS via CDN -->
+    <title>Export: Panneaux Sandwichs</title>
+    <!-- 
+      Tailwind CSS from CDN
+      This provides the utility classes (like p-4, text-lg, grid, etc.) that style the page.
+    -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* 2. Add custom styles from globals.css and for interactivity */
-        :root {
-            --background: 0 0% 100%;
-            --foreground: 0 0% 29.4%;
-            --card: 0 0% 100%;
-            --card-foreground: 0 0% 29.4%;
-            --popover: 0 0% 100%;
-            --popover-foreground: 0 0% 29.4%;
-            --primary: 0 0% 29.4%;
-            --primary-foreground: 0 0% 100%;
-            --secondary: 0 0% 96.1%;
-            --secondary-foreground: 0 0% 29.4%;
-            --muted: 0 0% 96.1%;
-            --muted-foreground: 0 0% 45.1%;
-            --accent: 358 66% 45.1%;
-            --accent-foreground: 0 0% 100%;
-            --destructive: 358 66% 45.1%;
-            --destructive-foreground: 0 0% 100%;
-            --border: 0 0% 89.8%;
-            --input: 0 0% 89.8%;
-            --ring: 0 0% 29.4%;
-            --radius: 0.5rem;
-        }
+      /* 
+        Custom CSS Theme Variables from src/app/globals.css 
+        These are the specific colors and settings for your site's theme.
+        The WordPress developer can use these values to match the site's design.
+      */
+      :root {
+        --background: 0 0% 100%;
+        --foreground: 0 0% 29.4%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 29.4%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 29.4%;
+        --primary: 0 0% 29.4%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 0 0% 96.1%;
+        --secondary-foreground: 0 0% 29.4%;
+        --muted: 0 0% 96.1%;
+        --muted-foreground: 0 0% 45.1%;
+        --accent: 358 66% 45.1%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 358 66% 45.1%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 0 0% 89.8%;
+        --input: 0 0% 89.8%;
+        --ring: 0 0% 29.4%;
+        --radius: 0.5rem;
+      }
+      /* 
+        Applying the theme variables to Tailwind.
+        This configures Tailwind to use your custom colors.
+      */
+      html {
+        font-family: 'Roboto', sans-serif;
+      }
+      body {
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+      }
+      .font-headline {
+        font-family: 'Montserrat', sans-serif;
+      }
+      .bg-primary { background-color: hsl(var(--primary)); }
+      .text-primary { color: hsl(var(--primary)); }
+      .bg-secondary { background-color: hsl(var(--secondary)); }
+      .text-secondary-foreground { color: hsl(var(--secondary-foreground)); }
+      .bg-accent { background-color: hsl(var(--accent)); }
+      .text-accent { color: hsl(var(--accent)); }
+      .text-accent-foreground { color: hsl(var(--accent-foreground)); }
+      .border-accent { border-color: hsl(var(--accent)); }
+      .text-muted-foreground { color: hsl(var(--muted-foreground)); }
+      .shadow-lg { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+      .border { border-width: 1px; border-color: hsl(var(--border)); }
+      .rounded-lg { border-radius: var(--radius); }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: hsl(var(--background));
-            color: hsl(var(--foreground));
-        }
-
-        .font-headline {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .text-primary {
-             color: hsl(var(--primary));
-        }
-        .text-accent {
-            color: hsl(var(--accent));
-        }
-        .text-muted-foreground {
-            color: hsl(var(--muted-foreground));
-        }
-        .bg-white {
-             background-color: hsl(var(--background));
-        }
-        .bg-accent {
-            background-color: hsl(var(--accent));
-        }
-        .bg-secondary {
-             background-color: hsl(var(--secondary));
-        }
-         .bg-accent-foreground {
-            background-color: hsl(var(--accent-foreground));
-        }
-        .text-accent-foreground {
-            color: hsl(var(--accent-foreground));
-        }
-
-        /* --- Helper Classes for JS --- */
-        .product-content {
-            display: none; /* Hide all content by default */
-        }
-        .product-content.active {
-            display: block; /* Show only the active content */
-        }
-
-        .product-button.active .icon-container {
-            background-color: hsl(var(--accent));
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
-        
-        .product-button.active .icon-container svg {
-             color: hsl(var(--accent-foreground));
-        }
-        
-        .product-button.active .button-label {
-            background-color: hsl(var(--accent));
-            color: hsl(var(--accent-foreground));
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
-        
-        .product-button .icon-container {
-            background-color: hsl(var(--secondary));
-        }
-        .product-button .icon-container svg {
-            color: hsl(var(--primary));
-        }
-
-        .product-button .button-label {
-            background-color: hsl(var(--secondary));
-            color: hsl(var(--primary));
-        }
-        .product-button:hover .button-label {
-            background-color: hsla(var(--accent) / 0.1);
-        }
+      /* Custom styles for the interactive elements */
+      .product-button.active .icon-container {
+        background-color: hsl(var(--accent));
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      }
+      .product-button.active .icon-container svg {
+        color: hsl(var(--accent-foreground));
+      }
+      .product-button.active .button-label {
+        background-color: hsl(var(--accent));
+        color: hsl(var(--accent-foreground));
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      }
+      .product-button .icon-container {
+        background-color: hsl(var(--secondary));
+      }
+      .product-button .button-label {
+        background-color: hsl(var(--secondary));
+        color: hsl(var(--primary));
+      }
+      /* Hide all product content by default */
+      .product-content {
+        display: none;
+      }
+      /* Show the active product content */
+      .product-content.active {
+        display: block;
+      }
     </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white">
 
     <section id="product-details" class="py-20">
         <div class="container mx-auto px-4 max-w-screen-2xl">
-            <!-- Section Header -->
+            <!-- SECTION: Page Header -->
             <div class="text-center mb-20">
                 <h1 class="font-headline text-5xl font-bold text-primary mb-6">Panneaux Sandwichs Haute Performance</h1>
                 <p class="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
-                    Découvrez notre gamme complète de panneaux sandwichs pour bâtiments préfabriqués (PEB). Conçus pour offrir une isolation thermique et acoustique supérieure, nos panneaux sont la solution idéale pour les toitures, les bardages et les chambres froides. Chaque variation est conçue avec précision pour répondre aux exigences spécifiques de votre projet, garantissant durabilité, efficacité énergétique et une finition esthétique impeccable.
+                    Découvrez notre gamme complète de panneaux sandwichs pour bâtiments préfabriqués (PEB). Conçus pour offrir une isolation thermique et acoustique supérieure, nos panneaux sont la solution idéale pour les toitures, les bardages et les chambres froides.
                 </p>
             </div>
-            
-            <!-- Product Selection Buttons -->
-            <div class="mb-24 flex flex-wrap justify-center items-center gap-x-8 gap-y-12">
-                
-                <!-- Button 1: Couverture -->
+
+            <!-- SECTION: Product Selection Buttons -->
+            <div class="mb-24 flex flex-wrap justify-center items-start gap-x-8 gap-y-12">
+                <!-- Button 1: Panneaux de Couverture -->
                 <div id="btn-couverture" class="product-button flex flex-col items-center gap-4 cursor-pointer group active">
                     <div class="icon-container w-24 h-24 rounded-full flex items-center justify-center border-4 border-white transition-all duration-300 transform group-hover:scale-110">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 transition-colors duration-300">
-                            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                            <line x1="10" y1="4" x2="10" y2="20"></line>
-                            <line x1="16" y1="4" x2="16" y2="20"></line>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-primary transition-colors duration-300"><rect x="4" y="4" width="16" height="16" rx="2"></rect><line x1="10" y1="4" x2="10" y2="20"></line><line x1="16" y1="4" x2="16" y2="20"></line></svg>
                     </div>
                     <button class="button-label h-auto py-2 px-6 transition-all duration-300 text-center rounded-md">
                         <span class="text-center text-base font-semibold">Panneaux de Couverture</span>
                     </button>
                 </div>
-
-                <!-- Button 2: Bardage -->
+                <!-- Button 2: Panneaux de Bardage -->
                 <div id="btn-bardage" class="product-button flex flex-col items-center gap-4 cursor-pointer group">
                     <div class="icon-container w-24 h-24 rounded-full flex items-center justify-center border-4 border-white transition-all duration-300 transform group-hover:scale-110">
-                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-10 w-10 transition-colors duration-300"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-10 w-10 text-primary transition-colors duration-300"><path d="M3 2h18v4H3zM4 6h16v4H4zM4 10h16v4H4zM4 14h16v4H4zM3 18h18v4H3z"></path></svg>
                     </div>
                     <button class="button-label h-auto py-2 px-6 transition-all duration-300 text-center rounded-md">
                         <span class="text-center text-base font-semibold">Panneaux de Bardage</span>
                     </button>
                 </div>
-
-                <!-- Button 3: Frigorifique -->
+                <!-- Button 3: Panneaux Frigorifiques -->
                 <div id="btn-frigorifique" class="product-button flex flex-col items-center gap-4 cursor-pointer group">
                     <div class="icon-container w-24 h-24 rounded-full flex items-center justify-center border-4 border-white transition-all duration-300 transform group-hover:scale-110">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 transition-colors duration-300"><path d="M2 12h10"/><path d="M2 12h10"/><path d="m5 7-3 5 3 5"/><path d="M22 12h-10"/><path d="M22 12h-10"/><path d="m19 7 3 5-3 5"/><path d="m12 2 5 3-5 3-5-3z"/><path d="m12 22 5-3-5-3-5 3z"/><path d="M12 2v20"/><path d="M12 2v20"/><path d="m5 17 7-12 7 12"/><path d="m5 7 7 12 7-12"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-primary transition-colors duration-300"><path d="M20 7.5a2.5 2.5 0 0 0-2.5-2.5c-1.54 0-2.5 1.5-2.5 1.5s-.96-1.5-2.5-1.5A2.5 2.5 0 0 0 10 7.5c0 .98 1.14 2.5 2.5 2.5S15 8.48 15 7.5Z"></path><path d="m5.1 11.2-1.3-2.6a.5.5 0 0 1 .5-.6h14.4a.5.5 0 0 1 .5.6l-1.3 2.6C17.3 12 16 13 16 13.7V18a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-4.3c0-.7-1.3-1.7-1.9-2.5Z"></path></svg>
                     </div>
                     <button class="button-label h-auto py-2 px-6 transition-all duration-300 text-center rounded-md">
                         <span class="text-center text-base font-semibold">Panneaux Frigorifiques</span>
                     </button>
                 </div>
-                
-                 <!-- Button 4: Tole Nervuree -->
+                <!-- Button 4: Tôle Nervurée -->
                 <div id="btn-toleNervuree" class="product-button flex flex-col items-center gap-4 cursor-pointer group">
-                    <div class="icon-container w-24 h-24 rounded-full flex items-center justify-center border-4 border-white transition-all duration-300 transform group-hover:scale-110">
-                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 transition-colors duration-300 rotate-[-90deg]"><path d="m13 17 5-5-5-5"/><path d="m6 17 5-5-5-5"/></svg>
+                    <div class="icon-container w-24 h24 rounded-full flex items-center justify-center border-4 border-white transition-all duration-300 transform group-hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-primary transition-colors duration-300 rotate-[-90deg]"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
                     </div>
                     <button class="button-label h-auto py-2 px-6 transition-all duration-300 text-center rounded-md">
                         <span class="text-center text-base font-semibold">Tôle Nervurée</span>
                     </button>
                 </div>
-
-            </div>
-            
-            <!-- This is where the dynamic content for each product will be rendered -->
-            <div id="product-display-area">
-                <!-- Content for "Panneaux de Couverture" -->
-                <div id="content-couverture" class="product-content active">
-                    <!-- This would contain the full grid layout, image gallery, and tables for this product -->
-                    <h2 class="font-headline text-5xl font-bold text-accent mb-16">1-PANNEAUX SANDWICHS DE COUVERTURE</h2>
-                    <p class="text-lg">Full details, images, and technical tables for "Couverture" would be placed here, mirroring the structure in the component.</p>
-                </div>
-                
-                <!-- Content for "Panneaux de Bardage" -->
-                <div id="content-bardage" class="product-content">
-                    <h2 class="font-headline text-5xl font-bold text-accent mb-16">2-PANNAUX SANDWICHS DE BARDAGE</h2>
-                    <p class="text-lg">Full details, images, and technical tables for "Bardage" would be placed here.</p>
-                </div>
-
-                <!-- Content for "Panneaux Frigorifiques" -->
-                <div id="content-frigorifique" class="product-content">
-                    <h2 class="font-headline text-5xl font-bold text-accent mb-16">3-PANNEAUX SANDWICHS FRIGORIFIQUE</h2>
-                     <p class="text-lg">Full details, images, and technical tables for "Frigorifique" would be placed here.</p>
-                </div>
-                
-                <!-- Content for "Tôle Nervurée" -->
-                <div id="content-toleNervuree" class="product-content">
-                    <h2 class="font-headline text-5xl font-bold text-accent mb-16">4-TÔLE NERVURÉE</h2>
-                    <p class="text-lg">Full details, images, and technical tables for "Tôle Nervurée" would be placed here.</p>
-                </div>
             </div>
 
+            <!-- SECTION: Main Content Area -->
+            <div class="grid lg:grid-cols-3 gap-x-24 gap-y-16">
+                <!-- Left Column: Image Gallery -->
+                <div class="lg:col-span-1 h-max space-y-8">
+                    <!-- Image content will be dynamically updated by JS -->
+                    <div id="product-image-gallery">
+                        <!-- Initial image is for the default product (Couverture) -->
+                        <div class="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                           <img src="/media/bardage/bardage-main.png" alt="Panneaux sandwichs de couverture" width="800" height="600" class="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Product Details -->
+                <div class="lg:col-span-2">
+                    
+                    <!-- Content for Couverture -->
+                    <div id="content-couverture" class="product-content active">
+                        <h2 class="font-headline text-5xl font-bold text-accent mb-16">1-PANNEAUX SANDWICHS DE COUVERTURE</h2>
+                        <div class="border-none shadow-none p-0">
+                            <!-- Content specific to Couverture goes here -->
+                            <h3 class="font-headline text-3xl font-bold text-primary mb-8">CARACTÉRISTIQUE PRODUIT</h3>
+                            <div class="space-y-4 text-lg">
+                                <p><strong>Utilisation:</strong> Bâtiments industriels, entrepôts, etc.</p>
+                                <p><strong>Définition:</strong> Acier Nuance S250, S280, S320.</p>
+                                <!-- More details... -->
+                            </div>
+                            <h3 class="font-headline text-3xl font-bold text-primary mt-12 mb-8">TABLEAUX TECHNIQUES</h3>
+                            <p>Table data for Couverture would be here...</p>
+                        </div>
+                    </div>
+
+                    <!-- Content for Bardage -->
+                    <div id="content-bardage" class="product-content">
+                        <h2 class="font-headline text-5xl font-bold text-accent mb-16">2-PANNAUX SANDWICHS DE BARDAGE</h2>
+                        <div class="border-none shadow-none p-0">
+                            <!-- Content specific to Bardage goes here -->
+                            <h3 class="font-headline text-3xl font-bold text-primary mb-8">CARACTÉRISTIQUE PRODUIT</h3>
+                            <div class="space-y-4 text-lg">
+                                <p><strong>Utilisation:</strong> Façades de bâtiments, show-rooms, etc.</p>
+                                <p><strong>Définition:</strong> Fixations cachées et visibles.</p>
+                                <!-- More details... -->
+                            </div>
+                            <h3 class="font-headline text-3xl font-bold text-primary mt-12 mb-8">TABLEAUX TECHNIQUES</h3>
+                            <p>Table data for Bardage would be here...</p>
+                        </div>
+                    </div>
+
+                    <!-- Content for Frigorifique -->
+                    <div id="content-frigorifique" class="product-content">
+                        <h2 class="font-headline text-5xl font-bold text-accent mb-16">3-PANNEAUX SANDWICHS FRIGORIFIQUE</h2>
+                        <div class="border-none shadow-none p-0">
+                            <!-- Content specific to Frigorifique goes here -->
+                            <h3 class="font-headline text-3xl font-bold text-primary mb-8">CARACTÉRISTIQUE PRODUIT</h3>
+                            <div class="space-y-4 text-lg">
+                                <p><strong>Utilisation:</strong> Chambres froides, structures agro-alimentaires.</p>
+                                <p><strong>Ame isolante:</strong> Mousse polyurethane rigide.</p>
+                                <!-- More details... -->
+                            </div>
+                            <h3 class="font-headline text-3xl font-bold text-primary mt-12 mb-8">TABLEAUX TECHNIQUES</h3>
+                            <p>Table data for Frigorifique would be here...</p>
+                        </div>
+                    </div>
+
+                    <!-- Content for Tôle Nervurée -->
+                    <div id="content-toleNervuree" class="product-content">
+                        <h2 class="font-headline text-5xl font-bold text-accent mb-16">4-TÔLE NERVURÉE</h2>
+                        <div class="border-none shadow-none p-0">
+                            <!-- Content specific to Tôle Nervurée goes here -->
+                            <h3 class="font-headline text-3xl font-bold text-primary mb-8">CARACTÉRISTIQUE PRODUIT</h3>
+                            <div class="space-y-4 text-lg">
+                                <p><strong>Utilisation:</strong> Bâtiments industriels, ateliers de production.</p>
+                                <p><strong>Revêtement:</strong> Galvanisé seul qualité Z200.</p>
+                                <!-- More details... -->
+                            </div>
+                            <h3 class="font-headline text-3xl font-bold text-primary mt-12 mb-8">TABLEAUX TECHNIQUES</h3>
+                            <p>Table data for Tôle Nervurée would be here...</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- 3. Add JavaScript for Interactivity -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Get all the buttons and content panels
-            const buttons = document.querySelectorAll('.product-button');
-            const contents = document.querySelectorAll('.product-content');
+<script>
+    // This script provides the interactivity for the page.
+    document.addEventListener('DOMContentLoaded', function () {
+        // --- DATA ---
+        // This is a simplified version of the data from src/config/products-data.ts
+        // A developer can use this to populate the full content.
+        const productData = {
+            couverture: {
+                title: '1-PANNEAUX SANDWICHS DE COUVERTURE',
+                imageSrc: '/media/bardage/bardage-main.png',
+                imageAlt: 'Panneaux sandwichs de couverture'
+            },
+            bardage: {
+                title: '2-PANNAUX SANDWICHS DE BARDAGE',
+                imageSrc: '/media/bardage/bardage-main.png',
+                imageAlt: 'Panneaux sandwichs de bardage'
+            },
+            frigorifique: {
+                title: '3-PANNEaux SANDWICHS FRIGORIFIQUE',
+                imageSrc: '/media/frigorifique/frigorifique-main.png',
+                imageAlt: 'Panneaux sandwichs frigorifiques'
+            },
+            toleNervuree: {
+                title: '4-TÔLE NERVURÉE',
+                imageSrc: '/media/tole-nervuree/tole-main.png',
+                imageAlt: 'Tôle nervurée'
+            }
+        };
 
+        // --- DOM ELEMENTS ---
+        const buttons = document.querySelectorAll('.product-button');
+        const contents = document.querySelectorAll('.product-content');
+        const imageGallery = document.getElementById('product-image-gallery');
+
+        // --- FUNCTION to handle click events ---
+        function handleButtonClick(event) {
+            // Get the ID of the clicked button container (e.g., 'btn-couverture')
+            const clickedButtonId = event.currentTarget.id;
+            
+            // Derive the product key (e.g., 'couverture') from the button ID
+            const productKey = clickedButtonId.replace('btn-', '');
+
+            // 1. Update Buttons: Make the clicked button active, others inactive.
             buttons.forEach(button => {
-                button.addEventListener('click', function () {
-                    // Get the ID of the clicked button (e.g., "btn-couverture")
-                    const buttonId = this.id;
-                    // Derive the corresponding content ID (e.g., "content-couverture")
-                    const contentId = 'content-' + buttonId.split('-')[1];
-
-                    // --- Handle button styling ---
-                    // 1. Remove 'active' class from all buttons
-                    buttons.forEach(btn => btn.classList.remove('active'));
-                    // 2. Add 'active' class to the clicked button
-                    this.classList.add('active');
-                    
-                    // --- Handle content visibility ---
-                    // 1. Hide all content panels
-                    contents.forEach(content => content.classList.remove('active'));
-                    // 2. Show the corresponding content panel
-                    const activeContent = document.getElementById(contentId);
-                    if (activeContent) {
-                        activeContent.classList.add('active');
-                    }
-                });
+                if (button.id === clickedButtonId) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
             });
+
+            // 2. Update Content: Show the content for the selected product, hide others.
+            contents.forEach(content => {
+                if (content.id === `content-${productKey}`) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+
+            // 3. Update Image Gallery
+            const activeProductData = productData[productKey];
+            if (activeProductData && imageGallery) {
+                imageGallery.innerHTML = `
+                    <div class="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                       <img src="${activeProductData.imageSrc}" alt="${activeProductData.imageAlt}" width="800" height="600" class="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                    </div>
+                `;
+            }
+        }
+
+        // --- EVENT LISTENERS ---
+        // Attach a click event listener to each button.
+        buttons.forEach(button => {
+            button.addEventListener('click', handleButtonClick);
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>

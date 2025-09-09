@@ -230,57 +230,57 @@ export function SandwichPanelsPage() {
                                     </div>
                                 )}
                                 {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows && activeProduct.tables.chargesPortees.rows.length > 0 && (
-                                <div className="mb-16">
-                                    <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
-                                    {activeProduct.tables.chargesPortees.subtitle && <p className="text-muted-foreground mb-4">{activeProduct.tables.chargesPortees.subtitle}</p>}
-                                    <Table>
-                                        <TableHeader>
-                                            <TableRow className="bg-accent/10">
-                                                {activeProduct.tables.chargesPortees.headers.map((h, i) => (
-                                                    <TableHead key={i} colSpan={h.colspan} className="text-accent font-bold text-center">{h.title}</TableHead>
-                                                ))}
-                                            </TableRow>
-                                            {activeProduct.tables.chargesPortees.subheaders && activeProduct.tables.chargesPortees.subheaders.length > 0 && (
+                                    <div className="mb-16">
+                                        <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
+                                        {activeProduct.tables.chargesPortees.subtitle && <p className="text-muted-foreground mb-4">{activeProduct.tables.chargesPortees.subtitle}</p>}
+                                        <Table>
+                                            <TableHeader>
                                                 <TableRow className="bg-accent/10">
-                                                    {activeProduct.tables.chargesPortees.subheaders.map((sh, i) => (
-                                                        <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
+                                                    {activeProduct.tables.chargesPortees.headers.map((h, i) => (
+                                                        <TableHead key={i} colSpan={h.colspan} className="text-accent font-bold text-center">{h.title}</TableHead>
                                                     ))}
                                                 </TableRow>
-                                            )}
-                                        </TableHeader>
-                                        <TableBody>
-                                            {activeProduct.tables.chargesPortees.rows.map((row: any, i: number) => {
-                                                if (activeProductKey === 'toleNervuree') {
+                                                {activeProduct.tables.chargesPortees.subheaders && activeProduct.tables.chargesPortees.subheaders.length > 0 && (
+                                                    <TableRow className="bg-accent/10">
+                                                        {activeProduct.tables.chargesPortees.subheaders.map((sh, i) => (
+                                                            <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
+                                                        ))}
+                                                    </TableRow>
+                                                )}
+                                            </TableHeader>
+                                            <TableBody>
+                                               {(activeProduct.tables.chargesPortees.rows as any[]).map((row: any, i: number) => {
                                                     const subheaders = activeProduct.tables.chargesPortees.subheaders || [];
-                                                    const rowData = row as { 'EP (mm)': number; [key: string]: any };
-                                                    return (
-                                                        <TableRow key={i}>
-                                                            <TableCell className="text-center font-semibold">{rowData['EP (mm)']}</TableCell>
-                                                            {subheaders.slice(1).map((key: string, j: number) => (
-                                                                <TableCell key={`${i}-${j}`} className="text-center">
-                                                                    {rowData[key as keyof typeof rowData] ?? ''}
-                                                                </TableCell>
-                                                            ))}
-                                                        </TableRow>
-                                                    );
-                                                } else {
-                                                    const rowData = row as { [key:string]: any};
-                                                    const subheaders = activeProduct.tables.chargesPortees.subheaders || [];
-                                                    return (
-                                                        <TableRow key={i}>
-                                                            {subheaders.map((key: string, j: number) => (
-                                                                <TableCell key={`${i}-${j}`} className="text-center">
-                                                                    {rowData[key as keyof typeof rowData] ?? ''}
-                                                                </TableCell>
-                                                            ))}
-                                                        </TableRow>
-                                                    );
-                                                }
-                                            })}
-                                        </TableBody>
-                                    </Table>
-                                </div>
-                            )}
+                                                    if (activeProductKey === 'toleNervuree' && 'type' in row) {
+                                                      const rowData = row as { type: string; epaisseur: number; [key: string]: any };
+                                                      return (
+                                                          <TableRow key={i}>
+                                                              <TableCell className="text-center font-semibold">{rowData['type']}</TableCell>
+                                                              <TableCell className="text-center font-semibold">{rowData['epaisseur']}</TableCell>
+                                                              {subheaders.slice(2).map((key, j) => (
+                                                                  <TableCell key={j} className="text-center">
+                                                                      {rowData[key] ?? ''}
+                                                                  </TableCell>
+                                                              ))}
+                                                          </TableRow>
+                                                      );
+                                                    } else {
+                                                      const rowData = row as { [key: string]: any };
+                                                      return (
+                                                          <TableRow key={i}>
+                                                              {subheaders.map((key, j) => (
+                                                                  <TableCell key={j} className="text-center">
+                                                                      {rowData[key] ?? ''}
+                                                                  </TableCell>
+                                                              ))}
+                                                          </TableRow>
+                                                      );
+                                                    }
+                                                })}
+                                            </TableBody>
+                                        </Table>
+                                    </div>
+                                )}
                             </section>
                             
                             {activeProduct.features.caracteristiquesGeometriques && (
