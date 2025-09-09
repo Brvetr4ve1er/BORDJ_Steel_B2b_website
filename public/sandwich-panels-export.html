@@ -1,318 +1,358 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Export: Panneaux Sandwichs</title>
-    <!-- 
-      Tailwind CSS from CDN
-      This provides the utility classes (like p-4, text-lg, grid, etc.) that style the page.
-    -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      /* 
-        Custom CSS Theme Variables from src/app/globals.css 
-        These are the specific colors and settings for your site's theme.
-        The WordPress developer can use these values to match the site's design.
-      */
-      :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 29.4%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 29.4%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 29.4%;
-        --primary: 0 0% 29.4%;
-        --primary-foreground: 0 0% 100%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 29.4%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 358 66% 45.1%;
-        --accent-foreground: 0 0% 100%;
-        --destructive: 358 66% 45.1%;
-        --destructive-foreground: 0 0% 100%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 29.4%;
-        --radius: 0.5rem;
+export const productData = {
+  couverture: {
+    title: '1-PANNEAUX SANDWICHS DE COUVERTURE',
+    subtitle: '',
+    image: {
+      src: 'https://images.unsplash.com/photo-1614003013812-e397300cd764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdGVlbCUyMGNvdmVyfGVufDB8fHx8MTc1NjcxODU1M3ww&ixlib=rb-4.1.0&q=80&w=1080',
+      aiHint: 'metal sheets',
+    },
+    galleryImages: [
+      { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
+    ],
+    features: {
+      utilisation: [
+        'Bâtiments industriels et modulaires',
+        'Ateliers de production',
+        'Entrepôts',
+        'Centres commerciaux',
+        'Complexes sportifs',
+        'Ensembles scolaires et universitaires',
+        'ainsi que dans toute autre construction nécessitant une isolation thermique',
+      ],
+      definition: {
+        acier: 'Nuance S250, S280, S320',
+        parementExterne: {
+            profil: 'Profil type: 5.40.1000 mm',
+            description: '4 ondes avec mousse et 1 onde sans mousse',
+            epaisseur: 'Épaisseur: 0,5mm - 0,6 mm - 0,7 mm',
+        },
+        parementInterne: {
+            profil: 'Profil à nervuration en faible profondeur',
+            epaisseur: 'Épaisseur: 0,5mm - 0,6 mm - 0,7 mm',
+        },
+      },
+      revetement: 'polyester pour la face extérieure : 25 µm, polyester pour la face intérieure: 7µm',
+      ameIsolante: {
+        type: 'Mousse polyuréthane rigide sans CFC (avec du N-Pentane)',
+        conductivite: '0,023 W/m. °c',
+        densite: '38/41 kg/m³',
+      },
+      reactionAuFeu: 'B3: standard, B,S2-d0.',
+      tolerance: [
+        'Sur épaisseur ±3mm',
+        'Sur longueur ± 3mm',
+        'Sur largeur ± 3mm',
+        'Sur équerrage ± 3mm',
+      ],
+    },
+    tables: {
+      isolation: {
+        title: 'Coefficient d’isolation thermique',
+        headers: ['Épaisseur en (mm)', 'W/m²K', 'Kcal/m²h°c'],
+        rows: [
+          { 'Épaisseur en (mm)': 30, 'W/m²K': '0,55', 'Kcal/m²h°c': '0,48' },
+          { 'Épaisseur en (mm)': 35, 'W/m²K': '0,49', 'Kcal/m²h°c': '0,43' },
+          { 'Épaisseur en (mm)': 40, 'W/m²K': '0,44', 'Kcal/m²h°c': '0,38' },
+          { 'Épaisseur en (mm)': 60, 'W/m²K': '0,31', 'Kcal/m²h°c': '0,27' },
+        ],
+      },
+      dimensionnement: {
+        title: 'Dimensionnement du panneau',
+        headers: ['Type', 'Longueur (mm)', 'Largueur standard (mm)', 'Épaisseur (mm)', 'Poids Kg/m²'],
+        rows: [
+            { Type: 'TL70', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 30, 'Poids Kg/m²': 10.3 },
+            { Type: 'TL75', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 35, 'Poids Kg/m²': 10.5 },
+            { Type: 'TL80', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 40, 'Poids Kg/m²': 10.7 },
+            { Type: 'TL100', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 60, 'Poids Kg/m²': 11.5 },
+        ],
+      },
+      chargesPortees: {
+        title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)',
+        subtitle: 'Tôle en acier épaisseur 0,5mm',
+        headers: [
+            { title: 'Charge utile uniformément repartie', colspan: 2, isGroup: true },
+            { title: 'Epaisseur du panneau en mm (2 appuis)', colspan: 4, isGroup: true },
+            { title: 'Epaisseur du panneau en mm (3 appuis)', colspan: 4, isGroup: true },
+        ],
+        subheaders: ['Kg/m²', 'daN/m²', '30', '35', '40', '60', '30_3app', '35_3app', '40_3app', '60_3app'],
+        rows: [
+            { 'Kg/m²': 80, 'daN/m²': 87, '30': 345, '35': 365, '40': 390, '60': 485, '30_3app': 400, '35_3app': 425, '40_3app': 455, '60_3app': 560 },
+            { 'Kg/m²': 120, 'daN/m²': 177, '30': 290, '35': 310, '40': 335, '60': 415, '30_3app': 345, '35_3app': 365, '40_3app': 390, '60_3app': 485 },
+            { 'Kg/m²': 150, 'daN/m²': 147, '30': 265, '35': 285, '40': 305, '60': 375, '30_3app': 315, '35_3app': 335, '40_3app': 355, '60_3app': 440 },
+            { 'Kg/m²': 200, 'daN/m²': 196, '30': 235, '35': 250, '40': 270, '60': 340, '30_3app': 285, '35_3app': 305, '40_3app': 325, '60_3app': 400 },
+            { 'Kg/m²': 250, 'daN/m²': 245, '30': 210, '35': 225, '40': 245, '60': 305, '30_3app': 255, '35_3app': 275, '40_3app': 295, '60_3app': 360 },
+        ]
       }
-      /* 
-        Applying the theme variables to Tailwind.
-        This configures Tailwind to use your custom colors.
-      */
-      html {
-        font-family: 'Roboto', sans-serif;
+    },
+    implementationImages: [
+        { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
+        { src: 'https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
+    ],
+    pose: {
+      title: 'La pose de panneaux sandwichs',
+      decoupage: "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier.",
+      fixation: "Les panneaux doivent être fixés au sommet de chaque nervure sur les pannes d'extrémité, Sur les pannes intermédiaires. Lors de la pose, les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet, Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité, les chéneaux, les gouttières, les recouvrements."
+    },
+    etancheite: "Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une nervure femelle (sans mousse) permettant un assemblage par emboitement. La nervure mâle est fermée par une bande adhésive, et la nervure femelle d'un joint d'étanchéité à l'air",
+    sens: "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. il est de type gauche dans le sens inverse."
+  },
+  bardage: {
+    title: '2-PANNAUX SANDWICHS DE BARDAGE',
+    subtitle: '(Fixations cachées et visibles)',
+    image: {
+      src: '/images/product-imgaes/sandwich-panels/peb promo style  .png',
+      aiHint: 'cladding panels',
+    },
+    galleryImages: [
+      { src: '/media/bardage/bardage-main.png', alt: 'Panneaux sandwichs de bardage', aiHint: 'cladding sandwich panels' },
+    ],
+    features: {
+      utilisation: [
+        'Bâtiments industriels',
+        'Entrepôts',
+        'Centres logistiques',
+        'Grandes surfaces commerciales',
+        'Show-rooms',
+        'Salles de sport',
+      ],
+      definition: { 
+        acier: 'Nuance S250, S280, S320', 
+        parementExterne: {profil: 'Profil à nervurations trapézoïdales ou profil lisse', description: '', epaisseur: 'Épaisseur: 0,5mm - 0,6 mm - 0,7 mm'}, 
+        parementInterne: {profil: 'Profil à nervuration en faible profondeur', epaisseur: 'Épaisseur: 0,5mm - 0,6 mm'}
+      },
+      revetement: 'Polyester pour la face extérieure : 25 µm, polyester pour la face intérieure: 7µm',
+      ameIsolante: { type: 'Mousse polyuréthane rigide sans CFC (avec du N-Pentane)', conductivite: '0,023 W/m. °c', densite: '38/41 kg/m³'},
+      reactionAuFeu: 'B3: standard, B,S2-d0.',
+      tolerance: [
+        'Sur épaisseur ±3mm',
+        'Sur longueur ± 3mm',
+        'Sur largeur ± 3mm',
+        'Sur équerrage ± 3mm',
+      ],
+    },
+    implementationImages: [
+        { src: '/media/bardage/bardage-impl-1.png', alt: 'Implementation of cladding panels 1', aiHint: 'cladding panels implementation' },
+        { src: '/media/bardage/bardage-impl-2.png', alt: 'Implementation of cladding panels 2', aiHint: 'cladding panels building' },
+    ],
+    tables: {
+      isolation: { 
+        title: 'Coefficient d’isolation thermique', 
+        headers: ['Épaisseur en (mm)', 'W/m²K', 'Kcal/m²h°c'], 
+        rows: [
+          { 'Épaisseur en (mm)': 30, 'W/m²K': '0,55', 'Kcal/m²h°c': '0,48' },
+          { 'Épaisseur en (mm)': 40, 'W/m²K': '0,44', 'Kcal/m²h°c': '0,38' },
+          { 'Épaisseur en (mm)': 50, 'W/m²K': '0,36', 'Kcal/m²h°c': '0,31' },
+          { 'Épaisseur en (mm)': 60, 'W/m²K': '0,31', 'Kcal/m²h°c': '0,27' },
+          { 'Épaisseur en (mm)': 80, 'W/m²K': '0,24', 'Kcal/m²h°c': '0,21' },
+          { 'Épaisseur en (mm)': 100, 'W/m²K': '0,20', 'Kcal/m²h°c': '0,17' },
+        ] 
+      },
+      dimensionnement: { 
+        title: 'Dimensionnement du panneau', 
+        headers: ['Type', 'Longueur (mm)', 'Largueur standard (mm)', 'Épaisseur (mm)', 'Poids Kg/m²'], 
+        rows: [
+            { Type: 'TBN/L 70', 'Longueur (mm)': 12000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 30, 'Poids Kg/m²': 10.3 },
+            { Type: 'TBN/L 80', 'Longueur (mm)': 12000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 40, 'Poids Kg/m²': 10.7 },
+            { Type: 'TBN/L 90', 'Longueur (mm)': 12000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 50, 'Poids Kg/m²': 11.1 },
+            { Type: 'TBN/L 100', 'Longueur (mm)': 12000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 60, 'Poids Kg/m²': 11.5 },
+            { Type: 'TBN/L 120', 'Longueur (mm)': 10000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 80, 'Poids Kg/m²': 12.3 },
+            { Type: 'TBN/L 140', 'Longueur (mm)': 8000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 100, 'Poids Kg/m²': 13.1 },
+        ] 
+      },
+       chargesPortees: { 
+        title: 'Portées admissibles (m)', 
+        subtitle: 'Charge uniformément répartie (daN/m²)',
+        headers: [
+            { title: 'Épaisseur (mm)', colspan: 1, isGroup: false },
+            { title: '40', colspan: 1, isGroup: false },
+            { title: '60', colspan: 1, isGroup: false },
+            { title: '80', colspan: 1, isGroup: false },
+            { title: '100', colspan: 1, isGroup: false },
+        ],
+        subheaders: ['Épaisseur (mm)', '40', '60', '80', '100'],
+        rows: [
+            { 'Épaisseur (mm)': 30, '40': 3.10, '60': 2.70, '80': 2.50, '100': 2.30},
+            { 'Épaisseur (mm)': 40, '40': 3.40, '60': 3.00, '80': 2.70, '100': 2.50},
+            { 'Épaisseur (mm)': 50, '40': 3.60, '60': 3.20, '80': 2.90, '100': 2.70},
+            { 'Épaisseur (mm)': 60, '40': 3.80, '60': 3.40, '80': 3.10, '100': 2.90},
+            { 'Épaisseur (mm)': 80, '40': 4.30, '60': 3.80, '80': 3.50, '100': 3.30},
+            { 'Épaisseur (mm)': 100, '40': 4.70, '60': 4.20, '80': 3.90, '100': 3.60},
+        ] 
       }
-      body {
-        background-color: hsl(var(--background));
-        color: hsl(var(--foreground));
-      }
-      .font-headline {
-        font-family: 'Montserrat', sans-serif;
-      }
-      .bg-primary { background-color: hsl(var(--primary)); }
-      .text-primary { color: hsl(var(--primary)); }
-      .bg-secondary { background-color: hsl(var(--secondary)); }
-      .text-secondary-foreground { color: hsl(var(--secondary-foreground)); }
-      .bg-accent { background-color: hsl(var(--accent)); }
-      .text-accent { color: hsl(var(--accent)); }
-      .text-accent-foreground { color: hsl(var(--accent-foreground)); }
-      .border-accent { border-color: hsl(var(--accent)); }
-      .text-muted-foreground { color: hsl(var(--muted-foreground)); }
-      .shadow-lg { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
-      .border { border-width: 1px; border-color: hsl(var(--border)); }
-      .rounded-lg { border-radius: var(--radius); }
-
-      /* Custom styles for the interactive elements */
-      .product-button.active .icon-container {
-        background-color: hsl(var(--accent));
-        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-      }
-      .product-button.active .icon-container svg {
-        color: hsl(var(--accent-foreground));
-      }
-      .product-button.active .button-label {
-        background-color: hsl(var(--accent));
-        color: hsl(var(--accent-foreground));
-        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-      }
-      .product-button .icon-container {
-        background-color: hsl(var(--secondary));
-      }
-      .product-button .button-label {
-        background-color: hsl(var(--secondary));
-        color: hsl(var(--primary));
-      }
-      /* Hide all product content by default */
-      .product-content {
-        display: none;
-      }
-      /* Show the active product content */
-      .product-content.active {
-        display: block;
-      }
-    </style>
-    <!-- Google Fonts for typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-</head>
-<body class="bg-white">
-
-    <section id="product-details" class="py-20">
-        <div class="container mx-auto px-4 max-w-screen-2xl">
-            <!-- SECTION: Page Header -->
-            <div class="text-center mb-20">
-                <h1 class="font-headline text-5xl font-bold text-primary mb-6">Panneaux Sandwichs Haute Performance</h1>
-                <p class="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
-                    Découvrez notre gamme complète de panneaux sandwichs pour bâtiments préfabriqués (PEB). Conçus pour offrir une isolation thermique et acoustique supérieure, nos panneaux sont la solution idéale pour les toitures, les bardages et les chambres froides.
-                </p>
-            </div>
-
-            <!-- SECTION: Product Selection Buttons -->
-            <div class="mb-24 flex flex-wrap justify-center items-start gap-x-8 gap-y-12">
-                <!-- Button 1: Panneaux de Couverture -->
-                <div id="btn-couverture" class="product-button flex flex-col items-center gap-4 cursor-pointer group active">
-                    <div class="icon-container w-24 h-24 rounded-full flex items-center justify-center border-4 border-white transition-all duration-300 transform group-hover:scale-110">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-primary transition-colors duration-300"><rect x="4" y="4" width="16" height="16" rx="2"></rect><line x1="10" y1="4" x2="10" y2="20"></line><line x1="16" y1="4" x2="16" y2="20"></line></svg>
-                    </div>
-                    <button class="button-label h-auto py-2 px-6 transition-all duration-300 text-center rounded-md">
-                        <span class="text-center text-base font-semibold">Panneaux de Couverture</span>
-                    </button>
-                </div>
-                <!-- Button 2: Panneaux de Bardage -->
-                <div id="btn-bardage" class="product-button flex flex-col items-center gap-4 cursor-pointer group">
-                    <div class="icon-container w-24 h-24 rounded-full flex items-center justify-center border-4 border-white transition-all duration-300 transform group-hover:scale-110">
-                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-10 w-10 text-primary transition-colors duration-300"><path d="M3 2h18v4H3zM4 6h16v4H4zM4 10h16v4H4zM4 14h16v4H4zM3 18h18v4H3z"></path></svg>
-                    </div>
-                    <button class="button-label h-auto py-2 px-6 transition-all duration-300 text-center rounded-md">
-                        <span class="text-center text-base font-semibold">Panneaux de Bardage</span>
-                    </button>
-                </div>
-                <!-- Button 3: Panneaux Frigorifiques -->
-                <div id="btn-frigorifique" class="product-button flex flex-col items-center gap-4 cursor-pointer group">
-                    <div class="icon-container w-24 h-24 rounded-full flex items-center justify-center border-4 border-white transition-all duration-300 transform group-hover:scale-110">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-primary transition-colors duration-300"><path d="M20 7.5a2.5 2.5 0 0 0-2.5-2.5c-1.54 0-2.5 1.5-2.5 1.5s-.96-1.5-2.5-1.5A2.5 2.5 0 0 0 10 7.5c0 .98 1.14 2.5 2.5 2.5S15 8.48 15 7.5Z"></path><path d="m5.1 11.2-1.3-2.6a.5.5 0 0 1 .5-.6h14.4a.5.5 0 0 1 .5.6l-1.3 2.6C17.3 12 16 13 16 13.7V18a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-4.3c0-.7-1.3-1.7-1.9-2.5Z"></path></svg>
-                    </div>
-                    <button class="button-label h-auto py-2 px-6 transition-all duration-300 text-center rounded-md">
-                        <span class="text-center text-base font-semibold">Panneaux Frigorifiques</span>
-                    </button>
-                </div>
-                <!-- Button 4: Tôle Nervurée -->
-                <div id="btn-toleNervuree" class="product-button flex flex-col items-center gap-4 cursor-pointer group">
-                    <div class="icon-container w-24 h24 rounded-full flex items-center justify-center border-4 border-white transition-all duration-300 transform group-hover:scale-110">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-primary transition-colors duration-300 rotate-[-90deg]"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
-                    </div>
-                    <button class="button-label h-auto py-2 px-6 transition-all duration-300 text-center rounded-md">
-                        <span class="text-center text-base font-semibold">Tôle Nervurée</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- SECTION: Main Content Area -->
-            <div class="grid lg:grid-cols-3 gap-x-24 gap-y-16">
-                <!-- Left Column: Image Gallery -->
-                <div class="lg:col-span-1 h-max space-y-8">
-                    <!-- Image content will be dynamically updated by JS -->
-                    <div id="product-image-gallery">
-                        <!-- Initial image is for the default product (Couverture) -->
-                        <div class="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
-                           <img src="/media/bardage/bardage-main.png" alt="Panneaux sandwichs de couverture" width="800" height="600" class="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: Product Details -->
-                <div class="lg:col-span-2">
-                    
-                    <!-- Content for Couverture -->
-                    <div id="content-couverture" class="product-content active">
-                        <h2 class="font-headline text-5xl font-bold text-accent mb-16">1-PANNEAUX SANDWICHS DE COUVERTURE</h2>
-                        <div class="border-none shadow-none p-0">
-                            <!-- Content specific to Couverture goes here -->
-                            <h3 class="font-headline text-3xl font-bold text-primary mb-8">CARACTÉRISTIQUE PRODUIT</h3>
-                            <div class="space-y-4 text-lg">
-                                <p><strong>Utilisation:</strong> Bâtiments industriels, entrepôts, etc.</p>
-                                <p><strong>Définition:</strong> Acier Nuance S250, S280, S320.</p>
-                                <!-- More details... -->
-                            </div>
-                            <h3 class="font-headline text-3xl font-bold text-primary mt-12 mb-8">TABLEAUX TECHNIQUES</h3>
-                            <p>Table data for Couverture would be here...</p>
-                        </div>
-                    </div>
-
-                    <!-- Content for Bardage -->
-                    <div id="content-bardage" class="product-content">
-                        <h2 class="font-headline text-5xl font-bold text-accent mb-16">2-PANNAUX SANDWICHS DE BARDAGE</h2>
-                        <div class="border-none shadow-none p-0">
-                            <!-- Content specific to Bardage goes here -->
-                            <h3 class="font-headline text-3xl font-bold text-primary mb-8">CARACTÉRISTIQUE PRODUIT</h3>
-                            <div class="space-y-4 text-lg">
-                                <p><strong>Utilisation:</strong> Façades de bâtiments, show-rooms, etc.</p>
-                                <p><strong>Définition:</strong> Fixations cachées et visibles.</p>
-                                <!-- More details... -->
-                            </div>
-                            <h3 class="font-headline text-3xl font-bold text-primary mt-12 mb-8">TABLEAUX TECHNIQUES</h3>
-                            <p>Table data for Bardage would be here...</p>
-                        </div>
-                    </div>
-
-                    <!-- Content for Frigorifique -->
-                    <div id="content-frigorifique" class="product-content">
-                        <h2 class="font-headline text-5xl font-bold text-accent mb-16">3-PANNEAUX SANDWICHS FRIGORIFIQUE</h2>
-                        <div class="border-none shadow-none p-0">
-                            <!-- Content specific to Frigorifique goes here -->
-                            <h3 class="font-headline text-3xl font-bold text-primary mb-8">CARACTÉRISTIQUE PRODUIT</h3>
-                            <div class="space-y-4 text-lg">
-                                <p><strong>Utilisation:</strong> Chambres froides, structures agro-alimentaires.</p>
-                                <p><strong>Ame isolante:</strong> Mousse polyurethane rigide.</p>
-                                <!-- More details... -->
-                            </div>
-                            <h3 class="font-headline text-3xl font-bold text-primary mt-12 mb-8">TABLEAUX TECHNIQUES</h3>
-                            <p>Table data for Frigorifique would be here...</p>
-                        </div>
-                    </div>
-
-                    <!-- Content for Tôle Nervurée -->
-                    <div id="content-toleNervuree" class="product-content">
-                        <h2 class="font-headline text-5xl font-bold text-accent mb-16">4-TÔLE NERVURÉE</h2>
-                        <div class="border-none shadow-none p-0">
-                            <!-- Content specific to Tôle Nervurée goes here -->
-                            <h3 class="font-headline text-3xl font-bold text-primary mb-8">CARACTÉRISTIQUE PRODUIT</h3>
-                            <div class="space-y-4 text-lg">
-                                <p><strong>Utilisation:</strong> Bâtiments industriels, ateliers de production.</p>
-                                <p><strong>Revêtement:</strong> Galvanisé seul qualité Z200.</p>
-                                <!-- More details... -->
-                            </div>
-                            <h3 class="font-headline text-3xl font-bold text-primary mt-12 mb-8">TABLEAUX TECHNIQUES</h3>
-                            <p>Table data for Tôle Nervurée would be here...</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-<script>
-    // This script provides the interactivity for the page.
-    document.addEventListener('DOMContentLoaded', function () {
-        // --- DATA ---
-        // This is a simplified version of the data from src/config/products-data.ts
-        // A developer can use this to populate the full content.
-        const productData = {
-            couverture: {
-                title: '1-PANNEAUX SANDWICHS DE COUVERTURE',
-                imageSrc: '/media/bardage/bardage-main.png',
-                imageAlt: 'Panneaux sandwichs de couverture'
-            },
-            bardage: {
-                title: '2-PANNAUX SANDWICHS DE BARDAGE',
-                imageSrc: '/media/bardage/bardage-main.png',
-                imageAlt: 'Panneaux sandwichs de bardage'
-            },
-            frigorifique: {
-                title: '3-PANNEaux SANDWICHS FRIGORIFIQUE',
-                imageSrc: '/media/frigorifique/frigorifique-main.png',
-                imageAlt: 'Panneaux sandwichs frigorifiques'
-            },
-            toleNervuree: {
-                title: '4-TÔLE NERVURÉE',
-                imageSrc: '/media/tole-nervuree/tole-main.png',
-                imageAlt: 'Tôle nervurée'
-            }
-        };
-
-        // --- DOM ELEMENTS ---
-        const buttons = document.querySelectorAll('.product-button');
-        const contents = document.querySelectorAll('.product-content');
-        const imageGallery = document.getElementById('product-image-gallery');
-
-        // --- FUNCTION to handle click events ---
-        function handleButtonClick(event) {
-            // Get the ID of the clicked button container (e.g., 'btn-couverture')
-            const clickedButtonId = event.currentTarget.id;
-            
-            // Derive the product key (e.g., 'couverture') from the button ID
-            const productKey = clickedButtonId.replace('btn-', '');
-
-            // 1. Update Buttons: Make the clicked button active, others inactive.
-            buttons.forEach(button => {
-                if (button.id === clickedButtonId) {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
-                }
-            });
-
-            // 2. Update Content: Show the content for the selected product, hide others.
-            contents.forEach(content => {
-                if (content.id === `content-${productKey}`) {
-                    content.classList.add('active');
-                } else {
-                    content.classList.remove('active');
-                }
-            });
-
-            // 3. Update Image Gallery
-            const activeProductData = productData[productKey];
-            if (activeProductData && imageGallery) {
-                imageGallery.innerHTML = `
-                    <div class="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
-                       <img src="${activeProductData.imageSrc}" alt="${activeProductData.imageAlt}" width="800" height="600" class="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
-                    </div>
-                `;
-            }
+    },
+    pose: { title: 'La pose de panneaux sandwichs', decoupage: "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier.", fixation: "Les panneaux doivent être fixés au sommet de chaque nervure sur les pannes d'extrémité, Sur les pannes intermédiaires. Lors de la pose, les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet, Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité, les chéneaux, les gouttières, les recouvrements."},
+    etancheite: "Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une nervure femelle (sans mousse) permettant un assemblage par emboitement. La nervure mâle est fermée par une bande adhésive, et la nervure femelle d'un joint d'étanchéité à l'air",
+    sens: "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. il est de type gauche dans le sens inverse."
+  },
+  frigorifique: {
+    title: '3-PANNEAUX SANDWICHS FRIGORIFIQUE',
+    subtitle: '',
+    image: {
+        src: '/images/product-imgaes/sandwich-panels/sandwich pannel.png',
+        aiHint: 'refrigeration panels',
+    },
+    galleryImages: [
+      { src: '/media/frigorifique/frigorifique-main.png', alt: 'Panneaux sandwichs frigorifiques', aiHint: 'refrigeration sandwich panels' },
+    ],
+    features: {
+        utilisation: [
+            'Bâtiments industriels et modulaires',
+            'Ateliers de production',
+            'Entrepôts',
+            'Complexes sportifs',
+            'Centres commerciaux',
+            'Ensembles scolaires et universitaires',
+            'Chambres froides',
+            'Les structures agricoles & agro-alimentaires',
+        ],
+        definition: {
+            acier: 'Nuance S250, S280, S320',
+            parementExterne: { profil: 'Profil à nervurassions en faible profondeur, pour le type lisse pas de nervurassions.', description: '', epaisseur: 'Épaisseur: 0,5mm - 0,6 mm - 0,7 mm (Selon la demande du Client)' },
+            parementInterne: { profil: '', epaisseur: '' },
+        },
+        revetement: 'polyester pour la face extérieure : 25 µm, polyester pour la face intérieure: 7µm',
+        ameIsolante: {
+            type: 'Mousse polyurethane rigide sans CFC (avec du N-Pentane)',
+            conductivite: '0,023 W/m. °c',
+            densite: '38/41 kg/m³',
+        },
+        reactionAuFeu: 'B3: standard, B,S2-d0.',
+        tolerance: [
+            'Sur épaisseur ±3mm',
+            'Sur longueur ± 3mm',
+            'Sur largeur ± 3mm',
+            'Sur équerrage ± 3mm',
+        ],
+    },
+    implementationImages: [
+        { src: '/media/frigorifique/frigorifique-impl-1.png', alt: 'Implementation of refrigeration panels 1', aiHint: 'refrigeration panels implementation' },
+        { src: '/media/frigorifique/frigorifique-impl-2.png', alt: 'Implementation of refrigeration panels 2', aiHint: 'refrigeration panels building' },
+    ],
+    tables: {
+        isolation: {
+            title: 'Coefficient d’isolation thermique',
+            headers: ['Épaisseur en mm', 'W/m²K', 'Kcal/m²h°c'],
+            rows: [
+                { 'Épaisseur en mm': 80, 'W/m²K': '0,26', 'Kcal/m²h°c': '0,23' },
+                { 'Épaisseur en mm': 100, 'W/m²K': '0,21', 'Kcal/m²h°c': '0,18' },
+                { 'Épaisseur en mm': 120, 'W/m²K': '0,18', 'Kcal/m²h°c': '0,15' },
+                { 'Épaisseur en mm': 150, 'W/m²K': '0,14', 'Kcal/m²h°c': '0,12' },
+                { 'Épaisseur en mm': 180, 'W/m²K': '0,12', 'Kcal/m²h°c': '0,10' },
+                { 'Épaisseur en mm': 200, 'W/m²K': '0,11', 'Kcal/m²h°c': '0,09' },
+            ],
+        },
+        dimensionnement: {
+            title: 'Dimensionnement du panneau',
+            headers: ['Type', 'Longueur (mm)', 'Largueur standard (mm)', 'Épaisseur (mm)', 'Poids Kg/m²'],
+            rows: [
+                { 'Type': 'LL80', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 80, 'Poids Kg/m²': 11.6 },
+                { 'Type': 'LL100', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 100, 'Poids Kg/m²': 12.40 },
+                { 'Type': 'LL120', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 120, 'Poids Kg/m²': 13.40 },
+                { 'Type': 'LL150', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 150, 'Poids Kg/m²': 10.40 },
+                { 'Type': 'LL180', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 180, 'Poids Kg/m²': 15.6 },
+                { 'Type': 'LL200', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 200, 'Poids Kg/m²': 16.4 },
+            ],
+        },
+        chargesPortees: {
+            title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m²)',
+            subtitle: 'Tôle en acier épaisseur 0,5mm',
+            headers: [
+                { title: 'Charge utile uniformément repartie', colspan: 2, isGroup: true },
+                { title: 'Epaisseur du panneau en mm (2 appuis)', colspan: 6, isGroup: true },
+                { title: 'Epaisseur du panneau en mm (3 appuis)', colspan: 6, isGroup: true },
+            ],
+            subheaders: ['Kg/m²', 'daN/m²', '80', '100', '120', '150', '180', '200', '80_3app', '100_3app', '120_3app', '150_3app', '180_3app', '200_3app'],
+            rows: [
+                { 'Kg/m²': 60, 'daN/m²': 58, '80': 545, '100': 635, '120': 715, '150': 790, '180': 845, '200': 870, '80_3app': 620, '100_3app': 725, '120_3app': 805, '150_3app': 905, '180_3app': 975, '200_3app': 1035 },
+                { 'Kg/m²': 80, 'daN/m²': 78, '80': 490, '100': 570, '120': 640, '150': 700, '180': 740, '200': 765, '80_3app': 565, '100_3app': 655, '120_3app': 735, '150_3app': 805, '180_3app': 865, '200_3app': 920 },
+                { 'Kg/m²': 100, 'daN/m²': 98, '80': 450, '100': 525, '120': 590, '150': 640, '180': 670, '200': 690, '80_3app': 520, '100_3app': 605, '120_3app': 680, '150_3app': 740, '180_3app': 800, '200_3app': 855 },
+                { 'Kg/m²': 120, 'daN/m²': 117, '80': 420, '100': 490, '120': 550, '150': 590, '180': 610, '200': 625, '80_3app': 485, '100_3app': 565, '120_3app': 635, '150_3app': 685, '180_3app': 735, '200_3app': 755 },
+                { 'Kg/m²': 140, 'daN/m²': 137, '80': 395, '100': 460, '120': 520, '150': 545, '180': 555, '200': 560, '80_3app': 460, '100_3app': 535, '120_3app': 600, '150_3app': 640, '180_3app': 675, '200_3app': 700 },
+                { 'Kg/m²': 160, 'daN/m²': 156, '80': 375, '100': 435, '120': 490, '150': 515, '180': 525, '200': 530, '80_3app': 435, '100_3app': 510, '120_3app': 575, '150_3app': 605, '180_3app': 630, '200_3app': 650 },
+            ]
         }
-
-        // --- EVENT LISTENERS ---
-        // Attach a click event listener to each button.
-        buttons.forEach(button => {
-            button.addEventListener('click', handleButtonClick);
-        });
-    });
-</script>
-
-</body>
-</html>
+    },
+    pose: {
+        title: 'La pose de panneaux sandwichs',
+        decoupage: "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier.",
+        fixation: "Les panneaux doivent être fixés au sommet de chaque nervure sur les pannes d'extrémité, Sur les pannes intermédiaires. Lors de la pose, les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet, Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité, les chéneaux, les gouttières, les recouvrements."
+    },
+    etancheite: "Les panneaux sandwichs de bardages présentent une rive mâle et une rive femelle permettant un assemblage par emboitement. Les nervures mâle et femelle sont fermées par une bande adhésive. Tous les panneaux bardage sont munis sur la nervure femelle d'un joint d'étanchéité à l'air; leurs parements pré-laqués sont protégés par un film adhésif à retirer à la pose.",
+    sens: ''
+  },
+  toleNervuree: {
+    title: '4-TÔLE NERVURÉE',
+    subtitle: 'TOLE NERVURÉE TN40',
+     image: {
+      src: 'https://images.unsplash.com/photo-1706029831375-c090c70c161d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtZXRhbCUyMHNoZWV0JTIwfGVufDB8fHx8MTc1NTA5MDY2OHww&ixlib=rb-4.1.0&q=80&w=1080',
+      aiHint: 'ribbed steel sheet',
+    },
+    galleryImages: [
+      { src: '/media/tole-nervuree/tole-main.png', alt: 'Tôle nervurée', aiHint: 'ribbed steel sheet' },
+    ],
+    features: {
+      utilisation: [
+        'Bâtiments industriels',
+        'Ateliers de production',
+        'Entrepôts agricoles',
+        'Centres commerciaux',
+      ],
+      definition: { acier: '', parementExterne: {profil: '', description: '', epaisseur: ''}, parementInterne: {profil: '', epaisseur: ''}},
+      revetement: 'Sans spécifications particulière les profils nervurés sont livrés en qualité standard. Galvanisé seul qualité Z200. Galvanisé pré-laqué, face extérieure finition laquée polyester ép. 25µ',
+      ameIsolante: { type: '', conductivite: '', densite: ''},
+      reactionAuFeu: 'Classement de réaction au feu M0',
+      tolerance: [],
+      miseEnOeuvre: {
+        title: "Mise en œuvre",
+        manutention: "Manutention : Les profils ne doivent pas être choqué ou griffés pour éviter toute mise à nu du métal."
+      },
+      caracteristiquesGeometriques: {
+        title: "Caractéristiques Géométriques",
+        image: {
+          src: '/media/tole-nervuree/tole-geometrie.png',
+          aiHint: 'geometric characteristics diagram'
+        }
+      }
+    },
+    implementationImages: [
+        { src: '/media/tole-nervuree/tole-impl-1.png', alt: 'Implementation of ribbed steel sheet 1', aiHint: 'ribbed steel sheet implementation' },
+        { src: '/media/tole-nervuree/tole-impl-2.png', alt: 'Implementation of ribbed steel sheet 2', aiHint: 'ribbed steel sheet building' },
+    ],
+    tables: {
+        isolation: { title: '', headers: [], rows: [] },
+        dimensionnement: { 
+          title: '', 
+          headers: ['Type', 'Longueur (ml)', 'Largeur standard (mm)', 'Épaisseurs (mm)', 'Poids (kg/m²)', 'J (cm²/m)', 'W (cm³/m)', 'Système de revêtement'], 
+          rows: [
+            { type: 'TN 40', longueur: 1500, largeur: 1000, details: [
+              { epaisseur: 0.5, poids: 4.91, j: 12.3, w: 3.92, systeme: 'Galvanisée Pré laquée' },
+              { epaisseur: 0.6, poids: 5.90, j: 16.05, w: 5.30, systeme: 'Galvanisée Pré laquée' },
+              { epaisseur: 0.7, poids: 6.88, j: 18.72, w: 6.18, systeme: 'Galvanisée Pré laquée' },
+              { epaisseur: 1.0, poids: 9.81, j: 26.75, w: 8.83, systeme: 'Galvanisée Pré laquée' },
+            ]}
+          ] 
+        },
+        chargesPortees: { 
+            title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)',
+            subtitle: '',
+            headers: [
+              { title: 'Type / EP (mm)', colspan: 2, isGroup: true },
+              { title: 'Portée (m)', colspan: 10, isGroup: true },
+            ],
+            subheaders: ['type', 'epaisseur', '1,00', '1,25', '1,50', '1,75', '2,00', '2,25', '2,50', '2,75', '3', '3,25'],
+            rows: [
+              { type: '2 appuis', epaisseur: 0.5, '1,00': 439, '1,25': 281, '1,50': 185, '1,75': 143, '2,00': 109, '2,25': 86, '2,50': 63, '2,75': 47, '3': 36, '3,25': null },
+              { type: '2 appuis', epaisseur: 0.6, '1,00': 614, '1,25': 393, '1,50': 273, '1,75': 200, '2,00': 153, '2,25': 115, '2,50': 84, '2,75': 63, '3': 48, '3,25': 38 },
+              { type: '2 appuis', epaisseur: 0.7, '1,00': 716, '1,25': 458, '1,50': 318, '1,75': 234, '2,00': 179, '2,25': 135, '2,50': 98, '2,75': 73, '3': 57, '3,25': null },
+              { type: '3 appuis', epaisseur: 0.5, '1,00': 570, '1,25': 365, '1,50': 252, '1,75': 180, '2,00': 141, '2,25': 111, '2,50': 90, '2,75': 67, '3': 51, '3,25': 40 },
+              { type: '3 appuis', epaisseur: 0.6, '1,00': 768, '1,25': 491, '1,50': 341, '1,75': 251, '2,00': 192, '2,25': 152, '2,50': 123, '2,75': 101, '3': 81, '3,25': 64 },
+              { type: '3 appuis', epaisseur: 0.7, '1,00': 896, '1,25': 573, '1,50': 398, '1,75': 292, '2,00': 224, '2,25': 177, '2,50': 143, '2,75': 118, '3': 95, '3,25': 74 },
+              { type: '3 appuis', epaisseur: 1.0, '1,00': 1280, '1,25': 819, '1,50': 569, '1,75': 418, '2,00': 320, '2,25': 253, '2,50': 204, '2,75': 169, '3': 135, '3,25': 106 },
+            ]
+        }
+    },
+    pose: { title: '', decoupage: '', fixation: ''},
+    etancheite: '',
+    sens: ''
+  },
+};

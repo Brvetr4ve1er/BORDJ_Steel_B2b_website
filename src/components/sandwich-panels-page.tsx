@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { useState } from 'react';
-import { ChevronsRight, Snowflake, Layers } from 'lucide-react';
+import { ChevronsRight, Snowflake } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
@@ -37,7 +37,7 @@ const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" stroke="currentColor" {...props}>
       <path d="M3 2h18v4H3zM4 6h16v4H4zM4 10h16v4H4zM4 14h16v4H4zM3 18h18v4H3z" />
     </svg>
 );
@@ -70,7 +70,7 @@ export function SandwichPanelsPage() {
         </AnimatedWrapper>
         
         <AnimatedWrapper animation="fade-in">
-           <div className="mb-24 flex flex-wrap justify-center items-center gap-x-8 gap-y-12">
+           <div className="mb-24 flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
             {productButtons.map(({ key, label, icon: Icon }) => (
               <div key={key} className="flex flex-col items-center gap-4 cursor-pointer group" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
                 <div className={cn(
@@ -85,6 +85,7 @@ export function SandwichPanelsPage() {
                 </div>
                 <Button
                     variant={activeProductKey === key ? 'destructive' : 'outline'}
+                    onClick={() => setActiveProductKey(key as keyof typeof productData)}
                     className={cn(
                         "h-auto py-2 px-6 transition-all duration-300 text-center",
                         activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
@@ -249,33 +250,17 @@ export function SandwichPanelsPage() {
                                                 )}
                                             </TableHeader>
                                             <TableBody>
-                                               {(activeProduct.tables.chargesPortees.rows as any[]).map((row: any, i: number) => {
+                                                {(activeProduct.tables.chargesPortees.rows as any[]).map((row: any, i: number) => {
                                                     const subheaders = activeProduct.tables.chargesPortees.subheaders || [];
-                                                    if (activeProductKey === 'toleNervuree' && 'type' in row) {
-                                                      const rowData = row as { type: string; epaisseur: number; [key: string]: any };
-                                                      return (
-                                                          <TableRow key={i}>
-                                                              <TableCell className="text-center font-semibold">{rowData['type']}</TableCell>
-                                                              <TableCell className="text-center font-semibold">{rowData['epaisseur']}</TableCell>
-                                                              {subheaders.slice(2).map((key, j) => (
-                                                                  <TableCell key={j} className="text-center">
-                                                                      {rowData[key] ?? ''}
-                                                                  </TableCell>
-                                                              ))}
-                                                          </TableRow>
-                                                      );
-                                                    } else {
-                                                      const rowData = row as { [key: string]: any };
-                                                      return (
-                                                          <TableRow key={i}>
-                                                              {subheaders.map((key, j) => (
-                                                                  <TableCell key={j} className="text-center">
-                                                                      {rowData[key] ?? ''}
-                                                                  </TableCell>
-                                                              ))}
-                                                          </TableRow>
-                                                      );
-                                                    }
+                                                    return (
+                                                        <TableRow key={i}>
+                                                            {subheaders.map((key, j) => (
+                                                                <TableCell key={j} className="text-center">
+                                                                    {row[key] ?? ''}
+                                                                </TableCell>
+                                                            ))}
+                                                        </TableRow>
+                                                    );
                                                 })}
                                             </TableBody>
                                         </Table>
@@ -334,5 +319,3 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
-
-    
