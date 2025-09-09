@@ -37,14 +37,18 @@ const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M4 4h16v16H4z" />
-      <path d="M4 8h16" />
-      <path d="M4 12h16" />
-      <path d="M4 16h16" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
+      <path d="M4 6h16" />
+      <path d="M4 10h16" />
+      <path d="M4 14h16" />
+      <path d="M4 18h16" />
+      <rect x="3" y="3" width="18" height="18" rx="2" />
     </svg>
 );
 
+const FrigorifiqueIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <Snowflake {...props} />
+);
 
 export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
@@ -53,7 +57,7 @@ export function SandwichPanelsPage() {
   const productButtons = [
     { key: 'couverture', label: 'Panneaux de Couverture', icon: CouvertureIcon },
     { key: 'bardage', label: 'Panneaux de Bardage', icon: BardageIcon },
-    { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: Snowflake },
+    { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: FrigorifiqueIcon },
     { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
   ];
 
@@ -241,25 +245,33 @@ export function SandwichPanelsPage() {
                                             )}
                                         </TableHeader>
                                         <TableBody>
-                                            {activeProduct.tables.chargesPortees.rows.map((row: any, i: number) => (
-                                                <TableRow key={i}>
-                                                    {(activeProduct.tables.chargesPortees.subheaders ?? (typeof row === 'object' && row ? Object.keys(row) : [])).map((key: string, j: number) => {
-                                                        let cellValue;
-                                                        if (activeProductKey === 'toleNervuree' && typeof row === 'object' && row !== null) {
-                                                            const subheaderKey = activeProduct.tables.chargesPortees.subheaders?.[j];
-                                                            if (j === 0) {
-                                                                return <TableCell key={j} className="text-center font-semibold">{row.epaisseur}</TableCell>;
-                                                            }
-                                                            cellValue = row[subheaderKey as keyof typeof row];
-                                                        } else if (typeof row === 'object' && row !== null) {
-                                                            const headers = activeProduct.tables.chargesPortees.subheaders;
-                                                            const currentHeader = headers ? headers[j] : Object.keys(row)[j];
-                                                            cellValue = row[currentHeader as keyof typeof row];
-                                                        }
-                                                        return <TableCell key={j} className="text-center">{cellValue}</TableCell>;
-                                                    })}
-                                                </TableRow>
-                                            ))}
+                                            {activeProduct.tables.chargesPortees.rows.map((row: any, i: number) => {
+                                                const subheaders = activeProduct.tables.chargesPortees.subheaders || [];
+                                                if (activeProductKey === 'toleNervuree') {
+                                                    // Special rendering for toleNervuree
+                                                    return (
+                                                        <TableRow key={i}>
+                                                            <TableCell className="text-center font-semibold">{row.epaisseur}</TableCell>
+                                                            {subheaders.slice(1).map((key: string, j: number) => (
+                                                                <TableCell key={`${i}-${j}`} className="text-center">
+                                                                    {row[key as keyof typeof row] ?? ''}
+                                                                </TableCell>
+                                                            ))}
+                                                        </TableRow>
+                                                    );
+                                                } else {
+                                                    // Standard rendering for other products
+                                                    return (
+                                                        <TableRow key={i}>
+                                                            {subheaders.map((key: string, j: number) => (
+                                                                <TableCell key={`${i}-${j}`} className="text-center">
+                                                                    {row[key as keyof typeof row] ?? ''}
+                                                                </TableCell>
+                                                            ))}
+                                                        </TableRow>
+                                                    );
+                                                }
+                                            })}
                                         </TableBody>
                                     </Table>
                                 </div>
@@ -317,5 +329,3 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
-
-    

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export - Panneaux Sandwichs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        /* Copied from src/app/globals.css */
+        @layer base {
+          :root {
+            --background: 0 0% 100%;
+            --foreground: 0 0% 29.4%; /* #4B4B4B */
+            --card: 0 0% 100%;
+            --card-foreground: 0 0% 29.4%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 0 0% 29.4%;
+            --primary: 0 0% 29.4%;
+            --primary-foreground: 0 0% 100%;
+            --secondary: 0 0% 96.1%; /* #D9D9D9 */
+            --secondary-foreground: 0 0% 29.4%;
+            --muted: 0 0% 96.1%;
+            --muted-foreground: 0 0% 45.1%;
+            --accent: 358 66% 45.1%; /* #C1272D */
+            --accent-hover: 358 66% 35%;
+            --accent-foreground: 0 0% 100%;
+            --destructive: 358 66% 45.1%;
+            --destructive-foreground: 0 0% 100%;
+            --border: 0 0% 89.8%;
+            --input: 0 0% 89.8%;
+            --ring: 0 0% 29.4%;
+            --chart-1: 12 76% 61%;
+            --chart-2: 173 58% 39%;
+            --chart-3: 197 37% 24%;
+            --chart-4: 43 74% 66%;
+            --chart-5: 27 87% 67%;
+            --radius: 0.5rem;
+          }
+        }
+
+        @layer base {
+          * {
+            @apply border-border;
+          }
+          body {
+            @apply bg-background text-foreground;
+            font-family: 'Roboto', sans-serif;
+          }
+          section {
+            @apply w-full py-16 md:py-24 lg:py-32;
+          }
+          /* Added font families for demonstration */
+          .font-headline {
+            font-family: 'Montserrat', sans-serif;
+          }
+        }
+    </style>
+    <!-- Adding Google Fonts for display purposes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-white">
+
+    <!-- 
+      This is a static HTML export of the Panneaux Sandwichs page.
+      The structure is derived from `src/components/sandwich-panels-page.tsx`.
+      Styling is handled by Tailwind CSS (via CDN) and custom styles from `globals.css`.
+      
+      NOTE: This is a representation for one state (the 'Couverture' product). 
+      The interactive parts (like clicking buttons to change product) are not functional 
+      as this is a static HTML file. JavaScript would be required to replicate that behavior.
+      Animations are CSS-based and should work.
+    -->
+
+    <section id="product-details" class="bg-white py-20">
+        <div class="container mx-auto px-4 max-w-screen-2xl">
+            
+            <!-- Section: Main Title and Description -->
+            <div class="text-center mb-20">
+                <h1 class="font-headline text-5xl font-bold text-primary mb-6">Panneaux Sandwichs Haute Performance</h1>
+                <p class="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
+                    Découvrez notre gamme complète de panneaux sandwichs pour bâtiments préfabriqués (PEB). Conçus pour offrir une isolation thermique et acoustique supérieure, nos panneaux sont la solution idéale pour les toitures, les bardages et les chambres froides. Chaque variation est conçue avec précision pour répondre aux exigences spécifiques de votre projet, garantissant durabilité, efficacité énergétique et une finition esthétique impeccable.
+                </p>
+            </div>
+            
+            <!-- Section: Product Selection Buttons -->
+            <div class="mb-24 flex flex-wrap justify-center items-center gap-x-8 gap-y-12">
+                
+                <!-- Button 1: Panneaux de Couverture (Active State) -->
+                <div class="flex flex-col items-center gap-4 cursor-pointer group">
+                    <div class="w-24 h-24 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110 bg-accent shadow-lg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 transition-colors duration-300 text-accent-foreground">
+                            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                            <line x1="10" y1="4" x2="10" y2="20"></line>
+                            <line x1="16" y1="4" x2="16" y2="20"></line>
+                        </svg>
+                    </div>
+                    <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden group bg-destructive text-destructive-foreground hover:bg-destructive/90 h-auto py-2 px-6 shadow-lg">
+                        <span class="text-center text-base font-semibold">Panneaux de Couverture</span>
+                    </button>
+                </div>
+
+                <!-- Button 2: Panneaux de Bardage -->
+                <div class="flex flex-col items-center gap-4 cursor-pointer group">
+                    <div class="w-24 h-24 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110 bg-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 transition-colors duration-300 text-primary">
+                          <path d="M3 21V9l9-6 9 6v12h-6v-7h-6v7H3z"></path>
+                        </svg>
+                    </div>
+                     <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden group border border-input bg-secondary text-primary hover:bg-accent/10 h-auto py-2 px-6">
+                        <span class="text-center text-base font-semibold">Panneaux de Bardage</span>
+                    </button>
+                </div>
+
+                <!-- Button 3: Panneaux Frigorifiques -->
+                 <div class="flex flex-col items-center gap-4 cursor-pointer group">
+                    <div class="w-24 h-24 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110 bg-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 transition-colors duration-300 text-primary">
+                          <path d="M20 17.58A5 5 0 0 0 15.05 15h-.1a5 5 0 0 0-4.9-2.58A5 5 0 0 0 5 17.58"/>
+                          <path d="m5 16-1 1"/>
+                          <path d="m20 16 1 1"/>
+                          <path d="M12 2v2"/>
+                          <path d="m12 19-1 1-1-1"/>
+                          <path d="M16 13h-1.5"/>
+                          <path d="M9.5 13H8"/>
+                          <path d="m14 17.5-1-1"/>
+                          <path d="m11 16.5-1 1"/>
+                        </svg>
+                    </div>
+                     <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden group border border-input bg-secondary text-primary hover:bg-accent/10 h-auto py-2 px-6">
+                        <span class="text-center text-base font-semibold">Panneaux Frigorifiques</span>
+                    </button>
+                </div>
+                
+                <!-- Button 4: Tôle Nervurée -->
+                <div class="flex flex-col items-center gap-4 cursor-pointer group">
+                    <div class="w-24 h-24 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110 bg-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 transition-colors duration-300 text-primary rotate-[-90deg]">
+                            <path d="m18 15-6-6-6 6"/>
+                            <path d="m18 9-6-6-6 6"/>
+                        </svg>
+                    </div>
+                     <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden group border border-input bg-secondary text-primary hover:bg-accent/10 h-auto py-2 px-6">
+                        <span class="text-center text-base font-semibold">Tôle Nervurée</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Section: Main Content Grid -->
+            <div class="grid lg:grid-cols-3 gap-x-24 gap-y-16">
+
+                <!-- Left Column: Image Gallery -->
+                <div class="lg:col-span-1 h-max space-y-8">
+                    <div class="space-y-4">
+                        <div class="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                            <img src="https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg" alt="Panneaux sandwichs de couverture" width="800" height="600" class="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                        </div>
+                        <div class="h-[800px] w-full"></div>
+                        <div class="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                             <img src="https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg" alt="Implementation of roofing panels 1" width="800" height="600" class="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                        </div>
+                        <div class="h-[800px] w-full"></div>
+                        <div class="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
+                            <img src="https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg" alt="Implementation of roofing panels 2" width="800" height="600" class="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Product Details -->
+                <div class="lg:col-span-2">
+                    <div>
+                        <h2 class="font-headline text-5xl font-bold text-accent mb-16">1-PANNEAUX SANDWICHS DE COUVERTURE</h2>
+                        <div class="border-none shadow-none p-0">
+                            <div class="p-0">
+                                <!-- Feature Section -->
+                                <h3 class="font-headline text-3xl font-bold text-primary mb-8">CARACTÉRISTIQUE PRODUIT</h3>
+                                <div class="space-y-12 text-lg">
+                                    <div>
+                                        <h4 class="font-headline text-2xl font-bold text-primary mt-10 mb-6">Utilisation</h4>
+                                        <ul class="list-disc pl-6 space-y-2">
+                                            <li>Bâtiments industriels et modulaires</li>
+                                            <li>Ateliers de production</li>
+                                            <li>Entrepôts</li>
+                                            <li>Centres commerciaux</li>
+                                            <li>Complexes sportifs</li>
+                                            <li>Ensembles scolaires et universitaires</li>
+                                            <li>ainsi que dans toute autre construction nécessitant une isolation thermique</li>
+                                        </ul>
+                                    </div>
+                                    <!-- Add other feature subsections here... -->
+                                </div>
+
+                                <!-- Technical Tables Section -->
+                                <section class="mt-24">
+                                    <h3 class="font-headline text-3xl font-bold text-primary mb-8">TABLEAUX TECHNIQUES</h3>
+                                    
+                                    <!-- Isolation Table -->
+                                    <div class="mb-16">
+                                        <h4 class="font-headline text-2xl font-bold text-primary mt-10 mb-6">Coefficient d’isolation thermique</h4>
+                                        <table class="w-full caption-bottom text-sm">
+                                            <thead class="[&_tr]:border-b">
+                                                <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted bg-accent/10">
+                                                    <th class="h-12 px-4 text-left align-middle font-medium text-accent font-bold">Épaisseur en (mm)</th>
+                                                    <th class="h-12 px-4 text-left align-middle font-medium text-accent font-bold">W/m²K</th>
+                                                    <th class="h-12 px-4 text-left align-middle font-medium text-accent font-bold">Kcal/m²h°c</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="[&_tr:last-child]:border-0">
+                                                <tr><td class="p-4 align-middle">30</td><td class="p-4 align-middle">0,55</td><td class="p-4 align-middle">0,48</td></tr>
+                                                <tr><td class="p-4 align-middle">35</td><td class="p-4 align-middle">0,49</td><td class="p-4 align-middle">0,43</td></tr>
+                                                <tr><td class="p-4 align-middle">40</td><td class="p-4 align-middle">0,44</td><td class="p-4 align-middle">0,38</td></tr>
+                                                <tr><td class="p-4 align-middle">60</td><td class="p-4 align-middle">0,31</td><td class="p-4 align-middle">0,27</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <!-- Dimensionnement Table -->
+                                    <div class="mb-16">
+                                         <h4 class="font-headline text-2xl font-bold text-primary mt-10 mb-6">Dimensionnement du panneau</h4>
+                                         <!-- Table HTML here -->
+                                    </div>
+
+                                    <!-- Charges Portees Table -->
+                                    <div class="mb-16">
+                                        <h4 class="font-headline text-2xl font-bold text-primary mt-10 mb-6">LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)</h4>
+                                        <!-- Table HTML here -->
+                                    </div>
+                                </section>
+                                
+                                <!-- Pose et Étanchéité Section -->
+                                <section class="mt-24">
+                                     <h3 class="font-headline text-3xl font-bold text-primary mb-8">POSE ET ÉTANCHÉITÉ</h3>
+                                     <!-- Content here -->
+                                </section>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
