@@ -35,8 +35,14 @@ const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-10 w-10">
+      <path d="M20 3H4C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V4C21 3.44772 20.5523 3 20 3ZM19 5V7H5V5H19ZM5 19V9H19V19H5Z" />
+      <path d="M7 11H9V13H7V11Z" />
+      <path d="M11 11H13V13H11V11Z" />
+      <path d="M15 11H17V13H15V11Z" />
+      <path d="M7 15H9V17H7V15Z" />
+      <path d="M11 15H13V17H11V15Z" />
+      <path d="M15 15H17V17H15V15Z" />
     </svg>
 );
 
@@ -44,13 +50,6 @@ const FrigorifiqueIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <Snowflake {...props} />
 );
 
-const HiBondIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <path d="M3 6l3 3l3-3l3 3l3-3l3 3l3-3" />
-        <path d="M4 9v12h16V9" />
-        <path d="M4 15h16" />
-    </svg>
-);
 
 export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
@@ -61,7 +60,6 @@ export function SandwichPanelsPage() {
     { key: 'bardage', label: 'Panneaux de Bardage', icon: BardageIcon },
     { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: FrigorifiqueIcon },
     { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
-    { key: 'hiBond77', label: 'Plancher "HI-BOND 77"', icon: HiBondIcon },
   ];
 
   return (
@@ -225,7 +223,7 @@ export function SandwichPanelsPage() {
                                                 </TableRow>
                                             </TableHeader>
                                             <TableBody>
-                                                {activeProductKey === 'toleNervuree' || activeProductKey === 'hiBond77' ? (
+                                                {activeProductKey === 'toleNervuree' ? (
                                                    activeProduct.tables.dimensionnement.rows.map((row: any, i) => (
                                                         row.details && Array.isArray(row.details) && row.details.map((detail: any, j: number) => (
                                                             <TableRow key={`${i}-${j}`}>
@@ -234,12 +232,8 @@ export function SandwichPanelsPage() {
                                                                 {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Largueur standard (mm)']}</TableCell>}
                                                                 <TableCell>{detail['Epaisseurs (mm)']}</TableCell>
                                                                 <TableCell>{detail['Poids (kg/m2)']}</TableCell>
-                                                                {activeProductKey === 'toleNervuree' && detail.j && detail.w && (
-                                                                    <>
-                                                                    <TableCell>{detail.j}</TableCell>
-                                                                    <TableCell>{detail.w}</TableCell>
-                                                                    </>
-                                                                )}
+                                                                {detail.j && <TableCell>{detail.j}</TableCell>}
+                                                                {detail.w && <TableCell>{detail.w}</TableCell>}
                                                                 <TableCell>{detail['Système de revêtement']}</TableCell>
                                                             </TableRow>
                                                         ))

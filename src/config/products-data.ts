@@ -289,7 +289,7 @@ export const productData = {
   },
   toleNervuree: {
     title: '4-TÔLE NERVURÉE',
-    subtitle: 'TOLE NERVURÉE TN40',
+    subtitle: 'TOLE NERVURÉE TN40 & PLANCHER COLLABORANT "HI-BOND 77"',
      image: {
       src: 'https://images.unsplash.com/photo-1706029831375-c090c70c161d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtZXRhbCUyMHNoZWV0JTIwfGVufDB8fHx8MTc1NTA5MDY2OHww&ixlib=rb-4.1.0&q=80&w=1080',
       aiHint: 'ribbed steel sheet',
@@ -334,23 +334,23 @@ export const productData = {
     ],
     tables: {
         isolation: { title: '', headers: [], rows: [] },
-        dimensionnement: { 
-          title: 'PLANCHER COLLABORANT HI-BOND 77', 
-          headers: ['Type', 'Longueur (ml)', 'Largueur standard (mm)', 'Epaisseurs (mm)', 'Poids (kg/m2)', 'Système de revêtement'],
-          rows: [
-            { 'Type': 'plancher collaborant HI-BOND 77 Galvanisé', 'Longueur (ml)': 15000, 'Largueur standard (mm)': 732, details: [
-                { 'Epaisseurs (mm)': 0.70, 'Poids (kg/m2)': 9.17, 'Système de revêtement': 'Galvanisée' },
-                { 'Epaisseurs (mm)': 1.00, 'Poids (kg/m2)': 13.10, 'Système de revêtement': 'Galvanisée' },
-                { 'Epaisseurs (mm)': 1.50, 'Poids (kg/m2)': 19.66, 'Système de revêtement': 'Galvanisée' },
-            ]},
-            { 'Type': 'plancher collaborant HI-BOND 77 Pré laqué', 'Longueur (ml)': 15000, 'Largueur standard (mm)': 732, details: [
-                { 'Epaisseurs (mm)': 0.70, 'Poids (kg/m2)': 9.17, 'Système de revêtement': 'pré laqué' },
-                { 'Epaisseurs (mm)': 1.00, 'Poids (kg/m2)': 13.10, 'Système de revêtement': 'pré laqué' },
-                { 'Epaisseurs (mm)': 1.50, 'Poids (kg/m2)': 19.66, 'Système de revêtement': 'pré laqué' },
-            ]},
-          ] 
+        dimensionnement: {
+            title: 'TÔLE NERVURÉE TN40',
+            headers: ['Type', 'Longueur (ml)', 'Largueur standard (mm)', 'Epaisseurs (mm)', 'Poids (kg/m2)', 'j', 'w', 'Système de revêtement'],
+            rows: [
+                { 'Type': 'TN 40 Galvanisée', 'Longueur (ml)': 15000, 'Largueur standard (mm)': 1000, details: [
+                    { 'Epaisseurs (mm)': 0.50, 'Poids (kg/m2)': 4.88, j: '24.23', w: '5.20', 'Système de revêtement': 'Galvanisée' },
+                    { 'Epaisseurs (mm)': 0.60, 'Poids (kg/m2)': 5.85, j: '29.35', w: '6.29', 'Système de revêtement': 'Galvanisée' },
+                    { 'Epaisseurs (mm)': 0.70, 'Poids (kg/m2)': 6.83, j: '34.46', w: '7.38', 'Système de revêtement': 'Galvanisée' },
+                ]},
+                { 'Type': 'TN 40 Pré laqué', 'Longueur (ml)': 15000, 'Largueur standard (mm)': 1000, details: [
+                    { 'Epaisseurs (mm)': 0.50, 'Poids (kg/m2)': 4.88, j: '24.23', w: '5.20', 'Système de revêtement': 'pré laqué' },
+                    { 'Epaisseurs (mm)': 0.60, 'Poids (kg/m2)': 5.85, j: '29.35', w: '6.29', 'Système de revêtement': 'pré laqué' },
+                    { 'Epaisseurs (mm)': 0.70, 'Poids (kg/m2)': 6.83, j: '34.46', w: '7.38', 'Système de revêtement': 'pré laqué' },
+                ]},
+            ]
         },
-        chargesPortees: { 
+        chargesPortees: {
             title: 'TABLEAU DES CHARGES SUR LA TÔLE HI-BOND 77 (KN/M²)',
             subtitle: '',
             headers: [
@@ -383,7 +383,7 @@ export const productData = {
             rows: [
                 { 'ÉP': '0,70', 'Poids-Kg/m': '6.87', 'Haut de la tôle en compression': { 'Lx Cm4': '83.27', 'Zx-top Cm3': '14.34', 'Zx-bot Cm3': '18.87', 'Ma Kn.m': '2,32' }, 'Bas de la tôle en compression': { 'Lx Cm4': '83,27', 'Zx-top Cm3': '21,16', 'Zx-bot Cm3': '16,56', 'Ma Kn.m': '2.68' }, 'Cisaillement voilement': { 'Va KN': '22,18', 'Pa KN': '11,28' } },
                 { 'ÉP': '1,00', 'Poids-Kg/m': '9,81', 'Haut de la tôle en compression': { 'Lx Cm4': '119,0', 'Zx-top Cm3': '23,34', 'Zx-bot Cm3': '27,87', 'Ma Kn.m': '3,77' }, 'Bas de la tôle en compression': { 'Lx Cm4': '119,0', 'Zx-top Cm3': '31,03', 'Zx-bot Cm3': '26,74', 'Ma Kn.m': '4.32' }, 'Cisaillement voilement': { 'Va KN': '51,37', 'Pa KN': '21,83' } },
-                { 'ÉP': '1,50', 'Poids-Kg/m': '14.72', 'Haut de la tôle en compression': { 'Lx Cm4': '178.0', 'Zx-top Cm3': '41.11', 'Zx-bot Cm3': '43.20', 'Ma Kn.m': '6.65' }, 'Bas de la tôle en compression': { 'Lx Cm4': '178,0', 'Zx-top Cm3': '47,27', 'Zx-bot Cm3': '43,73', 'Ma Kn.m': '7.07' }, 'Cisaillement voilement': { 'Va KN': '91,16', 'Pa KN': '45,20' } },
+                { 'ÉP': '1.50', 'Poids-Kg/m': '14.72', 'Haut de la tôle en compression': { 'Lx Cm4': '178.0', 'Zx-top Cm3': '41.11', 'Zx-bot Cm3': '43.20', 'Ma Kn.m': '6.65' }, 'Bas de la tôle en compression': { 'Lx Cm4': '178,0', 'Zx-top Cm3': '47,27', 'Zx-bot Cm3': '43,73', 'Ma Kn.m': '7.07' }, 'Cisaillement voilement': { 'Va KN': '91,16', 'Pa KN': '45,20' } },
             ]
         }
     },
@@ -391,92 +391,4 @@ export const productData = {
     etancheite: '',
     sens: ''
   },
-  hiBond77: {
-    title: 'PLANCHER COLLABORANT "HI-BOND 77"',
-    subtitle: '',
-    image: {
-        src: 'https://images.unsplash.com/photo-1519995520935-3c106938393c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtZXRhbCUyMGZsb29yJTIwZGVja2luZ3xlbnwwfHx8fDE3MjE4MTQwMjl8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        aiHint: 'metal floor decking',
-    },
-    galleryImages: [
-        { src: 'https://images.unsplash.com/photo-1519995520935-3c106938393c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtZXRhbCUyMGZsb29yJTIwZGVja2luZ3xlbnwwfHx8fDE3MjE4MTQwMjl8MA&ixlib=rb-4.1.0&q=80&w=1080', alt: 'Plancher Collaborant HI-BOND 77', aiHint: 'collaborative flooring' },
-    ],
-    features: {
-        application: 'Coffrage et armature de dalles béton',
-        avantages: [
-            'Rapidité de pose.',
-            'Participe à la structure de la dalle béton.',
-            'Idéal en construction et rénovation.',
-        ],
-        revetement: 'Sans spécifications particulière les profils nervurés sont livrés en qualité standard\n• Galvanisé seul qualité Z200\n• Galvanisé pré-laqué, face extérieure finition laquée polyester ép. 25µ',
-        reactionAuFeu: 'Classement de reaction au feu M0',
-        caracteristiquesGeometriques: {
-            title: "Caractéristiques Géométriques",
-            image: {
-              src: '/media/hi-bond-77/hi-bond-geometrie.png',
-              aiHint: 'HI-BOND 77 geometric characteristics'
-            }
-        },
-        utilisation: [],
-        definition: { acier: '', parementExterne: {profil: '', description: '', epaisseur: ''}, parementInterne: {profil: '', epaisseur: ''}},
-        ameIsolante: { type: '', conductivite: '', densite: ''},
-        tolerance: [],
-    },
-    tables: {
-        dimensionnement: {
-            title: 'PLANCHER COLLABORANT HI-BOND 77',
-            headers: ['Type', 'Longueur (ml)', 'Largueur standard (mm)', 'Epaisseurs (mm)', 'Poids (kg/m2)', 'Système de revêtement'],
-            rows: [
-                { 'Type': 'plancher collaborant HI-BOND 77 Galvanisé', 'Longueur (ml)': 15000, 'Largueur standard (mm)': 732, details: [
-                    { 'Epaisseurs (mm)': 0.70, 'Poids (kg/m2)': 9.17, 'Système de revêtement': 'Galvanisée' },
-                    { 'Epaisseurs (mm)': 1.00, 'Poids (kg/m2)': 13.10, 'Système de revêtement': 'Galvanisée' },
-                    { 'Epaisseurs (mm)': 1.50, 'Poids (kg/m2)': 19.66, 'Système de revêtement': 'Galvanisée' },
-                ]},
-                { 'Type': 'plancher collaborant HI-BOND 77 Pré laqué', 'Longueur (ml)': 15000, 'Largueur standard (mm)': 732, details: [
-                    { 'Epaisseurs (mm)': 0.70, 'Poids (kg/m2)': 9.17, 'Système de revêtement': 'pré laqué' },
-                    { 'Epaisseurs (mm)': 1.00, 'Poids (kg/m2)': 13.10, 'Système de revêtement': 'pré laqué' },
-                    { 'Epaisseurs (mm)': 1.50, 'Poids (kg/m2)': 19.66, 'Système de revêtement': 'pré laqué' },
-                ]},
-            ],
-        },
-        chargesPortees: {
-            title: 'TABLEAU DES CHARGES SUR LA TÔLE HI-BOND 77 (KN/M²)',
-            subtitle: '',
-            headers: [
-                { title: 'ÉP', colspan: 1},
-                { title: 'NOMBRE D\'ESPACEMENT', colspan: 1},
-                { title: 'CAS DES CHARGES', colspan: 1},
-                { title: 'ESPACEMENT en mm', colspan: 10},
-            ],
-            subheaders: ['ÉP', 'NOMBRE D\'ESPACEMENT', 'CAS DES CHARGES', '1,00', '1,25', '1,50', '1,75', '2,00', '2,25', '2,50', '2,75', '3,00', '3,50'],
-            rows: [
-                { 'ÉP': '0.70', 'NOMBRE D\'ESPACEMENT': '1', 'CAS DES CHARGES': 'G+Q', '1,00': '18,55', '1,25': '11,87', '1,50': '8,25', '1,75': '6,06', '2,00': '4,64', '2,25': '3,66', '2,50': '2,97', '2,75': '2,45', '3,00': '2,06', '3,50': '1,51' },
-                { 'ÉP': '0.70', 'NOMBRE D\'ESPACEMENT': '2', 'CAS DES CHARGES': '', '1,00': '9,02', '1,25': '7,22', '1,50': '6,02', '1,75': '5,16', '2,00': '4,51', '2,25': '4,01', '2,50': '3,43', '2,75': '2,83', '3,00': '2,38', '3,50': '1,75' },
-                { 'ÉP': '0.70', 'NOMBRE D\'ESPACEMENT': '3', 'CAS DES CHARGES': '', '1,00': '10,26', '1,25': '8,21', '1,50': '6,84', '1,75': '5,87', '2,00': '5,13', '2,25': '4,56', '2,50': '4,11', '2,75': '3,54', '3,00': '2,98', '3,50': '2,19' },
-                { 'ÉP': '1.00', 'NOMBRE D\'ESPACEMENT': '1', 'CAS DES CHARGES': 'G+Q', '1,00': '30,16', '1,25': '19,30', '1,50': '13,40', '1,75': '9,85', '2,00': '7,54', '2,25': '5,96', '2,50': '4,83', '2,75': '3,99', '3,00': '3,35', '3,50': '2,44' },
-                { 'ÉP': '1.00', 'NOMBRE D\'ESPACEMENT': '2', 'CAS DES CHARGES': '', '1,00': '17,46', '1,25': '13,97', '1,50': '11,64', '1,75': '9,98', '2,00': '8,64', '2,25': '6,83', '2,50': '5,53', '2,75': '4,5', '3,00': '3,84', '3,50': '2,82' },
-                { 'ÉP': '1.00', 'NOMBRE D\'ESPACEMENT': '3', 'CAS DES CHARGES': '', '1,00': '19,87', '1,25': '15,89', '1,50': '13,24', '1,75': '11,35', '2,00': '9,93', '2,25': '8.53', '2,50': '6.91', '2,75': '5.71', '3,00': '4.80', '3,50': '3.53' },
-                { 'ÉP': '1.50', 'NOMBRE D\'ESPACEMENT': '1', 'CAS DES CHARGES': 'G+Q', '1,00': '53,20', '1,25': '34,05', '1,50': '23,64', '1,75': '17,37', '2,00': '13,30', '2,25': '10,57', '2,50': '8,51', '2,75': '7,03', '3,00': '5,80', '3,50': '3,65' },
-                { 'ÉP': '1.50', 'NOMBRE D\'ESPACEMENT': '2', 'CAS DES CHARGES': '', '1,00': '36,16', '1,25': '28,93', '1,50': '24,11', '1,75': '18,47', '2,00': '14,40', '2,25': '11,17', '2,50': '9,05', '2,75': '7,48', '3,00': '6,28', '3,50': '4,26' },
-                { 'ÉP': '1.50', 'NOMBRE D\'ESPACEMENT': '3', 'CAS DES CHARGES': '', '1,00': '41,13', '1,25': '32,91', '1,50': '27,42', '1,75': '23,09', '2,00': '17,68', '2,25': '13,97', '2,50': '11,31', '2,75': '9,35', '3,00': '7,86', '3,50': '5,77' },
-            ]
-        },
-        proprietes: {
-            title: 'PROPRIÉTÉS DE LA TÔLE HI-BOND 77',
-            headers: ['ÉP', 'Poids-Kg/m', 'Haut de la tôle en compression', 'Bas de la tôle en compression', 'Cisaillement voilement'],
-            subheaders: {
-                'Haut de la tôle en compression': ['Lx Cm4', 'Zx-top Cm3', 'Zx-bot Cm3', 'Ma Kn.m'],
-                'Bas de la tôle en compression': ['Lx Cm4', 'Zx-top Cm3', 'Zx-bot Cm3', 'Ma Kn.m'],
-                'Cisaillement voilement': ['Va KN', 'Pa KN']
-            },
-            rows: [
-                { 'ÉP': '0,70', 'Poids-Kg/m': '6.87', 'Haut de la tôle en compression': { 'Lx Cm4': '83.27', 'Zx-top Cm3': '14.34', 'Zx-bot Cm3': '18.87', 'Ma Kn.m': '2,32' }, 'Bas de la tôle en compression': { 'Lx Cm4': '83,27', 'Zx-top Cm3': '21,16', 'Zx-bot Cm3': '16,56', 'Ma Kn.m': '2.68' }, 'Cisaillement voilement': { 'Va KN': '22,18', 'Pa KN': '11,28' } },
-                { 'ÉP': '1,00', 'Poids-Kg/m': '9,81', 'Haut de la tôle en compression': { 'Lx Cm4': '119,0', 'Zx-top Cm3': '23,34', 'Zx-bot Cm3': '27,87', 'Ma Kn.m': '3,77' }, 'Bas de la tôle en compression': { 'Lx Cm4': '119,0', 'Zx-top Cm3': '31,03', 'Zx-bot Cm3': '26,74', 'Ma Kn.m': '4.32' }, 'Cisaillement voilement': { 'Va KN': '51,37', 'Pa KN': '21,83' } },
-                { 'ÉP': '1,50', 'Poids-Kg/m': '14.72', 'Haut de la tôle en compression': { 'Lx Cm4': '178.0', 'Zx-top Cm3': '41.11', 'Zx-bot Cm3': '43.20', 'Ma Kn.m': '6.65' }, 'Bas de la tôle en compression': { 'Lx Cm4': '178,0', 'Zx-top Cm3': '47,27', 'Zx-bot Cm3': '43,73', 'Ma Kn.m': '7.07' }, 'Cisaillement voilement': { 'Va KN': '91,16', 'Pa KN': '45,20' } },
-            ]
-        }
-    },
-  },
 };
-
-    
