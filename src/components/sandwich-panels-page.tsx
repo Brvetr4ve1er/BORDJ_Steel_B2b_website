@@ -234,12 +234,12 @@ export function SandwichPanelsPage() {
                                                                 {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Largueur standard (mm)']}</TableCell>}
                                                                 <TableCell>{detail['Epaisseurs (mm)']}</TableCell>
                                                                 <TableCell>{detail['Poids (kg/m2)']}</TableCell>
-                                                                {activeProductKey === 'toleNervuree' ? (
+                                                                {activeProductKey === 'toleNervuree' && detail.j && detail.w && (
                                                                     <>
                                                                     <TableCell>{detail.j}</TableCell>
                                                                     <TableCell>{detail.w}</TableCell>
                                                                     </>
-                                                                ) : null}
+                                                                )}
                                                                 <TableCell>{detail['Système de revêtement']}</TableCell>
                                                             </TableRow>
                                                         ))
@@ -378,3 +378,5 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
+
+    
