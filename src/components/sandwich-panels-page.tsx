@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Image from 'next/image';
@@ -206,7 +207,7 @@ export function SandwichPanelsPage() {
                                             <TableBody>
                                                 {activeProduct.tables.isolation.rows.map((row, i) => (
                                                     <TableRow key={i}>
-                                                        {activeProduct.tables.isolation.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row]}</TableCell>)}
+                                                        {activeProduct.tables.isolation.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row] ?? ''}</TableCell>)}
                                                     </TableRow>
                                                 ))}
                                             </TableBody>
@@ -241,7 +242,7 @@ export function SandwichPanelsPage() {
                                                 ) : (
                                                     activeProduct.tables.dimensionnement.rows.map((row, i) => (
                                                         <TableRow key={i}>
-                                                            {activeProduct.tables.dimensionnement.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row]}</TableCell>)}
+                                                            {activeProduct.tables.dimensionnement.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row] ?? ''}</TableCell>)}
                                                         </TableRow>
                                                     ))
                                                 )}
@@ -270,11 +271,11 @@ export function SandwichPanelsPage() {
                                             <TableBody>
                                             {activeProduct.tables.proprietes.rows.map((row: any, i: number) => (
                                                 <TableRow key={i}>
-                                                    <TableCell>{row['ÉP']}</TableCell>
-                                                    <TableCell>{row['Poids-Kg/m']}</TableCell>
+                                                    <TableCell>{row['ÉP'] ?? ''}</TableCell>
+                                                    <TableCell>{row['Poids-Kg/m'] ?? ''}</TableCell>
                                                     {Object.keys(activeProduct.tables.proprietes.subheaders).map(headerKey => 
-                                                        Object.keys(row[headerKey]).map((subKey, j) => (
-                                                            <TableCell key={`${headerKey}-${j}`} className="text-center">{row[headerKey][subKey]}</TableCell>
+                                                        Object.keys(row[headerKey] ?? {}).map((subKey, j) => (
+                                                            <TableCell key={`${headerKey}-${j}`} className="text-center">{row[headerKey]?.[subKey] ?? ''}</TableCell>
                                                         ))
                                                     )}
                                                 </TableRow>
@@ -283,57 +284,63 @@ export function SandwichPanelsPage() {
                                         </Table>
                                     </div>
                                 )}
-                                {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows && activeProduct.tables.chargesPortees.rows.length > 0 && (
-                                    <div className="mb-16">
-                                        <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
-                                        {activeProduct.tables.chargesPortees.subtitle && <p className="text-muted-foreground mb-4">{activeProduct.tables.chargesPortees.subtitle}</p>}
-                                        <Table>
-                                            <TableHeader>
-                                                <TableRow className="bg-accent/10">
-                                                    {activeProduct.tables.chargesPortees.headers.map((h, i) => (
-                                                        <TableHead key={i} colSpan={h.colspan} className="text-accent font-bold text-center">{h.title}</TableHead>
-                                                    ))}
-                                                </TableRow>
-                                                {activeProduct.tables.chargesPortees.subheaders && activeProduct.tables.chargesPortees.subheaders.length > 0 && (
-                                                    <TableRow className="bg-accent/10">
-                                                        {activeProduct.tables.chargesPortees.subheaders.map((sh, i) => (
-                                                            <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
-                                                        ))}
-                                                    </TableRow>
+
+                                {activeProduct.features.caracteristiquesGeometriques && (
+                                    <section className="mt-24">
+                                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 items-start">
+                                            <div>
+                                                <SubSectionTitle>{activeProduct.features.caracteristiquesGeometriques.title}</SubSectionTitle>
+                                                <Image 
+                                                    src={activeProduct.features.caracteristiquesGeometriques.image.src}
+                                                    alt={activeProduct.features.caracteristiquesGeometriques.title}
+                                                    width={800}
+                                                    height={400}
+                                                    className="w-full object-contain"
+                                                    data-ai-hint={activeProduct.features.caracteristiquesGeometriques.image.aiHint}
+                                                />
+                                            </div>
+                                            <div>
+                                                {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows && activeProduct.tables.chargesPortees.rows.length > 0 && activeProduct.tables.chargesPortees.subheaders && (
+                                                    <div className="mb-16 mt-10">
+                                                        <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
+                                                        {activeProduct.tables.chargesPortees.subtitle && <p className="text-muted-foreground mb-4">{activeProduct.tables.chargesPortees.subtitle}</p>}
+                                                        <Table>
+                                                            <TableHeader>
+                                                                <TableRow className="bg-accent/10">
+                                                                    {activeProduct.tables.chargesPortees.headers.map((h, i) => (
+                                                                        <TableHead key={i} colSpan={h.colspan} className="text-accent font-bold text-center">{h.title}</TableHead>
+                                                                    ))}
+                                                                </TableRow>
+                                                                {activeProduct.tables.chargesPortees.subheaders && activeProduct.tables.chargesPortees.subheaders.length > 0 && (
+                                                                    <TableRow className="bg-accent/10">
+                                                                        {activeProduct.tables.chargesPortees.subheaders.map((sh, i) => (
+                                                                            <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
+                                                                        ))}
+                                                                    </TableRow>
+                                                                )}
+                                                            </TableHeader>
+                                                            <TableBody>
+                                                                {(activeProduct.tables.chargesPortees.rows as any[]).map((row: any, i: number) => {
+                                                                    const subheaders = activeProduct.tables.chargesPortees.subheaders || [];
+                                                                    return (
+                                                                        <TableRow key={i}>
+                                                                            {subheaders.map((key, j) => (
+                                                                                <TableCell key={j} className="text-center">
+                                                                                    {row[key] ?? ''}
+                                                                                </TableCell>
+                                                                            ))}
+                                                                        </TableRow>
+                                                                    );
+                                                                })}
+                                                            </TableBody>
+                                                        </Table>
+                                                    </div>
                                                 )}
-                                            </TableHeader>
-                                            <TableBody>
-                                                {(activeProduct.tables.chargesPortees.rows as any[]).map((row: any, i: number) => {
-                                                    const subheaders = activeProduct.tables.chargesPortees.subheaders || [];
-                                                    return (
-                                                        <TableRow key={i}>
-                                                            {subheaders.map((key, j) => (
-                                                                <TableCell key={j} className="text-center">
-                                                                    {row[key] ?? ''}
-                                                                </TableCell>
-                                                            ))}
-                                                        </TableRow>
-                                                    );
-                                                })}
-                                            </TableBody>
-                                        </Table>
-                                    </div>
+                                            </div>
+                                        </div>
+                                    </section>
                                 )}
                             </section>
-                            
-                            {activeProduct.features.caracteristiquesGeometriques && (
-                                <section className="mt-24">
-                                    <SectionTitle>{activeProduct.features.caracteristiquesGeometriques.title}</SectionTitle>
-                                    <Image 
-                                        src={activeProduct.features.caracteristiquesGeometriques.image.src}
-                                        alt={activeProduct.features.caracteristiquesGeometriques.title}
-                                        width={800}
-                                        height={200}
-                                        className="w-full object-contain"
-                                        data-ai-hint={activeProduct.features.caracteristiquesGeometriques.image.aiHint}
-                                    />
-                                </section>
-                            )}
                            
                             {activeProduct.pose?.decoupage && 
                             <section className="mt-24">
