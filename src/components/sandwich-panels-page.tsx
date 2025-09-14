@@ -5,7 +5,7 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { useState } from 'react';
-import { ChevronsRight, Snowflake } from 'lucide-react';
+import { ChevronsRight, Snowflake, Pilcrow } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
@@ -50,6 +50,23 @@ const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const FrigorifiqueIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <Snowflake {...props} />
 );
+
+const HibondIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <path d="M3 6H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M3 12H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M5 3L8 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M9 3L12 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M13 3L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M17 3L20 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M4 15L7 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M8 15L11 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 15L15 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M16 15L19 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 
 
 export function SandwichPanelsPage() {
@@ -284,64 +301,88 @@ export function SandwichPanelsPage() {
                                         </Table>
                                     </div>
                                 )}
-
-                                {activeProduct.features.caracteristiquesGeometriques && (
-                                    <section className="mt-24">
-                                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 items-start">
-                                            <div>
-                                                <SubSectionTitle>{activeProduct.features.caracteristiquesGeometriques.title}</SubSectionTitle>
-                                                <Image 
-                                                    src={activeProduct.features.caracteristiquesGeometriques.image.src}
-                                                    alt={activeProduct.features.caracteristiquesGeometriques.title}
-                                                    width={800}
-                                                    height={400}
-                                                    className="w-full object-contain"
-                                                    data-ai-hint={activeProduct.features.caracteristiquesGeometriques.image.aiHint}
-                                                />
-                                            </div>
-                                            <div>
-                                                {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows && activeProduct.tables.chargesPortees.rows.length > 0 && activeProduct.tables.chargesPortees.subheaders && (
-                                                    <div className="mb-16 mt-10">
-                                                        <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
-                                                        {activeProduct.tables.chargesPortees.subtitle && <p className="text-muted-foreground mb-4">{activeProduct.tables.chargesPortees.subtitle}</p>}
-                                                        <Table>
-                                                            <TableHeader>
-                                                                <TableRow className="bg-accent/10">
-                                                                    {activeProduct.tables.chargesPortees.headers.map((h, i) => (
-                                                                        <TableHead key={i} colSpan={h.colspan} className="text-accent font-bold text-center">{h.title}</TableHead>
-                                                                    ))}
-                                                                </TableRow>
-                                                                {activeProduct.tables.chargesPortees.subheaders && activeProduct.tables.chargesPortees.subheaders.length > 0 && (
-                                                                    <TableRow className="bg-accent/10">
-                                                                        {activeProduct.tables.chargesPortees.subheaders.map((sh, i) => (
-                                                                            <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
-                                                                        ))}
-                                                                    </TableRow>
-                                                                )}
-                                                            </TableHeader>
-                                                            <TableBody>
-                                                                {(activeProduct.tables.chargesPortees.rows as any[]).map((row: any, i: number) => {
-                                                                    const subheaders = activeProduct.tables.chargesPortees.subheaders || [];
-                                                                    return (
-                                                                        <TableRow key={i}>
-                                                                            {subheaders.map((key, j) => (
-                                                                                <TableCell key={j} className="text-center">
-                                                                                    {row[key] ?? ''}
-                                                                                </TableCell>
-                                                                            ))}
-                                                                        </TableRow>
-                                                                    );
-                                                                })}
-                                                            </TableBody>
-                                                        </Table>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </div>
-                                    </section>
-                                )}
                             </section>
                            
+                            {activeProduct.features.caracteristiquesGeometriques && (
+                                <section className="mt-24">
+                                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 items-start">
+                                        <div>
+                                            <SubSectionTitle>{activeProduct.features.caracteristiquesGeometriques.title}</SubSectionTitle>
+                                            <Image 
+                                                src={activeProduct.features.caracteristiquesGeometriques.image.src}
+                                                alt={activeProduct.features.caracteristiquesGeometriques.title}
+                                                width={800}
+                                                height={400}
+                                                className="w-full object-contain"
+                                                data-ai-hint={activeProduct.features.caracteristiquesGeometriques.image.aiHint}
+                                            />
+                                        </div>
+                                        <div>
+                                            {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows && activeProduct.tables.chargesPortees.rows.length > 0 && activeProduct.tables.chargesPortees.subheaders && (
+                                                <div className="mb-16 mt-10">
+                                                    <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
+                                                    {activeProduct.tables.chargesPortees.subtitle && <p className="text-muted-foreground mb-4">{activeProduct.tables.chargesPortees.subtitle}</p>}
+                                                    <Table>
+                                                        <TableHeader>
+                                                            <TableRow className="bg-accent/10">
+                                                                {activeProduct.tables.chargesPortees.headers.map((h, i) => (
+                                                                    <TableHead key={i} colSpan={h.colspan} className="text-accent font-bold text-center">{h.title}</TableHead>
+                                                                ))}
+                                                            </TableRow>
+                                                            {activeProduct.tables.chargesPortees.subheaders && activeProduct.tables.chargesPortees.subheaders.length > 0 && (
+                                                                <TableRow className="bg-accent/10">
+                                                                    {activeProduct.tables.chargesPortees.subheaders.map((sh, i) => (
+                                                                        <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
+                                                                    ))}
+                                                                </TableRow>
+                                                            )}
+                                                        </TableHeader>
+                                                        <TableBody>
+                                                            {(activeProduct.tables.chargesPortees.rows as any[]).map((row: any, i: number) => {
+                                                                const subheaders = activeProduct.tables.chargesPortees.subheaders || [];
+                                                                return (
+                                                                    <TableRow key={i}>
+                                                                        {subheaders.map((key, j) => (
+                                                                            <TableCell key={j} className="text-center">
+                                                                                {row[key] ?? ''}
+                                                                            </TableCell>
+                                                                        ))}
+                                                                    </TableRow>
+                                                                );
+                                                            })}
+                                                        </TableBody>
+                                                    </Table>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </section>
+                            )}
+
+                             {activeProduct.features.finitions && activeProduct.features.finitions.length > 0 && (
+                                <section className="mt-24">
+                                    <SectionTitle>PIÈCES DE FINITIONS</SectionTitle>
+                                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
+                                        {activeProduct.features.finitions.map((finition, index) => (
+                                        <div key={index} className="flex flex-col items-center text-center">
+                                            <div className="relative w-full aspect-square mb-4">
+                                                <Image
+                                                    src={finition.image.src}
+                                                    alt={finition.name}
+                                                    layout="fill"
+                                                    objectFit="contain"
+                                                    className="rounded-md"
+                                                    data-ai-hint={finition.image.aiHint}
+                                                />
+                                            </div>
+                                            <h4 className="font-semibold text-primary">{finition.name}</h4>
+                                            <p className="text-sm text-muted-foreground">{finition.length}</p>
+                                        </div>
+                                        ))}
+                                    </div>
+                                </section>
+                            )}
+
                             {activeProduct.pose?.decoupage && 
                             <section className="mt-24">
                                 <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
@@ -379,5 +420,3 @@ export function SandwichPanelsPage() {
     </section>
   );
 }
-
-    
