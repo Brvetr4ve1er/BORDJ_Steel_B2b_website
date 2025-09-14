@@ -30,20 +30,26 @@ const ProductFeature = ({ label, value }: { label: string; value: string }) => (
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <rect x="4" y="4" width="16" height="16" rx="2" />
-        <line x1="10" y1="4" x2="10" y2="20" />
-        <line x1="16" y1="4" x2="16" y2="20" />
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>
     </svg>
 );
 
 const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" stroke="currentColor" {...props}>
-      <path d="M3 2h18v4H3zM4 6h16v4H4zM4 10h16v4H4zM4 14h16v4H4zM3 18h18v4H3z" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
     </svg>
 );
 
 const FrigorifiqueIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <Snowflake {...props} />
+);
+
+const HiBondIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        <path d="M3 6l3 3l3-3l3 3l3-3l3 3l3-3" />
+        <path d="M4 9v12h16V9" />
+        <path d="M4 15h16" />
+    </svg>
 );
 
 export function SandwichPanelsPage() {
@@ -55,6 +61,7 @@ export function SandwichPanelsPage() {
     { key: 'bardage', label: 'Panneaux de Bardage', icon: BardageIcon },
     { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: FrigorifiqueIcon },
     { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
+    { key: 'hiBond77', label: 'Plancher "HI-BOND 77"', icon: HiBondIcon },
   ];
 
   return (
@@ -62,9 +69,9 @@ export function SandwichPanelsPage() {
       <div className="container mx-auto px-4 max-w-screen-2xl">
         <AnimatedWrapper animation="fade-in">
             <div className="text-center mb-20">
-                <h1 className="font-headline text-5xl font-bold text-primary mb-6">Panneaux Sandwichs Haute Performance</h1>
+                <h1 className="font-headline text-5xl font-bold text-primary mb-6">Panneaux Sandwichs & Solutions de Construction</h1>
                 <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
-                    Découvrez notre gamme complète de panneaux sandwichs pour bâtiments préfabriqués (PEB). Conçus pour offrir une isolation thermique et acoustique supérieure, nos panneaux sont la solution idéale pour les toitures, les bardages et les chambres froides. Chaque variation est conçue avec précision pour répondre aux exigences spécifiques de votre projet, garantissant durabilité, efficacité énergétique et une finition esthétique impeccable.
+                    Découvrez notre gamme complète de panneaux sandwichs et solutions pour bâtiments préfabriqués (PEB). Conçus pour offrir une isolation thermique et acoustique supérieure, nos panneaux sont la solution idéale pour les toitures, les bardages et les chambres froides. Chaque variation est conçue avec précision pour répondre aux exigences spécifiques de votre projet, garantissant durabilité, efficacité énergétique et une finition esthétique impeccable.
                 </p>
             </div>
         </AnimatedWrapper>
@@ -72,7 +79,7 @@ export function SandwichPanelsPage() {
         <AnimatedWrapper animation="fade-in">
            <div className="mb-24 flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
             {productButtons.map(({ key, label, icon: Icon }) => (
-              <div key={key} className="flex flex-col items-center gap-4 cursor-pointer group" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
+              <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
                 <div className={cn(
                     "w-24 h-24 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
                     activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
@@ -114,6 +121,20 @@ export function SandwichPanelsPage() {
                         <CardContent className="p-0">
                             <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
                             <div className="space-y-12 text-lg">
+                                {activeProduct.features.application && activeProduct.features.application.length > 0 &&
+                                    <div>
+                                        <SubSectionTitle>Application conseillée</SubSectionTitle>
+                                        <p>{activeProduct.features.application}</p>
+                                    </div>
+                                }
+                                {activeProduct.features.avantages && activeProduct.features.avantages.length > 0 &&
+                                    <div>
+                                        <SubSectionTitle>Les avantages de l'utilisation</SubSectionTitle>
+                                        <ul className="list-disc pl-6 space-y-2">
+                                            {activeProduct.features.avantages.map(item => <li key={item}>{item}</li>)}
+                                        </ul>
+                                    </div>
+                                }
                                 {activeProduct.features.utilisation && activeProduct.features.utilisation.length > 0 &&
                                 <div>
                                     <SubSectionTitle>Utilisation</SubSectionTitle>
@@ -149,7 +170,7 @@ export function SandwichPanelsPage() {
                                 }
                                 {activeProduct.features.revetement && <div>
                                     <SubSectionTitle>Revêtement</SubSectionTitle>
-                                    <p>{activeProduct.features.revetement}</p>
+                                    <p className="whitespace-pre-wrap">{activeProduct.features.revetement}</p>
                                 </div>}
                                  { activeProduct.features.ameIsolante && activeProduct.features.ameIsolante.type && <div>
                                     <SubSectionTitle>Ame isolante</SubSectionTitle>
@@ -167,7 +188,7 @@ export function SandwichPanelsPage() {
                                         {activeProduct.features.tolerance.map(item => <li key={item}>{item}</li>)}
                                     </ul>
                                 </div>}
-                                { activeProduct.features.miseEnOeuvre && <div>
+                                { activeProduct.features.miseEnOeuvre && activeProduct.features.miseEnOeuvre.manutention && <div>
                                     <SubSectionTitle>{activeProduct.features.miseEnOeuvre.title}</SubSectionTitle>
                                     <p>{activeProduct.features.miseEnOeuvre.manutention}</p>
                                 </div>}
@@ -196,7 +217,7 @@ export function SandwichPanelsPage() {
                                 )}
                                 {activeProduct.tables.dimensionnement?.rows && activeProduct.tables.dimensionnement.rows.length > 0 && (
                                     <div className="mb-16">
-                                        <SubSectionTitle>{activeProduct.tables.dimensionnement.title}</SubSectionTitle>
+                                        <SubSectionTitle>{activeProduct.tables.dimensionnement.title || 'Dimensionnement'}</SubSectionTitle>
                                         <Table>
                                             <TableHeader>
                                                 <TableRow className="bg-accent/10">
@@ -204,18 +225,22 @@ export function SandwichPanelsPage() {
                                                 </TableRow>
                                             </TableHeader>
                                             <TableBody>
-                                                {activeProductKey === 'toleNervuree' ? (
+                                                {activeProductKey === 'toleNervuree' || activeProductKey === 'hiBond77' ? (
                                                    activeProduct.tables.dimensionnement.rows.map((row: any, i) => (
                                                         row.details && Array.isArray(row.details) && row.details.map((detail: any, j: number) => (
                                                             <TableRow key={`${i}-${j}`}>
-                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.type}</TableCell>}
-                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.longueur}</TableCell>}
-                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.largeur}</TableCell>}
-                                                                <TableCell>{detail.epaisseur}</TableCell>
-                                                                <TableCell>{detail.poids}</TableCell>
-                                                                <TableCell>{detail.j}</TableCell>
-                                                                <TableCell>{detail.w}</TableCell>
-                                                                <TableCell>{detail.systeme}</TableCell>
+                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.Type}</TableCell>}
+                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Longueur (ml)']}</TableCell>}
+                                                                {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Largueur standard (mm)']}</TableCell>}
+                                                                <TableCell>{detail['Epaisseurs (mm)']}</TableCell>
+                                                                <TableCell>{detail['Poids (kg/m2)']}</TableCell>
+                                                                {activeProductKey === 'toleNervuree' ? (
+                                                                    <>
+                                                                    <TableCell>{detail.j}</TableCell>
+                                                                    <TableCell>{detail.w}</TableCell>
+                                                                    </>
+                                                                ) : null}
+                                                                <TableCell>{detail['Système de revêtement']}</TableCell>
                                                             </TableRow>
                                                         ))
                                                     ))
@@ -226,6 +251,40 @@ export function SandwichPanelsPage() {
                                                         </TableRow>
                                                     ))
                                                 )}
+                                            </TableBody>
+                                        </Table>
+                                    </div>
+                                )}
+                                {activeProduct.tables.proprietes && activeProduct.tables.proprietes.rows.length > 0 && (
+                                    <div className="mb-16">
+                                        <SubSectionTitle>{activeProduct.tables.proprietes.title}</SubSectionTitle>
+                                        <Table>
+                                            <TableHeader>
+                                                <TableRow className="bg-accent/10">
+                                                {activeProduct.tables.proprietes.headers.map((h, i) => (
+                                                    <TableHead key={i} colSpan={activeProduct.tables.proprietes.subheaders[h]?.length || 1} className="text-accent font-bold text-center">{h}</TableHead>
+                                                ))}
+                                                </TableRow>
+                                                <TableRow className="bg-accent/10">
+                                                    <TableHead className="text-accent font-bold">ÉP</TableHead>
+                                                    <TableHead className="text-accent font-bold">Poids-Kg/m</TableHead>
+                                                    {Object.values(activeProduct.tables.proprietes.subheaders).flat().map((sh, i) => (
+                                                        <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
+                                                    ))}
+                                                </TableRow>
+                                            </TableHeader>
+                                            <TableBody>
+                                            {activeProduct.tables.proprietes.rows.map((row: any, i: number) => (
+                                                <TableRow key={i}>
+                                                    <TableCell>{row['ÉP']}</TableCell>
+                                                    <TableCell>{row['Poids-Kg/m']}</TableCell>
+                                                    {Object.keys(activeProduct.tables.proprietes.subheaders).map(headerKey => 
+                                                        Object.keys(row[headerKey]).map((subKey, j) => (
+                                                            <TableCell key={`${headerKey}-${j}`} className="text-center">{row[headerKey][subKey]}</TableCell>
+                                                        ))
+                                                    )}
+                                                </TableRow>
+                                            ))}
                                             </TableBody>
                                         </Table>
                                     </div>
