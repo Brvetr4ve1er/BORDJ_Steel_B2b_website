@@ -365,31 +365,7 @@ export function SandwichPanelsPage() {
                                 </section>
                             )}
 
-                             {activeProduct.features.finitions && activeProduct.features.finitions.length > 0 && (
-                                <section className="mt-24">
-                                    <SectionTitle>PIÈCES DE FINITIONS</SectionTitle>
-                                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
-                                        {activeProduct.features.finitions.map((finition, index) => (
-                                        <div key={index} className="flex flex-col items-center text-center">
-                                            <div className="relative w-full aspect-square mb-4">
-                                                <Image
-                                                    src={finition.image.src}
-                                                    alt={finition.name}
-                                                    layout="fill"
-                                                    objectFit="contain"
-                                                    className="rounded-md"
-                                                    data-ai-hint={finition.image.aiHint}
-                                                />
-                                            </div>
-                                            <h4 className="font-semibold text-primary">{finition.name}</h4>
-                                            <p className="text-sm text-muted-foreground">{finition.length}</p>
-                                        </div>
-                                        ))}
-                                    </div>
-                                </section>
-                            )}
-
-                            {activeProduct.pose?.decoupage && 
+                             {activeProduct.pose?.decoupage && 
                             <section className="mt-24">
                                 <SectionTitle>POSE ET ÉTANCHÉITÉ</SectionTitle>
                                 <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
