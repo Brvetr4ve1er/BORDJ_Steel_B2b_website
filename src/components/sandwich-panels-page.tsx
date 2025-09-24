@@ -36,7 +36,7 @@ const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const BardageIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-10 w-10">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
       <path d="M20 3H4C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V4C21 3.44772 20.5523 3 20 3ZM19 5V7H5V5H19ZM5 19V9H19V19H5Z" />
       <path d="M7 11H9V13H7V11Z" />
       <path d="M11 11H13V13H11V11Z" />
@@ -214,6 +214,28 @@ export function SandwichPanelsPage() {
                                     <SubSectionTitle>{activeProduct.features.miseEnOeuvre.title}</SubSectionTitle>
                                     <p>{activeProduct.features.miseEnOeuvre.manutention}</p>
                                 </div>}
+                                
+                                {activeProduct.features.finitions && activeProduct.features.finitions.length > 0 && (
+                                    <div>
+                                        <SubSectionTitle>Pièces de Finitions</SubSectionTitle>
+                                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                                            {activeProduct.features.finitions.map((finition, index) => (
+                                                <div key={index} className="text-center">
+                                                    <Image 
+                                                        src={finition.image.src} 
+                                                        alt={finition.name} 
+                                                        width={150} 
+                                                        height={100}
+                                                        className="mx-auto"
+                                                        data-ai-hint={finition.image.aiHint}
+                                                    />
+                                                    <p className="font-semibold mt-2">{finition.name}</p>
+                                                    <p className="text-sm text-muted-foreground">{finition.length}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
                             <section className="mt-24">
