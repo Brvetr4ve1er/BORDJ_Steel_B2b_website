@@ -401,4 +401,89 @@ export const productData = {
     etancheite: '',
     sens: ''
   },
+  hibond: {
+    title: '5-PLANCHER COLLABORANT "HI-BOND 77"',
+    subtitle: '',
+    image: { src: '', aiHint: '' },
+    galleryImages: [
+        { src: '/media/hi-bond-77/hi-bond-main.png', alt: 'Plancher collaborant Hi-Bond 77', aiHint: 'composite floor deck' },
+    ],
+    features: {
+        utilisation: [],
+        avantages: [],
+        application: 'Coffrage et armature de dalles béton',
+        definition: { acier: '', parementExterne: {profil: '', description: '', epaisseur: ''}, parementInterne: {profil: '', epaisseur: ''}},
+        revetement: '',
+        ameIsolante: { type: '', conductivite: '', densite: ''},
+        reactionAuFeu: '',
+        tolerance: [],
+        miseEnOeuvre: { title: "", manutention: "" },
+        caracteristiquesGeometriques: {
+            title: "Caractéristiques Géométriques",
+            image: {
+              src: '/media/hi-bond-77/hi-bond-geometrie.png',
+              aiHint: 'geometric characteristics diagram'
+            }
+        },
+    },
+    tables: {
+        isolation: { title: '', headers: [], rows: [] },
+        dimensionnement: { title: '', headers: [], rows: [] },
+        chargesPortees: {
+            title: 'TABLEAU DES CHARGES SUR LA TÔLE HI-BOND 77 (KN/M²)',
+            subtitle: '',
+            headers: [
+              { title: 'ÉP', colspan: 1},
+              { title: 'NOMBRE D\'ESPACEMENT', colspan: 1},
+              { title: 'CAS DES CHARGES', colspan: 1},
+              { title: 'ESPACEMENT en mm', colspan: 10},
+            ],
+            subheaders: ['ÉP', 'NOMBRE D\'ESPACEMENT', 'CAS DES CHARGES', '1,00', '1,25', '1,50', '1,75', '2,00', '2,25', '2,50', '2,75', '3,00', '3,50'],
+            rows: [
+                { 'ÉP': '0.70', 'NOMBRE D\'ESPACEMENT': '1', 'CAS DES CHARGES': 'G+Q', '1,00': '18,55', '1,25': '11,87', '1,50': '8,25', '1,75': '6,06', '2,00': '4,64', '2,25': '3,66', '2,50': '2,97', '2,75': '2,45', '3,00': '2,06', '3,50': '1,51' },
+                { 'ÉP': '0.70', 'NOMBRE D\'ESPACEMENT': '2', 'CAS DES CHARGES': '', '1,00': '9,02', '1,25': '7,22', '1,50': '6,02', '1,75': '5,16', '2,00': '4,51', '2,25': '4,01', '2,50': '3,43', '2,75': '2,83', '3,00': '2,38', '3,50': '1,75' },
+                { 'ÉP': '0.70', 'NOMBRE D\'ESPACEMENT': '3', 'CAS DES CHARGES': '', '1,00': '10,26', '1,25': '8,21', '1,50': '6,84', '1,75': '5,87', '2,00': '5,13', '2,25': '4,56', '2,50': '4,11', '2,75': '3,54', '3,00': '2,98', '3,50': '2,19' },
+                { 'ÉP': '1.00', 'NOMBRE D\'ESPACEMENT': '1', 'CAS DES CHARGES': 'G+Q', '1,00': '30,16', '1,25': '19,30', '1,50': '13,40', '1,75': '9,85', '2,00': '7,54', '2,25': '5,96', '2,50': '4,83', '2,75': '3,99', '3,00': '3,35', '3,50': '2,44' },
+                { 'ÉP': '1.00', 'NOMBRE D\'ESPACEMENT': '2', 'CAS DES CHARGES': '', '1,00': '17,46', '1,25': '13,97', '1,50': '11,64', '1,75': '9,98', '2,00': '8,64', '2,25': '6,83', '2,50': '5,53', '2,75': '4,5', '3,00': '3,84', '3,50': '2,82' },
+                { 'ÉP': '1.00', 'NOMBRE D\'ESPACEMENT': '3', 'CAS DES CHARGES': '', '1,00': '19,87', '1,25': '15,89', '1,50': '13,24', '1,75': '11,35', '2,00': '9,93', '2,25': '8.53', '2,50': '6.91', '2,75': '5.71', '3,00': '4.80', '3,50': '3.53' },
+                { 'ÉP': '1.50', 'NOMBRE D\'ESPACEMENT': '1', 'CAS DES CHARGES': 'G+Q', '1,00': '53,20', '1,25': '34,05', '1,50': '23,64', '1,75': '17,37', '2,00': '13,30', '2,25': '10,57', '2,50': '8,51', '2,75': '7,03', '3,00': '5,80', '3,50': '3,65' },
+                { 'ÉP': '1.50', 'NOMBRE D\'ESPACEMENT': '2', 'CAS DES CHARGES': '', '1,00': '36,16', '1,25': '28,93', '1,50': '24,11', '1,75': '18,47', '2,00': '14,40', '2,25': '11,17', '2,50': '9,05', '2,75': '7,48', '3,00': '6,28', '3,50': '4,26' },
+                { 'ÉP': '1.50', 'NOMBRE D\'ESPACEMENT': '3', 'CAS DES CHARGES': '', '1,00': '41,13', '1,25': '32,91', '1,50': '27,42', '1,75': '23,09', '2,00': '17,68', '2,25': '13,97', '2,50': '11,31', '2,75': '9,35', '3,00': '7,86', '3,50': '5,77' },
+            ]
+        },
+    },
+  },
+  finitions: {
+    title: '6-PIÈCES DE FINITION',
+    subtitle: '',
+    image: { src: '', aiHint: '' },
+    galleryImages: [
+        { src: '/media/finitions/finitions-main.png', alt: 'Pièces de finition', aiHint: 'finishing parts' },
+    ],
+    features: {
+        utilisation: [],
+        avantages: [],
+        application: '',
+        definition: { acier: '', parementExterne: {profil: '', description: '', epaisseur: ''}, parementInterne: {profil: '', epaisseur: ''}},
+        revetement: '',
+        ameIsolante: { type: '', conductivite: '', densite: ''},
+        reactionAuFeu: '',
+        tolerance: [],
+        miseEnOeuvre: { title: "", manutention: "" },
+        finitions: [
+            { name: 'Bande de rive sur mur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bande-de-rive.png', aiHint: 'wall edge band' } },
+            { name: 'Angle droit', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/angle-droit.png', aiHint: 'right angle' } },
+            { name: 'Cornière d\'angle intérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-interieur.png', aiHint: 'internal corner angle' } },
+            { name: 'U de sol acier galvanisé', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/u-de-sol.png', aiHint: 'galvanized steel U-profile' } },
+            { name: 'Bavette rejet d\'eau', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bavette-rejet-eau.png', aiHint: 'water drip flashing' } },
+            { name: 'Sous faitière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/sous-faitiere.png', aiHint: 'under ridge' } },
+            { name: 'Cornière d\'angle extérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-exterieur.png', aiHint: 'external corner angle' } },
+            { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/faitiere.png', aiHint: 'ridge cap' } },
+        ]
+    },
+    tables: {
+        isolation: { title: '', headers: [], rows: [] },
+        dimensionnement: { title: '', headers: [], rows: [] },
+    },
+  }
 };

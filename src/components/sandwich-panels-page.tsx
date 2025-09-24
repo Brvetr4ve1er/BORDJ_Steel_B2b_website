@@ -5,7 +5,7 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { useState } from 'react';
-import { ChevronsRight, Snowflake, Pilcrow } from 'lucide-react';
+import { ChevronsRight, Snowflake, Pilcrow, Settings } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
@@ -67,6 +67,10 @@ const HibondIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const FinitionsIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <Settings {...props} />
+);
+
 
 
 export function SandwichPanelsPage() {
@@ -78,6 +82,8 @@ export function SandwichPanelsPage() {
     { key: 'bardage', label: 'Panneaux de Bardage', icon: BardageIcon },
     { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: FrigorifiqueIcon },
     { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
+    { key: 'hibond', label: 'Hi-Bond 77', icon: HibondIcon },
+    { key: 'finitions', label: 'Pièces de Finition', icon: FinitionsIcon },
   ];
 
   return (
