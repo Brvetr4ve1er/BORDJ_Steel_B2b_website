@@ -19,6 +19,7 @@ export const companyData = {
           { "name": "Notre Histoire", "href": "#about", "description": "Découvrez nos origines et notre parcours.", "icon": "Building2" },
           { "name": "Vision & Mission", "href": "#about", "description": "Nos valeurs et nos ambitions pour l'avenir.", "icon": "Award" },
           { "name": "Politique QHSE", "href": "#about", "description": "Notre engagement pour la Qualité, Hygiène, Sécurité et Environnement.", "icon": "ShieldCheck" },
+          { "name": "Politique RH", "href": "#", "description": "Découvrez notre politique de ressources humaines.", "icon": "User" }
         ]
       },
       {
@@ -90,7 +91,7 @@ export const companyData = {
           text: "Engagée dans une démarche d'excellence, BORDJ STEEL est certifiée ISO 9001:2015, ISO 14001:2015, et ISO 45001:2018. Notre politique Qualité, Hygiène, Sécurité, et Environnement, signée par le Directeur Général M. TRIRAT Samir, est le pilier de notre performance.",
         },
         image: {
-            src: 'https://images.unsplash.com/photo-1600683605785-d51d43138eee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c3RlZWwlMjBmYWN0b3J5fGVufDB8fHx8MTc1Mzg4MjMwMHww&ixlib=rb-4.1.0&q=80&w=1080',
+            src: 'https://i.pinimg.com/736x/7b/2e/0e/7b2e0e0f355e7f114d5f981d2b144175.jpg',
             alt: 'Siège social de Bordj Steel',
             aiHint: 'company building'
         },
@@ -111,7 +112,7 @@ export const companyData = {
         {
           title: 'Panneaux Sandwichs',
           description: `Capacité de 5000 m²/jour. Gamme d'épaisseur de 30-200 mm pour couverture, bardage, et chambres froides.`,
-          image: { src: 'https://images.unsplash.com/photo-1585435582425-a03999930ee74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyMHx8JTIwbWV0YWwlMjBzaGVldCUyMHBhbmVsJTIwfGVufDB8fHx8MTc1Mzg3NjYwNHww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'sandwich panels' },
+          image: { src: 'https://i.pinimg.com/736x/cf/00/2d/cf002d58c397f8a51dc69dfd23d65b47.jpg', aiHint: 'sandwich panels' },
           icon: 'Layers',
           href: '/products/sandwich-panels'
         },
@@ -151,7 +152,7 @@ export const companyData = {
         },
         {
           name: 'Accessoires de Finition',
-          description: 'Tous les accessoires nécessaires pour une finition parfaite : gouttières, faîtages, et plus encore.',
+          description: 'Tous les accessoires nécessaires pour une finition perfecte : gouttières, faîtages, et plus encore.',
           image: { src: 'https://placehold.co/800x600.png', aiHint: 'metal accessories' }
         }
       ]
@@ -246,3 +247,5 @@ export const companyData = {
     whatsapp: "#"
   },
 };
+
+    

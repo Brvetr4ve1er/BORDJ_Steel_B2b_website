@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View } from 'lucide-react';
+import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -50,7 +50,8 @@ const iconMap: { [key: string]: React.ElementType } = {
   Anchor,
   BookOpen,
   Video,
-  View
+  View,
+  User
 };
 
 const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?: () => void }) => {
@@ -300,3 +301,5 @@ export function Navbar() {
     </header>
   );
 }
+
+    
