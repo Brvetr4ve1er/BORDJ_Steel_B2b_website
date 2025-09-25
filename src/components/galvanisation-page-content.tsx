@@ -149,7 +149,7 @@ export function GalvanisationPageContent() {
         <div className="relative max-w-3xl mx-auto">
             <div className="absolute left-1/2 top-0 h-full w-px bg-red-500/30 hidden md:block" />
             {processSteps.map((step, index) => (
-                <AnimatedWrapper key={index} animation="slide-up">
+                <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
                     <div className={cn("relative flex items-center mb-12", index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse")}>
                         <div className="hidden md:flex w-1/2" />
                         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block">
@@ -182,7 +182,7 @@ export function GalvanisationPageContent() {
                                 <Ruler className="w-8 h-8 text-red-400" />
                                 <div>
                                     <p className="font-bold text-lg">Épaisseur Standard</p>
-                                    <p className="text-gray-400">Garantie de 50 à 150 µm</p>
+                                    <p className="text-gray-400">Garantie de 50 à <AnimatedCounter end={150} duration={2000} className="inline-block"/> µm</p>
                                 </div>
                             </div>
                              <div className="flex items-center gap-4">
@@ -196,7 +196,7 @@ export function GalvanisationPageContent() {
                                 <Calendar className="w-8 h-8 text-red-400" />
                                 <div>
                                     <p className="font-bold text-lg">Longévité du Bouclier</p>
-                                    <p className="text-gray-400">Protection certifiée jusqu'à 50 ans</p>
+                                    <p className="text-gray-400">Protection certifiée jusqu'à <AnimatedCounter end={50} duration={2000} className="inline-block"/> ans</p>
                                 </div>
                             </div>
                         </div>
@@ -208,11 +208,13 @@ export function GalvanisationPageContent() {
                     <h3 className="font-headline text-3xl font-bold text-white mb-6">Avantages de la Galvanisation</h3>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {advantages.map((advantage, index) => (
-                            <div key={index} className="p-6 rounded-lg bg-gray-900/40 border border-gray-800/70 transition-all duration-300 hover:border-red-500/50 hover:-translate-y-1">
+                          <AnimatedWrapper animation="fade-in-stagger" staggerIndex={index} key={index}>
+                            <div className="p-6 rounded-lg bg-gray-900/40 border border-gray-800/70 transition-all duration-300 hover:border-red-500/50 hover:-translate-y-1 h-full">
                                 <div className="text-red-500 mb-3">{advantage.icon}</div>
                                 <h4 className="font-bold text-lg mb-1">{advantage.title}</h4>
                                 <p className="text-sm text-gray-400">{advantage.description}</p>
                             </div>
+                          </AnimatedWrapper>
                         ))}
                     </div>
                  </AnimatedWrapper>
@@ -223,18 +225,18 @@ export function GalvanisationPageContent() {
       {/* 6. Applications */}
       <Section className="bg-black/20">
           <SectionTitle>Domaines d’Application</SectionTitle>
-          <AnimatedWrapper animation="fade-in">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 {applications.map((app, index) => (
-                    <div key={index} className="text-center group">
-                        <div className="w-32 h-32 mx-auto rounded-full bg-gray-800/50 border border-gray-700 flex items-center justify-center transition-all duration-300 group-hover:bg-[#C1272D]/20 group-hover:border-[#C1272D]/50">
-                           <div className="text-gray-400 transition-colors duration-300 group-hover:text-white"> {app.icon} </div>
-                        </div>
-                        <p className="mt-4 font-semibold text-lg">{app.name}</p>
-                    </div>
+                    <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                      <div className="text-center group">
+                          <div className="w-32 h-32 mx-auto rounded-full bg-gray-800/50 border border-gray-700 flex items-center justify-center transition-all duration-300 group-hover:bg-[#C1272D]/20 group-hover:border-[#C1272D]/50">
+                            <div className="text-gray-400 transition-colors duration-300 group-hover:text-white"> {app.icon} </div>
+                          </div>
+                          <p className="mt-4 font-semibold text-lg">{app.name}</p>
+                      </div>
+                    </AnimatedWrapper>
                 ))}
             </div>
-          </AnimatedWrapper>
       </Section>
 
       {/* Final CTA */}
@@ -255,3 +257,5 @@ export function GalvanisationPageContent() {
     </div>
   );
 }
+
+    
