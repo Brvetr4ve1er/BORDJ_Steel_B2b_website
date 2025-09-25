@@ -94,7 +94,7 @@ export function GalvanisationPageContent() {
   return (
     <div className="bg-[#1A1A1A] text-gray-200">
       {/* 1. Hero Banner */}
-      <section className="relative h-screen w-full flex items-center justify-center text-white overflow-hidden">
+      <section className="relative h-screen w-full flex items-center justify-start text-white overflow-hidden">
         <Image
           src="https://i.pinimg.com/736x/5e/56/c4/5e56c4a55c30e8c82620e6ec3839700d.jpg"
           alt="Bain de galvanisation à chaud"
@@ -104,19 +104,21 @@ export function GalvanisationPageContent() {
           data-ai-hint="molten zinc"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-[#1A1A1A] z-10" />
-        <div className="relative z-20 text-center px-4">
-          <AnimatedWrapper animation="zoom-in">
-            <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase">
-              GALVANISATION À CHAUD
-            </h1>
-            <p className="mt-6 text-xl md:text-2xl max-w-3xl mx-auto text-gray-300">
-              Protection Intégrale, Pérennité Inégalée.
-            </p>
-            <Button size="lg" variant="destructive" className="mt-8 bg-[#C1272D] hover:bg-[#E53935] text-white font-bold text-lg px-10 py-6 group">
-                Découvrir le Procédé
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
-            </Button>
-          </AnimatedWrapper>
+        <div className="relative z-20 container mx-auto px-4">
+          <div className="max-w-2xl text-left">
+            <AnimatedWrapper animation="zoom-in">
+              <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase">
+                GALVANISATION À CHAUD
+              </h1>
+              <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-300">
+                Protection Intégrale, Pérennité Inégalée.
+              </p>
+              <Button size="lg" variant="destructive" className="mt-8 bg-[#C1272D] hover:bg-[#E53935] text-white font-bold text-lg px-10 py-6 group">
+                  Découvrir le Procédé
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+              </Button>
+            </AnimatedWrapper>
+          </div>
         </div>
       </section>
 
