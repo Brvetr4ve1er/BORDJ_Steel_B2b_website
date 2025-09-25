@@ -146,23 +146,22 @@ export function GalvanisationPageContent() {
       {/* 3. Detailed Process Steps */}
       <Section className="bg-black/20">
         <SectionTitle>Étapes Détaillées du Processus</SectionTitle>
-        <div className="relative max-w-3xl mx-auto">
+        <div className="relative max-w-4xl mx-auto">
             <div className="absolute left-1/2 top-0 h-full w-px bg-red-500/30 hidden md:block" />
             {processSteps.map((step, index) => (
                 <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                    <div className={cn("relative flex items-center mb-12", index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse")}>
-                        <div className="hidden md:flex w-1/2" />
-                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block">
+                    <div className="relative flex items-center justify-center mb-12">
+                         <div className="absolute left-1/2 -translate-x-1/2 hidden md:block">
                             <div className="w-5 h-5 rounded-full bg-[#C1272D] border-4 border-gray-800" />
                         </div>
-                        <div className="w-full md:w-1/2 p-6 bg-gray-800/60 border border-gray-700 rounded-lg shadow-lg">
-                            <div className="flex items-center gap-4 mb-3">
-                                <div className="w-12 h-12 flex-shrink-0 rounded-full bg-[#C1272D]/20 text-[#C1272D] flex items-center justify-center">
+                        <div className="w-full p-8 bg-gray-800/60 border border-gray-700 rounded-lg shadow-lg">
+                            <div className="flex items-center gap-6 mb-4">
+                                <div className="w-16 h-16 flex-shrink-0 rounded-full bg-[#C1272D]/20 text-[#C1272D] flex items-center justify-center">
                                     {step.icon}
                                 </div>
-                                <h3 className="font-headline text-2xl font-bold text-white">{step.title}</h3>
+                                <h3 className="font-headline text-3xl font-bold text-white">{step.title}</h3>
                             </div>
-                            <p className="text-gray-400">{step.description}</p>
+                            <p className="text-gray-300 text-lg ml-22 pl-2">{step.description}</p>
                         </div>
                     </div>
                 </AnimatedWrapper>
