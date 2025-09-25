@@ -4,9 +4,10 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
-import { ArrowRight, Zap, ShieldCheck, ChevronsRight, Layers, Wind, Droplets, Thermometer, Sun, PackageCheck } from 'lucide-react';
+import { ArrowRight, Zap, ShieldCheck, Layers, Wind, Droplets, Thermometer, Sun, PackageCheck, Recycle, Calendar, Ruler, Atom, Construction, TowerControl, Car, Ship } from 'lucide-react';
 import React from 'react';
-import YouTube from 'react-youtube';
+import { cn } from '@/lib/utils';
+import { AnimatedCounter } from './animated-counter';
 
 const Section = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <section className={`py-20 sm:py-28 ${className}`}>
@@ -14,8 +15,8 @@ const Section = ({ children, className }: { children: React.ReactNode; className
   </section>
 );
 
-const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="font-headline text-5xl font-bold text-primary mb-16 text-center">
+const SectionTitle = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <h2 className={cn("font-headline text-5xl font-bold text-white mb-16 text-center tracking-tighter", className)}>
     {children}
   </h2>
 );
@@ -23,187 +24,234 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
 const processSteps = [
   {
     icon: <Droplets className="h-10 w-10" />,
-    title: 'Dégraissage',
-    description: 'Élimination des huiles, graisses et salissures de la surface de l’acier.',
+    title: '1. Décontamination et Nettoyage',
+    description: 'Objectif : Surface Nulle. Immersion dans des bains alcalins pour éliminer huiles, graisses et impuretés. Le moindre contaminant compromettrait l\'activation future de la surface.',
   },
   {
-    icon: <Zap className="h-10 w-10" />,
-    title: 'Décapage',
-    description: 'Immersion dans un bain d’acide pour enlever la rouille et la calamine.',
-  },
-    {
-    icon: <Layers className="h-10 w-10" />,
-    title: 'Fluxage',
-    description: 'Application d’une solution pour prévenir l’oxydation avant l’immersion.',
+    icon: <Wind className="h-10 w-10" />,
+    title: '2. Éradication de l\'Oxydation',
+    description: 'Procédure : Activation Chimique. L\'acier passe dans un bain d\'acide chlorhydrique pour retirer calamine et rouille, révélant une surface métallique pure.',
   },
   {
-    icon: <Sun className="h-10 w-10" />,
-    title: 'Séchage',
-    description: 'Les pièces sont séchées pour éviter les éclaboussures dans le bain de zinc.',
+    icon: <Atom className="h-10 w-10" />,
+    title: '3. Pré-conditionnement Moléculaire',
+    description: 'Mission : Prévenir la Réoxydation. Application d\'un flux de chlorure de zinc et d\'ammonium qui agit comme agent de mouillage et prépare le terrain pour la fusion.',
   },
   {
     icon: <Thermometer className="h-10 w-10" />,
-    title: 'Galvanisation',
-    description: 'Immersion dans un bain de zinc en fusion à 450°C pour créer un revêtement protecteur.',
+    title: '4. Fusion Contrôlée : Le Bond Métallurgique',
+    description: 'Noyau du Protocole. À 450°C, une réaction de diffusion crée les couches d\'alliages Zinc-Fer (Gamma, Delta, Zeta) formant l\'armure. La couche externe est du Zinc pur (Eta).',
   },
   {
     icon: <PackageCheck className="h-10 w-10" />,
-    title: 'Contrôle',
-    description: 'Inspection de la qualité du revêtement, de l’épaisseur et de la finition.',
+    title: '5. Refroidissement et Finalisation',
+    description: 'Fin du Cycle. Retrait lent pour l\'égouttage de l\'excès de zinc, suivi d\'un refroidissement. Le revêtement cristallise, créant une surface lisse et prête à l\'emploi.',
   },
 ];
 
 const advantages = [
   {
-    title: 'Durabilité Exceptionnelle',
-    description: 'Une protection qui peut durer plus de 50 ans, même dans les environnements les plus difficiles.',
-    icon: <ShieldCheck className="w-12 h-12" />,
+    title: 'Protection Totale',
+    description: 'Le zinc couvre 100% de la surface, y compris cavités et angles.',
+    icon: <Layers className="w-8 h-8" />,
   },
   {
-    title: 'Protection Intégrale',
-    description: 'Le zinc couvre 100% de la surface, y compris les cavités, les angles et les zones difficiles d’accès.',
-    icon: <Layers className="w-12 h-12" />,
+    title: 'Longévité Extrême',
+    description: 'Une protection qui peut durer plus de 50 ans.',
+    icon: <Calendar className="w-8 h-8" />,
   },
   {
-    title: 'Rentabilité à Long Terme',
-    description: 'Un coût initial compétitif et une absence quasi-totale de maintenance pour des décennies.',
-    icon: <Zap className="w-12 h-12" />,
+    title: 'Économique',
+    description: 'Coût initial compétitif et maintenance quasi nulle.',
+    icon: <Zap className="w-8 h-8" />,
   },
   {
-    title: 'Fiabilité et Prévisibilité',
-    description: 'Le processus est normé (ISO 1461), garantissant une qualité et une performance constantes et mesurables.',
-    icon: <ChevronsRight className="w-12 h-12" />,
+    title: 'Écologique',
+    description: 'Le zinc est un élément naturel et 100% recyclable.',
+    icon: <Recycle className="w-8 h-8" />,
+  },
+  {
+    title: 'Polyvalence',
+    description: 'Applicable à une vaste gamme de pièces et de structures.',
+    icon: <Zap className="w-8 h-8" />,
+  },
+   {
+    title: 'Résistance',
+    description: 'Le revêtement est résistant aux chocs et à l\'abrasion.',
+    icon: <ShieldCheck className="w-8 h-8" />,
   },
 ];
 
+const applications = [
+    { name: 'Construction', icon: <Construction className="w-12 h-12" /> },
+    { name: 'Pylônes', icon: <TowerControl className="w-12 h-12" /> },
+    { name: 'Mobilier Urbain', icon: <Car className="w-12 h-12" /> },
+    { name: 'Transport', icon: <Ship className="w-12 h-12" /> },
+    { name: 'Ouvrages Maritimes', icon: <Ship className="w-12 h-12" /> },
+];
 
 export function GalvanisationPageContent() {
-  const videoId = 'FquIZa7qT6g'; // Example video ID
-
   return (
-    <>
-      <section className="relative h-[80vh] w-full flex items-center justify-center text-white overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full z-0">
-          <YouTube
-            videoId={videoId}
-            opts={{
-              height: '100%',
-              width: '100%',
-              playerVars: {
-                autoplay: 1,
-                controls: 0,
-                loop: 1,
-                mute: 1,
-                playlist: videoId,
-                showinfo: 0,
-                modestbranding: 1,
-              },
-            }}
-            className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover"
-            onReady={(event) => event.target.playVideo()}
-          />
-        </div>
-        <div className="absolute inset-0 bg-primary/70 z-10" />
+    <div className="bg-[#1A1A1A] text-gray-200">
+      {/* 1. Hero Banner */}
+      <section className="relative h-screen w-full flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="https://picsum.photos/seed/galva1/1920/1080"
+          alt="Bain de galvanisation à chaud"
+          layout="fill"
+          objectFit="cover"
+          className="z-0 opacity-30"
+          data-ai-hint="molten zinc"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-[#1A1A1A] z-10" />
         <div className="relative z-20 text-center px-4">
-          <AnimatedWrapper animation="fade-in">
+          <AnimatedWrapper animation="zoom-in">
             <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase">
-              Galvanisation <span className="text-accent">à Chaud</span>
+              GALVANISATION À CHAUD
             </h1>
-            <p className="mt-6 text-xl md:text-2xl max-w-3xl mx-auto text-white/90">
-              La protection ultime pour l'acier, assurant une longévité et une résistance inégalées contre la corrosion.
+            <p className="mt-6 text-xl md:text-2xl max-w-3xl mx-auto text-gray-300">
+              Protection Intégrale, Pérennité Inégalée.
             </p>
+            <Button size="lg" variant="destructive" className="mt-8 bg-[#C1272D] hover:bg-[#E53935] text-white font-bold text-lg px-10 py-6 group">
+                Découvrir le Procédé
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+            </Button>
           </AnimatedWrapper>
         </div>
       </section>
 
-      <Section className="bg-secondary">
-        <SectionTitle>Notre Processus de Galvanisation</SectionTitle>
-        <div className="relative">
-          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-border -translate-x-1/2 hidden md:block"></div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-            {processSteps.map((step, index) => (
-              <AnimatedWrapper key={index} animation="slide-up">
-                <div className={`flex items-start gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                  <div className="flex-shrink-0 w-24 h-24 rounded-full bg-accent text-white flex items-center justify-center border-4 border-white shadow-lg">
-                    {step.icon}
-                  </div>
-                  <div className={`text-left ${index % 2 !== 0 && 'md:text-right'}`}>
-                    <h3 className="font-headline text-3xl font-bold text-primary mb-3">{step.title}</h3>
-                    <p className="text-lg">{step.description}</p>
-                  </div>
+      {/* 2. Service Overview */}
+      <Section>
+        <AnimatedWrapper animation="slide-up">
+            <div className="text-center max-w-4xl mx-auto">
+                <SectionTitle>Qu’est-ce que la galvanisation à chaud ?</SectionTitle>
+                <p className="text-xl text-gray-400">
+                    La galvanisation à chaud n'est pas un simple revêtement, mais la création d'une <strong>liaison métallurgique intégrée</strong>—une armure d'alliages Zinc-Fer programmée pour résister à l'environnement le plus agressif. C'est le standard de l'ingénierie moderne pour la pérennité structurelle.
+                </p>
+            </div>
+            <div className="mt-20 grid md:grid-cols-2 gap-12 items-center">
+                <div className="relative aspect-video rounded-lg overflow-hidden">
+                    <Image src="https://picsum.photos/seed/galva2/800/600" alt="Liaison métallurgique Zinc-Fer" layout="fill" objectFit='cover' data-ai-hint="metallurgy microscope" />
                 </div>
-              </AnimatedWrapper>
+                <div className="bg-gray-800/50 p-8 rounded-lg border border-gray-700">
+                    <h3 className="font-headline text-3xl font-bold text-white mb-4">Une Véritable Liaison Métallurgique</h3>
+                    <p className="text-lg text-gray-300">
+                        Contrairement à une peinture, la galvanisation fusionne le zinc avec l'acier. Cette réaction crée des couches d'alliages ultra-résistantes qui font partie intégrante de la pièce, offrant une protection qui ne s'écaille pas et qui résiste aux impacts.
+                    </p>
+                </div>
+            </div>
+        </AnimatedWrapper>
+      </Section>
+
+      {/* 3. Detailed Process Steps */}
+      <Section className="bg-black/20">
+        <SectionTitle>Étapes Détaillées du Processus</SectionTitle>
+        <div className="relative max-w-3xl mx-auto">
+            <div className="absolute left-1/2 top-0 h-full w-px bg-red-500/30 hidden md:block" />
+            {processSteps.map((step, index) => (
+                <AnimatedWrapper key={index} animation="slide-up">
+                    <div className={cn("relative flex items-center mb-12", index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse")}>
+                        <div className="hidden md:flex w-1/2" />
+                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block">
+                            <div className="w-5 h-5 rounded-full bg-[#C1272D] border-4 border-gray-800" />
+                        </div>
+                        <div className="w-full md:w-1/2 p-6 bg-gray-800/60 border border-gray-700 rounded-lg shadow-lg">
+                            <div className="flex items-center gap-4 mb-3">
+                                <div className="w-12 h-12 flex-shrink-0 rounded-full bg-[#C1272D]/20 text-[#C1272D] flex items-center justify-center">
+                                    {step.icon}
+                                </div>
+                                <h3 className="font-headline text-2xl font-bold text-white">{step.title}</h3>
+                            </div>
+                            <p className="text-gray-400">{step.description}</p>
+                        </div>
+                    </div>
+                </AnimatedWrapper>
             ))}
-          </div>
+        </div>
+      </Section>
+
+      {/* 4. Technical Specs & 5. Advantages */}
+      <Section>
+        <div className="grid lg:grid-cols-5 gap-12">
+            <div className="lg:col-span-2">
+                <AnimatedWrapper animation="fade-in">
+                    <div className="p-8 rounded-lg bg-gray-800/50 border border-red-500/50 h-full">
+                        <h3 className="font-headline text-3xl font-bold text-white mb-6">Caractéristiques Techniques</h3>
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-4">
+                                <Ruler className="w-8 h-8 text-red-400" />
+                                <div>
+                                    <p className="font-bold text-lg">Épaisseur Standard</p>
+                                    <p className="text-gray-400">Garantie de 50 à 150 µm</p>
+                                </div>
+                            </div>
+                             <div className="flex items-center gap-4">
+                                <ShieldCheck className="w-8 h-8 text-red-400" />
+                                <div>
+                                    <p className="font-bold text-lg">Résistance Exceptionnelle</p>
+                                    <p className="text-gray-400">Adhérence et résistance aux chocs supérieures</p>
+                                </div>
+                            </div>
+                             <div className="flex items-center gap-4">
+                                <Calendar className="w-8 h-8 text-red-400" />
+                                <div>
+                                    <p className="font-bold text-lg">Longévité du Bouclier</p>
+                                    <p className="text-gray-400">Protection certifiée jusqu'à 50 ans</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </AnimatedWrapper>
+            </div>
+            <div className="lg:col-span-3">
+                 <AnimatedWrapper animation="fade-in">
+                    <h3 className="font-headline text-3xl font-bold text-white mb-6">Avantages de la Galvanisation</h3>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {advantages.map((advantage, index) => (
+                            <div key={index} className="p-6 rounded-lg bg-gray-900/40 border border-gray-800/70 transition-all duration-300 hover:border-red-500/50 hover:-translate-y-1">
+                                <div className="text-red-500 mb-3">{advantage.icon}</div>
+                                <h4 className="font-bold text-lg mb-1">{advantage.title}</h4>
+                                <p className="text-sm text-gray-400">{advantage.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                 </AnimatedWrapper>
+            </div>
         </div>
       </Section>
       
-      <Section className="bg-background">
-        <SectionTitle>Les Avantages Clés</SectionTitle>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {advantages.map((advantage, index) => (
-            <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-              <div className="p-8 border border-border rounded-lg text-center h-full flex flex-col items-center group hover:border-accent transition-colors duration-300">
-                <div className="mb-6 text-accent transition-transform duration-300 group-hover:scale-110">
-                  {advantage.icon}
-                </div>
-                <h3 className="font-headline text-2xl font-bold text-primary mb-3">{advantage.title}</h3>
-                <p className="text-muted-foreground">{advantage.description}</p>
-              </div>
-            </AnimatedWrapper>
-          ))}
-        </div>
-      </Section>
-
-      <Section className="bg-primary text-primary-foreground">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-            <AnimatedWrapper animation="zoom-in">
-                <div>
-                    <h2 className="font-headline text-5xl font-bold mb-6">Nos Capacités Techniques</h2>
-                    <p className="text-lg text-primary-foreground/80 mb-8">
-                        Notre usine est équipée d'un des plus grands bains de galvanisation en Afrique, nous permettant de traiter des pièces de dimensions exceptionnelles avec une efficacité et une qualité maximales.
-                    </p>
-                    <div className="space-y-6">
-                        <div className="bg-background/10 p-6 rounded-lg">
-                            <h3 className="font-headline text-2xl font-bold text-accent">Dimensions du Bain</h3>
-                            <p className="text-xl">13m (L) x 1.6m (l) x 3.2m (P)</p>
+      {/* 6. Applications */}
+      <Section className="bg-black/20">
+          <SectionTitle>Domaines d’Application</SectionTitle>
+          <AnimatedWrapper animation="fade-in">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                {applications.map((app, index) => (
+                    <div key={index} className="text-center group">
+                        <div className="w-32 h-32 mx-auto rounded-full bg-gray-800/50 border border-gray-700 flex items-center justify-center transition-all duration-300 group-hover:bg-[#C1272D]/20 group-hover:border-[#C1272D]/50">
+                           <div className="text-gray-400 transition-colors duration-300 group-hover:text-white"> {app.icon} </div>
                         </div>
-                         <div className="bg-background/10 p-6 rounded-lg">
-                            <h3 className="font-headline text-2xl font-bold text-accent">Capacité Annuelle</h3>
-                            <p className="text-xl">60 000 tonnes</p>
-                        </div>
+                        <p className="mt-4 font-semibold text-lg">{app.name}</p>
                     </div>
-                </div>
-            </AnimatedWrapper>
-            <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1}>
-                <Image
-                    src="https://images.unsplash.com/photo-1569968201228-01aebb252e80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtZXRhbCUyMGZhY3Rvcnl8ZW58MHx8fHwxNzUzODc2NjczfDA&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Bain de galvanisation"
-                    width={600}
-                    height={600}
-                    className="rounded-lg shadow-2xl w-full h-auto object-cover"
-                    data-ai-hint="galvanization bath"
-                />
-            </AnimatedWrapper>
-        </div>
+                ))}
+            </div>
+          </AnimatedWrapper>
       </Section>
 
-      <Section className="bg-accent">
-         <AnimatedWrapper animation="fade-in">
-            <div className="text-center">
-                <h2 className="font-headline text-4xl font-bold text-accent-foreground mb-4">Protégez vos investissements avec BORDJ STEEL</h2>
-                <p className="text-accent-foreground/90 text-lg max-w-3xl mx-auto mb-8">
-                    Contactez nos experts pour discuter de votre projet et obtenir un devis personnalisé pour vos besoins en galvanisation.
+      {/* Final CTA */}
+      <Section>
+         <AnimatedWrapper animation="zoom-in">
+            <div className="text-center max-w-3xl mx-auto">
+                <h2 className="font-headline text-4xl font-bold text-white mb-4">L'investissement dans la durabilité ZERO-MAINTENANCE.</h2>
+                <p className="text-gray-400/90 text-lg mb-8">
+                    Choisissez la performance BORDJ STEEL pour vos projets critiques. Contactez nos experts pour une consultation technique et un devis personnalisé.
                 </p>
-                <Button size="lg" variant="outline" className="bg-background text-primary hover:bg-background/90" asChild>
-                    <a href="#contact">
-                    Demander un Devis
-                    <ArrowRight className="ml-2" />
-                    </a>
+                <Button size="lg" variant="destructive" className="bg-[#C1272D] hover:bg-[#E53935] text-white font-bold text-lg px-10 py-6 group">
+                    DEMANDER UNE CONSULTATION TECHNIQUE
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
                 </Button>
             </div>
          </AnimatedWrapper>
       </Section>
-    </>
+    </div>
   );
 }

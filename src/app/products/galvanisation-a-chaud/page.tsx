@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function GalvanisationPage() {
   return (
-    <div className="flex min-h-[100dvh] flex-col bg-background">
+    <div className="flex min-h-[100dvh] flex-col bg-[#1A1A1A]">
       <Navbar />
       <main className="flex-1">
         <GalvanisationPageContent />
