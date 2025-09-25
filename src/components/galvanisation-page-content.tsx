@@ -35,7 +35,7 @@ const processSteps = [
   {
     icon: <Atom className="h-10 w-10" />,
     title: '3. Pré-conditionnement Moléculaire',
-    description: 'Mission : Prévenir la Réoxydation. Application d'un flux de chlorure de zinc et d'ammonium qui agit comme agent de mouillage et prépare le terrain pour la fusion.',
+    description: 'Mission : Prévenir la Réoxydation. Application d\'un flux de chlorure de zinc et d\'ammonium qui agit comme agent de mouillage et prépare le terrain pour la fusion.',
   },
   {
     icon: <Thermometer className="h-10 w-10" />,
@@ -151,15 +151,10 @@ export function GalvanisationPageContent() {
             {processSteps.map((step, index) => (
                 <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
                     <div className={cn(
-                        "relative md:flex items-center mb-12",
-                        index % 2 === 0 ? "justify-start" : "justify-end"
+                        "relative flex items-center mb-12",
+                         index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                     )}>
-                        <div className="hidden md:block absolute w-full">
-                            <div className={cn(
-                                "h-px w-1/2 bg-red-500/30",
-                                index % 2 === 0 ? "float-left" : "float-right"
-                            )}></div>
-                        </div>
+                       <div className="hidden md:block w-1/2" />
                         <div className="absolute left-1/2 -translate-x-1/2 hidden md:block">
                             <div className="w-5 h-5 rounded-full bg-[#C1272D] border-4 border-gray-800" />
                         </div>
