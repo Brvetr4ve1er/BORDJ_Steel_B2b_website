@@ -96,7 +96,7 @@ export function GalvanisationPageContent() {
       {/* 1. Hero Banner */}
       <section className="relative h-screen w-full flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="https://picsum.photos/seed/galva1/1920/1080"
+          src="https://i.pinimg.com/736x/5e/56/c4/5e56c4a55c30e8c82620e6ec3839700d.jpg"
           alt="Bain de galvanisation à chaud"
           layout="fill"
           objectFit="cover"
@@ -257,5 +257,3 @@ export function GalvanisationPageContent() {
     </div>
   );
 }
-
-    
