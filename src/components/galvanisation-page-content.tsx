@@ -35,7 +35,7 @@ const processSteps = [
   {
     icon: <Atom className="h-10 w-10" />,
     title: '3. Pré-conditionnement Moléculaire',
-    description: 'Mission : Prévenir la Réoxydation. Application d\'un flux de chlorure de zinc et d\'ammonium qui agit comme agent de mouillage et prépare le terrain pour la fusion.',
+    description: 'Mission : Prévenir la Réoxydation. Application d'un flux de chlorure de zinc et d'ammonium qui agit comme agent de mouillage et prépare le terrain pour la fusion.',
   },
   {
     icon: <Thermometer className="h-10 w-10" />,
@@ -146,15 +146,24 @@ export function GalvanisationPageContent() {
       {/* 3. Detailed Process Steps */}
       <Section className="bg-black/20">
         <SectionTitle>Étapes Détaillées du Processus</SectionTitle>
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-5xl mx-auto">
             <div className="absolute left-1/2 top-0 h-full w-px bg-red-500/30 hidden md:block" />
             {processSteps.map((step, index) => (
                 <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                    <div className="relative flex items-center justify-center mb-12">
-                         <div className="absolute left-1/2 -translate-x-1/2 hidden md:block">
+                    <div className={cn(
+                        "relative md:flex items-center mb-12",
+                        index % 2 === 0 ? "justify-start" : "justify-end"
+                    )}>
+                        <div className="hidden md:block absolute w-full">
+                            <div className={cn(
+                                "h-px w-1/2 bg-red-500/30",
+                                index % 2 === 0 ? "float-left" : "float-right"
+                            )}></div>
+                        </div>
+                        <div className="absolute left-1/2 -translate-x-1/2 hidden md:block">
                             <div className="w-5 h-5 rounded-full bg-[#C1272D] border-4 border-gray-800" />
                         </div>
-                        <div className="w-full p-8 bg-gray-800/60 border border-gray-700 rounded-lg shadow-lg">
+                        <div className="md:w-1/2 p-8 bg-gray-800/60 border border-gray-700 rounded-lg shadow-lg">
                             <div className="flex items-center gap-6 mb-4">
                                 <div className="w-16 h-16 flex-shrink-0 rounded-full bg-[#C1272D]/20 text-[#C1272D] flex items-center justify-center">
                                     {step.icon}
