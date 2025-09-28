@@ -94,16 +94,17 @@ export function SandwichPanelsPage() {
           alt="Panneaux Sandwich en production"
           layout="fill"
           objectFit="cover"
-          className="z-0 opacity-40"
+          className="z-0"
           data-ai-hint="sandwich panels factory"
+          priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/20 z-10" />
+        <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="relative z-20 container mx-auto px-4 text-center">
             <AnimatedWrapper animation="zoom-in">
-              <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-primary">
+              <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
                 Panneaux Sandwichs
               </h1>
-              <p className="mt-6 text-xl md:text-2xl max-w-3xl text-foreground/80 mx-auto">
+              <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 mx-auto">
                 Solutions d'isolation haute performance pour la construction moderne.
               </p>
               <Button size="lg" variant="destructive" className="mt-8 group">
