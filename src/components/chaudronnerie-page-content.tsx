@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
-import { ArrowRight, Tank, Wind, Construction, Cog } from 'lucide-react';
+import { ArrowRight, Database, Wind, Construction, Cog } from 'lucide-react';
 import React, { useState } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
 import { cn } from '@/lib/utils';
@@ -25,7 +25,7 @@ export function ChaudronneriePageContent() {
   const activeProduct = chaudronnerieData[activeProductKey];
 
   const productButtons = [
-    { key: 'silos', label: 'Silos & Réservoirs', icon: Tank },
+    { key: 'silos', label: 'Silos & Réservoirs', icon: Database },
     { key: 'conduites', label: 'Conduites & Gaines', icon: Wind },
     { key: 'structures', label: 'Structures Spéciales', icon: Construction },
     { key: 'equipements', label: 'Équipements Industriels', icon: Cog },
