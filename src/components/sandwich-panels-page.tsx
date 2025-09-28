@@ -90,7 +90,7 @@ export function SandwichPanelsPage() {
     <>
       <section className="relative h-screen w-full flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="https://i.pinimg.com/736x/ce/22/71/ce227152b9fed3c117cbaad50450656a.jpg"
+          src="https://i.pinimg.com/736x/47/d1/cc/47d1ccc3c54a931ddd6a15fc025c0aa8.jpg"
           alt="Panneaux Sandwich en production"
           layout="fill"
           objectFit="cover"
