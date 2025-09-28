@@ -3,6 +3,7 @@ import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { companyData } from '@/config/company-data';
 import type { Metadata } from 'next';
+import { CharpenteMetalliquePageContent } from '@/components/charpente-metallique-page';
 
 export const metadata: Metadata = {
   title: `Charpente Métallique | ${companyData.siteMetadata.title}`,
@@ -13,11 +14,8 @@ export default function CharpenteMetalliquePage() {
   return (
     <div className="flex min-h-[100dvh] flex-col">
       <Navbar />
-      <main className="flex-1 pt-32">
-        <div className="container mx-auto px-4 py-16">
-          <h1 className="text-4xl font-bold font-headline">Charpente Métallique</h1>
-          <p className="mt-4 text-lg">Page en construction. Plus de détails sur nos solutions de charpente métallique seront bientôt disponibles.</p>
-        </div>
+      <main className="flex-1 pt-32 bg-secondary/50">
+        <CharpenteMetalliquePageContent />
       </main>
       <Footer />
     </div>
