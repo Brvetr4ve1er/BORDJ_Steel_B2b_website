@@ -14,7 +14,7 @@ export default function SandwichPanelsProductPage() {
   return (
     <div className="flex min-h-[100dvh] flex-col">
       <Navbar />
-      <main className="flex-1 pt-32">
+      <main className="flex-1">
         <SandwichPanelsPage />
       </main>
       <Footer />
