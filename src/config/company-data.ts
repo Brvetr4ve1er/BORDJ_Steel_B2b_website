@@ -112,7 +112,7 @@ export const companyData = {
         {
           title: 'Panneaux Sandwichs',
           description: `Capacité de 5000 m²/jour. Gamme d'épaisseur de 30-200 mm pour couverture, bardage, et chambres froides.`,
-          image: { src: 'https://i.pinimg.com/736x/cf/00/2d/cf002d58c397f8a51dc69dfd23d65b47.jpg', aiHint: 'sandwich panels' },
+          image: { src: 'https://i.pinimg.com/736x/ce/22/71/ce227152b9fed3c117cbaad50450656a.jpg', aiHint: 'sandwich panels' },
           icon: 'Layers',
           href: '/products/sandwich-panels'
         },
@@ -248,4 +248,5 @@ export const companyData = {
   },
 };
 
+    
     
