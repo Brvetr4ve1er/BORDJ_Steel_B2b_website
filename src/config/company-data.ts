@@ -105,7 +105,7 @@ export const companyData = {
         {
           title: 'Charpente Métallique',
           description: `Capacité de 1500 T/mois (25000 T/an) et PRS 3000 T/an. Nous produisons des hangars, pylônes, et supports publicitaires.`,
-          image: { src: 'https://picsum.photos/seed/charpente/800/600', aiHint: 'steel fabrication' },
+          image: { src: 'https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg', aiHint: 'steel fabrication' },
           icon: 'HardHat',
           href: '/products/charpente-metallique'
         },
@@ -249,4 +249,6 @@ export const companyData = {
 };
 
     
+    
+
     
