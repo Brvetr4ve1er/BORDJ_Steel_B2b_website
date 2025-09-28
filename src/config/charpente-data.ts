@@ -6,13 +6,13 @@ export type ProductImage = {
 };
 
 export const charpenteData = {
-  poutrelles: {
-    title: 'Poutrelles (IPN, IPE, HEA, HEB)',
+  prs: {
+    title: 'PRS (Profils Reconstitués Soudés)',
     galleryImages: [
       { src: 'https://picsum.photos/seed/beams/800/600', alt: 'Poutrelles en acier', aiHint: 'steel beams' },
     ],
     features: {
-      description: 'Les poutrelles sont des éléments de structure essentiels qui supportent les charges des planchers, des toitures et des murs. Notre gamme comprend des profils IPN, IPE, HEA et HEB pour répondre à toutes les exigences de charge et de portée.',
+      description: 'Les poutrelles sont des éléments de structure essentiels qui supportent les charges. Notre gamme inclut des profils standards (IPN, IPE, HEA, HEB, UPN) et des Profils Reconstitués Soudés (PRS) sur mesure pour répondre à toutes les exigences de charge et de portée.',
       avantages: [
         'Haute capacité de charge',
         'Grande variété de sections disponibles',

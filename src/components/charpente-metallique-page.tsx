@@ -139,11 +139,11 @@ const SubSectionTitle = ({ children }: { children: React.ReactNode }) => (
 
 
 export function CharpenteMetalliquePageContent() {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof charpenteData>('poutrelles');
+  const [activeProductKey, setActiveProductKey] = useState<keyof typeof charpenteData>('prs');
   const activeProduct = charpenteData[activeProductKey];
 
   const productButtons = [
-    { key: 'poutrelles', label: 'Poutrelles', icon: GanttChart },
+    { key: 'prs', label: 'PRS', icon: GanttChart },
     { key: 'profiles', label: 'Profilés', icon: Square },
     { key: 'poteaux', label: 'Poteaux', icon: Component },
     { key: 'accessoires', label: 'Accessoires', icon: ToyBrick },
@@ -302,4 +302,3 @@ export function CharpenteMetalliquePageContent() {
     </div>
   );
 }
-
