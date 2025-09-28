@@ -2,22 +2,16 @@
 "use client";
 
 import Image from 'next/image';
-import { useState } from 'react';
-import { AnimatedWrapper } from './animated-wrapper';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Building, Factory, CheckCircle, Wind, HardHat, Layers, Truck, GanttChart, Square, Component, ToyBrick } from 'lucide-react';
-import { companyData } from '@/config/company-data';
-import { charpenteData } from '@/config/charpente-data';
-import { ProductImageGallery } from './product-image-gallery';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
-import { cn } from '@/lib/utils';
-
+import { ArrowRight, Building, Factory, HardHat, CheckCircle, ShieldCheck, Zap, Bot, BookCopy, TowerControl, Car, Tractor, Award } from 'lucide-react';
+import { AnimatedWrapper } from './animated-wrapper';
+import React from 'react';
 
 const applications = [
   { icon: <Building className="w-8 h-8" />, text: "Bâtiments industriels & commerciaux" },
   { icon: <Factory className="w-8 h-8" />, text: "Hangars de stockage & agricoles" },
-  { icon: <Truck className="w-8 h-8" />, text: "Infrastructures logistiques" },
+  { icon: <Tractor className="w-8 h-8" />, text: "Infrastructures logistiques" },
   { icon: <HardHat className="w-8 h-8" />, text: "Projets sur mesure" },
 ];
 
@@ -129,26 +123,58 @@ const bentoItems = [
   },
 ];
 
-const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="font-headline text-3xl font-bold text-primary mb-8">{children}</h3>
-);
 
-const SubSectionTitle = ({ children }: { children: React.ReactNode }) => (
-    <h4 className="font-headline text-2xl font-bold text-primary mt-10 mb-6">{children}</h4>
-);
+const pillars = [
+    {
+        icon: <HardHat className="w-12 h-12" />,
+        title: "PRS – Profils Reconstitués Soudés",
+        explanation: "Fabrication sur mesure selon les normes internationales. Grande capacité de portance, adaptées aux bâtiments industriels, ponts et charpentes lourdes.",
+        advantages: ["Précision", "Durabilité", "Optimisation du poids"],
+        image: { src: "https://picsum.photos/seed/prs-pillar/800/600", aiHint: "welded steel beams" },
+    },
+    {
+        icon: <TowerControl className="w-12 h-12" />,
+        title: "Supports de Transport",
+        explanation: "Conception et production de structures métalliques pour l’énergie (électricité, tours 5G), la communication (projecteurs) et l’affichage (panneaux publicitaires).",
+        advantages: ["Fiabilité climatique", "Stabilité", "Longévité"],
+        image: { src: "https://picsum.photos/seed/pylon-pillar/800/600", aiHint: "communication tower" },
+    },
+    {
+        icon: <Tractor className="w-12 h-12" />,
+        title: "Pont Roulant – Mono et Bipoutre",
+        explanation: "Production de ponts roulants pour la manutention lourde, avec options mono-poutre et bi-poutre à caisson renforcé.",
+        advantages: ["Usines", "Ateliers", "Entrepôts"],
+        image: { src: "https://picsum.photos/seed/crane-pillar/800/600", aiHint: "overhead crane" },
+    },
+    {
+        icon: <Car className="w-12 h-12" />,
+        title: "Ligne de Fabrication Automobile",
+        explanation: "Ligne complète pour la transformation métallique automobile, assurant la production de pièces de carrosserie avec haute précision et tolérances strictes.",
+        advantages: ["Haute précision", "Tolérances strictes", "Adapté aux constructeurs"],
+        image: { src: "https://picsum.photos/seed/auto-pillar/800/600", aiHint: "automotive welding line" },
+    }
+];
+
+const whyChooseUs = [
+    {
+        icon: <Award className="w-10 h-10" />,
+        title: "Standards & Certifications",
+        description: "Nous respectons les normes internationales les plus strictes (ISO, EN) pour garantir la qualité et la sécurité de chaque structure."
+    },
+    {
+        icon: <Zap className="w-10 h-10" />,
+        title: "Capacités de Production",
+        description: "Avec des machines CNC de pointe et des soudeuses automatiques, nous avons une capacité de production massive pour les projets de toute envergure."
+    },
+    {
+        icon: <ShieldCheck className="w-10 h-10" />,
+        title: "Expertise & Innovation",
+        description: "Notre bureau d'études et nos équipes s'appuient sur une riche expérience et des références solides pour innover et relever les défis complexes."
+    }
+];
 
 
 export function CharpenteMetalliquePageContent() {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof charpenteData>('prs');
-  const activeProduct = charpenteData[activeProductKey];
-
-  const productButtons = [
-    { key: 'prs', label: 'PRS', icon: GanttChart },
-    { key: 'profiles', label: 'Profilés', icon: Square },
-    { key: 'poteaux', label: 'Poteaux', icon: Component },
-    { key: 'accessoires', label: 'Accessoires', icon: ToyBrick },
-  ];
-
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="grid grid-cols-1 lg:grid-cols-5 lg:grid-rows-3 gap-8 min-h-[80vh]">
@@ -166,139 +192,83 @@ export function CharpenteMetalliquePageContent() {
         ))}
       </div>
 
-      <section id="product-details" className="bg-background py-20 mt-20">
-         <AnimatedWrapper animation="fade-in">
-            <div className="text-center mb-20">
-                <h1 className="font-headline text-5xl font-bold text-primary mb-6">Catalogue Technique de Charpente Métallique</h1>
-                <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
-                    Explorez notre gamme complète de composants pour charpentes métalliques. Chaque pièce est conçue pour garantir une intégrité structurelle, une durabilité et une conformité aux normes les plus strictes.
-                </p>
-            </div>
-        </AnimatedWrapper>
-
+      <section id="category-pillars" className="py-20 mt-20">
         <AnimatedWrapper animation="fade-in">
-           <div className="mb-24 flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
-            {productButtons.map(({ key, label, icon: Icon }) => (
-              <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => setActiveProductKey(key as keyof typeof charpenteData)}>
-                <div className={cn(
-                    "w-32 h-32 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
-                    activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
-                )}>
-                    <Icon className={cn(
-                        "h-14 w-14 transition-colors duration-300",
-                        activeProductKey === key ? 'text-accent-foreground' : 'text-primary'
-                    )} />
-                </div>
-                <Button
-                    variant={activeProductKey === key ? 'destructive' : 'outline'}
-                    onClick={() => setActiveProductKey(key as keyof typeof charpenteData)}
-                    className={cn(
-                        "h-auto py-2 px-6 transition-all duration-300 text-center",
-                        activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
-                    )}
-                >
-                    <span className="text-center text-lg font-semibold">{label}</span>
-                </Button>
-              </div>
-            ))}
-          </div>
+          <h2 className="font-headline text-5xl font-bold text-primary mb-16 text-center">Nos Piliers de Production</h2>
         </AnimatedWrapper>
-        
-        <div className="grid lg:grid-cols-3 gap-x-24 gap-y-16">
-            <div className="lg:col-span-1 h-max sticky top-32 space-y-8">
-                <ProductImageGallery 
-                    galleryImages={activeProduct.galleryImages}
-                />
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+            {pillars.map((pillar, index) => (
+                <AnimatedWrapper key={index} animation="slide-up" staggerIndex={index}>
+                   <Card className="group relative overflow-hidden rounded-2xl shadow-lg h-full hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+                       <div className="relative h-56">
+                           <Image
+                               src={pillar.image.src}
+                               alt={pillar.title}
+                               layout="fill"
+                               objectFit="cover"
+                               className="transition-transform duration-500 group-hover:scale-110"
+                               data-ai-hint={pillar.image.aiHint}
+                           />
+                           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                           <div className="absolute top-4 left-4 bg-accent/80 text-accent-foreground p-3 rounded-full backdrop-blur-sm">
+                               {pillar.icon}
+                           </div>
+                       </div>
+                       <CardContent className="p-6 flex flex-col flex-grow">
+                           <h3 className="font-headline text-2xl font-bold text-primary mb-3">{pillar.title}</h3>
+                           <p className="text-muted-foreground mb-4 flex-grow">{pillar.explanation}</p>
+                           <ul className="space-y-2 mt-auto">
+                               {pillar.advantages.map((adv, i) => (
+                                   <li key={i} className="flex items-center gap-2 text-sm">
+                                       <CheckCircle className="h-4 w-4 text-accent" />
+                                       <span>{adv}</span>
+                                   </li>
+                               ))}
+                           </ul>
+                       </CardContent>
+                   </Card>
+                </AnimatedWrapper>
+            ))}
+        </div>
+      </section>
 
-            <div className="lg:col-span-2">
-              <AnimatedWrapper animation="fade-in">
-                <div>
-                    <h2 className="font-headline text-5xl font-bold text-accent mb-16">{activeProduct.title}</h2>
-                    <Card className="border-none shadow-none p-0">
-                        <CardContent className="p-0">
-                            <SectionTitle>CARACTÉRISTIQUES DU PRODUIT</SectionTitle>
-                            <div className="space-y-12 text-lg">
-                                {activeProduct.features.description && (
-                                  <div>
-                                      <SubSectionTitle>Description</SubSectionTitle>
-                                      <p>{activeProduct.features.description}</p>
-                                  </div>
-                                )}
-                                {activeProduct.features.avantages && activeProduct.features.avantages.length > 0 &&
-                                    <div>
-                                        <SubSectionTitle>Avantages Clés</SubSectionTitle>
-                                        <ul className="list-disc pl-6 space-y-2">
-                                            {activeProduct.features.avantages.map(item => <li key={item}>{item}</li>)}
-                                        </ul>
-                                    </div>
-                                }
-                                {activeProduct.features.applications && activeProduct.features.applications.length > 0 &&
-                                  <div>
-                                      <SubSectionTitle>Applications Courantes</SubSectionTitle>
-                                      <ul className="list-disc pl-6 space-y-2">
-                                          {activeProduct.features.applications.map(item => <li key={item}>{item}</li>)}
-                                      </ul>
-                                  </div>
-                                }
-                                {activeProduct.features.normes && 
-                                  <div>
-                                      <SubSectionTitle>Normes et Qualité</SubSectionTitle>
-                                      <p>{activeProduct.features.normes}</p>
-                                  </div>
-                                }
-                            </div>
-
-                            <section className="mt-24">
-                                <SectionTitle>TABLEAUX TECHNIQUES</SectionTitle>
-                                {activeProduct.tables.dimensions?.rows && activeProduct.tables.dimensions.rows.length > 0 && (
-                                    <div className="mb-16">
-                                        <SubSectionTitle>{activeProduct.tables.dimensions.title}</SubSectionTitle>
-                                        <Table>
-                                            <TableHeader>
-                                                <TableRow className="bg-accent/10">
-                                                    {activeProduct.tables.dimensions.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
-                                                </TableRow>
-                                            </TableHeader>
-                                            <TableBody>
-                                                {activeProduct.tables.dimensions.rows.map((row, i) => (
-                                                    <TableRow key={i}>
-                                                        {activeProduct.tables.dimensions.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row] ?? ''}</TableCell>)}
-                                                    </TableRow>
-                                                ))}
-                                            </TableBody>
-                                        </Table>
-                                    </div>
-                                )}
-                                 {activeProduct.tables.accessoires && (
-                                    <div className="mb-16">
-                                        <SubSectionTitle>{activeProduct.tables.accessoires.title}</SubSectionTitle>
-                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-                                          {activeProduct.tables.accessoires.items.map((item, index) => (
-                                            <div key={index} className="text-center">
-                                              <Image 
-                                                  src={item.image.src} 
-                                                  alt={item.name} 
-                                                  width={150} 
-                                                  height={100}
-                                                  className="mx-auto"
-                                                  data-ai-hint={item.image.aiHint}
-                                              />
-                                              <p className="font-semibold mt-2">{item.name}</p>
-                                            </div>
-                                          ))}
-                                        </div>
-                                    </div>
-                                )}
-                            </section>
-
-                        </CardContent>
-                    </Card>
-                </div>
-              </AnimatedWrapper>
-            </div>
+      <section id="why-choose-us" className="py-20">
+          <AnimatedWrapper animation="fade-in">
+            <h2 className="font-headline text-5xl font-bold text-primary mb-16 text-center">Pourquoi Nous Choisir?</h2>
+          </AnimatedWrapper>
+          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
+              {whyChooseUs.map((item, index) => (
+                  <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                      <div className="text-center">
+                          <div className="flex items-center justify-center h-20 w-20 rounded-full bg-accent/10 text-accent mx-auto mb-6">
+                              {item.icon}
+                          </div>
+                          <h3 className="font-headline text-2xl font-bold text-primary mb-3">{item.title}</h3>
+                          <p className="text-muted-foreground">{item.description}</p>
+                      </div>
+                  </AnimatedWrapper>
+              ))}
           </div>
       </section>
+
+      <section id="cta-bottom" className="py-20">
+        <AnimatedWrapper animation="zoom-in">
+          <div className="bg-secondary rounded-2xl p-12 text-center max-w-4xl mx-auto shadow-xl">
+            <h2 className="font-headline text-4xl font-bold text-primary mb-4">Discutons de votre projet.</h2>
+            <p className="text-muted-foreground text-lg mb-8">Notre équipe est prête à transformer vos idées en réalité. Contactez-nous pour un devis ou une consultation technique.</p>
+            <div className="flex justify-center gap-4 flex-wrap">
+                <Button size="lg" variant="destructive">
+                    Demander un Devis <ArrowRight className="ml-2" />
+                </Button>
+                <Button size="lg" variant="outline" className="bg-white hover:bg-white/90 border-primary/20">
+                    <BookCopy className="mr-2" />
+                    Télécharger la Brochure
+                </Button>
+            </div>
+          </div>
+        </AnimatedWrapper>
+      </section>
+
     </div>
   );
 }
