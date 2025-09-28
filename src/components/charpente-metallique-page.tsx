@@ -37,7 +37,7 @@ const bentoItems = [
     content: (
       <div className="relative w-full h-full">
         <Image
-          src={companyData.pages.units.items.find(i => i.title === 'Charpente Métallique')?.image.src || ''}
+          src="https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg"
           alt="Charpente Métallique en construction"
           layout="fill"
           objectFit="cover"
@@ -302,3 +302,5 @@ export function CharpenteMetalliquePageContent() {
     </div>
   );
 }
+
+    
