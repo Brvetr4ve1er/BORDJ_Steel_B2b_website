@@ -103,7 +103,6 @@ export function GalvanisationPageContent() {
           className="z-0 opacity-30"
           data-ai-hint="molten zinc"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-[#1A1A1A] z-10" />
         <div className="relative z-20 container mx-auto px-4">
           <div className="max-w-2xl text-left">
             <AnimatedWrapper animation="zoom-in">
