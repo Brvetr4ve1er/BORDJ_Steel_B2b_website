@@ -58,9 +58,16 @@ const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?
     const { navigation } = companyData;
     const [openMenu, setOpenMenu] = useState('');
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
+        setIsMounted(true);
+    }, []);
+    
+    useEffect(() => {
+        if (!isMounted) return;
+        
         const handleScroll = () => {
           const scrolled = window.scrollY > 20;
           if (scrolled !== isScrolled) {
@@ -69,7 +76,7 @@ const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [isScrolled]);
+    }, [isMounted, isScrolled]);
 
     const handleMenuClick = (menuName: string) => {
         setOpenMenu(openMenu === menuName ? '' : menuName);
@@ -80,6 +87,8 @@ const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?
       return pathname.startsWith(href);
     };
     
+    const navTextColor = isMounted && isScrolled ? 'text-foreground' : 'text-background';
+
     return (
         <NavigationMenu value={openMenu} onValueChange={setOpenMenu}>
             <NavigationMenuList className={cn("flex items-center gap-2", className)}>
@@ -91,7 +100,7 @@ const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?
                                 <>
                                     <NavigationMenuTrigger
                                         onClick={() => handleMenuClick(item.name)}
-                                        className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent", isScrolled ? 'text-foreground' : 'text-background')}
+                                        className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent", navTextColor)}
                                     >
                                        {Icon && <Icon className="h-4 w-4 mr-2" />}
                                         {item.name}
@@ -120,7 +129,7 @@ const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?
                                 <NavigationMenuLink asChild>
                                   <Link
                                     href={item.href}
-                                    className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent", isScrolled ? 'text-foreground' : 'text-background')}
+                                    className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent", navTextColor)}
                                     onClick={onItemClick}
                                   >
                                       <div className="flex items-center">
@@ -175,29 +184,42 @@ ListItem.displayName = "ListItem";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { navigation, siteMetadata } = companyData;
   const pathname = usePathname();
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMounted]);
+
+  const headerStyle = isMounted && isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32';
+  const logoWidth = isMounted && isScrolled ? 'w-32' : 'w-40';
+  const textColor = isMounted && isScrolled ? 'text-primary' : 'text-white/80';
+  const menuIconColor = isMounted && isScrolled ? 'text-foreground' : 'text-background';
+  const selectTextColor = isMounted && isScrolled ? "text-primary border-primary/50" : "text-white";
 
   return (
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 transition-all duration-300',
-        isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32'
+        headerStyle
       )}
     >
       <div className="flex items-center h-full">
         <Link href="/" className="flex items-center h-full gap-2 group">
           <div className="relative h-full flex items-center overflow-hidden transition-transform duration-300 ease-out group-hover:scale-110">
-            <div className={cn('relative transition-all duration-300 h-full py-4', isScrolled ? 'w-32' : 'w-40')}>
+            <div className={cn('relative transition-all duration-300 h-full py-4', logoWidth)}>
               <Logo />
             </div>
             <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out group-hover:left-[100%]" />
@@ -211,11 +233,11 @@ export function Navbar() {
 
       <div className="flex items-center gap-4">
         <div className="hidden md:flex flex-col items-end gap-1 text-right">
-            <p className={cn('text-xs font-semibold uppercase tracking-wider', isScrolled ? 'text-primary' : 'text-white/80')}>{siteMetadata.slogan}</p>
-            <p className={cn('font-cairo font-bold text-sm', isScrolled ? 'text-primary' : 'text-white/80')}>{siteMetadata.sloganArabic}</p>
+            <p className={cn('text-xs font-semibold uppercase tracking-wider', textColor)}>{siteMetadata.slogan}</p>
+            <p className={cn('font-cairo font-bold text-sm', textColor)}>{siteMetadata.sloganArabic}</p>
           <div className="mt-1">
              <Select defaultValue="fr">
-                <SelectTrigger className={cn("w-[120px] bg-transparent border-white/50", isScrolled ? "text-primary border-primary/50" : "text-white")}>
+                <SelectTrigger className={cn("w-[120px] bg-transparent border-white/50", selectTextColor)}>
                     <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -229,7 +251,7 @@ export function Navbar() {
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <Menu className={cn('h-6 w-6', isScrolled ? 'text-foreground' : 'text-background')} />
+                <Menu className={cn('h-6 w-6', menuIconColor)} />
                 <span className="sr-only">Ouvrir le menu</span>
               </Button>
             </SheetTrigger>
@@ -297,5 +319,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    
