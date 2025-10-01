@@ -228,94 +228,106 @@ export function Navbar() {
       </div>
 
       <div className="hidden md:flex flex-1 justify-center items-center">
-        <NavLinks />
+        {isMounted ? <NavLinks /> : <div className="h-10" /> /* Placeholder */}
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="hidden md:flex flex-col items-end gap-1 text-right">
-            <p className={cn('text-xs font-semibold uppercase tracking-wider', textColor)}>{siteMetadata.slogan}</p>
-            <p className={cn('font-cairo font-bold text-sm', textColor)}>{siteMetadata.sloganArabic}</p>
-          <div className="mt-1">
-             <Select defaultValue="fr">
-                <SelectTrigger className={cn("w-[120px] bg-transparent border-white/50", selectTextColor)}>
-                    <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectItem value="fr">Français</SelectItem>
-                    <SelectItem value="en">English</SelectItem>
-                </SelectContent>
-            </Select>
-          </div>
-        </div>
+        {isMounted ? (
+            <div className="hidden md:flex flex-col items-end gap-1 text-right">
+                <p className={cn('text-xs font-semibold uppercase tracking-wider', textColor)}>{siteMetadata.slogan}</p>
+                <p className={cn('font-cairo font-bold text-sm', textColor)}>{siteMetadata.sloganArabic}</p>
+              <div className="mt-1">
+                 <Select defaultValue="fr">
+                    <SelectTrigger className={cn("w-[120px] bg-transparent border-white/50", selectTextColor)}>
+                        <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="fr">Français</SelectItem>
+                        <SelectItem value="en">English</SelectItem>
+                    </SelectContent>
+                </Select>
+              </div>
+            </div>
+        ): <div className="hidden md:block w-[120px] h-[76px]" /> /* Placeholder */}
+
         <div className="md:hidden">
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className={cn('h-6 w-6', menuIconColor)} />
-                <span className="sr-only">Ouvrir le menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-full h-full bg-background/95 backdrop-blur-sm p-0 flex flex-col">
-              <div className="p-6 flex justify-between items-center border-b">
-                <div className="w-32">
-                  <Logo />
-                </div>
-                <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
-                  <X className="h-6 w-6 text-foreground" />
+          {isMounted ? (
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className={cn('h-6 w-6', menuIconColor)} />
+                  <span className="sr-only">Ouvrir le menu</span>
                 </Button>
-              </div>
-              <div className="flex-1 p-6 flex flex-col items-start gap-4 relative overflow-y-auto">
-                 <Accordion type="single" collapsible className="w-full">
-                   {navigation.mainMenu.map((item, index) => {
-                    const Icon = iconMap[item.icon];
-                    return (
-                      <div key={item.name} className="w-full">
-                        {item.children ? (
-                           <AccordionItem value={`item-${index}`} className="border-b-0">
-                            <AccordionTrigger className="w-full flex justify-between items-center py-2 font-headline text-lg hover:no-underline">
-                               <span className="flex items-center gap-3">
-                                {Icon && <Icon className="h-5 w-5" />}
-                                {item.name}
-                              </span>
-                            </AccordionTrigger>
-                            <AccordionContent>
-                              <div className="pl-8 flex flex-col items-start gap-2 mt-1">
-                                {item.children.map((child) => (
-                                  <Link key={child.name} href={child.href} className="text-lg text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>{child.name}</Link>
-                                ))}
-                              </div>
-                            </AccordionContent>
-                          </AccordionItem>
-                        ) : (
-                          <Link href={item.href} className="flex items-center gap-3 py-2 font-headline text-lg" onClick={() => setIsMobileMenuOpen(false)}>
-                             {Icon && <Icon className="h-5 w-5" />}
-                             {item.name}
-                          </Link>
-                        )}
-                      </div>
-                    )
-                  })}
-                 </Accordion>
-              </div>
-               <div className="p-6 border-t mt-auto">
-                  <div className="flex flex-col items-center gap-4">
-                     <p className="text-xs font-semibold uppercase tracking-wider text-primary">{siteMetadata.slogan}</p>
-                     <p className="font-cairo font-bold text-sm text-primary">{siteMetadata.sloganArabic}</p>
-                     <Select defaultValue="fr">
-                          <SelectTrigger className="w-[120px]">
-                              <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                              <SelectItem value="fr">Français</SelectItem>
-                              <SelectItem value="en">English</SelectItem>
-                          </SelectContent>
-                      </Select>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-full h-full bg-background/95 backdrop-blur-sm p-0 flex flex-col">
+                <div className="p-6 flex justify-between items-center border-b">
+                  <div className="w-32">
+                    <Logo />
                   </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+                  <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
+                    <X className="h-6 w-6 text-foreground" />
+                  </Button>
+                </div>
+                <div className="flex-1 p-6 flex flex-col items-start gap-4 relative overflow-y-auto">
+                   <Accordion type="single" collapsible className="w-full">
+                     {navigation.mainMenu.map((item, index) => {
+                      const Icon = iconMap[item.icon];
+                      return (
+                        <div key={item.name} className="w-full">
+                          {item.children ? (
+                             <AccordionItem value={`item-${index}`} className="border-b-0">
+                              <AccordionTrigger className="w-full flex justify-between items-center py-2 font-headline text-lg hover:no-underline">
+                                 <span className="flex items-center gap-3">
+                                  {Icon && <Icon className="h-5 w-5" />}
+                                  {item.name}
+                                </span>
+                              </AccordionTrigger>
+                              <AccordionContent>
+                                <div className="pl-8 flex flex-col items-start gap-2 mt-1">
+                                  {item.children.map((child) => (
+                                    <Link key={child.name} href={child.href} className="text-lg text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>{child.name}</Link>
+                                  ))}
+                                </div>
+                              </AccordionContent>
+                            </AccordionItem>
+                          ) : (
+                            <Link href={item.href} className="flex items-center gap-3 py-2 font-headline text-lg" onClick={() => setIsMobileMenuOpen(false)}>
+                               {Icon && <Icon className="h-5 w-5" />}
+                               {item.name}
+                            </Link>
+                          )}
+                        </div>
+                      )
+                    })}
+                   </Accordion>
+                </div>
+                 <div className="p-6 border-t mt-auto">
+                    <div className="flex flex-col items-center gap-4">
+                       <p className="text-xs font-semibold uppercase tracking-wider text-primary">{siteMetadata.slogan}</p>
+                       <p className="font-cairo font-bold text-sm text-primary">{siteMetadata.sloganArabic}</p>
+                       <Select defaultValue="fr">
+                            <SelectTrigger className="w-[120px]">
+                                <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="fr">Français</SelectItem>
+                                <SelectItem value="en">English</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          ) : (
+            <Button variant="ghost" size="icon">
+              <Menu className={cn('h-6 w-6', menuIconColor)} />
+              <span className="sr-only">Ouvrir le menu</span>
+            </Button>
+          )}
         </div>
       </div>
     </header>
   );
 }
+
+    
