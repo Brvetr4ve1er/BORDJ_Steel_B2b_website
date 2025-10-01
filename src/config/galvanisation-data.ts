@@ -1,6 +1,7 @@
 
 import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import images from '@/app/lib/placeholder-images.json';
 
 // Using an object to map string names to actual Lucide components
 export const iconMap: { [key: string]: LucideIcon } = {
@@ -32,7 +33,7 @@ export const galvanisationContent = {
       { "title": "Durée de vie", "value": "> 50 ans", "icon": "shield" },
       { "title": "Produits", "value": "Profils | Panneaux | Structures", "icon": "layers" }
     ],
-    "image_url": "https://i.pinimg.com/736x/5e/56/c4/5e56c4a55c30e8c82620e6ec3839700d.jpg",
+    "image_url": images.galvanisation.hero.src,
     "cta_primary": "Demander un devis",
     "cta_secondary": "Télécharger la fiche technique"
   },
