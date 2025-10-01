@@ -247,8 +247,3 @@ export const companyData = {
     whatsapp: "#"
   },
 };
-
-    
-    
-
-    
