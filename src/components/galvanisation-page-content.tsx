@@ -27,8 +27,8 @@ function HeroSection() {
   const { hero } = galvanisationContent;
 
   return (
-    <section className="relative min-h-screen flex items-center bg-black">
-      <div className="absolute inset-0 z-0 opacity-30">
+    <section className="relative min-h-screen flex items-end bg-black">
+      <div className="absolute inset-0 z-0 opacity-40">
         <Image
           src={hero.image_url}
           alt="Bain de galvanisation à chaud"
@@ -38,51 +38,55 @@ function HeroSection() {
           data-ai-hint="molten zinc"
         />
       </div>
-      <div className="container mx-auto px-4 relative z-10 grid md:grid-cols-2 gap-8 items-center">
-        <div className="text-left">
-          <AnimatedWrapper animation="fade-in">
-            <h1 className="font-headline text-5xl md:text-6xl font-bold text-white leading-tight">
-              {hero.title}
-            </h1>
-            <p className="mt-4 text-lg text-gray-300 max-w-xl">
-              {hero.subtitle}
-            </p>
-          </AnimatedWrapper>
-          <AnimatedWrapper animation="fade-in" staggerIndex={1}>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90">
-                {hero.cta_primary} <ArrowRight className="ml-2" />
-              </Button>
-              <Button size="lg" variant="outline" className="text-white border-white/50 hover:bg-white/10 hover:text-white">
-                {hero.cta_secondary}
-              </Button>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+      <div className="container mx-auto px-4 relative z-10 pb-24">
+        <div className="grid md:grid-cols-2 gap-8 items-end">
+          <div className="text-left">
+            <AnimatedWrapper animation="fade-in">
+              <h1 className="font-headline text-5xl md:text-6xl font-bold text-white leading-tight">
+                {hero.title}
+              </h1>
+              <p className="mt-4 text-lg text-gray-300 max-w-xl">
+                {hero.subtitle}
+              </p>
+            </AnimatedWrapper>
+            <AnimatedWrapper animation="fade-in" staggerIndex={1}>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90">
+                  {hero.cta_primary} <ArrowRight className="ml-2" />
+                </Button>
+                <Button size="lg" variant="outline" className="text-white border-white/50 hover:bg-white/10 hover:text-white">
+                  {hero.cta_secondary}
+                </Button>
+              </div>
+            </AnimatedWrapper>
+          </div>
+          <div className="hidden md:block">
+            <div className="grid grid-cols-2 gap-6">
+              {hero.stats.map((stat, index) => {
+                const Icon = iconMap[stat.icon];
+                return (
+                  <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                    <Card className="bg-white/10 backdrop-blur-md border-white/20 text-white">
+                      <CardContent className="p-6 flex items-center gap-4">
+                        {Icon && <Icon className="h-10 w-10 text-accent" />}
+                        <div>
+                          <p className="text-2xl font-bold">{stat.value}</p>
+                          <p className="text-sm text-gray-300">{stat.title}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </AnimatedWrapper>
+                );
+              })}
             </div>
-          </AnimatedWrapper>
-        </div>
-        <div className="hidden md:block">
-          <div className="grid grid-cols-2 gap-6">
-            {hero.stats.map((stat, index) => {
-              const Icon = iconMap[stat.icon];
-              return (
-                <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                  <Card className="bg-white/10 backdrop-blur-md border-white/20 text-white">
-                    <CardContent className="p-6 flex items-center gap-4">
-                      {Icon && <Icon className="h-10 w-10 text-accent" />}
-                      <div>
-                        <p className="text-2xl font-bold">{stat.value}</p>
-                        <p className="text-sm text-gray-300">{stat.title}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </AnimatedWrapper>
-              );
-            })}
           </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 // 2. Process Timeline Section
 function ProcessTimeline() {
