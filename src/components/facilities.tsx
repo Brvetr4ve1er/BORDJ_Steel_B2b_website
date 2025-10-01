@@ -38,10 +38,9 @@ export function Facilities() {
                         <Image
                         src={facility.image.src}
                         alt={facility.title}
-                        layout="fill"
-                        objectFit="cover"
+                        fill
                         className={cn(
-                            "transition-transform duration-500 group-hover:scale-110",
+                            "transition-transform duration-500 group-hover:scale-110 object-cover",
                             facility.title === 'Panneaux Sandwichs' && 'object-top'
                         )}
                         data-ai-hint={facility.image.aiHint}

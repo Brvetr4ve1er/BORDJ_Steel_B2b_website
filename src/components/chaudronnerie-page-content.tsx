@@ -38,10 +38,10 @@ export function ChaudronneriePageContent() {
         <Image
           src="https://images.unsplash.com/photo-1510900767338-8bf61abf2562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMG1lbHRpbmclMjBmYWN0b3J5fGVufDB8fHx8MTc1Mzg3Njc2NXww&ixlib=rb-4.1.0&q=80&w=1080"
           alt="Opération de chaudronnerie"
-          layout="fill"
-          objectFit="cover"
-          className="z-0 opacity-40"
+          fill
+          className="z-0 opacity-40 object-cover"
           data-ai-hint="metal fabrication"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/20 z-10" />
         <div className="relative z-20 container mx-auto px-4">

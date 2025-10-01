@@ -14,9 +14,8 @@ export function Hero() {
       <Image
         src={hero.image.src}
         alt="Steel factory background"
-        layout="fill"
-        objectFit="cover"
-        className="z-0"
+        fill
+        className="z-0 object-cover"
         priority
         data-ai-hint={hero.image.aiHint}
       />

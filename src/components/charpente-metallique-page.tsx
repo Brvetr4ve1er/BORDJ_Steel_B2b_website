@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Building, Factory, HardHat, CheckCircle, ShieldCheck, Zap, Bot, BookCopy, TowerControl, Car, Tractor, Award } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import React from 'react';
+import images from '@/app/lib/placeholder-images.json';
 
 const applications = [
   { icon: <Building className="w-8 h-8" />, text: "Bâtiments industriels & commerciaux" },
@@ -31,12 +32,13 @@ const bentoItems = [
     content: (
       <div className="relative w-full h-full">
         <Image
-          src="https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg"
-          alt="Charpente Métallique en construction"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-xl"
-          data-ai-hint="steel frame construction"
+          src={images['charpente-metallique'].main.src}
+          alt={images['charpente-metallique'].main.alt}
+          width={images['charpente-metallique'].main.width}
+          height={images['charpente-metallique'].main.height}
+          className="rounded-xl object-cover w-full h-full"
+          data-ai-hint={images['charpente-metallique'].main.aiHint}
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-0 left-0 p-8 text-white">
@@ -130,28 +132,28 @@ const pillars = [
         title: "PRS – Profils Reconstitués Soudés",
         explanation: "Fabrication sur mesure selon les normes internationales. Grande capacité de portance, adaptées aux bâtiments industriels, ponts et charpentes lourdes.",
         advantages: ["Précision", "Durabilité", "Optimisation du poids"],
-        image: { src: "https://picsum.photos/seed/prs-pillar/800/600", aiHint: "welded steel beams" },
+        image: images['charpente-metallique']['prs-pillar'],
     },
     {
         icon: <TowerControl className="w-12 h-12" />,
         title: "Supports de Transport",
         explanation: "Conception et production de structures métalliques pour l’énergie (électricité, tours 5G), la communication (projecteurs) et l’affichage (panneaux publicitaires).",
         advantages: ["Fiabilité climatique", "Stabilité", "Longévité"],
-        image: { src: "https://picsum.photos/seed/pylon-pillar/800/600", aiHint: "communication tower" },
+        image: images['charpente-metallique']['pylon-pillar'],
     },
     {
         icon: <Tractor className="w-12 h-12" />,
         title: "Pont Roulant – Mono et Bipoutre",
         explanation: "Production de ponts roulants pour la manutention lourde, avec options mono-poutre et bi-poutre à caisson renforcé.",
         advantages: ["Usines", "Ateliers", "Entrepôts"],
-        image: { src: "https://picsum.photos/seed/crane-pillar/800/600", aiHint: "overhead crane" },
+        image: images['charpente-metallique']['crane-pillar'],
     },
     {
         icon: <Car className="w-12 h-12" />,
         title: "Ligne de Fabrication Automobile",
         explanation: "Ligne complète pour la transformation métallique automobile, assurant la production de pièces de carrosserie avec haute précision et tolérances strictes.",
         advantages: ["Haute précision", "Tolérances strictes", "Adapté aux constructeurs"],
-        image: { src: "https://picsum.photos/seed/auto-pillar/800/600", aiHint: "automotive welding line" },
+        image: images['charpente-metallique']['auto-pillar'],
     }
 ];
 
@@ -204,9 +206,9 @@ export function CharpenteMetalliquePageContent() {
                            <Image
                                src={pillar.image.src}
                                alt={pillar.title}
-                               layout="fill"
-                               objectFit="cover"
-                               className="transition-transform duration-500 group-hover:scale-110"
+                               width={pillar.image.width}
+                               height={pillar.image.height}
+                               className="transition-transform duration-500 group-hover:scale-110 object-cover w-full h-full"
                                data-ai-hint={pillar.image.aiHint}
                            />
                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
@@ -272,5 +274,3 @@ export function CharpenteMetalliquePageContent() {
     </div>
   );
 }
-
-    

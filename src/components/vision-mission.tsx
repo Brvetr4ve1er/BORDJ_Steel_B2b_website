@@ -27,9 +27,9 @@ export function VisionMission() {
               <Image
                 src={image.src}
                 alt={image.alt}
-                layout="fill"
-                objectFit="cover"
-                className="transition-transform duration-500 group-hover:scale-110"
+                width={736}
+                height={736}
+                className="transition-transform duration-500 group-hover:scale-110 object-cover w-full h-full"
                 data-ai-hint={image.aiHint}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />

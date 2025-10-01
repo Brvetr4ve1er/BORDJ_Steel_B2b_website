@@ -8,6 +8,7 @@ import { ArrowRight, Zap, ShieldCheck, Layers, Wind, Droplets, Thermometer, Sun,
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { AnimatedCounter } from './animated-counter';
+import images from '@/app/lib/placeholder-images.json';
 
 const Section = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <section className={`py-20 sm:py-28 ${className}`}>
@@ -91,17 +92,21 @@ const applications = [
 ];
 
 export function GalvanisationPageContent() {
+  const heroImage = images.galvanisation.hero;
+  const liaisonImage = images.galvanisation['liaison-metallurgique'];
+
   return (
     <div className="bg-[#1A1A1A] text-gray-200">
       {/* 1. Hero Banner */}
       <section className="relative h-screen w-full flex items-center justify-start text-white overflow-hidden">
         <Image
-          src="https://i.pinimg.com/736x/5e/56/c4/5e56c4a55c30e8c82620e6ec3839700d.jpg"
-          alt="Bain de galvanisation à chaud"
-          layout="fill"
-          objectFit="cover"
-          className="z-0 opacity-30"
-          data-ai-hint="molten zinc"
+          src={heroImage.src}
+          alt={heroImage.alt}
+          width={heroImage.width}
+          height={heroImage.height}
+          className="z-0 opacity-30 object-cover w-full h-full"
+          data-ai-hint={heroImage.aiHint}
+          priority
         />
         <div className="relative z-20 container mx-auto px-4">
           <div className="max-w-2xl text-left">
@@ -132,7 +137,13 @@ export function GalvanisationPageContent() {
             </div>
             <div className="mt-20 grid md:grid-cols-2 gap-12 items-center">
                 <div className="relative aspect-video rounded-lg overflow-hidden">
-                    <Image src="https://picsum.photos/seed/galva2/800/600" alt="Liaison métallurgique Zinc-Fer" layout="fill" objectFit='cover' data-ai-hint="metallurgy microscope" />
+                    <Image 
+                      src={liaisonImage.src} 
+                      alt={liaisonImage.alt} 
+                      width={liaisonImage.width}
+                      height={liaisonImage.height}
+                      className="object-cover w-full h-full"
+                      data-ai-hint={liaisonImage.aiHint} />
                 </div>
                 <div className="bg-gray-800/50 p-8 rounded-lg border border-gray-700">
                     <h3 className="font-headline text-3xl font-bold text-white mb-4">Une Véritable Liaison Métallurgique</h3>

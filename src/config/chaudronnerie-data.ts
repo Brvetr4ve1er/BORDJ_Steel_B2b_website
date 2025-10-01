@@ -1,15 +1,19 @@
 
+import images from '@/app/lib/placeholder-images.json';
+
 export type ProductImage = {
   src: string;
   alt: string;
   aiHint: string;
+  width: number;
+  height: number;
 };
 
 export const chaudronnerieData = {
   silos: {
     title: 'Silos & Réservoirs de Stockage',
     galleryImages: [
-      { src: 'https://picsum.photos/seed/silo/800/600', alt: 'Silo en acier de grande capacité', aiHint: 'steel silo' },
+      { ...images.chaudronnerie.silos, alt: 'Silo en acier de grande capacité' },
     ],
     features: {
       description: 'Nous concevons et fabriquons des silos et réservoirs de toutes tailles pour le stockage de produits pulvérulents (ciment, céréales), de liquides (eau, produits chimiques) et de gaz. Nos solutions sont optimisées pour garantir la sécurité, la durabilité et une conservation optimale du contenu.',
@@ -43,7 +47,7 @@ export const chaudronnerieData = {
   conduites: {
     title: 'Conduites, Gaines et Tuyauterie Industrielle',
     galleryImages: [
-      { src: 'https://picsum.photos/seed/ducting/800/600', alt: 'Gaines de ventilation industrielle', aiHint: 'industrial ducting' },
+      { ...images.chaudronnerie.ducting, alt: 'Gaines de ventilation industrielle' },
     ],
     features: {
       description: 'Fabrication de réseaux de tuyauterie et de gaines pour le transport de fluides, de gaz, d\'air ou de poussières. Nous maîtrisons le travail des aciers pour des applications à haute ou basse pression, à haute température ou en environnement corrosif.',
@@ -76,7 +80,7 @@ export const chaudronnerieData = {
   structures: {
     title: 'Structures Spéciales et Mécano-soudées',
     galleryImages: [
-      { src: 'https://picsum.photos/seed/meccano/800/600', alt: 'Structure mécano-soudée complexe', aiHint: 'welded structure' },
+      { ...images.chaudronnerie.meccano, alt: 'Structure mécano-soudée complexe' },
     ],
     features: {
       description: 'Nous réalisons des ensembles mécano-soudés complexes et des structures métalliques spéciales qui ne rentrent pas dans le cadre de la charpente traditionnelle. Notre bureau d\'études travaille en étroite collaboration avec nos clients pour développer des solutions innovantes et performantes.',
@@ -108,7 +112,7 @@ export const chaudronnerieData = {
   equipements: {
     title: 'Équipements Industriels Sur Mesure',
     galleryImages: [
-      { src: 'https://picsum.photos/seed/equipment/800/600', alt: 'Équipement industriel en acier', aiHint: 'industrial equipment' },
+      { ...images.chaudronnerie.equipment, alt: 'Équipement industriel en acier' },
     ],
     features: {
       description: 'Notre savoir-faire en chaudronnerie nous permet de fabriquer une large gamme d\'équipements pour l\'industrie, en pièce unique ou en petite série. De la trémie au convoyeur, nous apportons des solutions robustes et fonctionnelles.',
