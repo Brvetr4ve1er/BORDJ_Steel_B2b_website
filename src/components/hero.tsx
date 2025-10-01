@@ -5,19 +5,21 @@ import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { companyData } from '@/config/company-data';
 import { AnimatedCounter } from './animated-counter';
+import images from '@/app/lib/placeholder-images.json';
 
 export function Hero() {
   const { hero } = companyData.pages.homepage.content;
+  const heroImage = images.homepage.hero;
 
   return (
     <section id="home" className="relative h-screen w-full p-0">
       <Image
-        src={hero.image.src}
-        alt="Steel factory background"
+        src={heroImage.src}
+        alt={heroImage.alt}
         fill
         className="z-0 object-cover"
         priority
-        data-ai-hint={hero.image.aiHint}
+        data-ai-hint={heroImage.aiHint}
       />
       <div className="absolute inset-0 bg-black/60 z-10" />
       <div className="relative z-20 flex h-full flex-col items-center justify-center text-center text-white">

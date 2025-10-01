@@ -5,6 +5,7 @@ import { Award, Cog } from "lucide-react";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { AnimatedCounter } from "./animated-counter";
+import images from '@/app/lib/placeholder-images.json';
 
 const iconMap: { [key: string]: React.ElementType } = {
   Award: Award,
@@ -13,7 +14,8 @@ const iconMap: { [key: string]: React.ElementType } = {
 
 export function VisionMission() {
   const { about } = companyData.pages;
-  const { vision, mission, history, image, completedProjects } = about.content;
+  const { vision, mission, history, completedProjects } = about.content;
+  const aboutImage = images.homepage.about;
 
   const VisionIcon = iconMap[vision.icon];
   const MissionIcon = iconMap[mission.icon];
@@ -25,12 +27,12 @@ export function VisionMission() {
           <AnimatedWrapper animation="zoom-in">
             <div className="relative aspect-square rounded-lg overflow-hidden shadow-2xl group">
               <Image
-                src={image.src}
-                alt={image.alt}
-                width={736}
-                height={736}
+                src={aboutImage.src}
+                alt={aboutImage.alt}
+                width={aboutImage.width}
+                height={aboutImage.height}
                 className="transition-transform duration-500 group-hover:scale-110 object-cover w-full h-full"
-                data-ai-hint={image.aiHint}
+                data-ai-hint={aboutImage.aiHint}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center">

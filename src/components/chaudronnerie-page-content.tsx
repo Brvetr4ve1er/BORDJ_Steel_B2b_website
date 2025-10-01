@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import { ProductImageGallery } from './product-image-gallery';
 import { Card, CardContent } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import images from '@/app/lib/placeholder-images.json';
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   <h3 className="font-headline text-3xl font-bold text-primary mb-8">{children}</h3>
@@ -23,6 +24,7 @@ const SubSectionTitle = ({ children }: { children: React.ReactNode }) => (
 export function ChaudronneriePageContent() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof chaudronnerieData>('silos');
   const activeProduct = chaudronnerieData[activeProductKey];
+  const heroImage = images.chaudronnerie.hero;
 
   const productButtons = [
     { key: 'silos', label: 'Silos & Réservoirs', icon: Database },
@@ -36,11 +38,11 @@ export function ChaudronneriePageContent() {
       {/* 1. Hero Banner */}
       <section className="relative h-[70vh] w-full flex items-center justify-start text-white overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1510900767338-8bf61abf2562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMG1lbHRpbmclMjBmYWN0b3J5fGVufDB8fHx8MTc1Mzg3Njc2NXww&ixlib=rb-4.1.0&q=80&w=1080"
-          alt="Opération de chaudronnerie"
+          src={heroImage.src}
+          alt={heroImage.alt}
           fill
           className="z-0 opacity-40 object-cover"
-          data-ai-hint="metal fabrication"
+          data-ai-hint={heroImage.aiHint}
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/20 z-10" />

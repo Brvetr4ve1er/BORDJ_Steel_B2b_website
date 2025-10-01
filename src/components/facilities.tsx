@@ -10,6 +10,7 @@ import { Button } from './ui/button';
 import { ArrowRight, HardHat, Layers, Cog, Anchor } from 'lucide-react';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
+import images from '@/app/lib/placeholder-images.json';
 
 const iconMap: { [key: string]: React.ElementType } = {
   HardHat,
@@ -21,6 +22,14 @@ const iconMap: { [key: string]: React.ElementType } = {
 
 export function Facilities() {
   const { units } = companyData.pages;
+  const facilityImages = images.facilities;
+
+  const facilitiesData = [
+    { ...units.items[0], image: facilityImages.charpente },
+    { ...units.items[1], image: facilityImages.panneaux },
+    { ...units.items[2], image: facilityImages.galvanisation },
+    { ...units.items[3], image: facilityImages.chaudronnerie },
+  ];
 
   return (
     <section id="services" className="bg-secondary">
@@ -29,7 +38,7 @@ export function Facilities() {
           <h2 className="font-headline text-4xl font-bold text-center text-primary mb-12">{units.title}</h2>
         </AnimatedWrapper>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {units.items.map((facility, index) => {
+          {facilitiesData.map((facility, index) => {
              const Icon = iconMap[facility.icon];
              return (
                 <AnimatedWrapper key={index} animation="slide-up">
@@ -38,9 +47,10 @@ export function Facilities() {
                         <Image
                         src={facility.image.src}
                         alt={facility.title}
-                        fill
+                        width={facility.image.width}
+                        height={facility.image.height}
                         className={cn(
-                            "transition-transform duration-500 group-hover:scale-110 object-cover",
+                            "transition-transform duration-500 group-hover:scale-110 object-cover w-full h-full",
                             facility.title === 'Panneaux Sandwichs' && 'object-top'
                         )}
                         data-ai-hint={facility.image.aiHint}

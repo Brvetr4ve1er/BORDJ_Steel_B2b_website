@@ -13,6 +13,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 import { productData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
 import { ProductImageGallery, ProductImage } from './product-image-gallery';
+import images from '@/app/lib/placeholder-images.json';
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   <h3 className="font-headline text-3xl font-bold text-primary mb-8">{children}</h3>
@@ -76,6 +77,7 @@ const FinitionsIcon = (props: React.SVGProps<SVGSVGElement>) => (
 export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
   const activeProduct = productData[activeProductKey];
+  const heroImage = images['sandwich-panels'].hero;
 
   const productButtons = [
     { key: 'couverture', label: 'Panneaux de Couverture', icon: CouvertureIcon },
@@ -90,12 +92,11 @@ export function SandwichPanelsPage() {
     <>
       <section className="relative h-screen w-full flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="https://i.pinimg.com/736x/47/d1/cc/47d1ccc3c54a931ddd6a15fc025c0aa8.jpg"
-          alt="Panneaux Sandwich en production"
-          layout="fill"
-          objectFit="cover"
-          className="z-0"
-          data-ai-hint="sandwich panels factory"
+          src={heroImage.src}
+          alt={heroImage.alt}
+          fill
+          className="z-0 object-cover"
+          data-ai-hint={heroImage.aiHint}
           priority
         />
         <div className="absolute inset-0 bg-black/60 z-10" />

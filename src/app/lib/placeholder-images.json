@@ -1,5 +1,55 @@
 
 {
+  "homepage": {
+    "hero": {
+      "src": "https://images.unsplash.com/photo-1598302936625-6075fbd98dd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtZXRhbCUyMGZhY3Rvcnl8ZW58MHx8fHwxNzUzODc2NjczfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "width": 1080,
+      "height": 720,
+      "alt": "Steel factory background",
+      "aiHint": "steel factory"
+    },
+    "about": {
+      "src": "https://i.pinimg.com/736x/7b/2e/0e/7b2e0e0f355e7f114d5f981d2b144175.jpg",
+      "width": 736,
+      "height": 736,
+      "alt": "Siège social de Bordj Steel",
+      "aiHint": "company building"
+    }
+  },
+  "facilities": {
+    "charpente": {
+      "src": "https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg",
+      "width": 736,
+      "height": 920,
+      "aiHint": "steel fabrication"
+    },
+    "panneaux": {
+      "src": "https://i.pinimg.com/736x/ce/22/71/ce227152b9fed3c117cbaad50450656a.jpg",
+      "width": 736,
+      "height": 920,
+      "aiHint": "sandwich panels"
+    },
+    "galvanisation": {
+      "src": "https://images.unsplash.com/photo-1569968201228-01aebb252e80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtZXRhbCUyMGZhY3Rvcnl8ZW58MHx8fHwxNzUzODc2NjczfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "width": 1080,
+      "height": 1620,
+      "aiHint": "hot-dip galvanization"
+    },
+    "chaudronnerie": {
+      "src": "https://images.unsplash.com/photo-1510900767338-8bf61abf2562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMG1lbHRpbmclMjBmYWN0b3J5fGVufDB8fHx8MTc1Mzg3Njc2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "width": 1080,
+      "height": 720,
+      "aiHint": "boiler making"
+    }
+  },
+  "portfolio": {
+    "utec": { "src": "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxpbmR1c3RyaWFsJTIwd2FyZWhvdXNlfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "aiHint": "industrial warehouse" },
+    "star-good": { "src": "https://images.unsplash.com/photo-1603779931001-a6b508e5da81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb21tZXJjaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzU1NjM2MzgyfDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1350, "aiHint": "commercial building" },
+    "cfce": { "src": "https://images.unsplash.com/photo-1636905879476-b86b9dfa24f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxleGhpYml0aW9uJTIwY2VudGVyfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "aiHint": "exhibition center" },
+    "condor-logistics": { "src": "https://images.unsplash.com/photo-1720382248625-dc19de24834c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsb2dpc3RpY3MlMjBiYXNlfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "aiHint": "logistics base" },
+    "softal": { "src": "https://images.unsplash.com/photo-1696194145126-32e22fc61ace?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxpbmR1c3RyaWFsJTIwZmFjdG9yeXxlbnwwfHx8fDE3NTU2ODIzMzF8MA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1350, "aiHint": "industrial factory" },
+    "duct-piping": { "src": "https://images.unsplash.com/photo-1725916631452-b411a5991fce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwaXBpbmclMjBzeXN0ZW18ZW58MHx8fHwxNzU1NjgyMzMxfDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1350, "aiHint": "piping system" }
+  },
   "charpente-metallique": {
     "main": {
       "src": "https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg",
@@ -54,6 +104,13 @@
     }
   },
   "chaudronnerie": {
+    "hero": {
+      "src": "https://images.unsplash.com/photo-1510900767338-8bf61abf2562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMG1lbHRpbmclMjBmYWN0b3J5fGVufDB8fHx8MTc1Mzg3Njc2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "width": 1080,
+      "height": 720,
+      "alt": "Opération de chaudronnerie",
+      "aiHint": "metal fabrication"
+    },
     "silos": {
       "src": "https://picsum.photos/seed/silo/800/600",
       "width": 800,
@@ -81,6 +138,15 @@
       "height": 600,
       "alt": "Équipement industriel en acier",
       "aiHint": "industrial equipment"
+    }
+  },
+  "sandwich-panels": {
+    "hero": {
+      "src": "https://i.pinimg.com/736x/47/d1/cc/47d1ccc3c54a931ddd6a15fc025c0aa8.jpg",
+      "width": 736,
+      "height": 490,
+      "alt": "Panneaux Sandwich en production",
+      "aiHint": "sandwich panels factory"
     }
   }
 }

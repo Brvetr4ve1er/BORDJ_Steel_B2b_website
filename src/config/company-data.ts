@@ -58,10 +58,6 @@ export const companyData = {
         hero: {
           headline: "BÂTIR L'AVENIR, ENSEMBLE",
           subheadline: 'Leader de la construction métallique en Algérie',
-          image: {
-            src: 'https://images.unsplash.com/photo-1598302936625-6075fbd98dd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtZXRhbCUyMGZhY3Rvcnl8ZW58MHx8fHwxNzUzODc2NjczfDA&ixlib=rb-4.1.0&q=80&w=1080',
-            aiHint: 'steel factory'
-          },
           stats: [
             { "value": 25000, "label": "Tonnes/an Charpente" },
             { "value": 1500000, "label": "m²/an Panneaux Sandwich" },
@@ -90,11 +86,6 @@ export const companyData = {
           title: "Politique QHSE",
           text: "Engagée dans une démarche d'excellence, BORDJ STEEL est certifiée ISO 9001:2015, ISO 14001:2015, et ISO 45001:2018. Notre politique Qualité, Hygiène, Sécurité, et Environnement, signée par le Directeur Général M. TRIRAT Samir, est le pilier de notre performance.",
         },
-        image: {
-            src: 'https://i.pinimg.com/736x/7b/2e/0e/7b2e0e0f355e7f114d5f981d2b144175.jpg',
-            alt: 'Siège social de Bordj Steel',
-            aiHint: 'company building'
-        },
         completedProjects: 300,
       },
     },
@@ -105,28 +96,24 @@ export const companyData = {
         {
           title: 'Charpente Métallique',
           description: `Capacité de 1500 T/mois (25000 T/an) et PRS 3000 T/an. Nous produisons des hangars, pylônes, et supports publicitaires.`,
-          image: { src: 'https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg', aiHint: 'steel fabrication' },
           icon: 'HardHat',
           href: '/products/charpente-metallique'
         },
         {
           title: 'Panneaux Sandwichs',
           description: `Capacité de 5000 m²/jour. Gamme d'épaisseur de 30-200 mm pour couverture, bardage, et chambres froides.`,
-          image: { src: 'https://i.pinimg.com/736x/ce/22/71/ce227152b9fed3c117cbaad50450656a.jpg', aiHint: 'sandwich panels' },
           icon: 'Layers',
           href: '/products/sandwich-panels'
         },
         {
           title: 'Galvanisation à Chaud',
           description: `Capacité de 60000 T/an avec un bain de 13m de long pour des pièces jusqu'à 15m.`,
-          image: { src: 'https://images.unsplash.com/photo-1569968201228-01aebb252e80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtZXRhbCUyMGZhY3Rvcnl8ZW58MHx8fHwxNzUzODc2NjczfDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'hot-dip galvanization' },
           icon: 'Cog',
           href: '/products/galvanisation-a-chaud'
         },
         {
           title: 'Chaudronnerie',
           description: `Notre unité de chaudronnerie est spécialisée dans la fabrication d'équipements sur mesure pour divers secteurs industriels.`,
-          image: { src: 'https://images.unsplash.com/photo-1510900767338-8bf61abf2562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMG1lbHRpbmclMjBmYWN0b3J5fGVufDB8fHx8MTc1Mzg3Njc2NXww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'boiler making' },
           icon: 'Anchor',
           href: '/products/chaudronnerie'
         }
@@ -161,12 +148,12 @@ export const companyData = {
       slug: '/projets',
       title: 'Nos Références',
       projects: [
-          { name: 'UTEC', location: 'Ain Oulmen', image: { src: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxpbmR1c3RyaWFsJTIwd2FyZWhvdXNlfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'industrial warehouse' } },
-          { name: 'STAR GOOD', location: 'Oued Smar', image: { src: 'https://images.unsplash.com/photo-1603779931001-a6b508e5da81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb21tZXJjaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzU1NjM2MzgyfDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'commercial building' } },
-          { name: 'CFCE', location: 'Oran', image: { src: 'https://images.unsplash.com/photo-1636905879476-b86b9dfa24f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxleGhpYml0aW9uJTIwY2VudGVyfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'exhibition center' } },
-          { name: 'Base Logistique CONDOR', location: '', image: { src: 'https://images.unsplash.com/photo-1720382248625-dc19de24834c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsb2dpc3RpY3MlMjBiYXNlfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'logistics base' } },
-          { name: 'Softal', location: 'Boufarik', image: { src: 'https://images.unsplash.com/photo-1696194145126-32e22fc61ace?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxpbmR1c3RyaWFsJTIwZmFjdG9yeXxlbnwwfHx8fDE3NTU2ODIzMzF8MA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'industrial factory' } },
-          { name: 'Duct & Piping', location: '(Bordj Steel)', image: { src: 'https://images.unsplash.com/photo-1725916631452-b411a5991fce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwaXBpbmclMjBzeXN0ZW18ZW58MHx8fHwxNzU1NjgyMzMxfDA&ixlib=rb-4.1.0&q=80&w=1080', aiHint: 'piping system' } },
+          { name: 'UTEC', location: 'Ain Oulmen' },
+          { name: 'STAR GOOD', location: 'Oued Smar' },
+          { name: 'CFCE', location: 'Oran' },
+          { name: 'Base Logistique CONDOR', location: '' },
+          { name: 'Softal', location: 'Boufarik' },
+          { name: 'Duct & Piping', location: '(Bordj Steel)' },
       ]
     },
     certifications: {
