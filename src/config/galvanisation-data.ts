@@ -1,0 +1,99 @@
+
+import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+
+// Using an object to map string names to actual Lucide components
+export const iconMap: { [key: string]: LucideIcon } = {
+  factory: Factory,
+  thermometer: Thermometer,
+  shield: Shield,
+  layers: Layers,
+  cleaning: Droplets, // Placeholder, assuming 'cleaning' maps to Droplets
+  chemical: Atom, // Placeholder
+  fire: Thermometer, // Placeholder
+  snowflake: Wind, // Placeholder
+  check: PackageCheck,
+  clock: Shield, // Placeholder
+  coin: Layers, // Placeholder
+  beam: Construction,
+  panel: Layers,
+  pylon: TowerControl,
+  truss: Car, // Placeholder, using car for now
+  ship: Ship,
+};
+
+export const galvanisationContent = {
+  "hero": {
+    "title": "Protégez l’acier pour des décennies grâce à la galvanisation à chaud",
+    "subtitle": "Notre unité de galvanisation traite jusqu’à 25.000 tonnes/an, avec des bains de zinc de 12m x 1,5m x 3m, offrant une protection anticorrosion homogène, certifiée et durable.",
+    "stats": [
+      { "title": "Capacité annuelle", "value": "25.000 tonnes", "icon": "factory" },
+      { "title": "Température du bain", "value": "450 °C", "icon": "thermometer" },
+      { "title": "Durée de vie", "value": "> 50 ans", "icon": "shield" },
+      { "title": "Produits", "value": "Profils | Panneaux | Structures", "icon": "layers" }
+    ],
+    "image_url": "https://i.pinimg.com/736x/5e/56/c4/5e56c4a55c30e8c82620e6ec3839700d.jpg",
+    "cta_primary": "Demander un devis",
+    "cta_secondary": "Télécharger la fiche technique"
+  },
+  "galvanisation_steps": [
+    {
+      "step": 1,
+      "title": "Préparation de surface",
+      "description": "Dégraissage, décapage acide et rinçage pour éliminer toutes impuretés.",
+      "icon": "cleaning"
+    },
+    {
+      "step": 2,
+      "title": "Fluxage",
+      "description": "Application d’un flux de chlorure de zinc et d’ammonium pour éviter l’oxydation.",
+      "icon": "chemical"
+    },
+    {
+      "step": 3,
+      "title": "Immersion dans le bain",
+      "description": "À 450 °C, le métal est plongé dans le zinc fondu, formant une couche Zn-Fe ultra résistante.",
+      "icon": "fire"
+    },
+    {
+      "step": 4,
+      "title": "Refroidissement & Solidification",
+      "description": "Le revêtement se solidifie, rendant l’acier prêt et protégé.",
+      "icon": "snowflake"
+    },
+    {
+      "step": 5,
+      "title": "Contrôle & Finition",
+      "description": "Inspection visuelle, mesure d’épaisseur et certification qualité BordjSteel.",
+      "icon": "check"
+    }
+  ],
+  "benefits": [
+    {
+      "title": "Résistance à la corrosion",
+      "text": "Bouclier contre humidité, intempéries et environnements agressifs.",
+      "icon": "shield"
+    },
+    {
+      "title": "Durabilité exceptionnelle",
+      "text": "Une protection qui dure plusieurs décennies sans entretien coûteux.",
+      "icon": "clock"
+    },
+    {
+      "title": "Rentabilité",
+      "text": "Réduction des coûts de maintenance, repeinte ou remplacement.",
+      "icon": "coin"
+    }
+  ],
+  "highlight": {
+    "title": "Applicable à tous types de produits en acier",
+    "text": "Des poutrelles industrielles aux structures légères, en passant par les panneaux et pylônes — notre unité s’adapte à vos projets.",
+    "icons": ["beam", "panel", "pylon", "truss", "ship"]
+  },
+  "cta": {
+    "title": "Confiez votre projet de galvanisation à BordjSteel",
+    "button_primary": "Demander un devis",
+    "button_secondary": "Télécharger la fiche technique",
+    "form_url": "https://bordjsteel.com/contact"
+  }
+};
