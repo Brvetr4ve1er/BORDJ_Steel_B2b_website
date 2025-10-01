@@ -25,7 +25,7 @@ export function Certifications() {
                      <Award className="h-20 w-20 text-accent transition-colors duration-300 group-hover:text-accent/80" />
                   </div>
                   <h3 className="font-headline font-semibold text-primary max-w-xs">
-                    <span className="text-accent">{iso}</span>
+                    <span className="text-accent font-bold text-2xl">{iso}</span>
                     <br />
                     {description}
                   </h3>
