@@ -42,67 +42,67 @@ export const galvanisationContent = {
   "galvanisation_steps": [
     {
       "step": 1,
-      "title": "Dégraissage – La première purification",
-      "goal": "But : Éliminer graisses, huiles, poussières.",
-      "process": "Procédé : Bains alcalins chauffés (60–80°C), composés de carbonate de sodium ou soude.",
-      "result": "“Surface parfaitement propre, prête à réagir chimiquement.”",
-      "icon": "cleaning"
+      "title": "DÉGRAISSAGE",
+      "shortDesc": "Nettoyage alcalin à 60–80°C.",
+      "longDesc": "Élimination des huiles et graisses en bains alcalins chauffés, garantissant une surface propre pour le décapage.",
+      "icon": "cleaning",
+      "meta": { "temperature": "60–80°C", "duration": "5–10 min" }
     },
     {
       "step": 2,
-      "title": "Rinçage – Neutralisation",
-      "goal": "But : Éliminer tout résidu alcalin.",
-      "process": "Procédé : Rinçage intensif à l’eau claire, souvent en cascade pour garantir zéro trace.",
-      "result": "“Surface chimiquement neutre, sans risque de réaction parasite.”",
-      "icon": "water"
+      "title": "RINÇAGE",
+      "shortDesc": "Neutralisation des résidus alcalins.",
+      "longDesc": "Rinçage intensif à l’eau claire, parfois en cascade, pour neutraliser et purifier l’acier avant le décapage.",
+      "icon": "water",
+      "meta": { "temperature": "Ambiante", "duration": "2–4 min" }
     },
-     {
+    {
       "step": 3,
-      "title": "Décapage – L’acier mis à nu",
-      "goal": "But : Supprimer oxydes et calamine.",
-      "process": "Procédé : Immersion dans acide chlorhydrique (HCl) à température ambiante, inhibé pour protéger l’acier.",
-      "result": "“Acier parfaitement nu, surface active chimiquement.”",
-      "icon": "acid"
+      "title": "DÉCAPAGE",
+      "shortDesc": "Élimination des oxydes.",
+      "longDesc": "Immersion en bain d’acide chlorhydrique enrichi en inhibiteurs. Surface brillante et chimiquement active.",
+      "icon": "acid",
+      "meta": { "temperature": "Ambiante", "duration": "10–20 min" }
     },
     {
       "step": 4,
-      "title": "Rinçage – Pureté avant activation",
-      "goal": "But : Éliminer sels de fer et acides résiduels.",
-      "process": "Procédé : Rinçage intensif en cascade pour éviter la pollution du fluxage.",
-      "result": "“Surface prête pour le fluxage.”",
-      "icon": "water"
+      "title": "RINÇAGE",
+      "shortDesc": "Élimination sels et acides.",
+      "longDesc": "Rinçage en cascade pour éliminer sels de fer et acides résiduels qui pourraient polluer le fluxage.",
+      "icon": "water",
+      "meta": { "temperature": "Ambiante", "duration": "2–4 min" }
     },
     {
       "step": 5,
-      "title": "Fluxage – Le bouclier invisible",
-      "goal": "But : Prévenir oxydation avant immersion et activer la réaction Fe/Zn.",
-      "process": "Procédé : Bain aqueux de chlorure de zinc (ZnCl₂) + chlorure d’ammonium (NH₄Cl).",
-      "result": "“Acier protégé, surface réactive prête pour la métallurgie du zinc.”",
-      "icon": "chemical"
+      "title": "FLUXAGE",
+      "shortDesc": "Prévenir l’oxydation.",
+      "longDesc": "Bain aqueux de chlorure de zinc et ammonium formant une pellicule protectrice. Active la réaction Fe/Zn.",
+      "icon": "chemical",
+      "meta": { "temperature": "60-70°C", "duration": "3–5 min" }
     },
-     {
+    {
       "step": 6,
-      "title": "Séchage – La préparation thermique",
-      "goal": "But : Empêcher projections de zinc fondu.",
-      "process": "Procédé : Étuvage en four à température contrôlée (~100°C) pour éliminer toute humidité.",
-      "result": "“Surface sèche, température équilibrée.”",
-      "icon": "snowflake"
+      "title": "SÉCHAGE",
+      "shortDesc": "Étuve chauffée.",
+      "longDesc": "Étuvage à température contrôlée pour éviter toute projection de zinc liquide à l’immersion.",
+      "icon": "snowflake",
+      "meta": { "temperature": "~100°C", "duration": "10–15 min" }
     },
     {
       "step": 7,
-      "title": "Galvanisation – L’alliance métallurgique",
-      "goal": "But : Former un revêtement métallurgiquement lié.",
-      "process": "Procédé : Immersion dans zinc fondu à 450°C, créant des couches d'alliages Fe-Zn.",
-      "result": "“Revêtement continu, imperméable, ultra-résistant.”",
-      "icon": "fire"
+      "title": "GALVANISATION",
+      "shortDesc": "Immersion dans zinc fondu à 450°C.",
+      "longDesc": "Immersion contrôlée du métal dans le bain de zinc fondu. Formation de couches d’alliages Zn-Fe.",
+      "icon": "fire",
+      "meta": { "temperature": "450°C", "duration": "3–15 min" }
     },
     {
       "step": 8,
-      "title": "Refroidissement & Contrôle – La validation finale",
-      "goal": "But : Stabiliser le revêtement et garantir sa qualité.",
-      "process": "Procédé : Refroidissement air/eau puis inspection complète (épaisseur, adhérence, dureté).",
-      "result": "“Pièces conformes, prêtes à durer 30–50 ans en service.”",
-      "icon": "check"
+      "title": "REFROIDISSEMENT & CONTRÔLE",
+      "shortDesc": "Stabilisation + inspection.",
+      "longDesc": "Refroidissement à l’air ou eau. Contrôle visuel, mesure d’épaisseur (50–200 µm), et tests d’adhérence.",
+      "icon": "check",
+      "meta": { "temperature": "Refroidissement", "duration": "Variable" }
     }
   ],
   "benefits": [

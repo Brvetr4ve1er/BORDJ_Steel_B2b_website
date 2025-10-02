@@ -5,8 +5,9 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { galvanisationContent, iconMap } from '@/config/galvanisation-data';
+import { galvanisationContent } from '@/config/galvanisation-data';
 import { ArrowRight } from 'lucide-react';
+import { iconMap } from '@/config/galvanisation-data';
 
 // Main Page Component
 export function GalvanisationPageContent() {
@@ -95,49 +96,61 @@ function ProcessTimeline() {
     const { galvanisation_steps } = galvanisationContent;
   
     return (
-      <section className="py-20 bg-[#1A1A1A]">
-        <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
+      <section className="relative w-full bg-[#1A1A1A] text-gray-200 py-24 px-6">
+        <motion.div 
+            initial={{ opacity: 0 }} 
+            whileInView={{ opacity: 1 }} 
+            viewport={{ once: true, amount: 0.5 }} 
+            transition={{ duration: 0.6 }}
+            className="text-center mb-20"
+        >
             <h2 className="font-headline text-4xl font-bold text-center text-white mb-4">
-             Le processus de galvanisation pas à pas
+                Le processus de galvanisation pas à pas
             </h2>
-            <p className='text-center text-lg text-gray-400 max-w-3xl mx-auto mb-20'>Chaque pièce d’acier passe par une transformation alchimique. De brute et vulnérable, elle ressort invincible, gainée d’un bouclier de zinc. Voici le voyage, étape par étape.</p>
-          </motion.div>
-          <div className="relative max-w-4xl mx-auto">
-            <div className="absolute left-1/2 top-0 h-full w-0.5 bg-gray-700" />
-            {galvanisation_steps.map((step, index) => {
-              const Icon = iconMap[step.icon];
-              const isEven = index % 2 === 0;
-  
-              return (
-                <motion.div
-                  key={step.step}
-                  className="relative mb-12 flex items-center"
-                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                >
-                  <div className={`w-1/2 ${isEven ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
-                    <div className="p-6 bg-gray-800 rounded-lg shadow-lg border border-gray-700">
-                       <div className={`flex items-center gap-4 ${isEven ? 'justify-end' : 'justify-start'}`}>
-                        {isEven && <h3 className="font-headline text-xl font-bold text-white">{step.title}</h3>}
-                        {Icon && <Icon className="h-8 w-8 text-accent" />}
-                        {!isEven && <h3 className="font-headline text-xl font-bold text-white">{step.title}</h3>}
-                      </div>
-                       <p className="mt-4 text-accent text-sm font-semibold">{step.goal}</p>
-                       <p className="mt-2 text-gray-300">{step.process}</p>
-                      <p className="mt-4 text-gray-400 italic border-l-2 border-accent pl-4">“{step.result}”</p>
-                    </div>
-                  </div>
-                  <div className="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold border-4 border-[#1A1A1A]">
-                    {step.step}
-                  </div>
-                  <div className="w-1/2" />
-                </motion.div>
-              );
+            <p className='text-center text-lg text-gray-400 max-w-3xl mx-auto'>
+                Chaque pièce d’acier passe par une transformation alchimique. De brute et vulnérable, elle ressort invincible, gainée d’un bouclier de zinc. Voici le voyage, étape par étape.
+            </p>
+        </motion.div>
+        <div className="relative max-w-6xl mx-auto">
+            {/* The visual connecting line can be added here if desired */}
+            <div className="absolute left-1/2 top-0 h-full w-0.5 bg-accent/30 hidden md:block" />
+            <div className="space-y-16">
+            {galvanisation_steps.map((step, i) => {
+                 const Icon = iconMap[step.icon];
+                 return (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: i % 2 === 0 ? -100 : 100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: i * 0.2 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        className={`relative flex items-center ${
+                        i % 2 === 0 ? "justify-start" : "justify-end"
+                        }`}
+                    >
+                         <div className="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold border-4 border-[#1A1A1A] md:static md:translate-x-0">
+                            {step.step}
+                        </div>
+                        <div className={`w-full md:w-5/12 ${i % 2 === 0 ? 'md:pl-16' : 'md:pr-16 text-right'}`}>
+                            <div className="relative bg-black/50 backdrop-blur-sm text-gray-200 rounded-xl border border-gray-700 shadow-lg p-6 group transition-all duration-300 hover:border-accent">
+                                <div className="absolute -top-3 -left-3 w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center border-2 border-accent transition-all duration-300 group-hover:scale-110">
+                                   {Icon && <Icon className="h-6 w-6 text-accent" />}
+                                </div>
+                                <h3 className="text-xl font-extrabold text-accent mb-2 uppercase tracking-wider mt-8">
+                                    {step.title}
+                                </h3>
+                                <p className="text-sm text-gray-300 opacity-90 mb-4">{step.shortDesc}</p>
+                                <p className="text-xs text-gray-400 font-mono">{step.longDesc}</p>
+                                <div className="mt-4 text-xs text-accent/80 flex justify-between font-mono">
+                                    <span>{step.meta.temperature}</span>
+                                    <span>{step.meta.duration}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                 )
             })}
-          </div>
+            </div>
         </div>
       </section>
     );
