@@ -29,7 +29,7 @@ function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-end bg-background">
-      <div className="absolute inset-0 z-0 opacity-10">
+      <div className="absolute inset-0 z-0">
         <Image
           src={hero.image_url}
           alt="Bain de galvanisation à chaud"
@@ -102,7 +102,7 @@ function ProcessTimeline() {
             whileInView={{ opacity: 1 }} 
             viewport={{ once: true, amount: 0.5 }} 
             transition={{ duration: 0.6 }}
-            className="text-center mb-24"
+            className="text-center mb-24 max-w-screen-xl mx-auto"
         >
             <h2 className="font-headline text-4xl font-bold text-center text-primary mb-4">
                 Le processus de galvanisation pas à pas
