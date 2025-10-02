@@ -7,12 +7,11 @@ import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { galvanisationContent, iconMap } from '@/config/galvanisation-data';
 import { ArrowRight } from 'lucide-react';
-import { AnimatedWrapper } from './animated-wrapper';
 
 // Main Page Component
 export function GalvanisationPageContent() {
   return (
-    <div className="bg-[#101010] text-gray-200">
+    <div className="text-gray-200">
       <HeroSection />
       <ProcessTimeline />
       <BenefitsSection />
@@ -42,15 +41,15 @@ function HeroSection() {
       <div className="container mx-auto px-4 relative z-10 pb-24">
         <div className="grid md:grid-cols-2 gap-8 items-end">
           <div className="text-left">
-            <AnimatedWrapper animation="fade-in">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <h1 className="font-headline text-5xl md:text-6xl font-bold text-white leading-tight">
                 {hero.title}
               </h1>
               <p className="mt-4 text-lg text-gray-300 max-w-xl">
                 {hero.subtitle}
               </p>
-            </AnimatedWrapper>
-            <AnimatedWrapper animation="fade-in" staggerIndex={1}>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90">
                   {hero.cta_primary} <ArrowRight className="ml-2" />
@@ -59,14 +58,19 @@ function HeroSection() {
                   {hero.cta_secondary}
                 </Button>
               </div>
-            </AnimatedWrapper>
+            </motion.div>
           </div>
           <div className="hidden md:block">
             <div className="grid grid-cols-2 gap-6">
               {hero.stats.map((stat, index) => {
                 const Icon = iconMap[stat.icon];
                 return (
-                  <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                  >
                     <Card className="bg-white/10 backdrop-blur-md border-white/20 text-white">
                       <CardContent className="p-6 flex items-center gap-4">
                         {Icon && <Icon className="h-10 w-10 text-accent" />}
@@ -76,7 +80,7 @@ function HeroSection() {
                         </div>
                       </CardContent>
                     </Card>
-                  </AnimatedWrapper>
+                  </motion.div>
                 );
               })}
             </div>
@@ -95,11 +99,11 @@ function ProcessTimeline() {
     return (
       <section className="py-20 bg-[#1A1A1A]">
         <div className="container mx-auto px-4">
-          <AnimatedWrapper animation="fade-in">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
             <h2 className="font-headline text-4xl font-bold text-center text-white mb-16">
               Le processus de galvanisation pas à pas
             </h2>
-          </AnimatedWrapper>
+          </motion.div>
           <div className="relative max-w-2xl mx-auto">
             <div className="absolute left-1/2 top-0 h-full w-0.5 bg-gray-700" />
             {galvanisation_steps.map((step, index) => {
@@ -146,16 +150,22 @@ function BenefitsSection() {
     return (
       <section className="py-20 bg-[#101010]">
         <div className="container mx-auto px-4">
-          <AnimatedWrapper animation="fade-in">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
             <h2 className="font-headline text-4xl font-bold text-center text-white mb-12">
               Les avantages de la galvanisation
             </h2>
-          </AnimatedWrapper>
+          </motion.div>
           <div className="grid md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => {
               const Icon = iconMap[benefit.icon];
               return (
-                <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                >
                     <Card className="bg-gray-900 border-gray-800 text-center p-8 h-full transition-all duration-300 hover:border-accent hover:-translate-y-2">
                         {Icon && <Icon className="h-12 w-12 text-accent mx-auto mb-4" />}
                         <CardTitle className="text-white text-2xl">{benefit.title}</CardTitle>
@@ -163,7 +173,7 @@ function BenefitsSection() {
                             <p className="text-gray-400">{benefit.text}</p>
                         </CardContent>
                     </Card>
-                </AnimatedWrapper>
+                </motion.div>
               );
             })}
           </div>
@@ -179,27 +189,35 @@ function HighlightSection() {
     return (
       <section className="py-20 bg-[#1A1A1A]">
         <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-            <AnimatedWrapper animation="fade-in">
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
                 <h2 className="font-headline text-4xl font-bold text-white">
                     {highlight.title}
                 </h2>
                 <p className="mt-4 text-lg text-gray-400 max-w-lg">
                     {highlight.text}
                 </p>
-            </AnimatedWrapper>
-            <AnimatedWrapper animation="fade-in" staggerIndex={1}>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-                    {highlight.icons.map((iconName) => {
+                    {highlight.icons.map((iconName, index) => {
                         const Icon = iconMap[iconName];
                         return (
-                            <div key={iconName} className="flex flex-col items-center justify-center p-6 bg-gray-800 rounded-lg text-center">
-                                {Icon && <Icon className="h-12 w-12 text-accent mb-2" />}
-                                <span className="text-white font-semibold capitalize">{iconName}</span>
-                            </div>
+                           <motion.div
+                              key={iconName}
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              viewport={{ once: true, amount: 0.5 }}
+                              transition={{ duration: 0.4, delay: index * 0.1 }}
+                            >
+                                <div className="flex flex-col items-center justify-center p-6 bg-gray-800 rounded-lg text-center">
+                                    {Icon && <Icon className="h-12 w-12 text-accent mb-2" />}
+                                    <span className="text-white font-semibold capitalize">{iconName}</span>
+                                </div>
+                            </motion.div>
                         );
                     })}
                 </div>
-            </AnimatedWrapper>
+            </motion.div>
         </div>
       </section>
     );
@@ -212,7 +230,7 @@ function CTASection() {
     return (
       <section className="py-24 bg-[#101010]">
         <div className="container mx-auto px-4 text-center">
-            <AnimatedWrapper animation="zoom-in">
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
                 <h2 className="font-headline text-4xl font-bold text-white max-w-2xl mx-auto">
                     {cta.title}
                 </h2>
@@ -224,7 +242,7 @@ function CTASection() {
                         {cta.button_secondary}
                     </Button>
                 </div>
-            </AnimatedWrapper>
+            </motion.div>
         </div>
       </section>
     );

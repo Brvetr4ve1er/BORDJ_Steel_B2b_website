@@ -1,5 +1,5 @@
 
-import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship } from 'lucide-react';
+import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship, HardHat, CircleDollarSign } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import images from '@/app/lib/placeholder-images.json';
 
@@ -9,17 +9,17 @@ export const iconMap: { [key: string]: LucideIcon } = {
   thermometer: Thermometer,
   shield: Shield,
   layers: Layers,
-  cleaning: Droplets, // Placeholder, assuming 'cleaning' maps to Droplets
-  chemical: Atom, // Placeholder
-  fire: Thermometer, // Placeholder
-  snowflake: Wind, // Placeholder
+  cleaning: Droplets,
+  chemical: Atom,
+  fire: Thermometer, // Representing heat
+  snowflake: Wind, // Representing cooling
   check: PackageCheck,
-  clock: Shield, // Placeholder
-  coin: Layers, // Placeholder
-  beam: Construction,
+  clock: Shield, // Representing durability
+  coin: CircleDollarSign, // More appropriate for rentability
+  beam: HardHat,
   panel: Layers,
   pylon: TowerControl,
-  truss: Car, // Placeholder, using car for now
+  truss: Construction,
   ship: Ship,
 };
 
