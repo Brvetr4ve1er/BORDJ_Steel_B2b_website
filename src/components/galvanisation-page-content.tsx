@@ -83,16 +83,6 @@ function HeroSection() {
                 </div>
             </motion.div>
           </div>
-          <motion.div className="hidden md:block" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-             <Image
-              src={hero.image_url}
-              alt="Illustration 3D de l'unité de galvanisation"
-              width={800}
-              height={800}
-              className="object-contain"
-              data-ai-hint="galvanization 3d render"
-            />
-          </motion.div>
         </div>
       </div>
     </section>
