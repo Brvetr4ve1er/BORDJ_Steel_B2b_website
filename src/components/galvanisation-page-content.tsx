@@ -9,6 +9,7 @@ import { galvanisationContent } from '@/config/galvanisation-data';
 import { ArrowRight } from 'lucide-react';
 import { iconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
+import { ShinyButton } from './ui/shiny-button';
 
 // Main Page Component
 export function GalvanisationPageContent() {
@@ -61,9 +62,9 @@ function HeroSection() {
             className="mt-8 grid md:grid-cols-2 gap-8 items-center"
         >
             <div className="flex flex-wrap gap-4">
-            <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90">
+            <ShinyButton>
                 {hero.cta_primary} <ArrowRight className="ml-2" />
-            </Button>
+            </ShinyButton>
             <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/10 hover:text-white">
                 {hero.cta_secondary}
             </Button>
@@ -276,9 +277,9 @@ function CTASection() {
                     {cta.title}
                 </h2>
                 <div className="mt-8 flex justify-center flex-wrap gap-4">
-                    <Button asChild size="lg" variant="destructive" className="bg-accent hover:bg-accent/90">
+                    <ShinyButton>
                         <a href={cta.form_url}>{cta.button_primary} <ArrowRight className="ml-2" /></a>
-                    </Button>
+                    </ShinyButton>
                     <Button size="lg" variant="outline" className="text-primary border-primary/20 hover:bg-primary/5 hover:text-primary">
                         {cta.button_secondary}
                     </Button>
