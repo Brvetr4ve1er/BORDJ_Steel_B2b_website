@@ -39,7 +39,7 @@ function HeroSection() {
           data-ai-hint="molten zinc"
         />
       </div>
-      <div className="max-w-screen-xl mx-auto px-4 relative z-10 pb-32">
+      <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10 pb-32">
         <div className="grid md:grid-cols-2 gap-8 items-end">
           <div className="text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -50,41 +50,47 @@ function HeroSection() {
                 {hero.subtitle}
               </p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90">
-                  {hero.cta_primary} <ArrowRight className="ml-2" />
-                </Button>
-                <Button size="lg" variant="outline" className="text-primary border-primary/20 hover:bg-primary/5 hover:text-primary">
-                  {hero.cta_secondary}
-                </Button>
-              </div>
-                 <div className="mt-12 grid grid-cols-2 gap-6">
-                  {hero.stats.map((stat, index) => {
-                    const Icon = iconMap[stat.icon];
-                    return (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                      >
-                        <Card className="bg-background/50 backdrop-blur-md border-border text-foreground">
-                          <CardContent className="p-6 flex items-center gap-4">
-                            {Icon && <Icon className="h-10 w-10 text-accent" />}
-                            <div>
-                              <p className="text-2xl font-bold">{stat.value}</p>
-                              <p className="text-sm text-muted-foreground">{stat.title}</p>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-            </motion.div>
           </div>
+          <div />
         </div>
+        <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-16 grid md:grid-cols-2 gap-8 items-center"
+        >
+            <div className="flex flex-wrap gap-4">
+            <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90">
+                {hero.cta_primary} <ArrowRight className="ml-2" />
+            </Button>
+            <Button size="lg" variant="outline" className="text-primary border-primary/20 hover:bg-primary/5 hover:text-primary">
+                {hero.cta_secondary}
+            </Button>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {hero.stats.map((stat, index) => {
+                const Icon = iconMap[stat.icon];
+                return (
+                <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                >
+                    <Card className="bg-background/50 backdrop-blur-md border-border text-foreground">
+                    <CardContent className="p-4 flex items-center gap-3">
+                        {Icon && <Icon className="h-8 w-8 text-accent" />}
+                        <div>
+                        <p className="text-xl font-bold">{stat.value}</p>
+                        <p className="text-xs text-muted-foreground">{stat.title}</p>
+                        </div>
+                    </CardContent>
+                    </Card>
+                </motion.div>
+                );
+            })}
+            </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -111,46 +117,46 @@ function ProcessTimeline() {
                 Chaque pièce d’acier passe par une transformation alchimique. De brute et vulnérable, elle ressort invincible, gainée d’un bouclier de zinc. Voici le voyage, étape par étape.
             </p>
         </motion.div>
-        <div className="relative max-w-screen-xl mx-auto">
-            <div className="absolute left-1/2 top-0 h-full w-0.5 bg-accent/30 hidden md:block" />
-            <div className="space-y-16">
-            {galvanisation_steps.map((step, i) => {
-                 const Icon = iconMap[step.icon];
-                 const isLeft = i % 2 === 0;
-                 return (
-                    <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: isLeft ? -100 : 100 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: i * 0.1 }}
-                        viewport={{ once: true, amount: 0.5 }}
-                        className={cn("relative flex items-center", isLeft ? "justify-start" : "justify-end")}
-                    >
-                        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-accent items-center justify-center text-white font-bold border-4 border-secondary z-10">
-                            {step.step}
-                        </div>
-                        <div className={cn("w-full md:w-5/12", isLeft ? 'md:pr-6' : 'md:pl-6')}>
-                           <div className="relative bg-background/80 backdrop-blur-sm text-foreground rounded-xl border border-border/50 shadow-2xl p-6 group transition-all duration-300 hover:border-accent">
-                                <div className="absolute -top-3 -left-3 w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center border-2 border-accent transition-all duration-300 group-hover:scale-110">
-                                   {Icon && <Icon className="h-7 w-7 text-accent" />}
-                                </div>
-                                <h3 className="text-xl font-extrabold text-accent mb-2 uppercase tracking-wider mt-8 ml-4">
-                                    {step.title}
-                                </h3>
-                                <p className="text-sm text-muted-foreground mb-4 ml-4">{step.shortDesc}</p>
-                                <blockquote className="ml-4 pl-4 border-l-2 border-accent/50 text-sm text-foreground/80 italic">
-                                  "{step.longDesc}"
-                                </blockquote>
-                                <div className="mt-4 text-xs text-accent/80 flex justify-end gap-4 font-mono pr-4">
-                                    <span>TEMP: {step.meta.temperature}</span>
-                                    <span>DURÉE: {step.meta.duration}</span>
-                                </div>
+        <div className="relative max-w-4xl mx-auto">
+          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-accent/30 hidden md:block" />
+          {galvanisation_steps.map((step, i) => {
+                const Icon = iconMap[step.icon];
+                const isLeft = i % 2 === 0;
+                return (
+                <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    className={cn("mb-12 flex w-full items-center", isLeft ? "justify-start" : "justify-end")}
+                >
+                    <div className={cn("w-full md:w-5/12", isLeft ? 'md:pr-8' : 'md:pl-8')}>
+                        <div className="relative bg-card text-foreground rounded-xl border border-border shadow-lg p-6 group transition-all duration-300 hover:border-accent">
+                            <div className="absolute top-4 left-4 flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 border-2 border-accent">
+                                {Icon && <Icon className="h-6 w-6 text-accent" />}
+                            </div>
+                            <div className="absolute -top-5 md:top-1/2 md:-translate-y-1/2 flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground font-bold text-2xl border-4 border-secondary"
+                                style={isLeft ? {right: '-2rem'} : {left: '-2rem'}}
+                            >
+                                {step.step}
+                            </div>
+                            <h3 className="text-xl font-extrabold text-primary mb-2 mt-10 uppercase tracking-wider">
+                                {step.title}
+                            </h3>
+                            <p className="text-sm text-accent font-semibold mb-3">{step.shortDesc}</p>
+                            <blockquote className="text-sm text-muted-foreground italic border-l-2 border-border pl-4">
+                              {step.longDesc}
+                            </blockquote>
+                            <div className="mt-4 text-xs text-muted-foreground/80 flex justify-end gap-4 font-mono pr-4">
+                                <span>TEMP: {step.meta.temperature}</span>
+                                <span>DURÉE: {step.meta.duration}</span>
                             </div>
                         </div>
-                    </motion.div>
-                 )
-            })}
-            </div>
+                    </div>
+                </motion.div>
+                )
+          })}
         </div>
       </section>
     );
