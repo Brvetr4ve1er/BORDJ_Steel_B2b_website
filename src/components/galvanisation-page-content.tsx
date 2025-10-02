@@ -131,7 +131,7 @@ function ProcessTimeline() {
                         <div className={`hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-accent items-center justify-center text-white font-bold border-4 border-background`}>
                             {step.step}
                         </div>
-                        <div className={`w-full md:w-5/12 ${isLeft ? 'md:pr-16' : 'md:pl-16'}`}>
+                        <div className={`w-full md:w-full ${isLeft ? 'md:pr-16' : 'md:pl-16'}`}>
                             <div className="relative bg-card text-foreground rounded-xl border border-border shadow-lg p-6 group transition-all duration-300 hover:border-accent">
                                 <div className="flex md:hidden absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-accent items-center justify-center text-white font-bold border-4 border-background">
                                     {step.step}
