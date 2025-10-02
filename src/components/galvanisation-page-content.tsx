@@ -112,27 +112,31 @@ function ProcessTimeline() {
             </p>
         </motion.div>
         <div className="relative max-w-6xl mx-auto">
-            {/* The visual connecting line can be added here if desired */}
+            {/* The visual connecting line */}
             <div className="absolute left-1/2 top-0 h-full w-0.5 bg-accent/30 hidden md:block" />
             <div className="space-y-16">
             {galvanisation_steps.map((step, i) => {
                  const Icon = iconMap[step.icon];
+                 const isLeft = i % 2 === 0;
                  return (
                     <motion.div
                         key={i}
-                        initial={{ opacity: 0, x: i % 2 === 0 ? -100 : 100 }}
+                        initial={{ opacity: 0, x: isLeft ? -100 : 100 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: i * 0.2 }}
+                        transition={{ duration: 0.8, delay: i * 0.1 }}
                         viewport={{ once: true, amount: 0.5 }}
                         className={`relative flex items-center ${
-                        i % 2 === 0 ? "justify-start" : "justify-end"
+                          isLeft ? "justify-start" : "justify-end"
                         }`}
                     >
-                         <div className="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold border-4 border-[#1A1A1A] md:static md:translate-x-0">
+                        <div className={`hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-accent items-center justify-center text-white font-bold border-4 border-[#1A1A1A]`}>
                             {step.step}
                         </div>
-                        <div className={`w-full md:w-5/12 ${i % 2 === 0 ? 'md:pl-16' : 'md:pr-16 text-right'}`}>
+                        <div className={`w-full md:w-5/12 ${isLeft ? 'md:pr-16' : 'md:pl-16'}`}>
                             <div className="relative bg-black/50 backdrop-blur-sm text-gray-200 rounded-xl border border-gray-700 shadow-lg p-6 group transition-all duration-300 hover:border-accent">
+                                <div className="flex md:hidden absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-accent items-center justify-center text-white font-bold border-4 border-[#1A1A1A]">
+                                    {step.step}
+                                </div>
                                 <div className="absolute -top-3 -left-3 w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center border-2 border-accent transition-all duration-300 group-hover:scale-110">
                                    {Icon && <Icon className="h-6 w-6 text-accent" />}
                                 </div>
