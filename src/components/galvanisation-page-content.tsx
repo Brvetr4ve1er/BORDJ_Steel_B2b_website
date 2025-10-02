@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { galvanisationContent } from '@/config/galvanisation-data';
 import { ArrowRight } from 'lucide-react';
 import { iconMap } from '@/config/galvanisation-data';
+import { cn } from '@/lib/utils';
 
 // Main Page Component
 export function GalvanisationPageContent() {
@@ -39,7 +40,7 @@ function HeroSection() {
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent" />
-      <div className="container mx-auto px-4 relative z-10 pb-24">
+      <div className="max-w-7xl mx-auto px-4 relative z-10 pb-24">
         <div className="grid md:grid-cols-2 gap-8 items-end">
           <div className="text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -111,7 +112,7 @@ function ProcessTimeline() {
                 Chaque pièce d’acier passe par une transformation alchimique. De brute et vulnérable, elle ressort invincible, gainée d’un bouclier de zinc. Voici le voyage, étape par étape.
             </p>
         </motion.div>
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-7xl mx-auto">
             <div className="absolute left-1/2 top-0 h-full w-0.5 bg-accent/30 hidden md:block" />
             <div className="space-y-16">
             {galvanisation_steps.map((step, i) => {
@@ -131,7 +132,7 @@ function ProcessTimeline() {
                         <div className={`hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-accent items-center justify-center text-white font-bold border-4 border-background`}>
                             {step.step}
                         </div>
-                        <div className={`w-full md:w-full ${isLeft ? 'md:pr-16' : 'md:pl-16'}`}>
+                        <div className={cn("w-full md:w-[90%]", isLeft ? 'md:pr-16' : 'md:pl-16')}>
                             <div className="relative bg-card text-foreground rounded-xl border border-border shadow-lg p-6 group transition-all duration-300 hover:border-accent">
                                 <div className="flex md:hidden absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-accent items-center justify-center text-white font-bold border-4 border-background">
                                     {step.step}
@@ -165,7 +166,7 @@ function BenefitsSection() {
   
     return (
       <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
             <h2 className="font-headline text-4xl font-bold text-center text-primary mb-12">
               Les avantages de la galvanisation
@@ -204,7 +205,7 @@ function HighlightSection() {
   
     return (
       <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
                 <h2 className="font-headline text-4xl font-bold text-primary">
                     {highlight.title}
@@ -245,7 +246,7 @@ function CTASection() {
   
     return (
       <section className="py-24 bg-secondary">
-        <div className="container mx-auto px-4 text-center">
+        <div className="max-w-7xl mx-auto px-4 text-center">
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
                 <h2 className="font-headline text-4xl font-bold text-primary max-w-2xl mx-auto">
                     {cta.title}
