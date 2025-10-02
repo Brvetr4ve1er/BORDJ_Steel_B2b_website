@@ -39,7 +39,6 @@ function HeroSection() {
           data-ai-hint="molten zinc"
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent" />
       <div className="max-w-screen-xl mx-auto px-4 relative z-10 pb-32">
         <div className="grid md:grid-cols-2 gap-8 items-end">
           <div className="text-left">
