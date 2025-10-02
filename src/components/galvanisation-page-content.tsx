@@ -38,16 +38,16 @@ function HeroSection() {
           priority
           data-ai-hint="molten zinc"
         />
-        
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
       </div>
-      <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10 pb-32">
+      <div className="max-w-screen-xl mx-auto px-4 w-full relative z-20 pb-16">
         <div className="grid md:grid-cols-2 gap-8 items-end">
           <div className="text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <h1 className="font-headline text-5xl md:text-6xl font-bold text-primary leading-tight">
+              <h1 className="font-headline text-5xl md:text-6xl font-bold text-white leading-tight">
                 {hero.title}
               </h1>
-              <p className="mt-4 text-lg text-muted-foreground max-w-xl">
+              <p className="mt-4 text-lg text-gray-300 max-w-xl">
                 {hero.subtitle}
               </p>
             </motion.div>
@@ -58,13 +58,13 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-16 grid md:grid-cols-2 gap-8 items-center"
+            className="mt-8 grid md:grid-cols-2 gap-8 items-center"
         >
             <div className="flex flex-wrap gap-4">
             <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90">
                 {hero.cta_primary} <ArrowRight className="ml-2" />
             </Button>
-            <Button size="lg" variant="outline" className="text-primary border-primary/20 hover:bg-primary/5 hover:text-primary">
+            <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/10 hover:text-white">
                 {hero.cta_secondary}
             </Button>
             </div>
@@ -78,12 +78,12 @@ function HeroSection() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                 >
-                    <Card className="bg-background/50 backdrop-blur-md border-border text-foreground">
+                    <Card className="bg-background/50 backdrop-blur-md border-border text-white">
                     <CardContent className="p-4 flex items-center gap-3">
                         {Icon && <Icon className="h-8 w-8 text-accent" />}
                         <div>
                         <p className="text-xl font-bold">{stat.value}</p>
-                        <p className="text-xs text-muted-foreground">{stat.title}</p>
+                        <p className="text-xs text-gray-300">{stat.title}</p>
                         </div>
                     </CardContent>
                     </Card>
@@ -267,5 +267,7 @@ function CTASection() {
       </section>
     );
 }
+
+    
 
     
