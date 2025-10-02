@@ -145,7 +145,13 @@ function ProcessTimeline() {
                               "relative bg-card text-foreground rounded-xl border border-border shadow-lg group transition-all duration-300 hover:border-accent overflow-hidden",
                           )}
                       >
-                        <div className="p-6 flex items-start gap-6">
+                        {/* Shape-defining elements */}
+                        <div className="absolute -top-2 -right-2 w-12 h-12 bg-secondary transform rotate-45"></div>
+                        <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-secondary transform rotate-45"></div>
+                        <div className="absolute top-0 right-0 w-8 h-8 bg-card rounded-bl-full"></div>
+                        <div className="absolute bottom-0 left-0 w-12 h-12 bg-card rounded-tr-full"></div>
+                        
+                        <div className="relative z-10 p-6 flex items-start gap-6">
                            <div className="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 border-2 border-accent mt-1">
                               {Icon && <Icon className="h-8 w-8 text-accent" />}
                           </div>
@@ -156,7 +162,7 @@ function ProcessTimeline() {
                               <p className="text-sm text-accent font-semibold mb-3">{step.shortDesc}</p>
                           </div>
                         </div>
-                        <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-500 ease-in-out">
+                        <div className="relative z-10 h-0 overflow-hidden group-hover:h-auto transition-all duration-500 ease-in-out">
                             <div className="px-6 pb-6">
                                 <blockquote className="text-sm text-muted-foreground italic border-l-2 border-border pl-4">
                                 {step.longDesc}
