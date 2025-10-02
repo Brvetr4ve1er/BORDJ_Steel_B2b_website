@@ -142,26 +142,32 @@ function ProcessTimeline() {
                       
                       <div
                           className={cn(
-                              "relative bg-card text-foreground rounded-xl border border-border shadow-lg p-6 group transition-all duration-300 hover:border-accent flex items-start gap-6",
+                              "relative bg-card text-foreground rounded-xl border border-border shadow-lg group transition-all duration-300 hover:border-accent overflow-hidden",
                           )}
                       >
-                          <div className="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 border-2 border-accent mt-1">
+                        <div className="p-6 flex items-start gap-6">
+                           <div className="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 border-2 border-accent mt-1">
                               {Icon && <Icon className="h-8 w-8 text-accent" />}
                           </div>
-                          
                           <div className="flex-grow">
                               <h3 className="text-xl font-extrabold text-primary mb-1 uppercase tracking-wider">
                                   {step.title}
                               </h3>
                               <p className="text-sm text-accent font-semibold mb-3">{step.shortDesc}</p>
-                              <blockquote className="text-sm text-muted-foreground italic border-l-2 border-border pl-4">
-                                {step.longDesc}
-                              </blockquote>
-                              <div className="mt-4 text-xs text-muted-foreground/80 flex flex-col sm:flex-row justify-end gap-x-4 gap-y-1 font-mono pr-4">
-                                  <span>TEMP: {step.meta.temperature}</span>
-                                  <span>DURÉE: {step.meta.duration}</span>
-                              </div>
                           </div>
+                        </div>
+                        <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-500 ease-in-out">
+                            <div className="px-6 pb-6">
+                                <blockquote className="text-sm text-muted-foreground italic border-l-2 border-border pl-4">
+                                {step.longDesc}
+                                </blockquote>
+                                <div className="mt-4 text-xs text-muted-foreground/80 flex flex-col sm:flex-row justify-end gap-x-4 gap-y-1 font-mono pr-4">
+                                    <span>TEMP: {step.meta.temperature}</span>
+                                    <span>DURÉE: {step.meta.duration}</span>
+                                </div>
+                            </div>
+                        </div>
+
                       </div>
                     </div>
                 </motion.div>
