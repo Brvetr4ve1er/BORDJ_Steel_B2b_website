@@ -38,6 +38,7 @@ function HeroSection() {
           priority
           data-ai-hint="molten zinc"
         />
+        
       </div>
       <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10 pb-32">
         <div className="grid md:grid-cols-2 gap-8 items-end">
@@ -67,7 +68,7 @@ function HeroSection() {
                 {hero.cta_secondary}
             </Button>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 gap-4">
             {hero.stats.map((stat, index) => {
                 const Icon = iconMap[stat.icon];
                 return (
@@ -266,3 +267,5 @@ function CTASection() {
       </section>
     );
 }
+
+    
