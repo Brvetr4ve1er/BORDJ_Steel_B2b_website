@@ -40,7 +40,7 @@ function HeroSection() {
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent" />
-      <div className="max-w-7xl mx-auto px-4 relative z-10 pb-24">
+      <div className="max-w-screen-xl mx-auto px-4 relative z-10 pb-32">
         <div className="grid md:grid-cols-2 gap-8 items-end">
           <div className="text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -97,13 +97,13 @@ function ProcessTimeline() {
     const { galvanisation_steps } = galvanisationContent;
   
     return (
-      <section className="relative w-full bg-background text-foreground py-24 px-6">
+      <section className="relative w-full bg-background text-foreground py-32 px-6">
         <motion.div 
             initial={{ opacity: 0 }} 
             whileInView={{ opacity: 1 }} 
             viewport={{ once: true, amount: 0.5 }} 
             transition={{ duration: 0.6 }}
-            className="text-center mb-20"
+            className="text-center mb-24"
         >
             <h2 className="font-headline text-4xl font-bold text-center text-primary mb-4">
                 Le processus de galvanisation pas à pas
@@ -112,7 +112,7 @@ function ProcessTimeline() {
                 Chaque pièce d’acier passe par une transformation alchimique. De brute et vulnérable, elle ressort invincible, gainée d’un bouclier de zinc. Voici le voyage, étape par étape.
             </p>
         </motion.div>
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative max-w-screen-xl mx-auto">
             <div className="absolute left-1/2 top-0 h-full w-0.5 bg-accent/30 hidden md:block" />
             <div className="space-y-16">
             {galvanisation_steps.map((step, i) => {
@@ -165,10 +165,10 @@ function BenefitsSection() {
     const { benefits } = galvanisationContent;
   
     return (
-      <section className="py-20 bg-secondary">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="py-32 bg-secondary">
+        <div className="max-w-screen-xl mx-auto px-4">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
-            <h2 className="font-headline text-4xl font-bold text-center text-primary mb-12">
+            <h2 className="font-headline text-4xl font-bold text-center text-primary mb-16">
               Les avantages de la galvanisation
             </h2>
           </motion.div>
@@ -204,8 +204,8 @@ function HighlightSection() {
     const { highlight } = galvanisationContent;
   
     return (
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-32 bg-background">
+        <div className="max-w-screen-xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
                 <h2 className="font-headline text-4xl font-bold text-primary">
                     {highlight.title}
@@ -245,8 +245,8 @@ function CTASection() {
     const { cta } = galvanisationContent;
   
     return (
-      <section className="py-24 bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 text-center">
+      <section className="py-32 bg-secondary">
+        <div className="max-w-screen-xl mx-auto px-4 text-center">
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
                 <h2 className="font-headline text-4xl font-bold text-primary max-w-2xl mx-auto">
                     {cta.title}
@@ -264,3 +264,6 @@ function CTASection() {
       </section>
     );
 }
+
+
+    
