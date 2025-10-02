@@ -41,31 +41,36 @@ export const galvanisationContent = {
     {
       "step": 1,
       "title": "Préparation de surface",
-      "description": "Dégraissage, décapage acide et rinçage pour éliminer toutes impuretés.",
+      "process": "Dégraissage → décapage acide → rinçage",
+      "description": "On élimine toutes les impuretés et oxydes pour garantir une parfaite adhérence du zinc.",
       "icon": "cleaning"
     },
     {
       "step": 2,
       "title": "Fluxage",
-      "description": "Application d’un flux de chlorure de zinc et d’ammonium pour éviter l’oxydation.",
+      "process": "Application d’un flux de chlorure de zinc et d’ammonium",
+      "description": "Le flux évite l’oxydation avant immersion et prépare la surface à la liaison métal-métal.",
       "icon": "chemical"
     },
     {
       "step": 3,
-      "title": "Immersion dans le bain",
-      "description": "À 450 °C, le métal est plongé dans le zinc fondu, formant une couche Zn-Fe ultra résistante.",
+      "title": "Immersion dans le bain de zinc",
+      "process": "450 °C | réaction Zn-Fe",
+      "description": "Le métal est plongé dans un bain de zinc fondu, formant une couche d’alliage zinc-fer ultra résistante.",
       "icon": "fire"
     },
     {
       "step": 4,
       "title": "Refroidissement & Solidification",
-      "description": "Le revêtement se solidifie, rendant l’acier prêt et protégé.",
+      "process": "",
+      "description": "En sortant du bain, le revêtement se solidifie. L’acier est prêt, protégé pour des décennies.",
       "icon": "snowflake"
     },
     {
       "step": 5,
       "title": "Contrôle & Finition",
-      "description": "Inspection visuelle, mesure d’épaisseur et certification qualité BordjSteel.",
+      "process": "",
+      "description": "Inspection visuelle, mesure d’épaisseur, certification qualité BordjSteel.",
       "icon": "check"
     }
   ],

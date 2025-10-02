@@ -122,7 +122,8 @@ function ProcessTimeline() {
                         {Icon && <Icon className="h-8 w-8 text-accent" />}
                         {!isEven && <h3 className="font-headline text-xl font-bold text-white">{step.title}</h3>}
                       </div>
-                      <p className="mt-2 text-gray-400">{step.description}</p>
+                       {step.process && <p className="mt-4 text-accent text-sm font-semibold">{step.process}</p>}
+                      <p className="mt-2 text-gray-400 italic">“{step.description}”</p>
                     </div>
                   </div>
                   <div className="absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white font-bold border-4 border-[#1A1A1A]">
