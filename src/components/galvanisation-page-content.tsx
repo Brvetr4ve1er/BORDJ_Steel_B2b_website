@@ -58,33 +58,41 @@ function HeroSection() {
                   {hero.cta_secondary}
                 </Button>
               </div>
+                 <div className="mt-12 grid grid-cols-2 gap-6">
+                  {hero.stats.map((stat, index) => {
+                    const Icon = iconMap[stat.icon];
+                    return (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                      >
+                        <Card className="bg-white/10 backdrop-blur-md border-white/20 text-white">
+                          <CardContent className="p-6 flex items-center gap-4">
+                            {Icon && <Icon className="h-10 w-10 text-accent" />}
+                            <div>
+                              <p className="text-2xl font-bold">{stat.value}</p>
+                              <p className="text-sm text-gray-300">{stat.title}</p>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    );
+                  })}
+                </div>
             </motion.div>
           </div>
-          <div className="hidden md:block">
-            <div className="grid grid-cols-2 gap-6">
-              {hero.stats.map((stat, index) => {
-                const Icon = iconMap[stat.icon];
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  >
-                    <Card className="bg-white/10 backdrop-blur-md border-white/20 text-white">
-                      <CardContent className="p-6 flex items-center gap-4">
-                        {Icon && <Icon className="h-10 w-10 text-accent" />}
-                        <div>
-                          <p className="text-2xl font-bold">{stat.value}</p>
-                          <p className="text-sm text-gray-300">{stat.title}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
+          <motion.div className="hidden md:block" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+             <Image
+              src={hero.image_url}
+              alt="Illustration 3D de l'unité de galvanisation"
+              width={800}
+              height={800}
+              className="object-contain"
+              data-ai-hint="galvanization 3d render"
+            />
+          </motion.div>
         </div>
       </div>
     </section>
@@ -100,11 +108,12 @@ function ProcessTimeline() {
       <section className="py-20 bg-[#1A1A1A]">
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
-            <h2 className="font-headline text-4xl font-bold text-center text-white mb-16">
-              Le processus de galvanisation pas à pas
+            <h2 className="font-headline text-4xl font-bold text-center text-white mb-4">
+             Le processus de galvanisation pas à pas
             </h2>
+            <p className='text-center text-lg text-gray-400 max-w-3xl mx-auto mb-20'>Chaque pièce d’acier passe par une transformation alchimique. De brute et vulnérable, elle ressort invincible, gainée d’un bouclier de zinc. Voici le voyage, étape par étape.</p>
           </motion.div>
-          <div className="relative max-w-2xl mx-auto">
+          <div className="relative max-w-4xl mx-auto">
             <div className="absolute left-1/2 top-0 h-full w-0.5 bg-gray-700" />
             {galvanisation_steps.map((step, index) => {
               const Icon = iconMap[step.icon];
@@ -121,16 +130,17 @@ function ProcessTimeline() {
                 >
                   <div className={`w-1/2 ${isEven ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
                     <div className="p-6 bg-gray-800 rounded-lg shadow-lg border border-gray-700">
-                      <div className={`flex items-center gap-4 ${isEven ? 'justify-end' : 'justify-start'}`}>
+                       <div className={`flex items-center gap-4 ${isEven ? 'justify-end' : 'justify-start'}`}>
                         {isEven && <h3 className="font-headline text-xl font-bold text-white">{step.title}</h3>}
                         {Icon && <Icon className="h-8 w-8 text-accent" />}
                         {!isEven && <h3 className="font-headline text-xl font-bold text-white">{step.title}</h3>}
                       </div>
-                       {step.process && <p className="mt-4 text-accent text-sm font-semibold">{step.process}</p>}
-                      <p className="mt-2 text-gray-400 italic">“{step.description}”</p>
+                       <p className="mt-4 text-accent text-sm font-semibold">{step.goal}</p>
+                       <p className="mt-2 text-gray-300">{step.process}</p>
+                      <p className="mt-4 text-gray-400 italic border-l-2 border-accent pl-4">“{step.result}”</p>
                     </div>
                   </div>
-                  <div className="absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white font-bold border-4 border-[#1A1A1A]">
+                  <div className="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold border-4 border-[#1A1A1A]">
                     {step.step}
                   </div>
                   <div className="w-1/2" />

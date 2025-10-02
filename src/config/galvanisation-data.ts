@@ -1,5 +1,5 @@
 
-import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship, HardHat, CircleDollarSign } from 'lucide-react';
+import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship, HardHat, CircleDollarSign, Check, Beaker, Spray, Fan, Pipette } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import images from '@/app/lib/placeholder-images.json';
 
@@ -9,18 +9,20 @@ export const iconMap: { [key: string]: LucideIcon } = {
   thermometer: Thermometer,
   shield: Shield,
   layers: Layers,
-  cleaning: Droplets,
-  chemical: Atom,
-  fire: Thermometer, // Representing heat
-  snowflake: Wind, // Representing cooling
-  check: PackageCheck,
-  clock: Shield, // Representing durability
-  coin: CircleDollarSign, // More appropriate for rentability
+  cleaning: Spray,
+  chemical: Pipette,
+  fire: Thermometer,
+  snowflake: Fan,
+  check: Check,
+  clock: Shield,
+  coin: CircleDollarSign,
   beam: HardHat,
   panel: Layers,
   pylon: TowerControl,
   truss: Construction,
   ship: Ship,
+  water: Droplets,
+  acid: Beaker
 };
 
 export const galvanisationContent = {
@@ -40,37 +42,66 @@ export const galvanisationContent = {
   "galvanisation_steps": [
     {
       "step": 1,
-      "title": "Préparation de surface",
-      "process": "Dégraissage → décapage acide → rinçage",
-      "description": "On élimine toutes les impuretés et oxydes pour garantir une parfaite adhérence du zinc.",
+      "title": "Dégraissage – La première purification",
+      "goal": "But : Éliminer graisses, huiles, poussières.",
+      "process": "Procédé : Bains alcalins chauffés (60–80°C), composés de carbonate de sodium ou soude.",
+      "result": "Surface parfaitement propre, prête à réagir chimiquement.",
       "icon": "cleaning"
     },
     {
       "step": 2,
-      "title": "Fluxage",
-      "process": "Application d’un flux de chlorure de zinc et d’ammonium",
-      "description": "Le flux évite l’oxydation avant immersion et prépare la surface à la liaison métal-métal.",
-      "icon": "chemical"
+      "title": "Rinçage – Neutralisation",
+      "goal": "But : Éliminer tout résidu alcalin.",
+      "process": "Procédé : Rinçage intensif à l’eau claire, souvent en cascade pour garantir zéro trace.",
+      "result": "Surface chimiquement neutre, sans risque de réaction parasite.",
+      "icon": "water"
     },
-    {
+     {
       "step": 3,
-      "title": "Immersion dans le bain de zinc",
-      "process": "450 °C | réaction Zn-Fe",
-      "description": "Le métal est plongé dans un bain de zinc fondu, formant une couche d’alliage zinc-fer ultra résistante.",
-      "icon": "fire"
+      "title": "Décapage – L’acier mis à nu",
+      "goal": "But : Supprimer oxydes et calamine.",
+      "process": "Procédé : Immersion dans acide chlorhydrique (HCl) à température ambiante, inhibé pour protéger l’acier.",
+      "result": "Acier parfaitement nu, surface active chimiquement.",
+      "icon": "acid"
     },
     {
       "step": 4,
-      "title": "Refroidissement & Solidification",
-      "process": "",
-      "description": "En sortant du bain, le revêtement se solidifie. L’acier est prêt, protégé pour des décennies.",
-      "icon": "snowflake"
+      "title": "Rinçage – Pureté avant activation",
+      "goal": "But : Éliminer sels de fer et acides résiduels.",
+      "process": "Procédé : Rinçage intensif en cascade pour éviter la pollution du fluxage.",
+      "result": "Surface prête pour le fluxage.",
+      "icon": "water"
     },
     {
       "step": 5,
-      "title": "Contrôle & Finition",
-      "process": "",
-      "description": "Inspection visuelle, mesure d’épaisseur, certification qualité BordjSteel.",
+      "title": "Fluxage – Le bouclier invisible",
+      "goal": "But : Prévenir oxydation avant immersion et activer la réaction Fe/Zn.",
+      "process": "Procédé : Bain aqueux de chlorure de zinc (ZnCl₂) + chlorure d’ammonium (NH₄Cl).",
+      "result": "Acier protégé, surface réactive prête pour la métallurgie du zinc.",
+      "icon": "chemical"
+    },
+     {
+      "step": 6,
+      "title": "Séchage – La préparation thermique",
+      "goal": "But : Empêcher projections de zinc fondu.",
+      "process": "Procédé : Étuvage en four à température contrôlée (~100°C) pour éliminer toute humidité.",
+      "result": "Surface sèche, température équilibrée.",
+      "icon": "snowflake"
+    },
+    {
+      "step": 7,
+      "title": "Galvanisation – L’alliance métallurgique",
+      "goal": "But : Former un revêtement métallurgiquement lié.",
+      "process": "Procédé : Immersion dans zinc fondu à 450°C, créant des couches d'alliages Fe-Zn.",
+      "result": "Revêtement continu, imperméable, ultra-résistant.",
+      "icon": "fire"
+    },
+    {
+      "step": 8,
+      "title": "Refroidissement & Contrôle – La validation finale",
+      "goal": "But : Stabiliser le revêtement et garantir sa qualité.",
+      "process": "Procédé : Refroidissement air/eau puis inspection complète (épaisseur, adhérence, dureté).",
+      "result": "Pièces conformes, prêtes à durer 30–50 ans en service.",
       "icon": "check"
     }
   ],
@@ -100,6 +131,6 @@ export const galvanisationContent = {
     "title": "Confiez votre projet de galvanisation à BordjSteel",
     "button_primary": "Demander un devis",
     "button_secondary": "Télécharger la fiche technique",
-    "form_url": "https://bordjsteel.com/contact"
+    "form_url": "/contact"
   }
 };
