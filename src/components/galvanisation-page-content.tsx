@@ -65,9 +65,9 @@ function HeroSection() {
             <ShinyButton>
                 {hero.cta_primary} <ArrowRight className="ml-2" />
             </ShinyButton>
-            <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/10 hover:text-white">
+            <ShinyButton>
                 {hero.cta_secondary}
-            </Button>
+            </ShinyButton>
             </div>
             <div className="grid grid-cols-2 gap-4">
             {hero.stats.map((stat, index) => {
@@ -280,14 +280,16 @@ function CTASection() {
                     <ShinyButton>
                         <a href={cta.form_url}>{cta.button_primary} <ArrowRight className="ml-2" /></a>
                     </ShinyButton>
-                    <Button size="lg" variant="outline" className="text-primary border-primary/20 hover:bg-primary/5 hover:text-primary">
+                    <ShinyButton>
                         {cta.button_secondary}
-                    </Button>
+                    </ShinyButton>
                 </div>
             </motion.div>
         </div>
       </section>
     );
 }
+
+    
 
     
