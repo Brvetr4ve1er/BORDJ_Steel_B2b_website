@@ -40,7 +40,7 @@ function HeroSection() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
       </div>
-      <div className="max-w-screen-xl mx-auto px-4 w-full relative z-20 pb-16">
+      <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10 pb-32">
         <div className="grid md:grid-cols-2 gap-8 items-end">
           <div className="text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -132,7 +132,7 @@ function ProcessTimeline() {
                     viewport={{ once: true, amount: 0.5 }}
                     className={cn("mb-12 flex w-full items-center", isLeft ? "justify-start" : "justify-end")}
                 >
-                    <div className={cn("w-full md:w-5/12", isLeft ? 'md:pr-8' : 'md:pl-8')}>
+                    <div className={cn("w-full md:w-1/2", isLeft ? 'md:pr-8' : 'md:pl-8')}>
                         <div className="relative bg-card text-foreground rounded-xl border border-border shadow-lg p-6 group transition-all duration-300 hover:border-accent">
                             <div className="absolute top-4 left-4 flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 border-2 border-accent">
                                 {Icon && <Icon className="h-6 w-6 text-accent" />}
@@ -271,3 +271,4 @@ function CTASection() {
     
 
     
+
