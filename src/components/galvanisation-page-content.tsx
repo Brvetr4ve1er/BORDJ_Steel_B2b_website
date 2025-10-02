@@ -118,7 +118,7 @@ function ProcessTimeline() {
                 Chaque pièce d’acier passe par une transformation alchimique. De brute et vulnérable, elle ressort invincible, gainée d’un bouclier de zinc. Voici le voyage, étape par étape.
             </p>
         </motion.div>
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-5xl mx-auto">
           <div className="absolute left-1/2 top-0 h-full w-0.5 bg-accent/30 hidden md:block" />
           {galvanisation_steps.map((step, i) => {
                 const Icon = iconMap[step.icon];
@@ -130,30 +130,39 @@ function ProcessTimeline() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true, amount: 0.5 }}
-                    className={cn("mb-12 flex w-full items-center", isLeft ? "justify-start" : "justify-end")}
+                    className={cn("mb-12 flex w-full items-center", isLeft ? "md:justify-start" : "md:justify-end")}
                 >
-                    <div className={cn("w-full md:w-1/2", isLeft ? 'md:pr-8' : 'md:pl-8')}>
-                        <div className="relative bg-card text-foreground rounded-xl border border-border shadow-lg p-6 group transition-all duration-300 hover:border-accent">
-                            <div className="absolute top-4 left-4 flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 border-2 border-accent">
-                                {Icon && <Icon className="h-6 w-6 text-accent" />}
-                            </div>
-                            <div className="absolute -top-5 md:top-1/2 md:-translate-y-1/2 flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground font-bold text-2xl border-4 border-secondary"
-                                style={isLeft ? {right: '-2rem'} : {left: '-2rem'}}
-                            >
-                                {step.step}
-                            </div>
-                            <h3 className="text-xl font-extrabold text-primary mb-2 mt-10 uppercase tracking-wider">
-                                {step.title}
-                            </h3>
-                            <p className="text-sm text-accent font-semibold mb-3">{step.shortDesc}</p>
-                            <blockquote className="text-sm text-muted-foreground italic border-l-2 border-border pl-4">
-                              {step.longDesc}
-                            </blockquote>
-                            <div className="mt-4 text-xs text-muted-foreground/80 flex justify-end gap-4 font-mono pr-4">
-                                <span>TEMP: {step.meta.temperature}</span>
-                                <span>DURÉE: {step.meta.duration}</span>
-                            </div>
-                        </div>
+                    <div className="w-full md:w-1/2 relative px-4 md:px-0">
+                      <div className="absolute -top-5 md:top-1/2 md:-translate-y-1/2 flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground font-bold text-2xl border-4 border-secondary z-10"
+                          style={isLeft ? {right: '-2rem'} : {left: '-2rem'}}
+                      >
+                          {step.step}
+                      </div>
+                      <div className={cn("hidden md:block absolute top-1/2 -translate-y-1/2 h-0.5 w-8 bg-accent/30", isLeft ? 'right-0' : 'left-0')} />
+                      
+                      <div
+                          className={cn(
+                              "relative bg-card text-foreground rounded-xl border border-border shadow-lg p-6 group transition-all duration-300 hover:border-accent flex items-start gap-6",
+                          )}
+                      >
+                          <div className="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 border-2 border-accent mt-1">
+                              {Icon && <Icon className="h-8 w-8 text-accent" />}
+                          </div>
+                          
+                          <div className="flex-grow">
+                              <h3 className="text-xl font-extrabold text-primary mb-1 uppercase tracking-wider">
+                                  {step.title}
+                              </h3>
+                              <p className="text-sm text-accent font-semibold mb-3">{step.shortDesc}</p>
+                              <blockquote className="text-sm text-muted-foreground italic border-l-2 border-border pl-4">
+                                {step.longDesc}
+                              </blockquote>
+                              <div className="mt-4 text-xs text-muted-foreground/80 flex flex-col sm:flex-row justify-end gap-x-4 gap-y-1 font-mono pr-4">
+                                  <span>TEMP: {step.meta.temperature}</span>
+                                  <span>DURÉE: {step.meta.duration}</span>
+                              </div>
+                          </div>
+                      </div>
                     </div>
                 </motion.div>
                 )
@@ -269,6 +278,3 @@ function CTASection() {
 }
 
     
-
-    
-
