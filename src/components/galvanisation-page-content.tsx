@@ -42,56 +42,64 @@ function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
       </div>
       <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10 pb-32">
-        <div className="grid md:grid-cols-2 gap-8 items-end">
-          <div className="text-left">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="grid md:grid-cols-2 gap-8 items-end"
+        >
+          <div className="text-left space-y-8">
+            <div>
               <h1 className="font-headline text-5xl md:text-6xl font-bold text-white leading-tight">
                 {hero.title}
               </h1>
               <p className="mt-4 text-lg text-gray-300 max-w-xl">
                 {hero.subtitle}
               </p>
-            </motion.div>
-          </div>
-          <div />
-        </div>
-        <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-8 grid md:grid-cols-2 gap-8 items-center"
-        >
-            <div className="flex flex-wrap gap-4">
-            <ShinyButton>
-                {hero.cta_primary} <ArrowRight className="ml-2" />
-            </ShinyButton>
-            <ShinyButton>
-                {hero.cta_secondary}
-            </ShinyButton>
             </div>
+            <div className="flex flex-col items-start gap-4">
+              <ShinyButton>
+                <div className="flex items-center gap-2">
+                  {hero.cta_primary} <ArrowRight className="ml-2" />
+                </div>
+              </ShinyButton>
+              <ShinyButton>
+                <div className="flex items-center gap-2">
+                  {hero.cta_secondary}
+                </div>
+              </ShinyButton>
+            </div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <div className="grid grid-cols-2 gap-4">
-            {hero.stats.map((stat, index) => {
+              {hero.stats.map((stat, index) => {
                 const Icon = iconMap[stat.icon];
                 return (
-                <motion.div
+                  <motion.div
                     key={index}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                >
+                  >
                     <Card className="bg-background/50 backdrop-blur-md border-border text-white">
-                    <CardContent className="p-4 flex items-center gap-3">
+                      <CardContent className="p-4 flex items-center gap-3">
                         {Icon && <Icon className="h-8 w-8 text-accent" />}
                         <div>
-                        <p className="text-xl font-bold">{stat.value}</p>
-                        <p className="text-xs text-gray-300">{stat.title}</p>
+                          <p className="text-xl font-bold">{stat.value}</p>
+                          <p className="text-xs text-gray-300">{stat.title}</p>
                         </div>
-                    </CardContent>
+                      </CardContent>
                     </Card>
-                </motion.div>
+                  </motion.div>
                 );
-            })}
+              })}
             </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -278,10 +286,14 @@ function CTASection() {
                 </h2>
                 <div className="mt-8 flex justify-center flex-wrap gap-4">
                     <ShinyButton>
-                        <a href={cta.form_url}>{cta.button_primary} <ArrowRight className="ml-2" /></a>
+                        <a href={cta.form_url} className="flex items-center gap-2">
+                            {cta.button_primary} <ArrowRight className="ml-2" />
+                        </a>
                     </ShinyButton>
                     <ShinyButton>
-                        {cta.button_secondary}
+                        <div className="flex items-center gap-2">
+                            {cta.button_secondary}
+                        </div>
                     </ShinyButton>
                 </div>
             </motion.div>
