@@ -204,7 +204,7 @@ export function Navbar() {
   }, [isMounted]);
 
   const headerStyle = isMounted && isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32';
-  const logoWidth = isMounted && isScrolled ? 'w-64' : 'w-[24rem]';
+  const logoContainerSize = isMounted && isScrolled ? 'h-20 w-20' : 'h-28 w-28';
   const textColor = isMounted && isScrolled ? 'text-primary' : 'text-white/80';
   const menuIconColor = isMounted && isScrolled ? 'text-foreground' : 'text-background';
   const selectTextColor = isMounted && isScrolled ? "text-primary border-primary/50" : "text-white";
@@ -218,11 +218,11 @@ export function Navbar() {
     >
       <div className="flex items-center h-full">
         <Link href="/" className="flex items-center h-full gap-2 group">
-          <div className="relative h-full flex items-center overflow-hidden transition-transform duration-300 ease-out group-hover:scale-110">
-            <div className={cn('relative transition-all duration-300 h-full py-4', logoWidth)}>
+          <div className={cn("relative transition-all duration-300", logoContainerSize)}>
+            <div className="relative h-full w-full overflow-hidden transition-transform duration-300 ease-out group-hover:scale-110">
               <Logo />
+              <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out group-hover:left-[100%]" />
             </div>
-            <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out group-hover:left-[100%]" />
           </div>
         </Link>
       </div>
