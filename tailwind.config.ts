@@ -11,9 +11,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Roboto', 'sans-serif'],
-        headline: ['Montserrat', 'sans-serif'],
-        cairo: ['Cairo', 'sans-serif'],
+        body: ['var(--font-roboto)', 'sans-serif'],
+        headline: ['var(--font-montserrat)', 'sans-serif'],
+        cairo: ['var(--font-cairo)', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
