@@ -57,17 +57,11 @@ function HeroSection() {
                 {hero.subtitle}
               </p>
             </div>
-            <div className="flex flex-col items-start gap-4">
-              <ShinyButton>
-                <div className="flex items-center gap-2">
-                  {hero.cta_primary} <ArrowRight className="ml-2" />
-                </div>
-              </ShinyButton>
-              <ShinyButton>
-                <div className="flex items-center gap-2">
-                  {hero.cta_secondary}
-                </div>
-              </ShinyButton>
+            <div className="flex flex-row items-start gap-4">
+               <ShinyButton>
+                {hero.cta_primary} <ArrowRight className="ml-2" />
+               </ShinyButton>
+               <ShinyButton>{hero.cta_secondary}</ShinyButton>
             </div>
           </div>
 
@@ -305,3 +299,4 @@ function CTASection() {
     
 
     
+
