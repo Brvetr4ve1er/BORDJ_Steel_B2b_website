@@ -221,7 +221,10 @@ export function Navbar() {
           <div className={cn("relative transition-all duration-300", logoContainerSize)}>
             <div className="relative h-full w-full overflow-hidden transition-transform duration-300 ease-out group-hover:scale-110">
               <Logo />
-              <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out group-hover:left-[100%]" />
+              <div
+                className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out group-hover:left-[100%] transform-gpu"
+                style={{ mask: 'url(#shine-mask)' }}
+              />
             </div>
           </div>
         </Link>
