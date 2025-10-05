@@ -204,7 +204,7 @@ export function Navbar() {
   }, [isMounted]);
 
   const headerStyle = isMounted && isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32';
-  const logoWidth = isMounted && isScrolled ? 'w-32' : 'w-40';
+  const logoWidth = isMounted && isScrolled ? 'w-64' : 'w-80';
   const textColor = isMounted && isScrolled ? 'text-primary' : 'text-white/80';
   const menuIconColor = isMounted && isScrolled ? 'text-foreground' : 'text-background';
   const selectTextColor = isMounted && isScrolled ? "text-primary border-primary/50" : "text-white";
@@ -261,7 +261,7 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="right" className="w-full h-full bg-background/95 backdrop-blur-sm p-0 flex flex-col">
                 <div className="p-6 flex justify-between items-center border-b">
-                  <div className="w-32">
+                  <div className="w-64">
                     <Logo />
                   </div>
                   <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
@@ -329,5 +329,7 @@ export function Navbar() {
     </header>
   );
 }
+
+    
 
     
