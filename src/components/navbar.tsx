@@ -204,7 +204,7 @@ export function Navbar() {
   }, [isMounted]);
 
   const headerStyle = isMounted && isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32';
-  const logoWidth = isMounted && isScrolled ? 'w-64' : 'w-80';
+  const logoWidth = isMounted && isScrolled ? 'w-80' : 'w-[32rem]';
   const textColor = isMounted && isScrolled ? 'text-primary' : 'text-white/80';
   const menuIconColor = isMounted && isScrolled ? 'text-foreground' : 'text-background';
   const selectTextColor = isMounted && isScrolled ? "text-primary border-primary/50" : "text-white";
