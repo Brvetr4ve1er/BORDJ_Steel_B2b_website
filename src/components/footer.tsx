@@ -21,7 +21,7 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
-            <div className='w-80'>
+            <div className='w-40'>
                 <Logo />
             </div>
             <p className="mt-2 text-sm text-primary-foreground/80">{footer.tagline}</p>
