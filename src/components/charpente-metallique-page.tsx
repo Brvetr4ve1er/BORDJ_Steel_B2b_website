@@ -107,7 +107,7 @@ export function CharpenteMetalliquePageContent() {
                           <CardHeader>
                               <CardTitle className="font-headline text-2xl text-primary">Nos Avantages</CardTitle>
                           </CardHeader>
-                          <CardContent className="flex-grow">
+                          <CardContent className="flex-grow flex flex-col justify-center">
                               <ul className="space-y-4">
                                 {advantages.map((adv, index) => (
                                   <li key={index} className="flex items-center gap-3 text-lg text-foreground">
@@ -124,7 +124,7 @@ export function CharpenteMetalliquePageContent() {
         </div>
       </section>
 
-      <section className="py-20 bg-secondary/30">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-8 items-center">
             <div className="flex gap-8">
