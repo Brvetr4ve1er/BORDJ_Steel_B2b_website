@@ -1,6 +1,6 @@
+import dynamic from 'next/dynamic';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
-import dynamic from 'next/dynamic';
 
 const Hero = dynamic(() => import('@/components/hero').then(mod => mod.Hero));
 const VisionMission = dynamic(() => import('@/components/vision-mission').then(mod => mod.VisionMission));
