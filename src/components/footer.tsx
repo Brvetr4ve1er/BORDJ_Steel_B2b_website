@@ -1,19 +1,19 @@
-
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Facebook, Instagram, Linkedin, Twitter, MessageCircle } from 'lucide-react';
 import { companyData } from '@/config/company-data';
 import { Logo } from './logo';
 import { cn } from '@/lib/utils';
+import { SocialButton } from './social-button';
 
 export function Footer() {
   const { footer, socials, navigation, pages } = companyData;
 
   const socialIcons = [
-    { href: socials.facebook, icon: <Facebook />, name: 'Facebook' },
-    { href: socials.instagram, icon: <Instagram />, name: 'Instagram' },
-    { href: socials.whatsapp, icon: <MessageCircle />, name: 'WhatsApp' },
-    { href: socials.x, icon: <Twitter />, name: 'X' },
+    { href: socials.facebook, icon: <Facebook className="w-8 h-8" />, name: 'Facebook' },
+    { href: socials.instagram, icon: <Instagram className="w-8 h-8" />, name: 'Instagram' },
+    { href: socials.whatsapp, icon: <MessageCircle className="w-8 h-8" />, name: 'WhatsApp' },
+    { href: socials.x, icon: <Twitter className="w-8 h-8" />, name: 'X' },
   ];
 
   return (
@@ -71,20 +71,15 @@ export function Footer() {
       </div>
       <div className="bg-destructive/80 py-6">
         <div className="container mx-auto flex justify-center">
-            <div className="flex space-x-8">
+            <div className="flex flex-wrap justify-center items-center gap-x-0 gap-y-4 md:gap-x-8">
                 {socialIcons.map((social) => (
-                    <Link
+                    <SocialButton
                         key={social.name}
                         href={social.href}
-                        target="_blank"
-                        className="group relative flex h-12 w-12 items-center justify-center rounded-full text-white transition-transform duration-300 ease-in-out hover:scale-110"
+                        aria-label={`Bordj Steel on ${social.name}`}
                     >
-                       <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 transition-opacity group-hover:opacity-100" />
-                       <div className="relative overflow-hidden">
-                         {social.icon}
-                         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out left-[-100%] group-hover:left-[100%] blur-[5px]" />
-                       </div>
-                    </Link>
+                       {social.icon}
+                    </SocialButton>
                 ))}
             </div>
         </div>
