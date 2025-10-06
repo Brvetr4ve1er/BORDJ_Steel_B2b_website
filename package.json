@@ -63,7 +63,6 @@
     "react-youtube": "^10.1.0",
     "recharts": "^2.15.1",
     "sharp": "^0.34.4",
-    "styled-components": "^6.1.11",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
     "validator": "^13.12.0",

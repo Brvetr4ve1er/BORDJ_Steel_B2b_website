@@ -8,7 +8,6 @@ import { galvanisationContent } from '@/config/galvanisation-data';
 import { ArrowRight } from 'lucide-react';
 import { iconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
-import { ShinyButton } from './ui/shiny-button';
 import { AnimatedWrapper } from './animated-wrapper';
 
 // Main Page Component
@@ -54,10 +53,8 @@ function HeroSection() {
                 </p>
               </div>
               <div className="flex flex-row items-start gap-4">
-                 <ShinyButton>
-                  {hero.cta_primary} <ArrowRight className="ml-2" />
-                 </ShinyButton>
-                 <ShinyButton>{hero.cta_secondary}</ShinyButton>
+                 <Button size="lg" variant="destructive">{hero.cta_primary} <ArrowRight className="ml-2" /></Button>
+                 <Button size="lg" variant="secondary">{hero.cta_secondary}</Button>
               </div>
             </div>
           </AnimatedWrapper>
@@ -257,16 +254,16 @@ function CTASection() {
                     {cta.title}
                 </h2>
                 <div className="mt-8 flex justify-center flex-wrap gap-4">
-                    <ShinyButton>
+                    <Button asChild size="lg" variant="destructive">
                         <a href={cta.form_url} className="flex items-center gap-2">
                             {cta.button_primary} <ArrowRight className="ml-2" />
                         </a>
-                    </ShinyButton>
-                    <ShinyButton>
+                    </Button>
+                    <Button size="lg" variant="secondary">
                         <div className="flex items-center gap-2">
                             {cta.button_secondary}
                         </div>
-                    </ShinyButton>
+                    </Button>
                 </div>
             </AnimatedWrapper>
         </div>
