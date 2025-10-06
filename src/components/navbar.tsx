@@ -332,5 +332,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    

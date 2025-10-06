@@ -3,11 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { Montserrat, Roboto, Cairo } from 'next/font/google';
-
-export const metadata: Metadata = {
-  title: 'BORDJ STEEL',
-  description: 'Leader de la construction métallique en Algérie',
-};
+import { companyData } from '@/config/company-data';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -29,6 +25,28 @@ const cairo = Cairo({
   variable: '--font-cairo',
   weight: ['700'],
 });
+
+export const metadata: Metadata = {
+  title: {
+    default: companyData.siteMetadata.title,
+    template: `%s | ${companyData.siteMetadata.title}`,
+  },
+  description: companyData.siteMetadata.description,
+  openGraph: {
+    title: companyData.siteMetadata.title,
+    description: companyData.siteMetadata.description,
+    siteName: companyData.siteMetadata.title,
+    type: 'website',
+    locale: 'fr_FR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: companyData.siteMetadata.title,
+    description: companyData.siteMetadata.description,
+  },
+  metadataBase: new URL('https://bordj-steel.com'), // Replace with your actual domain
+};
+
 
 export default function RootLayout({
   children,

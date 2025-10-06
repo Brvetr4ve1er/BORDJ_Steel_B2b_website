@@ -24,23 +24,23 @@ export function Contact() {
                 <div className="bg-accent text-accent-foreground p-8 lg:p-12 h-full flex flex-col justify-center">
                   <form className="space-y-6">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="font-medium">Nom</label>
-                      <Input id="name" placeholder="Votre Nom" className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
+                      <label htmlFor="name" className="font-medium">{contact.content.form.name}</label>
+                      <Input id="name" placeholder={contact.content.form.namePlaceholder} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="email" className="font-medium">E-mail</label>
-                      <Input id="email" type="email" placeholder="Votre E-mail" className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
+                      <label htmlFor="email" className="font-medium">{contact.content.form.email}</label>
+                      <Input id="email" type="email" placeholder={contact.content.form.emailPlaceholder} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="subject" className="font-medium">Sujet</label>
-                      <Input id="subject" placeholder="Sujet de votre message" className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
+                      <label htmlFor="subject" className="font-medium">{contact.content.form.subject}</label>
+                      <Input id="subject" placeholder={contact.content.form.subjectPlaceholder} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="message" className="font-medium">Message</label>
-                      <Textarea id="message" placeholder="Votre Message" rows={5} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
+                      <label htmlFor="message" className="font-medium">{contact.content.form.message}</label>
+                      <Textarea id="message" placeholder={contact.content.form.messagePlaceholder} rows={5} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
                     </div>
                     <Button type="submit" size="lg" className="w-full bg-background text-primary hover:bg-background/90 group">
-                      Envoyer le Message
+                      {contact.content.form.button}
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
                     </Button>
                   </form>
@@ -50,8 +50,8 @@ export function Contact() {
                 <div className="p-8 lg:p-12 h-full flex flex-col">
                   <div className="space-y-8 flex-grow">
                      <div>
-                      <h3 className="font-headline text-2xl font-bold text-primary">Informations de Contact</h3>
-                      <p className="mt-2 text-muted-foreground">Remplissez le formulaire et notre équipe vous répondra dans les 24 heures.</p>
+                      <h3 className="font-headline text-2xl font-bold text-primary">{contact.content.info.title}</h3>
+                      <p className="mt-2 text-muted-foreground">{contact.content.info.description}</p>
                     </div>
                     <div className="space-y-4">
                       {contact.content.phones.map(phone => (
