@@ -151,6 +151,46 @@ export function CharpenteMetalliquePageContent() {
           </div>
         </div>
       </section>
+      
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <AnimatedWrapper animation="fade-in">
+                    <div className="grid grid-cols-2 gap-8">
+                        <div className="text-center p-6 bg-background rounded-lg shadow-md border">
+                            <p className="font-headline text-4xl font-bold text-accent"><AnimatedCounter end={25000} /></p>
+                            <p className="text-sm uppercase tracking-wider text-muted-foreground mt-1">Tonnes / an</p>
+                            <p className="font-semibold text-primary mt-2">Capacité de production<br/>Charpente</p>
+                        </div>
+                        <div className="text-center p-6 bg-background rounded-lg shadow-md border">
+                            <p className="font-headline text-4xl font-bold text-accent"><AnimatedCounter end={3000} /></p>
+                            <p className="text-sm uppercase tracking-wider text-muted-foreground mt-1">Tonnes / an</p>
+                            <p className="font-semibold text-primary mt-2">Capacité de production<br/>PRS</p>
+                        </div>
+                    </div>
+                </AnimatedWrapper>
+                <AnimatedWrapper animation="fade-in" staggerIndex={1}>
+                    <Card className="shadow-lg bg-background">
+                        <CardHeader>
+                            <CardTitle className="font-headline text-2xl text-primary">Domaines d'Application</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-4">
+                              {applications.map((app, index) => (
+                                <li key={index} className="flex items-center gap-3 text-lg text-foreground">
+                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-secondary text-accent flex items-center justify-center">
+                                      {app.icon}
+                                    </div>
+                                    <span>{app.text}</span>
+                                </li>
+                              ))}
+                            </ul>
+                        </CardContent>
+                    </Card>
+                </AnimatedWrapper>
+            </div>
+        </div>
+      </section>
 
       <section id="category-pillars" className="py-32 bg-background">
         <AnimatedWrapper animation="fade-in">
