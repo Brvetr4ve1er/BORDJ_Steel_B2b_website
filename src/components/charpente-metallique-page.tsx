@@ -173,7 +173,7 @@ export function CharpenteMetalliquePageContent() {
         </div>
       </section>
 
-      <section id="category-pillars" className="py-20 bg-background">
+      <section id="category-pillars" className="py-32 bg-background">
         <AnimatedWrapper animation="fade-in">
           <h2 className="font-headline text-5xl font-bold text-primary mb-16 text-center">Nos Piliers de Production</h2>
         </AnimatedWrapper>
