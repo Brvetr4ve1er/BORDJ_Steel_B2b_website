@@ -102,8 +102,8 @@ export function CharpenteMetalliquePageContent() {
                   </AnimatedWrapper>
                 </div>
                 <div className="flex">
-                  <AnimatedWrapper animation="fade-in" staggerIndex={1} className="flex-grow">
-                      <Card className="shadow-lg bg-background/90 backdrop-blur-sm min-h-full flex flex-col">
+                  <AnimatedWrapper animation="fade-in" staggerIndex={1} className="flex-grow flex">
+                      <Card className="shadow-lg bg-background/90 backdrop-blur-sm min-h-full flex flex-col w-full">
                           <CardHeader>
                               <CardTitle className="font-headline text-2xl text-primary">Nos Avantages</CardTitle>
                           </CardHeader>
