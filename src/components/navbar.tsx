@@ -54,29 +54,10 @@ const iconMap: { [key: string]: React.ElementType } = {
   User
 };
 
-const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?: () => void }) => {
+const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string, onItemClick?: () => void, navTextColor: string }) => {
     const { navigation } = companyData;
     const [openMenu, setOpenMenu] = useState('');
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
     const pathname = usePathname();
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-    
-    useEffect(() => {
-        if (!isMounted) return;
-        
-        const handleScroll = () => {
-          const scrolled = window.scrollY > 20;
-          if (scrolled !== isScrolled) {
-            setIsScrolled(scrolled);
-          }
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [isMounted, isScrolled]);
 
     const handleMenuClick = (menuName: string) => {
         setOpenMenu(openMenu === menuName ? '' : menuName);
@@ -87,8 +68,6 @@ const NavLinks = ({ className, onItemClick }: { className?: string, onItemClick?
       return pathname.startsWith(href);
     };
     
-    const navTextColor = isMounted && isScrolled ? 'text-foreground' : 'text-background';
-
     return (
         <NavigationMenu value={openMenu} onValueChange={setOpenMenu}>
             <NavigationMenuList className={cn("flex items-center gap-2", className)}>
@@ -205,7 +184,7 @@ export function Navbar() {
 
   const headerStyle = isMounted && isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32';
   const logoContainerSize = isMounted && isScrolled ? 'h-20 w-20' : 'h-28 w-28';
-  const textColor = isMounted && isScrolled ? 'text-primary' : 'text-white/80';
+  const textColor = isMounted && isScrolled ? 'text-primary' : 'text-white';
   const menuIconColor = isMounted && isScrolled ? 'text-foreground' : 'text-background';
   const selectTextColor = isMounted && isScrolled ? "text-primary border-primary/50" : "text-white";
 
@@ -231,7 +210,7 @@ export function Navbar() {
       </div>
 
       <div className="hidden md:flex flex-1 justify-center items-center">
-        {isMounted ? <NavLinks /> : <div className="h-10" /> /* Placeholder */}
+        {isMounted ? <NavLinks navTextColor={textColor} /> : <div className="h-10" /> /* Placeholder */}
       </div>
 
       <div className="flex items-center gap-4">
