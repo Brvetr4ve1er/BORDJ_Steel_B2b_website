@@ -217,9 +217,9 @@ export function Navbar() {
       )}
     >
       <div className="flex items-center h-full">
-        <Link href="/" className="flex items-center h-full gap-2 group">
-          <div className={cn("relative transition-all duration-300", logoContainerSize)}>
-            <div className="relative h-full w-full overflow-hidden transition-transform duration-300 ease-out group-hover:scale-110">
+        <Link href="/" className="flex items-center h-full gap-2 group" aria-label="Bordj Steel Home">
+          <div className={cn("relative transition-all duration-300 overflow-hidden", logoContainerSize)}>
+            <div className="relative h-full w-full transition-transform duration-300 ease-out group-hover:scale-110">
               <Logo />
               <div
                 className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out group-hover:left-[100%] transform-gpu"
@@ -279,7 +279,7 @@ export function Navbar() {
                         <div key={item.name} className="w-full">
                           {item.children ? (
                              <AccordionItem value={`item-${index}`} className="border-b-0">
-                              <AccordionTrigger className="w-full flex justify-between items-center py-2 font-headline text-lg hover:no-underline">
+                              <AccordionTrigger className="w-full flex justify-between items-center py-4 font-headline text-lg hover:no-underline">
                                  <span className="flex items-center gap-3">
                                   {Icon && <Icon className="h-5 w-5" />}
                                   {item.name}
@@ -288,13 +288,13 @@ export function Navbar() {
                               <AccordionContent>
                                 <div className="pl-8 flex flex-col items-start gap-2 mt-1">
                                   {item.children.map((child) => (
-                                    <Link key={child.name} href={child.href} className="text-lg text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>{child.name}</Link>
+                                    <Link key={child.name} href={child.href} className="py-2 text-lg text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>{child.name}</Link>
                                   ))}
                                 </div>
                               </AccordionContent>
                             </AccordionItem>
                           ) : (
-                            <Link href={item.href} className="flex items-center gap-3 py-2 font-headline text-lg" onClick={() => setIsMobileMenuOpen(false)}>
+                            <Link href={item.href} className="flex items-center gap-3 py-4 font-headline text-lg" onClick={() => setIsMobileMenuOpen(false)}>
                                {Icon && <Icon className="h-5 w-5" />}
                                {item.name}
                             </Link>

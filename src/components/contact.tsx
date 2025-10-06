@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { AnimatedWrapper } from './animated-wrapper';
 import { companyData } from '@/config/company-data';
 import { cn } from '@/lib/utils';
+import { Label } from '@/components/ui/label';
 
 export function Contact() {
   const { contact } = companyData.pages;
@@ -24,19 +25,19 @@ export function Contact() {
                 <div className="bg-accent text-accent-foreground p-8 lg:p-12 h-full flex flex-col justify-center">
                   <form className="space-y-6">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="font-medium">{contact.content.form.name}</label>
+                      <Label htmlFor="name" className="font-medium">{contact.content.form.name}</Label>
                       <Input id="name" placeholder={contact.content.form.namePlaceholder} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="email" className="font-medium">{contact.content.form.email}</label>
+                      <Label htmlFor="email" className="font-medium">{contact.content.form.email}</Label>
                       <Input id="email" type="email" placeholder={contact.content.form.emailPlaceholder} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="subject" className="font-medium">{contact.content.form.subject}</label>
+                      <Label htmlFor="subject" className="font-medium">{contact.content.form.subject}</Label>
                       <Input id="subject" placeholder={contact.content.form.subjectPlaceholder} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="message" className="font-medium">{contact.content.form.message}</label>
+                      <Label htmlFor="message" className="font-medium">{contact.content.form.message}</Label>
                       <Textarea id="message" placeholder={contact.content.form.messagePlaceholder} rows={5} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
                     </div>
                     <Button type="submit" size="lg" className="w-full bg-background text-primary hover:bg-background/90 group">

@@ -1,14 +1,14 @@
-"use client";
-
 import { Navbar } from '@/components/navbar';
-import { Hero } from '@/components/hero';
-import { VisionMission } from '@/components/vision-mission';
-import { Facilities } from '@/components/facilities';
-import { Portfolio } from '@/components/portfolio';
-import { Certifications } from '@/components/certifications';
-import { Clients } from '@/components/clients';
-import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
+import dynamic from 'next/dynamic';
+
+const Hero = dynamic(() => import('@/components/hero').then(mod => mod.Hero));
+const VisionMission = dynamic(() => import('@/components/vision-mission').then(mod => mod.VisionMission));
+const Facilities = dynamic(() => import('@/components/facilities').then(mod => mod.Facilities));
+const Portfolio = dynamic(() => import('@/components/portfolio').then(mod => mod.Portfolio));
+const Certifications = dynamic(() => import('@/components/certifications').then(mod => mod.Certifications));
+const Clients = dynamic(() => import('@/components/clients').then(mod => mod.Clients));
+const Contact = dynamic(() => import('@/components/contact').then(mod => mod.Contact));
 
 export function HomePage() {
   return (
