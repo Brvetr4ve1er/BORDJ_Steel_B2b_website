@@ -31,11 +31,8 @@ export function SocialButton({ href, children, className, 'aria-label': ariaLabe
             </div>
           </div>
           {/* Glass Effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/80 transform -translate-y-1/2 group-hover:-translate-y-[40%] origin-bottom transition-all duration-500 ease-in-out" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/50 transform -translate-y-1/2 group-hover:-translate-y-[45%] origin-bottom transition-all duration-500 ease-in-out" />
         </div>
-        {/* Blooms */}
-        <div className="absolute top-[10px] right-[20px] w-px h-px bg-white shadow-[0px_0px_10px_10px_white,0px_0px_20px_20px_white]" />
-        <div className="absolute bottom-[10px] left-[20px] w-px h-px bg-white shadow-[0px_0px_10px_10px_rgba(255,255,255,0.5),0px_0px_30px_20px_rgba(255,255,255,0.5)]" />
       </div>
     </Link>
   );
