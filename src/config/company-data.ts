@@ -225,8 +225,7 @@ export const companyData = {
       contactUs: "Contactez-Nous"
   },
   socials: {
-    x: "#",
-    linkedin: "#",
+    linkedin: "https://dz.linkedin.com/in/bordj-steel-spa-2a082616a",
     github: "#",
     facebook: "https://web.facebook.com/spabordjsteel/?_rdc=1&_rdr",
     instagram: "https://www.instagram.com/bordj_steel/",

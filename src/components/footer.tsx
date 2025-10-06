@@ -13,7 +13,7 @@ export function Footer() {
     { href: socials.facebook, icon: <Facebook className="w-4 h-4" />, name: 'Facebook', fromColor: 'from-blue-600', toColor: 'to-blue-400' },
     { href: socials.instagram, icon: <Instagram className="w-4 h-4" />, name: 'Instagram', fromColor: 'from-pink-500', toColor: 'to-orange-400' },
     { href: socials.whatsapp, icon: <MessageCircle className="w-4 h-4" />, name: 'WhatsApp', fromColor: 'from-green-600', toColor: 'to-green-400' },
-    { href: socials.x, icon: <Twitter className="w-4 h-4" />, name: 'X', fromColor: 'from-gray-800', toColor: 'to-gray-600' },
+    { href: socials.linkedin, icon: <Linkedin className="w-4 h-4" />, name: 'LinkedIn', fromColor: 'from-sky-600', toColor: 'to-sky-400' },
   ];
 
   return (
