@@ -1,8 +1,8 @@
-import dynamic from 'next/dynamic';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
+import { Hero } from '@/components/hero';
+import dynamic from 'next/dynamic';
 
-const Hero = dynamic(() => import('@/components/hero').then(mod => mod.Hero));
 const VisionMission = dynamic(() => import('@/components/vision-mission').then(mod => mod.VisionMission));
 const Facilities = dynamic(() => import('@/components/facilities').then(mod => mod.Facilities));
 const Portfolio = dynamic(() => import('@/components/portfolio').then(mod => mod.Portfolio));
