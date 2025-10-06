@@ -8,6 +8,8 @@ import { ArrowRight, Building, Factory, HardHat, CheckCircle, ShieldCheck, Zap, 
 import { AnimatedWrapper } from './animated-wrapper';
 import React from 'react';
 import images from '@/app/lib/placeholder-images.json';
+import { cn } from '@/lib/utils';
+import { AnimatedCounter } from './animated-counter';
 
 const applications = [
   { icon: <Building className="w-8 h-8" />, text: "Bâtiments industriels & commerciaux" },
@@ -23,108 +25,6 @@ const advantages = [
     "Flexibilité architecturale",
     "Respect des normes parasismiques"
 ];
-
-const bentoItems = [
-  {
-    id: 'main',
-    colSpan: 'lg:col-span-3',
-    rowSpan: 'lg:row-span-2',
-    content: (
-      <div className="relative w-full h-full">
-        <Image
-          src={images['charpente-metallique'].main.src}
-          alt={images['charpente-metallique'].main.alt}
-          width={images['charpente-metallique'].main.width}
-          height={images['charpente-metallique'].main.height}
-          className="rounded-xl object-cover w-full h-full"
-          data-ai-hint={images['charpente-metallique'].main.aiHint}
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        <div className="absolute bottom-0 left-0 p-8 text-white">
-          <h1 className="font-headline text-5xl font-bold">Charpente Métallique</h1>
-          <p className="mt-2 text-xl max-w-lg">Solutions d'ingénierie robustes pour les projets les plus ambitieux.</p>
-        </div>
-      </div>
-    ),
-    padding: 'p-0',
-  },
-  {
-    id: 'applications',
-    colSpan: 'lg:col-span-2',
-    rowSpan: 'lg:row-span-2',
-    content: (
-        <>
-            <CardHeader>
-                <CardTitle className="font-headline text-3xl">Domaines d'Application</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <div className="space-y-6">
-                    {applications.map((app, index) => (
-                        <div key={index} className="flex items-center gap-4">
-                            <div className="flex-shrink-0 w-16 h-16 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
-                                {app.icon}
-                            </div>
-                            <p className="text-lg font-medium">{app.text}</p>
-                        </div>
-                    ))}
-                </div>
-            </CardContent>
-        </>
-    ),
-  },
-  {
-    id: 'capacity',
-    colSpan: 'lg:col-span-2',
-    rowSpan: 'lg:row-span-1',
-    content: (
-        <div className="text-center flex flex-col justify-center items-center h-full">
-            <p className="font-headline text-7xl font-bold text-accent">25,000</p>
-            <p className="font-semibold text-xl mt-2 text-muted-foreground">Tonnes / an</p>
-            <p className="font-headline text-5xl font-bold text-accent mt-4">3,000</p>
-            <p className="font-semibold text-xl mt-2 text-muted-foreground">Tonnes / an de PRS</p>
-        </div>
-    ),
-  },
-  {
-    id: 'advantages',
-    colSpan: 'lg:col-span-3',
-    rowSpan: 'lg:row-span-2',
-    content: (
-        <>
-            <CardHeader>
-                <CardTitle className="font-headline text-3xl">Nos Avantages</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <ul className="space-y-4">
-                   {advantages.map((adv, index) => (
-                     <li key={index} className="flex items-center gap-3 text-lg">
-                       <CheckCircle className="h-6 w-6 text-accent" />
-                       <span>{adv}</span>
-                     </li>
-                   ))}
-                </ul>
-            </CardContent>
-        </>
-    ),
-  },
-   {
-    id: 'cta',
-    colSpan: 'lg:col-span-2',
-    rowSpan: 'lg:row-span-1',
-    content: (
-      <div className="flex flex-col items-center justify-center h-full text-center bg-accent text-accent-foreground rounded-xl">
-        <h3 className="font-headline text-3xl font-bold">Un projet en tête?</h3>
-        <p className="mt-2 mb-6">Discutons de vos besoins spécifiques.</p>
-        <Button size="lg" variant="secondary" className="bg-white text-accent hover:bg-white/90 group">
-          Demander un Devis <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-        </Button>
-      </div>
-    ),
-     padding: 'p-0',
-  },
-];
-
 
 const pillars = [
     {
@@ -175,33 +75,112 @@ const whyChooseUs = [
     }
 ];
 
-
 export function CharpenteMetalliquePageContent() {
   return (
-    <div className="container mx-auto px-4 py-16">
-      <div className="grid grid-cols-1 lg:grid-cols-5 lg:grid-rows-3 gap-8 min-h-[80vh]">
-        {bentoItems.map((item, index) => (
-          <AnimatedWrapper
-            key={item.id}
-            animation="zoom-in"
-            staggerIndex={index}
-            className={`${item.colSpan} ${item.rowSpan}`}
-          >
-            <Card className={`h-full w-full shadow-lg hover:shadow-2xl transition-shadow duration-300 ${item.padding !== 'p-0' ? 'p-6' : ''} ${item.id === 'cta' ? 'bg-transparent border-none' : ''}`}>
-              {item.content}
-            </Card>
-          </AnimatedWrapper>
-        ))}
-      </div>
+    <div className="bg-background">
+      <section className="relative bg-primary text-primary-foreground pt-32 lg:pt-48 pb-16 lg:pb-24">
+         <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src={images['charpente-metallique'].main.src}
+            alt={images['charpente-metallique'].main.alt}
+            fill
+            className="object-cover opacity-20"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent"></div>
+        </div>
+        <div className="container mx-auto px-4 relative">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                  <AnimatedWrapper animation="fade-in">
+                    <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight uppercase">
+                        Charpente Métallique
+                    </h1>
+                    <p className="mt-4 text-lg md:text-xl max-w-lg text-primary-foreground/80">
+                      Solutions d'ingénierie robustes pour les projets les plus ambitieux.
+                    </p>
+                  </AnimatedWrapper>
+                </div>
+                <div>
+                  <AnimatedWrapper animation="fade-in" staggerIndex={1}>
+                      <Card className="shadow-lg bg-background/90 backdrop-blur-sm">
+                          <CardHeader>
+                              <CardTitle className="font-headline text-2xl text-primary">Nos Avantages</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                              <ul className="space-y-4">
+                                {advantages.map((adv, index) => (
+                                  <li key={index} className="flex items-center gap-3 text-lg text-foreground">
+                                    <CheckCircle className="h-6 w-6 text-accent" />
+                                    <span>{adv}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                          </CardContent>
+                      </Card>
+                  </AnimatedWrapper>
+                </div>
+            </div>
+        </div>
+      </section>
 
-      <section id="category-pillars" className="py-20 mt-20">
+      <section className="py-20 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-3 gap-8 items-center">
+            <div className="flex gap-8">
+              <AnimatedWrapper animation="slide-up">
+                <Card className="text-center p-6 bg-accent text-accent-foreground flex-1 shadow-lg">
+                  <p className="font-headline font-bold text-5xl">
+                    <AnimatedCounter end={25000} />
+                  </p>
+                  <p className="font-semibold text-lg mt-2">Tonnes / an</p>
+                  <p className="text-sm mt-4">Capacité de production<br/>Charpente</p>
+                </Card>
+              </AnimatedWrapper>
+               <AnimatedWrapper animation="slide-up" staggerIndex={1}>
+                <Card className="text-center p-6 bg-primary text-primary-foreground flex-1 shadow-lg">
+                  <p className="font-headline font-bold text-5xl">
+                    <AnimatedCounter end={3000} />
+                  </p>
+                  <p className="font-semibold text-lg mt-2">Tonnes / an</p>
+                  <p className="text-sm mt-4">Capacité de production<br/>PRS</p>
+                </Card>
+              </AnimatedWrapper>
+            </div>
+            <div className="flex justify-center items-center">
+              <AnimatedWrapper animation="zoom-in">
+                  <div className="w-32 h-32 rounded-full bg-background flex items-center justify-center shadow-2xl border-4 border-accent">
+                    <HardHat className="w-16 h-16 text-accent" />
+                  </div>
+              </AnimatedWrapper>
+            </div>
+            <div>
+              <AnimatedWrapper animation="fade-in">
+                  <h3 className="font-headline text-3xl font-bold text-primary">Domaines d'Application</h3>
+                  <div className="mt-6 space-y-4">
+                      {applications.map((app, index) => (
+                          <div key={index} className="flex items-center gap-4">
+                              <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
+                                  {app.icon}
+                              </div>
+                              <p className="text-lg font-medium">{app.text}</p>
+                          </div>
+                      ))}
+                  </div>
+              </AnimatedWrapper>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="category-pillars" className="py-20 bg-background">
         <AnimatedWrapper animation="fade-in">
           <h2 className="font-headline text-5xl font-bold text-primary mb-16 text-center">Nos Piliers de Production</h2>
         </AnimatedWrapper>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
             {pillars.map((pillar, index) => (
                 <AnimatedWrapper key={index} animation="slide-up" staggerIndex={index}>
-                   <Card className="group relative overflow-hidden rounded-2xl shadow-lg h-full hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+                   <Card className="group relative overflow-hidden rounded-2xl shadow-lg h-full hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col bg-secondary/30">
                        <div className="relative h-56">
                            <Image
                                src={pillar.image.src}
@@ -216,7 +195,7 @@ export function CharpenteMetalliquePageContent() {
                                {pillar.icon}
                            </div>
                        </div>
-                       <CardContent className="p-6 flex flex-col flex-grow">
+                       <CardContent className="p-6 flex flex-col flex-grow bg-card">
                            <h3 className="font-headline text-2xl font-bold text-primary mb-3">{pillar.title}</h3>
                            <p className="text-muted-foreground mb-4 flex-grow">{pillar.explanation}</p>
                            <ul className="space-y-2 mt-auto">
@@ -234,41 +213,45 @@ export function CharpenteMetalliquePageContent() {
         </div>
       </section>
 
-      <section id="why-choose-us" className="py-20">
-          <AnimatedWrapper animation="fade-in">
-            <h2 className="font-headline text-5xl font-bold text-primary mb-16 text-center">Pourquoi Nous Choisir?</h2>
-          </AnimatedWrapper>
-          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
-              {whyChooseUs.map((item, index) => (
-                  <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                      <div className="text-center">
-                          <div className="flex items-center justify-center h-20 w-20 rounded-full bg-accent/10 text-accent mx-auto mb-6">
-                              {item.icon}
-                          </div>
-                          <h3 className="font-headline text-2xl font-bold text-primary mb-3">{item.title}</h3>
-                          <p className="text-muted-foreground">{item.description}</p>
-                      </div>
-                  </AnimatedWrapper>
-              ))}
+      <section id="why-choose-us" className="py-20 bg-secondary/30">
+          <div className="container mx-auto px-4">
+            <AnimatedWrapper animation="fade-in">
+              <h2 className="font-headline text-5xl font-bold text-primary mb-16 text-center">Pourquoi Nous Choisir?</h2>
+            </AnimatedWrapper>
+            <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
+                {whyChooseUs.map((item, index) => (
+                    <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                        <div className="text-center">
+                            <div className="flex items-center justify-center h-20 w-20 rounded-full bg-background text-accent mx-auto mb-6 shadow-lg border">
+                                {item.icon}
+                            </div>
+                            <h3 className="font-headline text-2xl font-bold text-primary mb-3">{item.title}</h3>
+                            <p className="text-muted-foreground">{item.description}</p>
+                        </div>
+                    </AnimatedWrapper>
+                ))}
+            </div>
           </div>
       </section>
 
-      <section id="cta-bottom" className="py-20">
-        <AnimatedWrapper animation="zoom-in">
-          <div className="bg-secondary rounded-2xl p-12 text-center max-w-4xl mx-auto shadow-xl">
-            <h2 className="font-headline text-4xl font-bold text-primary mb-4">Discutons de votre projet.</h2>
-            <p className="text-muted-foreground text-lg mb-8">Notre équipe est prête à transformer vos idées en réalité. Contactez-nous pour un devis ou une consultation technique.</p>
-            <div className="flex justify-center gap-4 flex-wrap">
-                <Button size="lg" variant="destructive">
-                    Demander un Devis <ArrowRight className="ml-2" />
-                </Button>
-                <Button size="lg" variant="outline" className="bg-white hover:bg-white/90 border-primary/20">
-                    <BookCopy className="mr-2" />
-                    Télécharger la Brochure
-                </Button>
-            </div>
-          </div>
-        </AnimatedWrapper>
+      <section id="cta-bottom" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+            <AnimatedWrapper animation="zoom-in">
+              <div className="bg-secondary rounded-2xl p-12 text-center max-w-4xl mx-auto shadow-xl">
+                <h2 className="font-headline text-4xl font-bold text-primary mb-4">Discutons de votre projet.</h2>
+                <p className="text-muted-foreground text-lg mb-8">Notre équipe est prête à transformer vos idées en réalité. Contactez-nous pour un devis ou une consultation technique.</p>
+                <div className="flex justify-center gap-4 flex-wrap">
+                    <Button size="lg" variant="destructive">
+                        Demander un Devis <ArrowRight className="ml-2" />
+                    </Button>
+                    <Button size="lg" variant="outline" className="bg-white hover:bg-white/90 border-primary/20">
+                        <BookCopy className="mr-2" />
+                        Télécharger la Brochure
+                    </Button>
+                </div>
+              </div>
+            </AnimatedWrapper>
+        </div>
       </section>
 
     </div>

@@ -14,7 +14,7 @@ export default function CharpenteMetalliquePage() {
   return (
     <div className="flex min-h-[100dvh] flex-col">
       <Navbar />
-      <main className="flex-1 pt-32 bg-secondary/50">
+      <main className="flex-1 bg-secondary/20">
         <CharpenteMetalliquePageContent />
       </main>
       <Footer />
