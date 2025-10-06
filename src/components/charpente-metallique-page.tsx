@@ -90,7 +90,7 @@ export function CharpenteMetalliquePageContent() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent"></div>
         </div>
         <div className="container mx-auto px-4 relative">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 items-stretch">
                 <div>
                   <AnimatedWrapper animation="fade-in">
                     <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight uppercase">
@@ -101,13 +101,13 @@ export function CharpenteMetalliquePageContent() {
                     </p>
                   </AnimatedWrapper>
                 </div>
-                <div>
-                  <AnimatedWrapper animation="fade-in" staggerIndex={1}>
-                      <Card className="shadow-lg bg-background/90 backdrop-blur-sm">
+                <div className="flex">
+                  <AnimatedWrapper animation="fade-in" staggerIndex={1} className="flex-grow">
+                      <Card className="shadow-lg bg-background/90 backdrop-blur-sm min-h-full flex flex-col">
                           <CardHeader>
                               <CardTitle className="font-headline text-2xl text-primary">Nos Avantages</CardTitle>
                           </CardHeader>
-                          <CardContent>
+                          <CardContent className="flex-grow">
                               <ul className="space-y-4">
                                 {advantages.map((adv, index) => (
                                   <li key={index} className="flex items-center gap-3 text-lg text-foreground">
