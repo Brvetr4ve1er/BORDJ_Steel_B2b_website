@@ -9,11 +9,11 @@ import { SocialButton } from './social-button';
 export function Footer() {
   const { footer, socials, navigation, pages } = companyData;
 
-  const socialIcons = [
-    { href: socials.facebook, icon: <Facebook className="w-8 h-8" />, name: 'Facebook' },
-    { href: socials.instagram, icon: <Instagram className="w-8 h-8" />, name: 'Instagram' },
-    { href: socials.whatsapp, icon: <MessageCircle className="w-8 h-8" />, name: 'WhatsApp' },
-    { href: socials.x, icon: <Twitter className="w-8 h-8" />, name: 'X' },
+  const socialButtons = [
+    { href: socials.facebook, icon: <Facebook className="w-8 h-8" />, name: 'Facebook', fromColor: 'from-blue-600', toColor: 'to-blue-400' },
+    { href: socials.instagram, icon: <Instagram className="w-8 h-8" />, name: 'Instagram', fromColor: 'from-pink-500', toColor: 'to-orange-400' },
+    { href: socials.whatsapp, icon: <MessageCircle className="w-8 h-8" />, name: 'WhatsApp', fromColor: 'from-green-600', toColor: 'to-green-400' },
+    { href: socials.x, icon: <Twitter className="w-8 h-8" />, name: 'X', fromColor: 'from-gray-800', toColor: 'to-gray-600' },
   ];
 
   return (
@@ -72,11 +72,13 @@ export function Footer() {
       <div className="bg-destructive/80 py-6">
         <div className="container mx-auto flex justify-center">
             <div className="flex flex-wrap justify-center items-center gap-x-0 gap-y-4 md:gap-x-8">
-                {socialIcons.map((social) => (
+                {socialButtons.map((social) => (
                     <SocialButton
                         key={social.name}
                         href={social.href}
                         aria-label={`Bordj Steel on ${social.name}`}
+                        fromColor={social.fromColor}
+                        toColor={social.toColor}
                     >
                        {social.icon}
                     </SocialButton>
