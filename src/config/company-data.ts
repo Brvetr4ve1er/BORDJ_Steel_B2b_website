@@ -228,7 +228,7 @@ export const companyData = {
     x: "#",
     linkedin: "#",
     github: "#",
-    facebook: "#",
+    facebook: "https://web.facebook.com/spabordjsteel/?_rdc=1&_rdr",
     instagram: "#",
     tiktok: "#",
     whatsapp: "#"
