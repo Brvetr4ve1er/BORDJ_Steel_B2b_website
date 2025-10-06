@@ -10,10 +10,10 @@ export function Footer() {
   const { footer, socials, navigation, pages } = companyData;
 
   const socialButtons = [
-    { href: socials.facebook, icon: <Facebook className="w-8 h-8" />, name: 'Facebook', fromColor: 'from-blue-600', toColor: 'to-blue-400' },
-    { href: socials.instagram, icon: <Instagram className="w-8 h-8" />, name: 'Instagram', fromColor: 'from-pink-500', toColor: 'to-orange-400' },
-    { href: socials.whatsapp, icon: <MessageCircle className="w-8 h-8" />, name: 'WhatsApp', fromColor: 'from-green-600', toColor: 'to-green-400' },
-    { href: socials.x, icon: <Twitter className="w-8 h-8" />, name: 'X', fromColor: 'from-gray-800', toColor: 'to-gray-600' },
+    { href: socials.facebook, icon: <Facebook />, name: 'Facebook', fromColor: 'from-blue-600', toColor: 'to-blue-400' },
+    { href: socials.instagram, icon: <Instagram />, name: 'Instagram', fromColor: 'from-pink-500', toColor: 'to-orange-400' },
+    { href: socials.whatsapp, icon: <MessageCircle />, name: 'WhatsApp', fromColor: 'from-green-600', toColor: 'to-green-400' },
+    { href: socials.x, icon: <Twitter />, name: 'X', fromColor: 'from-gray-800', toColor: 'to-gray-600' },
   ];
 
   return (
@@ -71,7 +71,7 @@ export function Footer() {
       </div>
       <div className="bg-destructive/80 py-6">
         <div className="container mx-auto flex justify-center">
-            <div className="flex flex-wrap justify-center items-center gap-x-0 gap-y-4 md:gap-x-8">
+            <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-4">
                 {socialButtons.map((social) => (
                     <SocialButton
                         key={social.name}
