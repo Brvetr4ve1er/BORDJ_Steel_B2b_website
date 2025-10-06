@@ -78,7 +78,7 @@ const whyChooseUs = [
 export function CharpenteMetalliquePageContent() {
   return (
     <div className="bg-background">
-      <section className="relative bg-primary text-primary-foreground pt-32 lg:pt-48 pb-16 lg:pb-24">
+      <section className="relative bg-primary text-primary-foreground pt-40 lg:pt-56 pb-24 lg:pb-32">
          <div className="absolute inset-0 overflow-hidden">
           <Image
             src={images['charpente-metallique'].main.src}
