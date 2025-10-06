@@ -79,7 +79,7 @@ export function CharpenteMetalliquePageContent() {
 
   return (
     <div className="bg-background">
-      <section className="relative bg-primary text-primary-foreground pt-48 lg:pt-64 pb-32 lg:pb-40">
+      <section className="relative bg-primary text-primary-foreground pt-56 lg:pt-80 pb-40 lg:pb-56">
          <div className="absolute inset-0 overflow-hidden">
           <Image
             src={activeImage.src}
