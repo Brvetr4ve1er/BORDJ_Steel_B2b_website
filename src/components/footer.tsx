@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Facebook, Instagram, Linkedin, Twitter, MessageCircle } from 'lucide-react';
@@ -10,10 +11,10 @@ export function Footer() {
   const { footer, socials, navigation, pages } = companyData;
 
   const socialButtons = [
-    { href: socials.facebook, icon: <Facebook className="w-4 h-4" />, name: 'Facebook', fromColor: 'from-blue-600', toColor: 'to-blue-400' },
-    { href: socials.instagram, icon: <Instagram className="w-4 h-4" />, name: 'Instagram', fromColor: 'from-pink-500', toColor: 'to-orange-400' },
-    { href: socials.whatsapp, icon: <MessageCircle className="w-4 h-4" />, name: 'WhatsApp', fromColor: 'from-green-600', toColor: 'to-green-400' },
-    { href: socials.linkedin, icon: <Linkedin className="w-4 h-4" />, name: 'LinkedIn', fromColor: 'from-sky-600', toColor: 'to-sky-400' },
+    { href: socials.facebook, icon: <Facebook className="w-6 h-6" />, name: 'Facebook', fromColor: 'from-blue-600', toColor: 'to-blue-400' },
+    { href: socials.instagram, icon: <Instagram className="w-6 h-6" />, name: 'Instagram', fromColor: 'from-pink-500', toColor: 'to-orange-400' },
+    { href: socials.whatsapp, icon: <MessageCircle className="w-6 h-6" />, name: 'WhatsApp', fromColor: 'from-green-600', toColor: 'to-green-400' },
+    { href: socials.linkedin, icon: <Linkedin className="w-6 h-6" />, name: 'LinkedIn', fromColor: 'from-sky-600', toColor: 'to-sky-400' },
   ];
 
   return (
