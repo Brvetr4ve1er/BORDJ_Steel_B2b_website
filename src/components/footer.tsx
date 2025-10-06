@@ -77,11 +77,13 @@ export function Footer() {
                         key={social.name}
                         href={social.href}
                         target="_blank"
-                        className="group relative flex h-12 w-12 items-center justify-center rounded-full bg-transparent text-white transition-transform duration-300 ease-in-out hover:scale-110"
+                        className="group relative flex h-12 w-12 items-center justify-center rounded-full text-white transition-transform duration-300 ease-in-out hover:scale-110"
                     >
                        <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 transition-opacity group-hover:opacity-100" />
-                       <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out left-[-100%] group-hover:left-[100%]" />
-                       {social.icon}
+                       <div className="relative overflow-hidden">
+                         {social.icon}
+                         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out left-[-100%] group-hover:left-[100%] blur-[5px]" />
+                       </div>
                     </Link>
                 ))}
             </div>
