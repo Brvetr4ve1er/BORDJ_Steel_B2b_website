@@ -28,7 +28,7 @@ function HeroSection() {
   const { hero } = galvanisationContent;
 
   return (
-    <section className="relative min-h-screen flex items-end bg-background">
+    <section className="relative min-h-screen flex items-center bg-background py-24 sm:py-32">
       <div className="absolute inset-0 z-0">
         <Image
           src={hero.image_url}
@@ -40,8 +40,8 @@ function HeroSection() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
       </div>
-      <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10 pb-32">
-        <div className="grid md:grid-cols-2 gap-8 items-end">
+      <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
           <AnimatedWrapper animation="slide-up">
             <div className="text-left space-y-8">
               <div>
