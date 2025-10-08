@@ -28,7 +28,7 @@ function HeroSection() {
   const { hero } = galvanisationContent;
 
   return (
-    <section className="relative min-h-screen flex items-center bg-background py-24 sm:py-32">
+    <section className="relative min-h-screen flex items-end bg-background pb-24 sm:pb-32">
       <div className="absolute inset-0 z-0">
         <Image
           src={hero.image_url}
@@ -271,4 +271,5 @@ function CTASection() {
     );
 }
 
+    
     
