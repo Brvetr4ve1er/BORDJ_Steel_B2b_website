@@ -103,7 +103,7 @@ function ProcessTimeline() {
                 Chaque pièce d’acier passe par une transformation alchimique. De brute et vulnérable, elle ressort invincible, gainée d’un bouclier de zinc. Voici le voyage, étape par étape.
             </p>
         </AnimatedWrapper>
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-screen-2xl mx-auto">
           <div className="absolute left-1/2 top-0 h-full w-0.5 bg-accent/30 hidden md:block" />
           {galvanisation_steps.map((step, i) => {
                 const Icon = iconMap[step.icon];
@@ -270,3 +270,5 @@ function CTASection() {
       </section>
     );
 }
+
+    
