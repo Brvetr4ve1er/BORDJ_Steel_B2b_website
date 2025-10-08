@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -32,7 +33,7 @@ export function SocialButton({ href, children, className, 'aria-label': ariaLabe
           toColor
         )}
       />
-      <div className="relative z-10 text-primary-foreground/70 transition-colors duration-300 group-hover:text-primary-foreground">
+      <div className="relative z-10 text-primary-foreground transition-colors duration-300 group-hover:text-primary-foreground">
         {children}
       </div>
     </Link>
