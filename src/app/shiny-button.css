@@ -331,9 +331,13 @@
 }
 
 .inputbox input:valid ~ i,
-.inputbox input:focus ~ i,
+.inputbox input:focus ~ i {
+  height: 44px; /* Set specific height for inputs */
+  background: hsl(var(--accent-hover));
+}
+
 .inputbox textarea:valid ~ i,
 .inputbox textarea:focus ~ i {
-  height: 100%; /* Changed from 44px to be more flexible */
+  height: 100%; /* Keep flexible height for textarea */
   background: hsl(var(--accent-hover));
 }
