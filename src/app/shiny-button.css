@@ -313,7 +313,7 @@
 .inputbox textarea:valid ~ span,
 .inputbox textarea:focus ~ span {
   color: #fff; /* Changed from #45f3ff to white to match button theme */
-  transform: translateX(0px) translateY(-24px); /* Adjusted transform for better positioning */
+  transform: translateX(0px) translateY(-34px); /* Adjusted transform for better positioning */
   font-size: 0.75em;
 }
 
