@@ -49,10 +49,10 @@ export function ChaudronneriePageContent() {
         <div className="relative z-20 container mx-auto px-4">
           <div className="max-w-3xl text-left">
             <AnimatedWrapper animation="zoom-in">
-              <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-primary">
+              <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
                 Chaudronnerie
               </h1>
-              <p className="mt-6 text-xl md:text-2xl max-w-3xl text-foreground/80">
+              <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200">
                 Fabrication sur mesure d'équipements industriels de haute précision.
               </p>
             </AnimatedWrapper>
