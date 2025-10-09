@@ -16,8 +16,8 @@ export function Contact() {
         </AnimatedWrapper>
         <Card className="shadow-2xl overflow-hidden">
           <CardContent className="p-0">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1}>
+            <div className="grid grid-cols-1 lg:grid-cols-5">
+              <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1} className="lg:col-span-2">
                 <div className="bg-accent text-accent-foreground p-8 lg:p-12 h-full flex flex-col justify-center">
                   <form className="space-y-8">
                     <div className="inputbox">
@@ -47,7 +47,7 @@ export function Contact() {
                   </form>
                 </div>
               </AnimatedWrapper>
-               <AnimatedWrapper animation="fade-in-stagger" staggerIndex={2}>
+               <AnimatedWrapper animation="fade-in-stagger" staggerIndex={2} className="lg:col-span-3">
                 <div className="p-8 lg:p-12 h-full flex flex-col">
                   <div className="space-y-8 flex-grow">
                      <div>
