@@ -1,9 +1,8 @@
 
-import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 import { companyData } from '@/config/company-data';
 import type { Metadata } from 'next';
 import { ChaudronneriePageContent } from '@/components/chaudronnerie-page-content';
+import { ProductPageLayout } from '@/components/product-page-layout';
 
 export const metadata: Metadata = {
   title: `Chaudronnerie | ${companyData.siteMetadata.title}`,
@@ -12,12 +11,8 @@ export const metadata: Metadata = {
 
 export default function ChaudronneriePage() {
   return (
-    <div className="flex min-h-[100dvh] flex-col">
-      <Navbar />
-      <main className="flex-1">
+    <ProductPageLayout>
         <ChaudronneriePageContent />
-      </main>
-      <Footer />
-    </div>
+    </ProductPageLayout>
   );
 }

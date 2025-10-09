@@ -1,9 +1,8 @@
 
-import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 import { companyData } from '@/config/company-data';
 import type { Metadata } from 'next';
 import { CharpenteMetalliquePageContent } from '@/components/charpente-metallique-page';
+import { ProductPageLayout } from '@/components/product-page-layout';
 
 export const metadata: Metadata = {
   title: `Charpente Métallique | ${companyData.siteMetadata.title}`,
@@ -12,12 +11,8 @@ export const metadata: Metadata = {
 
 export default function CharpenteMetalliquePage() {
   return (
-    <div className="flex min-h-[100dvh] flex-col">
-      <Navbar />
-      <main className="flex-1 bg-secondary/20">
-        <CharpenteMetalliquePageContent />
-      </main>
-      <Footer />
-    </div>
+    <ProductPageLayout mainClassName="bg-secondary/20">
+      <CharpenteMetalliquePageContent />
+    </ProductPageLayout>
   );
 }

@@ -1,9 +1,8 @@
 
-import { Navbar } from '@/components/navbar';
 import { SandwichPanelsPage } from '@/components/sandwich-panels-page';
-import { Footer } from '@/components/footer';
 import { companyData } from '@/config/company-data';
 import type { Metadata } from 'next';
+import { ProductPageLayout } from '@/components/product-page-layout';
 
 export const metadata: Metadata = {
   title: `Panneaux Sandwichs PEB | ${companyData.siteMetadata.title}`,
@@ -12,12 +11,8 @@ export const metadata: Metadata = {
 
 export default function SandwichPanelsProductPage() {
   return (
-    <div className="flex min-h-[100dvh] flex-col">
-      <Navbar />
-      <main className="flex-1">
-        <SandwichPanelsPage />
-      </main>
-      <Footer />
-    </div>
+    <ProductPageLayout>
+      <SandwichPanelsPage />
+    </ProductPageLayout>
   );
 }
