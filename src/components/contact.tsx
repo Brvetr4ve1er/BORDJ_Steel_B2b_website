@@ -1,12 +1,9 @@
 import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { AnimatedWrapper } from './animated-wrapper';
 import { companyData } from '@/config/company-data';
-import { cn } from '@/lib/utils';
-import { Label } from '@/components/ui/label';
+import '../app/shiny-button.css';
 
 export function Contact() {
   const { contact } = companyData.pages;
@@ -22,24 +19,28 @@ export function Contact() {
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1}>
                 <div className="bg-accent text-accent-foreground p-8 lg:p-12 h-full flex flex-col justify-center">
-                  <form className="space-y-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="font-medium">{contact.content.form.name}</Label>
-                      <Input id="name" placeholder={contact.content.form.namePlaceholder} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
+                  <form className="space-y-8">
+                    <div className="inputbox">
+                      <input required="required" type="text" id="name" />
+                      <span>{contact.content.form.namePlaceholder}</span>
+                      <i />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="font-medium">{contact.content.form.email}</Label>
-                      <Input id="email" type="email" placeholder={contact.content.form.emailPlaceholder} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
+                    <div className="inputbox">
+                      <input required="required" type="email" id="email" />
+                      <span>{contact.content.form.emailPlaceholder}</span>
+                      <i />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="subject" className="font-medium">{contact.content.form.subject}</Label>
-                      <Input id="subject" placeholder={contact.content.form.subjectPlaceholder} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
+                    <div className="inputbox">
+                      <input required="required" type="text" id="subject" />
+                      <span>{contact.content.form.subjectPlaceholder}</span>
+                      <i />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="message" className="font-medium">{contact.content.form.message}</Label>
-                      <Textarea id="message" placeholder={contact.content.form.messagePlaceholder} rows={5} className="bg-accent-foreground/10 border-accent-foreground/20 placeholder:text-accent-foreground/70 focus:bg-accent-foreground/20" />
+                    <div className="inputbox">
+                      <textarea required="required" id="message" rows={4} className="resize-none" />
+                      <span>{contact.content.form.messagePlaceholder}</span>
+                      <i />
                     </div>
-                    <Button type="submit" size="lg" className="w-full bg-background text-primary hover:bg-background/90 group">
+                    <Button type="submit" size="lg" className="w-full bg-background text-primary hover:bg-background/90 group !mt-12">
                       {contact.content.form.button}
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
                     </Button>
