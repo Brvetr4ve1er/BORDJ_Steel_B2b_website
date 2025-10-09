@@ -305,6 +305,7 @@
   letter-spacing: 0.05em; /* Corrected typo */
   transition: 0.5s;
   pointer-events: none;
+  z-index: 1; /* Lowered z-index */
 }
 
 .inputbox input:valid ~ span,
