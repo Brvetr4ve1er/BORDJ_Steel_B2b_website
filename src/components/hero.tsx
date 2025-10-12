@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { companyData } from '@/config/company-data';
-import { AnimatedCounter } from './animated-counter';
+import { AnimatedNumber } from './animated-number';
 import images from '@/app/lib/placeholder-images.json';
 
 export function Hero() {
@@ -36,7 +36,7 @@ export function Hero() {
             {hero.stats.map((stat, index) => (
               <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index + 1}>
                 <div className="font-headline text-4xl font-bold text-accent">
-                    <AnimatedCounter end={stat.value} />
+                    <AnimatedNumber value={stat.value} />
                 </div>
                 <p className="text-sm uppercase tracking-widest text-gray-300">{stat.label}</p>
               </AnimatedWrapper>

@@ -9,7 +9,7 @@ import { AnimatedWrapper } from './animated-wrapper';
 import React, { useState } from 'react';
 import images from '@/app/lib/placeholder-images.json';
 import { cn } from '@/lib/utils';
-import { AnimatedCounter } from './animated-counter';
+import { AnimatedNumber } from './animated-number';
 import { ProductionPillarCard } from './production-pillar-card';
 
 const applications = [
@@ -158,12 +158,12 @@ export function CharpenteMetalliquePageContent() {
                 <AnimatedWrapper animation="fade-in">
                     <div className="grid grid-cols-2 gap-8">
                         <div className="text-center p-6 bg-background rounded-lg shadow-md border">
-                            <p className="font-headline text-4xl font-bold text-accent"><AnimatedCounter end={25000} /></p>
+                            <p className="font-headline text-4xl font-bold text-accent"><AnimatedNumber value={25000} /></p>
                             <p className="text-sm uppercase tracking-wider text-muted-foreground mt-1">Tonnes / an</p>
                             <p className="font-semibold text-primary mt-2">Capacité de production<br/>Charpente</p>
                         </div>
                         <div className="text-center p-6 bg-background rounded-lg shadow-md border">
-                            <p className="font-headline text-4xl font-bold text-accent"><AnimatedCounter end={3000} /></p>
+                            <p className="font-headline text-4xl font-bold text-accent"><AnimatedNumber value={3000} /></p>
                             <p className="text-sm uppercase tracking-wider text-muted-foreground mt-1">Tonnes / an</p>
                             <p className="font-semibold text-primary mt-2">Capacité de production<br/>PRS</p>
                         </div>

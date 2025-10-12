@@ -52,6 +52,7 @@
     "helmet": "^7.1.0",
     "ioredis": "^5.4.1",
     "lucide-react": "^0.475.0",
+    "motion": "^12.23.22",
     "next": "^15.5.2",
     "node-cache": "^5.1.2",
     "patch-package": "^8.0.0",

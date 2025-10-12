@@ -4,7 +4,7 @@ import { companyData } from '@/config/company-data';
 import { Award, Cog } from "lucide-react";
 import { Button } from "./ui/button";
 import Image from "next/image";
-import { AnimatedCounter } from "./animated-counter";
+import { AnimatedNumber } from "./animated-number";
 import images from '@/app/lib/placeholder-images.json';
 
 const iconMap: { [key: string]: React.ElementType } = {
@@ -40,7 +40,7 @@ export function VisionMission() {
                     <div className="absolute inset-0 bg-accent/80 backdrop-blur-sm rounded-xl transform -rotate-6 transition-transform duration-300 group-hover:rotate-0" />
                     <div className="relative text-white text-center flex flex-col justify-center h-full p-4">
                         <div className="font-headline font-bold text-6xl flex items-center justify-center">
-                            <AnimatedCounter end={completedProjects} />+
+                            <AnimatedNumber value={completedProjects} />+
                         </div>
                         <p className="font-semibold uppercase tracking-wider mt-2">Projets Réalisés</p>
                     </div>
