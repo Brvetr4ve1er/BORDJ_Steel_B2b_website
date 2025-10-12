@@ -14,11 +14,11 @@ interface ProductionPillarCardProps {
 export function ProductionPillarCard({ Icon, title, description }: ProductionPillarCardProps) {
   return (
     <div className={cn(
-      "group relative w-full h-[400px] p-5 cursor-pointer",
-      "text-primary border-2 border-accent",
+      "group relative w-full h-[400px] p-6 cursor-pointer",
+      "bg-black/30 backdrop-blur-sm text-white border-2 border-white/20",
       "flex flex-col",
       "transform-origin-center transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]",
-      "hover:rounded-xl hover:bg-accent hover:scale-95 hover:rotate-6 hover:shadow-2xl hover:shadow-accent/40"
+      "hover:bg-accent hover:border-accent-foreground rounded-lg hover:scale-105 hover:shadow-2xl hover:shadow-accent/40"
     )}>
       <div className={cn(
         "transition-colors duration-500",
