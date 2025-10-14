@@ -11,7 +11,6 @@ import images from '@/app/lib/placeholder-images.json';
 import { cn } from '@/lib/utils';
 import { AnimatedNumber } from './animated-number';
 import { ProductionPillarCard } from './production-pillar-card';
-import MetalBeamsBackground from './metal-beams-background';
 
 const applications = [
   { icon: <Building className="w-8 h-8" />, text: "Bâtiments industriels & commerciaux" },
@@ -193,25 +192,20 @@ export function CharpenteMetalliquePageContent() {
         </div>
       </section>
 
-      <section id="category-pillars" className="py-32 bg-background relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <MetalBeamsBackground />
-        </div>
-        <div className="relative z-10">
-          <AnimatedWrapper animation="fade-in">
-            <h2 className="font-headline text-5xl font-bold text-white mb-16 text-center">Nos Piliers de Production</h2>
-          </AnimatedWrapper>
-          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-              {pillars.map((pillar, index) => (
-                  <AnimatedWrapper key={index} animation="slide-up" staggerIndex={index}>
-                    <ProductionPillarCard
-                      Icon={pillar.icon}
-                      title={pillar.title}
-                      description={pillar.explanation}
-                    />
-                  </AnimatedWrapper>
-              ))}
-          </div>
+      <section id="category-pillars" className="py-32 bg-secondary/30">
+        <AnimatedWrapper animation="fade-in">
+          <h2 className="font-headline text-5xl font-bold text-primary mb-16 text-center">Nos Piliers de Production</h2>
+        </AnimatedWrapper>
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+            {pillars.map((pillar, index) => (
+                <AnimatedWrapper key={index} animation="slide-up" staggerIndex={index}>
+                  <ProductionPillarCard
+                    Icon={pillar.icon}
+                    title={pillar.title}
+                    description={pillar.explanation}
+                  />
+                </AnimatedWrapper>
+            ))}
         </div>
       </section>
 
