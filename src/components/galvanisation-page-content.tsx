@@ -45,7 +45,7 @@ function HeroSection() {
           <AnimatedWrapper animation="slide-up">
             <div className="text-left space-y-8">
               <div>
-                <h1 className="font-headline text-5xl md:text-6xl font-bold text-white leading-tight">
+                <h1 className="font-headline text-7xl md:text-8xl font-bold text-white leading-tight">
                   {hero.title}
                 </h1>
                 <p className="mt-4 text-lg text-gray-300 max-w-xl">
