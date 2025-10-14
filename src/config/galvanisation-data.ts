@@ -27,7 +27,7 @@ export const iconMap: { [key: string]: LucideIcon } = {
 
 export const galvanisationContent = {
   "hero": {
-    "title": "Protégez l’acier pour des décennies grâce à la galvanisation à chaud",
+    "title": "GALVANISATION A CHAUD",
     "subtitle": "Notre unité de galvanisation traite jusqu’à 25.000 tonnes/an, avec des bains de zinc de 12m x 1,5m x 3m, offrant une protection anticorrosion homogène, certifiée et durable.",
     "stats": [
       { "title": "Capacité annuelle", "value": "25.000 tonnes", "icon": "factory" },
