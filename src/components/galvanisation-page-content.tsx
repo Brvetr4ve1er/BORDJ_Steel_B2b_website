@@ -41,11 +41,11 @@ function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
       </div>
       <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="grid md:grid-cols-1 gap-8 items-center">
           <AnimatedWrapper animation="slide-up">
             <div className="text-left space-y-8">
               <div>
-                <h1 className="font-headline text-7xl md:text-8xl font-bold text-white leading-tight">
+                <h1 className="font-headline text-5xl md:text-8xl font-bold text-white leading-tight">
                   {hero.title}
                 </h1>
                 <p className="mt-4 text-lg text-gray-300 max-w-xl">
@@ -60,7 +60,7 @@ function HeroSection() {
           </AnimatedWrapper>
 
           <AnimatedWrapper animation="slide-up" staggerIndex={1}>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
               {hero.stats.map((stat, index) => {
                 const Icon = iconMap[stat.icon];
                 return (
@@ -272,4 +272,6 @@ function CTASection() {
 }
 
     
+    
+
     
