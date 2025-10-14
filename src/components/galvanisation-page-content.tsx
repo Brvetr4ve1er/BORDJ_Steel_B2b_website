@@ -41,13 +41,13 @@ function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
       </div>
       <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">
-        <div className="grid md:grid-cols-1 gap-8 items-center">
+        <div className="space-y-12">
           <AnimatedWrapper animation="slide-up">
             <div className="text-left space-y-8">
               <div>
-                <h1 className="font-headline text-5xl md:text-8xl font-bold text-white leading-tight">
+                <h2 className="font-headline text-5xl md:text-8xl font-bold text-white leading-tight">
                   {hero.title}
-                </h1>
+                </h2>
                 <p className="mt-4 text-lg text-gray-300 max-w-xl">
                   {hero.subtitle}
                 </p>
