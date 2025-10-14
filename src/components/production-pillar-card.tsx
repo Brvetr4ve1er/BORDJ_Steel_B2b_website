@@ -19,7 +19,7 @@ export function ProductionPillarCard({ Icon, title, description }: ProductionPil
       "group relative w-full h-[400px] p-6 cursor-pointer overflow-hidden",
       "bg-black/30 backdrop-blur-sm text-white border-2 border-white/20",
       "flex flex-col justify-between",
-      "transform-origin-center transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]",
+      "transform-origin-center transition-all duration-500",
       "hover:bg-accent hover:border-accent-foreground rounded-lg hover:scale-105 hover:shadow-2xl hover:shadow-accent/40"
     )}>
       {/* Top section with Icon and Title */}
@@ -55,4 +55,3 @@ export function ProductionPillarCard({ Icon, title, description }: ProductionPil
     </div>
   );
 }
-
