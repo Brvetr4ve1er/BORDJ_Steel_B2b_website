@@ -41,7 +41,7 @@ function HeroSection() {
           priority
           data-ai-hint="molten zinc"
         />
-        <div className="absolute inset-0 bg-black/20 z-10" />
+        <div className="absolute inset-0 bg-black/50 z-10" />
       </div>
       <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">
         <div className="space-y-12">
@@ -68,7 +68,7 @@ function HeroSection() {
                 <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1}>
                   <Card className="bg-background/50 backdrop-blur-md border-border text-white h-full">
                     <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
-                       <BathsIcon className="h-16 w-16 text-accent mb-2" />
+                       <BathsIcon className="h-24 w-24 text-accent mb-2" />
                         <div>
                           <p className="text-4xl font-bold">{largeStat.value}</p>
                           <p className="text-lg text-gray-300">{largeStat.title}</p>
