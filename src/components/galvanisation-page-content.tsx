@@ -156,18 +156,18 @@ function ProcessTimeline() {
                               {Icon && <Icon className="h-8 w-8 text-accent" />}
                           </div>
                           <div className="flex-grow">
-                              <h3 className="text-2xl font-extrabold text-primary mb-1 uppercase tracking-wider">
+                              <h3 className="text-4xl font-extrabold text-primary mb-1 uppercase tracking-wider">
                                   {step.title}
                               </h3>
-                              <p className="text-base text-accent font-semibold mb-3">{step.shortDesc}</p>
+                              <p className="text-xl text-accent font-semibold mb-3">{step.shortDesc}</p>
                           </div>
                         </div>
                         <div className="relative z-10 h-0 overflow-hidden group-hover:h-auto transition-all duration-500 ease-in-out">
                             <div className="px-6 pb-6">
-                                <blockquote className="text-base text-muted-foreground italic border-l-2 border-border pl-4">
+                                <blockquote className="text-lg text-muted-foreground italic border-l-2 border-border pl-4">
                                 {step.longDesc}
                                 </blockquote>
-                                <div className="mt-4 text-sm text-muted-foreground/80 flex flex-col sm:flex-row justify-end gap-x-4 gap-y-1 font-mono pr-4">
+                                <div className="mt-4 text-base text-muted-foreground/80 flex flex-col sm:flex-row justify-end gap-x-4 gap-y-1 font-mono pr-4">
                                     <span>TEMP: {step.meta.temperature}</span>
                                     <span>DURÉE: {step.meta.duration}</span>
                                 </div>
