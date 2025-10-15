@@ -41,7 +41,7 @@ function HeroSection() {
           priority
           data-ai-hint="molten zinc"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
+        <div className="absolute inset-0 bg-black/20 z-10" />
       </div>
       <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">
         <div className="space-y-12">
@@ -288,9 +288,3 @@ function CTASection() {
       </section>
     );
 }
-
-    
-    
-
-    
-
