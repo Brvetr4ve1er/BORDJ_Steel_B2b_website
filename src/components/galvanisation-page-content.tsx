@@ -9,7 +9,7 @@ import { ArrowRight } from 'lucide-react';
 import { iconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
-import { BathsIcon } from './icons/baths-icon';
+import { AnimatedBaths } from './animated-baths';
 
 // Main Page Component
 export function GalvanisationPageContent() {
@@ -68,11 +68,7 @@ function HeroSection() {
                 <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1}>
                   <Card className="bg-background/50 backdrop-blur-md border-border text-white h-full">
                     <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
-                       <BathsIcon className="h-24 w-24 text-accent mb-2" />
-                        <div>
-                          <p className="text-4xl font-bold">{largeStat.value}</p>
-                          <p className="text-lg text-gray-300">{largeStat.title}</p>
-                        </div>
+                       <AnimatedBaths />
                     </CardContent>
                   </Card>
                 </AnimatedWrapper>
@@ -288,3 +284,5 @@ function CTASection() {
       </section>
     );
 }
+
+    
