@@ -9,6 +9,7 @@ import { ArrowRight } from 'lucide-react';
 import { iconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
+import { BathsIcon } from './icons/baths-icon';
 
 // Main Page Component
 export function GalvanisationPageContent() {
@@ -26,6 +27,8 @@ export function GalvanisationPageContent() {
 // 1. Hero Section
 function HeroSection() {
   const { hero } = galvanisationContent;
+  const largeStat = hero.stats.find(s => s.large);
+  const smallStats = hero.stats.filter(s => !s.large);
 
   return (
     <section className="relative min-h-screen flex items-end bg-background pb-24 sm:pb-32">
@@ -60,23 +63,38 @@ function HeroSection() {
           </AnimatedWrapper>
 
           <AnimatedWrapper animation="slide-up" staggerIndex={1}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-              {hero.stats.map((stat, index) => {
-                const Icon = iconMap[stat.icon];
-                return (
-                  <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index + 2}>
-                    <Card className="bg-background/50 backdrop-blur-md border-border text-white">
-                      <CardContent className="p-4 flex items-center gap-3">
-                        {Icon && <Icon className="h-8 w-8 text-accent" />}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+              {largeStat && (
+                <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1}>
+                  <Card className="bg-background/50 backdrop-blur-md border-border text-white h-full">
+                    <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
+                       <BathsIcon className="h-16 w-16 text-accent mb-2" />
                         <div>
-                          <p className="text-xl font-bold">{stat.value}</p>
-                          <p className="text-xs text-gray-300">{stat.title}</p>
+                          <p className="text-4xl font-bold">{largeStat.value}</p>
+                          <p className="text-lg text-gray-300">{largeStat.title}</p>
                         </div>
-                      </CardContent>
-                    </Card>
-                  </AnimatedWrapper>
-                );
-              })}
+                    </CardContent>
+                  </Card>
+                </AnimatedWrapper>
+              )}
+              <div className="grid grid-cols-2 gap-4">
+                {smallStats.map((stat, index) => {
+                  const Icon = iconMap[stat.icon];
+                  return (
+                    <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index + 2}>
+                      <Card className="bg-background/50 backdrop-blur-md border-border text-white">
+                        <CardContent className="p-4 flex items-center gap-3">
+                          {Icon && <Icon className="h-8 w-8 text-accent" />}
+                          <div>
+                            <p className="text-xl font-bold">{stat.value}</p>
+                            <p className="text-xs text-gray-300">{stat.title}</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </AnimatedWrapper>
+                  );
+                })}
+              </div>
             </div>
           </AnimatedWrapper>
         </div>
@@ -275,3 +293,4 @@ function CTASection() {
     
 
     
+

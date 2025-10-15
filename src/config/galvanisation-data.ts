@@ -30,6 +30,7 @@ export const galvanisationContent = {
     "title": "GALVANISATION A CHAUD",
     "subtitle": "Notre unité de galvanisation traite jusqu’à 25.000 tonnes/an, avec des bains de zinc de 12m x 1,5m x 3m, offrant une protection anticorrosion homogène, certifiée et durable.",
     "stats": [
+      { "title": "Bains de traitement", "value": "13", "icon": "baths", "large": true },
       { "title": "Capacité annuelle", "value": "25.000 tonnes", "icon": "factory" },
       { "title": "Température du bain", "value": "450 °C", "icon": "thermometer" },
       { "title": "Durée de vie", "value": "> 50 ans", "icon": "shield" },
