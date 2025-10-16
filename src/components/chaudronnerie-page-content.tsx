@@ -41,11 +41,10 @@ export function ChaudronneriePageContent() {
           src={heroImage.src}
           alt={heroImage.alt}
           fill
-          className="z-0 opacity-20 object-cover"
+          className="z-0 object-cover"
           data-ai-hint={heroImage.aiHint}
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
         <div className="relative z-20 container mx-auto px-4">
           <div className="max-w-3xl text-left">
             <AnimatedWrapper animation="zoom-in">
