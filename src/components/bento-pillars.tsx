@@ -53,7 +53,7 @@ export const BentoPillars = () => {
             <div className={cn("absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]", pillar.bgClass)}>
               <div className="flex flex-col items-center text-center text-white">
                 <pillar.icon className="w-12 h-12 mb-4" />
-                <p className="text-sm font-semibold">{pillar.description}</p>
+                <p className="text-base font-semibold">{pillar.description}</p>
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
