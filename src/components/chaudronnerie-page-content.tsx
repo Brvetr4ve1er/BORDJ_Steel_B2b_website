@@ -36,23 +36,23 @@ export function ChaudronneriePageContent() {
   return (
     <div className="bg-background text-foreground">
       {/* 1. Hero Banner */}
-      <section className="relative h-[70vh] w-full flex items-center justify-start text-white overflow-hidden">
+      <section className="relative h-screen w-full flex items-center justify-start text-white overflow-hidden">
         <Image
           src={heroImage.src}
           alt={heroImage.alt}
           fill
-          className="z-0 opacity-40 object-cover"
+          className="z-0 opacity-20 object-cover"
           data-ai-hint={heroImage.aiHint}
           priority
         />
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
         <div className="relative z-20 container mx-auto px-4">
           <div className="max-w-3xl text-left">
             <AnimatedWrapper animation="zoom-in">
-              <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
+              <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 Chaudronnerie
               </h1>
-              <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200">
+              <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]">
                 Fabrication sur mesure d'équipements industriels de haute précision.
               </p>
             </AnimatedWrapper>
