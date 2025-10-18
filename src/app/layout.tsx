@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import './shiny-button.css';
+import './download-button.css';
 import { Toaster } from "@/components/ui/toaster"
 import { Montserrat, Roboto, Cairo } from 'next/font/google';
 import { companyData } from '@/config/company-data';

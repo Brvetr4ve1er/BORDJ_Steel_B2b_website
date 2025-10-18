@@ -11,6 +11,7 @@ import images from '@/app/lib/placeholder-images.json';
 import { cn } from '@/lib/utils';
 import { AnimatedNumber } from './animated-number';
 import { BentoPillars } from './bento-pillars';
+import { DownloadButton } from './ui/download-button';
 
 const applications = [
   { icon: <Building className="w-8 h-8" />, text: "Bâtiments industriels & commerciaux" },
@@ -225,10 +226,7 @@ export function CharpenteMetalliquePageContent() {
                     <Button size="lg" variant="destructive">
                         Demander un Devis <ArrowRight className="ml-2" />
                     </Button>
-                    <Button size="lg" variant="outline" className="bg-white hover:bg-white/90 border-primary/20">
-                        <BookCopy className="mr-2" />
-                        Télécharger la Brochure
-                    </Button>
+                     <DownloadButton text="Télécharger la Brochure" />
                 </div>
               </div>
             </AnimatedWrapper>

@@ -10,6 +10,7 @@ import { iconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
 import { AnimatedBaths } from './animated-baths';
+import { DownloadButton } from './ui/download-button';
 
 // Main Page Component
 export function GalvanisationPageContent() {
@@ -55,9 +56,9 @@ function HeroSection() {
                   {hero.subtitle}
                 </p>
               </div>
-              <div className="flex flex-row items-start gap-4">
+              <div className="flex flex-row items-center gap-4">
                  <Button size="lg" variant="destructive">{hero.cta_primary} <ArrowRight className="ml-2" /></Button>
-                 <Button size="lg" variant="secondary">{hero.cta_secondary}</Button>
+                 <DownloadButton text={hero.cta_secondary} />
               </div>
             </div>
           </AnimatedWrapper>
@@ -273,11 +274,7 @@ function CTASection() {
                             {cta.button_primary} <ArrowRight className="ml-2" />
                         </a>
                     </Button>
-                    <Button size="lg" variant="secondary">
-                        <div className="flex items-center gap-2">
-                            {cta.button_secondary}
-                        </div>
-                    </Button>
+                    <DownloadButton text={cta.button_secondary} />
                 </div>
             </AnimatedWrapper>
         </div>
