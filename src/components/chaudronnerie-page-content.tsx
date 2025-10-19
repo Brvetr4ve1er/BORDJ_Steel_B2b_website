@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
-import { ArrowRight, Database, Wind, Construction, Cog } from 'lucide-react';
+import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat } from 'lucide-react';
 import React, { useState } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
 import { cn } from '@/lib/utils';
@@ -20,6 +20,29 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
 const SubSectionTitle = ({ children }: { children: React.ReactNode }) => (
     <h4 className="font-headline text-2xl font-bold text-primary mt-10 mb-6">{children}</h4>
 );
+
+const featureCards = [
+  {
+    icon: Zap,
+    title: 'Cutting-Edge Technology',
+    description: 'Utilizing advanced CNC machinery for unparalleled precision.',
+  },
+  {
+    icon: HardHat,
+    title: 'Skilled Workforce',
+    description: 'A team of certified welders and experienced technicians.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Quality Assurance',
+    description: 'Rigorous testing and quality control at every production stage.',
+  },
+  {
+    icon: Construction,
+    title: 'Custom Fabrication',
+    description: 'Tailor-made solutions to meet unique and complex project needs.',
+  }
+];
 
 export function ChaudronneriePageContent() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof chaudronnerieData>('silos');
@@ -45,6 +68,7 @@ export function ChaudronneriePageContent() {
           data-ai-hint={heroImage.aiHint}
           priority
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
         <div className="relative z-20 container mx-auto px-4">
           <div className="max-w-3xl text-left">
             <AnimatedWrapper animation="zoom-in">
@@ -55,6 +79,30 @@ export function ChaudronneriePageContent() {
                 Fabrication sur mesure d'équipements industriels de haute précision.
               </p>
             </AnimatedWrapper>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature Cards Section */}
+      <section className="bg-secondary/50 -mt-24 md:-mt-32 relative z-30 py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {featureCards.map((card, index) => {
+              const Icon = card.icon;
+              return (
+                <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                  <Card className="bg-background/80 backdrop-blur-sm p-6 text-center shadow-lg h-full border border-border transition-all duration-300 hover:border-accent hover:shadow-xl">
+                    <div className="flex justify-center mb-4">
+                      <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center">
+                        <Icon className="w-8 h-8 text-accent" />
+                      </div>
+                    </div>
+                    <h3 className="font-headline font-bold text-xl text-primary h-12 flex items-center justify-center"> </h3>
+                    <p className="text-muted-foreground text-sm h-16"> </p>
+                  </Card>
+                </AnimatedWrapper>
+              );
+            })}
           </div>
         </div>
       </section>
