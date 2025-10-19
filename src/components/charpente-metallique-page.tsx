@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils';
 import { AnimatedNumber } from './animated-number';
 import { BentoPillars } from './bento-pillars';
 import { DownloadButton } from './ui/download-button';
+import InteractiveImageBentoGallery from './ui/bento-gallery';
 
 const applications = [
   { icon: <Building className="w-8 h-8" />, text: "Bâtiments industriels & commerciaux" },
@@ -75,8 +76,14 @@ const whyChooseUs = [
 
 export function CharpenteMetalliquePageContent() {
   const [activeImage, setActiveImage] = useState(images['charpente-metallique'].main);
-  const galleryImages = images['charpente-metallique'].gallery;
-
+  
+  const galleryItems = images['charpente-metallique'].gallery.map((image, index) => ({
+    id: index,
+    title: image.alt,
+    desc: `Image ${index + 1} de la galerie de projets de charpente métallique.`,
+    url: image.src,
+    span: index % 3 === 0 ? 'md:col-span-2' : 'md:col-span-1',
+  }));
 
   return (
     <div className="bg-background">
@@ -127,31 +134,11 @@ export function CharpenteMetalliquePageContent() {
         </div>
       </section>
 
-       <section className="py-24">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {galleryImages.map((image, index) => (
-              <AnimatedWrapper animation="zoom-in" staggerIndex={index} key={image.src}>
-                <div 
-                  className="relative aspect-video rounded-lg overflow-hidden cursor-pointer group shadow-lg"
-                  onClick={() => setActiveImage(image)}
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    className={cn(
-                      "object-cover transition-all duration-300 group-hover:scale-110",
-                      activeImage.src === image.src ? 'ring-4 ring-accent ring-offset-2' : 'grayscale group-hover:grayscale-0'
-                    )}
-                  />
-                   <div className={cn("absolute inset-0 bg-black/50 transition-opacity", activeImage.src === image.src ? 'opacity-0' : 'opacity-100 group-hover:opacity-0')}></div>
-                </div>
-              </AnimatedWrapper>
-            ))}
-          </div>
-        </div>
-      </section>
+      <InteractiveImageBentoGallery 
+        imageItems={galleryItems}
+        title="Notre Galerie de Projets"
+        description="Explorez nos réalisations en charpente métallique, des structures industrielles complexes aux bâtiments commerciaux."
+      />
       
       <section className="py-20">
         <div className="container mx-auto px-4">
