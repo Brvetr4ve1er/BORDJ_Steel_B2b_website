@@ -12,6 +12,7 @@ import { ProductImageGallery } from './product-image-gallery';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { DownloadButton } from './ui/download-button';
+import { FeatureHoverCard } from './feature-hover-card';
 
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
@@ -136,18 +137,13 @@ export function ChaudronneriePageContent() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featureCards.map((card, index) => {
-              const Icon = card.icon;
               return (
                 <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                  <Card className="bg-background/80 backdrop-blur-sm p-6 text-center shadow-lg h-full border border-border transition-all duration-300 hover:border-accent hover:shadow-xl">
-                    <div className="flex justify-center mb-4">
-                      <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center">
-                        <Icon className="w-8 h-8 text-accent" />
-                      </div>
-                    </div>
-                    <h3 className="font-headline font-bold text-xl text-primary h-12 flex items-center justify-center">{card.title}</h3>
-                    <p className="text-muted-foreground text-sm h-16">{card.description}</p>
-                  </Card>
+                    <FeatureHoverCard
+                        Icon={card.icon}
+                        title={card.title}
+                        description={card.description}
+                    />
                 </AnimatedWrapper>
               );
             })}
@@ -276,7 +272,5 @@ export function ChaudronneriePageContent() {
     </div>
   );
 }
-
-    
 
     
