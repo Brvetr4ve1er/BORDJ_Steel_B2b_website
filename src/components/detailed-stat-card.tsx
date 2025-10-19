@@ -49,13 +49,19 @@ export const DetailedStatCard = ({
             transition={{ duration: 0.5, ease: "easeOut" }}
         >
           {secondaryValue ? (
-            <div className="flex items-baseline gap-x-4">
-              <p className="text-4xl font-bold text-destructive-foreground">
-                {value}
-              </p>
-              <p className="text-2xl font-semibold text-destructive-foreground/80">
-                {secondaryValue}
-              </p>
+            <div className="flex items-baseline justify-between">
+              <div className="text-left">
+                <p className="text-3xl font-bold text-destructive-foreground">
+                  {value}
+                </p>
+                <p className="text-sm text-destructive-foreground/80">par jour</p>
+              </div>
+              <div className="text-right">
+                <p className="text-3xl font-bold text-destructive-foreground/80">
+                  {secondaryValue}
+                </p>
+                <p className="text-sm text-destructive-foreground/80">par an</p>
+              </div>
             </div>
           ) : (
              <p className="text-5xl font-bold text-destructive-foreground">
@@ -63,7 +69,7 @@ export const DetailedStatCard = ({
             </p>
           )}
 
-          <CardDescription className="mt-1 text-destructive-foreground/80">
+          <CardDescription className="mt-2 text-destructive-foreground/80 text-left">
             {description}
           </CardDescription>
         </motion.div>
