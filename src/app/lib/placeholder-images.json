@@ -122,5 +122,14 @@
       "alt": "Bain de galvanisation à chaud",
       "aiHint": "hot-dip galvanization"
     }
+  },
+  "sandwich-panels": {
+    "hero": {
+      "src": "https://images.unsplash.com/photo-1603779931001-a6b508e5da81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb21tZXJjaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzU1NjM2MzgyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "width": 1080,
+      "height": 720,
+      "alt": "Insulated sandwich panels on a building",
+      "aiHint": "sandwich panels"
+    }
   }
 }
