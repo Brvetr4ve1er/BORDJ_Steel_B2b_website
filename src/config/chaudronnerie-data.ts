@@ -20,7 +20,7 @@ export const chaudronnerieData = {
     cta_secondary: 'Notre expertise',
     stats: [
       { title: 'Capacité de levage', value: '50 Tonnes', icon: 'Scale' },
-      { title: 'Épaisseur maximale', value: '60 mm', icon: 'Rulers' },
+      { title: 'Épaisseur maximale', value: '60 mm', icon: 'Ruler' },
       { title: 'Types d\'acier', value: 'Carbone, Inox, Hardox', icon: 'Package' },
     ],
   },
