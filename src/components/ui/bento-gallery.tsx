@@ -110,9 +110,14 @@ const InteractiveImageBentoGallery: React.FC<
       }
     }
 
-    calculateConstraints()
+    // A small delay to ensure all elements are rendered and widths are calculated
+    const timer = setTimeout(calculateConstraints, 100);
     window.addEventListener("resize", calculateConstraints)
-    return () => window.removeEventListener("resize", calculateConstraints)
+    
+    return () => {
+        clearTimeout(timer);
+        window.removeEventListener("resize", calculateConstraints);
+    }
   }, [imageItems])
 
   // Framer Motion scroll animations
@@ -145,14 +150,14 @@ const InteractiveImageBentoGallery: React.FC<
         className="relative mt-12 w-full cursor-grab active:cursor-grabbing"
       >
         <motion.div
-          className="w-max"
+          className="w-full"
           drag="x"
           dragConstraints={{ left: dragConstraint, right: 0 }}
           dragElastic={0.05}
         >
           <motion.div
             ref={gridRef}
-            className="grid auto-cols-[minmax(20rem,1fr)] grid-flow-col-dense grid-rows-2 gap-4 px-4 md:px-8"
+            className="w-max grid auto-cols-[minmax(20rem,1fr)] grid-flow-col-dense grid-rows-2 gap-4 px-4 md:px-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
