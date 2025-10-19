@@ -52,19 +52,19 @@
   },
   "charpente-metallique": {
     "main": {
-      "src": "https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg",
-      "width": 736,
-      "height": 920,
+      "src": "https://images.unsplash.com/photo-1533035345784-38c45c925180?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzdGVlbCUyMGZyYW1lJTIwY29uc3RydWN0aW9ufGVufDB8fHx8MTc1NzM3NjE4Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "width": 1080,
+      "height": 720,
       "alt": "Charpente Métallique en construction",
       "aiHint": "steel frame construction"
     },
     "gallery": [
-      { "src": "https://i.pinimg.com/736x/8f/1a/1b/8f1a1b324ca2d0f50b4a5b4a9a01e0a8.jpg", "width": 736, "height": 920, "alt": "Steel structure assembly", "aiHint": "steel structure" },
-      { "src": "https://i.pinimg.com/736x/a2/e2/2b/a2e22b63a92147313a436c78a0a3a7f8.jpg", "width": 736, "height": 1104, "alt": "Welding steel frame", "aiHint": "welding steel" },
-      { "src": "https://i.pinimg.com/736x/01/29/45/012945d8b8577531773af737f2d57404.jpg", "width": 736, "height": 981, "alt": "Industrial building frame", "aiHint": "industrial building" },
-      { "src": "https://i.pinimg.com/736x/09/b8/0e/09b80e474528148e6f4770e0f51390e1.jpg", "width": 736, "height": 920, "alt": "Steel beam details", "aiHint": "steel beam" },
-      { "src": "https://i.pinimg.com/736x/e8/6e/c3/e86ec3391d09ca0745582f42a58b92c4.jpg", "width": 736, "height": 490, "alt": "Construction site with steel frame", "aiHint": "construction site" },
-      { "src": "https://i.pinimg.com/736x/d4/ae/d1/d4aed144c35a643557e9b62646625805.jpg", "width": 736, "height": 981, "alt": "Finished steel framework", "aiHint": "steel framework" }
+      { "src": "https://images.unsplash.com/photo-1504917595217-d4dc5b472F3d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdGVlbCUyMHN0cnVjdHVyZXxlbnwwfHx8fDE3NTczNzYxODZ8MA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "alt": "Steel structure assembly", "aiHint": "steel structure" },
+      { "src": "https://images.unsplash.com/photo-1526938459242-10a41535780a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWxkaW5nJTIwc3RlZWx8ZW58MHx8fHwxNzU3Mzc2MTg2fDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1620, "alt": "Welding steel frame", "aiHint": "welding steel" },
+      { "src": "https://images.unsplash.com/photo-1581094376335-a13a7936a048?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzU3Mzc2MTg2fDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "alt": "Industrial building frame", "aiHint": "industrial building" },
+      { "src": "https://images.unsplash.com/photo-1596092585253-15637e67fd13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdGVlbCUyMGJlYW18ZW58MHx8fHwxNzU3Mzc2MTg2fDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1620, "alt": "Steel beam details", "aiHint": "steel beam" },
+      { "src": "https://images.unsplash.com/photo-1587424974914-24a83a05a06c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb25zdHJ1Y3Rpb24lMjBzaXRlfGVufDB8fHx8MTc1NzM3NjE4Nnww&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "alt": "Construction site with steel frame", "aiHint": "construction site" },
+      { "src": "https://images.unsplash.com/photo-1518545851509-c495147420a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdGVlbCUyMGZyYW1ld29ya3xlbnwwfHx8fDE3NTczNzYxODZ8MA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1620, "alt": "Finished steel framework", "aiHint": "steel framework" }
     ],
     "prs-pillar": {
       "src": "https://picsum.photos/seed/prs-pillar/800/600",
