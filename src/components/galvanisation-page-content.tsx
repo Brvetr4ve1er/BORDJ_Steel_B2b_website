@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
 import { AnimatedBaths } from './animated-baths';
 import { DownloadButton } from './ui/download-button';
+import { BathsIcon } from './icons/baths-icon';
 
 // Main Page Component
 export function GalvanisationPageContent() {
@@ -68,8 +69,15 @@ function HeroSection() {
               {largeStat && (
                 <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1}>
                   <Card className="bg-background/50 backdrop-blur-md border-border text-white h-full">
-                    <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
-                       <AnimatedBaths />
+                    <CardContent className="p-4 flex items-center justify-center text-center h-full">
+                       <div className="flex items-center gap-4">
+                        <BathsIcon className="w-24 h-24 text-accent" />
+                        <div className="text-left">
+                            <p className="text-6xl font-bold text-accent">{largeStat.value}</p>
+                            <p className="text-2xl font-semibold text-accent -mt-2">mètres</p>
+                            <p className="text-lg uppercase tracking-wider text-white mt-1">{largeStat.title}</p>
+                        </div>
+                       </div>
                     </CardContent>
                   </Card>
                 </AnimatedWrapper>
@@ -281,5 +289,7 @@ function CTASection() {
       </section>
     );
 }
+
+    
 
     

@@ -22,3 +22,5 @@ export function BathsIcon({ className }: { className?: string }) {
         </svg>
     );
 }
+
+    
