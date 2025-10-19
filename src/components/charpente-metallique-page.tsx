@@ -79,7 +79,8 @@ export function CharpenteMetalliquePageContent() {
   
   const galleryItems = images['charpente-metallique'].gallery.map((image, index) => {
     // This creates a more interesting bento layout
-    const span = (index % 6 === 0 || index % 6 === 4) ? 'md:col-span-2' : 'md:col-span-1';
+    const spanOptions = ['md:col-span-1', 'md:col-span-2', 'md:col-span-1', 'md:col-span-1', 'md:col-span-2', 'md:col-span-1'];
+    const span = spanOptions[index % spanOptions.length];
     return {
       id: index,
       title: image.alt,
