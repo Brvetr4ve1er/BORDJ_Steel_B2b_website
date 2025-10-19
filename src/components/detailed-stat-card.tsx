@@ -36,7 +36,7 @@ export const DetailedStatCard = ({
     >
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle id={`stat-card-title-${title.replace(/\s+/g, '-')}`}>{title}</CardTitle>
+          <CardTitle id={`stat-card-title-${title.replace(/\s+/g, '-')}`} className="text-xl">{title}</CardTitle>
           <div className="flex-shrink-0 w-12 h-12 rounded-full bg-destructive-foreground/10 flex items-center justify-center">
             {Icon && <Icon className="h-6 w-6 text-destructive-foreground" />}
           </div>
@@ -69,7 +69,7 @@ export const DetailedStatCard = ({
             </p>
           )}
 
-          <CardDescription className="mt-2 text-destructive-foreground/80 text-left">
+          <CardDescription className="mt-2 text-destructive-foreground/80 text-base text-left">
             {description}
           </CardDescription>
         </motion.div>
