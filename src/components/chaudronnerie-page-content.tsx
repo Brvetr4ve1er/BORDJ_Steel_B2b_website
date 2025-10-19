@@ -97,8 +97,8 @@ export function ChaudronneriePageContent() {
                         <Icon className="w-8 h-8 text-accent" />
                       </div>
                     </div>
-                    <h3 className="font-headline font-bold text-xl text-primary h-12 flex items-center justify-center"> </h3>
-                    <p className="text-muted-foreground text-sm h-16"> </p>
+                    <h3 className="font-headline font-bold text-xl text-primary h-12 flex items-center justify-center">{card.title}</h3>
+                    <p className="text-muted-foreground text-sm h-16">{card.description}</p>
                   </Card>
                 </AnimatedWrapper>
               );
