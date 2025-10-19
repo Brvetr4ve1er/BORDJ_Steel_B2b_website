@@ -29,7 +29,7 @@ export const DetailedStatCard = ({
 }: DetailedStatCardProps) => {
   return (
     <Card
-      className={cn("w-full", className)}
+      className={cn("w-full bg-background/50 backdrop-blur-md border-border text-foreground", className)}
       aria-labelledby={`stat-card-title-${title.replace(/\s+/g, '-')}`}
     >
       <CardHeader>
