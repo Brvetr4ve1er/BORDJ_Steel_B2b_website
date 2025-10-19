@@ -30,9 +30,10 @@
       "aiHint": "sandwich panels"
     },
     "galvanisation": {
-      "src": "https://images.unsplash.com/photo-1569968201228-01aebb252e80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtZXRhbCUyMGZhY3Rvcnl8ZW58MHx8fHwxNzUzODc2NjczfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "width": 1080,
-      "height": 1620,
+      "src": "https://i.pinimg.com/736x/ef/2e/99/ef2e9977bd5bfca70c8ebd557e614faf.jpg",
+      "width": 736,
+      "height": 920,
+      "alt": "Bain de galvanisation à chaud",
       "aiHint": "hot-dip galvanization"
     },
     "chaudronnerie": {
@@ -47,8 +48,8 @@
     "star-good": { "src": "https://images.unsplash.com/photo-1603779931001-a6b508e5da81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb21tZXJjaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzU1NjM2MzgyfDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1350, "aiHint": "commercial building" },
     "cfce": { "src": "https://images.unsplash.com/photo-1636905879476-b86b9dfa24f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxleGhpYml0aW9uJTIwY2VudGVyfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "aiHint": "exhibition center" },
     "condor-logistics": { "src": "https://images.unsplash.com/photo-1720382248625-dc19de24834c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsb2dpc3RpY3MlMjBiYXNlfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "aiHint": "logistics base" },
-    "softal": { "src": "https://images.unsplash.com/photo-1696194145126-32e22fc61ace?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxpbmR1c3RyaWFsJTIwZmFjdG9yeXxlbnwwfHx8fDE3NTU2ODIzMzF8MA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1350, "aiHint": "industrial factory" },
-    "duct-piping": { "src": "https://images.unsplash.com/photo-1725916631452-b411a5991fce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwaXBpbmclMjBzeXN0ZW18ZW58MHx8fHwxNzU1NjgyMzMxfDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1350, "aiHint": "piping system" }
+    "softal": { "src": "https://images.unsplash.com/photo-1696194145126-32e22fc61ace?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxpbmR1c3RyaWFsJTIwZmFjdG9yeXxlbnwwfHx8fDE3NTU2ODIzMzF8MA&ixlibrb-4.1.0&q=80&w=1080", "width": 1080, "height": 1350, "aiHint": "industrial factory" },
+    "duct-piping": { "src": "https://images.unsplash.com/photo-1725916631452-b411a5991fce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwaXBpbmclMjBzeXN0ZW18ZW58MHx8fHwxNzU1NjgyMzMxfDA&ixlibrb-4.1.0&q=80&w=1080", "width": 1080, "height": 1350, "aiHint": "piping system" }
   },
   "charpente-metallique": {
     "main": {
@@ -63,5 +64,37 @@
       { "src": "https://images.unsplash.com/photo-1526938459242-10a41535780a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWxkaW5nJTIwc3RlZWx8ZW58MHx8fHwxNzU3Mzc2MTg2fDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1620, "alt": "Welding steel frame", "aiHint": "welding steel" },
       { "src": "https://images.unsplash.com/photo-1581094376335-a13a7936a048?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzU3Mzc2MTg2fDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1620, "alt": "Industrial building frame", "aiHint": "industrial frame" }
     ]
+  },
+  "chaudronnerie": {
+    "hero": {
+        "src": "https://i.pinimg.com/736x/ef/2e/99/ef2e9977bd5bfca70c8ebd557e614faf.jpg",
+        "width": 736, "height": 920,
+        "alt": "Fabrication sur mesure en chaudronnerie",
+        "aiHint": "metal fabrication"
+    },
+    "silos": {
+        "src": "https://picsum.photos/seed/silo/800/600",
+        "width": 800, "height": 600,
+        "alt": "Silo en acier de grande capacité",
+        "aiHint": "steel silo"
+    },
+    "ducting": {
+        "src": "https://picsum.photos/seed/ducting/800/600",
+        "width": 800, "height": 600,
+        "alt": "Gaines de ventilation industrielle",
+        "aiHint": "industrial ducting"
+    },
+    "meccano": {
+        "src": "https://picsum.photos/seed/meccano/800/600",
+        "width": 800, "height": 600,
+        "alt": "Structure mécano-soudée complexe",
+        "aiHint": "welded structure"
+    },
+    "equipment": {
+        "src": "https://picsum.photos/seed/equipment/800/600",
+        "width": 800, "height": 600,
+        "alt": "Équipement industriel en acier",
+        "aiHint": "industrial equipment"
+    }
   }
 }
