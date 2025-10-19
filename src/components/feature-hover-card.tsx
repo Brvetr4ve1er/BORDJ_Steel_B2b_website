@@ -14,9 +14,9 @@ export function FeatureHoverCard({ Icon, title, description }: FeatureHoverCardP
   return (
     <div className={cn(
         "group before:hover:scale-95 before:hover:h-80 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-accent/50 via-primary/50 to-primary before:absolute before:top-0",
-        "w-80 h-96 relative bg-background flex flex-col items-center justify-center gap-2 text-center rounded-2xl shadow-lg mx-auto"
+        "w-80 h-[26rem] relative bg-background flex flex-col items-center justify-center gap-2 text-center rounded-2xl shadow-lg mx-auto"
     )}>
-      <div className="w-28 h-28 bg-primary mt-8 rounded-full border-4 border-background z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-28 transition-all duration-500 flex items-center justify-center">
+      <div className="w-28 h-28 bg-primary mt-8 rounded-full border-4 border-background z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-32 transition-all duration-500 flex items-center justify-center">
         <Icon className="w-16 h-16 text-primary-foreground" />
       </div>
       <div className="z-10 group-hover:-translate-y-10 transition-all duration-500">
