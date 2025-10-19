@@ -23,29 +23,6 @@ const SubSectionTitle = ({ children }: { children: React.ReactNode }) => (
     <h4 className="font-headline text-2xl font-bold text-primary mt-10 mb-6">{children}</h4>
 );
 
-const featureCards = [
-  {
-    icon: Zap,
-    title: 'Cutting-Edge Technology',
-    description: 'Utilizing advanced CNC machinery for unparalleled precision.',
-  },
-  {
-    icon: HardHat,
-    title: 'Skilled Workforce',
-    description: 'A team of certified welders and experienced technicians.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Quality Assurance',
-    description: 'Rigorous testing and quality control at every production stage.',
-  },
-  {
-    icon: Construction,
-    title: 'Custom Fabrication',
-    description: 'Tailor-made solutions to meet unique and complex project needs.',
-  }
-];
-
 export function ChaudronneriePageContent() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof chaudronnerieData.products>('silos');
   const activeProduct = chaudronnerieData.products[activeProductKey];
@@ -59,15 +36,18 @@ export function ChaudronneriePageContent() {
     Cog,
     Factory,
     Users,
-    Square
+    Square,
+    Database,
+    Wind,
+    Construction,
   };
 
 
-  const productButtons = [
-    { key: 'silos', label: 'Silos & Réservoirs', icon: Database },
-    { key: 'conduites', label: 'Conduites & Gaines', icon: Wind },
-    { key: 'structures', label: 'Structures Spéciales', icon: Construction },
-    { key: 'equipements', label: 'Équipements Industriels', icon: Cog },
+  const productCards = [
+    { key: 'silos', icon: Database, title: 'Silos & Réservoirs', description: 'Solutions de stockage sur mesure pour solides, liquides et gaz.' },
+    { key: 'conduites', icon: Wind, title: 'Conduites & Gaines', description: 'Réseaux de tuyauterie pour le transport de fluides et de gaz.' },
+    { key: 'structures', icon: Construction, title: 'Structures Spéciales', description: 'Ensembles mécano-soudés complexes et bâtis de machines.' },
+    { key: 'equipements', icon: Cog, title: 'Équipements Industriels', description: 'Fabrication de trémies, convoyeurs et équipements sur mesure.' },
   ];
 
   return (
@@ -136,14 +116,16 @@ export function ChaudronneriePageContent() {
       <section className="bg-secondary py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {featureCards.map((card, index) => {
+            {productCards.map((card, index) => {
               return (
                 <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                    <FeatureHoverCard
-                        Icon={card.icon}
-                        title={card.title}
-                        description={card.description}
-                    />
+                    <div onClick={() => setActiveProductKey(card.key as keyof typeof chaudronnerieData.products)} className="cursor-pointer">
+                        <FeatureHoverCard
+                            Icon={card.icon}
+                            title={card.title}
+                            description={card.description}
+                        />
+                    </div>
                 </AnimatedWrapper>
               );
             })}
@@ -160,34 +142,6 @@ export function ChaudronneriePageContent() {
                 <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
                   Notre unité de chaudronnerie est spécialisée dans la conception et la fabrication sur mesure d'équipements pour les secteurs industriels, agroalimentaires et de la construction. Nous transformons l'acier pour donner vie à des projets complexes avec une précision et une qualité inégalées.
                 </p>
-            </div>
-          </AnimatedWrapper>
-          
-          <AnimatedWrapper animation="fade-in">
-            <div className="mb-24 flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
-              {productButtons.map(({ key, label, icon: Icon }) => (
-                <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => setActiveProductKey(key as keyof typeof chaudronnerieData.products)}>
-                  <div className={cn(
-                      "w-32 h-32 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
-                      activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
-                  )}>
-                      <Icon className={cn(
-                          "h-14 w-14 transition-colors duration-300",
-                          activeProductKey === key ? 'text-accent-foreground' : 'text-primary'
-                      )} />
-                  </div>
-                  <Button
-                      variant={activeProductKey === key ? 'destructive' : 'outline'}
-                      onClick={() => setActiveProductKey(key as keyof typeof chaudronnerieData.products)}
-                      className={cn(
-                          "h-auto py-2 px-6 transition-all duration-300 text-center",
-                          activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
-                      )}
-                  >
-                      <span className="text-center text-lg font-semibold">{label}</span>
-                  </Button>
-                </div>
-              ))}
             </div>
           </AnimatedWrapper>
           
