@@ -4,14 +4,16 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
-import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat } from 'lucide-react';
+import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat, Package, Check, Rulers, Scale } from 'lucide-react';
 import React, { useState } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
 import { cn } from '@/lib/utils';
 import { ProductImageGallery } from './product-image-gallery';
-import { Card, CardContent } from './ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import images from '@/app/lib/placeholder-images.json';
+import { DownloadButton } from './ui/download-button';
+
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   <h3 className="font-headline text-3xl font-bold text-primary mb-8">{children}</h3>
@@ -45,9 +47,17 @@ const featureCards = [
 ];
 
 export function ChaudronneriePageContent() {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof chaudronnerieData>('silos');
-  const activeProduct = chaudronnerieData[activeProductKey];
-  const heroImage = images.chaudronnerie.hero;
+  const [activeProductKey, setActiveProductKey] = useState<keyof typeof chaudronnerieData.products>('silos');
+  const activeProduct = chaudronnerieData.products[activeProductKey];
+  const { hero } = chaudronnerieData;
+  const smallStats = hero.stats.filter(s => !s.large);
+
+  const iconMap: { [key: string]: React.ElementType } = {
+    Package,
+    Rulers,
+    Scale
+  };
+
 
   const productButtons = [
     { key: 'silos', label: 'Silos & Réservoirs', icon: Database },
@@ -59,29 +69,60 @@ export function ChaudronneriePageContent() {
   return (
     <div className="bg-background text-foreground">
       {/* 1. Hero Banner */}
-      <section className="relative h-screen w-full flex items-center justify-start text-white overflow-hidden">
-        <Image
-          src={heroImage.src}
-          alt={heroImage.alt}
-          fill
-          className="z-0 object-cover"
-          data-ai-hint={heroImage.aiHint}
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
-        <div className="relative z-20 container mx-auto px-4">
-          <div className="max-w-3xl text-left">
-            <AnimatedWrapper animation="zoom-in">
-              <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                Chaudronnerie
-              </h1>
-              <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]">
-                Fabrication sur mesure d'équipements industriels de haute précision.
-              </p>
-            </AnimatedWrapper>
+      <section className="relative min-h-screen flex items-end bg-background pb-24 sm:pb-32">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={hero.image_url}
+              alt={hero.alt}
+              fill
+              className="object-cover"
+              priority
+              data-ai-hint={hero.aiHint}
+            />
+            <div className="absolute inset-0 bg-black/50 z-10" />
           </div>
-        </div>
-      </section>
+          <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">
+            <div className="space-y-12">
+              <AnimatedWrapper animation="slide-up">
+                <div className="text-left space-y-8">
+                  <div>
+                    <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                      {hero.title}
+                    </h1>
+                    <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]">
+                      {hero.subtitle}
+                    </p>
+                  </div>
+                   <div className="flex flex-row items-center gap-4">
+                     <Button size="lg" variant="destructive">{hero.cta_primary} <ArrowRight className="ml-2" /></Button>
+                     <DownloadButton text={hero.cta_secondary} />
+                  </div>
+                </div>
+              </AnimatedWrapper>
+
+              <AnimatedWrapper animation="slide-up" staggerIndex={1}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+                    {smallStats.map((stat, index) => {
+                      const Icon = iconMap[stat.icon];
+                      return (
+                        <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index + 2}>
+                          <Card className="bg-background/50 backdrop-blur-md border-border text-white">
+                            <CardContent className="p-4 flex items-center gap-4">
+                              {Icon && <Icon className="h-10 w-10 text-accent" />}
+                              <div>
+                                <p className="text-2xl font-bold">{stat.value}</p>
+                                <p className="text-sm text-gray-300">{stat.title}</p>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </AnimatedWrapper>
+                      );
+                    })}
+                </div>
+              </AnimatedWrapper>
+            </div>
+          </div>
+        </section>
 
       {/* Feature Cards Section */}
       <section className="bg-secondary/50 -mt-24 md:-mt-32 relative z-30 py-16">
@@ -122,7 +163,7 @@ export function ChaudronneriePageContent() {
           <AnimatedWrapper animation="fade-in">
             <div className="mb-24 flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
               {productButtons.map(({ key, label, icon: Icon }) => (
-                <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => setActiveProductKey(key as keyof typeof chaudronnerieData)}>
+                <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => setActiveProductKey(key as keyof typeof chaudronnerieData.products)}>
                   <div className={cn(
                       "w-32 h-32 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
                       activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
@@ -134,7 +175,7 @@ export function ChaudronneriePageContent() {
                   </div>
                   <Button
                       variant={activeProductKey === key ? 'destructive' : 'outline'}
-                      onClick={() => setActiveProductKey(key as keyof typeof chaudronnerieData)}
+                      onClick={() => setActiveProductKey(key as keyof typeof chaudronnerieData.products)}
                       className={cn(
                           "h-auto py-2 px-6 transition-all duration-300 text-center",
                           activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
