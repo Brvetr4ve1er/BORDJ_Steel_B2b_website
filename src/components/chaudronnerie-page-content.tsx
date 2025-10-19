@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
-import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat, Package, Check, Ruler, Scale } from 'lucide-react';
+import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat, Package, Check, Ruler, Scale, Square } from 'lucide-react';
 import React, { useState } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
 import { cn } from '@/lib/utils';
@@ -50,12 +50,13 @@ export function ChaudronneriePageContent() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof chaudronnerieData.products>('silos');
   const activeProduct = chaudronnerieData.products[activeProductKey];
   const { hero } = chaudronnerieData;
-  const smallStats = hero.stats.filter(s => !s.large);
+  const smallStats = hero.stats;
 
   const iconMap: { [key: string]: React.ElementType } = {
     Package,
     Ruler,
-    Scale
+    Scale,
+    Square
   };
 
 
@@ -110,7 +111,7 @@ export function ChaudronneriePageContent() {
                             <CardContent className="p-4 flex items-center gap-4">
                               {Icon && <Icon className="h-10 w-10 text-accent" />}
                               <div>
-                                <p className="text-2xl font-bold">{stat.value}</p>
+                                <p className="text-2xl font-bold text-accent">{stat.value}</p>
                                 <p className="text-sm text-gray-300">{stat.title}</p>
                               </div>
                             </CardContent>
