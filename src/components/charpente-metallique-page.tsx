@@ -77,13 +77,17 @@ const whyChooseUs = [
 export function CharpenteMetalliquePageContent() {
   const [activeImage, setActiveImage] = useState(images['charpente-metallique'].main);
   
-  const galleryItems = images['charpente-metallique'].gallery.map((image, index) => ({
-    id: index,
-    title: image.alt,
-    desc: `Image ${index + 1} de la galerie de projets de charpente métallique.`,
-    url: image.src,
-    span: index % 3 === 0 ? 'md:col-span-2' : 'md:col-span-1',
-  }));
+  const galleryItems = images['charpente-metallique'].gallery.map((image, index) => {
+    // This creates a more interesting bento layout
+    const span = (index % 6 === 0 || index % 6 === 4) ? 'md:col-span-2' : 'md:col-span-1';
+    return {
+      id: index,
+      title: image.alt,
+      desc: `Image ${index + 1} de la galerie de projets de charpente métallique.`,
+      url: image.src,
+      span: span,
+    };
+  });
 
   return (
     <div className="bg-background">
