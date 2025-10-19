@@ -13,6 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { DownloadButton } from './ui/download-button';
 import { FeatureHoverCard } from './feature-hover-card';
+import { DetailedStatCard } from './detailed-stat-card';
 
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
@@ -27,7 +28,7 @@ export function ChaudronneriePageContent() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof chaudronnerieData.products>('silos');
   const activeProduct = chaudronnerieData.products[activeProductKey];
   const { hero } = chaudronnerieData;
-  const smallStats = hero.stats;
+  const heroStats = hero.stats;
 
   const iconMap: { [key: string]: React.ElementType } = {
     Package,
@@ -86,23 +87,16 @@ export function ChaudronneriePageContent() {
 
               <AnimatedWrapper animation="slide-up" staggerIndex={1}>
                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-                    {smallStats.map((stat, index) => {
+                    {heroStats.map((stat, index) => {
                       const Icon = iconMap[stat.icon];
                       return (
                         <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                           <Card className="bg-destructive/80 text-destructive-foreground">
-                            <CardContent className="p-4 flex items-center gap-4">
-                                {Icon && (
-                                    <div className="w-16 h-16 rounded-full bg-destructive/50 flex-shrink-0 flex items-center justify-center">
-                                        <Icon className="h-8 w-8 text-destructive-foreground" />
-                                    </div>
-                                )}
-                                <div className="text-left">
-                                    <p className="text-sm font-semibold">{stat.title}</p>
-                                    <p className="font-bold text-2xl">{stat.value}</p>
-                                </div>
-                            </CardContent>
-                           </Card>
+                           <DetailedStatCard 
+                            icon={Icon}
+                            title={stat.title}
+                            value={stat.value}
+                            description={stat.description}
+                           />
                         </AnimatedWrapper>
                       );
                     })}
