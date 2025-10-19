@@ -104,21 +104,17 @@ export function ChaudronneriePageContent() {
               </AnimatedWrapper>
 
               <AnimatedWrapper animation="slide-up" staggerIndex={1}>
-                 <div className="flex flex-wrap gap-4 mt-8">
+                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
                     {smallStats.map((stat, index) => {
                       const Icon = iconMap[stat.icon];
-                      const isProductionCard = stat.title === 'Capacité de production';
                       return (
                         <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                           <Card className={cn("bg-background/50 backdrop-blur-md border-border text-white", isProductionCard ? "md:col-span-2" : "md:w-56 w-full")}>
-                            <CardContent className={cn(
-                                "p-4 flex justify-center items-center text-center gap-4 h-full",
-                                isProductionCard ? "flex-row" : "flex-col"
-                            )}>
+                           <Card className="bg-background/50 backdrop-blur-md border-border text-white">
+                            <CardContent className="p-4 flex flex-col items-center justify-center text-center gap-2 h-full">
                                 {Icon && <Icon className="h-12 w-12 text-accent flex-shrink-0" />}
-                                <div className={isProductionCard ? "text-left" : ""}>
-                                    <p className={cn("font-bold text-accent", isProductionCard ? "text-3xl" : "text-2xl")}>{stat.value}</p>
-                                    <p className={cn("text-gray-300", isProductionCard ? "text-base" : "text-sm")}>{stat.title}</p>
+                                <div>
+                                    <p className="font-bold text-accent text-2xl">{stat.value}</p>
+                                    <p className="text-gray-300 text-sm">{stat.title}</p>
                                 </div>
                             </CardContent>
                            </Card>
@@ -132,7 +128,7 @@ export function ChaudronneriePageContent() {
         </section>
 
       {/* Feature Cards Section */}
-      <section className="bg-secondary relative z-30 py-16">
+      <section className="bg-secondary py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featureCards.map((card, index) => {
