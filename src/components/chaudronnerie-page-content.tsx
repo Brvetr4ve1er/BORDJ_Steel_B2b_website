@@ -109,16 +109,16 @@ export function ChaudronneriePageContent() {
                       const Icon = iconMap[stat.icon];
                       return (
                         <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                           <Card className="bg-background/50 backdrop-blur-md border-border text-white h-full">
+                           <Card className="bg-destructive/80 text-destructive-foreground">
                             <CardContent className="p-4 flex items-center gap-4">
                                 {Icon && (
-                                    <div className="w-16 h-16 rounded-full bg-accent/20 flex-shrink-0 flex items-center justify-center">
-                                        <Icon className="h-8 w-8 text-accent" />
+                                    <div className="w-16 h-16 rounded-full bg-destructive/50 flex-shrink-0 flex items-center justify-center">
+                                        <Icon className="h-8 w-8 text-destructive-foreground" />
                                     </div>
                                 )}
                                 <div className="text-left">
-                                    <p className="text-gray-300 text-sm">{stat.title}</p>
-                                    <p className="font-bold text-accent text-2xl">{stat.value}</p>
+                                    <p className="text-sm font-semibold">{stat.title}</p>
+                                    <p className="font-bold text-2xl">{stat.value}</p>
                                 </div>
                             </CardContent>
                            </Card>
@@ -276,5 +276,7 @@ export function ChaudronneriePageContent() {
     </div>
   );
 }
+
+    
 
     
