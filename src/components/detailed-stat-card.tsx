@@ -29,14 +29,14 @@ export const DetailedStatCard = ({
 }: DetailedStatCardProps) => {
   return (
     <Card
-      className={cn("w-full bg-background/50 backdrop-blur-md border-border text-foreground", className)}
+      className={cn("w-full bg-destructive border-destructive-foreground/20 text-destructive-foreground", className)}
       aria-labelledby={`stat-card-title-${title.replace(/\s+/g, '-')}`}
     >
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle id={`stat-card-title-${title.replace(/\s+/g, '-')}`}>{title}</CardTitle>
-          <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-            {Icon && <Icon className="h-6 w-6 text-accent" />}
+          <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-destructive-foreground/10 flex items-center justify-center">
+            {Icon && <Icon className="h-6 w-6 text-destructive-foreground" />}
           </div>
         </div>
       </CardHeader>
@@ -46,10 +46,10 @@ export const DetailedStatCard = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <p className="text-5xl font-bold tracking-tighter text-foreground">
+          <p className="text-5xl font-bold tracking-tighter text-destructive-foreground">
             {value}
           </p>
-          <CardDescription className="mt-1">
+          <CardDescription className="mt-1 text-destructive-foreground/80">
             {description}
           </CardDescription>
         </motion.div>
