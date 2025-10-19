@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
-import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat, Package, Check, Ruler, Scale, Square } from 'lucide-react';
+import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat, Package, Check, Ruler, Scale, Square, Factory } from 'lucide-react';
 import React, { useState } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
 import { cn } from '@/lib/utils';
@@ -56,7 +56,8 @@ export function ChaudronneriePageContent() {
     Ruler,
     Scale,
     Square,
-    Cog
+    Cog,
+    Factory,
   };
 
 
@@ -102,7 +103,7 @@ export function ChaudronneriePageContent() {
               </AnimatedWrapper>
 
               <AnimatedWrapper animation="slide-up" staggerIndex={1}>
-                <div className="grid grid-cols-1 md:flex md:flex-wrap gap-4 mt-8">
+                <div className="flex flex-wrap gap-4 mt-8">
                     {smallStats.map((stat, index) => {
                       const Icon = iconMap[stat.icon];
                       return (
