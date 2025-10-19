@@ -11,7 +11,6 @@ import { cn } from '@/lib/utils';
 import { ProductImageGallery } from './product-image-gallery';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
-import images from '@/app/lib/placeholder-images.json';
 import { DownloadButton } from './ui/download-button';
 
 
@@ -56,7 +55,8 @@ export function ChaudronneriePageContent() {
     Package,
     Ruler,
     Scale,
-    Square
+    Square,
+    Cog
   };
 
 
@@ -102,20 +102,20 @@ export function ChaudronneriePageContent() {
               </AnimatedWrapper>
 
               <AnimatedWrapper animation="slide-up" staggerIndex={1}>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+                <div className="grid grid-cols-1 md:flex md:flex-wrap gap-4 mt-8">
                     {smallStats.map((stat, index) => {
                       const Icon = iconMap[stat.icon];
                       return (
-                        <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index + 2}>
-                          <Card className="bg-background/50 backdrop-blur-md border-border text-white">
-                            <CardContent className="p-4 flex items-center gap-4">
-                              {Icon && <Icon className="h-10 w-10 text-accent" />}
-                              <div>
-                                <p className="text-2xl font-bold text-accent">{stat.value}</p>
-                                <p className="text-sm text-gray-300">{stat.title}</p>
-                              </div>
+                        <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                           <Card className="bg-background/50 backdrop-blur-md border-border text-white w-full md:w-56">
+                            <CardContent className="p-4 flex flex-col items-center justify-center text-center gap-2 h-full">
+                                {Icon && <Icon className="h-10 w-10 text-accent" />}
+                                <div>
+                                    <p className="text-2xl font-bold text-accent">{stat.value}</p>
+                                    <p className="text-sm text-gray-300">{stat.title}</p>
+                                </div>
                             </CardContent>
-                          </Card>
+                           </Card>
                         </AnimatedWrapper>
                       );
                     })}
@@ -126,7 +126,7 @@ export function ChaudronneriePageContent() {
         </section>
 
       {/* Feature Cards Section */}
-      <section className="bg-secondary relative z-30 py-16">
+      <section className="bg-secondary py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featureCards.map((card, index) => {
