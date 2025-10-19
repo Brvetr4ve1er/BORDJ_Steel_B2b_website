@@ -95,6 +95,7 @@ export function ChaudronneriePageContent() {
                             icon={Icon}
                             title={stat.title}
                             value={stat.value}
+                            secondaryValue={(stat as any).secondaryValue}
                             description={stat.description}
                            />
                         </AnimatedWrapper>

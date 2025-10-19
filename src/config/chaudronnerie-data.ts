@@ -20,7 +20,7 @@ export const chaudronnerieData = {
     cta_secondary: 'Notre expertise',
     stats: [
       { title: 'Surface de production', value: '1500 m²', icon: 'Square', description: 'Dédiée à la chaudronnerie lourde et fine.' },
-      { title: 'Capacité de production', value: '8h/j | 5000T/an', icon: 'Factory', description: 'Pour les projets de petite à grande envergure.' },
+      { title: 'Capacité de production', value: '8h/j', secondaryValue: '5000T/an', icon: 'Factory', description: 'Pour les projets de petite à grande envergure.' },
       { title: 'Effectifs', value: '30 Employés', icon: 'Users', description: 'Une équipe qualifiée et expérimentée.' },
     ],
   },
