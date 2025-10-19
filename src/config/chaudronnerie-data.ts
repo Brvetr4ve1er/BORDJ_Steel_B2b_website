@@ -21,7 +21,7 @@ export const chaudronnerieData = {
     stats: [
       { title: 'Surface de production', value: '1500 m²', icon: 'Square' },
       { title: 'Capacité de production', value: '8h/jour | 5000T/an', icon: 'Factory' },
-      { title: 'Types d\'acier', value: 'Carbone, Inox, Hardox', icon: 'Package' },
+      { title: 'Effectifs', value: '30 Employés', icon: 'Users' },
     ],
   },
   products: {

@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
-import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat, Package, Check, Ruler, Scale, Square, Factory } from 'lucide-react';
+import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat, Package, Check, Ruler, Scale, Square, Factory, Users } from 'lucide-react';
 import React, { useState } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
 import { cn } from '@/lib/utils';
@@ -58,6 +58,7 @@ export function ChaudronneriePageContent() {
     Square,
     Cog,
     Factory,
+    Users
   };
 
 
@@ -103,7 +104,7 @@ export function ChaudronneriePageContent() {
               </AnimatedWrapper>
 
               <AnimatedWrapper animation="slide-up" staggerIndex={1}>
-                <div className="flex flex-wrap gap-4 mt-8">
+                 <div className="flex flex-wrap gap-4 mt-8">
                     {smallStats.map((stat, index) => {
                       const Icon = iconMap[stat.icon];
                       const isProductionCard = stat.title === 'Capacité de production';
@@ -131,7 +132,7 @@ export function ChaudronneriePageContent() {
         </section>
 
       {/* Feature Cards Section */}
-      <section className="bg-secondary py-16">
+      <section className="bg-secondary relative z-30 py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featureCards.map((card, index) => {
