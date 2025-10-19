@@ -10,9 +10,9 @@ import React, { useState } from 'react';
 import images from '@/app/lib/placeholder-images.json';
 import { cn } from '@/lib/utils';
 import { AnimatedNumber } from './animated-number';
-import { BentoPillars } from './bento-pillars';
 import { DownloadButton } from './ui/download-button';
 import InteractiveImageBentoGallery from './ui/bento-gallery';
+import { FeatureHoverCard } from './feature-hover-card';
 
 const applications = [
   { icon: <Building className="w-8 h-8" />, text: "Bâtiments industriels & commerciaux" },
@@ -33,26 +33,22 @@ const pillars = [
     {
         icon: HardHat,
         title: "PRS – Profils Reconstitués Soudés",
-        explanation: "Fabrication sur mesure selon les normes internationales. Grande capacité de portance, adaptées aux bâtiments industriels, ponts et charpentes lourdes.",
-        image: images['charpente-metallique']['prs-pillar'],
+        description: "Fabrication sur mesure pour bâtiments industriels, ponts et charpentes lourdes.",
     },
     {
         icon: TowerControl,
         title: "Supports de Transport",
-        explanation: "Conception et production de structures métalliques pour l’énergie (électricité, tours 5G), la communication (projecteurs) et l’affichage (panneaux publicitaires).",
-        image: images['charpente-metallique']['pylon-pillar'],
+        description: "Structures pour l’énergie, la communication et l’affichage.",
     },
     {
         icon: Tractor,
         title: "Pont Roulant – Mono et Bipoutre",
-        explanation: "Production de ponts roulants pour la manutention lourde, avec options mono-poutre et bi-poutre à caisson renforcé.",
-        image: images['charpente-metallique']['crane-pillar'],
+        description: "Solutions de manutention lourde avec options mono-poutre et bi-poutre.",
     },
     {
         icon: Car,
         title: "Ligne de Fabrication Automobile",
-        explanation: "Ligne complète pour la transformation métallique automobile, assurant la production de pièces de carrosserie avec haute précision et tolérances strictes.",
-        image: images['charpente-metallique']['auto-pillar'],
+        description: "Ligne complète pour la transformation métallique automobile de haute précision.",
     }
 ];
 
@@ -185,7 +181,29 @@ export function CharpenteMetalliquePageContent() {
         </div>
       </section>
 
-      <BentoPillars />
+      <section className="bg-secondary py-24">
+        <div className="container mx-auto px-4">
+          <div className="mb-16">
+            <h2 className="text-5xl font-bold text-center text-primary">Nos Piliers de Production</h2>
+            <p className="text-center text-muted-foreground mt-4 max-w-2xl mx-auto">
+                Chacun de nos piliers de production représente un pôle d'excellence, équipé des technologies les plus avancées pour transformer l'acier en solutions innovantes.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {pillars.map((pillar, index) => {
+              return (
+                <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                    <FeatureHoverCard
+                        Icon={pillar.icon}
+                        title={pillar.title}
+                        description={pillar.description}
+                    />
+                </AnimatedWrapper>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       <section id="why-choose-us" className="py-20">
           <div className="container mx-auto px-4">
