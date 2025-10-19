@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
-import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat, Package, Check, Ruler, Scale, Square, Factory, Users } from 'lucide-react';
+import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat, Package, Check, Ruler, Scale, Factory, Users, Square } from 'lucide-react';
 import React, { useState } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
 import { cn } from '@/lib/utils';
@@ -55,10 +55,10 @@ export function ChaudronneriePageContent() {
     Package,
     Ruler,
     Scale,
-    Square,
     Cog,
     Factory,
-    Users
+    Users,
+    Square
   };
 
 
@@ -110,8 +110,12 @@ export function ChaudronneriePageContent() {
                       return (
                         <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
                            <Card className="bg-background/50 backdrop-blur-md border-border text-white">
-                            <CardContent className="p-4 flex flex-col items-center justify-center text-center gap-2 h-full">
-                                {Icon && <Icon className="h-12 w-12 text-accent flex-shrink-0" />}
+                            <CardContent className="p-4 flex items-center gap-4">
+                                {Icon && (
+                                    <div className="w-16 h-16 rounded-full bg-accent/20 flex-shrink-0 flex items-center justify-center">
+                                        <Icon className="h-8 w-8 text-accent" />
+                                    </div>
+                                )}
                                 <div>
                                     <p className="font-bold text-accent text-2xl">{stat.value}</p>
                                     <p className="text-gray-300 text-sm">{stat.title}</p>
@@ -128,7 +132,7 @@ export function ChaudronneriePageContent() {
         </section>
 
       {/* Feature Cards Section */}
-      <section className="bg-secondary py-16">
+      <section className="bg-secondary relative z-30 py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featureCards.map((card, index) => {
@@ -272,3 +276,5 @@ export function ChaudronneriePageContent() {
     </div>
   );
 }
+
+    
