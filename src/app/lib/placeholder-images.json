@@ -59,12 +59,12 @@
       "aiHint": "steel frame construction"
     },
     "gallery": [
-      { "src": "https://picsum.photos/seed/gallery1/800/600", "width": 800, "height": 600, "alt": "Steel structure assembly", "aiHint": "steel structure" },
-      { "src": "https://picsum.photos/seed/gallery2/800/600", "width": 800, "height": 600, "alt": "Welding steel frame", "aiHint": "welding steel" },
-      { "src": "https://picsum.photos/seed/gallery3/800/600", "width": 800, "height": 600, "alt": "Industrial building frame", "aiHint": "industrial building" },
-      { "src": "https://picsum.photos/seed/gallery4/800/600", "width": 800, "height": 600, "alt": "Steel beam details", "aiHint": "steel beam" },
-      { "src": "https://picsum.photos/seed/gallery5/800/600", "width": 800, "height": 600, "alt": "Construction site with steel frame", "aiHint": "construction site" },
-      { "src": "https://picsum.photos/seed/gallery6/800/600", "width": 800, "height": 600, "alt": "Finished steel framework", "aiHint": "steel framework" }
+      { "src": "https://i.pinimg.com/736x/8f/1a/1b/8f1a1b324ca2d0f50b4a5b4a9a01e0a8.jpg", "width": 736, "height": 920, "alt": "Steel structure assembly", "aiHint": "steel structure" },
+      { "src": "https://i.pinimg.com/736x/a2/e2/2b/a2e22b63a92147313a436c78a0a3a7f8.jpg", "width": 736, "height": 1104, "alt": "Welding steel frame", "aiHint": "welding steel" },
+      { "src": "https://i.pinimg.com/736x/01/29/45/012945d8b8577531773af737f2d57404.jpg", "width": 736, "height": 981, "alt": "Industrial building frame", "aiHint": "industrial building" },
+      { "src": "https://i.pinimg.com/736x/09/b8/0e/09b80e474528148e6f4770e0f51390e1.jpg", "width": 736, "height": 920, "alt": "Steel beam details", "aiHint": "steel beam" },
+      { "src": "https://i.pinimg.com/736x/e8/6e/c3/e86ec3391d09ca0745582f42a58b92c4.jpg", "width": 736, "height": 490, "alt": "Construction site with steel frame", "aiHint": "construction site" },
+      { "src": "https://i.pinimg.com/736x/d4/ae/d1/d4aed144c35a643557e9b62646625805.jpg", "width": 736, "height": 981, "alt": "Finished steel framework", "aiHint": "steel framework" }
     ],
     "prs-pillar": {
       "src": "https://picsum.photos/seed/prs-pillar/800/600",
