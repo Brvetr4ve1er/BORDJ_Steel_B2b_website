@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from 'framer-motion';
@@ -29,6 +30,8 @@ export function AnimatedBaths() {
     };
   }, []);
 
+  const rulerSegments = Array.from({ length: 13 });
+
   return (
     <div ref={ref} className="w-full relative flex items-center justify-between gap-4 p-4 h-full">
       <BathsIcon className="w-24 h-24 text-accent flex-shrink-0" />
@@ -42,12 +45,18 @@ export function AnimatedBaths() {
           </div>
         </div>
         {isInView && (
-             <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: '100%' }}
-                transition={{ duration: 2, ease: 'easeInOut' }}
-                className="h-0.5 bg-accent mt-2"
-            />
+          <div className="flex w-full h-2 mt-2">
+            {rulerSegments.map((_, i) => (
+              <motion.div
+                key={i}
+                initial={{ scaleX: 0, originX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.1, delay: i * 0.1, ease: 'easeIn' }}
+                className="h-full flex-1 bg-accent"
+                style={{ marginRight: i < rulerSegments.length - 1 ? '2px' : '0' }}
+              />
+            ))}
+          </div>
         )}
         <p className="text-lg uppercase tracking-wider text-white mt-2">Bains de traitement</p>
       </div>
