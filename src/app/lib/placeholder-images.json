@@ -34,7 +34,8 @@
       "width": 736,
       "height": 920,
       "alt": "Bain de galvanisation à chaud",
-      "aiHint": "hot-dip galvanization"
+      "aiHint": "hot-dip galvanization",
+      "blurDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
     },
     "chaudronnerie": {
       "src": "https://images.unsplash.com/photo-1510900767338-8bf61abf2562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMG1lbHRpbmclMjBmYWN0b3J5fGVufDB8fHx8MTc1Mzg3Njc2NXww&ixlib=rb-4.1.0&q=80&w=1080",
@@ -57,7 +58,8 @@
       "width": 1080,
       "height": 720,
       "alt": "Charpente Métallique en construction",
-      "aiHint": "steel frame construction"
+      "aiHint": "steel frame construction",
+      "blurDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
     },
     "gallery": [
       { "src": "https://images.unsplash.com/photo-1504917595217-d4dc5b472F3d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdGVlbCUyMHN0cnVjdHVyZXxlbnwwfHx8fDE3NTczNzYxODZ8MA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "alt": "Steel structure assembly", "aiHint": "steel structure" },
@@ -87,7 +89,8 @@
         "src": "https://i.pinimg.com/736x/ef/2e/99/ef2e9977bd5bfca70c8ebd557e614faf.jpg",
         "width": 736, "height": 920,
         "alt": "Fabrication sur mesure en chaudronnerie",
-        "aiHint": "metal fabrication"
+        "aiHint": "metal fabrication",
+        "blurDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
     },
     "silos": {
         "src": "https://picsum.photos/seed/silo/800/600",
@@ -120,7 +123,8 @@
       "width": 736,
       "height": 920,
       "alt": "Bain de galvanisation à chaud",
-      "aiHint": "hot-dip galvanization"
+      "aiHint": "hot-dip galvanization",
+      "blurDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
     }
   },
   "sandwich-panels": {
