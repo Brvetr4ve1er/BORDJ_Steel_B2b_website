@@ -16,6 +16,7 @@ export const chaudronnerieData = {
     image_url: images.chaudronnerie.hero.src,
     alt: images.chaudronnerie.hero.alt,
     aiHint: images.chaudronnerie.hero.aiHint,
+    blurDataUrl: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=",
     cta_primary: 'Explorer les produits',
     cta_secondary: 'Notre expertise',
     stats: [
