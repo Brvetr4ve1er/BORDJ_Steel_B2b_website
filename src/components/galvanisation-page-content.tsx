@@ -9,7 +9,6 @@ import { ArrowRight } from 'lucide-react';
 import { iconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
-import { AnimatedBaths } from './animated-baths';
 import { DownloadButton } from './ui/download-button';
 import { BathsIcon } from './icons/baths-icon';
 import dynamic from 'next/dynamic';

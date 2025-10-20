@@ -223,5 +223,3 @@ export function ChaudronneriePageContent() {
     </div>
   );
 }
-
-    

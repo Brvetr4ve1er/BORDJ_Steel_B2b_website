@@ -37,7 +37,6 @@ export function ProductImageGallery({ galleryImages, implementationImages }: Pro
                     height={600} 
                     className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                     data-ai-hint={mainImage.aiHint}
-                    priority
                 />
                 </Card>
             </AnimatedWrapper>
