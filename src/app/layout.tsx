@@ -4,7 +4,7 @@ import './globals.css';
 import './shiny-button.css';
 import './download-button.css';
 import { Toaster } from "@/components/ui/toaster"
-import { Montserrat, Roboto, Cairo } from 'next/font/google';
+import { Montserrat, Roboto } from 'next/font/google';
 import { companyData } from '@/config/company-data';
 
 const montserrat = Montserrat({
@@ -18,13 +18,6 @@ const roboto = Roboto({
   display: 'swap',
   variable: '--font-roboto',
   weight: ['400', '500', '700'],
-});
-
-const cairo = Cairo({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-cairo',
-  weight: ['700'],
 });
 
 export const metadata: Metadata = {
@@ -55,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${montserrat.variable} ${roboto.variable} ${cairo.variable}`}>
+    <html lang="fr" className={`${montserrat.variable} ${roboto.variable}`}>
       <head>
       </head>
       <body className="font-body antialiased" suppressHydrationWarning>
