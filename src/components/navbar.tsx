@@ -33,6 +33,15 @@ import {
 } from "@/components/ui/accordion";
 import * as React from 'react';
 import { usePathname } from 'next/navigation';
+import { Cairo } from 'next/font/google';
+
+const cairo = Cairo({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-cairo',
+  weight: ['700'],
+});
+
 
 const iconMap: { [key: string]: React.ElementType } = {
   Info,
@@ -192,7 +201,8 @@ export function Navbar() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 transition-all duration-300',
-        headerStyle
+        headerStyle,
+        cairo.variable
       )}
     >
       <div className="flex items-center h-full">
@@ -286,7 +296,7 @@ export function Navbar() {
                  <div className="p-6 border-t mt-auto">
                     <div className="flex flex-col items-center gap-4">
                        <p className="text-xs font-semibold uppercase tracking-wider text-primary">{siteMetadata.slogan}</p>
-                       <p className="font-cairo font-bold text-sm text-primary">{siteMetadata.sloganArabic}</p>
+                       <p className={cn('font-cairo font-bold text-sm text-primary', cairo.variable)}>{siteMetadata.sloganArabic}</p>
                        <Select defaultValue="fr">
                             <SelectTrigger className="w-[120px]">
                                 <SelectValue />
