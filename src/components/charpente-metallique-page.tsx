@@ -11,8 +11,11 @@ import images from '@/app/lib/placeholder-images.json';
 import { cn } from '@/lib/utils';
 import { AnimatedNumber } from './animated-number';
 import { DownloadButton } from './ui/download-button';
-import InteractiveImageBentoGallery from './ui/bento-gallery';
-import { FeatureHoverCard } from './feature-hover-card';
+import dynamic from 'next/dynamic';
+
+const InteractiveImageBentoGallery = dynamic(() => import('./ui/bento-gallery'));
+const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
+
 
 const applications = [
   { icon: <Building className="w-8 h-8" />, text: "Bâtiments industriels & commerciaux" },
