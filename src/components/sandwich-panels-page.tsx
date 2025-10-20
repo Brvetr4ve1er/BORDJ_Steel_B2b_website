@@ -305,7 +305,7 @@ export function SandwichPanelsPage() {
                                               </TableHeader>
                                               <TableBody>
                                                   {activeProductKey === 'toleNervuree' ? (
-                                                    activeProduct.tables.dimensionnement.rows.map((row: any, i) => (
+                                                    activeProduct.tables.dimensionnement.rows.map((row: any, i: number) => (
                                                           row.details && Array.isArray(row.details) && row.details.map((detail: any, j: number) => (
                                                               <TableRow key={`${i}-${j}`}>
                                                                   {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.Type}</TableCell>}
@@ -377,7 +377,7 @@ export function SandwichPanelsPage() {
                                                   width={800}
                                                   height={400}
                                                   className="w-full object-contain"
-                                                  data-ai-hint={active-product.features.caracteristiquesGeometriques.image.aiHint}
+                                                  data-ai-hint={activeProduct.features.caracteristiquesGeometriques.image.aiHint}
                                                   placeholder="blur"
                                                   blurDataURL={activeProduct.features.caracteristiquesGeometriques.image.blurDataUrl}
                                               />
