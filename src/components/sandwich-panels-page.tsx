@@ -12,8 +12,11 @@ import { Card, CardContent } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { productData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
-import { ProductImageGallery, ProductImage } from './product-image-gallery';
+import { ProductImage } from './product-image-gallery';
 import images from '@/app/lib/placeholder-images.json';
+import dynamic from 'next/dynamic';
+
+const ProductImageGallery = dynamic(() => import('./product-image-gallery').then(mod => mod.ProductImageGallery));
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   <h3 className="font-headline text-3xl font-bold text-primary mb-8">{children}</h3>

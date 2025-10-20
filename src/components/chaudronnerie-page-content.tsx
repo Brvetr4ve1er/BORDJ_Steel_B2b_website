@@ -8,12 +8,14 @@ import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHa
 import React, { useState } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
 import { cn } from '@/lib/utils';
-import { ProductImageGallery } from './product-image-gallery';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { DownloadButton } from './ui/download-button';
-import { FeatureHoverCard } from './feature-hover-card';
-import { DetailedStatCard } from './detailed-stat-card';
+import dynamic from 'next/dynamic';
+
+const ProductImageGallery = dynamic(() => import('./product-image-gallery').then(mod => mod.ProductImageGallery));
+const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
+const DetailedStatCard = dynamic(() => import('./detailed-stat-card').then(mod => mod.DetailedStatCard));
 
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (

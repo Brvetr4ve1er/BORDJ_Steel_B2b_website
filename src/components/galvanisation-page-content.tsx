@@ -12,6 +12,16 @@ import { AnimatedWrapper } from './animated-wrapper';
 import { AnimatedBaths } from './animated-baths';
 import { DownloadButton } from './ui/download-button';
 import { BathsIcon } from './icons/baths-icon';
+import dynamic from 'next/dynamic';
+
+const DynamicAnimatedBaths = dynamic(() => import('./animated-baths').then(mod => mod.AnimatedBaths));
+
+const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
+const ProcessTimeline = dynamic(() => Promise.resolve(UnwrappedProcessTimeline));
+const BenefitsSection = dynamic(() => Promise.resolve(UnwrappedBenefitsSection));
+const HighlightSection = dynamic(() => Promise.resolve(UnwrappedHighlightSection));
+const CTASection = dynamic(() => Promise.resolve(UnwrappedCTASection));
+
 
 // Main Page Component
 export function GalvanisationPageContent() {
@@ -27,7 +37,7 @@ export function GalvanisationPageContent() {
 }
 
 // 1. Hero Section
-function HeroSection() {
+function UnwrappedHeroSection() {
   const { hero } = galvanisationContent;
   const largeStat = hero.stats.find(s => s.large);
   const smallStats = hero.stats.filter(s => !s.large);
@@ -70,7 +80,7 @@ function HeroSection() {
                 <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1}>
                   <Card className="bg-background/50 backdrop-blur-md border-border text-white h-full">
                     <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
-                      <AnimatedBaths />
+                      <DynamicAnimatedBaths />
                     </CardContent>
                   </Card>
                 </AnimatedWrapper>
@@ -105,7 +115,7 @@ function HeroSection() {
 
 
 // 2. Process Timeline Section
-function ProcessTimeline() {
+function UnwrappedProcessTimeline() {
     const { galvanisation_steps } = galvanisationContent;
   
     return (
@@ -185,7 +195,7 @@ function ProcessTimeline() {
 }
 
 // 3. Benefits Section
-function BenefitsSection() {
+function UnwrappedBenefitsSection() {
     const { benefits } = galvanisationContent;
   
     return (
@@ -222,7 +232,7 @@ function BenefitsSection() {
 }
 
 // 4. Highlight Section
-function HighlightSection() {
+function UnwrappedHighlightSection() {
     const { highlight } = galvanisationContent;
   
     return (
@@ -261,7 +271,7 @@ function HighlightSection() {
 }
 
 // 5. CTA Section
-function CTASection() {
+function UnwrappedCTASection() {
     const { cta } = galvanisationContent;
   
     return (
@@ -284,8 +294,3 @@ function CTASection() {
       </section>
     );
 }
-
-    
-
-    
-
