@@ -9,6 +9,7 @@ export type ProductImage = {
   src: string;
   alt: string;
   aiHint: string;
+  blurDataUrl?: string;
 };
 
 interface ProductImageGalleryProps {
@@ -37,6 +38,8 @@ export function ProductImageGallery({ galleryImages, implementationImages }: Pro
                     height={600} 
                     className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                     data-ai-hint={mainImage.aiHint}
+                    placeholder={mainImage.blurDataUrl ? 'blur' : 'empty'}
+                    blurDataURL={mainImage.blurDataUrl}
                 />
                 </Card>
             </AnimatedWrapper>
@@ -52,6 +55,8 @@ export function ProductImageGallery({ galleryImages, implementationImages }: Pro
                 height={600}
                 className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                 data-ai-hint={image.aiHint}
+                placeholder={image.blurDataUrl ? 'blur' : 'empty'}
+                blurDataURL={image.blurDataUrl}
               />
             </Card>
           </AnimatedWrapper>

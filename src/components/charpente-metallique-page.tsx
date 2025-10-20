@@ -86,6 +86,7 @@ export function CharpenteMetalliquePageContent() {
       desc: `Image ${index + 1} de la galerie de projets de charpente métallique.`,
       url: image.src,
       span: span,
+      blurDataURL: image.blurDataUrl
     };
   });
 
@@ -100,6 +101,8 @@ export function CharpenteMetalliquePageContent() {
             className="object-cover opacity-20 transition-all duration-500"
             priority
             key={activeImage.src}
+            placeholder="blur"
+            blurDataURL={activeImage.blurDataUrl}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent"></div>
         </div>

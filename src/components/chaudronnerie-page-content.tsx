@@ -65,6 +65,8 @@ export function ChaudronneriePageContent() {
               className="object-cover"
               priority
               data-ai-hint={hero.aiHint}
+              placeholder="blur"
+              blurDataURL={hero.blurDataUrl}
             />
             <div className="absolute inset-0 bg-black/50 z-10" />
           </div>

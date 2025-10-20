@@ -101,6 +101,8 @@ export function SandwichPanelsPage() {
           className="z-0 object-cover"
           data-ai-hint={heroImage.aiHint}
           priority
+          placeholder="blur"
+          blurDataURL={heroImage.blurDataUrl}
         />
         <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="relative z-20 container mx-auto px-4 text-center">
@@ -259,6 +261,8 @@ export function SandwichPanelsPage() {
                                                           height={100}
                                                           className="mx-auto"
                                                           data-ai-hint={finition.image.aiHint}
+                                                          placeholder="blur"
+                                                          blurDataURL={finition.image.blurDataUrl}
                                                       />
                                                       <p className="font-semibold mt-2">{finition.name}</p>
                                                       <p className="text-sm text-muted-foreground">{finition.length}</p>
@@ -373,7 +377,9 @@ export function SandwichPanelsPage() {
                                                   width={800}
                                                   height={400}
                                                   className="w-full object-contain"
-                                                  data-ai-hint={activeProduct.features.caracteristiquesGeometriques.image.aiHint}
+                                                  data-ai-hint={active-product.features.caracteristiquesGeometriques.image.aiHint}
+                                                  placeholder="blur"
+                                                  blurDataURL={activeProduct.features.caracteristiquesGeometriques.image.blurDataUrl}
                                               />
                                           </div>
                                           <div>

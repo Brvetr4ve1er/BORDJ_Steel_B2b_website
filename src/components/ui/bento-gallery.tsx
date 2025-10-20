@@ -8,26 +8,28 @@ import {
   useTransform,
   AnimatePresence,
 } from "framer-motion"
-import { cn } from "@/lib/utils" // Assumes a 'lib/utils.ts' file for 'cn'
+import { cn } from "@/lib/utils" 
 import { X } from "lucide-react"
+import Image from 'next/image';
 
-// Defines the structure for each image item in the gallery
+
 type ImageItem = {
   id: number | string
   title: string
   desc: string
   url: string
-  span: string // Tailwind CSS grid span classes (e.g., "md:col-span-2")
+  span: string 
+  blurDataURL?: string
 }
 
-// Defines the props for the main gallery component
+
 interface InteractiveImageBentoGalleryProps {
   imageItems: ImageItem[]
   title: string
   description: string
 }
 
-// Animation variants for the container to stagger children
+
 const containerVariants = {
   hidden: {},
   visible: {
@@ -37,7 +39,7 @@ const containerVariants = {
   },
 }
 
-// Animation variants for each gallery item
+
 const itemVariants = {
   hidden: { opacity: 0, y: 20, scale: 0.95 },
   visible: {
@@ -71,10 +73,12 @@ const ImageModal = ({
         className="relative w-full max-w-4xl p-4"
         onClick={(e) => e.stopPropagation()}
       >
-        <img
+        <Image
           src={item.url}
           alt={item.title}
           className="h-auto max-h-[90vh] w-full rounded-lg object-contain"
+          width={1200}
+          height={800}
         />
       </motion.div>
       <button
@@ -88,7 +92,7 @@ const ImageModal = ({
   )
 }
 
-// Main gallery component
+
 const InteractiveImageBentoGallery: React.FC<
   InteractiveImageBentoGalleryProps
 > = ({ imageItems, title, description }) => {
@@ -98,19 +102,19 @@ const InteractiveImageBentoGallery: React.FC<
   const gridRef = useRef<HTMLDivElement>(null)
   const targetRef = useRef<HTMLDivElement>(null)
 
-  // Calculate the draggable area constraint
+  
   useEffect(() => {
     const calculateConstraints = () => {
       if (gridRef.current && containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth
         const gridWidth = gridRef.current.scrollWidth
-        // The '- 32' provides some padding at the end
+        
         const newConstraint = Math.min(0, containerWidth - gridWidth - 32)
         setDragConstraint(newConstraint)
       }
     }
 
-    // A small delay to ensure all elements are rendered and widths are calculated
+    
     const timer = setTimeout(calculateConstraints, 100);
     window.addEventListener("resize", calculateConstraints)
     
@@ -120,7 +124,7 @@ const InteractiveImageBentoGallery: React.FC<
     }
   }, [imageItems])
 
-  // Framer Motion scroll animations
+  
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start end", "end start"],
@@ -178,10 +182,13 @@ const InteractiveImageBentoGallery: React.FC<
                 tabIndex={0}
                 aria-label={`View ${item.title}`}
               >
-                <img
+                <Image
                   src={item.url}
                   alt={item.title}
+                  fill
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  placeholder={item.blurDataURL ? 'blur' : 'empty'}
+                  blurDataURL={item.blurDataURL}
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="relative z-10 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">

@@ -30,7 +30,7 @@
       "aiHint": "sandwich panels"
     },
     "galvanisation": {
-      "src": "https://i.pinimg.com/736x/ef/2e/99/ef2e9977bd5bfca70c8ebd557e614faf.jpg",
+      "src": "https://i.pinimg.com/736x/5c/c4/bd/5cc4bd370f1bd95024acf54e7b1ff667.jpg",
       "width": 736,
       "height": 920,
       "alt": "Bain de galvanisation à chaud",
@@ -129,7 +129,8 @@
       "width": 1080,
       "height": 720,
       "alt": "Insulated sandwich panels on a building",
-      "aiHint": "sandwich panels"
+      "aiHint": "sandwich panels",
+      "blurDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
     }
   }
 }

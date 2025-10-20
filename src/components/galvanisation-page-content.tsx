@@ -51,6 +51,8 @@ function UnwrappedHeroSection() {
           className="object-cover"
           priority
           data-ai-hint="molten zinc"
+          placeholder="blur"
+          blurDataURL={hero.blurDataUrl}
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
       </div>
