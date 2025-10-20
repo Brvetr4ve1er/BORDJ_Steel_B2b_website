@@ -82,7 +82,9 @@ function HeroSection() {
                     <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index + 2}>
                       <Card className="bg-background/50 backdrop-blur-md border-border text-white">
                         <CardContent className="p-4 flex items-center gap-3">
-                          {Icon && <Icon className="h-8 w-8 text-accent" />}
+                          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                            {Icon && <Icon className="h-6 w-6 text-accent" />}
+                          </div>
                           <div>
                             <p className="text-xl font-bold">{stat.value}</p>
                             <p className="text-xs text-gray-300">{stat.title}</p>
@@ -286,3 +288,4 @@ function CTASection() {
     
 
     
+

@@ -34,7 +34,9 @@ export function AnimatedBaths() {
 
   return (
     <div ref={ref} className="w-full relative flex items-center justify-between gap-4 p-4 h-full">
-      <BathsIcon className="w-24 h-24 text-accent flex-shrink-0" />
+      <div className="flex-shrink-0 w-24 h-24 rounded-full bg-white flex items-center justify-center">
+        <BathsIcon className="w-16 h-16 text-accent flex-shrink-0" />
+      </div>
       <div className="flex-grow flex flex-col items-center justify-center text-white">
         <div className="relative w-full flex items-center justify-center">
           <div className="flex items-baseline space-x-2">
