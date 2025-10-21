@@ -76,7 +76,7 @@ const whyChooseUs = [
 export function CharpenteMetalliquePageContent() {
   const [activeImage, setActiveImage] = useState(images['charpente-metallique'].main);
   
-  const galleryImageUrls = images['charpente-metallique'].gallery.map(image => image.src);
+  const galleryImageUrls = images['charpente-metallique'].gallery.map(image => image.src).slice(0, 7);
 
   return (
     <div className="bg-background">

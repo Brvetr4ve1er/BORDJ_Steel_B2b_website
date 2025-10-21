@@ -38,7 +38,7 @@ export const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, cl
     if (hoveredIndex === null) {
       return 1;
     }
-    return hoveredIndex === index ? 2 : 0.5;
+    return hoveredIndex === index ? 3 : 0.5;
   };
 
   return (
@@ -78,12 +78,12 @@ export const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, cl
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center dark:bg-black bg-white bg-opacity-95 p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm p-4"
             onClick={closeImage}
           >
             {/* Close Button */}
             <button
-              className="absolute top-4 right-4 z-10 text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors"
+              className="absolute top-4 right-4 z-10 text-white hover:text-gray-300 transition-colors"
               onClick={closeImage}
             >
               <svg
@@ -104,7 +104,7 @@ export const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, cl
             {/* Previous Button */}
             {images.length > 1 && (
               <button
-                className="absolute left-4 z-10 text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors"
+                className="absolute left-4 z-10 text-white hover:text-gray-300 transition-colors"
                 onClick={goToPrev}
               >
                 <svg
@@ -143,7 +143,7 @@ export const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, cl
             {/* Next Button */}
             {images.length > 1 && (
               <button
-                className="absolute right-4 z-10 text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors"
+                className="absolute right-4 z-10 text-white hover:text-gray-300 transition-colors"
                 onClick={goToNext}
               >
                 <svg
@@ -163,7 +163,7 @@ export const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, cl
             )}
 
             {/* Image Counter */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-black dark:text-white text-sm bg-white/50 dark:bg-black/50 px-4 py-2 rounded-md">
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm bg-black/50 px-4 py-2 rounded-md">
               {selectedIndex + 1} / {images.length}
             </div>
           </motion.div>
