@@ -14,8 +14,8 @@ import { DownloadButton } from './ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import { Portfolio } from '@/components/portfolio';
 
-const ExpandableGallery = dynamic(() => import('@/components/ui/expandable-gallery').then(mod => mod.ExpandableGallery));
 const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
 const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
 
@@ -119,7 +119,6 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
 
 
 export function CharpenteMetalliquePageContent() {
-  const galleryImageUrls = images['charpente-metallique'].gallery.map(image => image.src).slice(0, 5);
   const [selectedPillarId, setSelectedPillarId] = useState<string | null>(charpenteMetalliqueData.pillars[0].id);
 
   const selectedPillar = charpenteMetalliqueData.pillars.find(p => p.id === selectedPillarId);
@@ -137,7 +136,7 @@ export function CharpenteMetalliquePageContent() {
       <HeroSection hero={charpenteMetalliqueData.hero} />
 
       <section className="py-16 sm:py-24">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Notre Galerie de Projets
@@ -146,7 +145,7 @@ export function CharpenteMetalliquePageContent() {
               Explorez nos réalisations en charpente métallique, des structures industrielles complexes aux bâtiments commerciaux.
             </p>
           </div>
-          <ExpandableGallery images={galleryImageUrls} className="w-full max-w-7xl mx-auto" />
+          <Portfolio />
         </div>
       </section>
       
