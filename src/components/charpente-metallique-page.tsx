@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -76,7 +75,7 @@ const whyChooseUs = [
 export function CharpenteMetalliquePageContent() {
   const [activeImage, setActiveImage] = useState(images['charpente-metallique'].main);
   
-  const galleryImageUrls = images['charpente-metallique'].gallery.map(image => image.src).slice(0, 7);
+  const galleryImageUrls = images['charpente-metallique'].gallery.map(image => image.src).slice(0, 5);
 
   return (
     <div className="bg-background">
