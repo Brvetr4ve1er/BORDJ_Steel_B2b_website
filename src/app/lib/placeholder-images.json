@@ -2,9 +2,9 @@
 {
   "homepage": {
     "hero": {
-      "src": "https://i.pinimg.com/736x/ef/2e/99/ef2e9977bd5bfca70c8ebd557e614faf.jpg",
-      "width": 736,
-      "height": 920,
+      "src": "https://images.unsplash.com/photo-1526938459242-10a41535780a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWxkaW5nJTIwc3RlZWx8ZW58MHx8fHwxNzU3Mzc2MTg2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "width": 1080,
+      "height": 1620,
       "alt": "Steel factory background",
       "aiHint": "welding steel"
     },
