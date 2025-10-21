@@ -13,7 +13,7 @@ import { AnimatedNumber } from './animated-number';
 import { DownloadButton } from './ui/download-button';
 import dynamic from 'next/dynamic';
 
-const InteractiveImageBentoGallery = dynamic(() => import('./ui/bento-gallery'));
+const ExpandableGallery = dynamic(() => import('@/components/ui/expandable-gallery').then(mod => mod.ExpandableGallery));
 const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
 
 
@@ -76,19 +76,7 @@ const whyChooseUs = [
 export function CharpenteMetalliquePageContent() {
   const [activeImage, setActiveImage] = useState(images['charpente-metallique'].main);
   
-  const galleryItems = images['charpente-metallique'].gallery.map((image, index) => {
-    // This creates a more interesting bento layout
-    const spanOptions = ['md:col-span-1', 'md:col-span-2', 'md:col-span-1', 'md:col-span-1', 'md:col-span-2', 'md:col-span-1'];
-    const span = spanOptions[index % spanOptions.length];
-    return {
-      id: index,
-      title: image.alt,
-      desc: `Image ${index + 1} de la galerie de projets de charpente métallique.`,
-      url: image.src,
-      span: span,
-      blurDataURL: image.blurDataUrl
-    };
-  });
+  const galleryImageUrls = images['charpente-metallique'].gallery.map(image => image.src);
 
   return (
     <div className="bg-background">
@@ -141,11 +129,19 @@ export function CharpenteMetalliquePageContent() {
         </div>
       </section>
 
-      <InteractiveImageBentoGallery 
-        imageItems={galleryItems}
-        title="Notre Galerie de Projets"
-        description="Explorez nos réalisations en charpente métallique, des structures industrielles complexes aux bâtiments commerciaux."
-      />
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Notre Galerie de Projets
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+              Explorez nos réalisations en charpente métallique, des structures industrielles complexes aux bâtiments commerciaux.
+            </p>
+          </div>
+          <ExpandableGallery images={galleryImageUrls} className="w-full max-w-7xl mx-auto" />
+        </div>
+      </section>
       
       <section className="py-20">
         <div className="container mx-auto px-4">
