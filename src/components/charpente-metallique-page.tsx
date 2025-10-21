@@ -127,7 +127,7 @@ const NewGallery = () => {
                     with intention, emotion, and style.
                 </p>
             </div>
-            <div className="flex items-center gap-2 h-[400px] w-full max-w-5xl mt-10 px-4">
+            <div className="flex items-center gap-2 h-[400px] w-full max-w-7xl mt-10 px-4">
                 {[
                     "https://images.unsplash.com/photo-1719368472026-dc26f70a9b76?q=80&h=800&w=800&auto=format&fit=crop",
                     "https://images.unsplash.com/photo-1649265825072-f7dd6942baed?q=80&h=800&w=800&auto=format&fit=crop",
@@ -330,6 +330,8 @@ export function CharpenteMetalliquePageContent() {
     </div>
   );
 }
+
+    
 
     
 
