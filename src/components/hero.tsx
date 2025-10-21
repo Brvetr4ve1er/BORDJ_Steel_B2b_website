@@ -21,6 +21,7 @@ export function Hero() {
         priority
         data-ai-hint={heroImage.aiHint}
       />
+       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
       <div className="relative z-20 flex h-full flex-col items-center justify-center text-center text-white">
         <AnimatedWrapper animation="zoom-in">
             <h1 className="font-headline text-5xl font-bold tracking-tight md:text-7xl lg:text-8xl [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
