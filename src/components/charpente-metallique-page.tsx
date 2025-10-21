@@ -14,7 +14,6 @@ import { DownloadButton } from './ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
-import { Portfolio } from '@/components/portfolio';
 
 const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
 const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
@@ -131,12 +130,14 @@ export function CharpenteMetalliquePageContent() {
     }
   };
 
+  const galleryImages = images['charpente-metallique'].gallery;
+
   return (
     <div className="bg-background">
       <HeroSection hero={charpenteMetalliqueData.hero} />
 
       <section className="py-16 sm:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Notre Galerie de Projets
@@ -145,7 +146,22 @@ export function CharpenteMetalliquePageContent() {
               Explorez nos réalisations en charpente métallique, des structures industrielles complexes aux bâtiments commerciaux.
             </p>
           </div>
-          <Portfolio />
+          <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+            {galleryImages.map((image, index) => (
+              <AnimatedWrapper key={index} animation="zoom-in" staggerIndex={index}>
+                <div className="overflow-hidden rounded-lg break-inside-avoid group">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={image.width}
+                      height={image.height}
+                      className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                      data-ai-hint={image.aiHint}
+                    />
+                </div>
+              </AnimatedWrapper>
+            ))}
+          </div>
         </div>
       </section>
       
@@ -306,3 +322,5 @@ export function CharpenteMetalliquePageContent() {
     </div>
   );
 }
+
+    
