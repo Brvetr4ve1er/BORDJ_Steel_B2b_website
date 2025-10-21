@@ -97,40 +97,31 @@ const InteractiveImageBentoGallery: React.FC<
   InteractiveImageBentoGalleryProps
 > = ({ imageItems, title, description }) => {
   const [selectedItem, setSelectedItem] = useState<ImageItem | null>(null)
-  const [dragConstraint, setDragConstraint] = useState(0)
-  const containerRef = useRef<HTMLDivElement>(null)
   const gridRef = useRef<HTMLDivElement>(null)
   const targetRef = useRef<HTMLDivElement>(null)
 
-  
-  useEffect(() => {
-    const calculateConstraints = () => {
-      if (gridRef.current && containerRef.current) {
-        const containerWidth = containerRef.current.offsetWidth
-        const gridWidth = gridRef.current.scrollWidth
-        
-        const newConstraint = Math.min(0, containerWidth - gridWidth - 32)
-        setDragConstraint(newConstraint)
-      }
-    }
-
-    
-    const timer = setTimeout(calculateConstraints, 100);
-    window.addEventListener("resize", calculateConstraints)
-    
-    return () => {
-        clearTimeout(timer);
-        window.removeEventListener("resize", calculateConstraints);
-    }
-  }, [imageItems])
-
-  
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start end", "end start"],
   })
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
   const y = useTransform(scrollYProgress, [0, 0.2], [30, 0])
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+
+    const onWheel = (e: WheelEvent) => {
+      if (e.deltaY === 0) return;
+      e.preventDefault();
+      el.scrollTo({
+        left: el.scrollLeft + e.deltaY,
+        behavior: 'smooth'
+      });
+    };
+    el.addEventListener('wheel', onWheel);
+    return () => el.removeEventListener('wheel', onWheel);
+  }, []);
 
   return (
     <section
@@ -150,17 +141,11 @@ const InteractiveImageBentoGallery: React.FC<
       </motion.div>
 
       <div
-        ref={containerRef}
-        className="relative mt-12 w-full cursor-grab active:cursor-grabbing"
+        ref={gridRef}
+        className="relative mt-12 w-full flex overflow-x-auto pb-4"
+        style={{ scrollbarWidth: 'none', '-ms-overflow-style': 'none' }}
       >
-        <motion.div
-          className="w-full"
-          drag="x"
-          dragConstraints={{ left: dragConstraint, right: 0 }}
-          dragElastic={0.05}
-        >
           <motion.div
-            ref={gridRef}
             className="w-max grid auto-cols-[minmax(20rem,1fr)] grid-flow-col-dense grid-rows-2 gap-4 px-4 md:px-8"
             variants={containerVariants}
             initial="hidden"
@@ -198,7 +183,6 @@ const InteractiveImageBentoGallery: React.FC<
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
       </div>
 
       <AnimatePresence>
