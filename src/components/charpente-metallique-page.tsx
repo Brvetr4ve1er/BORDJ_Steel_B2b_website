@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Image from 'next/image';
@@ -116,6 +117,42 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
   );
 }
 
+const NewGallery = () => {
+    return (
+        <section className="w-full flex flex-col items-center justify-start py-12">
+            <div className="max-w-3xl text-center px-4">
+                <h1 className="text-3xl font-semibold">Our Latest Creations</h1>
+                <p className="text-sm text-slate-500 mt-2">
+                    A visual collection of our most recent works – each piece crafted
+                    with intention, emotion, and style.
+                </p>
+            </div>
+            <div className="flex items-center gap-2 h-[400px] w-full max-w-5xl mt-10 px-4">
+                {[
+                    "https://images.unsplash.com/photo-1719368472026-dc26f70a9b76?q=80&h=800&w=800&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1649265825072-f7dd6942baed?q=80&h=800&w=800&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1555212697-194d092e3b8f?q=80&h=800&w=800&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1729086046027-09979ade13fd?q=80&h=800&w=800&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1601568494843-772eb04aca5d?q=80&h=800&w=800&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1585687501004-615dfdfde7f1?q=80&h=800&w=800&auto=format&fit=crop",
+                ].map((src, idx) => (
+                    <div
+                        key={idx}
+                        className="relative group flex-grow transition-all w-56 rounded-lg overflow-hidden h-[400px] duration-500 hover:w-full"
+                    >
+                        <Image
+                            fill
+                            className="h-full w-full object-cover object-center"
+                            src={src}
+                            alt={`image-${idx}`}
+                        />
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+};
+
 
 export function CharpenteMetalliquePageContent() {
   const [selectedPillarId, setSelectedPillarId] = useState<string | null>(charpenteMetalliqueData.pillars[0].id);
@@ -130,40 +167,11 @@ export function CharpenteMetalliquePageContent() {
     }
   };
 
-  const galleryImages = images['charpente-metallique'].gallery;
-
   return (
     <div className="bg-background">
       <HeroSection hero={charpenteMetalliqueData.hero} />
 
-      <section className="py-16 sm:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Notre Galerie de Projets
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              Explorez nos réalisations en charpente métallique, des structures industrielles complexes aux bâtiments commerciaux.
-            </p>
-          </div>
-          <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-            {galleryImages.map((image, index) => (
-              <AnimatedWrapper key={index} animation="zoom-in" staggerIndex={index}>
-                <div className="overflow-hidden rounded-lg break-inside-avoid group">
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      width={image.width}
-                      height={image.height}
-                      className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-                      data-ai-hint={image.aiHint}
-                    />
-                </div>
-              </AnimatedWrapper>
-            ))}
-          </div>
-        </div>
-      </section>
+      <NewGallery />
       
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -322,5 +330,7 @@ export function CharpenteMetalliquePageContent() {
     </div>
   );
 }
+
+    
 
     
