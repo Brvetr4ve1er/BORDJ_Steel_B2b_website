@@ -16,5 +16,112 @@ export const charpenteMetalliqueData = {
     blurDataUrl: images['charpente-metallique'].main.blurDataUrl,
     cta_primary: 'Demander un devis',
     cta_secondary: 'Télécharger la brochure',
-  }
+  },
+  pillars: [
+    {
+      id: 'prs',
+      iconName: 'HardHat',
+      title: "PRS – Profils Reconstitués Soudés",
+      description: "Fabrication sur mesure pour bâtiments industriels, ponts et charpentes lourdes.",
+      specifications: {
+        description: "Les Profils Reconstitués Soudés (PRS) sont des éléments de structure métallique fabriqués par soudage de tôles d'acier pour créer des sections sur mesure. Cette technique permet une optimisation parfaite de la matière et des formes, offrant une alternative économique et performante aux profilés laminés à chaud pour les grandes portées et les charges importantes.",
+        applications: [
+          'Bâtiments industriels de grande portée',
+          'Entrepôts logistiques',
+          'Ponts et ouvrages d\'art',
+          'Structures pour charges lourdes (ponts roulants)',
+        ],
+        technicalTable: {
+          title: "Spécifications Techniques PRS",
+          headers: ["Caractéristique", "Valeur"],
+          rows: [
+            { "Caractéristique": "Nuances d'acier", "Valeur": "S235, S275, S355 et autres sur demande" },
+            { "Caractéristique": "Hauteur du profil", "Valeur": "Jusqu'à 2500 mm" },
+            { "Caractéristique": "Largeur des semelles", "Valeur": "Jusqu'à 800 mm" },
+            { "Caractéristique": "Épaisseur (âme/semelle)", "Valeur": "De 6 mm à 40 mm" },
+            { "Caractéristique": "Procédé de soudage", "Valeur": "Arc submergé (SAW) automatisé" },
+            { "Caractéristique": "Contrôles", "Valeur": "Ultrasons (UT), Magnétoscopie (MT)" },
+          ],
+        }
+      }
+    },
+    {
+      id: 'supports',
+      iconName: 'TowerControl',
+      title: "Supports de Transport d'Énergie",
+      description: "Structures pour l’énergie, la communication et l’affichage.",
+      specifications: {
+        description: "Nous fabriquons une large gamme de supports métalliques destinés au transport et à la distribution de l'énergie électrique, ainsi qu'aux télécommunications. Nos structures sont conçues pour résister aux conditions environnementales les plus extrêmes tout en garantissant la sécurité et la fiabilité des réseaux.",
+        applications: [
+          'Pylônes pour lignes à haute et très haute tension (THT)',
+          'Supports pour lignes de distribution moyenne et basse tension',
+          'Pylônes de télécommunication (antennes, relais)',
+          'Mâts d\'éclairage public et de stade',
+        ],
+        technicalTable: {
+          title: "Spécifications Techniques Supports",
+          headers: ["Caractéristique", "Valeur"],
+          rows: [
+            { "Caractéristique": "Type de structure", "Valeur": "Treillis (cornières), Tubulaire" },
+            { "Caractéristique": "Hauteur", "Valeur": "Jusqu'à 100 mètres et plus" },
+            { "Caractéristique": "Assemblage", "Valeur": "Boulonné" },
+            { "Caractéristique": "Protection anticorrosion", "Valeur": "Galvanisation à chaud selon ISO 1461" },
+            { "Caractéristique": "Normes de conception", "Valeur": "Eurocodes, normes nationales (NTE, CSTR)" },
+          ],
+        }
+      }
+    },
+    {
+      id: 'ponts-roulants',
+      iconName: 'Tractor',
+      title: "Pont Roulant – Mono et Bipoutre",
+      description: "Solutions de manutention lourde avec options mono-poutre et bi-poutre.",
+      specifications: {
+        description: "Nous concevons et fabriquons les structures métalliques complètes pour les ponts roulants, un équipement essentiel pour la manutention dans les usines, les entrepôts et les ateliers. Nos solutions sont adaptées pour des configurations monopoutre (plus légères) et bipoutre (pour charges très lourdes et grandes portées).",
+        applications: [
+          'Ateliers de production et d\'assemblage',
+          'Aciéries et métallurgie',
+          'Entrepôts de stockage lourd',
+          'Zones de maintenance et de réparation',
+        ],
+        technicalTable: {
+          title: "Spécifications Techniques Ponts Roulants",
+          headers: ["Caractéristique", "Valeur"],
+          rows: [
+            { "Caractéristique": "Capacité de levage", "Valeur": "De 1 tonne à plus de 100 tonnes" },
+            { "Caractéristique": "Portée", "Valeur": "Jusqu'à 40 mètres" },
+            { "Caractéristique": "Type de poutre", "Valeur": "Profilé standard (IPE, HEA) ou PRS" },
+            { "Caractéristique": "Chemin de roulement", "Valeur": "Fabrication et alignement de précision" },
+            { "Caractéristique": "Conformité", "Valeur": "FEM (Fédération Européenne de la Manutention)" },
+          ],
+        }
+      }
+    },
+    {
+      id: 'automobile',
+      iconName: 'Car',
+      title: "Ligne de Fabrication Automobile",
+      description: "Ligne complète pour la transformation métallique automobile de haute précision.",
+      specifications: {
+        description: "Bordj Steel possède une expertise spécifique dans la fabrication de composants et de structures pour l'industrie automobile. Notre ligne de production dédiée permet de répondre aux exigences de haute précision, de cadence élevée et de qualité rigoureuse de ce secteur.",
+        applications: [
+          'Pièces de châssis et de carrosserie',
+          'Supports moteurs et berceaux',
+          'Lignes d\'assemblage et convoyeurs spécifiques',
+          'Outillages et gabarits de production',
+        ],
+        technicalTable: {
+          title: "Spécifications Techniques Automobile",
+          headers: ["Caractéristique", "Valeur"],
+          rows: [
+            { "Caractéristique": "Tolérances", "Valeur": "Précision sub-millimétrique" },
+            { "Caractéristique": "Procédés", "Valeur": "Découpe laser, pliage CNC, soudage robotisé" },
+            { "Caractéristique": "Matériaux", "Valeur": "Aciers HLE (Haute Limite Élastique), aciers emboutissables" },
+            { "Caractéristique": "Contrôle Qualité", "Valeur": "Contrôle tridimensionnel (CMM), Poka-Yoke" },
+            { "Caractéristique": "Certifications", "Valeur": "Conformité aux standards IATF 16949 (via partenaires)" },
+          ],
+        }
+      }
+    }
+  ]
 };

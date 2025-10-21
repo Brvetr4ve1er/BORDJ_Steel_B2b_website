@@ -6,13 +6,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Building, Factory, HardHat, CheckCircle, ShieldCheck, Zap, Award, BookCopy, TowerControl, Car, Tractor, Layers, Cog } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
-import React from 'react';
+import React, { useState } from 'react';
 import images from '@/app/lib/placeholder-images.json';
 import { cn } from '@/lib/utils';
 import { AnimatedNumber } from './animated-number';
 import { DownloadButton } from './ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 
 const ExpandableGallery = dynamic(() => import('@/components/ui/expandable-gallery').then(mod => mod.ExpandableGallery));
 const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
@@ -24,29 +25,6 @@ const applications = [
   { icon: <Factory className="w-8 h-8" />, text: "Hangars de stockage & agricoles" },
   { icon: <Tractor className="w-8 h-8" />, text: "Infrastructures logistiques" },
   { icon: <HardHat className="w-8 h-8" />, text: "Projets sur mesure" },
-];
-
-const pillars = [
-    {
-        icon: HardHat,
-        title: "PRS – Profils Reconstitués Soudés",
-        description: "Fabrication sur mesure pour bâtiments industriels, ponts et charpentes lourdes.",
-    },
-    {
-        icon: TowerControl,
-        title: "Supports de Transport",
-        description: "Structures pour l’énergie, la communication et l’affichage.",
-    },
-    {
-        icon: Tractor,
-        title: "Pont Roulant – Mono et Bipoutre",
-        description: "Solutions de manutention lourde avec options mono-poutre et bi-poutre.",
-    },
-    {
-        icon: Car,
-        title: "Ligne de Fabrication Automobile",
-        description: "Ligne complète pour la transformation métallique automobile de haute précision.",
-    }
 ];
 
 const whyChooseUs = [
@@ -70,7 +48,10 @@ const whyChooseUs = [
 const iconMap: { [key: string]: React.ElementType } = {
     HardHat,
     Cog,
-    Layers
+    Layers,
+    TowerControl,
+    Car,
+    Tractor
 };
 
 function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.hero }) {
@@ -116,7 +97,7 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
                   <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
                     <Card className="bg-background/50 backdrop-blur-md border-border text-white">
                       <CardHeader className="flex-row items-center gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
                           {Icon && <Icon className="h-6 w-6 text-accent" />}
                         </div>
                         <div>
@@ -139,6 +120,17 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
 
 export function CharpenteMetalliquePageContent() {
   const galleryImageUrls = images['charpente-metallique'].gallery.map(image => image.src).slice(0, 5);
+  const [selectedPillarId, setSelectedPillarId] = useState<string | null>(charpenteMetalliqueData.pillars[0].id);
+
+  const selectedPillar = charpenteMetalliqueData.pillars.find(p => p.id === selectedPillarId);
+
+  const handlePillarClick = (id: string) => {
+    setSelectedPillarId(id);
+    const element = document.getElementById('specifications-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <div className="bg-background">
@@ -207,14 +199,17 @@ export function CharpenteMetalliquePageContent() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {pillars.map((pillar, index) => {
+            {charpenteMetalliqueData.pillars.map((pillar, index) => {
+              const Icon = iconMap[pillar.iconName];
               return (
                 <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                  <div onClick={() => handlePillarClick(pillar.id)}>
                     <FeatureHoverCard
-                        Icon={pillar.icon}
+                        Icon={Icon}
                         title={pillar.title}
                         description={pillar.description}
                     />
+                  </div>
                 </AnimatedWrapper>
               );
             })}
@@ -222,7 +217,56 @@ export function CharpenteMetalliquePageContent() {
         </div>
       </section>
 
-      <section id="why-choose-us" className="py-20">
+      <section id="specifications-section" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          {selectedPillar && (
+            <AnimatedWrapper key={selectedPillar.id} animation="fade-in">
+              <Card className="shadow-lg border-border">
+                <CardHeader>
+                  <CardTitle className="font-headline text-4xl text-accent">{selectedPillar.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-8">
+                  <p className="text-lg text-muted-foreground">{selectedPillar.specifications.description}</p>
+                  
+                  <div>
+                    <h4 className="font-headline text-2xl font-bold text-primary mb-4">Applications typiques</h4>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 list-disc pl-5">
+                      {selectedPillar.specifications.applications.map((app, index) => (
+                        <li key={index} className="text-lg">{app}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="font-headline text-2xl font-bold text-primary mb-4">{selectedPillar.specifications.technicalTable.title}</h4>
+                    <Table>
+                      <TableHeader>
+                        <TableRow className="bg-accent/10">
+                          {selectedPillar.specifications.technicalTable.headers.map(header => (
+                            <TableHead key={header} className="text-accent font-bold">{header}</TableHead>
+                          ))}
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {selectedPillar.specifications.technicalTable.rows.map((row, index) => (
+                          <TableRow key={index}>
+                            <TableCell>{row.Caractéristique}</TableCell>
+                            <TableCell>{row.Valeur}</TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+
+                </CardContent>
+              </Card>
+            </AnimatedWrapper>
+          )}
+        </div>
+      </section>
+
+
+      <section id="why-choose-us" className="py-20 bg-secondary">
           <div className="container mx-auto px-4">
             <AnimatedWrapper animation="fade-in">
               <h2 className="font-headline text-5xl font-bold text-primary mb-16 text-center">Pourquoi Nous Choisir?</h2>
