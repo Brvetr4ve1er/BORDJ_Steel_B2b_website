@@ -54,7 +54,7 @@
   },
   "charpente-metallique": {
     "main": {
-      "src": "https://images.unsplash.com/photo-1533035345784-38c45c925180?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzdGVlbCUyMGZyYW1lJTIwY29uc3RydWN0aW9ufGVufDB8fHx8MTc1NzM3NjE4Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "src": "https://images.unsplash.com/photo-1557143930-d4e7a86a194f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzdGVlbCUyMHN0cnVjdHVyZXxlbnwwfHx8fDE3NjEwNDU4NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "width": 1080,
       "height": 720,
       "alt": "Charpente Métallique en construction",
@@ -138,5 +138,3 @@
     }
   }
 }
-
-    
