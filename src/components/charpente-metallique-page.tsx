@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Building, Factory, HardHat, CheckCircle, ShieldCheck, Zap, Award, BookCopy, TowerControl, Car, Tractor } from 'lucide-react';
+import { ArrowRight, Building, Factory, HardHat, CheckCircle, ShieldCheck, Zap, Award, BookCopy, TowerControl, Car, Tractor, Layers, Cog } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import React from 'react';
 import images from '@/app/lib/placeholder-images.json';
@@ -13,7 +13,6 @@ import { AnimatedNumber } from './animated-number';
 import { DownloadButton } from './ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
-import { iconMap } from '@/config/galvanisation-data';
 
 const ExpandableGallery = dynamic(() => import('@/components/ui/expandable-gallery').then(mod => mod.ExpandableGallery));
 const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
@@ -67,6 +66,12 @@ const whyChooseUs = [
         description: "Notre bureau d'études et nos équipes s'appuient sur une riche expérience et des références solides pour innover et relever les défis complexes."
     }
 ];
+
+const iconMap: { [key: string]: React.ElementType } = {
+    HardHat,
+    Cog,
+    Layers
+};
 
 function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.hero }) {
   return (
@@ -140,7 +145,7 @@ export function CharpenteMetalliquePageContent() {
       <HeroSection hero={charpenteMetalliqueData.hero} />
 
       <section className="py-16 sm:py-24">
-        <div className="container mx-auto px-4">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Notre Galerie de Projets
