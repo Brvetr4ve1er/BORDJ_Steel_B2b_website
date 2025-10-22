@@ -1,6 +1,8 @@
 
 import images from '@/app/lib/placeholder-images.json';
 
+const allGalleryImages = images['charpente-metallique'].gallery;
+
 export const charpenteMetalliqueData = {
   hero: {
     title: 'Charpente Métallique',
@@ -23,6 +25,7 @@ export const charpenteMetalliqueData = {
       iconName: 'HardHat',
       title: "PRS – Profils Reconstitués Soudés",
       description: "Fabrication sur mesure pour bâtiments industriels, ponts et charpentes lourdes.",
+      galleryImages: allGalleryImages.slice(0, 4).map(img => img.src),
       specifications: {
         description: "Les Profils Reconstitués Soudés (PRS) sont des éléments de structure métallique fabriqués par soudage de tôles d'acier pour créer des sections sur mesure. Cette technique permet une optimisation parfaite de la matière et des formes, offrant une alternative économique et performante aux profilés laminés à chaud pour les grandes portées et les charges importantes.",
         applications: [
@@ -50,6 +53,7 @@ export const charpenteMetalliqueData = {
       iconName: 'TowerControl',
       title: "Supports de Transport d'Énergie",
       description: "Structures pour l’énergie, la communication et l’affichage.",
+      galleryImages: allGalleryImages.slice(4, 8).map(img => img.src),
       specifications: {
         description: "Nous fabriquons une large gamme de supports métalliques destinés au transport et à la distribution de l'énergie électrique, ainsi qu'aux télécommunications. Nos structures sont conçues pour résister aux conditions environnementales les plus extrêmes tout en garantissant la sécurité et la fiabilité des réseaux.",
         applications: [
@@ -76,6 +80,7 @@ export const charpenteMetalliqueData = {
       iconName: 'Tractor',
       title: "Pont Roulant – Mono et Bipoutre",
       description: "Solutions de manutention lourde avec options mono-poutre et bi-poutre.",
+      galleryImages: allGalleryImages.slice(8, 12).map(img => img.src),
       specifications: {
         description: "Nous concevons et fabriquons les structures métalliques complètes pour les ponts roulants, un équipement essentiel pour la manutention dans les usines, les entrepôts et les ateliers. Nos solutions sont adaptées pour des configurations monopoutre (plus légères) et bipoutre (pour charges très lourdes et grandes portées).",
         applications: [
@@ -102,6 +107,7 @@ export const charpenteMetalliqueData = {
       iconName: 'Car',
       title: "Ligne de Fabrication Automobile",
       description: "Ligne complète pour la transformation métallique automobile de haute précision.",
+      galleryImages: allGalleryImages.slice(12, 16).map(img => img.src),
       specifications: {
         description: "Bordj Steel possède une expertise spécifique dans la fabrication de composants et de structures pour l'industrie automobile. Notre ligne de production dédiée permet de répondre aux exigences de haute précision, de cadence élevée et de qualité rigoureuse de ce secteur.",
         applications: [

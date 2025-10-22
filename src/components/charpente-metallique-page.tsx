@@ -159,7 +159,6 @@ export function CharpenteMetalliquePageContent() {
   const [selectedPillarId, setSelectedPillarId] = useState<string | null>(charpenteMetalliqueData.pillars[0].id);
 
   const selectedPillar = charpenteMetalliqueData.pillars.find(p => p.id === selectedPillarId);
-  const galleryImages = images['charpente-metallique'].gallery.map(img => img.src);
 
   const handlePillarClick = (id: string) => {
     setSelectedPillarId(id);
@@ -224,7 +223,7 @@ export function CharpenteMetalliquePageContent() {
               const Icon = iconMap[pillar.iconName];
               return (
                 <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                  <div onClick={() => handlePillarClick(pillar.id)}>
+                  <div onClick={() => handlePillarClick(pillar.id)} className="cursor-pointer">
                     <FeatureHoverCard
                         Icon={Icon}
                         title={pillar.title}
@@ -243,7 +242,7 @@ export function CharpenteMetalliquePageContent() {
           {selectedPillar && (
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <AnimatedWrapper animation="fade-in">
-                <HoverImageGallery images={galleryImages} />
+                <HoverImageGallery images={selectedPillar.galleryImages} />
               </AnimatedWrapper>
               <AnimatedWrapper key={selectedPillar.id} animation="fade-in" staggerIndex={1}>
                 <Card className="shadow-lg border-border">
@@ -339,4 +338,3 @@ export function CharpenteMetalliquePageContent() {
     
 
     
-
