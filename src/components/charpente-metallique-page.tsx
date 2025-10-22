@@ -98,7 +98,7 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
                   <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
                     <Card className="bg-background/50 backdrop-blur-md border-border text-white">
                       <CardHeader className="flex-row items-center gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
+                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center">
                           {Icon && <Icon className="h-6 w-6 text-accent" />}
                         </div>
                         <div>
