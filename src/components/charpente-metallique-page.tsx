@@ -15,6 +15,7 @@ import { DownloadButton } from './ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import { HoverImageGallery } from './ui/hover-image-gallery';
 
 const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
 const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
@@ -158,6 +159,7 @@ export function CharpenteMetalliquePageContent() {
   const [selectedPillarId, setSelectedPillarId] = useState<string | null>(charpenteMetalliqueData.pillars[0].id);
 
   const selectedPillar = charpenteMetalliqueData.pillars.find(p => p.id === selectedPillarId);
+  const galleryImages = images['charpente-metallique'].gallery.map(img => img.src);
 
   const handlePillarClick = (id: string) => {
     setSelectedPillarId(id);
@@ -243,47 +245,52 @@ export function CharpenteMetalliquePageContent() {
       <section id="specifications-section" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           {selectedPillar && (
-            <AnimatedWrapper key={selectedPillar.id} animation="fade-in">
-              <Card className="shadow-lg border-border">
-                <CardHeader>
-                  <CardTitle className="font-headline text-4xl text-accent">{selectedPillar.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-8">
-                  <p className="text-lg text-muted-foreground">{selectedPillar.specifications.description}</p>
-                  
-                  <div>
-                    <h4 className="font-headline text-2xl font-bold text-primary mb-4">Applications typiques</h4>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 list-disc pl-5">
-                      {selectedPillar.specifications.applications.map((app, index) => (
-                        <li key={index} className="text-lg">{app}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-headline text-2xl font-bold text-primary mb-4">{selectedPillar.specifications.technicalTable.title}</h4>
-                    <Table>
-                      <TableHeader>
-                        <TableRow className="bg-accent/10">
-                          {selectedPillar.specifications.technicalTable.headers.map(header => (
-                            <TableHead key={header} className="text-accent font-bold">{header}</TableHead>
-                          ))}
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        {selectedPillar.specifications.technicalTable.rows.map((row, index) => (
-                          <TableRow key={index}>
-                            <TableCell>{row.Caractéristique}</TableCell>
-                            <TableCell>{row.Valeur}</TableCell>
-                          </TableRow>
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <AnimatedWrapper animation="fade-in">
+                <HoverImageGallery images={galleryImages} />
+              </AnimatedWrapper>
+              <AnimatedWrapper key={selectedPillar.id} animation="fade-in" staggerIndex={1}>
+                <Card className="shadow-lg border-border">
+                  <CardHeader>
+                    <CardTitle className="font-headline text-4xl text-accent">{selectedPillar.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-8">
+                    <p className="text-lg text-muted-foreground">{selectedPillar.specifications.description}</p>
+                    
+                    <div>
+                      <h4 className="font-headline text-2xl font-bold text-primary mb-4">Applications typiques</h4>
+                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 list-disc pl-5">
+                        {selectedPillar.specifications.applications.map((app, index) => (
+                          <li key={index} className="text-lg">{app}</li>
                         ))}
-                      </TableBody>
-                    </Table>
-                  </div>
+                      </ul>
+                    </div>
 
-                </CardContent>
-              </Card>
-            </AnimatedWrapper>
+                    <div>
+                      <h4 className="font-headline text-2xl font-bold text-primary mb-4">{selectedPillar.specifications.technicalTable.title}</h4>
+                      <Table>
+                        <TableHeader>
+                          <TableRow className="bg-accent/10">
+                            {selectedPillar.specifications.technicalTable.headers.map(header => (
+                              <TableHead key={header} className="text-accent font-bold">{header}</TableHead>
+                            ))}
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {selectedPillar.specifications.technicalTable.rows.map((row, index) => (
+                            <TableRow key={index}>
+                              <TableCell>{row.Caractéristique}</TableCell>
+                              <TableCell>{row.Valeur}</TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </div>
+
+                  </CardContent>
+                </Card>
+              </AnimatedWrapper>
+            </div>
           )}
         </div>
       </section>
