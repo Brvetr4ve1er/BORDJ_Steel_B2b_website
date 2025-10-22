@@ -261,8 +261,6 @@ export function SandwichPanelsPage() {
                                                           height={100}
                                                           className="mx-auto"
                                                           data-ai-hint={finition.image.aiHint}
-                                                          placeholder="blur"
-                                                          blurDataURL={finition.image.blurDataUrl}
                                                       />
                                                       <p className="font-semibold mt-2">{finition.name}</p>
                                                       <p className="text-sm text-muted-foreground">{finition.length}</p>
@@ -379,7 +377,7 @@ export function SandwichPanelsPage() {
                                                   className="w-full object-contain"
                                                   data-ai-hint={activeProduct.features.caracteristiquesGeometriques.image.aiHint}
                                                   placeholder="blur"
-                                                  blurDataURL={activeProduct.features.caracteristiquesGeometriques.image.blurDataUrl}
+                                                  blurDataURL={activeProduct.features.caracteristiquesGeometriques.image.blurDataURL}
                                               />
                                           </div>
                                           <div>
