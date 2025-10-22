@@ -90,7 +90,7 @@ const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string
                                         onClick={() => handleMenuClick(item.name)}
                                         className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent", navTextColor)}
                                     >
-                                       {Icon && <Icon className="h-4 w-4 mr-2" />}
+                                       {Icon && <Icon className="h-5 w-5 mr-2" />}
                                         {item.name}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
@@ -121,7 +121,7 @@ const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string
                                     onClick={onItemClick}
                                   >
                                       <div className="flex items-center">
-                                        {Icon && <Icon className="h-4 w-4 mr-2" />}
+                                        {Icon && <Icon className="h-5 w-5 mr-2" />}
                                         {item.name}
                                       </div>
                                   </Link>
@@ -153,12 +153,12 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-lg bg-secondary transition-colors group-hover:bg-accent-foreground/10">
-            {Icon && <Icon className="h-6 w-6 text-accent transition-colors group-hover:text-accent-foreground" />}
+          <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg bg-secondary transition-colors group-hover:bg-accent-foreground/10">
+            {Icon && <Icon className="h-8 w-8 text-accent transition-colors group-hover:text-accent-foreground" />}
           </div>
           <div className="flex-grow">
-            <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            <div className="text-base font-medium leading-none">{title}</div>
+            <p className="line-clamp-2 text-base leading-snug text-muted-foreground">
               {children}
             </p>
           </div>
@@ -321,3 +321,5 @@ export function Navbar() {
     </header>
   );
 }
+
+    
