@@ -163,10 +163,6 @@ export function CharpenteMetalliquePageContent() {
 
   const handlePillarClick = (id: string) => {
     setSelectedPillarId(id);
-    const element = document.getElementById('specifications-section');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
   };
 
   return (
@@ -343,3 +339,4 @@ export function CharpenteMetalliquePageContent() {
     
 
     
+
