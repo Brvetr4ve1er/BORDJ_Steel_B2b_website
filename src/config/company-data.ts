@@ -23,7 +23,6 @@ export const companyData = {
         "children": [
           { "name": "Notre Histoire", "href": "#about", "description": "Découvrez nos origines et notre parcours.", "icon": "Building2" },
           { "name": "Vision & Mission", "href": "#about", "description": "Nos valeurs et nos ambitions pour l'avenir.", "icon": "Award" },
-          { "name": "Politique QHSE", "href": "#about", "description": "Notre engagement pour la Qualité, Hygiène, Sécurité et Environnement.", "icon": "ShieldCheck" },
           { "name": "Politique RH", "href": "#", "description": "Découvrez notre politique de ressources humaines.", "icon": "User" }
         ]
       },
