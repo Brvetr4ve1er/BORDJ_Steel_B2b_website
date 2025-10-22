@@ -50,7 +50,7 @@ export const BentoPillars = () => {
         {pillars.map((pillar, index) => (
           <BounceCard key={index} className={pillar.className}>
             <CardTitle>{pillar.title}</CardTitle>
-            <div className={cn("absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]", pillar.bgClass)}>
+            <div className={cn("absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl p-4 transition-transform duration-250 group-hover:translate-y-4 group-hover:rotate-[2deg]", pillar.bgClass)}>
               <div className="flex flex-col items-center text-center text-white">
                 <pillar.icon className="w-12 h-12 mb-4" />
                 <p className="text-base font-semibold">{pillar.description}</p>
