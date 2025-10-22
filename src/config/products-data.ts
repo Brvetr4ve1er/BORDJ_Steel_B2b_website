@@ -186,8 +186,8 @@ export const productData = {
       }
     },
     pose: { title: 'La pose de panneaux sandwichs', decoupage: "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier.", fixation: "Les panneaux doivent être fixés au sommet de chaque nervure sur les pannes d'extrémité, Sur les pannes intermédiaires. Lors de la pose, les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet, Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité, les chéneaux, les gouttières, les recouvrements."},
-    etancheite: "Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une nervure femelle (sans mousse) permettant un assemblage par emboitement. La nervure mâle est fermée par une bande adhésive, et la nervure femelle d'un joint d'étanchéité à l'air",
-    sens: "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. il est de type gauche dans le sens inverse."
+    etancheite: "Les panneaux sandwichs de bardages présentent une rive mâle et une rive femelle permettant un assemblage par emboitement. Les nervures mâle et femelle sont fermées par une bande adhésive. Tous les panneaux bardage sont munis sur la nervure femelle d'un joint d'étanchéité à l'air; leurs parements pré-laqués sont protégés par un film adhésif à retirer à la pose.",
+    sens: ''
   },
   frigorifique: {
     title: '3-PANNEAUX SANDWICHS FRIGORIFIQUE',
@@ -318,7 +318,8 @@ export const productData = {
         title: "Caractéristiques Géométriques",
         image: {
           src: '/media/hi-bond-77/hi-bond-geometrie.png',
-          aiHint: 'geometric characteristics diagram'
+          aiHint: 'geometric characteristics diagram',
+          blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
         }
       },
       avantages: [
@@ -328,14 +329,14 @@ export const productData = {
       ],
       application: 'Coffrage et armature de dalles béton',
       finitions: [
-        { name: 'Bande de rive sur mur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bande-de-rive.png', aiHint: 'wall edge band' } },
-        { name: 'Angle droit', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/angle-droit.png', aiHint: 'right angle' } },
-        { name: 'Cornière d\'angle intérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-interieur.png', aiHint: 'internal corner angle' } },
-        { name: 'U de sol acier galvanisé', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/u-de-sol.png', aiHint: 'galvanized steel U-profile' } },
-        { name: 'Bavette rejet d\'eau', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bavette-rejet-eau.png', aiHint: 'water drip flashing' } },
-        { name: 'Sous faitière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/sous-faitiere.png', aiHint: 'under ridge' } },
-        { name: 'Cornière d\'angle extérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-exterieur.png', aiHint: 'external corner angle' } },
-        { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/faitiere.png', aiHint: 'ridge cap' } },
+        { name: 'Bande de rive sur mur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bande-de-rive.png', aiHint: 'wall edge band', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+        { name: 'Angle droit', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/angle-droit.png', aiHint: 'right angle', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+        { name: 'Cornière d\'angle intérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-interieur.png', aiHint: 'internal corner angle', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+        { name: 'U de sol acier galvanisé', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/u-de-sol.png', aiHint: 'galvanized steel U-profile', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+        { name: 'Bavette rejet d\'eau', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bavette-rejet-eau.png', aiHint: 'water drip flashing', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+        { name: 'Sous faitière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/sous-faitiere.png', aiHint: 'under ridge', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+        { name: 'Cornière d\'angle extérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-exterieur.png', aiHint: 'external corner angle', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+        { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/faitiere.png', aiHint: 'ridge cap', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
       ]
     },
     implementationImages: [
@@ -422,7 +423,8 @@ export const productData = {
             title: "Caractéristiques Géométriques",
             image: {
               src: '/media/hi-bond-77/hi-bond-geometrie.png',
-              aiHint: 'geometric characteristics diagram'
+              aiHint: 'geometric characteristics diagram',
+              blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII='
             }
         },
     },
@@ -471,14 +473,14 @@ export const productData = {
         tolerance: [],
         miseEnOeuvre: { title: "", manutention: "" },
         finitions: [
-            { name: 'Bande de rive sur mur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bande-de-rive.png', aiHint: 'wall edge band' } },
-            { name: 'Angle droit', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/angle-droit.png', aiHint: 'right angle' } },
-            { name: 'Cornière d\'angle intérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-interieur.png', aiHint: 'internal corner angle' } },
-            { name: 'U de sol acier galvanisé', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/u-de-sol.png', aiHint: 'galvanized steel U-profile' } },
-            { name: 'Bavette rejet d\'eau', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bavette-rejet-eau.png', aiHint: 'water drip flashing' } },
-            { name: 'Sous faitière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/sous-faitiere.png', aiHint: 'under ridge' } },
-            { name: 'Cornière d\'angle extérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-exterieur.png', aiHint: 'external corner angle' } },
-            { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/faitiere.png', aiHint: 'ridge cap' } },
+            { name: 'Bande de rive sur mur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bande-de-rive.png', aiHint: 'wall edge band', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+            { name: 'Angle droit', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/angle-droit.png', aiHint: 'right angle', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+            { name: 'Cornière d\'angle intérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-interieur.png', aiHint: 'internal corner angle', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+            { name: 'U de sol acier galvanisé', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/u-de-sol.png', aiHint: 'galvanized steel U-profile', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+            { name: 'Bavette rejet d\'eau', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bavette-rejet-eau.png', aiHint: 'water drip flashing', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+            { name: 'Sous faitière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/sous-faitiere.png', aiHint: 'under ridge', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+            { name: 'Cornière d\'angle extérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-exterieur.png', aiHint: 'external corner angle', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+            { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/faitiere.png', aiHint: 'ridge cap', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
         ]
     },
     tables: {
