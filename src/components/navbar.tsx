@@ -65,12 +65,7 @@ const iconMap: { [key: string]: React.ElementType } = {
 
 const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string, onItemClick?: () => void, navTextColor: string }) => {
     const { navigation } = companyData;
-    const [openMenu, setOpenMenu] = useState('');
     const pathname = usePathname();
-
-    const handleMenuClick = (menuName: string) => {
-        setOpenMenu(openMenu === menuName ? '' : menuName);
-    };
 
     const isLinkActive = (href: string) => {
       if (href === '/') return pathname === href;
@@ -78,16 +73,15 @@ const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string
     };
     
     return (
-        <NavigationMenu value={openMenu} onValueChange={setOpenMenu}>
+        <NavigationMenu>
             <NavigationMenuList className={cn("flex items-center gap-2", className)}>
                 {navigation.mainMenu.map((item) => {
                     const Icon = iconMap[item.icon];
                     return (
-                        <NavigationMenuItem key={item.name} value={item.name}>
+                        <NavigationMenuItem key={item.name} >
                             {item.children ? (
                                 <>
                                     <NavigationMenuTrigger
-                                        onClick={() => handleMenuClick(item.name)}
                                         className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent", navTextColor)}
                                     >
                                        {Icon && <Icon className="h-5 w-5 mr-2" />}
@@ -104,7 +98,6 @@ const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string
                                                     className="w-[220px]"
                                                     onClick={() => {
                                                         onItemClick?.();
-                                                        setOpenMenu('');
                                                     }}
                                                 >
                                                     {component.description}
@@ -321,5 +314,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    

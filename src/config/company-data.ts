@@ -13,8 +13,13 @@ export const companyData = {
     mainMenu: [
       { 
         "name": "Home", 
-        "href": "#about", 
-        "icon": "Factory",
+        "href": "/", 
+        "icon": "Factory"
+      },
+      {
+        "name": "About",
+        "href": "#about",
+        "icon": "Info",
         "children": [
           { "name": "Notre Histoire", "href": "#about", "description": "Découvrez nos origines et notre parcours.", "icon": "Building2" },
           { "name": "Vision & Mission", "href": "#about", "description": "Nos valeurs et nos ambitions pour l'avenir.", "icon": "Award" },
