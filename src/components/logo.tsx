@@ -10,7 +10,6 @@ export function Logo() {
       y="0px"
       viewBox="0 0 1080 1080"
       className="w-auto h-full"
-      style={{ filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.7))' }}
       xmlSpace="preserve"
     >
       <style type="text/css">
@@ -259,5 +258,3 @@ export function Logo() {
     </svg>
   );
 }
-
-    
