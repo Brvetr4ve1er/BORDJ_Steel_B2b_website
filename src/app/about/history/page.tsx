@@ -49,15 +49,17 @@ const timelineSourceData = [
 const timelineEntries: TimelineEntry[] = timelineSourceData.map(item => ({
     title: item.year,
     content: (
-        <div className="p-6 rounded-lg border bg-card text-card-foreground shadow-sm">
-            <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center z-10 relative border-4 border-background">
-                    {item.icon}
+        <React.Fragment key={item.year}>
+            <div className="p-6 rounded-lg border bg-card text-card-foreground shadow-sm">
+                <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center z-10 relative border-4 border-background">
+                        {item.icon}
+                    </div>
+                    <h4 className="font-headline text-2xl font-bold text-primary">{item.title}</h4>
                 </div>
-                <h4 className="font-headline text-2xl font-bold text-primary">{item.title}</h4>
+                <p className="text-muted-foreground">{item.description}</p>
             </div>
-            <p className="text-muted-foreground">{item.description}</p>
-        </div>
+        </React.Fragment>
     )
 }));
 
