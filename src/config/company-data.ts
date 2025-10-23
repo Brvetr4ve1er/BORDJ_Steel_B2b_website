@@ -21,7 +21,7 @@ export const companyData = {
         "href": "#about",
         "icon": "Info",
         "children": [
-          { "name": "Notre Histoire", "href": "#about", "description": "Découvrez nos origines et notre parcours.", "icon": "Building2" },
+          { "name": "Notre Histoire", "href": "/about/history", "description": "Découvrez nos origines et notre parcours.", "icon": "Building2" },
           { "name": "Vision & Mission", "href": "#about", "description": "Nos valeurs et nos ambitions pour l'avenir.", "icon": "Award" },
           { "name": "Politique RH", "href": "#", "description": "Découvrez notre politique de ressources humaines.", "icon": "User" }
         ]
@@ -237,3 +237,5 @@ export const companyData = {
     whatsapp: "#"
   },
 };
+
+    
