@@ -5,7 +5,7 @@ import { Timeline, type TimelineEntry } from '@/components/timeline';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import { Building, Milestone, Zap } from 'lucide-react';
+import { Building, Milestone, Zap, HardHat, Layers, Star, Award, Calendar } from 'lucide-react';
 import React from 'react';
 
 export const metadata: Metadata = {
@@ -15,33 +15,45 @@ export const metadata: Metadata = {
 
 const timelineSourceData = [
   {
-    year: '2015',
+    year: '2012',
     title: 'Création de Bordj Steel',
-    description: 'Fondation de l\'entreprise avec la mission de fournir des solutions en acier de haute qualité pour l\'industrie moderne.',
+    description: 'Fondation de la SPA BORDJ STEEL dans le cadre de la stratégie de développement du groupe CONDOR pour consolider sa position de leader algérien.',
     icon: <Milestone />,
   },
   {
-    year: '2017',
-    title: 'Lancement de l\'Unité Charpente',
-    description: 'Démarrage de la production de charpentes métalliques, devenant rapidement un pilier de notre offre.',
+    year: '2013',
+    title: 'Début de la Construction',
+    description: 'En juin 2013, les travaux de construction de l\'unité de charpente métallique débutent, marquant le commencement de notre complexe industriel.',
+    icon: <HardHat />,
+  },
+  {
+    year: '2014',
+    title: 'Démarrage de la Production',
+    description: 'Juillet 2014 voit le démarrage de la production de l\'unité de charpente métallique, suivi en juin par le début des travaux de l\'unité de panneaux sandwichs.',
     icon: <Building />,
   },
   {
-    year: '2019',
-    title: 'Expansion & Diversification',
-    description: 'Inauguration des unités de panneaux sandwichs et de galvanisation à chaud, élargissant notre gamme de produits.',
+    year: '2015',
+    title: 'Expansion des Capacités',
+    description: 'Septembre 2015 est un mois charnière avec le démarrage de la production de l\'unité de panneaux sandwichs et le lancement des travaux de l\'unité de galvanisation à chaud.',
     icon: <Zap />,
   },
   {
-    year: '2021',
-    title: 'Reconnaissance Nationale',
-    description: 'Bordj Steel devient un acteur respecté et fiable, accompagnant des projets majeurs à travers l\'Algérie.',
-    icon: <Building />,
+    year: '2016',
+    title: 'Inauguration et Finalisation',
+    description: 'La production de l\'unité de galvanisation démarre en Octobre. En Décembre, le complexe est officiellement inauguré par le ministre de l’intérieur, M. BADOUI Nouredinne.',
+    icon: <Star />,
+  },
+  {
+    year: '2019',
+    title: 'Certification Qualité',
+    description: 'Obtention de la prestigieuse certification ISO 9001 Version 2015, une reconnaissance de notre engagement envers la qualité.',
+    icon: <Award />,
   },
   {
     year: 'Aujourd\'hui',
-    title: 'Leader de l\'Industrie',
-    description: 'Nous continuons d\'innover et de fournir des solutions durables pour les usines, projets agricoles et promoteurs industriels.',
+    title: 'Leader Engagé',
+    description: 'Nous continuons d\'innover et de fournir des solutions durables, guidés par notre système de Management Intégré QSE (ISO 9001, 14001 & 45001).',
     icon: <Milestone />,
   },
 ];
