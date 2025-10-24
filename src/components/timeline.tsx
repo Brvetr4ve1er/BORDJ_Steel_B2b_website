@@ -2,7 +2,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 export interface TimelineEntry {
@@ -12,6 +12,26 @@ export interface TimelineEntry {
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const ref = React.useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    // This function will run only on the client side, after the component mounts
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    // Set initial width
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+    
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start center", "end center"],
@@ -22,6 +42,25 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const cardHeight = 250; // Estimated height of each card section
   const totalHeight = data.length * cardHeight;
 
+  const getPath = (currentWidth: number) => {
+    if (currentWidth === 0) return "";
+    return `M ${currentWidth / 2} 0 ${data
+            .map((_, i) => {
+              const y = i * cardHeight + cardHeight / 2;
+              const x = i % 2 === 0 ? "25%" : "75%";
+              const nextY = (i + 1) * cardHeight + cardHeight / 2;
+              const nextX = (i + 1) % 2 === 0 ? "25%" : "75%";
+              if (i < data.length - 1) {
+                return `L ${x} ${y} L ${nextX} ${nextY}`;
+              }
+              return `L ${x} ${y}`;
+            })
+            .join(" ")}`;
+  };
+
+  const path = getPath(width);
+
+
   return (
     <div ref={ref} className="relative container mx-auto px-4 py-20">
       <svg
@@ -30,35 +69,13 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         height={totalHeight}
       >
         <motion.path
-          d={`M ${window.innerWidth / 2} 0 ${data
-            .map((_, i) => {
-              const y = i * cardHeight + cardHeight / 2;
-              const x = i % 2 === 0 ? "25%" : "75%";
-              const nextY = (i + 1) * cardHeight + cardHeight / 2;
-              const nextX = (i + 1) % 2 === 0 ? "25%" : "75%";
-              if (i < data.length - 1) {
-                return `L ${x} ${y} L ${nextX} ${nextY}`;
-              }
-              return `L ${x} ${y}`;
-            })
-            .join(" ")}`}
+          d={path}
           fill="none"
           stroke="hsl(var(--border))"
           strokeWidth="2"
         />
         <motion.path
-          d={`M ${window.innerWidth / 2} 0 ${data
-            .map((_, i) => {
-              const y = i * cardHeight + cardHeight / 2;
-              const x = i % 2 === 0 ? "25%" : "75%";
-              const nextY = (i + 1) * cardHeight + cardHeight / 2;
-              const nextX = (i + 1) % 2 === 0 ? "25%" : "75%";
-              if (i < data.length - 1) {
-                return `L ${x} ${y} L ${nextX} ${nextY}`;
-              }
-              return `L ${x} ${y}`;
-            })
-            .join(" ")}`}
+          d={path}
           fill="none"
           stroke="hsl(var(--accent))"
           strokeWidth="2"
