@@ -435,7 +435,22 @@ export const productData = {
     },
     tables: {
         isolation: { title: '', headers: [], rows: [] },
-        dimensionnement: { title: '', headers: [], rows: [] },
+        dimensionnement: { 
+            title: 'PLANCHER COLLABORANT HI-BOND 77', 
+            headers: ['Type', 'Longueur (ml)', 'Largueur standard (mm)', 'Epaisseurs (mm)', 'Poids (kg/m2)', 'Système de revêtement'], 
+            rows: [
+                { 'Type': 'plancher collaborant HI-BOND 77 Galvanisé', 'Longueur (ml)': 15000, 'Largueur standard (mm)': 732, details: [
+                    { 'Epaisseurs (mm)': '0,70', 'Poids (kg/m2)': '9,17', 'Système de revêtement': 'Galvanisée' },
+                    { 'Epaisseurs (mm)': '1,00', 'Poids (kg/m2)': '13,10', 'Système de revêtement': 'Galvanisée' },
+                    { 'Epaisseurs (mm)': '1,50', 'Poids (kg/m2)': '19,66', 'Système de revêtement': 'Galvanisée' },
+                ]},
+                { 'Type': 'plancher collaborant HI-BOND 77 Pré laqué', 'Longueur (ml)': 15000, 'Largueur standard (mm)': 732, details: [
+                    { 'Epaisseurs (mm)': '0,70', 'Poids (kg/m2)': '9,17', 'Système de revêtement': 'pré laqué' },
+                    { 'Epaisseurs (mm)': '1,00', 'Poids (kg/m2)': '13,10', 'Système de revêtement': 'pré laqué' },
+                    { 'Epaisseurs (mm)': '1,50', 'Poids (kg/m2)': '19,66', 'Système de revêtement': 'pré laqué' },
+                ]},
+            ] 
+        },
         chargesPortees: {
             title: 'TABLEAU DES CHARGES SUR LA TÔLE HI-BOND 77 (KN/M²)',
             subtitle: '',
