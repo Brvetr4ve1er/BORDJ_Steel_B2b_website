@@ -29,8 +29,8 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     };
   }, []);
 
-  const cardHeight = 350; 
-  const totalHeight = (data.length + 1) * cardHeight;
+  const cardHeight = 400; 
+  const totalHeight = (data.length) * cardHeight;
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -43,20 +43,25 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     if (currentWidth === 0) return "";
     
     const centerX = currentWidth / 2;
-    const amplitude = currentWidth / 8; // How far the line curves
+    const cardWidth = currentWidth / 2.5;
+    const gap = (currentWidth - (cardWidth * 2)) / 3;
+
+    const leftX = gap + cardWidth / 2;
+    const rightX = gap * 2 + cardWidth + cardWidth / 2;
+
     let path = `M ${centerX} -50`;
 
     data.forEach((_, i) => {
       const y1 = i * cardHeight + cardHeight / 4;
       const y2 = i * cardHeight + (cardHeight * 3) / 4;
-      const x1 = centerX + (i % 2 === 0 ? -amplitude : amplitude);
-      const x2 = centerX + (i % 2 === 0 ? amplitude : -amplitude);
+      const x1 = i % 2 === 0 ? rightX : leftX;
+      const x2 = i % 2 === 0 ? leftX : rightX;
       
       const prevY2 = (i - 1) * cardHeight + (cardHeight * 3) / 4;
-      const prevX2 = centerX + ((i - 1) % 2 === 0 ? amplitude : -amplitude);
+      const prevX2 = (i - 1) % 2 === 0 ? leftX : rightX;
 
       if (i === 0) {
-        path += ` C ${centerX} ${y1 / 2}, ${x1} ${y1 / 2}, ${x1} ${y1}`;
+        path += ` C ${centerX} ${y1/2}, ${x1} ${y1 / 2}, ${x1} ${y1}`;
       } else {
         path += ` C ${prevX2} ${prevY2 + cardHeight / 4}, ${x1} ${y1 - cardHeight / 4}, ${x1} ${y1}`;
       }
@@ -95,38 +100,46 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         {data.map((item, index) => {
           const isOdd = index % 2 !== 0;
           const y = index * cardHeight + cardHeight / 2;
-          const xOffset = width / 4; // 25% of width
+          
+          const cardWidth = width / 2.5;
+          const gap = (width - (cardWidth * 2)) / 3;
 
+          const eventCardLeft = isOdd ? gap * 2 + cardWidth : gap;
+          const dateCardLeft = isOdd ? gap : gap * 2 + cardWidth;
+          
           return (
-            <div
-              key={index}
-              className="absolute"
-              style={{
-                top: `${y - cardHeight/2}px`,
-                left: isOdd ? `${width / 2 + xOffset / 4}px` : `${width / 2 - xOffset * 1.25 - (width/12)}px`,
-                width: `${width / 2.5}px`
-              }}
-            >
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5 }}
-              >
-                {item.content}
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className={cn(
-                  "absolute top-1/2 -translate-y-1/2"
-                )}
+            <React.Fragment key={index}>
+              {/* Event Card */}
+              <div
+                className="absolute"
                 style={{
-                  left: isOdd ? `-${xOffset / 2}px` : `calc(100% + ${xOffset / 4}px)`,
+                  top: `${y - cardHeight/2}px`,
+                  left: `${eventCardLeft}px`,
+                  width: `${cardWidth}px`
                 }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {item.content}
+                </motion.div>
+              </div>
+              
+              {/* Date Card */}
+              <motion.div
+                 initial={{ opacity: 0, scale: 0.5 }}
+                 whileInView={{ opacity: 1, scale: 1 }}
+                 viewport={{ once: true, amount: 0.5 }}
+                 transition={{ duration: 0.5, delay: 0.2 }}
+                 className="absolute top-0"
+                 style={{
+                   top: `${y}px`,
+                   left: `${dateCardLeft + cardWidth / 2}px`,
+                   transform: 'translate(-50%, -50%)',
+                 }}
               >
                 <div className="group relative w-32 h-16">
                   <div className="absolute inset-0 bg-accent rounded-lg transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"></div>
@@ -137,7 +150,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   </div>
                 </div>
               </motion.div>
-            </div>
+            </React.Fragment>
           );
         })}
       </div>
