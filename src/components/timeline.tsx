@@ -17,7 +17,7 @@ interface TimelineProps {
 
 export const Timeline: React.FC<TimelineProps> = ({ events }) => {
   return (
-    <section className="relative w-full max-w-5xl mx-auto p-8">
+    <section className="relative w-full max-w-7xl mx-auto p-8">
       <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-border -translate-x-1/2"></div>
 
       {events.map((event, index) => {
@@ -38,7 +38,7 @@ export const Timeline: React.FC<TimelineProps> = ({ events }) => {
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="p-6 rounded-lg border bg-card text-card-foreground shadow-lg transition-shadow hover:shadow-2xl">
+                <div className="p-6 rounded-lg border bg-card text-card-foreground shadow-lg transition-shadow hover:shadow-2xl h-full">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-16 h-16 rounded-full bg-accent text-accent-foreground flex items-center justify-center flex-shrink-0">
                       {event.icon}
