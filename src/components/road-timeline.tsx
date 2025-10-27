@@ -6,11 +6,27 @@ import type { LucideIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { RunnerIcon } from './icons/runner-icon';
 import { FlagIcon } from './icons/flag-icon';
+import { Building, Milestone, Zap, HardHat, Star, Award, Search, Lightbulb, Cog, Users, BarChart, Target } from 'lucide-react';
+
+const iconMap: { [key: string]: LucideIcon } = {
+  Building,
+  Milestone,
+  Zap,
+  HardHat,
+  Star,
+  Award,
+  Search,
+  Lightbulb,
+  Cog,
+  Users,
+  BarChart,
+  Target
+};
 
 export interface RoadTimelineEvent {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: string;
 }
 
 interface RoadTimelineProps {
@@ -20,7 +36,6 @@ interface RoadTimelineProps {
 export const RoadTimeline: React.FC<RoadTimelineProps> = ({ events }) => {
   const roadWidth = 100;
   const segmentHeight = 250;
-  const curveRadius = 100;
   const totalHeight = (events.length + 1.5) * segmentHeight;
 
   const path = [
@@ -49,8 +64,7 @@ export const RoadTimeline: React.FC<RoadTimelineProps> = ({ events }) => {
   });
 
   const finalPath = path.join(' ');
-  const totalLength = 10000; // A large number to ensure animation completes
-
+  
   return (
     <div className="relative w-full max-w-5xl mx-auto" style={{ height: totalHeight }}>
       {/* Start */}
@@ -97,12 +111,11 @@ export const RoadTimeline: React.FC<RoadTimelineProps> = ({ events }) => {
       {events.map((event, index) => {
         const y = (index + 1) * segmentHeight;
         const isLeft = index % 2 !== 0;
-        const Icon = event.icon;
+        const Icon = iconMap[event.icon];
 
         const iconX = isLeft ? -roadWidth * 1.5 : roadWidth * 2.5;
-        const textX = isLeft ? '0%' : '100%';
-        const textAlign = isLeft ? 'left' : 'right';
         const textContainerX = isLeft ? `calc(50% + ${roadWidth * 1.5}px + 60px)` : `calc(50% - ${roadWidth * 2}px - 60px)`;
+        const textAlign = isLeft ? 'left' : 'right';
         
         return (
           <React.Fragment key={index}>
@@ -114,7 +127,7 @@ export const RoadTimeline: React.FC<RoadTimelineProps> = ({ events }) => {
               transition={{ delay: 0.5 + index * 0.5 }}
             >
               <div className="w-24 h-24 rounded-full bg-yellow-400 flex items-center justify-center border-4 border-black shadow-lg">
-                <Icon className="w-12 h-12 text-black" />
+                {Icon && <Icon className="w-12 h-12 text-black" />}
               </div>
             </motion.div>
             <motion.div

@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import { Building, Milestone, Zap, HardHat, Star, Award, Search, Lightbulb, Cog, Users, BarChart, Target } from 'lucide-react';
 import React from 'react';
 import { RoadTimeline, type RoadTimelineEvent } from '@/components/road-timeline';
 
@@ -17,32 +16,32 @@ const timelineEvents: RoadTimelineEvent[] = [
   {
     title: 'Création de Bordj Steel',
     description: 'Fondation de la SPA BORDJ STEEL dans le cadre de la stratégie de développement du groupe CONDOR.',
-    icon: Lightbulb,
+    icon: 'Lightbulb',
   },
   {
     title: 'Début de la Construction',
     description: 'En juin 2013, les travaux de construction de l\'unité de charpente métallique débutent.',
-    icon: Search,
+    icon: 'Search',
   },
   {
     title: 'Démarrage de la Production',
     description: 'Juillet 2014 voit le démarrage de la production de l\'unité de charpente métallique.',
-    icon: Cog,
+    icon: 'Cog',
   },
   {
     title: 'Expansion des Capacités',
     description: 'Septembre 2015 est un mois charnière avec le démarrage de la production de panneaux sandwichs.',
-    icon: Users,
+    icon: 'Users',
   },
   {
     title: 'Inauguration et Finalisation',
     description: 'En Décembre 2016, le complexe est officiellement inauguré par le ministre de l’intérieur.',
-    icon: BarChart,
+    icon: 'BarChart',
   },
   {
     title: 'Certification Qualité',
     description: 'Obtention de la prestigieuse certification ISO 9001 Version 2015.',
-    icon: Target,
+    icon: 'Target',
   },
 ];
 
