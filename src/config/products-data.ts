@@ -439,15 +439,15 @@ export const productData = {
             title: 'PLANCHER COLLABORANT HI-BOND 77', 
             headers: ['Type', 'Longueur (ml)', 'Largueur standard (mm)', 'Epaisseurs (mm)', 'Poids (kg/m2)', 'Système de revêtement'], 
             rows: [
-                { 'Type': 'plancher polystyrène extrudé défibré 7', 'Longueur (ml)': 1500, 'Largueur standard (mm)': 732, details: [
-                    { 'Epaisseurs (mm)': '0.70', 'Poids (kg/m2)': '9.17', 'Système de revêtement': 'Galvanisée' },
-                    { 'Epaisseurs (mm)': '1.00', 'Poids (kg/m2)': '13.10', 'Système de revêtement': 'Galvanisée' },
-                    { 'Epaisseurs (mm)': '1.50', 'Poids (kg/m2)': '19.66', 'Système de revêtement': 'Galvanisée' },
+                { 'Type': 'planche polystyrène extrudé défibré 7', 'Longueur (ml)': 1500, 'Largueur standard (mm)': 732, details: [
+                    { 'Epaisseurs (mm)': '0.70', 'Poids (kg/m2)': '9.17', 'Système de revêtement': 'fafeuillée' },
+                    { 'Epaisseurs (mm)': '1.00', 'Poids (kg/m2)': '13.10', 'Système de revêtement': 'fafeuillée' },
+                    { 'Epaisseurs (mm)': '1.50', 'Poids (kg/m2)': '19.66', 'Système de revêtement': 'fafeuillée' },
                 ]},
-                { 'Type': 'plancher polystyrène extrudé défibré 7?', 'Longueur (ml)': 1500, 'Largueur standard (mm)': 732, details: [
-                    { 'Epaisseurs (mm)': '0.70', 'Poids (kg/m2)': '9.17', 'Système de revêtement': 'Pré laqué' },
-                    { 'Epaisseurs (mm)': '1.00', 'Poids (kg/m2)': '13.10', 'Système de revêtement': 'Pré laqué' },
-                    { 'Epaisseurs (mm)': '1.50', 'Poids (kg/m2)': '19.66', 'Système de revêtement': 'Pré laqué' },
+                { 'Type': 'planche polystyrène extrudé défibré 7?', 'Longueur (ml)': 1500, 'Largueur standard (mm)': 732, details: [
+                    { 'Epaisseurs (mm)': '0.70', 'Poids (kg/m2)': '9.17', 'Système de revêtement': 'pré tourné' },
+                    { 'Epaisseurs (mm)': '1.00', 'Poids (kg/m2)': '13.10', 'Système de revêtement': 'pré tourné' },
+                    { 'Epaisseurs (mm)': '1.50', 'Poids (kg/m2)': '19.66', 'Système de revêtement': 'pré tourné' },
                 ]},
             ] 
         },
@@ -487,6 +487,8 @@ export const productData = {
     },
   }
 };
+
+    
 
     
 
