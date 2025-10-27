@@ -1,4 +1,5 @@
 
+
 export const productData = {
   couverture: {
     title: '1-PANNEAUX SANDWICHS DE COUVERTURE',
@@ -411,7 +412,11 @@ export const productData = {
     ],
     features: {
         utilisation: [],
-        avantages: [],
+        avantages: [
+            'Rapidité de pose.',
+            'Participe à la structure de la dalle béton.',
+            'Idéal en construction et rénovation.',
+        ],
         application: 'Coffrage et armature de dalles béton',
         definition: { acier: '', parementExterne: {profil: '', description: '', epaisseur: ''}, parementInterne: {profil: '', epaisseur: ''}},
         revetement: '',
@@ -489,5 +494,7 @@ export const productData = {
     },
   }
 };
+
+    
 
     
