@@ -2,7 +2,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export interface TimelineEntry {
@@ -11,22 +11,19 @@ export interface TimelineEntry {
 }
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
-  const ref = React.useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    // This function will run only on the client side, after the component mounts
     const handleResize = () => {
-      setWidth(window.innerWidth);
+      if (ref.current) {
+        setWidth(ref.current.offsetWidth);
+      }
     };
 
-    // Set initial width
     handleResize();
-
-    // Add event listener for window resize
     window.addEventListener('resize', handleResize);
     
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -37,25 +34,44 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     offset: ["start center", "end center"],
   });
 
-  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
-  const cardHeight = 250; // Estimated height of each card section
+  const cardHeight = 350; 
   const totalHeight = data.length * cardHeight;
 
   const getPath = (currentWidth: number) => {
     if (currentWidth === 0) return "";
-    return `M ${currentWidth / 2} 0 ${data
-            .map((_, i) => {
-              const y = i * cardHeight + cardHeight / 2;
-              const x = i % 2 === 0 ? "25%" : "75%";
-              const nextY = (i + 1) * cardHeight + cardHeight / 2;
-              const nextX = (i + 1) % 2 === 0 ? "25%" : "75%";
-              if (i < data.length - 1) {
-                return `L ${x} ${y} L ${nextX} ${nextY}`;
-              }
-              return `L ${x} ${y}`;
-            })
-            .join(" ")}`;
+    const cardWidth = currentWidth * (5/12);
+    const dateWidth = 128; // w-32
+    
+    const startX = currentWidth / 2;
+    const startY = -50;
+
+    let path = `M ${startX} ${startY}`;
+
+    data.forEach((_, i) => {
+        const cardY = i * cardHeight + cardHeight / 2;
+        const isOdd = i % 2 !== 0;
+
+        const cardX = isOdd ? currentWidth - cardWidth / 2 : cardWidth / 2;
+        const dateX = isOdd ? (currentWidth / 4) : (currentWidth * 3 / 4);
+
+        if (i === 0) {
+            path += ` L ${dateX} ${cardY}`;
+            path += ` L ${cardX} ${cardY}`;
+        } else {
+            const prevCardY = (i - 1) * cardHeight + cardHeight / 2;
+            const wasOdd = (i - 1) % 2 !== 0;
+            const prevDateX = wasOdd ? (currentWidth / 4) : (currentWidth * 3 / 4);
+            
+            path += ` L ${prevDateX} ${prevCardY}`;
+            path += ` L ${prevDateX} ${cardY}`;
+            path += ` L ${dateX} ${cardY}`;
+            path += ` L ${cardX} ${cardY}`;
+        }
+    });
+
+    return path;
   };
 
   const path = getPath(width);
@@ -94,14 +110,14 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.5 }}
               className={cn(
-                "relative flex items-center h-[250px]",
-                isOdd ? "justify-end" : "justify-start"
+                "relative flex items-center h-[280px]", // Adjusted height
+                isOdd ? "justify-start" : "justify-end"
               )}
             >
               <div
                 className={cn(
                   "w-full md:w-5/12",
-                  isOdd ? "md:order-first md:pr-8" : "md:order-last md:pl-8"
+                  isOdd ? "md:order-last md:pl-8" : "md:order-first md:pr-8"
                 )}
               >
                 {item.content}
@@ -110,7 +126,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               <div
                 className={cn(
                   "absolute top-1/2 -translate-y-1/2",
-                  isOdd ? "left-1/4 -translate-x-1/2" : "left-3/4 -translate-x-1/2"
+                  isOdd ? "left-3/4 -translate-x-1/2" : "left-1/4 -translate-x-1/2"
                 )}
               >
                 <div
