@@ -51,7 +51,7 @@ const timelineEvents: TimelineEvent[] = [
     icon: <Award className="w-8 h-8" />,
   },
   {
-    year: 'Aujourd\'hui',
+    year: '2025',
     title: 'Leader Engagé',
     description: 'Nous continuons d\'innover et de fournir des solutions durables, guidés par notre système de Management Intégré QSE (ISO 9001, 14001 & 45001).',
     icon: <Milestone className="w-8 h-8" />,
