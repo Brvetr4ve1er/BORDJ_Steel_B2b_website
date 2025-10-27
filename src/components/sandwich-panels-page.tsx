@@ -175,7 +175,7 @@ export function SandwichPanelsPage() {
                       <h2 className="font-headline text-5xl font-bold text-accent mb-16">{activeProduct.title}</h2>
                       <Card className="border-none shadow-none p-0">
                           <CardContent className="p-0">
-                            <ScrollArea className="h-[1200px] pr-6">
+                              
                                 <SectionTitle>CARACTÉRISTIQUE PRODUIT</SectionTitle>
                                 <div className="space-y-12 text-lg">
                                     {activeProduct.features.application && activeProduct.features.application.length > 0 &&
@@ -394,7 +394,6 @@ export function SandwichPanelsPage() {
                                     </div>
                                 </section>
                                 }
-                              </ScrollArea>
                           </CardContent>
                       </Card>
                   </div>
