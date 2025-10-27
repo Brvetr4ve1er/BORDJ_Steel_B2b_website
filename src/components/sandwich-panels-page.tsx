@@ -364,63 +364,7 @@ export function SandwichPanelsPage() {
                                   )}
                               </section>
                             
-                              {activeProduct.features.caracteristiquesGeometriques && (
-                                  <section className="mt-24">
-                                      <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 items-start">
-                                          <div>
-                                              <SubSectionTitle>{activeProduct.features.caracteristiquesGeometriques.title}</SubSectionTitle>
-                                              <Image 
-                                                  src={activeProduct.features.caracteristiquesGeometriques.image.src}
-                                                  alt={activeProduct.features.caracteristiquesGeometriques.title}
-                                                  width={800}
-                                                  height={400}
-                                                  className="w-full object-contain"
-                                                  data-ai-hint={activeProduct.features.caracteristiquesGeometriques.image.aiHint}
-                                                  placeholder="blur"
-                                                  blurDataURL={activeProduct.features.caracteristiquesGeometriques.image.blurDataURL}
-                                              />
-                                          </div>
-                                          <div>
-                                              {activeProduct.tables.chargesPortees && activeProduct.tables.chargesPortees.rows && activeProduct.tables.chargesPortees.rows.length > 0 && activeProduct.tables.chargesPortees.subheaders && (
-                                                  <div className="mb-16 mt-10">
-                                                      <SubSectionTitle>{activeProduct.tables.chargesPortees.title}</SubSectionTitle>
-                                                      {activeProduct.tables.chargesPortees.subtitle && <p className="text-muted-foreground mb-4">{activeProduct.tables.chargesPortees.subtitle}</p>}
-                                                      <Table>
-                                                          <TableHeader>
-                                                              <TableRow className="bg-accent/10">
-                                                                  {activeProduct.tables.chargesPortees.headers.map((h, i) => (
-                                                                      <TableHead key={i} colSpan={h.colspan} className="text-accent font-bold text-center">{h.title}</TableHead>
-                                                                  ))}
-                                                              </TableRow>
-                                                              {activeProduct.tables.chargesPortees.subheaders && activeProduct.tables.chargesPortees.subheaders.length > 0 && (
-                                                                  <TableRow className="bg-accent/10">
-                                                                      {activeProduct.tables.chargesPortees.subheaders.map((sh, i) => (
-                                                                          <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
-                                                                      ))}
-                                                                  </TableRow>
-                                                              )}
-                                                          </TableHeader>
-                                                          <TableBody>
-                                                              {(activeProduct.tables.chargesPortees.rows as any[]).map((row: any, i: number) => {
-                                                                  const subheaders = activeProduct.tables.chargesPortees.subheaders || [];
-                                                                  return (
-                                                                      <TableRow key={i}>
-                                                                          {subheaders.map((key, j) => (
-                                                                              <TableCell key={j} className="text-center">
-                                                                                  {row[key] ?? ''}
-                                                                              </TableCell>
-                                                                          ))}
-                                                                      </TableRow>
-                                                                  );
-                                                              })}
-                                                          </TableBody>
-                                                      </Table>
-                                                  </div>
-                                              )}
-                                          </div>
-                                      </div>
-                                  </section>
-                              )}
+                              
 
                               {activeProduct.pose?.decoupage && 
                               <section className="mt-24">
