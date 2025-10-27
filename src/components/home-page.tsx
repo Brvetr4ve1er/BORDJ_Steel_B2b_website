@@ -1,5 +1,4 @@
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
 import { Hero } from '@/components/hero';
 import dynamic from 'next/dynamic';
 
@@ -9,6 +8,7 @@ const Portfolio = dynamic(() => import('@/components/portfolio').then(mod => mod
 const Certifications = dynamic(() => import('@/components/certifications').then(mod => mod.Certifications));
 const Clients = dynamic(() => import('@/components/clients').then(mod => mod.Clients));
 const Contact = dynamic(() => import('@/components/contact').then(mod => mod.Contact));
+const Footer = dynamic(() => import('@/components/footer').then(mod => mod.Footer));
 
 export function HomePage() {
   return (

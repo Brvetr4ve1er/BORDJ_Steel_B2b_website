@@ -5,20 +5,19 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Building, Factory, HardHat, CheckCircle, ShieldCheck, Zap, Award, BookCopy, TowerControl, Car, Tractor, Layers, Cog } from 'lucide-react';
+import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, BookCopy, TowerControl, Car, Tractor, Layers, Cog } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import React, { useState } from 'react';
 import images from '@/app/lib/placeholder-images.json';
-import { cn } from '@/lib/utils';
 import { AnimatedNumber } from './animated-number';
 import { DownloadButton } from './ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
-import { HoverImageGallery } from './ui/hover-image-gallery';
 
 const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
 const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
+const HoverImageGallery = dynamic(() => import('./ui/hover-image-gallery').then(mod => mod.HoverImageGallery));
 
 
 const applications = [
@@ -332,9 +331,3 @@ export function CharpenteMetalliquePageContent() {
     </div>
   );
 }
-
-    
-
-    
-
-    

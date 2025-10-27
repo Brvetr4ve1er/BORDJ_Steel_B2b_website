@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface HoverImageGalleryProps {
   images: string[];
@@ -99,6 +100,17 @@ export function HoverImageGallery({ images }: HoverImageGalleryProps) {
             </div>
           </div>
         )}
+      </div>
+      <div className="flex justify-center mt-4 space-x-2">
+        {images.map((_, index) => (
+          <div
+            key={index}
+            className={cn(
+              "w-2 h-2 rounded-full transition-all duration-300",
+              index === currentImageIndex ? "bg-accent scale-125" : "bg-muted"
+            )}
+          />
+        ))}
       </div>
     </div>
   );
