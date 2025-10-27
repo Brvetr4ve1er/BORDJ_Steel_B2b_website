@@ -413,10 +413,9 @@ export const productData = {
     features: {
         utilisation: [],
         avantages: [
-            'Les avantages de l’utilisation',
-            '• Rapidité de pose.',
-            '• Participe à la structure de la dalle béton.',
-            '• Idéal en construction et rénovation.',
+            'Rapidité de pose.',
+            'Participe à la structure de la dalle béton.',
+            'Idéal en construction et rénovation.',
         ],
         application: 'Coffrage et armature de dalles béton',
         definition: { acier: '', parementExterne: {profil: '', description: '', epaisseur: ''}, parementInterne: {profil: '', epaisseur: ''}},
@@ -440,15 +439,15 @@ export const productData = {
             title: 'PLANCHER COLLABORANT HI-BOND 77', 
             headers: ['Type', 'Longueur (ml)', 'Largueur standard (mm)', 'Epaisseurs (mm)', 'Poids (kg/m2)', 'Système de revêtement'], 
             rows: [
-                { 'Type': 'plancher collaborant HI-BOND 77 Galvanisé', 'Longueur (ml)': 15000, 'Largueur standard (mm)': 732, details: [
-                    { 'Epaisseurs (mm)': '0,70', 'Poids (kg/m2)': '9,17', 'Système de revêtement': 'Galvanisée' },
-                    { 'Epaisseurs (mm)': '1,00', 'Poids (kg/m2)': '13,10', 'Système de revêtement': 'Galvanisée' },
-                    { 'Epaisseurs (mm)': '1,50', 'Poids (kg/m2)': '19,66', 'Système de revêtement': 'Galvanisée' },
+                { 'Type': 'plancher polystyrène extrudé défibré 7', 'Longueur (ml)': 1500, 'Largueur standard (mm)': 732, details: [
+                    { 'Epaisseurs (mm)': '0.70', 'Poids (kg/m2)': '9.17', 'Système de revêtement': 'Galvanisée' },
+                    { 'Epaisseurs (mm)': '1.00', 'Poids (kg/m2)': '13.10', 'Système de revêtement': 'Galvanisée' },
+                    { 'Epaisseurs (mm)': '1.50', 'Poids (kg/m2)': '19.66', 'Système de revêtement': 'Galvanisée' },
                 ]},
-                { 'Type': 'plancher collaborant HI-BOND 77 Pré laqué', 'Longueur (ml)': 15000, 'Largueur standard (mm)': 732, details: [
-                    { 'Epaisseurs (mm)': '0,70', 'Poids (kg/m2)': '9,17', 'Système de revêtement': 'pré laqué' },
-                    { 'Epaisseurs (mm)': '1,00', 'Poids (kg/m2)': '13,10', 'Système de revêtement': 'pré laqué' },
-                    { 'Epaisseurs (mm)': '1,50', 'Poids (kg/m2)': '19,66', 'Système de revêtement': 'pré laqué' },
+                { 'Type': 'plancher polystyrène extrudé défibré 7?', 'Longueur (ml)': 1500, 'Largueur standard (mm)': 732, details: [
+                    { 'Epaisseurs (mm)': '0.70', 'Poids (kg/m2)': '9.17', 'Système de revêtement': 'Pré laqué' },
+                    { 'Epaisseurs (mm)': '1.00', 'Poids (kg/m2)': '13.10', 'Système de revêtement': 'Pré laqué' },
+                    { 'Epaisseurs (mm)': '1.50', 'Poids (kg/m2)': '19.66', 'Système de revêtement': 'Pré laqué' },
                 ]},
             ] 
         },
