@@ -249,28 +249,6 @@ export function SandwichPanelsPage() {
                                         <SubSectionTitle>{activeProduct.features.miseEnOeuvre.title}</SubSectionTitle>
                                         <p>{activeProduct.features.miseEnOeuvre.manutention}</p>
                                     </div>}
-                                    
-                                    {activeProduct.features.finitions && activeProduct.features.finitions.length > 0 && (
-                                        <div>
-                                            <SubSectionTitle>Pièces de Finitions</SubSectionTitle>
-                                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                                                {activeProduct.features.finitions.map((finition, index) => (
-                                                    <div key={index} className="text-center">
-                                                        <Image 
-                                                            src={finition.image.src} 
-                                                            alt={finition.name} 
-                                                            width={150} 
-                                                            height={100}
-                                                            className="mx-auto"
-                                                            data-ai-hint={finition.image.aiHint}
-                                                        />
-                                                        <p className="font-semibold mt-2">{finition.name}</p>
-                                                        <p className="text-sm text-muted-foreground">{finition.length}</p>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
                                 </div>
 
                                 <section className="mt-24">
