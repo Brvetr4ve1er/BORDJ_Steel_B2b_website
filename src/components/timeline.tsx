@@ -29,6 +29,9 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     };
   }, []);
 
+  const cardHeight = 350; 
+  const totalHeight = (data.length + 1) * cardHeight;
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start center", "end center"],
@@ -36,63 +39,41 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
-  const cardHeight = 350; 
-  const totalHeight = (data.length + 1) * cardHeight;
-
   const getPath = (currentWidth: number) => {
     if (currentWidth === 0) return "";
     
-    const cardWidth = currentWidth > 768 ? currentWidth * (5 / 12) : currentWidth;
-    const dateWidth = 128; // w-32
-    
-    const startX = currentWidth / 2;
-    const startY = -50;
-
-    let path = `M ${startX} ${startY}`;
+    const centerX = currentWidth / 2;
+    const amplitude = currentWidth / 8; // How far the line curves
+    let path = `M ${centerX} -50`;
 
     data.forEach((_, i) => {
-      const cardY = i * cardHeight + cardHeight / 2;
-      const isOdd = i % 2 !== 0;
-
-      const dateX = currentWidth / 2;
-      const cardX = currentWidth > 768 
-        ? (isOdd ? currentWidth - cardWidth / 2 : cardWidth / 2) 
-        : currentWidth / 2;
+      const y1 = i * cardHeight + cardHeight / 4;
+      const y2 = i * cardHeight + (cardHeight * 3) / 4;
+      const x1 = centerX + (i % 2 === 0 ? -amplitude : amplitude);
+      const x2 = centerX + (i % 2 === 0 ? amplitude : -amplitude);
       
-      const dateCardOffset = dateWidth / 2 + 16;
-      const finalDateX = currentWidth > 768 
-        ? (isOdd ? dateX - dateCardOffset : dateX + dateCardOffset)
-        : dateX;
+      const prevY2 = (i - 1) * cardHeight + (cardHeight * 3) / 4;
+      const prevX2 = centerX + ((i - 1) % 2 === 0 ? amplitude : -amplitude);
 
-      const controlPointY = cardY - cardHeight / 4;
-      const prevCardY = (i-1) * cardHeight + cardHeight/2;
-
-      if(i > 0) {
-        const wasOdd = (i - 1) % 2 !== 0;
-        const prevDateCardOffset = dateWidth / 2 + 16;
-        const prevFinalDateX = currentWidth > 768 
-          ? (wasOdd ? dateX - prevDateCardOffset : dateX + prevDateCardOffset)
-          : dateX;
-        
-        path += ` L ${prevFinalDateX} ${prevCardY}`;
+      if (i === 0) {
+        path += ` C ${centerX} ${y1 / 2}, ${x1} ${y1 / 2}, ${x1} ${y1}`;
+      } else {
+        path += ` C ${prevX2} ${prevY2 + cardHeight / 4}, ${x1} ${y1 - cardHeight / 4}, ${x1} ${y1}`;
       }
-
-      path += ` L ${finalDateX} ${cardY}`;
-      path += ` L ${cardX} ${cardY}`;
+      path += ` S ${x1} ${y2}, ${x2} ${y2}`;
     });
 
     return path;
   };
-
+  
   const path = getPath(width);
 
-
   return (
-    <div ref={ref} className="relative container mx-auto px-4 py-20">
+    <div ref={ref} style={{ height: totalHeight }} className="relative container mx-auto px-4 py-20">
       <svg
         className="absolute left-0 top-0 w-full h-full"
         width="100%"
-        height={totalHeight}
+        height="100%"
       >
         <motion.path
           d={path}
@@ -105,52 +86,58 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           fill="none"
           stroke="hsl(var(--accent))"
           strokeWidth="2"
+          strokeDasharray="4 4"
           style={{ pathLength }}
         />
       </svg>
 
-      <div className="relative z-10 flex flex-col gap-12">
+      <div className="relative z-10 w-full h-full">
         {data.map((item, index) => {
           const isOdd = index % 2 !== 0;
+          const y = index * cardHeight + cardHeight / 2;
+          const xOffset = width / 4; // 25% of width
+
           return (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, x: isOdd ? 50 : -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.5 }}
-              className={cn(
-                "relative flex items-center h-[280px]", // Adjusted height
-                isOdd ? "justify-end" : "justify-start"
-              )}
+              className="absolute"
+              style={{
+                top: `${y - cardHeight/2}px`,
+                left: isOdd ? `${width / 2 + xOffset / 4}px` : `${width / 2 - xOffset * 1.25 - (width/12)}px`,
+                width: `${width / 2.5}px`
+              }}
             >
-              <div
-                className={cn(
-                  "w-full md:w-5/12",
-                  isOdd ? "md:order-last md:pl-8" : "md:order-first md:pr-8"
-                )}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
               >
                 {item.content}
-              </div>
-
-              <div
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
                 className={cn(
-                  "absolute top-1/2 -translate-y-1/2",
-                   isOdd ? "left-1/4 -translate-x-1/2" : "right-1/4 translate-x-1/2"
+                  "absolute top-1/2 -translate-y-1/2"
                 )}
+                style={{
+                  left: isOdd ? `-${xOffset / 2}px` : `calc(100% + ${xOffset / 4}px)`,
+                }}
               >
-                <div
-                  className="group relative w-32 h-16"
-                >
-                    <div className="absolute inset-0 bg-accent rounded-lg transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"></div>
-                    <div className="relative w-full h-full flex items-center justify-center bg-background border-2 border-accent rounded-lg shadow-lg">
-                        <p className="font-headline font-bold text-accent text-xl">
-                            {item.title}
-                        </p>
-                    </div>
+                <div className="group relative w-32 h-16">
+                  <div className="absolute inset-0 bg-accent rounded-lg transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"></div>
+                  <div className="relative w-full h-full flex items-center justify-center bg-background border-2 border-accent rounded-lg shadow-lg">
+                    <p className="font-headline font-bold text-accent text-xl">
+                      {item.title}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           );
         })}
       </div>

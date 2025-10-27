@@ -18,43 +18,43 @@ const timelineSourceData = [
     year: '2012',
     title: 'Création de Bordj Steel',
     description: 'Fondation de la SPA BORDJ STEEL dans le cadre de la stratégie de développement du groupe CONDOR pour consolider sa position de leader algérien.',
-    icon: <Milestone className="w-12 h-12" />,
+    icon: <Milestone className="w-8 h-8" />,
   },
   {
     year: '2013',
     title: 'Début de la Construction',
     description: 'En juin 2013, les travaux de construction de l\'unité de charpente métallique débutent, marquant le commencement de notre complexe industriel.',
-    icon: <HardHat className="w-12 h-12" />,
+    icon: <HardHat className="w-8 h-8" />,
   },
   {
     year: '2014',
     title: 'Démarrage de la Production',
     description: 'Juillet 2014 voit le démarrage de la production de l\'unité de charpente métallique, suivi en juin par le début des travaux de l\'unité de panneaux sandwichs.',
-    icon: <Building className="w-12 h-12" />,
+    icon: <Building className="w-8 h-8" />,
   },
   {
     year: '2015',
     title: 'Expansion des Capacités',
     description: 'Septembre 2015 est un mois charnière avec le démarrage de la production de l\'unité de panneaux sandwichs et le lancement des travaux de l\'unité de galvanisation à chaud.',
-    icon: <Zap className="w-12 h-12" />,
+    icon: <Zap className="w-8 h-8" />,
   },
   {
     year: '2016',
     title: 'Inauguration et Finalisation',
     description: 'La production de l\'unité de galvanisation démarre en Octobre. En Décembre, le complexe est officiellement inauguré par le ministre de l’intérieur, M. BADOUI Nouredinne.',
-    icon: <Star className="w-12 h-12" />,
+    icon: <Star className="w-8 h-8" />,
   },
   {
     year: '2019',
     title: 'Certification Qualité',
     description: 'Obtention de la prestigieuse certification ISO 9001 Version 2015, une reconnaissance de notre engagement envers la qualité.',
-    icon: <Award className="w-12 h-12" />,
+    icon: <Award className="w-8 h-8" />,
   },
   {
     year: 'Aujourd\'hui',
     title: 'Leader Engagé',
     description: 'Nous continuons d\'innover et de fournir des solutions durables, guidés par notre système de Management Intégré QSE (ISO 9001, 14001 & 45001).',
-    icon: <Milestone className="w-12 h-12" />,
+    icon: <Milestone className="w-8 h-8" />,
   },
 ];
 
@@ -63,7 +63,7 @@ const timelineEntries: TimelineEntry[] = timelineSourceData.map(item => ({
     content: (
         <div key={item.year} className="p-6 rounded-lg border bg-card text-card-foreground shadow-sm h-full">
             <div className="flex items-center gap-4 mb-4">
-                <div className="w-24 h-24 rounded-full bg-accent text-accent-foreground flex items-center justify-center z-10 relative border-4 border-background">
+                <div className="w-16 h-16 rounded-full bg-accent text-accent-foreground flex items-center justify-center z-10 relative border-4 border-background">
                     {item.icon}
                 </div>
                 <h4 className="font-headline text-2xl font-bold text-primary">{item.title}</h4>
