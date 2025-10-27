@@ -1,11 +1,11 @@
 
 import { companyData } from '@/config/company-data';
 import type { Metadata } from 'next';
-import { Timeline, type TimelineEntry } from '@/components/timeline';
+import { Timeline, type TimelineEvent } from '@/components/timeline';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import { Building, Milestone, Zap, HardHat, Layers, Star, Award, Calendar } from 'lucide-react';
+import { Building, Milestone, Zap, HardHat, Star, Award } from 'lucide-react';
 import React from 'react';
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: 'Découvrez l\'histoire et l\'évolution de Bordj Steel, un leader de la construction métallique en Algérie.',
 };
 
-const timelineSourceData = [
+const timelineEvents: TimelineEvent[] = [
   {
     year: '2012',
     title: 'Création de Bordj Steel',
@@ -58,21 +58,6 @@ const timelineSourceData = [
   },
 ];
 
-const timelineEntries: TimelineEntry[] = timelineSourceData.map(item => ({
-    title: item.year,
-    content: (
-        <div key={item.year} className="p-6 rounded-lg border bg-card text-card-foreground shadow-sm h-full">
-            <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 rounded-full bg-accent text-accent-foreground flex items-center justify-center z-10 relative border-4 border-background">
-                    {item.icon}
-                </div>
-                <h4 className="font-headline text-2xl font-bold text-primary">{item.title}</h4>
-            </div>
-            <p className="text-muted-foreground text-lg">{item.description}</p>
-        </div>
-    )
-}));
-
 
 export default function HistoryPage() {
   const heroImage = {
@@ -104,7 +89,7 @@ export default function HistoryPage() {
           </AnimatedWrapper>
         </div>
       </section>
-      <Timeline data={timelineEntries} />
+      <Timeline events={timelineEvents} />
     </ProductPageLayout>
   );
 }
