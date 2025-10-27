@@ -1,60 +1,48 @@
 
 import { companyData } from '@/config/company-data';
 import type { Metadata } from 'next';
-import { Timeline, type TimelineEvent } from '@/components/timeline';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import { Building, Milestone, Zap, HardHat, Star, Award } from 'lucide-react';
+import { Building, Milestone, Zap, HardHat, Star, Award, Search, Lightbulb, Cog, Users, BarChart, Target } from 'lucide-react';
 import React from 'react';
+import { RoadTimeline, type RoadTimelineEvent } from '@/components/road-timeline';
 
 export const metadata: Metadata = {
   title: `Notre Histoire | ${companyData.siteMetadata.title}`,
   description: 'Découvrez l\'histoire et l\'évolution de Bordj Steel, un leader de la construction métallique en Algérie.',
 };
 
-const timelineEvents: TimelineEvent[] = [
+const timelineEvents: RoadTimelineEvent[] = [
   {
-    year: '2012',
     title: 'Création de Bordj Steel',
-    description: 'Fondation de la SPA BORDJ STEEL dans le cadre de la stratégie de développement du groupe CONDOR pour consolider sa position de leader algérien.',
-    icon: <Milestone className="w-8 h-8" />,
+    description: 'Fondation de la SPA BORDJ STEEL dans le cadre de la stratégie de développement du groupe CONDOR.',
+    icon: Lightbulb,
   },
   {
-    year: '2013',
     title: 'Début de la Construction',
-    description: 'En juin 2013, les travaux de construction de l\'unité de charpente métallique débutent, marquant le commencement de notre complexe industriel.',
-    icon: <HardHat className="w-8 h-8" />,
+    description: 'En juin 2013, les travaux de construction de l\'unité de charpente métallique débutent.',
+    icon: Search,
   },
   {
-    year: '2014',
     title: 'Démarrage de la Production',
-    description: 'Juillet 2014 voit le démarrage de la production de l\'unité de charpente métallique, suivi en juin par le début des travaux de l\'unité de panneaux sandwichs.',
-    icon: <Building className="w-8 h-8" />,
+    description: 'Juillet 2014 voit le démarrage de la production de l\'unité de charpente métallique.',
+    icon: Cog,
   },
   {
-    year: '2015',
     title: 'Expansion des Capacités',
-    description: 'Septembre 2015 est un mois charnière avec le démarrage de la production de l\'unité de panneaux sandwichs et le lancement des travaux de l\'unité de galvanisation à chaud.',
-    icon: <Zap className="w-8 h-8" />,
+    description: 'Septembre 2015 est un mois charnière avec le démarrage de la production de panneaux sandwichs.',
+    icon: Users,
   },
   {
-    year: '2016',
     title: 'Inauguration et Finalisation',
-    description: 'La production de l\'unité de galvanisation démarre en Octobre. En Décembre, le complexe est officiellement inauguré par le ministre de l’intérieur, M. BADOUI Nouredinne.',
-    icon: <Star className="w-8 h-8" />,
+    description: 'En Décembre 2016, le complexe est officiellement inauguré par le ministre de l’intérieur.',
+    icon: BarChart,
   },
   {
-    year: '2019',
     title: 'Certification Qualité',
-    description: 'Obtention de la prestigieuse certification ISO 9001 Version 2015, une reconnaissance de notre engagement envers la qualité.',
-    icon: <Award className="w-8 h-8" />,
-  },
-  {
-    year: '2025',
-    title: 'Leader Engagé',
-    description: 'Nous continuons d\'innover et de fournir des solutions durables, guidés par notre système de Management Intégré QSE (ISO 9001, 14001 & 45001).',
-    icon: <Milestone className="w-8 h-8" />,
+    description: 'Obtention de la prestigieuse certification ISO 9001 Version 2015.',
+    icon: Target,
   },
 ];
 
@@ -89,7 +77,9 @@ export default function HistoryPage() {
           </AnimatedWrapper>
         </div>
       </section>
-      <Timeline events={timelineEvents} />
+      <section className="bg-gray-50 py-20">
+        <RoadTimeline events={timelineEvents} />
+      </section>
     </ProductPageLayout>
   );
 }
