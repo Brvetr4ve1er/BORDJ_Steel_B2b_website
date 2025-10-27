@@ -5,44 +5,21 @@ import { ProductPageLayout } from '@/components/product-page-layout';
 import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import React from 'react';
-import { RoadTimeline, type RoadTimelineEvent } from '@/components/road-timeline';
+import { Timeline, type TimelineEvent } from '@/components/timeline';
 
 export const metadata: Metadata = {
   title: `Notre Histoire | ${companyData.siteMetadata.title}`,
   description: 'Découvrez l\'histoire et l\'évolution de Bordj Steel, un leader de la construction métallique en Algérie.',
 };
 
-const timelineEvents: RoadTimelineEvent[] = [
-  {
-    title: 'Création de Bordj Steel',
-    description: 'Fondation de la SPA BORDJ STEEL dans le cadre de la stratégie de développement du groupe CONDOR.',
-    icon: 'Lightbulb',
-  },
-  {
-    title: 'Début de la Construction',
-    description: 'En juin 2013, les travaux de construction de l\'unité de charpente métallique débutent.',
-    icon: 'Search',
-  },
-  {
-    title: 'Démarrage de la Production',
-    description: 'Juillet 2014 voit le démarrage de la production de l\'unité de charpente métallique.',
-    icon: 'Cog',
-  },
-  {
-    title: 'Expansion des Capacités',
-    description: 'Septembre 2015 est un mois charnière avec le démarrage de la production de panneaux sandwichs.',
-    icon: 'Users',
-  },
-  {
-    title: 'Inauguration et Finalisation',
-    description: 'En Décembre 2016, le complexe est officiellement inauguré par le ministre de l’intérieur.',
-    icon: 'BarChart',
-  },
-  {
-    title: 'Certification Qualité',
-    description: 'Obtention de la prestigieuse certification ISO 9001 Version 2015.',
-    icon: 'Target',
-  },
+const timelineEvents: TimelineEvent[] = [
+    { year: '2012', title: 'Création de Bordj Steel', description: 'Fondation de la SPA BORDJ STEEL dans le cadre de la stratégie de développement du groupe CONDOR.', icon: 'Lightbulb' },
+    { year: '2013', title: 'Début de la Construction', description: 'En juin, les travaux de construction de l\'unité de charpente métallique débutent.', icon: 'HardHat' },
+    { year: '2014', title: 'Démarrage de la Production', description: 'Juillet voit le démarrage de la production de l\'unité de charpente métallique.', icon: 'Cog' },
+    { year: '2015', title: 'Expansion des Capacités', description: 'Septembre est un mois charnière avec le démarrage de la production de panneaux sandwichs.', icon: 'Layers' },
+    { year: '2016', title: 'Inauguration et Finalisation', description: 'En Décembre, le complexe est officiellement inauguré par le ministre de l’intérieur.', icon: 'Building' },
+    { year: '2019', title: 'Certification Qualité', description: 'Obtention de la prestigieuse certification ISO 9001 Version 2015.', icon: 'Award' },
+    { year: '2025', title: 'Leader Engagé', description: 'Nous continuons d\'innover, guidés par notre système de Management Intégré QSE.', icon: 'Star' }
 ];
 
 
@@ -77,7 +54,7 @@ export default function HistoryPage() {
         </div>
       </section>
       <section className="bg-gray-50 py-20">
-        <RoadTimeline events={timelineEvents} />
+        <Timeline events={timelineEvents} />
       </section>
     </ProductPageLayout>
   );
