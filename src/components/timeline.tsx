@@ -37,11 +37,12 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
   const cardHeight = 350; 
-  const totalHeight = data.length * cardHeight;
+  const totalHeight = (data.length + 1) * cardHeight;
 
   const getPath = (currentWidth: number) => {
     if (currentWidth === 0) return "";
-    const cardWidth = currentWidth * (5/12);
+    
+    const cardWidth = currentWidth > 768 ? currentWidth * (5 / 12) : currentWidth;
     const dateWidth = 128; // w-32
     
     const startX = currentWidth / 2;
@@ -50,25 +51,34 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     let path = `M ${startX} ${startY}`;
 
     data.forEach((_, i) => {
-        const cardY = i * cardHeight + cardHeight / 2;
-        const isOdd = i % 2 !== 0;
+      const cardY = i * cardHeight + cardHeight / 2;
+      const isOdd = i % 2 !== 0;
 
-        const cardX = isOdd ? currentWidth - cardWidth / 2 : cardWidth / 2;
-        const dateX = isOdd ? (currentWidth / 4) : (currentWidth * 3 / 4);
+      const dateX = currentWidth / 2;
+      const cardX = currentWidth > 768 
+        ? (isOdd ? currentWidth - cardWidth / 2 : cardWidth / 2) 
+        : currentWidth / 2;
+      
+      const dateCardOffset = dateWidth / 2 + 16;
+      const finalDateX = currentWidth > 768 
+        ? (isOdd ? dateX - dateCardOffset : dateX + dateCardOffset)
+        : dateX;
 
-        if (i === 0) {
-            path += ` L ${dateX} ${cardY}`;
-            path += ` L ${cardX} ${cardY}`;
-        } else {
-            const prevCardY = (i - 1) * cardHeight + cardHeight / 2;
-            const wasOdd = (i - 1) % 2 !== 0;
-            const prevDateX = wasOdd ? (currentWidth / 4) : (currentWidth * 3 / 4);
-            
-            path += ` L ${prevDateX} ${prevCardY}`;
-            path += ` L ${prevDateX} ${cardY}`;
-            path += ` L ${dateX} ${cardY}`;
-            path += ` L ${cardX} ${cardY}`;
-        }
+      const controlPointY = cardY - cardHeight / 4;
+      const prevCardY = (i-1) * cardHeight + cardHeight/2;
+
+      if(i > 0) {
+        const wasOdd = (i - 1) % 2 !== 0;
+        const prevDateCardOffset = dateWidth / 2 + 16;
+        const prevFinalDateX = currentWidth > 768 
+          ? (wasOdd ? dateX - prevDateCardOffset : dateX + prevDateCardOffset)
+          : dateX;
+        
+        path += ` L ${prevFinalDateX} ${prevCardY}`;
+      }
+
+      path += ` L ${finalDateX} ${cardY}`;
+      path += ` L ${cardX} ${cardY}`;
     });
 
     return path;
@@ -111,7 +121,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               transition={{ duration: 0.5 }}
               className={cn(
                 "relative flex items-center h-[280px]", // Adjusted height
-                isOdd ? "justify-start" : "justify-end"
+                isOdd ? "justify-end" : "justify-start"
               )}
             >
               <div
@@ -126,7 +136,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               <div
                 className={cn(
                   "absolute top-1/2 -translate-y-1/2",
-                  isOdd ? "left-3/4 -translate-x-1/2" : "left-1/4 -translate-x-1/2"
+                   isOdd ? "left-1/4 -translate-x-1/2" : "right-1/4 translate-x-1/2"
                 )}
               >
                 <div
