@@ -107,7 +107,7 @@ export function SandwichPanelsPage() {
           blurDataURL={heroImage.blurDataUrl}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10" />
-        <div className="relative z-20 w-full px-8 md:px-12 pb-24 text-left">
+        <div className="relative z-20 w-full px-8 md:px-12 pb-24">
             <AnimatedWrapper animation="zoom-in">
               <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
                 Panneaux Sandwichs
@@ -184,7 +184,7 @@ export function SandwichPanelsPage() {
                                 <CardHeader>
                                     <CardTitle className="text-primary text-3xl font-bold mb-6">CARACTÉRISTIQUE PRODUIT</CardTitle>
                                 </CardHeader>
-                                <CardContent>
+                                <CardContent className="p-0">
                                     {activeProduct.features.application && activeProduct.features.application.length > 0 &&
                                         <div>
                                             <SubSectionTitle>Application conseillée</SubSectionTitle>
@@ -259,7 +259,7 @@ export function SandwichPanelsPage() {
                                 <CardHeader>
                                     <CardTitle className="text-primary text-3xl font-bold mb-6">TABLEAUX TECHNIQUES</CardTitle>
                                 </CardHeader>
-                                <CardContent>
+                                <CardContent className="p-0">
                                     {activeProduct.tables.isolation?.rows && activeProduct.tables.isolation.rows.length > 0 && (
                                         <div className="mb-16">
                                             <h5 className="font-headline text-xl font-semibold text-primary mb-4">{activeProduct.tables.isolation.title}</h5>
@@ -364,16 +364,33 @@ export function SandwichPanelsPage() {
                                                   </TableRow>
                                               </TableHeader>
                                               <TableBody>
-                                                  {(activeProduct.tables as any).chargesPortees.rows.map((row: any, i: number) => (
-                                                      <TableRow key={i}>
-                                                          <TableCell>{row.epaisseur_mm.toFixed(2)}</TableCell>
-                                                          <TableCell>{row.nombre_espacement}</TableCell>
-                                                          <TableCell>{row.cas}</TableCell>
-                                                          {row.valeurs.map((val: number, j: number) => (
-                                                              <TableCell key={j} className="text-center">{val.toFixed(2)}</TableCell>
-                                                          ))}
-                                                      </TableRow>
-                                                  ))}
+                                                    {(activeProduct.tables as any).chargesPortees.rows.map((row: any, i: number) => (
+                                                        <TableRow key={i}>
+                                                            {row.epaisseur_mm !== undefined ? (
+                                                                <>
+                                                                    <TableCell>{row.epaisseur_mm.toFixed(2)}</TableCell>
+                                                                    <TableCell>{row.nombre_espacement ?? (row.ligne_1_nombre_espacement || row.ligne_2_nombre_espacement || row.ligne_3_nombre_espacement)}</TableCell>
+                                                                    <TableCell>{row.cas}</TableCell>
+                                                                    {row.valeurs.map((val: number, j: number) => (
+                                                                        <TableCell key={j} className="text-center">{val.toFixed(2)}</TableCell>
+                                                                    ))}
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    <TableCell>{row['Kg/m²']}</TableCell>
+                                                                    <TableCell>{row['daN/m²']}</TableCell>
+                                                                    <TableCell className="text-center">{row['30']}</TableCell>
+                                                                    <TableCell className="text-center">{row['35']}</TableCell>
+                                                                    <TableCell className="text-center">{row['40']}</TableCell>
+                                                                    <TableCell className="text-center">{row['60']}</TableCell>
+                                                                    <TableCell className="text-center">{row['30_3app']}</TableCell>
+                                                                    <TableCell className="text-center">{row['35_3app']}</TableCell>
+                                                                    <TableCell className="text-center">{row['40_3app']}</TableCell>
+                                                                    <TableCell className="text-center">{row['60_3app']}</TableCell>
+                                                                </>
+                                                            )}
+                                                        </TableRow>
+                                                    ))}
                                               </TableBody>
                                           </Table>
                                       </div>
