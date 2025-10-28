@@ -2,6 +2,7 @@
 "use client";
 import React from "react";
 import { Award, Lightbulb, Search, Cog, Users, BarChart, Target } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 /**
  * Timeline.tsx
@@ -32,11 +33,13 @@ const events = [
 
 export function Timeline() {
   return (
-    <section className="relative py-16">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Notre Parcours</h2>
+    <section className="relative w-full bg-secondary/30 py-20 px-4">
+      <div className="container mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-16 text-primary">
+          Notre Parcours
+        </h2>
         <div className="relative grid grid-cols-9 gap-y-12">
-          {/* central vertical line */}
+          {/* Central vertical line */}
           <div className="absolute left-1/2 top-0 h-full w-1 bg-accent/30 transform -translate-x-1/2"></div>
 
           {events.map((event, i) => {
@@ -45,41 +48,45 @@ export function Timeline() {
             return (
               <div
                 key={i}
-                className={`col-span-9 md:col-span-4 ${
-                  isLeft ? "md:col-start-1 md:text-right" : "md:col-start-6 md:text-left"
-                }`}
+                className={cn(
+                  "col-span-9 md:col-span-4",
+                  isLeft
+                    ? "md:col-start-1 text-center md:text-right"
+                    : "md:col-start-6 text-center md:text-left"
+                )}
               >
-                <div className={`relative flex flex-col ${isLeft ? 'items-end' : 'items-start'}`}>
-                  {/* connector dot (only visible on md+) */}
+                <div
+                  className={cn(
+                    "relative flex flex-col items-center",
+                    isLeft ? "md:items-end" : "md:items-start"
+                  )}
+                >
+                  {/* Connector dot (desktop only) */}
                   <div
-                    className={`hidden md:block absolute top-1/2 -translate-y-1/2 ${
-                      isLeft ? "right-[-2.5rem]" : "left-[-2.5rem]"
-                    } w-20 h-1 bg-accent/30`}
+                    className={cn(
+                      "hidden md:block absolute top-6 w-5 h-5 bg-accent rounded-full border-4 border-background shadow-md",
+                      isLeft ? "right-[-2.2rem]" : "left-[-2.2rem]"
+                    )}
                     aria-hidden="true"
                   ></div>
-                  <div
-                    className={`hidden md:block absolute top-1/2 -translate-y-1/2 ${
-                      isLeft ? "right-[-3.5rem]" : "left-[-3.5rem]"
-                    } w-20 h-20 bg-background border-4 border-accent rounded-full shadow-lg flex items-center justify-center`}
-                  >
-                     <span className="font-headline text-xl font-bold text-accent">
-                        {event.year}
-                     </span>
-                  </div>
 
-                  {/* card */}
-                  <article className="p-6 bg-white rounded-lg shadow-md border border-gray-100 hover:shadow-xl transition-shadow w-full md:max-w-sm">
-                    <div className="flex items-center gap-4 mb-3">
-                        <div className="md:hidden w-16 h-16 rounded-full bg-accent text-accent-foreground flex items-center justify-center flex-shrink-0">
-                           {Icon && <Icon className="w-8 h-8"/>}
-                        </div>
-                        <div>
-                             <p className="md:hidden text-left font-headline text-xl font-bold text-accent">{event.year}</p>
-                             <h3 className="text-xl font-semibold text-gray-800 text-left">{event.title}</h3>
-                        </div>
+                  {/* Card */}
+                  <div className="p-6 bg-background rounded-lg shadow-lg border border-border/50 hover:shadow-xl transition-shadow w-full max-w-sm">
+                    <div className="flex items-center gap-4 mb-4 md:mb-2">
+                       {/* Year/Icon for mobile */}
+                       <div className="md:hidden flex-shrink-0 w-14 h-14 bg-accent text-accent-foreground rounded-full flex flex-col items-center justify-center">
+                          <span className="font-bold text-lg">{event.year}</span>
+                       </div>
+                       {/* Year for desktop */}
+                       <div className={cn("hidden md:block text-2xl font-bold text-accent", isLeft ? 'ml-auto pl-4' : 'mr-auto pr-4')}>
+                          {event.year}
+                       </div>
+                       <div className="text-left flex-grow">
+                          <h3 className="text-xl font-semibold text-primary">{event.title}</h3>
+                       </div>
                     </div>
-                    <p className="text-gray-600 text-sm leading-relaxed text-left">{event.description}</p>
-                  </article>
+                    <p className="text-muted-foreground text-sm leading-relaxed text-left md:text-inherit">{event.description}</p>
+                  </div>
                 </div>
               </div>
             );
