@@ -16,9 +16,9 @@ const iconMap: { [key: string]: React.ElementType } = {
   Award,
 };
 
-const events = companyData.pages.about.timelineEvents;
-
 export function Timeline() {
+  const events = companyData.pages.about.timelineEvents;
+
   return (
     <section className="relative py-16">
       <div className="container mx-auto px-6">
@@ -44,13 +44,14 @@ export function Timeline() {
               >
                 <AnimatedWrapper animation="fade-in">
                   <div className={cn("relative", isLeft ? "md:text-right" : "md:text-left")}>
-                    {/* Horizontal Connector Line (Desktop) */}
+                    
+                    {/* Horizontal Connector Line */}
                     <div className={cn(
-                        "hidden md:block absolute top-8 w-1/2 h-0.5 bg-accent/30",
-                        isLeft ? "right-[-50%]" : "left-[-50%]"
+                        "hidden md:block absolute top-8 h-0.5 bg-accent/30",
+                        isLeft ? "left-1/2 w-[calc(50%-1.25rem)]" : "right-1/2 w-[calc(50%-1.25rem)]"
                     )}></div>
 
-                    {/* Connector dot (desktop only) */}
+                    {/* Connector dot */}
                     <div
                       className={cn(
                         "hidden md:block absolute top-6 w-5 h-5 bg-accent rounded-full border-4 border-gray-50 shadow-md z-10",
@@ -58,16 +59,18 @@ export function Timeline() {
                       )}
                       aria-hidden="true"
                     />
+                    
+                    <div className={cn("flex flex-col", isLeft ? 'items-end' : 'items-start')}>
+                        <p className={cn("text-2xl font-bold text-accent mb-2", isLeft ? 'mr-12' : 'ml-12')}>{event.year}</p>
+                        <article className="p-6 bg-white rounded-lg shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 w-full">
+                        <div className={cn("flex items-center gap-3 mb-3", isLeft ? 'justify-end' : '')}>
+                            {Icon && <Icon className={cn("h-6 w-6 text-primary", isLeft ? 'order-2' : 'order-1')} />}
+                            <h3 className={cn("text-2xl font-semibold text-primary", isLeft ? 'order-1' : 'order-2')}>{event.title}</h3>
+                        </div>
+                        <p className="text-gray-600 text-base leading-relaxed">{event.description}</p>
+                        </article>
+                    </div>
 
-                    {/* Card */}
-                    <article className="p-6 bg-white rounded-lg shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300">
-                      <p className="text-xl font-bold text-accent mb-2">{event.year}</p>
-                      <div className="flex items-center gap-3 mb-3">
-                         {Icon && <Icon className={cn("h-6 w-6 text-primary", isLeft ? 'ml-auto' : '')} />}
-                         <h3 className="text-2xl font-semibold text-primary">{event.title}</h3>
-                      </div>
-                      <p className="text-gray-600 text-base leading-relaxed">{event.description}</p>
-                    </article>
                   </div>
                 </AnimatedWrapper>
               </div>
