@@ -3,6 +3,7 @@
 import React from "react";
 import { Award, Lightbulb, Search, Cog, Users, BarChart, Target } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { companyData } from "@/config/company-data";
 
 /**
  * Timeline.tsx
@@ -34,11 +35,11 @@ const events = [
 export function Timeline() {
   return (
     <section className="relative w-full bg-secondary/30 py-20 px-4">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-8 max-w-full">
         <h2 className="text-3xl font-bold text-center mb-16 text-primary">
           Notre Parcours
         </h2>
-        <div className="relative grid grid-cols-9 gap-y-12">
+        <div className="relative grid grid-cols-9 gap-y-24">
           {/* Central vertical line */}
           <div className="absolute left-1/2 top-0 h-full w-1 bg-accent/30 transform -translate-x-1/2"></div>
 
@@ -49,12 +50,21 @@ export function Timeline() {
               <div
                 key={i}
                 className={cn(
-                  "col-span-9 md:col-span-4",
+                  "col-span-9 md:col-span-4 relative",
                   isLeft
-                    ? "md:col-start-1 text-center md:text-right"
-                    : "md:col-start-6 text-center md:text-left"
+                    ? "md:col-start-1"
+                    : "md:col-start-6"
                 )}
               >
+                {/* Horizontal connector line */}
+                <div
+                  className={cn(
+                    "hidden md:block absolute top-6 w-1/2 h-0.5 bg-accent/30",
+                    isLeft ? "right-0" : "left-0"
+                  )}
+                  aria-hidden="true"
+                ></div>
+
                 <div
                   className={cn(
                     "relative flex flex-col items-center",
@@ -65,27 +75,36 @@ export function Timeline() {
                   <div
                     className={cn(
                       "hidden md:block absolute top-6 w-5 h-5 bg-accent rounded-full border-4 border-background shadow-md",
-                      isLeft ? "right-[-2.2rem]" : "left-[-2.2rem]"
+                      isLeft ? "right-[-1.25rem]" : "left-[-1.25rem]"
                     )}
                     aria-hidden="true"
                   ></div>
 
                   {/* Card */}
-                  <div className="p-6 bg-background rounded-lg shadow-lg border border-border/50 hover:shadow-xl transition-shadow w-full max-w-sm">
-                    <div className="flex items-center gap-4 mb-4 md:mb-2">
+                   <div className={cn(
+                    "p-6 bg-background rounded-lg shadow-lg border border-border/50 hover:shadow-xl transition-shadow w-full max-w-sm",
+                    isLeft ? "md:text-right" : "md:text-left"
+                   )}>
+                    <div className={cn(
+                        "flex items-center gap-4 mb-4",
+                        isLeft ? "md:flex-row-reverse" : "md:flex-row"
+                    )}>
                        {/* Year/Icon for mobile */}
-                       <div className="md:hidden flex-shrink-0 w-14 h-14 bg-accent text-accent-foreground rounded-full flex flex-col items-center justify-center">
-                          <span className="font-bold text-lg">{event.year}</span>
+                       <div className="md:hidden flex-shrink-0 w-16 h-16 bg-accent text-accent-foreground rounded-full flex flex-col items-center justify-center">
+                           {Icon && <Icon className="w-8 h-8" />}
                        </div>
                        {/* Year for desktop */}
-                       <div className={cn("hidden md:block text-2xl font-bold text-accent", isLeft ? 'ml-auto pl-4' : 'mr-auto pr-4')}>
+                       <div className={cn(
+                        "hidden md:flex flex-shrink-0 text-2xl font-bold text-accent items-center justify-center w-16 h-16 bg-background rounded-full border-2 border-accent/20",
+                        isLeft ? 'ml-auto' : 'mr-auto'
+                        )}>
                           {event.year}
                        </div>
-                       <div className="text-left flex-grow">
+                       <div className={cn("flex-grow", isLeft ? "text-right" : "text-left")}>
                           <h3 className="text-xl font-semibold text-primary">{event.title}</h3>
                        </div>
                     </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed text-left md:text-inherit">{event.description}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{event.description}</p>
                   </div>
                 </div>
               </div>
