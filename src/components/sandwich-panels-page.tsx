@@ -16,6 +16,7 @@ import { ProductImage } from './product-image-gallery';
 import images from '@/app/lib/placeholder-images.json';
 import dynamic from 'next/dynamic';
 import { ScrollArea } from './ui/scroll-area';
+import { DownloadButton } from './ui/download-button';
 
 const ProductImageGallery = dynamic(() => import('./product-image-gallery').then(mod => mod.ProductImageGallery));
 
@@ -114,9 +115,12 @@ export function SandwichPanelsPage() {
               <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 mx-auto">
                 Solutions d'isolation haute performance pour la construction moderne.
               </p>
-              <Button size="lg" variant="destructive" className="mt-8 group">
-                  Explorer les produits <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
-              </Button>
+              <div className="mt-8 flex justify-center items-center gap-4">
+                <Button size="lg" variant="destructive" className="group">
+                    Explorer les produits <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+                </Button>
+                <DownloadButton text="Voir la brochure" />
+              </div>
             </AnimatedWrapper>
         </div>
       </section>
