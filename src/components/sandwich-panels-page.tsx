@@ -345,7 +345,35 @@ export function SandwichPanelsPage() {
                                   </Table>
                               </div>
                           )}
-                          
+                           {(activeProduct.tables as any).chargesPortees && (activeProduct.tables as any).chargesPortees.rows.length > 0 && (
+                            <div className="mb-16">
+                                <h5 className="font-headline text-xl font-semibold text-primary mb-4">{(activeProduct.tables as any).chargesPortees.table_title}</h5>
+                                <Table>
+                                    <TableHeader>
+                                        <TableRow className="bg-accent/10">
+                                            <TableHead className="text-accent font-bold">Ép (mm)</TableHead>
+                                            <TableHead className="text-accent font-bold">Nb. Espacement</TableHead>
+                                            <TableHead className="text-accent font-bold">Cas</TableHead>
+                                            {(activeProduct.tables as any).chargesPortees.espacements_header.map((h: number) => (
+                                                <TableHead key={h} className="text-accent font-bold text-center">{h.toFixed(2)}</TableHead>
+                                            ))}
+                                        </TableRow>
+                                    </TableHeader>
+                                    <TableBody>
+                                        {(activeProduct.tables as any).chargesPortees.rows.map((row: any, i: number) => (
+                                            <TableRow key={i}>
+                                                <TableCell>{row.epaisseur_mm.toFixed(2)}</TableCell>
+                                                <TableCell>{row.nombre_espacement}</TableCell>
+                                                <TableCell>{row.cas}</TableCell>
+                                                {row.valeurs.map((val: number, j: number) => (
+                                                    <TableCell key={j} className="text-center">{val.toFixed(2)}</TableCell>
+                                                ))}
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </div>
+                           )}
                           
 
                           {activeProduct.pose?.decoupage && 
@@ -384,3 +412,5 @@ export function SandwichPanelsPage() {
     </>
   );
 }
+
+    
