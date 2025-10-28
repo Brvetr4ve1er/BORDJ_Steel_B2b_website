@@ -1,10 +1,11 @@
 
 "use client";
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { Award, Lightbulb, Search, Cog, Users, BarChart, Target } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { companyData } from "@/config/company-data";
+import { AnimatedWrapper } from "./animated-wrapper";
 
 const iconMap: { [key: string]: React.ElementType } = {
   Lightbulb,
@@ -27,15 +28,10 @@ const events = [
 ];
 
 export function Timeline() {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start end", "end start"],
-  });
 
   return (
     <section className="relative w-full bg-secondary/30 py-20">
-      <div ref={targetRef} className="container mx-auto px-8 max-w-full">
+      <div className="container mx-auto px-8 max-w-full">
         <h2 className="text-3xl font-bold text-center mb-16 text-primary">
           Notre Parcours
         </h2>
@@ -43,49 +39,38 @@ export function Timeline() {
           
           {/* Central vertical line */}
           <div className="absolute left-1/2 top-0 h-full w-1 bg-accent/20 transform -translate-x-1/2">
-             <motion.div
-              className="h-full w-full bg-accent origin-top"
-              style={{ scaleY: scrollYProgress }}
-            />
+            <AnimatedWrapper animation="fade-in" className="h-full">
+               <div className="h-full w-full bg-accent" />
+            </AnimatedWrapper>
           </div>
 
           {events.map((event, i) => {
             const isLeft = i % 2 === 0;
             const Icon = iconMap[event.icon];
-            const totalEvents = events.length;
             
-            // Stagger the animation start for each item
-            const start = (i / totalEvents) * 0.9;
-            const end = start + (1 / totalEvents) * 0.9;
-            
-            const scaleX = useTransform(scrollYProgress, [start, end], [0, 1]);
-
             return (
               <div
                 key={i}
                 className={cn(
-                  "col-span-9 md:col-span-4 relative",
+                  "col-span-9 md:col-span-4 relative group",
                   isLeft ? "md:col-start-1" : "md:col-start-6"
                 )}
               >
-                {/* Horizontal connector line */}
-                <div
+                 {/* Horizontal connector line (desktop only) */}
+                <AnimatedWrapper 
+                  animation="fade-in"
                   className={cn(
-                    "hidden md:block absolute top-6 w-1/2 h-0.5 bg-accent/20",
-                    isLeft ? "right-0" : "left-0"
+                    "hidden md:block absolute top-6 h-0.5 bg-accent/20",
+                     isLeft ? "right-0 w-1/2" : "left-0 w-1/2"
                   )}
-                  aria-hidden="true"
                 >
-                   <motion.div
-                    className={cn(
-                      "h-full w-full bg-accent",
-                      isLeft ? "origin-right" : "origin-left"
-                    )}
-                    style={{ scaleX }}
-                  />
-                </div>
+                    <div className={cn("h-full w-full bg-accent transition-transform duration-500 ease-out origin-left scale-x-0", "group-hover:scale-x-100")} 
+                       style={{ transformOrigin: isLeft ? 'right' : 'left' }}
+                    />
+                </AnimatedWrapper>
 
-                <div
+                <AnimatedWrapper 
+                  animation={isLeft ? "fade-in" : "fade-in"}
                   className={cn(
                     "relative flex flex-col",
                     isLeft ? "md:items-end" : "md:items-start"
@@ -94,30 +79,22 @@ export function Timeline() {
                   {/* Connector dot (desktop only) */}
                   <div
                     className={cn(
-                      "hidden md:block absolute top-6 w-5 h-5 bg-accent/30 rounded-full border-4 border-background shadow-md",
-                      isLeft ? "right-[-1.25rem]" : "left-[-1.25rem]"
+                      "hidden md:block absolute top-6 w-5 h-5 bg-background rounded-full border-4 border-accent shadow-md z-10 transition-transform duration-300 group-hover:scale-125",
+                      isLeft ? "right-[-0.625rem]" : "left-[-0.625rem]"
                     )}
                     aria-hidden="true"
-                  >
-                    <motion.div 
-                      className="w-full h-full rounded-full bg-accent"
-                      style={{ scale: scaleX }}
-                    />
-                  </div>
+                  />
                   
-
                   {/* Card */}
                    <div className={cn(
-                    "p-6 bg-background rounded-lg shadow-lg border border-border/50 hover:shadow-xl transition-shadow w-full max-w-sm",
-                    isLeft ? "md:text-right" : "md:text-left"
+                    "p-6 bg-background rounded-lg shadow-lg border border-border/50 hover:shadow-xl transition-shadow w-full max-w-sm"
                    )}>
                     <div className={cn(
                         "flex items-center gap-4 mb-4",
                         isLeft ? "md:flex-row-reverse" : "md:flex-row"
                     )}>
-                       {/* Year for desktop */}
                        <div className={cn(
-                        "flex flex-shrink-0 text-2xl font-bold text-accent items-center justify-center w-16 h-16 bg-background rounded-full border-2 border-accent/20",
+                        "flex flex-shrink-0 text-2xl font-bold text-accent items-center justify-center w-20 h-20 bg-background rounded-full border-2 border-accent/20",
                         isLeft ? 'ml-auto' : 'mr-auto'
                         )}>
                           {event.year}
@@ -127,7 +104,7 @@ export function Timeline() {
                        </div>
                     </div>
                      <div className={cn(
-                        "flex items-center gap-4 mb-4",
+                        "flex items-center gap-4",
                         isLeft ? "md:flex-row-reverse" : "md:flex-row"
                      )}>
                         {Icon && <div className="flex-shrink-0 w-12 h-12 bg-accent/10 text-accent rounded-full flex items-center justify-center">
@@ -136,7 +113,7 @@ export function Timeline() {
                         <p className="text-muted-foreground text-sm leading-relaxed flex-grow">{event.description}</p>
                     </div>
                   </div>
-                </div>
+                </AnimatedWrapper>
               </div>
             );
           })}
