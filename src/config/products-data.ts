@@ -444,10 +444,10 @@ export const productData = {
                     'Longueur (ml)': 15000,
                     'Largeur standard (mm)': 732,
                     'Système de revêtement': 'Galvanisée',
-                    details: [
-                        { 'Épaisseurs (mm)': '0.70', 'Poids (kg/m2)': 9.17 },
-                        { 'Épaisseurs (mm)': '1.00', 'Poids (kg/m2)': 13.10 },
-                        { 'Épaisseurs (mm)': '1.50', 'Poids (kg/m2)': 19.66 },
+                    'details': [
+                        { 'Épaisseurs (mm)': 0.70, 'Poids (kg/m2)': 9.17 },
+                        { 'Épaisseurs (mm)': 1.00, 'Poids (kg/m2)': 13.10 },
+                        { 'Épaisseurs (mm)': 1.50, 'Poids (kg/m2)': 19.66 }
                     ]
                 },
                 {
@@ -455,14 +455,28 @@ export const productData = {
                     'Longueur (ml)': 15000,
                     'Largeur standard (mm)': 732,
                     'Système de revêtement': 'Pré laqué',
-                    details: [
-                        { 'Épaisseurs (mm)': '0.70', 'Poids (kg/m2)': 9.17 },
-                        { 'Épaisseurs (mm)': '1.00', 'Poids (kg/m2)': 13.10 },
-                        { 'Épaisseurs (mm)': '1.50', 'Poids (kg/m2)': 19.66 },
+                    'details': [
+                        { 'Épaisseurs (mm)': 0.70, 'Poids (kg/m2)': 9.17 },
+                        { 'Épaisseurs (mm)': 1.00, 'Poids (kg/m2)': 13.10 },
+                        { 'Épaisseurs (mm)': 1.50, 'Poids (kg/m2)': 19.66 }
                     ]
-                },
+                }
             ]
         },
+        proprietes: {
+            title: 'PROPRIÉTÉS DE LA TÔLE HI-BOND 77',
+            headers: ['ÉP', 'Poids-Kg/m', 'Haut de la tôle en compression', 'Bas de la tôle en compression', 'Cisaillement voilement'],
+            subheaders: {
+                'Haut de la tôle en compression': ['Lx Cm4', 'Zx-top Cm3', 'Zx-bot Cm3', 'Ma Kn.m'],
+                'Bas de la tôle en compression': ['Lx Cm4', 'Zx-top Cm3', 'Zx-bot Cm3', 'Ma Kn.m'],
+                'Cisaillement voilement': ['Va KN', 'Pa KN']
+            },
+            rows: [
+                { 'ÉP': '0.70', 'Poids-Kg/m': '6.87', 'Haut de la tôle en compression': { 'Lx Cm4': '83.27', 'Zx-top Cm3': '14.34', 'Zx-bot Cm3': '18.87', 'Ma Kn.m': '2,32' }, 'Bas de la tôle en compression': { 'Lx Cm4': '83,27', 'Zx-top Cm3': '21,16', 'Zx-bot Cm3': '16,56', 'Ma Kn.m': '2.68' }, 'Cisaillement voilement': { 'Va KN': '22,18', 'Pa KN': '11,28' } },
+                { 'ÉP': '1.00', 'Poids-Kg/m': '9.81', 'Haut de la tôle en compression': { 'Lx Cm4': '119,0', 'Zx-top Cm3': '23,34', 'Zx-bot Cm3': '27,87', 'Ma Kn.m': '3,77' }, 'Bas de la tôle en compression': { 'Lx Cm4': '119,0', 'Zx-top Cm3': '31,03', 'Zx-bot Cm3': '26,74', 'Ma Kn.m': '4.32' }, 'Cisaillement voilement': { 'Va KN': '51,37', 'Pa KN': '21,83' } },
+                { 'ÉP': '1.50', 'Poids-Kg/m': '14.72', 'Haut de la tôle en compression': { 'Lx Cm4': '178.0', 'Zx-top Cm3': '41.11', 'Zx-bot Cm3': '43.20', 'Ma Kn.m': '6.65' }, 'Bas de la tôle en compression': { 'Lx Cm4': '178,0', 'Zx-top Cm3': '47,27', 'Zx-bot Cm3': '43,73', 'Ma Kn.m': '7.07' }, 'Cisaillement voilement': { 'Va KN': '91,16', 'Pa KN': '45,20' } },
+            ]
+        }
     },
   },
   finitions: {
