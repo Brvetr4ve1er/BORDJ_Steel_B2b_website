@@ -1,4 +1,6 @@
 
+"use client";
+
 import { companyData } from '@/config/company-data';
 import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
@@ -7,10 +9,10 @@ import { AnimatedWrapper } from '@/components/animated-wrapper';
 import React from 'react';
 import { Timeline } from '@/components/timeline';
 
-export const metadata: Metadata = {
-  title: `Notre Histoire | ${companyData.siteMetadata.title}`,
-  description: 'Découvrez l\'histoire et l\'évolution de Bordj Steel, un leader de la construction métallique en Algérie.',
-};
+// export const metadata: Metadata = {
+//   title: `Notre Histoire | ${companyData.siteMetadata.title}`,
+//   description: 'Découvrez l\'histoire et l\'évolution de Bordj Steel, un leader de la construction métallique en Algérie.',
+// };
 
 export default function HistoryPage() {
   const heroImage = {
@@ -42,7 +44,7 @@ export default function HistoryPage() {
           </AnimatedWrapper>
         </div>
       </section>
-      <section className="bg-gray-900 text-white py-20">
+      <section className="bg-gray-50 py-20">
         <Timeline />
       </section>
     </ProductPageLayout>

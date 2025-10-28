@@ -22,11 +22,11 @@ export function Timeline() {
   return (
     <section className="relative py-16">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-16 text-white">
+        <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">
           Notre Parcours
         </h2>
 
-        <div className="relative grid grid-cols-9 gap-y-12">
+        <div className="relative grid grid-cols-9 gap-y-24">
           {/* Central vertical line */}
           <div className="absolute left-1/2 top-0 h-full w-0.5 bg-accent/30 transform -translate-x-1/2"></div>
 
@@ -44,20 +44,29 @@ export function Timeline() {
               >
                 <AnimatedWrapper animation="fade-in">
                   <div className={cn("relative", isLeft ? "md:text-right" : "md:text-left")}>
+                    {/* Horizontal Connector Line (Desktop) */}
+                    <div className={cn(
+                        "hidden md:block absolute top-8 w-1/2 h-0.5 bg-accent/30",
+                        isLeft ? "right-[-50%]" : "left-[-50%]"
+                    )}></div>
+
                     {/* Connector dot (desktop only) */}
                     <div
                       className={cn(
-                        "hidden md:block absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-accent rounded-full border-4 border-gray-900 shadow-md z-10",
-                        isLeft ? "right-[-1.125rem]" : "left-[-1.125rem]"
+                        "hidden md:block absolute top-6 w-5 h-5 bg-accent rounded-full border-4 border-gray-50 shadow-md z-10",
+                        isLeft ? "right-[-1.25rem]" : "left-[-1.25rem]"
                       )}
                       aria-hidden="true"
                     />
 
                     {/* Card */}
-                    <article className="p-6 bg-gray-800 rounded-lg shadow-lg border border-gray-700/50 hover:shadow-accent/20 hover:shadow-2xl transition-all duration-300">
+                    <article className="p-6 bg-white rounded-lg shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300">
                       <p className="text-xl font-bold text-accent mb-2">{event.year}</p>
-                      <h3 className="text-2xl font-semibold mb-3 text-white">{event.title}</h3>
-                      <p className="text-gray-400 text-base leading-relaxed">{event.description}</p>
+                      <div className="flex items-center gap-3 mb-3">
+                         {Icon && <Icon className={cn("h-6 w-6 text-primary", isLeft ? 'ml-auto' : '')} />}
+                         <h3 className="text-2xl font-semibold text-primary">{event.title}</h3>
+                      </div>
+                      <p className="text-gray-600 text-base leading-relaxed">{event.description}</p>
                     </article>
                   </div>
                 </AnimatedWrapper>
