@@ -531,13 +531,13 @@ export const productData = {
       miseEnOeuvre: { title: "", manutention: "" },
       finitions: [
         { name: 'Bande De Rive Sur Mur', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/28/14/75/28147544dd82d0c459d85954e48f1b83.jpg', aiHint: 'wall edge band' } },
-        { name: 'Angle Droit', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/angle-droit.png', aiHint: 'right angle' } },
-        { name: 'Bavette Rejet D\'eau', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bavette-rejet-eau.png', aiHint: 'water drip flashing' } },
-        { name: 'Cornière D\'angle Extérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-exterieur.png', aiHint: 'external corner angle' } },
-        { name: 'Cornière D\'angle Intérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-interieur.png', aiHint: 'internal corner angle' } },
-        { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/faitiere.png', aiHint: 'ridge cap' } },
-        { name: 'Sous Faitière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/sous-faitiere.png', aiHint: 'under ridge' } },
-        { name: 'U De Sol', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/u-de-sol.png', aiHint: 'u-profile floor' } },
+        { name: 'Angle Droit', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/52/70/4c/52704c1cb61fbec9f1ab6c2d24ef6b45.jpg', aiHint: 'right angle' } },
+        { name: 'Bavette Rejet D\'eau', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/474x/7c/46/24/7c46241638e5e1c9cbe15dea25be9613.jpg', aiHint: 'water drip flashing' } },
+        { name: 'Cornière D\'angle Extérieur', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/28/dd/e1/28dde1c98701028935e40ac4d9e2aeb0.jpg', aiHint: 'external corner angle' } },
+        { name: 'Cornière D\'angle Intérieur', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/28/dd/e1/28dde1c98701028935e40ac4d9e2aeb0.jpg', aiHint: 'internal corner angle' } },
+        { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/38/9f/22/389f22b55684dcbf9747652526fcc637.jpg', aiHint: 'ridge cap' } },
+        { name: 'Sous Faitière', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/df/cb/e8/dfcbe8706e2cd65a17a1d73fbad68458.jpg', aiHint: 'under ridge' } },
+        { name: 'U De Sol', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/12/c9/fc/12c9fcea3a33af7b379bbee140210007.jpg', aiHint: 'u-profile floor' } },
       ]
     },
     tables: {
