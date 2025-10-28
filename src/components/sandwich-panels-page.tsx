@@ -176,7 +176,7 @@ export function SandwichPanelsPage() {
               <div className="lg:col-span-2">
                 <AnimatedWrapper animation="fade-in">
                     <Card className="shadow-lg">
-                      <CardHeader className="bg-primary text-primary-foreground rounded-t-lg">
+                      <CardHeader className="bg-accent text-accent-foreground rounded-t-lg">
                         <CardTitle className="text-4xl font-bold">{activeProduct.title}</CardTitle>
                       </CardHeader>
                       <CardContent className="p-8">
