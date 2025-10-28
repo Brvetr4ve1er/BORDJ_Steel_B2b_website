@@ -530,14 +530,14 @@ export const productData = {
       tolerance: [],
       miseEnOeuvre: { title: "", manutention: "" },
       finitions: [
-        { name: 'Bande De Rive Sur Mur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bande-de-rive.png', aiHint: 'wall edge band' } },
+        { name: 'Bande De Rive Sur Mur', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/28/14/75/28147544dd82d0c459d85954e48f1b83.jpg', aiHint: 'wall edge band' } },
         { name: 'Angle Droit', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/angle-droit.png', aiHint: 'right angle' } },
         { name: 'Bavette Rejet D\'eau', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bavette-rejet-eau.png', aiHint: 'water drip flashing' } },
         { name: 'Cornière D\'angle Extérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-exterieur.png', aiHint: 'external corner angle' } },
         { name: 'Cornière D\'angle Intérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-interieur.png', aiHint: 'internal corner angle' } },
         { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/faitiere.png', aiHint: 'ridge cap' } },
         { name: 'Sous Faitière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/sous-faitiere.png', aiHint: 'under ridge' } },
-        { name: 'U De Sol', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/28/14/75/28147544dd82d0c459d85954e48f1b83.jpg', aiHint: 'u-profile floor' } },
+        { name: 'U De Sol', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/u-de-sol.png', aiHint: 'u-profile floor' } },
       ]
     },
     tables: {
