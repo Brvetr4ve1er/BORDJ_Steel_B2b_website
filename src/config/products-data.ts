@@ -332,12 +332,12 @@ export const productData = {
       finitions: [
         { name: 'Bande de rive sur mur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bande-de-rive.png', aiHint: 'wall edge band', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
         { name: 'Angle droit', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/angle-droit.png', aiHint: 'right angle', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
-        { name: 'Cornière d\'angle intérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-interieur.png', aiHint: 'internal corner angle', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
-        { name: 'U de sol acier galvanisé', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/u-de-sol.png', aiHint: 'galvanized steel U-profile', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
         { name: 'Bavette rejet d\'eau', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/bavette-rejet-eau.png', aiHint: 'water drip flashing', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
         { name: 'Sous faitière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/sous-faitiere.png', aiHint: 'under ridge', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+        { name: 'Cornière d\'angle intérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-interieur.png', aiHint: 'internal corner angle', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
         { name: 'Cornière d\'angle extérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-exterieur.png', aiHint: 'external corner angle', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
         { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/faitiere.png', aiHint: 'ridge cap', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
+        { name: 'U de sol acier galvanisé', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/u-de-sol.png', aiHint: 'galvanized steel U-profile', blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=' } },
       ]
     },
     implementationImages: [
@@ -440,56 +440,74 @@ export const productData = {
             headers: ['Type', 'Longueur (ml)', 'Largeur standard (mm)', 'Épaisseurs (mm)', 'Poids (kg/m2)', 'Système de revêtement'],
             rows: [
                 {
-                    'Type': 'Plancher collaborant HI-BOND 77 Galvanisé',
-                    'Longueur (ml)': 15000,
-                    'Largeur standard (mm)': 732,
-                    'Système de revêtement': 'Galvanisée',
-                    'details': [
-                        { 'Épaisseurs (mm)': 0.70, 'Poids (kg/m2)': 9.17 },
-                        { 'Épaisseurs (mm)': 1.00, 'Poids (kg/m2)': 13.10 },
-                        { 'Épaisseurs (mm)': 1.50, 'Poids (kg/m2)': 19.66 }
-                    ]
+                    'type': "Plancher collaborant HI-BOND 77 Galvanisé",
+                    'longueur': 15000,
+                    'largeur_standard': 732,
+                    'epaisseurs': [
+                      { "valeur_mm": 0.70, "poids_kg_m2": 9.17 },
+                      { "valeur_mm": 1.00, "poids_kg_m2": 13.10 },
+                      { "valeur_mm": 1.50, "poids_kg_m2": 19.66 }
+                    ],
+                    'revetement_systeme': "Galvanisée"
                 },
                 {
-                    'Type': 'Plancher collaborant HI-BOND 77 Pré laqué',
-                    'Longueur (ml)': 15000,
-                    'Largeur standard (mm)': 732,
-                    'Système de revêtement': 'Pré laqué',
-                    'details': [
-                        { 'Épaisseurs (mm)': 0.70, 'Poids (kg/m2)': 9.17 },
-                        { 'Épaisseurs (mm)': 1.00, 'Poids (kg/m2)': 13.10 },
-                        { 'Épaisseurs (mm)': 1.50, 'Poids (kg/m2)': 19.66 }
-                    ]
+                    'type': "Plancher collaborant HI-BOND 77 Pré laqué",
+                    'longueur': 15000,
+                    'largeur_standard': 732,
+                    'epaisseurs': [
+                        { "valeur_mm": 0.70, "poids_kg_m2": 9.17 },
+                        { "valeur_mm": 1.00, "poids_kg_m2": 13.10 },
+                        { "valeur_mm": 1.50, "poids_kg_m2": 19.66 }
+                    ],
+                    'revetement_systeme': "Pré laqué"
                 }
             ]
         },
         proprietes: {
-            title: 'PROPRIÉTÉS DE LA TÔLE HI-BOND 77',
-            headers: ['ÉP', 'Poids-Kg/m', 'Haut de la tôle en compression', 'Bas de la tôle en compression', 'Cisaillement voilement'],
-            subheaders: {
-                'Haut de la tôle en compression': ['Lx Cm4', 'Zx-top Cm3', 'Zx-bot Cm3', 'Ma Kn.m'],
-                'Bas de la tôle en compression': ['Lx Cm4', 'Zx-top Cm3', 'Zx-bot Cm3', 'Ma Kn.m'],
-                'Cisaillement voilement': ['Va KN', 'Pa KN']
+            "title": "Propriétés de la tôle HI-BOND 77",
+            "headers": ["Ép (mm)", "Poids (Kg/m)", "Haut de la tôle en compression", "Bas de la tôle en compression", "Cisaillement voilement"],
+            "subheaders": {
+                "Haut de la tôle en compression": ["Lx (Cm4)", "Zx-top (Cm3)", "Zx-bot (Cm3)", "Ma (Kn.m)"],
+                "Bas de la tôle en compression": ["Lx (Cm4)", "Zx-top (Cm3)", "Zx-bot (Cm3)", "Ma (Kn.m)"],
+                "Cisaillement voilement": ["Va (KN)", "Pa (KN)"]
             },
-            rows: [
-                { 'ÉP': '0.70', 'Poids-Kg/m': '6.87', 'Haut de la tôle en compression': { 'Lx Cm4': '83.27', 'Zx-top Cm3': '14.34', 'Zx-bot Cm3': '18.87', 'Ma Kn.m': '2,32' }, 'Bas de la tôle en compression': { 'Lx Cm4': '83,27', 'Zx-top Cm3': '21,16', 'Zx-bot Cm3': '16,56', 'Ma Kn.m': '2.68' }, 'Cisaillement voilement': { 'Va KN': '22,18', 'Pa KN': '11,28' } },
-                { 'ÉP': '1.00', 'Poids-Kg/m': '9.81', 'Haut de la tôle en compression': { 'Lx Cm4': '119,0', 'Zx-top Cm3': '23,34', 'Zx-bot Cm3': '27,87', 'Ma Kn.m': '3,77' }, 'Bas de la tôle en compression': { 'Lx Cm4': '119,0', 'Zx-top Cm3': '31,03', 'Zx-bot Cm3': '26,74', 'Ma Kn.m': '4.32' }, 'Cisaillement voilement': { 'Va KN': '51,37', 'Pa KN': '21,83' } },
-                { 'ÉP': '1.50', 'Poids-Kg/m': '14.72', 'Haut de la tôle en compression': { 'Lx Cm4': '178.0', 'Zx-top Cm3': '41.11', 'Zx-bot Cm3': '43.20', 'Ma Kn.m': '6.65' }, 'Bas de la tôle en compression': { 'Lx Cm4': '178,0', 'Zx-top Cm3': '47,27', 'Zx-bot Cm3': '43,73', 'Ma Kn.m': '7.07' }, 'Cisaillement voilement': { 'Va KN': '91,16', 'Pa KN': '45,20' } },
+            "rows": [
+                {
+                    "epaisseur": 0.70,
+                    "poids": 6.87,
+                    "haut_compression": { "Lx": 83.27, "Zx_top": 14.34, "Zx_bot": 18.87, "Ma": 2.32 },
+                    "bas_compression": { "Lx": 83.27, "Zx_top": 21.16, "Zx_bot": 16.56, "Ma": 2.68 },
+                    "cisaillement_voilement": { "Va": 22.18, "Pa": 11.28 }
+                },
+                {
+                    "epaisseur": 1.00,
+                    "poids": 9.81,
+                    "haut_compression": { "Lx": 119.0, "Zx_top": 23.34, "Zx_bot": 27.87, "Ma": 3.77 },
+                    "bas_compression": { "Lx": 119.0, "Zx_top": 31.03, "Zx_bot": 26.74, "Ma": 4.32 },
+                    "cisaillement_voilement": { "Va": 51.37, "Pa": 21.83 }
+                },
+                {
+                    "epaisseur": 1.50,
+                    "poids": 14.72,
+                    "haut_compression": { "Lx": 178.0, "Zx_top": 41.11, "Zx_bot": 43.20, "Ma": 6.65 },
+                    "bas_compression": { "Lx": 178.0, "Zx_top": 47.27, "Zx_bot": 43.73, "Ma": 7.07 },
+                    "cisaillement_voilement": { "Va": 91.16, "Pa": 45.20 }
+                }
             ]
         },
         chargesPortees: {
-            table_title: "Tableau des charges sur la tôle HI-BOND 77 (kN/m²)",
-            espacements_header: [1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.50],
-            rows: [
-              { epaisseur_mm: 0.70, cas: "G+Q", nombre_espacement: 1, valeurs: [18.55, 11.87, 8.25, 6.06, 4.64, 3.66, 2.97, 2.45, 2.06, 11.51] },
-              { epaisseur_mm: 0.70, cas: "G+Q", nombre_espacement: 2, valeurs: [9.02, 7.22, 6.02, 5.16, 4.51, 4.01, 3.43, 2.83, 2.38, 1.75] },
-              { epaisseur_mm: 0.70, cas: "G+Q", nombre_espacement: 3, valeurs: [10.26, 8.21, 6.84, 5.87, 5.13, 4.56, 4.11, 3.54, 2.98, 2.19] },
-              { epaisseur_mm: 1.00, cas: "G+Q", nombre_espacement: 1, valeurs: [30.16, 19.30, 13.40, 9.85, 7.54, 5.96, 4.83, 3.99, 3.35, 2.44] },
-              { epaisseur_mm: 1.00, cas: "G+Q", nombre_espacement: 2, valeurs: [17.46, 13.97, 11.64, 9.98, 8.64, 6.83, 5.53, 4.50, 3.84, 2.82] },
-              { epaisseur_mm: 1.00, cas: "G+Q", nombre_espacement: 3, valeurs: [19.87, 15.89, 13.24, 11.35, 9.93, 8.53, 6.91, 5.71, 4.80, 3.53] },
-              { epaisseur_mm: 1.50, cas: "G+Q", nombre_espacement: 1, valeurs: [53.20, 34.05, 23.64, 17.37, 13.30, 10.57, 8.51, 7.03, 5.80, 3.65] },
-              { epaisseur_mm: 1.50, cas: "G+Q", nombre_espacement: 2, valeurs: [36.16, 28.93, 24.11, 18.47, 14.40, 11.17, 9.05, 7.48, 6.28, 4.26] },
-              { epaisseur_mm: 1.50, cas: "G+Q", nombre_espacement: 3, valeurs: [41.13, 32.91, 27.42, 23.09, 17.68, 13.97, 11.31, 9.35, 7.86, 5.77] }
+            "table_title": "Tableau des charges sur la tôle HI-BOND 77 (kN/m²)",
+            "espacements_header": [1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.50],
+            "rows": [
+              { "epaisseur_mm": 0.70, "cas": "G+Q", "nombre_espacement": 1, "valeurs": [18.55, 11.87, 8.25, 6.06, 4.64, 3.66, 2.97, 2.45, 2.06, 11.51] },
+              { "epaisseur_mm": 0.70, "cas": "G+Q", "nombre_espacement": 2, "valeurs": [9.02, 7.22, 6.02, 5.16, 4.51, 4.01, 3.43, 2.83, 2.38, 1.75] },
+              { "epaisseur_mm": 0.70, "cas": "G+Q", "nombre_espacement": 3, "valeurs": [10.26, 8.21, 6.84, 5.87, 5.13, 4.56, 4.11, 3.54, 2.98, 2.19] },
+              { "epaisseur_mm": 1.00, "cas": "G+Q", "nombre_espacement": 1, "valeurs": [30.16, 19.30, 13.40, 9.85, 7.54, 5.96, 4.83, 3.99, 3.35, 2.44] },
+              { "epaisseur_mm": 1.00, "cas": "G+Q", "nombre_espacement": 2, "valeurs": [17.46, 13.97, 11.64, 9.98, 8.64, 6.83, 5.53, 4.50, 3.84, 2.82] },
+              { "epaisseur_mm": 1.00, "cas": "G+Q", "nombre_espacement": 3, "valeurs": [19.87, 15.89, 13.24, 11.35, 9.93, 8.53, 6.91, 5.71, 4.80, 3.53] },
+              { "epaisseur_mm": 1.50, "cas": "G+Q", "nombre_espacement": 1, "valeurs": [53.20, 34.05, 23.64, 17.37, 13.30, 10.57, 8.51, 7.03, 5.80, 3.65] },
+              { "epaisseur_mm": 1.50, "cas": "G+Q", "nombre_espacement": 2, "valeurs": [36.16, 28.93, 24.11, 18.47, 14.40, 11.17, 9.05, 7.48, 6.28, 4.26] },
+              { "epaisseur_mm": 1.50, "cas": "G+Q", "nombre_espacement": 3, "valeurs": [41.13, 32.91, 27.42, 23.09, 17.68, 13.97, 11.31, 9.35, 7.86, 5.77] }
             ]
         }
     },
@@ -519,7 +537,7 @@ export const productData = {
         { name: 'Cornière D\'angle Intérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/corniere-interieur.png', aiHint: 'internal corner angle' } },
         { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/faitiere.png', aiHint: 'ridge cap' } },
         { name: 'Sous Faitière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/sous-faitiere.png', aiHint: 'under ridge' } },
-        { name: 'U De Sol', length: 'Long. Std. 3m à 6m', image: { src: '/media/finitions/u-de-sol.png', aiHint: 'u-profile floor' } },
+        { name: 'U De Sol', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/28/14/75/28147544dd82d0c459d85954e48f1b83.jpg', aiHint: 'u-profile floor' } },
       ]
     },
     tables: {
