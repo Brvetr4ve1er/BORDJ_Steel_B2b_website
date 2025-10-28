@@ -42,13 +42,13 @@ export function Timeline() {
                   isLeft ? "md:col-start-1" : "md:col-start-6"
                 )}
               >
-                <AnimatedWrapper animation="fade-in">
+                <AnimatedWrapper animation="slide-up">
                   <div className={cn("relative", isLeft ? "md:text-right" : "md:text-left")}>
                     
                     {/* Horizontal Connector Line */}
                     <div className={cn(
                         "hidden md:block absolute top-8 h-0.5 bg-accent/30",
-                        isLeft ? "left-1/2 w-[calc(50%-1.25rem)]" : "right-1/2 w-[calc(50%-1.25rem)]"
+                        isLeft ? "left-[calc(50%_+_1.25rem)] w-[calc(50%_-_1.25rem)]" : "right-[calc(50%_+_1.25rem)] w-[calc(50%_-_1.25rem)]"
                     )}></div>
 
                     {/* Connector dot */}
@@ -70,7 +70,6 @@ export function Timeline() {
                         <p className="text-gray-600 text-base leading-relaxed">{event.description}</p>
                         </article>
                     </div>
-
                   </div>
                 </AnimatedWrapper>
               </div>
