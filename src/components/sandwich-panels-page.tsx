@@ -4,7 +4,7 @@
 
 import Image from 'next/image';
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronsRight, Snowflake, Pilcrow, Settings, ArrowRight } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
@@ -12,7 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { productData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
-import { ProductImage } from './product-image-gallery';
+import type { ProductImage } from './product-image-gallery';
 import images from '@/app/lib/placeholder-images.json';
 import dynamic from 'next/dynamic';
 import { ScrollArea } from './ui/scroll-area';
@@ -83,6 +83,12 @@ export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
   const activeProduct = productData[activeProductKey];
   const heroImage = images['sandwich-panels'].hero;
+  const [displayedImage, setDisplayedImage] = useState<ProductImage>(activeProduct.galleryImages[0]);
+
+  useEffect(() => {
+    setDisplayedImage(activeProduct.galleryImages[0]);
+  }, [activeProductKey, activeProduct.galleryImages]);
+
 
   const productButtons = [
     { key: 'couverture', label: 'Panneaux de Couverture', icon: CouvertureIcon },
@@ -168,8 +174,7 @@ export function SandwichPanelsPage() {
           <div className="grid lg:grid-cols-3 gap-x-8 gap-y-16">
               <div className="lg:col-span-1 h-max space-y-8">
                   <ProductImageGallery 
-                      galleryImages={activeProduct.galleryImages}
-                      implementationImages={activeProduct.implementationImages}
+                      mainImage={displayedImage}
                   />
               </div>
 
@@ -185,6 +190,28 @@ export function SandwichPanelsPage() {
                                     <CardTitle className="text-primary text-3xl font-bold mb-6">CARACTÉRISTIQUE PRODUIT</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-0">
+                                    {activeProduct.galleryImages && activeProduct.galleryImages.length > 1 && (
+                                    <div>
+                                        <SubSectionTitle>Galerie</SubSectionTitle>
+                                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                        {activeProduct.galleryImages.map((image, index) => (
+                                            <div
+                                            key={index}
+                                            className="cursor-pointer rounded-lg overflow-hidden border-2 hover:border-accent transition-all"
+                                            onClick={() => setDisplayedImage(image)}
+                                            >
+                                            <Image
+                                                src={image.src}
+                                                alt={image.alt}
+                                                width={200}
+                                                height={200}
+                                                className="w-full h-full object-cover aspect-square"
+                                            />
+                                            </div>
+                                        ))}
+                                        </div>
+                                    </div>
+                                    )}
                                     {activeProduct.features.application && activeProduct.features.application.length > 0 &&
                                         <div>
                                             <SubSectionTitle>Application conseillée</SubSectionTitle>
@@ -369,7 +396,7 @@ export function SandwichPanelsPage() {
                                                             {row.epaisseur_mm !== undefined ? (
                                                                 <>
                                                                     <TableCell>{row.epaisseur_mm.toFixed(2)}</TableCell>
-                                                                    <TableCell>{row.nombre_espacement ?? (row.ligne_1_nombre_espacement || row.ligne_2_nombre_espacement || row.ligne_3_nombre_espacement)}</TableCell>
+                                                                    <TableCell>{row.nombre_espacement || row.ligne_1_nombre_espacement || row.ligne_2_nombre_espacement || row.ligne_3_nombre_espacement}</TableCell>
                                                                     <TableCell>{row.cas}</TableCell>
                                                                     {row.valeurs.map((val: number, j: number) => (
                                                                         <TableCell key={j} className="text-center">{val.toFixed(2)}</TableCell>

@@ -13,54 +13,31 @@ export type ProductImage = {
 };
 
 interface ProductImageGalleryProps {
-    galleryImages: ProductImage[];
-    implementationImages?: ProductImage[];
+    mainImage: ProductImage;
 }
 
-export function ProductImageGallery({ galleryImages, implementationImages }: ProductImageGalleryProps) {
+export function ProductImageGallery({ mainImage }: ProductImageGalleryProps) {
   
-  if (!galleryImages || galleryImages.length === 0) {
+  if (!mainImage) {
     return null;
   }
 
-  const mainImage = galleryImages[0];
-  const secondaryImages = implementationImages || [];
-
   return (
     <div className="space-y-8">
-        {mainImage && (
-            <AnimatedWrapper animation="fade-in">
-                <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
-                <Image
-                    src={mainImage.src}
-                    alt={mainImage.alt}
-                    width={800}
-                    height={600} 
-                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                    data-ai-hint={mainImage.aiHint}
-                    placeholder={mainImage.blurDataUrl ? 'blur' : 'empty'}
-                    blurDataURL={mainImage.blurDataUrl}
-                />
-                </Card>
-            </AnimatedWrapper>
-        )}
-        
-        {secondaryImages.map((image, index) => (
-          <AnimatedWrapper animation="fade-in" staggerIndex={index + 1} key={image.src}>
+        <AnimatedWrapper animation="fade-in">
             <Card className="rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-2xl">
-              <Image
-                src={image.src}
-                alt={image.alt}
+            <Image
+                src={mainImage.src}
+                alt={mainImage.alt}
                 width={800}
-                height={600}
+                height={600} 
                 className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                data-ai-hint={image.aiHint}
-                placeholder={image.blurDataUrl ? 'blur' : 'empty'}
-                blurDataURL={image.blurDataUrl}
-              />
+                data-ai-hint={mainImage.aiHint}
+                placeholder={mainImage.blurDataUrl ? 'blur' : 'empty'}
+                blurDataURL={mainImage.blurDataUrl}
+            />
             </Card>
-          </AnimatedWrapper>
-        ))}
+        </AnimatedWrapper>
     </div>
   );
 }
