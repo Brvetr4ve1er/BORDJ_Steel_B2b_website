@@ -287,140 +287,156 @@ export function SandwichPanelsPage() {
                                     <CardTitle className="text-primary text-3xl font-bold mb-6">TABLEAUX TECHNIQUES</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-0">
-                                    {activeProduct.tables.isolation?.rows && activeProduct.tables.isolation.rows.length > 0 && (
-                                        <div className="mb-16">
-                                            <h5 className="font-headline text-xl font-semibold text-primary mb-4">{activeProduct.tables.isolation.title}</h5>
-                                            <Table>
-                                                <TableHeader>
-                                                    <TableRow className="bg-accent/10">
-                                                        {activeProduct.tables.isolation.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
-                                                    </TableRow>
-                                                </TableHeader>
-                                                <TableBody>
-                                                    {activeProduct.tables.isolation.rows.map((row, i) => (
-                                                        <TableRow key={i}>
-                                                            {activeProduct.tables.isolation.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row] ?? ''}</TableCell>)}
-                                                        </TableRow>
-                                                    ))}
-                                                </TableBody>
-                                            </Table>
+                                    {activeProductKey === 'finitions' && activeProduct.features.finitions ? (
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                            {activeProduct.features.finitions.map((item) => (
+                                                <div key={item.name} className="flex flex-col items-center text-center">
+                                                    <div className="relative w-full aspect-square mb-2">
+                                                        <Image src={item.image.src} alt={item.name} layout="fill" objectFit="contain" />
+                                                    </div>
+                                                    <h5 className="font-semibold text-primary">{item.name}</h5>
+                                                    <p className="text-sm text-muted-foreground">{item.length}</p>
+                                                </div>
+                                            ))}
                                         </div>
-                                    )}
-                                    {activeProduct.tables.dimensionnement?.rows && activeProduct.tables.dimensionnement.rows.length > 0 && (
-                                      <div className="mb-16">
-                                        <h5 className="font-headline text-xl font-semibold text-primary mb-4">{activeProduct.tables.dimensionnement.title || 'Dimensionnement'}</h5>
-                                        <Table>
-                                          <TableHeader>
-                                            <TableRow className="bg-accent/10">
-                                              {activeProduct.tables.dimensionnement.headers.map(h => (
-                                                <TableHead key={h} className="text-accent font-bold">{h}</TableHead>
-                                              ))}
-                                            </TableRow>
-                                          </TableHeader>
-                                          <TableBody>
-                                            {(activeProductKey === 'toleNervuree' || activeProductKey === 'hibond') ? (
-                                              activeProduct.tables.dimensionnement.rows.map((row: any, i: number) => (
-                                                row.details && Array.isArray(row.details) && row.details.map((detail: any, j: number) => (
-                                                  <TableRow key={`${i}-${j}`}>
-                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Type']}</TableCell>}
-                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Longueur (ml)']}</TableCell>}
-                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Largeur standard (mm)']}</TableCell>}
-                                                    <TableCell>{detail['Épaisseurs (mm)']}</TableCell>
-                                                    <TableCell>{detail['Poids (kg/m2)']}</TableCell>
-                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Système de revêtement']}</TableCell>}
-                                                  </TableRow>
-                                                ))
-                                              ))
-                                            ) : (
-                                              activeProduct.tables.dimensionnement.rows.map((row, i) => (
-                                                <TableRow key={i}>
-                                                  {activeProduct.tables.dimensionnement.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row] ?? ''}</TableCell>)}
-                                                </TableRow>
-                                              ))
+                                    ) : (
+                                        <>
+                                            {activeProduct.tables.isolation?.rows && activeProduct.tables.isolation.rows.length > 0 && (
+                                                <div className="mb-16">
+                                                    <h5 className="font-headline text-xl font-semibold text-primary mb-4">{activeProduct.tables.isolation.title}</h5>
+                                                    <Table>
+                                                        <TableHeader>
+                                                            <TableRow className="bg-accent/10">
+                                                                {activeProduct.tables.isolation.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
+                                                            </TableRow>
+                                                        </TableHeader>
+                                                        <TableBody>
+                                                            {activeProduct.tables.isolation.rows.map((row, i) => (
+                                                                <TableRow key={i}>
+                                                                    {activeProduct.tables.isolation.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row] ?? ''}</TableCell>)}
+                                                                </TableRow>
+                                                            ))}
+                                                        </TableBody>
+                                                    </Table>
+                                                </div>
                                             )}
-                                          </TableBody>
-                                        </Table>
-                                      </div>
-                                    )}
-                                    {activeProduct.tables.proprietes && activeProduct.tables.proprietes.rows.length > 0 && (
-                                        <div className="mb-16">
-                                            <h5 className="font-headline text-xl font-semibold text-primary mb-4">{activeProduct.tables.proprietes.title}</h5>
-                                            <Table>
+                                            {activeProduct.tables.dimensionnement?.rows && activeProduct.tables.dimensionnement.rows.length > 0 && (
+                                            <div className="mb-16">
+                                                <h5 className="font-headline text-xl font-semibold text-primary mb-4">{activeProduct.tables.dimensionnement.title || 'Dimensionnement'}</h5>
+                                                <Table>
                                                 <TableHeader>
                                                     <TableRow className="bg-accent/10">
-                                                    {activeProduct.tables.proprietes.headers.map((h, i) => (
-                                                        <TableHead key={i} colSpan={activeProduct.tables.proprietes.subheaders[h]?.length || 1} className="text-accent font-bold text-center">{h}</TableHead>
+                                                    {activeProduct.tables.dimensionnement.headers.map(h => (
+                                                        <TableHead key={h} className="text-accent font-bold">{h}</TableHead>
                                                     ))}
-                                                    </TableRow>
-                                                    <TableRow className="bg-accent/10">
-                                                        <TableHead className="text-accent font-bold">ÉP</TableHead>
-                                                        <TableHead className="text-accent font-bold">Poids-Kg/m</TableHead>
-                                                        {Object.values(activeProduct.tables.proprietes.subheaders).flat().map((sh, i) => (
-                                                            <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
-                                                        ))}
                                                     </TableRow>
                                                 </TableHeader>
                                                 <TableBody>
-                                                {activeProduct.tables.proprietes.rows.map((row: any, i: number) => (
-                                                    <TableRow key={i}>
-                                                        <TableCell>{row['ÉP'] ?? ''}</TableCell>
-                                                        <TableCell>{row['Poids-Kg/m'] ?? ''}</TableCell>
-                                                        {Object.keys(activeProduct.tables.proprietes.subheaders).map(headerKey => 
-                                                            Object.keys(row[headerKey] ?? {}).map((subKey, j) => (
-                                                                <TableCell key={`${headerKey}-${j}`} className="text-center">{row[headerKey]?.[subKey] ?? ''}</TableCell>
-                                                            ))
-                                                        )}
-                                                    </TableRow>
-                                                ))}
-                                                </TableBody>
-                                            </Table>
-                                        </div>
-                                    )}
-                                    {(activeProduct.tables as any).chargesPortees && (activeProduct.tables as any).chargesPortees.rows.length > 0 && (
-                                      <div className="mb-16">
-                                          <h5 className="font-headline text-xl font-semibold text-primary mb-4">{(activeProduct.tables as any).chargesPortees.table_title}</h5>
-                                          <Table>
-                                              <TableHeader>
-                                                  <TableRow className="bg-accent/10">
-                                                      <TableHead className="text-accent font-bold">Ép (mm)</TableHead>
-                                                      <TableHead className="text-accent font-bold">Nb. Espacement</TableHead>
-                                                      <TableHead className="text-accent font-bold">Cas</TableHead>
-                                                      {Array.isArray((activeProduct.tables as any).chargesPortees.espacements_header) && (activeProduct.tables as any).chargesPortees.espacements_header.map((h: number) => (
-                                                          <TableHead key={h} className="text-accent font-bold text-center">{h.toFixed(2)}</TableHead>
-                                                      ))}
-                                                  </TableRow>
-                                              </TableHeader>
-                                              <TableBody>
-                                                    {(activeProduct.tables as any).chargesPortees.rows.map((row: any, i: number) => (
-                                                        <TableRow key={i}>
-                                                            {row.epaisseur_mm !== undefined ? (
-                                                                <>
-                                                                    <TableCell>{row.epaisseur_mm.toFixed(2)}</TableCell>
-                                                                    <TableCell>{row.nombre_espacement || row.ligne_1_nombre_espacement || row.ligne_2_nombre_espacement || row.ligne_3_nombre_espacement}</TableCell>
-                                                                    <TableCell>{row.cas}</TableCell>
-                                                                    {row.valeurs.map((val: number, j: number) => (
-                                                                        <TableCell key={j} className="text-center">{val.toFixed(2)}</TableCell>
-                                                                    ))}
-                                                                </>
-                                                            ) : (
-                                                                <>
-                                                                    <TableCell>{row['Kg/m²']}</TableCell>
-                                                                    <TableCell>{row['daN/m²']}</TableCell>
-                                                                    <TableCell className="text-center">{row['30']}</TableCell>
-                                                                    <TableCell className="text-center">{row['35']}</TableCell>
-                                                                    <TableCell className="text-center">{row['40']}</TableCell>
-                                                                    <TableCell className="text-center">{row['60']}</TableCell>
-                                                                    <TableCell className="text-center">{row['30_3app']}</TableCell>
-                                                                    <TableCell className="text-center">{row['35_3app']}</TableCell>
-                                                                    <TableCell className="text-center">{row['40_3app']}</TableCell>
-                                                                    <TableCell className="text-center">{row['60_3app']}</TableCell>
-                                                                </>
-                                                            )}
+                                                    {(activeProductKey === 'toleNervuree' || activeProductKey === 'hibond') ? (
+                                                    activeProduct.tables.dimensionnement.rows.map((row: any, i: number) => (
+                                                        row.details && Array.isArray(row.details) && row.details.map((detail: any, j: number) => (
+                                                        <TableRow key={`${i}-${j}`}>
+                                                            {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Type']}</TableCell>}
+                                                            {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Longueur (ml)']}</TableCell>}
+                                                            {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Largeur standard (mm)']}</TableCell>}
+                                                            <TableCell>{detail['Épaisseurs (mm)']}</TableCell>
+                                                            <TableCell>{detail['Poids (kg/m2)']}</TableCell>
+                                                            {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Système de revêtement']}</TableCell>}
                                                         </TableRow>
-                                                    ))}
-                                              </TableBody>
-                                          </Table>
-                                      </div>
+                                                        ))
+                                                    ))
+                                                    ) : (
+                                                    activeProduct.tables.dimensionnement.rows.map((row, i) => (
+                                                        <TableRow key={i}>
+                                                        {activeProduct.tables.dimensionnement.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row] ?? ''}</TableCell>)}
+                                                        </TableRow>
+                                                    ))
+                                                    )}
+                                                </TableBody>
+                                                </Table>
+                                            </div>
+                                            )}
+                                            {activeProduct.tables.proprietes && activeProduct.tables.proprietes.rows.length > 0 && (
+                                                <div className="mb-16">
+                                                    <h5 className="font-headline text-xl font-semibold text-primary mb-4">{activeProduct.tables.proprietes.title}</h5>
+                                                    <Table>
+                                                        <TableHeader>
+                                                            <TableRow className="bg-accent/10">
+                                                            {activeProduct.tables.proprietes.headers.map((h, i) => (
+                                                                <TableHead key={i} colSpan={activeProduct.tables.proprietes.subheaders[h]?.length || 1} className="text-accent font-bold text-center">{h}</TableHead>
+                                                            ))}
+                                                            </TableRow>
+                                                            <TableRow className="bg-accent/10">
+                                                                <TableHead className="text-accent font-bold">ÉP</TableHead>
+                                                                <TableHead className="text-accent font-bold">Poids-Kg/m</TableHead>
+                                                                {Object.values(activeProduct.tables.proprietes.subheaders).flat().map((sh, i) => (
+                                                                    <TableHead key={i} className="text-accent font-bold text-center">{sh}</TableHead>
+                                                                ))}
+                                                            </TableRow>
+                                                        </TableHeader>
+                                                        <TableBody>
+                                                        {activeProduct.tables.proprietes.rows.map((row: any, i: number) => (
+                                                            <TableRow key={i}>
+                                                                <TableCell>{row['ÉP'] ?? ''}</TableCell>
+                                                                <TableCell>{row['Poids-Kg/m'] ?? ''}</TableCell>
+                                                                {Object.keys(activeProduct.tables.proprietes.subheaders).map(headerKey => 
+                                                                    Object.keys(row[headerKey] ?? {}).map((subKey, j) => (
+                                                                        <TableCell key={`${headerKey}-${j}`} className="text-center">{row[headerKey]?.[subKey] ?? ''}</TableCell>
+                                                                    ))
+                                                                )}
+                                                            </TableRow>
+                                                        ))}
+                                                        </TableBody>
+                                                    </Table>
+                                                </div>
+                                            )}
+                                            {(activeProduct.tables as any).chargesPortees && (activeProduct.tables as any).chargesPortees.rows.length > 0 && (
+                                            <div className="mb-16">
+                                                <h5 className="font-headline text-xl font-semibold text-primary mb-4">{(activeProduct.tables as any).chargesPortees.table_title}</h5>
+                                                <Table>
+                                                    <TableHeader>
+                                                        <TableRow className="bg-accent/10">
+                                                            <TableHead className="text-accent font-bold">Ép (mm)</TableHead>
+                                                            <TableHead className="text-accent font-bold">Nb. Espacement</TableHead>
+                                                            <TableHead className="text-accent font-bold">Cas</TableHead>
+                                                            {Array.isArray((activeProduct.tables as any).chargesPortees.espacements_header) && (activeProduct.tables as any).chargesPortees.espacements_header.map((h: number) => (
+                                                                <TableHead key={h} className="text-accent font-bold text-center">{h.toFixed(2)}</TableHead>
+                                                            ))}
+                                                        </TableRow>
+                                                    </TableHeader>
+                                                    <TableBody>
+                                                            {(activeProduct.tables as any).chargesPortees.rows.map((row: any, i: number) => (
+                                                                <TableRow key={i}>
+                                                                    {row.epaisseur_mm !== undefined ? (
+                                                                        <>
+                                                                            <TableCell>{row.epaisseur_mm.toFixed(2)}</TableCell>
+                                                                            <TableCell>{row.nombre_espacement || row.ligne_1_nombre_espacement || row.ligne_2_nombre_espacement || row.ligne_3_nombre_espacement}</TableCell>
+                                                                            <TableCell>{row.cas}</TableCell>
+                                                                            {row.valeurs.map((val: number, j: number) => (
+                                                                                <TableCell key={j} className="text-center">{val.toFixed(2)}</TableCell>
+                                                                            ))}
+                                                                        </>
+                                                                    ) : (
+                                                                        <>
+                                                                            <TableCell>{row['Kg/m²']}</TableCell>
+                                                                            <TableCell>{row['daN/m²']}</TableCell>
+                                                                            <TableCell className="text-center">{row['30']}</TableCell>
+                                                                            <TableCell className="text-center">{row['35']}</TableCell>
+                                                                            <TableCell className="text-center">{row['40']}</TableCell>
+                                                                            <TableCell className="text-center">{row['60']}</TableCell>
+                                                                            <TableCell className="text-center">{row['30_3app']}</TableCell>
+                                                                            <TableCell className="text-center">{row['35_3app']}</TableCell>
+                                                                            <TableCell className="text-center">{row['40_3app']}</TableCell>
+                                                                            <TableCell className="text-center">{row['60_3app']}</TableCell>
+                                                                        </>
+                                                                    )}
+                                                                </TableRow>
+                                                            ))}
+                                                    </TableBody>
+                                                </Table>
+                                            </div>
+                                            )}
+                                        </>
                                     )}
                                 </CardContent>
                             </Card>
