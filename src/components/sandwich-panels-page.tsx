@@ -107,15 +107,15 @@ export function SandwichPanelsPage() {
           blurDataURL={heroImage.blurDataUrl}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10" />
-        <div className="relative z-20 container mx-auto px-4 text-left">
+        <div className="relative z-20 w-full px-8 md:px-12 text-left">
             <AnimatedWrapper animation="zoom-in">
               <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
                 Panneaux Sandwichs
               </h1>
-              <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200">
+              <p className="mt-8 text-xl md:text-2xl max-w-3xl text-gray-200">
                 Solutions d'isolation haute performance pour la construction moderne.
               </p>
-              <div className="mt-8 flex justify-start items-center gap-4">
+              <div className="mt-12 flex justify-start items-center gap-4">
                 <Button size="lg" variant="destructive" className="group">
                     Explorer les produits <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
                 </Button>
