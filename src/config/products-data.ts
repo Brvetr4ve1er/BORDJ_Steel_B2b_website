@@ -419,9 +419,9 @@ export const productData = {
         ],
         application: 'Coffrage et armature de dalles béton',
         definition: { acier: '', parementExterne: {profil: '', description: '', epaisseur: ''}, parementInterne: {profil: '', epaisseur: ''}},
-        revetement: '',
+        revetement: "Sans spécifications particulières, les profils nervurés sont livrés en qualité standard.\nTypes:\n- Galvanisé seul: qualité Z200\n- Galvanisé pré-laqué: Face extérieure Finition laquée polyester ép. 25µ",
         ameIsolante: { type: '', conductivite: '', densite: ''},
-        reactionAuFeu: '',
+        reactionAuFeu: 'Classement de réaction au feu M0',
         tolerance: [],
         miseEnOeuvre: { title: "", manutention: "" },
         caracteristiquesGeometriques: {
@@ -435,21 +435,33 @@ export const productData = {
     },
     tables: {
         isolation: { title: '', headers: [], rows: [] },
-        dimensionnement: { 
-            title: 'PLANCHER COLLABORANT HI-BOND 77', 
-            headers: ['Type', 'Longueur (ml)', 'Largueur standard (mm)', 'Epaisseurs (mm)', 'Poids (kg/m2)', 'Système de revêtement'], 
+        dimensionnement: {
+            title: 'PLANCHER COLLABORANT HI-BOND 77',
+            headers: ['Type', 'Longueur (ml)', 'Largeur standard (mm)', 'Épaisseurs (mm)', 'Poids (kg/m2)', 'Système de revêtement'],
             rows: [
-                { 'Type': 'planche polystyrène extrudé défibré 7', 'Longueur (ml)': 1500, 'Largueur standard (mm)': 732, details: [
-                    { 'Epaisseurs (mm)': '0.70', 'Poids (kg/m2)': '9.17', 'Système de revêtement': 'fafeuillée' },
-                    { 'Epaisseurs (mm)': '1.00', 'Poids (kg/m2)': '13.10', 'Système de revêtement': 'fafeuillée' },
-                    { 'Epaisseurs (mm)': '1.50', 'Poids (kg/m2)': '19.66', 'Système de revêtement': 'fafeuillée' },
-                ]},
-                { 'Type': 'planche polystyrène extrudé défibré 7?', 'Longueur (ml)': 1500, 'Largueur standard (mm)': 732, details: [
-                    { 'Epaisseurs (mm)': '0.70', 'Poids (kg/m2)': '9.17', 'Système de revêtement': 'pré tourné' },
-                    { 'Epaisseurs (mm)': '1.00', 'Poids (kg/m2)': '13.10', 'Système de revêtement': 'pré tourné' },
-                    { 'Epaisseurs (mm)': '1.50', 'Poids (kg/m2)': '19.66', 'Système de revêtement': 'pré tourné' },
-                ]},
-            ] 
+                {
+                    'Type': 'Plancher collaborant HI-BOND 77 Galvanisé',
+                    'Longueur (ml)': 15000,
+                    'Largeur standard (mm)': 732,
+                    'Système de revêtement': 'Galvanisée',
+                    details: [
+                        { 'Épaisseurs (mm)': '0.70', 'Poids (kg/m2)': 9.17 },
+                        { 'Épaisseurs (mm)': '1.00', 'Poids (kg/m2)': 13.10 },
+                        { 'Épaisseurs (mm)': '1.50', 'Poids (kg/m2)': 19.66 },
+                    ]
+                },
+                {
+                    'Type': 'Plancher collaborant HI-BOND 77 Pré laqué',
+                    'Longueur (ml)': 15000,
+                    'Largeur standard (mm)': 732,
+                    'Système de revêtement': 'Pré laqué',
+                    details: [
+                        { 'Épaisseurs (mm)': '0.70', 'Poids (kg/m2)': 9.17 },
+                        { 'Épaisseurs (mm)': '1.00', 'Poids (kg/m2)': 13.10 },
+                        { 'Épaisseurs (mm)': '1.50', 'Poids (kg/m2)': 19.66 },
+                    ]
+                },
+            ]
         },
     },
   },
@@ -487,9 +499,5 @@ export const productData = {
     },
   }
 };
-
-    
-
-    
 
     

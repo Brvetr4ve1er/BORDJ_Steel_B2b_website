@@ -277,40 +277,40 @@ export function SandwichPanelsPage() {
                                         </div>
                                     )}
                                     {activeProduct.tables.dimensionnement?.rows && activeProduct.tables.dimensionnement.rows.length > 0 && (
-                                        <div className="mb-16">
-                                            <SubSectionTitle>{activeProduct.tables.dimensionnement.title || 'Dimensionnement'}</SubSectionTitle>
-                                            <Table>
-                                                <TableHeader>
-                                                    <TableRow className="bg-accent/10">
-                                                        {activeProduct.tables.dimensionnement.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
-                                                    </TableRow>
-                                                </TableHeader>
-                                                <TableBody>
-                                                    {activeProductKey === 'toleNervuree' ? (
-                                                      activeProduct.tables.dimensionnement.rows.map((row: any, i: number) => (
-                                                            row.details && Array.isArray(row.details) && row.details.map((detail: any, j: number) => (
-                                                                <TableRow key={`${i}-${j}`}>
-                                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.Type}</TableCell>}
-                                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Longueur (ml)']}</TableCell>}
-                                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Largueur standard (mm)']}</TableCell>}
-                                                                    <TableCell>{detail['Epaisseurs (mm)']}</TableCell>
-                                                                    <TableCell>{detail['Poids (kg/m2)']}</TableCell>
-                                                                    {detail.j && <TableCell>{detail.j}</TableCell>}
-                                                                    {detail.w && <TableCell>{detail.w}</TableCell>}
-                                                                    <TableCell>{detail['Système de revêtement']}</TableCell>
-                                                                </TableRow>
-                                                            ))
-                                                        ))
-                                                    ) : (
-                                                        activeProduct.tables.dimensionnement.rows.map((row, i) => (
-                                                            <TableRow key={i}>
-                                                                {activeProduct.tables.dimensionnement.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row] ?? ''}</TableCell>)}
-                                                            </TableRow>
-                                                        ))
-                                                    )}
-                                                </TableBody>
-                                            </Table>
-                                        </div>
+                                      <div className="mb-16">
+                                        <SubSectionTitle>{activeProduct.tables.dimensionnement.title || 'Dimensionnement'}</SubSectionTitle>
+                                        <Table>
+                                          <TableHeader>
+                                            <TableRow className="bg-accent/10">
+                                              {activeProduct.tables.dimensionnement.headers.map(h => (
+                                                <TableHead key={h} className="text-accent font-bold">{h}</TableHead>
+                                              ))}
+                                            </TableRow>
+                                          </TableHeader>
+                                          <TableBody>
+                                            {(activeProductKey === 'toleNervuree' || activeProductKey === 'hibond') ? (
+                                              activeProduct.tables.dimensionnement.rows.map((row: any, i: number) => (
+                                                row.details && Array.isArray(row.details) && row.details.map((detail: any, j: number) => (
+                                                  <TableRow key={`${i}-${j}`}>
+                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Type']}</TableCell>}
+                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Longueur (ml)']}</TableCell>}
+                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Largeur standard (mm)']}</TableCell>}
+                                                    <TableCell>{detail['Épaisseurs (mm)']}</TableCell>
+                                                    <TableCell>{detail['Poids (kg/m2)']}</TableCell>
+                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row['Système de revêtement']}</TableCell>}
+                                                  </TableRow>
+                                                ))
+                                              ))
+                                            ) : (
+                                              activeProduct.tables.dimensionnement.rows.map((row, i) => (
+                                                <TableRow key={i}>
+                                                  {activeProduct.tables.dimensionnement.headers.map(h => <TableCell key={h}>{row[h as keyof typeof row] ?? ''}</TableCell>)}
+                                                </TableRow>
+                                              ))
+                                            )}
+                                          </TableBody>
+                                        </Table>
+                                      </div>
                                     )}
                                     {activeProduct.tables.proprietes && activeProduct.tables.proprietes.rows.length > 0 && (
                                         <div className="mb-16">
@@ -387,3 +387,5 @@ export function SandwichPanelsPage() {
     </>
   );
 }
+
+    
