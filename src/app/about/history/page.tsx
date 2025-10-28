@@ -42,7 +42,7 @@ export default function HistoryPage() {
           </AnimatedWrapper>
         </div>
       </section>
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-900 text-white py-20">
         <Timeline />
       </section>
     </ProductPageLayout>
