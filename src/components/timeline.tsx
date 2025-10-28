@@ -35,56 +35,57 @@ export function Timeline() {
             const Icon = iconMap[event.icon];
 
             return (
-              <div
-                key={i}
-                className={cn(
-                  "col-span-9 md:col-span-4",
-                  isLeft ? "md:col-start-1" : "md:col-start-6"
-                )}
-              >
-                <AnimatedWrapper animation="slide-up">
-                  <div className={cn("relative flex items-center", isLeft ? "justify-end" : "justify-start")}>
-                    {/* Horizontal Connector Line (desktop) */}
-                    <div className={cn(
-                      "hidden md:block absolute top-1/2 w-[calc(50%-1.25rem)] h-0.5 bg-accent/30",
-                      isLeft ? "right-full" : "left-full"
-                    )} />
-                    
-                    {/* Connector dot */}
-                    <div className={cn(
-                      "hidden md:block absolute top-1/2 w-5 h-5 bg-accent rounded-full border-4 border-gray-50 shadow-md z-10 transform -translate-y-1/2",
-                      isLeft ? "right-[-1.25rem]" : "left-[-1.25rem]"
-                    )} aria-hidden="true" />
-                    
-                    {/* Year Marker */}
-                    <div className={cn("hidden md:block absolute top-1/2 transform -translate-y-1/2", isLeft ? "right-[-6rem]" : "left-[-6rem]")}>
-                       <span className="text-2xl font-bold text-accent">{event.year}</span>
-                    </div>
-
-                    {/* Card */}
-                    <article className={cn(
-                      "w-full p-6 bg-white rounded-lg shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 relative",
-                      isLeft ? "text-right" : "text-left"
-                    )}>
-                      {Icon && (
-                        <div className={cn(
-                          "absolute -top-6 w-16 h-16 rounded-full bg-accent text-white flex items-center justify-center border-4 border-gray-50 shadow-md",
-                          isLeft ? "right-4" : "left-4"
-                        )}>
-                          <Icon className="w-8 h-8" />
-                        </div>
-                      )}
-                      
-                       <p className="md:hidden text-2xl font-bold text-accent mb-2">{event.year}</p>
-
-                      <div className={cn("mt-8", isLeft ? 'text-right' : 'text-left')}>
-                        <h3 className="text-2xl font-semibold text-primary mb-3">{event.title}</h3>
-                        <p className="text-gray-600 text-base leading-relaxed">{event.description}</p>
-                      </div>
-                    </article>
-                  </div>
+              <React.Fragment key={i}>
+                {/* Year Marker */}
+                <AnimatedWrapper animation="slide-up" className="col-span-9 md:col-span-1 md:col-start-5 flex justify-center items-center">
+                    <div className="md:hidden text-2xl font-bold text-accent mb-2">{event.year}</div>
+                    <div className="hidden md:block text-2xl font-bold text-accent">{event.year}</div>
                 </AnimatedWrapper>
-              </div>
+
+                {/* Event Card */}
+                <div
+                  className={cn(
+                    "col-span-9 md:col-span-4",
+                    isLeft ? "md:col-start-1" : "md:col-start-6"
+                  )}
+                >
+                  <AnimatedWrapper animation="slide-up">
+                    <div className={cn("relative flex", isLeft ? "justify-end" : "justify-start")}>
+                      {/* Horizontal Connector Line (desktop) */}
+                      <div className={cn(
+                        "hidden md:block absolute top-6 h-0.5 bg-accent/30",
+                        isLeft ? "left-1/2 w-[calc(50%-1.25rem)]" : "right-1/2 w-[calc(50%-1.25rem)]"
+                      )} aria-hidden="true" />
+                      
+                      {/* Connector dot */}
+                      <div className={cn(
+                        "hidden md:block absolute top-6 w-5 h-5 bg-accent rounded-full border-4 border-gray-50 shadow-md z-10 transform -translate-y-1/2",
+                        isLeft ? "right-[-1.25rem]" : "left-[-1.25rem]"
+                      )} aria-hidden="true" />
+                      
+                      {/* Card */}
+                      <article className={cn(
+                        "w-full p-6 bg-white rounded-lg shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 relative",
+                        isLeft ? "text-right" : "text-left"
+                      )}>
+                        {Icon && (
+                          <div className={cn(
+                            "absolute -top-6 w-16 h-16 rounded-full bg-accent text-white flex items-center justify-center border-4 border-gray-50 shadow-md",
+                            isLeft ? "left-4" : "right-4"
+                          )}>
+                            <Icon className="w-8 h-8" />
+                          </div>
+                        )}
+                        
+                        <div className={cn("mt-8", isLeft ? 'text-right' : 'text-left')}>
+                          <h3 className="text-2xl font-semibold text-primary mb-3">{event.title}</h3>
+                          <p className="text-gray-600 text-base leading-relaxed">{event.description}</p>
+                        </div>
+                      </article>
+                    </div>
+                  </AnimatedWrapper>
+                </div>
+              </React.Fragment>
             );
           })}
         </div>
