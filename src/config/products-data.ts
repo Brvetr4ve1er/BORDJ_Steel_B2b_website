@@ -101,94 +101,142 @@ export const productData = {
     sens: "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. il est de type gauche dans le sens inverse."
   },
   bardage: {
-    title: '2-PANNAUX SANDWICHS DE BARDAGE',
-    subtitle: '(Fixations cachées et visibles)',
-    image: {
-      src: '/images/product-imgaes/sandwich-panels/peb promo style  .png',
-      aiHint: 'cladding panels',
+    documentMetadata: {
+      productCategory: "2 – PANNEAUX SANDWICHS DE BARDAGE",
+      pageNumber: 18,
+      language: "fr",
+      documentType: "Fiche Technique"
+    },
+    productSpecifications: {
+      title: "CARACTÉRISTIQUE PRODUIT",
+      utilisation: {
+        heading: "Utilisation",
+        description: "Les panneaux sandwichs de bardage sont utilisés pour :",
+        applications: [
+          "Atelier de production",
+          "Entrepôts",
+          "Bâtiments industriels & modulaires",
+          "Centres commerciaux",
+          "Complexes sportifs",
+          "Ensembles scolaires et universitaires"
+        ]
+      },
+      definition: {
+        heading: "Définition",
+        specifications: [
+          { parameter: "Identification d’acier", value: "Nuance S250, S280, S320" },
+          { parameter: "Profil", value: "Profil à nervurations en faible profondeur, pour le type lisse pas de nervurations." },
+          { parameter: "Épaisseur", value: "0.5mm – 0.6mm – 0.7mm (selon la demande du client)" }
+        ]
+      },
+      revetement: {
+        heading: "Revêtement",
+        specifications: [
+          { material: "polyester pour la face extérieure : 25 µm" },
+          { material: "polyester pour la face intérieure : 7 µm" }
+        ]
+      },
+      ameIsolante: {
+        heading: "Âme isolante",
+        type: "Mousse polyuréthane rigide sans CFC (avec du N-Pentane)"
+      },
+      caracteristiquesTechniques: {
+        conductiviteThermique: { label: "Conductivité thermique", value: "λ = 0,023 W/m.°C" },
+        densite: { label: "Densité (kg/m³)", value: "≈ 38/41 kg/m³" },
+        reactionAuFeu: {
+          label: "Réaction au feu",
+          classifications: ["B3 : standard", "B.S2.d0"]
+        }
+      },
+      tolerance: {
+        heading: "Tolérance sur panneaux",
+        tolerances: [
+          { parameter: "Sur épaisseur", value: "±3mm" },
+          { parameter: "Sur longueur", value: "±3mm" },
+          { parameter: "Sur largeur", value: "±3mm" },
+          { parameter: "Sur équerrage", value: "±3mm" }
+        ]
+      },
+      coefficientIsolationThermique: {
+        heading: "Coefficient d’isolation thermique",
+        table: {
+          headers: {
+            epaisseur_mm: [30, 35, 40, 50, 60]
+          },
+          data: [
+            { unit: "W/m².K", values: { 30: 0.55, 35: 0.50, 40: 0.45, 50: 0.39, 60: 0.35 } },
+            { unit: "Kcal/m².h.°C", values: { 30: 0.47, 35: 0.43, 40: 0.40, 50: 0.33, 60: 0.30 } }
+          ]
+        }
+      },
+      dimensionnementDuPanneau: {
+        heading: "Dimensionnement du panneau",
+        table: {
+          headers: ["Type", "Longueur (mm)", "Largeur utile (mm)", "Epaisseur (mm)", "Poids (kg/m²)"],
+          data: [
+            { type: "LL30", longueur_mm: 15400, largeur_utile_mm: 1000, epaisseur_mm: 30, poids_kg_m2: 9.6 },
+            { type: "LL35", longueur_mm: 15400, largeur_utile_mm: 1000, epaisseur_mm: 35, poids_kg_m2: 9.8 },
+            { type: "LL40", longueur_mm: 15400, largeur_utile_mm: 1000, epaisseur_mm: 40, poids_kg_m2: 10.2 },
+            { type: "LL50", longueur_mm: 15400, largeur_utile_mm: 1000, epaisseur_mm: 50, poids_kg_m2: 10.4 },
+            { type: "LL60", longueur_mm: 15400, largeur_utile_mm: 1000, epaisseur_mm: 60, poids_kg_m2: 10.8 }
+          ]
+        }
+      }
+    },
+    installationInformation: {
+      etancheiteDesRives: {
+        heading: "Étanchéité des rives",
+        paragraphs: [
+          "Les panneaux sandwichs de bardages présentent une rive mâle et une rive femelle permettant un assemblage par emboîtement.",
+          "Les nervures mâle et femelle sont fermées par une bande adhésive.",
+          "Tous les panneaux bardage sont munis sur la nervure femelle d’un joint d’étanchéité à l’air ; leurs parements pré-laqués sont protégés par un film adhésif à retirer à la pose."
+        ]
+      }
+    },
+    chargesEtPorteesAdmissibles: {
+      title: "LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m²)",
+      subtitle: "Tôle en acier épaisseur 0,5mm",
+      tableStructure: {
+        mainHeaders: {
+          col1: "Charge utile uniformément répartie",
+          col2: "Épaisseur du panneau en mm",
+          col3: "Épaisseur du panneau en mm"
+        },
+        subHeaders: {
+          epaisseurGroup1Label: "Entraxe Max cm",
+          epaisseurGroup1: [30, 35, 40, 50, 60],
+          epaisseurGroup2Label: "Entraxe Max cm",
+          epaisseurGroup2: [30, 35, 40, 50, 60]
+        }
+      },
+      tableData: [
+        { kg_m2: 60, dan_m2: 58, entraxeGroup1: { ep30: 285, ep35: 315, ep40: 345, ep50: 405, ep60: 425 }, entraxeGroup2: { ep30: 455, ep35: 505, ep40: 550, ep50: 560 } },
+        { kg_m2: 80, dan_m2: 78, entraxeGroup1: { ep30: 255, ep35: 285, ep40: 315, ep50: 345, ep60: 375 }, entraxeGroup2: { ep30: 405, ep35: 445, ep40: 490, ep50: 495 } },
+        { kg_m2: 100, dan_m2: 98, entraxeGroup1: { ep30: 235, ep35: 265, ep40: 300, ep50: 335, ep60: 375 }, entraxeGroup2: { ep30: 385, ep35: 410, ep40: 460, ep50: 470 } },
+        { kg_m2: 120, dan_m2: 117, entraxeGroup1: { ep30: 225, ep35: 255, ep40: 280, ep50: 310, ep60: 355 }, entraxeGroup2: { ep30: 360, ep35: 385, ep40: 430, ep50: 450 } },
+        { kg_m2: 140, dan_m2: 137, entraxeGroup1: { ep30: 205, ep35: 225, ep40: 250, ep50: 285, ep60: 340 }, entraxeGroup2: { ep30: 340, ep35: 370, ep40: 420, ep50: 430 } },
+        { kg_m2: 160, dan_m2: 156, entraxeGroup1: { ep30: 195, ep35: 215, ep40: 235, ep50: 280, ep60: 325 }, entraxeGroup2: { ep30: 325, ep35: 345, ep40: 370, ep50: 370 } }
+      ]
+    },
+    caracteristiquesGeometriques: {
+      title: "Caractéristiques Géométriques",
+      notes: "schéma technique visible sur référence image",
+      diagrams: [
+        { caption: "Panneaux sandwichs de bardage nervuré/nervuré", description: "Schéma technique A" },
+        { caption: "Panneaux sandwichs de bardage lisse/nervuré", description: "Schéma technique B" }
+      ]
+    },
+    stylingGuidelines: {
+      colors: {
+        primary: "#C41E3A",
+        secondary: "#808080",
+        tableHeader: "#C41E3A",
+        subHeaderBackground: "#808080"
+      }
     },
     galleryImages: [
       { src: '/media/bardage/bardage-main.png', alt: 'Panneaux sandwichs de bardage', aiHint: 'cladding sandwich panels' },
     ],
-    features: {
-      utilisation: [
-        'Bâtiments industriels',
-        'Entrepôts',
-        'Centres logistiques',
-        'Grandes surfaces commerciales',
-        'Show-rooms',
-        'Salles de sport',
-      ],
-      definition: { 
-        acier: 'Nuance S250, S280, S320', 
-        parementExterne: {profil: 'Profil à nervurations trapézoïdales ou profil lisse', description: '', epaisseur: 'Épaisseur: 0,5mm - 0,6 mm - 0,7 mm'}, 
-        parementInterne: {profil: 'Profil à nervuration en faible profondeur', epaisseur: 'Épaisseur: 0,5mm - 0,6 mm'}
-      },
-      revetement: 'Polyester pour la face extérieure : 25 µm, polyester pour la face intérieure: 7µm',
-      ameIsolante: { type: 'Mousse polyuréthane rigide sans CFC (avec du N-Pentane)', conductivite: '0,023 W/m. °c', densite: '38/41 kg/m³'},
-      reactionAuFeu: 'B3: standard, B,S2-d0.',
-      tolerance: [
-        'Sur épaisseur ±3mm',
-        'Sur longueur ± 3mm',
-        'Sur largeur ± 3mm',
-        'Sur équerrage ± 3mm',
-      ],
-      avantages: [],
-      application: '',
-    },
-    implementationImages: [
-        { src: '/media/bardage/bardage-impl-1.png', alt: 'Implementation of cladding panels 1', aiHint: 'cladding panels implementation' },
-        { src: '/media/bardage/bardage-impl-2.png', alt: 'Implementation of cladding panels 2', aiHint: 'cladding panels building' },
-    ],
-    tables: {
-      isolation: { 
-        title: 'Coefficient d’isolation thermique', 
-        headers: ['Épaisseur en (mm)', 'W/m²K', 'Kcal/m²h°c'], 
-        rows: [
-          { 'Épaisseur en (mm)': 30, 'W/m²K': '0,55', 'Kcal/m²h°c': '0,48' },
-          { 'Épaisseur en (mm)': 40, 'W/m²K': '0,44', 'Kcal/m²h°c': '0,38' },
-          { 'Épaisseur en (mm)': 50, 'W/m²K': '0,36', 'Kcal/m²h°c': '0,31' },
-          { 'Épaisseur en (mm)': 60, 'W/m²K': '0,31', 'Kcal/m²h°c': '0,27' },
-          { 'Épaisseur en (mm)': 80, 'W/m²K': '0,24', 'Kcal/m²h°c': '0,21' },
-          { 'Épaisseur en (mm)': 100, 'W/m²K': '0,20', 'Kcal/m²h°c': '0,17' },
-        ] 
-      },
-      dimensionnement: { 
-        title: 'Dimensionnement du panneau', 
-        headers: ['Type', 'Longueur (mm)', 'Largueur standard (mm)', 'Épaisseur (mm)', 'Poids Kg/m²'], 
-        rows: [
-            { 'Type': 'TBN/L 70', 'Longueur (mm)': 12000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 30, 'Poids Kg/m²': 10.3 },
-            { 'Type': 'TBN/L 80', 'Longueur (mm)': 12000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 40, 'Poids Kg/m²': 10.7 },
-            { 'Type': 'TBN/L 90', 'Longueur (mm)': 12000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 50, 'Poids Kg/m²': 11.1 },
-            { 'Type': 'TBN/L 100', 'Longueur (mm)': 12000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 60, 'Poids Kg/m²': 11.5 },
-            { 'Type': 'TBN/L 120', 'Longueur (mm)': 10000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 80, 'Poids Kg/m²': 12.3 },
-            { 'Type': 'TBN/L 140', 'Longueur (mm)': 8000, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 100, 'Poids Kg/m²': 13.1 },
-        ] 
-      },
-       chargesPortees: { 
-        title: 'Portées admissibles (m)', 
-        subtitle: 'Charge uniformément répartie (daN/m²)',
-        headers: [
-            { title: 'Épaisseur (mm)', colspan: 1 },
-            { title: '40', colspan: 1 },
-            { title: '60', colspan: 1 },
-            { title: '80', colspan: 1 },
-            { title: '100', colspan: 1 },
-        ],
-        subheaders: ['Épaisseur (mm)', '40', '60', '80', '100'],
-        rows: [
-            { 'Épaisseur (mm)': 30, '40': 3.10, '60': 2.70, '80': 2.50, '100': 2.30},
-            { 'Épaisseur (mm)': 40, '40': 3.40, '60': 3.00, '80': 2.70, '100': 2.50},
-            { 'Épaisseur (mm)': 50, '40': 3.60, '60': 3.20, '80': 2.90, '100': 2.70},
-            { 'Épaisseur (mm)': 60, '40': 3.80, '60': 3.40, '80': 3.10, '100': 2.90},
-            { 'Épaisseur (mm)': 80, '40': 4.30, '60': 3.80, '80': 3.50, '100': 3.30},
-            { 'Épaisseur (mm)': 100, '40': 4.70, '60': 4.20, '80': 3.90, '100': 3.60},
-        ] 
-      }
-    },
-    pose: { title: 'La pose de panneaux sandwichs', decoupage: "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier.", fixation: "Les panneaux doivent être fixés au sommet de chaque nervure sur les pannes d'extrémité, Sur les pannes intermédiaires. Lors de la pose, les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet, Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité, les chéneaux, les gouttières, les recouvrements."},
-    etancheite: "Les panneaux sandwichs de bardages présentent une rive mâle et une rive femelle permettant un assemblage par emboitement. Les nervures mâle et femelle sont fermées par une bande adhésive. Tous les panneaux bardage sont munis sur la nervure femelle d'un joint d'étanchéité à l'air; leurs parements pré-laqués sont protégés par un film adhésif à retirer à la pose.",
-    sens: ''
   },
   frigorifique: {
     title: '3-PANNEAUX SANDWICHS FRIGORIFIQUE',
@@ -371,17 +419,17 @@ export const productData = {
               { title: 'CAS DES CHARGES', colspan: 1},
               { title: 'ESPACEMENT en mm', colspan: 10},
             ],
-            subheaders: ['ÉP', 'NOMBRE D\'ESPACEMENT', 'CAS DES CHARGES', '1,00', '1,25', '1,50', '1,75', '2,00', '2,25', '2,50', '2,75', '3,00', '3,50'],
+            porteeValues_m: [1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.50],
             rows: [
-                { 'ÉP': '0.70', 'NOMBRE D\'ESPACEMENT': '1', 'CAS DES CHARGES': 'G+Q', '1,00': '18,55', '1,25': '11,87', '1,50': '8,25', '1,75': '6,06', '2,00': '4,64', '2,25': '3,66', '2,50': '2,97', '2,75': '2,45', '3,00': '2,06', '3,50': '1,51' },
-                { 'ÉP': '0.70', 'NOMBRE D\'ESPACEMENT': '2', 'CAS DES CHARGES': '', '1,00': '9,02', '1,25': '7,22', '1,50': '6,02', '1,75': '5,16', '2,00': '4,51', '2,25': '4,01', '2,50': '3,43', '2,75': '2,83', '3,00': '2,38', '3,50': '1,75' },
-                { 'ÉP': '0.70', 'NOMBRE D\'ESPACEMENT': '3', 'CAS DES CHARGES': '', '1,00': '10,26', '1,25': '8,21', '1,50': '6,84', '1,75': '5,87', '2,00': '5,13', '2,25': '4,56', '2,50': '4,11', '2,75': '3,54', '3,00': '2,98', '3,50': '2,19' },
-                { 'ÉP': '1.00', 'NOMBRE D\'ESPACEMENT': '1', 'CAS DES CHARGES': 'G+Q', '1,00': '30,16', '1,25': '19,30', '1,50': '13,40', '1,75': '9,85', '2,00': '7,54', '2,25': '5,96', '2,50': '4,83', '2,75': '3,99', '3,00': '3,35', '3,50': '2,44' },
-                { 'ÉP': '1.00', 'NOMBRE D\'ESPACEMENT': '2', 'CAS DES CHARGES': '', '1,00': '17,46', '1,25': '13,97', '1,50': '11,64', '1,75': '9,98', '2,00': '8,64', '2,25': '6,83', '2,50': '5,53', '2,75': '4,5', '3,00': '3,84', '3,50': '2,82' },
-                { 'ÉP': '1.00', 'NOMBRE D\'ESPACEMENT': '3', 'CAS DES CHARGES': '', '1,00': '19,87', '1,25': '15,89', '1,50': '13,24', '1,75': '11,35', '2,00': '9,93', '2,25': '8.53', '2,50': '6.91', '2,75': '5.71', '3,00': '4.80', '3,50': '3.53' },
-                { 'ÉP': '1.50', 'NOMBRE D\'ESPACEMENT': '1', 'CAS DES CHARGES': 'G+Q', '1,00': '53,20', '1,25': '34,05', '1,50': '23,64', '1,75': '17,37', '2,00': '13,30', '2,25': '10,57', '2,50': '8,51', '2,75': '7,03', '3,00': '5,80', '3,50': '3,65' },
-                { 'ÉP': '1.50', 'NOMBRE D\'ESPACEMENT': '2', 'CAS DES CHARGES': '', '1,00': '36,16', '1,25': '28,93', '1,50': '24,11', '1,75': '18,47', '2,00': '14,40', '2,25': '11,17', '2,50': '9,05', '2,75': '7,48', '3,00': '6,28', '3,50': '4,26' },
-                { 'ÉP': '1.50', 'NOMBRE D\'ESPACEMENT': '3', 'CAS DES CHARGES': '', '1,00': '41,13', '1,25': '32,91', '1,50': '27,42', '1,75': '23,09', '2,00': '17,68', '2,25': '13,97', '2,50': '11,31', '2,75': '9,35', '3,00': '7,86', '3,50': '5,77' },
+                { epaisseur: '0.70', nbEspacement: '1', cas: 'G+Q', values: [18.55, 11.87, 8.25, 6.06, 4.64, 3.66, 2.97, 2.45, 2.06, 1.51] },
+                { epaisseur: '0.70', nbEspacement: '2', cas: '', values: [9.02, 7.22, 6.02, 5.16, 4.51, 4.01, 3.43, 2.83, 2.38, 1.75] },
+                { epaisseur: '0.70', nbEspacement: '3', cas: '', values: [10.26, 8.21, 6.84, 5.87, 5.13, 4.56, 4.11, 3.54, 2.98, 2.19] },
+                { epaisseur: '1.00', nbEspacement: '1', cas: 'G+Q', values: [30.16, 19.30, 13.40, 9.85, 7.54, 5.96, 4.83, 3.99, 3.35, 2.44] },
+                { epaisseur: '1.00', nbEspacement: '2', cas: '', values: [17.46, 13.97, 11.64, 9.98, 8.64, 6.83, 5.53, 4.5, 3.84, 2.82] },
+                { epaisseur: '1.00', nbEspacement: '3', cas: '', values: [19.87, 15.89, 13.24, 11.35, 9.93, 8.53, 6.91, 5.71, 4.80, 3.53] },
+                { epaisseur: '1.50', nbEspacement: '1', cas: 'G+Q', values: [53.20, 34.05, 23.64, 17.37, 13.30, 10.57, 8.51, 7.03, 5.80, 3.65] },
+                { epaisseur: '1.50', nbEspacement: '2', cas: '', values: [36.16, 28.93, 24.11, 18.47, 14.40, 11.17, 9.05, 7.48, 6.28, 4.26] },
+                { epaisseur: '1.50', nbEspacement: '3', cas: '', values: [41.13, 32.91, 27.42, 23.09, 17.68, 13.97, 11.31, 9.35, 7.86, 5.77] },
             ]
         },
         proprietes: {
@@ -546,3 +594,5 @@ export const productData = {
     },
   }
 };
+
+  
