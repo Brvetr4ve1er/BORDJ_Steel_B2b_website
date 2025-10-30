@@ -129,11 +129,12 @@ const NewGallery = () => {
             </div>
             <div className="flex items-center gap-2 h-[400px] w-full max-w-7xl mt-10 px-4">
                 {[
-                    "https://i.pinimg.com/474x/e9/8f/d0/e98fd0f2be33adea96cf129e977d6dbf.jpg",
-                    "https://i.pinimg.com/736x/53/07/e6/5307e6787500b6efff734990a41772e5.jpg",
-                    "https://i.pinimg.com/736x/5c/c7/70/5cc77095f582fa54a8cd4188eda88705.jpg",
-                    "https://i.pinimg.com/736x/21/93/79/219379e4219680d5c06be55fecfcdbaf.jpg",
                     "https://i.pinimg.com/736x/ec/93/b8/ec93b8a90b0c088c23cdf817613dd183.jpg",
+                    "https://i.pinimg.com/736x/34/9a/c5/349ac528cf2b299e8e9d38dcf88e029d.jpg",
+                    "https://i.pinimg.com/736x/5f/00/6f/5f006fef04a5f7af462ba580abbb2adc.jpg",
+                    "https://i.pinimg.com/736x/7a/da/ff/7adaff64dfee8fb4467082a0a5daa933.jpg",
+                    "https://i.pinimg.com/736x/53/07/e6/5307e6787500b6efff734990a41772e5.jpg",
+                    "https://i.pinimg.com/736x/db/65/cd/db65cdc8fcf0205a18de1498e1a987c7.jpg"
                 ].map((src, idx) => (
                     <div
                         key={idx}
