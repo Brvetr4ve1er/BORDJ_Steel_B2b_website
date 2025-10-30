@@ -55,11 +55,11 @@ export const productData = {
           specifications: [
             {
               type: "Face extérieure",
-              material": "polyester pour la face extérieure : 25 µm"
+              "material": "polyester pour la face extérieure : 25 µm"
             },
             {
               type: "Face intérieure",
-              material": "polyester pour la face intérieure : 7µm"
+              "material": "polyester pour la face intérieure : 7µm"
             }
           ]
         },
@@ -92,7 +92,7 @@ export const productData = {
           tolerances: [
             {
               parameter: "Sur épaisseur",
-              value: "±2mm"
+              value: "±3mm"
             },
             {
               parameter: "Sur longueur",
@@ -101,21 +101,25 @@ export const productData = {
             {
               parameter: "Sur largeur",
               value: "±3mm"
+            },
+            {
+              parameter: "Sur équerrage",
+              value: "±3mm"
             }
           ]
         },
         subsection_coefficient_isolation: {
           heading: "Coefficient d'isolation thermique",
           table: {
-            headers: ["Epaisseur en mm", "30", "35", "40", "45", "50", "60"],
+            headers: ["Epaisseur en mm", "30", "35", "40", "60"],
             rows: [
               {
                 unit: "W/m²K",
-                values: ["0.55", "0.49", "0.43", "0.40", "0.36", "0.31"]
+                values: [0.55, 0.49, 0.44, 0.31]
               },
               {
                 unit: "Kcal/m²h°C",
-                values: ["0.45", "0.43", "0.37", "0.34", "0.31", "0.26"]
+                values: [0.48, 0.43, 0.38, 0.27]
               }
             ]
           }
@@ -123,32 +127,32 @@ export const productData = {
         subsection_dimensionnement: {
           heading: "Dimensionnement du panneau",
           table: {
-            headers: ["Type", "Longueur (mm)", "Largeur (mm)", "Épaisseur (mm)", "Poids (kg/m²)"],
+            headers: ["Type", "Longueur (mm)", "Largeur standard (mm)", "Epaisseur (mm)", "Poids kg/m²"],
             rows: [
               {
-                type: "TL70",
-                longueur: 13000,
+                type: "LL70",
+                longueur: 15400,
+                largeur: 1000,
+                epaisseur: 30,
+                poids: 10.3
+              },
+              {
+                type: "LL75",
+                longueur: 15400,
                 largeur: 1000,
                 epaisseur: 35,
                 poids: 10.5
               },
               {
-                type: "TL75",
-                longueur: 14000,
+                type: "LL80",
+                longueur: 15400,
                 largeur: 1000,
                 epaisseur: 40,
                 poids: 10.7
               },
               {
-                type: "TL80",
-                longueur: 15000,
-                largeur: 1000,
-                epaisseur: 50,
-                poids: 10.9
-              },
-              {
-                type: "TL82",
-                longueur: 15000,
+                type: "LL100",
+                longueur: 15400,
                 largeur: 1000,
                 epaisseur: 60,
                 poids: 11.5
@@ -160,13 +164,203 @@ export const productData = {
       section2_etancheite_sens: {
         subsection_etancheite_rives: {
           heading: "Etanchéité des rives",
-          content: "Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une nervure femelle (sans mousse) permettant une parfaite étanchéité.   Une nervure mâle est formée par une bande adhésive et la nervure femelle d’un joint d’étanchéité."
+          content: "Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une nervure femelle (sans mousse) permettant un assemblage par emboîtement. La nervure mâle est fermée par une bande adhésive. et la nervure femelle d'un joint d'étanchéité à l'air"
         },
         subsection_sens_panneaux: {
           heading: "Sens des panneaux",
-          content": "Les panneaux sandwichs de couverture sont désignés en fonction de la longueur par rapport à la direction des vents dominants.   Un panneau est dit **sens direct** lorsque la rive longitudinale femelle vient en recouvrement en regardant la façade.   Il est dit **sens inverse** dans le sens opposé."
+          content": "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. Il est de type gauche dans le sens inverse."
         }
+      },
+      section3_pose_installation: {
+        title: "La pose de panneaux sandwichs",
+        subsection_decoupage: {
+          heading: "Découpage des panneaux :",
+          instruction": "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier."
+        },
+        subsection_fixation: {
+          heading: "Fixation des panneaux :",
+          instruction": "Les panneaux doivent être rivés au sommet de chaque nervure sur les pannes d'extrémité. Sur les pannes intermédiaires. lors de la pose. les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet. Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité. les chéneaux. les gouttières, les recouvrements."
+        }
+      },
+      section4_charges_portees: {
+        title: "LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)",
+        subtitle: "Tôle en acier épaisseur 0.5mm",
+        table_principale: {
+          structure: {
+            header_row_1: {
+              col1: "Charge utile uniformément répartie",
+              col2: "Epaisseur du panneau en mm",
+              col3: "Epaisseur du panneau en mm"
+            },
+            header_row_2: {
+              col1_subheaders: ["Kg/m²", "daN/m²"],
+              col2_subheaders: ["30", "35", "40", "60"],
+              col2_label: "Entraxe Max cm",
+              col3_subheaders: ["30", "35", "40", "60"],
+              col3_label: "Entraxe Max cm"
+            }
+          },
+          data_rows: [
+            {
+              kg_m2: 80,
+              dan_m2: 87,
+              group1: {
+                ep_30: 345,
+                ep_35: 365,
+                ep_40: 390,
+                ep_60: 485
+              },
+              group2: {
+                ep_30: 400,
+                ep_35: 425,
+                ep_40: 455,
+                ep_60: 560
+              }
+            },
+            {
+              kg_m2: 120,
+              dan_m2: 177,
+              group1: {
+                ep_30: 290,
+                ep_35: 310,
+                ep_40: 335,
+                ep_60: 415
+              },
+              group2: {
+                ep_30: 345,
+                ep_35: 365,
+                ep_40: 390,
+                ep_60: 485
+              }
+            },
+            {
+              kg_m2: 150,
+              dan_m2: 147,
+              group1: {
+                ep_30: 265,
+                ep_35: 285,
+                ep_40: 305,
+                ep_60: 375
+              },
+              group2: {
+                ep_30: 315,
+                ep_35: 335,
+                ep_40: 355,
+                ep_60: 440
+              }
+            },
+            {
+              kg_m2: 200,
+              dan_m2: 196,
+              group1: {
+                ep_30: 235,
+                ep_35: 250,
+                ep_40: 270,
+                ep_60: 340
+              },
+              group2: {
+                ep_30: 285,
+                ep_35: 305,
+                ep_40: 325,
+                ep_60: 400
+              }
+            },
+            {
+              kg_m2: 250,
+              dan_m2: 245,
+              group1: {
+                ep_30: 210,
+                ep_35: 225,
+                ep_40: 245,
+                ep_60: 305
+              },
+              group2: {
+                ep_30: 255,
+                ep_35: 275,
+                ep_40: 295,
+                ep_60: 360
+              }
+            }
+          ]
+        }
+      },
+      section5_caracteristiques_geometriques: {
+        title: "Caractéristiques Géométriques",
+        diagram_description: "Schéma en coupe transversale montrant le profil du panneau sandwich de couverture avec 5 ondes",
+        caption: "Couverture avec 5 ondes"
       }
+    },
+    layoutInstructions: {
+      pageLayout: "two_column",
+      leftColumn: {
+        width: "45%",
+        sections: [
+          "section1_caracteristiques",
+          "section2_etancheite_sens"
+        ]
+      },
+      rightColumn: {
+        width: "55%",
+        sections: [
+          "section3_pose_installation",
+          "section4_charges_portees",
+          "section5_caracteristiques_geometriques"
+        ]
+      }
+    },
+    stylingGuidelines: {
+      colors: {
+        primary: "#C41E3A",
+        secondary: "#808080",
+        tableHeader: "#C41E3A",
+        tableSubHeader: "#A8A8A8",
+        tableAlternateRow: "#E8E8E8"
+      },
+      typography: {
+        mainTitle: {
+          size: "18px",
+          weight: "bold",
+          color: "#C41E3A"
+        },
+        sectionHeading: {
+          size: "14px",
+          weight: "bold",
+          color: "#000000"
+        },
+        bodyText: {
+          size: "11px",
+          weight: "normal",
+          color: "#000000"
+        }
+      },
+      tables: {
+        borderColor: "#000000",
+        cellPadding: "8px",
+        headerBackground: "#C41E3A",
+        headerTextColor: "#FFFFFF"
+      }
+    },
+    geminiProcessingInstructions: {
+      objective: "Generate a professional product description webpage that maintains the exact structure and data organization of the original technical document",
+      requirements: [
+        "Preserve the two-column layout structure exactly as shown",
+        "Maintain all technical specifications with exact numerical values",
+        "Keep section order: Caractéristiques → Installation → Charges/Portées → Géométrie",
+        "Format all tables with proper headers and organized data cells",
+        "Use professional technical terminology in French",
+        "Ensure all measurements, units, and standards are accurate",
+        "Include all safety and installation instructions verbatim",
+        "Apply the specified color scheme and typography guidelines",
+        "Make content web-ready while preserving technical accuracy"
+      ],
+      outputFormat: "HTML5 with CSS styling suitable for e-commerce product page",
+      criticalNotes: [
+        "Do NOT modify any numerical values",
+        "Do NOT change technical terminology",
+        "Do NOT alter the order of information",
+        "DO maintain exact table structures",
+        "DO preserve all safety warnings and instructions"
+      ]
     },
     image: {
       src: 'https://images.unsplash.com/photo-1614003013812-e397300cd764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdGVlbCUyMGNvdmVyfGVufDB8fHx8MTc1NjcxODU1M3ww&ixlib=rb-4.1.0&q=80&w=1080',
@@ -598,7 +792,7 @@ export const productData = {
         },
         proprietes: {
             "title": "Propriétés de la tôle HI-BOND 77",
-            "headers": ["Ép (mm)", "Poids (Kg/m)", "Haut de la tôle en compression", "Bas de la tôle en compression", "Cisaillement voilement"],
+            "headers": ["ÉP (mm)", "Poids (Kg/m)", "Haut de la tôle en compression", "Bas de la tôle en compression", "Cisaillement voilement"],
             "subheaders": {
                 "Haut de la tôle en compression": ["Lx (Cm4)", "Zx-top (Cm3)", "Zx-bot (Cm3)", "Ma (Kn.m)"],
                 "Bas de la tôle en compression": ["Lx (Cm4)", "Zx-top (Cm3)", "Zx-bot (Cm3)", "Ma (Kn.m)"],
