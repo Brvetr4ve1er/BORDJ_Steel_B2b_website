@@ -121,10 +121,9 @@ const NewGallery = () => {
     return (
         <section className="w-full flex flex-col items-center justify-start py-12">
             <div className="max-w-3xl text-center px-4">
-                <h1 className="text-3xl font-semibold">Our Latest Creations</h1>
+                <h1 className="text-3xl font-semibold">Nos Projets</h1>
                 <p className="text-sm text-slate-500 mt-2">
-                    A visual collection of our most recent works – each piece crafted
-                    with intention, emotion, and style.
+                    Une collection visuelle de nos travaux les plus récents - chaque pièce est fabriquée avec intention, émotion et style.
                 </p>
             </div>
             <div className="flex items-center gap-2 h-[400px] w-full max-w-7xl mt-10 px-4">
