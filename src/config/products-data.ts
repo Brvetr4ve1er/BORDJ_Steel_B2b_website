@@ -26,27 +26,27 @@ export const productData = {
           details: [
             {
               label: "Identification d'acier",
-              value": "Nuance S250, S280, S320"
+              "value": "Nuance S250, S280, S320"
             },
             {
               label: "Parement externe",
-              value": "Profil type: 5 .40 .1000 mm"
+              value: "Profil type: 5 .40 .1000 mm"
             },
             {
               label: "Structure",
-              value": "4 ondes avec mousse et 1 onde sans mousse"
+              value: "4 ondes avec mousse et 1 onde sans mousse"
             },
             {
               label: "Epaisseur",
-              value": "0.5mm - 0.6 mm - 0.7 mm"
+              value: "0.5mm - 0.6 mm - 0.7 mm"
             },
             {
               label: "Parement interne",
-              value": "Profil à nervuration en faible profondeur"
+              value: "Profil à nervuration en faible profondeur"
             },
             {
               label: "Epaisseur",
-              value": "0.5mm - 0.6 mm - 0.7 mm"
+              value: "0.5mm - 0.6 mm - 0.7 mm"
             }
           ]
         },
@@ -68,15 +68,15 @@ export const productData = {
           specifications: [
             {
               property: "Type",
-              value": "Mousse polyuréthane rigide sans CFC (avec du N-Pentane)"
+              value: "Mousse polyuréthane rigide sans CFC (avec du N-Pentane)"
             },
             {
               property: "Conductivité thermique",
-              value": "0.023 W/m. °C"
+              value: "0.023 W/m. °C"
             },
             {
               property: "Densité (kg/m³)",
-              value": "38/41 kg m3"
+              value: "38/41 kg m3"
             }
           ]
         },
@@ -92,15 +92,15 @@ export const productData = {
           tolerances: [
             {
               parameter: "Sur épaisseur",
-              value": "±2mm"
+              value: "±2mm"
             },
             {
               parameter: "Sur longueur",
-              value": "±3mm"
+              value: "±3mm"
             },
             {
               parameter: "Sur largeur",
-              value": "±3mm"
+              value: "±3mm"
             }
           ]
         },
@@ -123,7 +123,7 @@ export const productData = {
         subsection_dimensionnement: {
           heading: "Dimensionnement du panneau",
           table: {
-            headers: ["Type", "Longueur (mm)", "Largeur (mm)", "Epaisseur (mm)", "Poids (kg/m²)"],
+            headers: ["Type", "Longueur (mm)", "Largeur (mm)", "Épaisseur (mm)", "Poids (kg/m²)"],
             rows: [
               {
                 type: "TL70",
@@ -160,11 +160,11 @@ export const productData = {
       section2_etancheite_sens: {
         subsection_etancheite_rives: {
           heading: "Etanchéité des rives",
-          content": "Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une nervure femelle (sans mousse) permettant une parfaite étanchéité. Une nervure mâle est formée par une bande adhésive et la nervure femelle d’un joint d’étanchéité."
+          content: "Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une nervure femelle (sans mousse) permettant une parfaite étanchéité.   Une nervure mâle est formée par une bande adhésive et la nervure femelle d’un joint d’étanchéité."
         },
         subsection_sens_panneaux: {
           heading: "Sens des panneaux",
-          content": "Les panneaux sandwichs de couverture sont désignés en fonction de la longueur par rapport à la direction des vents dominants. Un panneau est dit sens direct lorsque la rive longitudinale femelle vient en recouvrement en regardant la façade. Il est dit sens inverse dans le sens opposé."
+          content": "Les panneaux sandwichs de couverture sont désignés en fonction de la longueur par rapport à la direction des vents dominants.   Un panneau est dit **sens direct** lorsque la rive longitudinale femelle vient en recouvrement en regardant la façade.   Il est dit **sens inverse** dans le sens opposé."
         }
       }
     },
@@ -204,7 +204,7 @@ export const productData = {
         specifications: [
           { parameter: "Identification d’acier", value: "Nuance S250, S280, S320" },
           { parameter: "Profil", value: "Profil à nervurations en faible profondeur, pour le type lisse pas de nervurations." },
-          { parameter: "Épaisseur", value: "0.5mm – 0.6mm – 0.7mm (selon la demande du client)" }
+          { parameter: "Épaisseur", value: "0,5mm – 0,6mm – 0,7mm (selon la demande du client)" }
         ]
       },
       revetement: {
@@ -511,11 +511,11 @@ export const productData = {
                 { epaisseur_mm: '0.70', nombre_espacement: '2', cas: '', valeurs: [9.02, 7.22, 6.02, 5.16, 4.51, 4.01, 3.43, 2.83, 2.38, 1.75] },
                 { epaisseur_mm: '0.70', nombre_espacement: '3', cas: '', valeurs: [10.26, 8.21, 6.84, 5.87, 5.13, 4.56, 4.11, 3.54, 2.98, 2.19] },
                 { epaisseur_mm: '1.00', nombre_espacement: '1', cas: 'G+Q', valeurs: [30.16, 19.30, 13.40, 9.85, 7.54, 5.96, 4.83, 3.99, 3.35, 2.44] },
-                { epaisseur_mm: '1.00', nombre_espacement: '2', cas: '', valeurs: [17.46, 13.97, 11.64, 9.98, 8.64, 6.83, 5.53, 4.5, 3.84, 2.82] },
+                { epaisseur_mm: '1.00', nombre_espacement: '2', cas: '', valeurs: [17.46, 13.97, 11.64, 9.98, 8.64, 6.83, 5.53, 4.50, 3.84, 2.82] },
                 { epaisseur_mm: '1.00', nombre_espacement: '3', cas: '', valeurs: [19.87, 15.89, 13.24, 11.35, 9.93, 8.53, 6.91, 5.71, 4.80, 3.53] },
                 { epaisseur_mm: '1.50', nombre_espacement: '1', cas: 'G+Q', valeurs: [53.20, 34.05, 23.64, 17.37, 13.30, 10.57, 8.51, 7.03, 5.80, 3.65] },
                 { epaisseur_mm: '1.50', nombre_espacement: '2', cas: '', valeurs: [36.16, 28.93, 24.11, 18.47, 14.40, 11.17, 9.05, 7.48, 6.28, 4.26] },
-                { epaisseur_mm: '1.50', nombre_espacement: '3', cas: '', valeurs: [41.13, 32.91, 27.42, 23.09, 17.68, 13.97, 11.31, 9.35, 7.86, 5.77] },
+                { epaisseur_mm: '1.50', nombre_espacement: '3', cas: '', valeurs: [41.13, 32.91, 27.42, 23.09, 17.68, 13.97, 11.31, 9.35, 7.86, 5.77] }
             ]
         },
         proprietes: {
@@ -533,9 +533,6 @@ export const productData = {
             ]
         }
     },
-    pose: { title: '', decoupage: '', fixation: ''},
-    etancheite: '',
-    sens: ''
   },
   hibond: {
     title: '5-PLANCHER COLLABORANT "HI-BOND 77"',
@@ -684,3 +681,5 @@ export const productData = {
     },
   }
 };
+
+  
