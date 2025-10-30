@@ -26,7 +26,7 @@ export const productData = {
           details: [
             {
               label: "Identification d'acier",
-              "value": "Nuance S250, S280, S320"
+              value: "Nuance S250, S280, S320"
             },
             {
               label: "Parement externe",
@@ -55,7 +55,7 @@ export const productData = {
           specifications: [
             {
               type: "Face extérieure",
-              "material": "polyester pour la face extérieure : 25 µm"
+              material: "polyester pour la face extérieure : 25 µm"
             },
             {
               type: "Face intérieure",
@@ -168,18 +168,18 @@ export const productData = {
         },
         subsection_sens_panneaux: {
           heading: "Sens des panneaux",
-          "content": "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. Il est de type gauche dans le sens inverse."
+          content: "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. Il est de type gauche dans le sens inverse."
         }
       },
       section3_pose_installation: {
         title: "La pose de panneaux sandwichs",
         subsection_decoupage: {
           heading: "Découpage des panneaux :",
-          "instruction": "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier."
+          instruction: "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier."
         },
         subsection_fixation: {
           heading: "Fixation des panneaux :",
-          "instruction": "Les panneaux doivent être rivés au sommet de chaque nervure sur les pannes d'extrémité. Sur les pannes intermédiaires. lors de la pose. les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet. Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité. les chéneaux. les gouttières, les recouvrements."
+          instruction: "Les panneaux doivent être rivés au sommet de chaque nervure sur les pannes d'extrémité. Sur les pannes intermédiaires. lors de la pose. les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet. Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité. les chéneaux. les gouttières, les recouvrements."
         }
       },
       section4_charges_portees: {
@@ -340,28 +340,6 @@ export const productData = {
         headerTextColor: "#FFFFFF"
       }
     },
-    geminiProcessingInstructions: {
-      objective: "Generate a professional product description webpage that maintains the exact structure and data organization of the original technical document",
-      requirements: [
-        "Preserve the two-column layout structure exactly as shown",
-        "Maintain all technical specifications with exact numerical values",
-        "Keep section order: Caractéristiques → Installation → Charges/Portées → Géométrie",
-        "Format all tables with proper headers and organized data cells",
-        "Use professional technical terminology in French",
-        "Ensure all measurements, units, and standards are accurate",
-        "Include all safety and installation instructions verbatim",
-        "Apply the specified color scheme and typography guidelines",
-        "Make content web-ready while preserving technical accuracy"
-      ],
-      outputFormat: "HTML5 with CSS styling suitable for e-commerce product page",
-      criticalNotes: [
-        "Do NOT modify any numerical values",
-        "Do NOT change technical terminology",
-        "Do NOT alter the order of information",
-        "DO maintain exact table structures",
-        "DO preserve all safety warnings and instructions"
-      ]
-    },
     image: {
       src: 'https://images.unsplash.com/photo-1614003013812-e397300cd764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdGVlbCUyMGNvdmVyfGVufDB8fHx8MTc1NjcxODU1M3ww&ixlib=rb-4.1.0&q=80&w=1080',
       aiHint: 'metal sheets',
@@ -513,7 +491,7 @@ export const productData = {
       { src: '/media/bardage/bardage-main.png', alt: 'Panneaux sandwichs de bardage', aiHint: 'cladding sandwich panels' },
        { src: 'https://i.pinimg.com/736x/8f/f4/7e/8ff47e67584c31185b37265551943445.jpg', alt: 'Bardage panel detail', aiHint: 'building facade' },
       { src: 'https://i.pinimg.com/736x/a2/2a/7c/a22a7c8e9b62f8350f38010375a7c295.jpg', alt: 'Industrial building with sandwich panels', aiHint: 'industrial building' },
-    ],
+    ]
   },
   frigorifique: {
     title: '3-PANNEAUX SANDWICHS FRIGORIFIQUE',
@@ -757,7 +735,7 @@ export const productData = {
             image: {
               src: '/media/hi-bond-77/hi-bond-geometrie.png',
               aiHint: 'geometric characteristics diagram',
-              blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII='
+              blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
             }
         },
     },
@@ -873,6 +851,6 @@ export const productData = {
     tables: {
         isolation: { title: '', headers: [], rows: [] },
         dimensionnement: { title: '', headers: [], rows: [] },
-    },
+    }
   }
 };
