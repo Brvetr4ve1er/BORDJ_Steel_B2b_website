@@ -26,7 +26,7 @@ export const productData = {
           details: [
             {
               label: "Identification d'acier",
-              value: "Nuance S250, S280, S320"
+              "value": "Nuance S250, S280, S320"
             },
             {
               label: "Parement externe",
@@ -55,7 +55,7 @@ export const productData = {
           specifications: [
             {
               type: "Face extérieure",
-              material: "polyester pour la face extérieure : 25 µm"
+              "material": "polyester pour la face extérieure : 25 µm"
             },
             {
               type: "Face intérieure",
@@ -168,18 +168,18 @@ export const productData = {
         },
         subsection_sens_panneaux: {
           heading: "Sens des panneaux",
-          content: "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. Il est de type gauche dans le sens inverse."
+          "content": "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. Il est de type gauche dans le sens inverse."
         }
       },
       section3_pose_installation: {
         title: "La pose de panneaux sandwichs",
         subsection_decoupage: {
           heading: "Découpage des panneaux :",
-          instruction: "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier."
+          "instruction": "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier."
         },
         subsection_fixation: {
           heading: "Fixation des panneaux :",
-          instruction: "Les panneaux doivent être rivés au sommet de chaque nervure sur les pannes d'extrémité. Sur les pannes intermédiaires. lors de la pose. les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet. Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité. les chéneaux. les gouttières, les recouvrements."
+          "instruction": "Les panneaux doivent être rivés au sommet de chaque nervure sur les pannes d'extrémité. Sur les pannes intermédiaires. lors de la pose. les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet. Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité. les chéneaux. les gouttières, les recouvrements."
         }
       },
       section4_charges_portees: {
@@ -416,8 +416,8 @@ export const productData = {
             epaisseur_mm: [30, 35, 40, 50, 60]
           },
           data: [
-            { unit: "W/m².K", values: { 30: "0.55", 35: "0.50", 40: "0.45", 50: "0.39", 60: "0.35" } },
-            { unit: "Kcal/m².h.°C", values: { 30: "0.47", 35: "0.43", 40: "0.40", 50: "0.33", 60: "0.30" } }
+            { unit: "W/m².K", values: { "30": "0.55", "35": "0.50", "40": "0.45", "50": "0.39", "60": "0.35" } },
+            { unit: "Kcal/m².h.°C", values: { "30": "0.47", "35": "0.43", "40": "0.40", "50": "0.33", "60": "0.30" } }
           ]
         }
       },
@@ -735,7 +735,7 @@ export const productData = {
             image: {
               src: '/media/hi-bond-77/hi-bond-geometrie.png',
               aiHint: 'geometric characteristics diagram',
-              blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
+              blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII='
             }
         },
     },
@@ -852,5 +852,7 @@ export const productData = {
         isolation: { title: '', headers: [], rows: [] },
         dimensionnement: { title: '', headers: [], rows: [] },
     }
-  }
+  },
 };
+
+    
