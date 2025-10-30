@@ -59,7 +59,7 @@ export const productData = {
             },
             {
               type: "Face intérieure",
-              "material": "polyester pour la face intérieure : 7µm"
+              material: "polyester pour la face intérieure : 7µm"
             }
           ]
         },
@@ -175,11 +175,11 @@ export const productData = {
         title: "La pose de panneaux sandwichs",
         subsection_decoupage: {
           heading: "Découpage des panneaux :",
-          instruction": "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier."
+          "instruction": "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier."
         },
         subsection_fixation: {
           heading: "Fixation des panneaux :",
-          instruction": "Les panneaux doivent être rivés au sommet de chaque nervure sur les pannes d'extrémité. Sur les pannes intermédiaires. lors de la pose. les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet. Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité. les chéneaux. les gouttières, les recouvrements."
+          "instruction": "Les panneaux doivent être rivés au sommet de chaque nervure sur les pannes d'extrémité. Sur les pannes intermédiaires. lors de la pose. les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet. Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité. les chéneaux. les gouttières, les recouvrements."
         }
       },
       section4_charges_portees: {
@@ -385,12 +385,12 @@ export const productData = {
         heading: "Utilisation",
         description: "Les panneaux sandwichs de bardage sont utilisés pour :",
         applications: [
-          "Atelier de production",
-          "Entrepôts",
-          "Bâtiments industriels & modulaires",
-          "Centres commerciaux",
-          "Complexes sportifs",
-          "Ensembles scolaires et universitaires"
+          "Atelier de production.",
+          "Entrepôts.",
+          "Bâtiments industriels & modulaires.",
+          "Centres commerciaux.",
+          "Complexes sportifs.",
+          "Ensembles scolaires et universitaires."
         ]
       },
       definition: {
@@ -473,8 +473,9 @@ export const productData = {
       tableStructure: {
         mainHeaders: {
           col1: "Charge utile uniformément répartie",
-          col2: "Épaisseur du panneau en mm",
-          col3: "Épaisseur du panneau en mm"
+          col2: "Kg/m²",
+          col3: "daN/m²",
+          col4: "Épaisseur du panneau en mm"
         },
         subHeaders: {
           epaisseurGroup1Label: "Entraxe Max cm",
@@ -699,7 +700,7 @@ export const productData = {
               { title: 'CAS DES CHARGES', colspan: 1},
               { title: 'ESPACEMENT en mm', colspan: 10},
             ],
-            espacements_header: [1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.50],
+            porteeValues_m: [1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.50],
             rows: [
                 { epaisseur_mm: '0.70', nombre_espacement: '1', cas: 'G+Q', valeurs: [18.55, 11.87, 8.25, 6.06, 4.64, 3.66, 2.97, 2.45, 2.06, 1.51] },
                 { epaisseur_mm: '0.70', nombre_espacement: '2', cas: '', valeurs: [9.02, 7.22, 6.02, 5.16, 4.51, 4.01, 3.43, 2.83, 2.38, 1.75] },
@@ -875,5 +876,3 @@ export const productData = {
     },
   }
 };
-
-    
