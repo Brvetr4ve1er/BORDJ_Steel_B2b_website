@@ -1,104 +1,182 @@
 
-
 export const productData = {
   couverture: {
-    title: '1-PANNEAUX SANDWICHS DE COUVERTURE',
-    subtitle: '',
+    documentMetadata: {
+      productType: "PANNEAUX SANDWICHS DE COUVERTURE",
+      productRange: "à 05 ondes Ep de 30 mm jusqu'au 60 mm",
+      pageNumber: 17,
+      language: "fr"
+    },
+    productDescription: {
+      section1_caracteristiques: {
+        title: "CARACTÉRISTIQUE PRODUIT",
+        subsection_utilisation: {
+          heading: "Utilisation",
+          items: [
+            "Bâtiments industriels et modulaires",
+            "Ateliers de production",
+            "Entrepôts",
+            "Centres commerciaux",
+            "Complexes sportifs",
+            "Ensembles scolaires et universitaires ainsi que dans toute autre construction nécessitant une isolation thermique"
+          ]
+        },
+        subsection_definition: {
+          heading: "Définition",
+          details: [
+            {
+              label: "Identification d'acier",
+              value": "Nuance S250, S280, S320"
+            },
+            {
+              label: "Parement externe",
+              value": "Profil type: 5 .40 .1000 mm"
+            },
+            {
+              label: "Structure",
+              value": "4 ondes avec mousse et 1 onde sans mousse"
+            },
+            {
+              label: "Epaisseur",
+              value": "0.5mm - 0.6 mm - 0.7 mm"
+            },
+            {
+              label: "Parement interne",
+              value": "Profil à nervuration en faible profondeur"
+            },
+            {
+              label: "Epaisseur",
+              value": "0.5mm - 0.6 mm - 0.7 mm"
+            }
+          ]
+        },
+        subsection_revetement: {
+          heading: "Revêtement :",
+          specifications: [
+            {
+              type: "Face extérieure",
+              material": "polyester pour la face extérieure : 25 µm"
+            },
+            {
+              type: "Face intérieure",
+              material": "polyester pour la face intérieure : 7µm"
+            }
+          ]
+        },
+        subsection_ame_isolante: {
+          heading: "Ame isolante :",
+          specifications: [
+            {
+              property: "Type",
+              value": "Mousse polyuréthane rigide sans CFC (avec du N-Pentane)"
+            },
+            {
+              property: "Conductivité thermique",
+              value": "0.023 W/m. °C"
+            },
+            {
+              property: "Densité (kg/m³)",
+              value": "38/41 kg m3"
+            }
+          ]
+        },
+        subsection_reaction_au_feu: {
+          heading: "Réaction au feu",
+          classifications: [
+            "B3 : standard",
+            "B,S2-d0."
+          ]
+        },
+        subsection_tolerance: {
+          heading: "Tolérance sur panneaux",
+          tolerances: [
+            {
+              parameter: "Sur épaisseur",
+              value": "±2mm"
+            },
+            {
+              parameter: "Sur longueur",
+              value": "±3mm"
+            },
+            {
+              parameter: "Sur largeur",
+              value": "±3mm"
+            }
+          ]
+        },
+        subsection_coefficient_isolation: {
+          heading: "Coefficient d'isolation thermique",
+          table: {
+            headers: ["Epaisseur en mm", "30", "35", "40", "45", "50", "60"],
+            rows: [
+              {
+                unit: "W/m²K",
+                values: ["0.55", "0.49", "0.43", "0.40", "0.36", "0.31"]
+              },
+              {
+                unit: "Kcal/m²h°C",
+                values: ["0.45", "0.43", "0.37", "0.34", "0.31", "0.26"]
+              }
+            ]
+          }
+        },
+        subsection_dimensionnement: {
+          heading: "Dimensionnement du panneau",
+          table: {
+            headers: ["Type", "Longueur (mm)", "Largeur (mm)", "Epaisseur (mm)", "Poids (kg/m²)"],
+            rows: [
+              {
+                type: "TL70",
+                longueur: 13000,
+                largeur: 1000,
+                epaisseur: 35,
+                poids: 10.5
+              },
+              {
+                type: "TL75",
+                longueur: 14000,
+                largeur: 1000,
+                epaisseur: 40,
+                poids: 10.7
+              },
+              {
+                type: "TL80",
+                longueur: 15000,
+                largeur: 1000,
+                epaisseur: 50,
+                poids: 10.9
+              },
+              {
+                type: "TL82",
+                longueur: 15000,
+                largeur: 1000,
+                epaisseur: 60,
+                poids: 11.5
+              }
+            ]
+          }
+        }
+      },
+      section2_etancheite_sens: {
+        subsection_etancheite_rives: {
+          heading: "Etanchéité des rives",
+          content": "Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une nervure femelle (sans mousse) permettant une parfaite étanchéité. Une nervure mâle est formée par une bande adhésive et la nervure femelle d’un joint d’étanchéité."
+        },
+        subsection_sens_panneaux: {
+          heading: "Sens des panneaux",
+          content": "Les panneaux sandwichs de couverture sont désignés en fonction de la longueur par rapport à la direction des vents dominants. Un panneau est dit sens direct lorsque la rive longitudinale femelle vient en recouvrement en regardant la façade. Il est dit sens inverse dans le sens opposé."
+        }
+      }
+    },
     image: {
       src: 'https://images.unsplash.com/photo-1614003013812-e397300cd764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdGVlbCUyMGNvdmVyfGVufDB8fHx8MTc1NjcxODU1M3ww&ixlib=rb-4.1.0&q=80&w=1080',
       aiHint: 'metal sheets',
     },
     galleryImages: [
       { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
-    ],
-    features: {
-      utilisation: [
-        'Bâtiments industriels et modulaires',
-        'Ateliers de production',
-        'Entrepôts',
-        'Centres commerciaux',
-        'Complexes sportifs',
-        'Ensembles scolaires et universitaires',
-        'ainsi que dans toute autre construction nécessitant une isolation thermique',
-      ],
-      definition: {
-        acier: 'Nuance S250, S280, S320',
-        parementExterne: {
-            profil: 'Profil type: 5.40.1000 mm',
-            description: '4 ondes avec mousse et 1 onde sans mousse',
-            epaisseur: 'Épaisseur: 0,5mm - 0,6 mm - 0,7 mm',
-        },
-        parementInterne: {
-            profil: 'Profil à nervuration en faible profondeur',
-            epaisseur: 'Épaisseur: 0,5mm - 0,6 mm - 0,7 mm',
-        },
-      },
-      revetement: 'polyester pour la face extérieure : 25 µm, polyester pour la face intérieure: 7µm',
-      ameIsolante: {
-        type: 'Mousse polyuréthane rigide sans CFC (avec du N-Pentane)',
-        conductivite: '0,023 W/m. °c',
-        densite: '38/41 kg/m³',
-      },
-      reactionAuFeu: 'B3: standard, B,S2-d0.',
-      tolerance: [
-        'Sur épaisseur ±3mm',
-        'Sur longueur ± 3mm',
-        'Sur largeur ± 3mm',
-        'Sur équerrage ± 3mm',
-      ],
-      avantages: [],
-      application: '',
-    },
-    tables: {
-      isolation: {
-        title: 'Coefficient d’isolation thermique',
-        headers: ['Épaisseur en (mm)', 'W/m²K', 'Kcal/m²h°c'],
-        rows: [
-          { 'Épaisseur en (mm)': 30, 'W/m²K': '0,55', 'Kcal/m²h°c': '0,48' },
-          { 'Épaisseur en (mm)': 35, 'W/m²K': '0,49', 'Kcal/m²h°c': '0,43' },
-          { 'Épaisseur en (mm)': 40, 'W/m²K': '0,44', 'Kcal/m²h°c': '0,38' },
-          { 'Épaisseur en (mm)': 60, 'W/m²K': '0,31', 'Kcal/m²h°c': '0,27' },
-        ],
-      },
-      dimensionnement: {
-        title: 'Dimensionnement du panneau',
-        headers: ['Type', 'Longueur (mm)', 'Largueur standard (mm)', 'Épaisseur (mm)', 'Poids Kg/m²'],
-        rows: [
-            { 'Type': 'TL70', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 30, 'Poids Kg/m²': 10.3 },
-            { 'Type': 'TL75', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 35, 'Poids Kg/m²': 10.5 },
-            { 'Type': 'TL80', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 40, 'Poids Kg/m²': 10.7 },
-            { 'Type': 'TL100', 'Longueur (mm)': 15400, 'Largueur standard (mm)': 1000, 'Épaisseur (mm)': 60, 'Poids Kg/m²': 11.5 },
-        ],
-      },
-      chargesPortees: {
-        title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)',
-        subtitle: 'Tôle en acier épaisseur 0,5mm',
-        headers: [
-            { title: 'Charge utile uniformément repartie', colspan: 2 },
-            { title: 'Epaisseur du panneau en mm (2 appuis)', colspan: 4 },
-            { title: 'Epaisseur du panneau en mm (3 appuis)', colspan: 4 },
-        ],
-        subheaders: ['Kg/m²', 'daN/m²', '30', '35', '40', '60', '30_3app', '35_3app', '40_3app', '60_3app'],
-        rows: [
-            { 'Kg/m²': 80, 'daN/m²': 87, '30': 345, '35': 365, '40': 390, '60': 485, '30_3app': 400, '35_3app': 425, '40_3app': 455, '60_3app': 560 },
-            { 'Kg/m²': 120, 'daN/m²': 177, '30': 290, '35': 310, '40': 335, '60': 415, '30_3app': 345, '35_3app': 365, '40_3app': 390, '60_3app': 485 },
-            { 'Kg/m²': 150, 'daN/m²': 147, '30': 265, '35': 285, '40': 305, '60': 375, '30_3app': 315, '35_3app': 335, '40_3app': 355, '60_3app': 440 },
-            { 'Kg/m²': 200, 'daN/m²': 196, '30': 235, '35': 250, '40': 270, '60': 340, '30_3app': 285, '35_3app': 305, '40_3app': 325, '60_3app': 400 },
-            { 'Kg/m²': 250, 'daN/m²': 245, '30': 210, '35': 225, '40': 245, '60': 305, '30_3app': 255, '35_3app': 275, '40_3app': 295, '60_3app': 360 },
-        ]
-      }
-    },
-    implementationImages: [
-        { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
-        { src: 'https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
-    ],
-    pose: {
-      title: 'La pose de panneaux sandwichs',
-      decoupage: "Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier.",
-      fixation: "Les panneaux doivent être fixés au sommet de chaque nervure sur les pannes d'extrémité, Sur les pannes intermédiaires. Lors de la pose, les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet, Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité, les chéneaux, les gouttières, les recouvrements."
-    },
-    etancheite: "Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une nervure femelle (sans mousse) permettant un assemblage par emboitement. La nervure mâle est fermée par une bande adhésive, et la nervure femelle d'un joint d'étanchéité à l'air",
-    sens: "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. il est de type gauche dans le sens inverse."
+      { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
+      { src: 'https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
+    ]
   },
   bardage: {
     documentMetadata: {
@@ -138,7 +216,9 @@ export const productData = {
       },
       ameIsolante: {
         heading: "Âme isolante",
-        type: "Mousse polyuréthane rigide sans CFC (avec du N-Pentane)"
+        type: "Mousse polyuréthane rigide sans CFC (avec du N-Pentane)",
+        conductiviteThermique: "λ = 0,023 W/m.°C",
+        densite: "≈ 38/41 kg/m³"
       },
       caracteristiquesTechniques: {
         conductiviteThermique: { label: "Conductivité thermique", value: "λ = 0,023 W/m.°C" },
@@ -164,8 +244,8 @@ export const productData = {
             epaisseur_mm: [30, 35, 40, 50, 60]
           },
           data: [
-            { unit: "W/m².K", values: { 30: 0.55, 35: 0.50, 40: 0.45, 50: 0.39, 60: 0.35 } },
-            { unit: "Kcal/m².h.°C", values: { 30: 0.47, 35: 0.43, 40: 0.40, 50: 0.33, 60: 0.30 } }
+            { unit: "W/m².K", values: { 30: "0.55", 35: "0.50", 40: "0.45", 50: "0.39", 60: "0.35" } },
+            { unit: "Kcal/m².h.°C", values: { 30: "0.47", 35: "0.43", 40: "0.40", 50: "0.33", 60: "0.30" } }
           ]
         }
       },
@@ -210,12 +290,12 @@ export const productData = {
         }
       },
       tableData: [
-        { kg_m2: 60, dan_m2: 58, entraxeGroup1: { ep30: 285, ep35: 315, ep40: 345, ep50: 405, ep60: 425 }, entraxeGroup2: { ep30: 455, ep35: 505, ep40: 550, ep50: 560 } },
-        { kg_m2: 80, dan_m2: 78, entraxeGroup1: { ep30: 255, ep35: 285, ep40: 315, ep50: 345, ep60: 375 }, entraxeGroup2: { ep30: 405, ep35: 445, ep40: 490, ep50: 495 } },
-        { kg_m2: 100, dan_m2: 98, entraxeGroup1: { ep30: 235, ep35: 265, ep40: 300, ep50: 335, ep60: 375 }, entraxeGroup2: { ep30: 385, ep35: 410, ep40: 460, ep50: 470 } },
-        { kg_m2: 120, dan_m2: 117, entraxeGroup1: { ep30: 225, ep35: 255, ep40: 280, ep50: 310, ep60: 355 }, entraxeGroup2: { ep30: 360, ep35: 385, ep40: 430, ep50: 450 } },
-        { kg_m2: 140, dan_m2: 137, entraxeGroup1: { ep30: 205, ep35: 225, ep40: 250, ep50: 285, ep60: 340 }, entraxeGroup2: { ep30: 340, ep35: 370, ep40: 420, ep50: 430 } },
-        { kg_m2: 160, dan_m2: 156, entraxeGroup1: { ep30: 195, ep35: 215, ep40: 235, ep50: 280, ep60: 325 }, entraxeGroup2: { ep30: 325, ep35: 345, ep40: 370, ep50: 370 } }
+        { kg_m2: 60, dan_m2: 58, entraxeGroup1: { ep30: 285, ep35: 315, ep40: 345, ep50: 405, ep60: 425 }, entraxeGroup2: { ep30: 455, ep35: 505, ep40: 550, ep50: 560, ep60: 0 } },
+        { kg_m2: 80, dan_m2: 78, entraxeGroup1: { ep30: 255, ep35: 285, ep40: 315, ep50: 345, ep60: 375 }, entraxeGroup2: { ep30: 405, ep35: 445, ep40: 490, ep50: 495, ep60: 0 } },
+        { kg_m2: 100, dan_m2: 98, entraxeGroup1: { ep30: 235, ep35: 265, ep40: 300, ep50: 335, ep60: 375 }, entraxeGroup2: { ep30: 385, ep35: 410, ep40: 460, ep50: 470, ep60: 0 } },
+        { kg_m2: 120, dan_m2: 117, entraxeGroup1: { ep30: 225, ep35: 255, ep40: 280, ep50: 310, ep60: 355 }, entraxeGroup2: { ep30: 360, ep35: 385, ep40: 430, ep50: 450, ep60: 0 } },
+        { kg_m2: 140, dan_m2: 137, entraxeGroup1: { ep30: 205, ep35: 225, ep40: 250, ep50: 285, ep60: 340 }, entraxeGroup2: { ep30: 340, ep35: 370, ep40: 420, ep50: 430, ep60: 0 } },
+        { kg_m2: 160, dan_m2: 156, entraxeGroup1: { ep30: 195, ep35: 215, ep40: 235, ep50: 280, ep60: 325 }, entraxeGroup2: { ep30: 325, ep35: 345, ep40: 370, ep50: 370, ep60: 0 } }
       ]
     },
     caracteristiquesGeometriques: {
@@ -236,6 +316,8 @@ export const productData = {
     },
     galleryImages: [
       { src: '/media/bardage/bardage-main.png', alt: 'Panneaux sandwichs de bardage', aiHint: 'cladding sandwich panels' },
+       { src: 'https://i.pinimg.com/736x/8f/f4/7e/8ff47e67584c31185b37265551943445.jpg', alt: 'Bardage panel detail', aiHint: 'building facade' },
+      { src: 'https://i.pinimg.com/736x/a2/2a/7c/a22a7c8e9b62f8350f38010375a7c295.jpg', alt: 'Industrial building with sandwich panels', aiHint: 'industrial building' },
     ],
   },
   frigorifique: {
@@ -247,6 +329,8 @@ export const productData = {
     },
     galleryImages: [
       { src: '/media/frigorifique/frigorifique-main.png', alt: 'Panneaux sandwichs frigorifiques', aiHint: 'refrigeration sandwich panels' },
+      { src: 'https://i.pinimg.com/736x/07/7a/84/077a84358a9015c9e2b49c7173268b84.jpg', alt: 'Cold room panels', aiHint: 'cold storage' },
+      { src: 'https://i.pinimg.com/736x/1a/7c/7b/1a7c7b80e466b0d911b3b27c3f3a5f82.jpg', alt: 'Refrigerated warehouse construction', aiHint: 'warehouse construction' },
     ],
     features: {
         utilisation: [
@@ -345,6 +429,8 @@ export const productData = {
     },
     galleryImages: [
       { src: '/media/tole-nervuree/tole-main.png', alt: 'Tôle nervurée', aiHint: 'ribbed steel sheet' },
+      { src: 'https://i.pinimg.com/736x/c9/2f/57/c92f57c83c2c109353907c130386445b.jpg', alt: 'Ribbed metal sheets stacked', aiHint: 'metal sheets' },
+      { src: 'https://i.pinimg.com/736x/5f/88/35/5f883582451559b3433aef84cf132b49.jpg', alt: 'Architectural detail of ribbed metal', aiHint: 'architectural detail' },
     ],
     features: {
       utilisation: [
@@ -419,17 +505,17 @@ export const productData = {
               { title: 'CAS DES CHARGES', colspan: 1},
               { title: 'ESPACEMENT en mm', colspan: 10},
             ],
-            porteeValues_m: [1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.50],
+            espacements_header: [1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.50],
             rows: [
-                { epaisseur: '0.70', nbEspacement: '1', cas: 'G+Q', values: [18.55, 11.87, 8.25, 6.06, 4.64, 3.66, 2.97, 2.45, 2.06, 1.51] },
-                { epaisseur: '0.70', nbEspacement: '2', cas: '', values: [9.02, 7.22, 6.02, 5.16, 4.51, 4.01, 3.43, 2.83, 2.38, 1.75] },
-                { epaisseur: '0.70', nbEspacement: '3', cas: '', values: [10.26, 8.21, 6.84, 5.87, 5.13, 4.56, 4.11, 3.54, 2.98, 2.19] },
-                { epaisseur: '1.00', nbEspacement: '1', cas: 'G+Q', values: [30.16, 19.30, 13.40, 9.85, 7.54, 5.96, 4.83, 3.99, 3.35, 2.44] },
-                { epaisseur: '1.00', nbEspacement: '2', cas: '', values: [17.46, 13.97, 11.64, 9.98, 8.64, 6.83, 5.53, 4.5, 3.84, 2.82] },
-                { epaisseur: '1.00', nbEspacement: '3', cas: '', values: [19.87, 15.89, 13.24, 11.35, 9.93, 8.53, 6.91, 5.71, 4.80, 3.53] },
-                { epaisseur: '1.50', nbEspacement: '1', cas: 'G+Q', values: [53.20, 34.05, 23.64, 17.37, 13.30, 10.57, 8.51, 7.03, 5.80, 3.65] },
-                { epaisseur: '1.50', nbEspacement: '2', cas: '', values: [36.16, 28.93, 24.11, 18.47, 14.40, 11.17, 9.05, 7.48, 6.28, 4.26] },
-                { epaisseur: '1.50', nbEspacement: '3', cas: '', values: [41.13, 32.91, 27.42, 23.09, 17.68, 13.97, 11.31, 9.35, 7.86, 5.77] },
+                { epaisseur_mm: '0.70', nombre_espacement: '1', cas: 'G+Q', valeurs: [18.55, 11.87, 8.25, 6.06, 4.64, 3.66, 2.97, 2.45, 2.06, 1.51] },
+                { epaisseur_mm: '0.70', nombre_espacement: '2', cas: '', valeurs: [9.02, 7.22, 6.02, 5.16, 4.51, 4.01, 3.43, 2.83, 2.38, 1.75] },
+                { epaisseur_mm: '0.70', nombre_espacement: '3', cas: '', valeurs: [10.26, 8.21, 6.84, 5.87, 5.13, 4.56, 4.11, 3.54, 2.98, 2.19] },
+                { epaisseur_mm: '1.00', nombre_espacement: '1', cas: 'G+Q', valeurs: [30.16, 19.30, 13.40, 9.85, 7.54, 5.96, 4.83, 3.99, 3.35, 2.44] },
+                { epaisseur_mm: '1.00', nombre_espacement: '2', cas: '', valeurs: [17.46, 13.97, 11.64, 9.98, 8.64, 6.83, 5.53, 4.5, 3.84, 2.82] },
+                { epaisseur_mm: '1.00', nombre_espacement: '3', cas: '', valeurs: [19.87, 15.89, 13.24, 11.35, 9.93, 8.53, 6.91, 5.71, 4.80, 3.53] },
+                { epaisseur_mm: '1.50', nombre_espacement: '1', cas: 'G+Q', valeurs: [53.20, 34.05, 23.64, 17.37, 13.30, 10.57, 8.51, 7.03, 5.80, 3.65] },
+                { epaisseur_mm: '1.50', nombre_espacement: '2', cas: '', valeurs: [36.16, 28.93, 24.11, 18.47, 14.40, 11.17, 9.05, 7.48, 6.28, 4.26] },
+                { epaisseur_mm: '1.50', nombre_espacement: '3', cas: '', valeurs: [41.13, 32.91, 27.42, 23.09, 17.68, 13.97, 11.31, 9.35, 7.86, 5.77] },
             ]
         },
         proprietes: {
@@ -441,9 +527,9 @@ export const productData = {
                 'Cisaillement voilement': ['Va KN', 'Pa KN']
             },
             rows: [
-                { 'ÉP': '0.70', 'Poids-Kg/m': '6.87', 'Haut de la tôle en compression': { 'Lx Cm4': '83.27', 'Zx-top Cm3': '14.34', 'Zx-bot Cm3': '18.87', 'Ma Kn.m': '2,32' }, 'Bas de la tôle en compression': { 'Lx Cm4': '83,27', 'Zx-top Cm3': '21,16', 'Zx-bot Cm3': '16,56', 'Ma Kn.m': '2.68' }, 'Cisaillement voilement': { 'Va KN': '22,18', 'Pa KN': '11,28' } },
-                { 'ÉP': '1.00', 'Poids-Kg/m': '9.81', 'Haut de la tôle en compression': { 'Lx Cm4': '119,0', 'Zx-top Cm3': '23,34', 'Zx-bot Cm3': '27,87', 'Ma Kn.m': '3,77' }, 'Bas de la tôle en compression': { 'Lx Cm4': '119,0', 'Zx-top Cm3': '31,03', 'Zx-bot Cm3': '26,74', 'Ma Kn.m': '4.32' }, 'Cisaillement voilement': { 'Va KN': '51,37', 'Pa KN': '21,83' } },
-                { 'ÉP': '1.50', 'Poids-Kg/m': '14.72', 'Haut de la tôle en compression': { 'Lx Cm4': '178.0', 'Zx-top Cm3': '41.11', 'Zx-bot Cm3': '43.20', 'Ma Kn.m': '6.65' }, 'Bas de la tôle en compression': { 'Lx Cm4': '178,0', 'Zx-top Cm3': '47,27', 'Zx-bot Cm3': '43,73', 'Ma Kn.m': '7.07' }, 'Cisaillement voilement': { 'Va KN': '91,16', 'Pa KN': '45,20' } },
+                { 'ÉP': '0.70', 'Poids-Kg/m': '6.87', haut_compression: { 'Lx Cm4': '83.27', 'Zx-top Cm3': '14.34', 'Zx-bot Cm3': '18.87', 'Ma Kn.m': '2,32' }, bas_compression: { 'Lx Cm4': '83,27', 'Zx-top Cm3': '21,16', 'Zx-bot Cm3': '16,56', 'Ma Kn.m': '2.68' }, cisaillement_voilement: { 'Va KN': '22,18', 'Pa KN': '11,28' } },
+                { 'ÉP': '1.00', 'Poids-Kg/m': '9.81', haut_compression: { 'Lx Cm4': '119,0', 'Zx-top Cm3': '23,34', 'Zx-bot Cm3': '27,87', 'Ma Kn.m': '3,77' }, bas_compression: { 'Lx Cm4': '119,0', 'Zx-top Cm3': '31,03', 'Zx-bot Cm3': '26,74', 'Ma Kn.m': '4.32' }, cisaillement_voilement: { 'Va KN': '51,37', 'Pa KN': '21,83' } },
+                { 'ÉP': '1.50', 'Poids-Kg/m': '14.72', haut_compression: { 'Lx Cm4': '178.0', 'Zx-top Cm3': '41.11', 'Zx-bot Cm3': '43.20', 'Ma Kn.m': '6.65' }, bas_compression: { 'Lx Cm4': '178,0', 'Zx-top Cm3': '47,27', 'Zx-bot Cm3': '43,73', 'Ma Kn.m': '7.07' }, cisaillement_voilement: { 'Va KN': '91,16', 'Pa KN': '45,20' } },
             ]
         }
     },
@@ -457,6 +543,8 @@ export const productData = {
     image: { src: '', aiHint: '' },
     galleryImages: [
         { src: '/media/hi-bond-77/hi-bond-main.png', alt: 'Plancher collaborant Hi-Bond 77', aiHint: 'composite floor deck' },
+        { src: 'https://i.pinimg.com/736x/8c/6c/a6/8c6ca67b36f7535b68117730d173e961.jpg', alt: 'Hi-Bond 77 flooring system', aiHint: 'flooring system' },
+        { src: 'https://i.pinimg.com/736x/21/fe/92/21fe928b939f50e0e1f72babf4a86b36.jpg', alt: 'Construction with composite decking', aiHint: 'construction decking' },
     ],
     features: {
         utilisation: [],
@@ -547,7 +635,7 @@ export const productData = {
             "table_title": "Tableau des charges sur la tôle HI-BOND 77 (kN/m²)",
             "espacements_header": [1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.50],
             "rows": [
-              { "epaisseur_mm": 0.70, "cas": "G+Q", "nombre_espacement": 1, "valeurs": [18.55, 11.87, 8.25, 6.06, 4.64, 3.66, 2.97, 2.45, 2.06, 11.51] },
+              { "epaisseur_mm": 0.70, "cas": "G+Q", "nombre_espacement": 1, "valeurs": [18.55, 11.87, 8.25, 6.06, 4.64, 3.66, 2.97, 2.45, 2.06, 1.51] },
               { "epaisseur_mm": 0.70, "cas": "G+Q", "nombre_espacement": 2, "valeurs": [9.02, 7.22, 6.02, 5.16, 4.51, 4.01, 3.43, 2.83, 2.38, 1.75] },
               { "epaisseur_mm": 0.70, "cas": "G+Q", "nombre_espacement": 3, "valeurs": [10.26, 8.21, 6.84, 5.87, 5.13, 4.56, 4.11, 3.54, 2.98, 2.19] },
               { "epaisseur_mm": 1.00, "cas": "G+Q", "nombre_espacement": 1, "valeurs": [30.16, 19.30, 13.40, 9.85, 7.54, 5.96, 4.83, 3.99, 3.35, 2.44] },
@@ -566,6 +654,8 @@ export const productData = {
     image: { src: '', aiHint: '' },
     galleryImages: [
       { src: '/media/finitions/finitions-main.png', alt: 'Pièces de finition', aiHint: 'finishing parts' },
+      { src: 'https://i.pinimg.com/736x/7d/5a/33/7d5a335017e88383c6c192d192131558.jpg', alt: 'Metal flashing and trim', aiHint: 'metal trim' },
+      { src: 'https://i.pinimg.com/736x/fe/a2/12/fea212558a261239c0e5a5a17689944e.jpg', alt: 'Custom metal fabrication', aiHint: 'metal fabrication' },
     ],
     features: {
       utilisation: [],
@@ -594,5 +684,3 @@ export const productData = {
     },
   }
 };
-
-  
