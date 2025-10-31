@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View, User, GanttChartSquare, Square, Component, ToyBrick } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { companyData } from '@/config/company-data';
 import { Logo } from './logo';
@@ -245,14 +245,20 @@ export function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-full h-full bg-background/95 backdrop-blur-sm p-0 flex flex-col">
-                <div className="p-6 flex justify-between items-center border-b">
+                <SheetHeader className="p-6 flex flex-row justify-between items-center border-b">
+                   <SheetTitle className="sr-only">Menu Principal</SheetTitle>
+                  <SheetDescription className="sr-only">
+                    Navigation principale pour le site Bordj Steel.
+                  </SheetDescription>
                   <div className="w-40">
                     <Logo />
                   </div>
-                  <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
-                    <X className="h-6 w-6 text-foreground" />
-                  </Button>
-                </div>
+                  <SheetClose asChild>
+                    <Button variant="ghost" size="icon">
+                      <X className="h-6 w-6 text-foreground" />
+                    </Button>
+                  </SheetClose>
+                </SheetHeader>
                 <div className="flex-1 p-6 flex flex-col items-start gap-4 relative overflow-y-auto">
                    <Accordion type="single" collapsible className="w-full">
                      {navigation.mainMenu.map((item, index) => {
