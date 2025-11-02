@@ -119,10 +119,10 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
             <Table>
                 <TableHeader>
                     <TableRow className="bg-accent text-accent-foreground">
-                        <TableHead className="text-accent-foreground" rowSpan={3}>Support</TableHead>
-                        <TableHead className="text-accent-foreground" rowSpan={2}>
-                            EP(mm)
+                        <TableHead className="text-accent-foreground align-middle text-center bg-white" rowSpan={3}>
+                            <OneSupportIcon className="h-16 mx-auto" />
                         </TableHead>
+                        <TableHead className="text-accent-foreground" rowSpan={2}>EP(mm)</TableHead>
                         <TableHead className="text-accent-foreground text-center" colSpan={10}>Portée (m)</TableHead>
                     </TableRow>
                     <TableRow className="bg-accent text-accent-foreground">
@@ -140,9 +140,6 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                 </TableHeader>
                 <TableBody>
                 <TableRow>
-                    <TableCell className="font-semibold bg-white align-middle p-4" rowSpan={4}>
-                      <OneSupportIcon className="h-16 mx-auto" />
-                    </TableCell>
                     <TableCell className="text-center bg-secondary/20">0.5</TableCell>
                     <TableCell className="text-center bg-secondary/20">439</TableCell>
                     <TableCell className="text-center bg-secondary/20">281</TableCell>
@@ -256,5 +253,3 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
     );
   };
   
-
-    
