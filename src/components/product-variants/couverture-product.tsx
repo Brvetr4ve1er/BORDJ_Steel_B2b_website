@@ -4,6 +4,7 @@ import Papa from 'papaparse';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { OneSupportIcon } from './one-support-icon';
 import { TwoSupportsIcon } from './two-supports-icon';
+import Image from 'next/image';
 
 
 const ChargesTable = () => {
@@ -17,7 +18,7 @@ const ChargesTable = () => {
         <thead>
             {/* First header row - Red spanning all columns */}
             <tr className="bg-accent text-accent-foreground">
-              <th className="border border-border px-2 py-3" rowSpan={4} colSpan={2}>
+              <th className="border border-border px-2 py-3" rowSpan={3} colSpan={2}>
                 Charge utile uniformément<br />répartie
               </th>
               <th className="border border-border px-2 py-3" colSpan={8}>
@@ -77,11 +78,11 @@ const ChargesTable = () => {
   
             {/* Data Rows */}
             {[
-                ["80", "87", "345", "365", "390", "485", "400", "425", "455", "560"],
-                ["120", "177", "290", "310", "335", "415", "345", "365", "390", "485"],
-                ["150", "147", "265", "285", "305", "375", "315", "335", "355", "440"],
-                ["200", "196", "235", "250", "270", "340", "285", "305", "325", "400"],
-                ["250", "245", "210", "225", "245", "305", "255", "275", "295", "360"],
+              ["80", "87", "345", "365", "390", "485", "400", "425", "455", "560"],
+              ["120", "177", "290", "310", "335", "415", "345", "365", "390", "485"],
+              ["150", "147", "265", "285", "305", "375", "315", "335", "355", "440"],
+              ["200", "196", "235", "250", "270", "340", "285", "305", "325", "400"],
+              ["250", "245", "210", "225", "245", "305", "255", "275", "295", "360"],
             ].map((row, rowIndex) => (
               <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
                 {row.map((val, valIndex) => (
@@ -260,8 +261,15 @@ export default function CouvertureProduct({ product }: { product: any }) {
              <div className="mb-6">
                <h3 className="font-semibold text-lg mb-3">{product.productDescription.section5_caracteristiques_geometriques.title}</h3>
                <div className="border-2 border-border bg-secondary/10 p-4 mb-3">
-                 <div className="bg-white border border-border h-32 flex items-center justify-center mb-2">
-                   <span className="text-muted-foreground text-base">[Schéma technique]</span>
+                 <div className="relative bg-white border border-border h-48 flex items-center justify-center mb-2 overflow-hidden">
+                   <Image 
+                    src="https://picsum.photos/seed/schema1/600/200" 
+                    alt="Schéma technique"
+                    width={600}
+                    height={200}
+                    className="object-contain"
+                    data-ai-hint="technical drawing"
+                    />
                  </div>
                  <p className="text-center text-sm">{product.productDescription.section5_caracteristiques_geometriques.caption}</p>
                </div>
