@@ -151,7 +151,7 @@ LL60,15400,1000,60,10.8`;
 
             <div className="mb-6">
               <h3 className="font-bold mb-2 text-lg">Definition :</h3>
-              <p className="text-base mb-2">
+              <p className="text-base mb-2 list-item ml-4">
                 Identification d'acier : Nuance S250, S280, S320:
               </p>
               <p className="text-base mb-2 list-item ml-4">

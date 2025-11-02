@@ -281,3 +281,4 @@ export default function CouvertureProduct({ product }: { product: any }) {
       </div>
     );
   };
+
