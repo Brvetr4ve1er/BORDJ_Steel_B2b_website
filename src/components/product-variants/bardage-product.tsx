@@ -2,6 +2,8 @@
 import React from 'react';
 import Papa from 'papaparse';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { OneSupportIcon } from './one-support-icon';
+import { TwoSupportsIcon } from './two-supports-icon';
 
 const LoadCapacityTable = () => {
   return (
@@ -14,7 +16,7 @@ const LoadCapacityTable = () => {
         <thead>
           {/* First header row - Red spanning all columns */}
           <tr className="bg-accent text-accent-foreground">
-            <th className="border border-border px-2 py-3" rowSpan={3} colSpan={2}>
+            <th className="border border-border px-2 py-3" rowSpan={4} colSpan={2}>
               Charge utile uniformément<br />répartie
             </th>
             <th className="border border-border px-2 py-3" colSpan={10}>
@@ -22,29 +24,26 @@ const LoadCapacityTable = () => {
             </th>
           </tr>
 
+          {/* New row for the large SVG icons */}
+          <tr className="bg-secondary">
+               <th className="border border-border p-2" colSpan={5}>
+                <div className="flex items-center justify-center gap-1 mb-1 px-4">
+                  <OneSupportIcon className="h-16" />
+                </div>
+               </th>
+               <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
+               <div className="flex items-center justify-center gap-1 mb-1 px-4">
+                  <TwoSupportsIcon className="h-16" />
+               </div>
+              </th>
+          </tr>
+
           {/* Second header row - Gray with icons */}
           <tr className="bg-secondary">
             <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
-              <div className="flex items-center justify-center gap-1 mb-1">
-                <svg width="30" height="20" viewBox="0 0 30 20" className="inline-block">
-                  <path d="M 2 10 L 8 10 L 8 5 L 12 5 L 12 15 L 8 15 L 8 10 L 2 10"
-                         fill="none" stroke="currentColor" strokeWidth="1.5"/>
-                  <line x1="15" y1="10" x2="28" y2="10" stroke="currentColor" strokeWidth="1.5"/>
-                </svg>
-              </div>
               Épaisseur du panneau en mm
             </th>
             <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
-              <div className="flex items-center justify-center gap-1 mb-1">
-                <svg width="40" height="20" viewBox="0 0 40 20" className="inline-block">
-                  <path d="M 2 10 L 8 10 L 8 5 L 12 5 L 12 15 L 8 15 L 8 10 L 2 10"
-                         fill="none" stroke="currentColor" strokeWidth="1.5"/>
-                  <line x1="15" y1="10" x2="20" y2="10" stroke="currentColor" strokeWidth="1.5"/>
-                  <path d="M 22 10 L 26 10 L 26 5 L 30 5 L 30 15 L 26 15 L 26 10 L 22 10"
-                         fill="none" stroke="currentColor" strokeWidth="1.5"/>
-                  <line x1="33" y1="10" x2="38" y2="10" stroke="currentColor" strokeWidth="1.5"/>
-                </svg>
-              </div>
               Épaisseur du panneau en mm
             </th>
           </tr>
@@ -79,12 +78,12 @@ const LoadCapacityTable = () => {
 
           {/* Data Rows */}
           {[
-            ["60", "58", "285", "315", "345", "485", "400", "425", "455", "560", "455", "560"],
-            ["80", "78", "255", "285", "335", "415", "345", "365", "390", "485", "390", "485"],
-            ["100", "98", "235", "260", "305", "375", "315", "335", "385", "440", "385", "440"],
-            ["120", "117", "220", "245", "265", "310", "355", "285", "360", "310", "360", "310"],
-            ["140", "137", "205", "225", "250", "395", "235", "240", "340", "290", "290", "290"],
-            ["160", "156", "195", "215", "235", "280", "315", "230", "225", "375", "325", "370"],
+             ["60", "58", "285", "315", "345", "485", "400", "425", "455", "560", "455", "560"],
+             ["80", "78", "255", "285", "335", "415", "345", "365", "390", "485", "390", "485"],
+             ["100", "98", "235", "260", "305", "375", "315", "335", "385", "440", "385", "440"],
+             ["120", "117", "220", "245", "265", "310", "355", "285", "360", "310", "360", "310"],
+             ["140", "137", "205", "225", "250", "395", "235", "240", "340", "290", "290", "290"],
+             ["160", "156", "195", "215", "235", "280", "315", "230", "225", "375", "325", "370"],
           ].map((row, rowIndex) => (
             <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
               {row.map((val, valIndex) => (
