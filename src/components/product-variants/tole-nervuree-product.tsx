@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Image from 'next/image';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -138,8 +137,8 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                 </TableHeader>
                 <TableBody>
                 <TableRow>
-                    <TableCell className="font-semibold bg-background text-accent-foreground align-middle p-4" rowSpan={4}>
-                         <OneSupportIcon className="h-16 mx-auto" />
+                    <TableCell className="font-semibold bg-background align-middle p-4" rowSpan={4}>
+                      <OneSupportIcon className="h-16 mx-auto" />
                     </TableCell>
                     <TableCell className="text-center bg-secondary/20">0.5</TableCell>
                     <TableCell className="text-center bg-secondary/20">439</TableCell>
@@ -193,7 +192,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                     <TableCell className="text-center">40</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell className="font-semibold bg-background text-accent-foreground align-middle p-4" rowSpan={3}>
+                    <TableCell className="font-semibold bg-background align-middle p-4" rowSpan={3}>
                         <TwoSupportsIcon className="h-16 mx-auto" />
                     </TableCell>
                     <TableCell className="text-center bg-secondary/20">0.6</TableCell>
