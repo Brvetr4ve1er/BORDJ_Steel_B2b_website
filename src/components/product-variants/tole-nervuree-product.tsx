@@ -3,9 +3,9 @@ import React from 'react';
 import Image from 'next/image';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-function OneSupportIcon({ className }: { className?: string }) {
+function ToleNervureeOneSupportIcon({ className }: { className?: string }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="68" viewBox="0 0 750 517.92" preserveAspectRatio="xMidYMid meet" className={className}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 517.92" preserveAspectRatio="xMidYMid meet" className={className}>
       <g transform="matrix(1, 0, 0, 1, 13, 171)">
         <path fill="#ffffff" d="M 0.917969 0.765625 L 722.941406 0.765625 L 722.941406 74.671875 L 0.917969 74.671875 Z" fillOpacity="1" fillRule="nonzero"/>
       </g>
@@ -22,9 +22,9 @@ function OneSupportIcon({ className }: { className?: string }) {
   );
 }
 
-function TwoSupportsIcon({ className }: { className?: string }) {
+function ToleNervureeTwoSupportsIcon({ className }: { className?: string }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="68" viewBox="0 0 750 517.92" preserveAspectRatio="xMidYMid meet" className={className}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 517.92" preserveAspectRatio="xMidYMid meet" className={className}>
       <g transform="matrix(1, 0, 0, 1, 36, 195)">
         <path fill="#ffffff" d="M 0.804688 0.21875 L 677.066406 0.21875 L 677.066406 69.4375 L 0.804688 69.4375 Z" fillOpacity="1" fillRule="nonzero"/>
       </g>
@@ -45,14 +45,13 @@ function TwoSupportsIcon({ className }: { className?: string }) {
   );
 }
 
-
 export default function ToleNervureeProduct({ product }: { product: any }) {
     if (!product) {
       return <p>Données produit non disponibles.</p>;
     }
   
     return (
-      <div className="bg-background min-h-screen p-8 font-sans">
+        <div className="bg-background min-h-screen p-8 font-sans">
         <div className="max-w-7xl mx-auto space-y-8">
           <div className="border-l-8 border-accent pl-4">
             <h1 className="text-2xl font-bold text-accent uppercase">
@@ -160,7 +159,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
             <Table>
                 <TableHeader>
                     <TableRow className="bg-accent text-accent-foreground">
-                        <TableHead className="text-accent-foreground" rowSpan={2}>Support</TableHead>
+                        <TableHead className="text-accent-foreground" rowSpan={2}></TableHead>
                         <TableHead className="text-accent-foreground text-center" rowSpan={2}>EP(mm)</TableHead>
                         <TableHead className="text-accent-foreground text-center" colSpan={10}>Portée (m)</TableHead>
                     </TableRow>
@@ -181,7 +180,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                 <TableRow>
                     <TableCell className="font-semibold bg-accent text-accent-foreground" rowSpan={4}>
                         <div className="flex items-center justify-center">
-                            <OneSupportIcon className="h-8" />
+                            <ToleNervureeOneSupportIcon className="w-20" />
                         </div>
                     </TableCell>
                     <TableCell className="text-center bg-secondary/20">0.5</TableCell>
@@ -238,7 +237,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                 <TableRow>
                     <TableCell className="font-semibold bg-accent text-accent-foreground" rowSpan={3}>
                         <div className="flex items-center justify-center">
-                            <TwoSupportsIcon className="h-8" />
+                            <ToleNervureeTwoSupportsIcon className="w-20" />
                         </div>
                     </TableCell>
                     <TableCell className="text-center bg-secondary/20">0.6</TableCell>
@@ -304,5 +303,3 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
     );
   };
   
-
-    
