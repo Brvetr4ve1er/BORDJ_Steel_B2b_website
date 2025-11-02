@@ -4,36 +4,115 @@ import Papa from 'papaparse';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 
-const CouvertureProduct = ({ product }: { product: any }) => {
-    // This component is now self-contained with the data provided in the prompt.
-    // The 'product' prop is not used, but kept for consistency with other product variant components.
+const ChargesTable = () => {
+   return (
+     <div className="overflow-x-auto my-8">
+       <table className="min-w-full border border-gray-300 text-sm text-center">
+         {/* Top Header */}
+         <thead>
+           <tr>
+             <th
+               colSpan={11}
+               className="bg-accent text-white font-semibold py-2 border border-gray-300"
+             >
+               LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)
+             </th>
+           </tr>
+           <tr>
+             <th
+               colSpan={11}
+               className="bg-gray-100 text-gray-800 font-medium py-2 border border-gray-300"
+             >
+               Tôle en acier épaisseur 0,5mm
+             </th>
+           </tr>
 
-    // CSV data for thermal coefficient table
-   const thermalCoefficientCSV = `Épaisseur en mm,30,35,40,60
+            {/* Subheader with grouping */}
+           <tr className="bg-gray-200 text-gray-800 font-semibold">
+             <th
+               rowSpan={3}
+               className="border border-gray-300 px-3 py-2 text-xs align-middle"
+             >
+               Charge utile uniformément<br />répartie
+             </th>
+             
+             <th
+               colSpan={4}
+               className="border border-gray-300 px-3 py-2 text-xs"
+             >
+               Épaisseur du panneau en mm
+             </th>
+             <th
+               colSpan={5}
+               className="border border-gray-300 px-3 py-2 text-xs"
+             >
+               Épaisseur du panneau en mm
+             </th>
+           </tr>
+
+            {/* Second line of headers (visual icons spacing simulated with text) */}
+           <tr className="bg-gray-200">
+            <th rowSpan={2} className="border border-gray-300 px-3 py-2 text-xs align-middle">daN/m²</th>
+             <th colSpan="4" className="border border-gray-300 px-3 py-2 text-xs">
+               Entraxe Max cm
+             </th>
+             <th colSpan={4} className="border border-gray-300 px-3 py-2 text-xs">
+               Entraxe Max cm
+             </th>
+           </tr>
+
+            {/* Final numeric headers */}
+           <tr className="bg-gray-200">
+             <th className="border border-gray-300 px-3 py-1">30</th>
+             <th className="border border-gray-300 px-3 py-1">35</th>
+             <th className="border border-gray-300 px-3 py-1">40</th>
+             <th className="border border-gray-300 px-3 py-1">60</th>
+             <th className="border border-gray-300 px-3 py-1">30</th>
+             <th className="border border-gray-300 px-3 py-1">35</th>
+             <th className="border border-gray-300 px-3 py-1">40</th>
+             <th className="border border-gray-300 px-3 py-1">60</th>
+           </tr>
+         </thead>
+
+          {/* Table Body */}
+         <tbody>
+           {[
+             [80, 87, 345, 365, 390, 485, 400, 425, 455, 560],
+             [120, 177, 290, 310, 335, 415, 345, 365, 390, 485],
+             [150, 147, 265, 285, 305, 375, 315, 335, 355, 440],
+             [200, 196, 235, 250, 270, 340, 285, 305, 325, 400],
+             [250, 245, 210, 225, 245, 305, 255, 275, 295, 360],
+           ].map((row, i) => (
+             <tr key={i} className="even:bg-gray-50">
+               {row.map((val, j) => (
+                 <td key={j} className="border border-gray-300 px-3 py-2">
+                   {val}
+                 </td>
+               ))}
+             </tr>
+           ))}
+         </tbody>
+       </table>
+     </div>
+   );
+ }
+
+
+const CouvertureProduct = ({ product }: { product: any }) => {
+
+    const thermalCoefficientCSV = `Épaisseur en mm,30,35,40,60
 W/m²K,0.55,0.49,0.44,0.31
 Kcal/hm²°C,0.48,0.43,0.38,0.27`;
 
-    // CSV data for panel dimensions table
-   const panelDimensionsCSV = `Type,Longueur (mm),Largeur standard (mm),Épaisseur (mm),Poids kg/m²
+    const panelDimensionsCSV = `Type,Longueur (mm),Largeur standard (mm),Épaisseur (mm),Poids kg/m²
 TL70,15400,1000,30,10.3
 TL75,15400,1000,35,10.5
 TL80,15400,1000,40,10.7
 TL100,15400,1000,60,11.5`;
 
-    // CSV data for load capacity table
-   const loadCapacityCSV = `Charge utile uniformément répartie,Tôle en acier épaisseur 0.5mm,,,,Épaisseur du panneau en mm,,,,Épaisseur du panneau en mm,,
-,30,35,40,60,30,35,40,60
-kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
-80,87,345,365,390,485,400,425,455,560
-120,177,290,310,335,415,345,365,390,485
-150,147,265,285,305,375,315,335,355,440
-200,196,235,250,270,340,285,305,325,400
-250,245,210,225,245,305,255,275,295,360`;
-
     const thermalData = Papa.parse(thermalCoefficientCSV).data;
     const dimensionsData = Papa.parse(panelDimensionsCSV).data;
-    const loadData = Papa.parse(loadCapacityCSV).data;
-
+    
     return (
      <div className="bg-white p-8 font-sans text-foreground">
        <div className="max-w-7xl mx-auto">
@@ -42,7 +121,7 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
            <h1 className="text-3xl font-bold text-accent uppercase">
              ■ 1-PANNEAUX SANDWICHS DE COUVERTURE
            </h1>
-           <p className="text-base text-muted-foreground">(à 05 ondes Ép de 30 mm jusqu'au 60 mm)</p>
+           <p className="text-lg text-muted-foreground">(à 05 ondes Ép de 30 mm jusqu'au 60 mm)</p>
          </div>
 
           <div className="grid grid-cols-1 gap-12">
@@ -53,8 +132,8 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
 
              {/* Utilisation */}
              <div className="mb-6">
-               <h3 className="font-bold text-lg mb-2">Utilisation</h3>
-               <ul className="text-base space-y-1 list-disc list-inside">
+               <h3 className="font-bold text-xl mb-2">Utilisation</h3>
+               <ul className="text-lg space-y-1 list-disc list-inside">
                  <li>Bâtiments industriels et modulaires</li>
                  <li>Ateliers de production</li>
                  <li>Entrepôts</li>
@@ -68,54 +147,54 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
 
               {/* Definition */}
              <div className="mb-6">
-               <h3 className="font-bold text-lg mb-2">Definition</h3>
-               <p className="text-base mb-2">
+               <h3 className="font-bold text-xl mb-2">Definition</h3>
+               <p className="text-lg mb-2">
                  Identification d'acier : Nuance S250,<br />
                  S280
                </p>
-               <p className="text-base mb-1 font-semibold">Parement externe</p>
-               <p className="text-base mb-1 list-item ml-4">Profil type: 5 .40 .1000 mm</p>
-               <p className="text-base mb-1">4 ondes profondes et 1 onde sans<br />mousse</p>
-               <p className="text-base mb-2">Épaisseur : 0.5mm - 0.6 mm - 0.7 mm</p>
-               <p className="text-base mb-1 font-semibold">Parement interne</p>
-               <p className="text-base mb-1 list-item ml-4">Profil à nervuration en faible<br />profondeur</p>
-               <p className="text-base">Épaisseur : 0.5mm - 0.6 mm - 0.7 mm</p>
+               <p className="text-lg mb-1 font-semibold">Parement externe</p>
+               <p className="text-lg mb-1 list-item ml-4">Profil type: 5 .40 .1000 mm</p>
+               <p className="text-lg mb-1">4 ondes profondes et 1 onde sans<br />mousse</p>
+               <p className="text-lg mb-2">Épaisseur : 0.5mm - 0.6 mm - 0.7 mm</p>
+               <p className="text-lg mb-1 font-semibold">Parement interne</p>
+               <p className="text-lg mb-1 list-item ml-4">Profil à nervuration en faible<br />profondeur</p>
+               <p className="text-lg">Épaisseur : 0.5mm - 0.6 mm - 0.7 mm</p>
              </div>
 
               {/* Revêtement */}
              <div className="mb-6">
-               <h3 className="font-bold text-lg mb-2">Revêtement :</h3>
-               <p className="text-base">polyester pour la face extérieure : 25 µm</p>
-               <p className="text-base">polyester pour la face intérieure : 7µm</p>
+               <h3 className="font-bold text-xl mb-2">Revêtement :</h3>
+               <p className="text-lg">polyester pour la face extérieure : 25 µm</p>
+               <p className="text-lg">polyester pour la face intérieure : 7µm</p>
              </div>
 
               {/* Âme isolante */}
              <div className="mb-6">
-               <h3 className="font-bold text-lg mb-2">Âme isolante : <span className="font-normal">Mousse polyuréthane</span></h3>
-               <p className="text-base">rigide sans CFC (avec du N-Pentane)</p>
-               <p className="text-base">Conductivité thermique : 0.023 W/m. °c</p>
-               <p className="text-base">Densité (kg/m³) = 38/41 kg m3</p>
+               <h3 className="font-bold text-xl mb-2">Âme isolante : <span className="font-normal">Mousse polyuréthane</span></h3>
+               <p className="text-lg">rigide sans CFC (avec du N-Pentane)</p>
+               <p className="text-lg">Conductivité thermique : 0.023 W/m. °c</p>
+               <p className="text-lg">Densité (kg/m³) = 38/41 kg m3</p>
              </div>
 
               {/* Réaction au feu */}
              <div className="mb-6">
-               <h3 className="font-bold text-lg mb-2">Réaction au feu</h3>
-               <p className="text-base">B3 : standard</p>
-               <p className="text-base">B-S2-d0.</p>
+               <h3 className="font-bold text-xl mb-2">Réaction au feu</h3>
+               <p className="text-lg">B3 : standard</p>
+               <p className="text-lg">B-S2-d0.</p>
              </div>
 
               {/* Tolérance sur panneaux */}
              <div className="mb-6">
-               <h3 className="font-bold text-lg mb-2">Tolérance sur panneaux</h3>
-               <p className="text-base">Sur épaisseur ±3mm</p>
-               <p className="text-base">Sur longueur ± 3mm</p>
-               <p className="text-base">Sur largeur ± 3mm</p>
-               <p className="text-base">Sur équerrage ± 3mm</p>
+               <h3 className="font-bold text-xl mb-2">Tolérance sur panneaux</h3>
+               <p className="text-lg">Sur épaisseur ±3mm</p>
+               <p className="text-lg">Sur longueur ± 3mm</p>
+               <p className="text-lg">Sur largeur ± 3mm</p>
+               <p className="text-lg">Sur équerrage ± 3mm</p>
              </div>
 
               {/* Dimensionnement du panneau */}
              <div className="mb-6">
-               <h3 className="font-bold text-lg mb-3">Dimensionnement du panneau</h3>
+               <h3 className="font-bold text-xl mb-3">Dimensionnement du panneau</h3>
                <div className="overflow-x-auto">
                  <Table>
                    <TableHeader>
@@ -126,7 +205,7 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
                    <TableBody>
                     {dimensionsData.slice(1).map((row: string[], rowIndex: number) => (
                       <TableRow key={rowIndex} className="bg-secondary/30">
-                        {row.map((cell: string, cellIndex: number) => <TableCell key={cellIndex} className="text-center text-base">{cell}</TableCell>)}
+                        {row.map((cell: string, cellIndex: number) => <TableCell key={cellIndex} className="text-center text-lg">{cell}</TableCell>)}
                       </TableRow>
                     ))}
                    </TableBody>
@@ -136,7 +215,7 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
 
               {/* Coefficient d'isolation thermique */}
              <div className="mb-6">
-               <h3 className="font-bold text-lg mb-3">Coefficient d'isolation thermique</h3>
+               <h3 className="font-bold text-xl mb-3">Coefficient d'isolation thermique</h3>
                <Table>
                  <TableHeader>
                    <TableRow className="bg-accent/20">
@@ -149,7 +228,7 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
                     {thermalData.slice(1).map((row: string[], rowIndex: number) => (
                         <TableRow key={rowIndex}>
                             {row.map((cell: string, cellIndex: number) => (
-                                <TableCell key={cellIndex} className={`text-center text-base ${cellIndex === 0 ? 'bg-secondary/30 font-semibold' : ''}`}>{cell}</TableCell>
+                                <TableCell key={cellIndex} className={`text-center text-lg ${cellIndex === 0 ? 'bg-secondary/30 font-semibold' : ''}`}>{cell}</TableCell>
                             ))}
                         </TableRow>
                     ))}
@@ -159,12 +238,12 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
 
               {/* Étanchéité des rives */}
              <div className="mb-6">
-               <h3 className="font-bold text-lg mb-2">Étanchéité des rives</h3>
-               <p className="text-base text-justify">
+               <h3 className="font-bold text-xl mb-2">Étanchéité des rives</h3>
+               <p className="text-lg text-justify">
                  Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une
                   nervure femelle (sans mousse) permettant un assemblage par emboîtement.
                </p>
-               <p className="text-base text-justify">
+               <p className="text-lg text-justify">
                  La nervure mâle est fermée par une bande adhésive, et la nervure femelle d'un joint
                   d'étanchéité à l'air
                </p>
@@ -172,32 +251,28 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
 
               {/* Sens des panneaux */}
              <div className="mb-6">
-               <h3 className="font-bold text-lg mb-2">Sens des panneaux</h3>
-               <p className="text-base text-justify">
+               <h3 className="font-bold text-xl mb-2">Sens des panneaux</h3>
+               <p className="text-lg text-justify">
                  les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur
                   l'ouvrage et par rapport à la direction des vents dominants.
                </p>
-               <p className="text-base text-justify">
+               <p className="text-lg text-justify">
                  Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en
                   recouvrement en regardant le faîtage. il est de type gauche dans le sens inverse.
                </p>
              </div>
-           </div>
-
-            {/* Right Column (now below Left Column) */}
-           <div>
               {/* La pose de panneaux sandwichs */}
              <div className="mb-6">
                <h3 className="font-bold text-xl mb-3">La pose de panneaux sandwichs</h3>
 
                <h4 className="font-semibold text-lg mb-2">Découpage des panneaux :</h4>
-               <p className="text-base mb-4">
+               <p className="text-lg mb-4">
                  Pour avoir un bon résultat il est conseillé d'utiliser
                   une scie sauteuse électrique à lame d'acier.
                </p>
 
                 <h4 className="font-semibold text-lg mb-2">Fixation des panneaux :</h4>
-               <p className="text-base text-justify mb-4">
+               <p className="text-lg text-justify mb-4">
                  Les panneaux doivent être fixés au sommet de chaque nervure
                   sur les pannes porteuses. Sur les pannes intermédiaires.
                   Lors de la pose, les panneaux doivent être serrés sur la partie
@@ -208,51 +283,11 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
                </p>
              </div>
 
-              {/* Load capacity table */}
-             <div className="mb-6">
-               <h3 className="font-semibold text-lg mb-3">LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)</h3>
-                <Table>
-                    <TableHeader>
-                        <TableRow className="bg-accent text-accent-foreground">
-                            <TableHead className="text-accent-foreground" rowSpan={3}>Charge utile<br/>uniformément<br/>répartie</TableHead>
-                            <TableHead className="text-accent-foreground text-center" colSpan={8}>Tôle en acier épaisseur 0.5mm</TableHead>
-                        </TableRow>
-                        <TableRow className="bg-secondary/50 text-foreground">
-                            <TableHead className="text-center" colSpan={4}>Épaisseur du panneau en mm</TableHead>
-                            <TableHead className="text-center" colSpan={4}>Épaisseur du panneau en mm</TableHead>
-                        </TableRow>
-                        <TableRow className="bg-secondary/30 text-foreground">
-                            <TableHead className="text-center">30</TableHead>
-                            <TableHead className="text-center">35</TableHead>
-                            <TableHead className="text-center">40</TableHead>
-                            <TableHead className="text-center">60</TableHead>
-                            <TableHead className="text-center">30</TableHead>
-                            <TableHead className="text-center">35</TableHead>
-                            <TableHead className="text-center">40</TableHead>
-                            <TableHead className="text-center">60</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        <TableRow className="bg-accent text-accent-foreground">
-                            <TableCell>kg/m²</TableCell>
-                            <TableCell className="bg-secondary/30 text-foreground">daN/m²</TableCell>
-                            <TableCell className="text-center" colSpan={4}>Entraxe Max cm</TableCell>
-                            <TableCell className="text-center" colSpan={4}>Entraxe Max cm</TableCell>
-                        </TableRow>
-                        {loadData.slice(3).map((row: any, rowIndex: number) => (
-                           <TableRow key={rowIndex}>
-                            {row.map((cell: string, cellIndex: number) => (
-                                <TableCell key={cellIndex} className={`text-center text-base ${cellIndex === 0 ? 'bg-accent text-accent-foreground' : cellIndex === 1 ? 'bg-secondary/30' : ''}`}>{cell}</TableCell>
-                            ))}
-                           </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-             </div>
+             <ChargesTable />
 
               {/* Caractéristiques Géométriques */}
              <div className="mb-6">
-               <h3 className="font-semibold text-lg mb-3">Caractéristiques Géométriques</h3>
+               <h3 className="font-semibold text-xl mb-3">Caractéristiques Géométriques</h3>
                <div className="border border-border p-4 bg-gray-50">
                  <div className="bg-white p-4 mb-2">
                    <svg viewBox="0 0 800 100" className="w-full">
@@ -267,7 +302,7 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
                             stroke="black" fill="none" strokeWidth="2"/>
                    </svg>
                  </div>
-                 <p className="text-center text-base">Couverture avec 5 ondes</p>
+                 <p className="text-center text-lg">Couverture avec 5 ondes</p>
                </div>
              </div>
            </div>
