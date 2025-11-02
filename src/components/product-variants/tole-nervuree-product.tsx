@@ -2,44 +2,9 @@
 import React from 'react';
 import Image from 'next/image';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { OneSupportIcon } from './one-support-icon';
+import { TwoSupportsIcon } from './two-supports-icon';
 
-const ToleNervureeOneSupportIcon = ({ className }: { className?: string }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="68" viewBox="0 0 750 517.92" preserveAspectRatio="xMidYMid meet" className={className}>
-      <g transform="matrix(1, 0, 0, 1, 13, 171)">
-        <path fill="#ffffff" d="M 0.917969 0.765625 L 722.941406 0.765625 L 722.941406 74.671875 L 0.917969 74.671875 Z" fillOpacity="1" fillRule="nonzero"/>
-      </g>
-      <path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 13.952631, 171.766561)" fill="none" strokeLinejoin="miter" d="M 0.000658708 -0.00124831 L 962.941082 -0.00124831 L 962.941082 98.545225 L 0.000658708 98.545225 Z" stroke="currentColor" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/>
-      <g transform="matrix(1, 0, 0, 1, 13, 245)">
-        <path fill="#ffffff" d="M 0.917969 0.671875 L 161.683594 0.671875 L 161.683594 101.296875 L 0.917969 101.296875 Z" fillOpacity="1" fillRule="nonzero"/>
-      </g>
-      <path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 13.91891, 245.673971)" fill="none" strokeLinejoin="miter" d="M 107.07778 0.00241434 L 214.156815 134.184593 L -0.00125521 134.184593 Z" stroke="currentColor" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/>
-      <g transform="matrix(1, 0, 0, 1, 575, 245)">
-        <path fill="#ffffff" d="M 0.480469 0.671875 L 161.246094 0.671875 L 161.246094 101.296875 L 0.480469 101.296875 Z" fillOpacity="1" fillRule="nonzero"/>
-      </g>
-      <path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 575.480921, 245.673971)" fill="none" strokeLinejoin="miter" d="M 107.078432 0.00241434 L 214.157467 134.184593 L -0.000603004 134.184593 Z" stroke="currentColor" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/>
-    </svg>
-);
-
-const ToleNervureeTwoSupportsIcon = ({ className }: { className?: string }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="68" viewBox="0 0 750 517.92" preserveAspectRatio="xMidYMid meet" className={className}>
-      <g transform="matrix(1, 0, 0, 1, 36, 195)">
-        <path fill="#ffffff" d="M 0.804688 0.21875 L 677.066406 0.21875 L 677.066406 69.4375 L 0.804688 69.4375 Z" fillOpacity="1" fillRule="nonzero"/>
-      </g>
-      <path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 36.846063, 195.217593)" fill="none" strokeLinejoin="miter" d="M 0.00212498 0.00154294 L 901.870614 0.00154294 L 901.870614 92.297051 L 0.00212498 92.297051 Z" stroke="currentColor" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/>
-      <g transform="matrix(1, 0, 0, 1, 36, 264)">
-        <path fill="#ffffff" d="M 0.804688 0.4375 L 151.378906 0.4375 L 151.378906 94.6875 L 0.804688 94.6875 Z" fillOpacity="1" fillRule="nonzero"/>
-      </g>
-      <path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 36.805218, 264.439338)" fill="none" strokeLinejoin="miter" d="M 100.285618 -0.0024508 L 200.571943 125.673214 L -0.000708017 125.673214 Z" stroke="currentColor" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/>
-      <g transform="matrix(1, 0, 0, 1, 562, 264)">
-        <path fill="#ffffff" d="M 0.773438 0.4375 L 151.351562 0.4375 L 151.351562 94.6875 L 0.773438 94.6875 Z" fillOpacity="1" fillRule="nonzero"/>
-      </g>
-      <path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 562.776996, 264.439338)" fill="none" strokeLinejoin="miter" d="M 100.28679 -0.0024508 L 200.573116 125.673214 L 0.000464056 125.673214 Z" stroke="currentColor" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/>
-      <g transform="matrix(1, 0, 0, 1, 299, 264)">
-        <path fill="#ffffff" d="M 0.789062 0.4375 L 151.367188 0.4375 L 151.367188 94.6875 L 0.789062 94.6875 Z" fillOpacity="1" fillRule="nonzero"/>
-      </g>
-      <path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 299.791117, 264.439338)" fill="none" strokeLinejoin="miter" d="M 100.288796 -0.0024508 L 200.575121 125.673214 L 0.00246995 125.673214 Z" stroke="currentColor" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/>
-    </svg>
-);
 
 export default function ToleNervureeProduct({ product }: { product: any }) {
     if (!product) {
@@ -155,7 +120,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
             <Table>
                 <TableHeader>
                     <TableRow className="bg-accent text-accent-foreground">
-                        <TableHead className="text-accent-foreground" rowSpan={2}>Support</TableHead>
+                        <TableHead className="text-accent-foreground" rowSpan={2}></TableHead>
                         <TableHead className="text-accent-foreground" rowSpan={2}>EP(mm)</TableHead>
                         <TableHead className="text-accent-foreground text-center" colSpan={10}>Portée (m)</TableHead>
                     </TableRow>
@@ -176,7 +141,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                 <TableRow>
                     <TableCell className="font-semibold bg-accent text-accent-foreground" rowSpan={4}>
                         <div className="flex items-center justify-center">
-                            <ToleNervureeOneSupportIcon className="h-8" />
+                            <OneSupportIcon className="h-8" />
                         </div>
                     </TableCell>
                     <TableCell className="text-center bg-secondary/20">0.5</TableCell>
@@ -233,7 +198,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                 <TableRow>
                     <TableCell className="font-semibold bg-accent text-accent-foreground" rowSpan={3}>
                         <div className="flex items-center justify-center">
-                            <ToleNervureeTwoSupportsIcon className="h-8" />
+                            <TwoSupportsIcon className="h-8" />
                         </div>
                     </TableCell>
                     <TableCell className="text-center bg-secondary/20">0.6</TableCell>
@@ -298,4 +263,3 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
       </div>
     );
   };
-
