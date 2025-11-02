@@ -260,7 +260,7 @@ LL60,15400,1000,60,10.8`;
                 <div className="border-2 border-border bg-secondary/10 p-4">
                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                     <Image 
-                      src="https://www.imghippo.com/i/xWkE01722369796.png"
+                      src="https://www.imghippo.com/i/OxI3616rCI.png"
                       alt="Schéma technique B"
                       width={600}
                       height={200}
