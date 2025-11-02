@@ -46,6 +46,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.imghippo.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.imghippo.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

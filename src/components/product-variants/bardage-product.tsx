@@ -20,7 +20,7 @@ const LoadCapacityTable = () => {
             <th className="border border-border px-2 py-3" rowSpan={4} colSpan={2}>
               Charge utile uniformément<br />répartie
             </th>
-            <th className="border border-border px-2 py-3" colSpan={8}>
+            <th className="border border-border px-2 py-3" colSpan={7}>
               Tôle en acier épaisseur 0.5mm
             </th>
           </tr>
@@ -32,7 +32,7 @@ const LoadCapacityTable = () => {
                   <OneSupportIcon className="h-16" />
                 </div>
                </th>
-               <th className="border border-border px-2 py-2 text-foreground" colSpan={4}>
+               <th className="border border-border px-2 py-2 text-foreground" colSpan={3}>
                <div className="flex items-center justify-center gap-1 mb-1 px-4">
                   <TwoSupportsIcon className="h-16" />
                </div>
@@ -44,7 +44,7 @@ const LoadCapacityTable = () => {
             <th className="border border-border px-2 py-2 text-foreground" colSpan={4}>
               Épaisseur du panneau en mm
             </th>
-            <th className="border border-border px-2 py-2 text-foreground" colSpan={4}>
+            <th className="border border-border px-2 py-2 text-foreground" colSpan={3}>
               Épaisseur du panneau en mm
             </th>
           </tr>
@@ -58,7 +58,6 @@ const LoadCapacityTable = () => {
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">30</th>
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">35</th>
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">40</th>
-            <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">60</th>
           </tr>
         </thead>
 
@@ -70,19 +69,19 @@ const LoadCapacityTable = () => {
             <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={4}>
               Entraxe Max cm
             </td>
-            <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={4}>
+            <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={3}>
               Entraxe Max cm
             </td>
           </tr>
 
           {/* Data Rows */}
           {[
-             ["60", "58", "285", "315", "345", "405", "455", "505", "550", "560"],
-             ["80", "78", "255", "285", "315", "345", "405", "445", "490", "495"],
-             ["100", "98", "235", "265", "300", "335", "385", "410", "460", "470"],
-             ["120", "117", "225", "255", "280", "310", "360", "385", "430", "450"],
-             ["140", "137", "205", "225", "250", "285", "340", "370", "420", "430"],
-             ["160", "156", "195", "215", "235", "280", "325", "345", "370", "370"],
+             ["60", "58", "285", "315", "345", "405", "455", "505", "550"],
+             ["80", "78", "255", "285", "315", "345", "405", "445", "490"],
+             ["100", "98", "235", "265", "300", "335", "385", "410", "460"],
+             ["120", "117", "225", "255", "280", "310", "360", "385", "430"],
+             ["140", "137", "205", "225", "250", "285", "340", "370", "420"],
+             ["160", "156", "195", "215", "235", "280", "325", "345", "370"],
           ].map((row, rowIndex) => (
             <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
               {row.map((val, valIndex) => (
@@ -260,7 +259,7 @@ LL60,15400,1000,60,10.8`;
                 <div className="border-2 border-border bg-secondary/10 p-4">
                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                     <Image 
-                      src="https://www.imghippo.com/i/OxI3616rCI.png"
+                      src="https://i.imghippo.com/files/OxI3616rCI.png"
                       alt="Schéma technique B"
                       width={600}
                       height={200}
