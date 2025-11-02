@@ -260,10 +260,10 @@ export default function CouvertureProduct({ product }: { product: any }) {
 
              <div className="mb-6">
                <h3 className="font-semibold text-lg mb-3">{product.productDescription.section5_caracteristiques_geometriques.title}</h3>
-               <div className="border-2 border-border bg-secondary/10 p-4 mb-3">
+               <div className="border-2 border-border bg-secondary/10 p-4">
                  <div className="bg-white border border-border p-4">
                    <Image 
-                    src="https://www.imghippo.com/i/xF7879PHU.png" 
+                    src="https://i.imghippo.com/files/OxI3616rCI.png" 
                     alt="Schéma technique"
                     width={600}
                     height={200}
@@ -281,4 +281,3 @@ export default function CouvertureProduct({ product }: { product: any }) {
       </div>
     );
   };
-
