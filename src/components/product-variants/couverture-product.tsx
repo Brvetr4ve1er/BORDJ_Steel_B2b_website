@@ -20,19 +20,19 @@ const ChargesTable = () => {
               <th className="border border-border px-2 py-3" rowSpan={4} colSpan={2}>
                 Charge utile uniformément<br />répartie
               </th>
-              <th className="border border-border px-2 py-3" colSpan={10}>
+              <th className="border border-border px-2 py-3" colSpan={8}>
                 Tôle en acier épaisseur 0.5mm
               </th>
             </tr>
   
              {/* New row for the large SVG icons */}
              <tr className="bg-secondary">
-               <th className="border border-border p-2" colSpan={5}>
+               <th className="border border-border p-2" colSpan={4}>
                 <div className="flex items-center justify-center gap-1 mb-1 px-4">
                   <OneSupportIcon className="h-16" />
                 </div>
                </th>
-               <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
+               <th className="border border-border px-2 py-2 text-foreground" colSpan={4}>
                <div className="flex items-center justify-center gap-1 mb-1 px-4">
                   <TwoSupportsIcon className="h-16" />
                </div>
@@ -41,10 +41,10 @@ const ChargesTable = () => {
   
             {/* Second header row - Gray with icons */}
             <tr className="bg-secondary">
-              <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
+              <th className="border border-border px-2 py-2 text-foreground" colSpan={4}>
                 Épaisseur du panneau en mm
               </th>
-              <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
+              <th className="border border-border px-2 py-2 text-foreground" colSpan={4}>
                 Épaisseur du panneau en mm
               </th>
             </tr>
@@ -55,12 +55,10 @@ const ChargesTable = () => {
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">35</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">40</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">60</th>
-              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">80</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">30</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">35</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">40</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">60</th>
-              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">100</th>
             </tr>
           </thead>
   
@@ -69,21 +67,21 @@ const ChargesTable = () => {
             <tr className="bg-accent text-accent-foreground">
               <td className="border border-border px-2 py-2 font-semibold text-center">kg/m²</td>
               <td className="border border-border px-2 py-2 font-semibold text-center">daN/m²</td>
-              <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={5}>
+              <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={4}>
                 Entraxe Max cm
               </td>
-              <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={5}>
+              <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={4}>
                 Entraxe Max cm
               </td>
             </tr>
   
             {/* Data Rows */}
             {[
-                ["80", "87", "345", "365", "390", "485", "", "400", "425", "455", "560", ""],
-                ["120", "177", "290", "310", "335", "415", "", "345", "365", "390", "485", ""],
-                ["150", "147", "265", "285", "305", "375", "", "315", "335", "355", "440", ""],
-                ["200", "196", "235", "250", "270", "340", "", "285", "305", "325", "400", ""],
-                ["250", "245", "210", "225", "245", "305", "", "255", "275", "295", "360", ""],
+                ["80", "87", "345", "365", "390", "485", "400", "425", "455", "560"],
+                ["120", "177", "290", "310", "335", "415", "345", "365", "390", "485"],
+                ["150", "147", "265", "285", "305", "375", "315", "335", "355", "440"],
+                ["200", "196", "235", "250", "270", "340", "285", "305", "325", "400"],
+                ["250", "245", "210", "225", "245", "305", "255", "275", "295", "360"],
             ].map((row, rowIndex) => (
               <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
                 {row.map((val, valIndex) => (
