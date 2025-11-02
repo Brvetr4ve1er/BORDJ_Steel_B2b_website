@@ -12,20 +12,20 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
   
     return (
       <div className="bg-background min-h-screen p-8 font-sans">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto space-y-8">
           {/* Header */}
-          <div className="border-l-8 border-accent pl-4 mb-6">
+          <div className="border-l-8 border-accent pl-4">
             <h1 className="text-2xl font-bold text-accent uppercase">
               ■ 4-TÔLE NERVURÉE
             </h1>
           </div>
   
           {/* Title */}
-          <h2 className="text-2xl font-bold text-accent mb-6">TÔLE NERVURÉE TN40</h2>
+          <h2 className="text-2xl font-bold text-accent">TÔLE NERVURÉE TN40</h2>
   
           {/* Utilisation */}
-          <div className="mb-6">
-            <h3 className="font-bold mb-2 text-lg">Utilisation :</h3>
+          <div className="space-y-2">
+            <h3 className="font-bold text-lg">Utilisation :</h3>
             <ul className="list-disc ml-5 text-base space-y-1">
                 <li>Bâtiments industriels</li>
                 <li>Ateliers de production</li>
@@ -35,7 +35,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
           </div>
   
           {/* Image placeholder */}
-          <div className="mb-8 bg-secondary/10 h-48 flex items-center justify-center border rounded-lg">
+          <div className="bg-secondary/10 h-48 flex items-center justify-center border rounded-lg">
              <Image 
                 src="https://i.imghippo.com/files/tqXJd1721663116.png" 
                 alt="TN40 Profile Image" 
@@ -47,7 +47,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
           </div>
   
           {/* Specifications Table */}
-          <div className="mb-8 overflow-x-auto">
+          <div className="overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow className="bg-accent text-accent-foreground">
@@ -95,9 +95,9 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
           </div>
   
           {/* Revêtement */}
-          <div className="mb-6">
-            <h3 className="font-bold mb-2 text-lg">Revêtement :</h3>
-            <p className="text-base mb-2">
+          <div className="space-y-2">
+            <h3 className="font-bold text-lg">Revêtement :</h3>
+            <p className="text-base">
               Sans spécifications particulière les profils nervurés sont livrés en qualité standard
             </p>
             <ul className="list-disc ml-5 text-base space-y-1">
@@ -107,14 +107,14 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
           </div>
   
           {/* Réaction au feu */}
-          <div className="mb-6">
-            <h3 className="font-bold mb-2 text-lg">Réaction au feu</h3>
+          <div className="space-y-1">
+            <h3 className="font-bold text-lg">Réaction au feu</h3>
             <p className="text-base">Classement de réaction au feu M0</p>
           </div>
   
           {/* Mise en œuvre */}
-          <div className="mb-8">
-            <h3 className="font-bold mb-2 text-lg">Mise en œuvre :</h3>
+          <div className="space-y-1">
+            <h3 className="font-bold text-lg">Mise en œuvre :</h3>
             <p className="text-base">
               <span className="font-bold">Manutention :</span> Les profils ne doivent pas être choqué ou griffés pour éviter toute mise
               à nu du métal.
@@ -122,12 +122,13 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
           </div>
   
           {/* Load capacity table */}
-          <div className="mb-8">
+          <div>
             <h3 className="font-semibold text-muted-foreground mb-3 text-lg">LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)</h3>
             <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
                   <TableRow className="bg-accent text-accent-foreground">
+                    <TableHead className="text-accent-foreground" rowSpan={2}>Support</TableHead>
                     <TableHead className="text-accent-foreground" rowSpan={2}>EP<br />(mm)</TableHead>
                     <TableHead className="text-accent-foreground text-center" colSpan={10}>Portée (m)</TableHead>
                   </TableRow>
@@ -161,6 +162,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                     <TableCell className="text-center bg-secondary/20">63</TableCell>
                     <TableCell className="text-center bg-secondary/20">47</TableCell>
                     <TableCell className="text-center bg-secondary/20">36</TableCell>
+                    <TableCell className="text-center bg-secondary/20">-</TableCell> {/* Placeholder, adjust if needed */}
                   </TableRow>
                   <TableRow>
                     <TableCell className="text-center">0.6</TableCell>
@@ -186,9 +188,10 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                     <TableCell className="text-center bg-secondary/20">98</TableCell>
                     <TableCell className="text-center bg-secondary/20">73</TableCell>
                     <TableCell className="text-center bg-secondary/20">57</TableCell>
+                    <TableCell className="text-center bg-secondary/20">-</TableCell> {/* Placeholder, adjust if needed */}
                   </TableRow>
                   <TableRow>
-                    <TableCell className="text-center">0.5</TableCell>
+                    <TableCell className="text-center">1.0</TableCell>
                     <TableCell className="text-center">570</TableCell>
                     <TableCell className="text-center">365</TableCell>
                     <TableCell className="text-center">252</TableCell>
@@ -232,17 +235,17 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                     <TableCell className="text-center">74</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">1.0</TableCell>
-                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">1280</TableCell>
-                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">819</TableCell>
-                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">569</TableCell>
-                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">418</TableCell>
-                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">320</TableCell>
-                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">253</TableCell>
-                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">204</TableCell>
-                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">169</TableCell>
-                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">135</TableCell>
-                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">106</TableCell>
+                    <TableCell className="text-center bg-secondary/20 font-bold">1.0</TableCell>
+                    <TableCell className="text-center bg-secondary/20 font-bold">1280</TableCell>
+                    <TableCell className="text-center bg-secondary/20 font-bold">819</TableCell>
+                    <TableCell className="text-center bg-secondary/20 font-bold">569</TableCell>
+                    <TableCell className="text-center bg-secondary/20 font-bold">418</TableCell>
+                    <TableCell className="text-center bg-secondary/20 font-bold">320</TableCell>
+                    <TableCell className="text-center bg-secondary/20 font-bold">253</TableCell>
+                    <TableCell className="text-center bg-secondary/20 font-bold">204</TableCell>
+                    <TableCell className="text-center bg-secondary/20 font-bold">169</TableCell>
+                    <TableCell className="text-center bg-secondary/20 font-bold">135</TableCell>
+                    <TableCell className="text-center bg-secondary/20 font-bold">106</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -250,7 +253,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
           </div>
   
           {/* Caractéristiques Géométriques */}
-          <div className="mb-8">
+          <div>
             <h3 className="font-semibold mb-3 text-lg">Caractéristiques Géométriques</h3>
             <div className="border-2 border-border bg-secondary/10 p-4">
               <div className="bg-white border border-border h-32 flex items-center justify-center">
@@ -270,4 +273,3 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
     );
   };
   
-
