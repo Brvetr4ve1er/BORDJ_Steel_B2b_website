@@ -1,143 +1,273 @@
 
 import React from 'react';
+import Image from 'next/image';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { OneSupportIcon } from './one-support-icon';
+import { TwoSupportsIcon } from './two-supports-icon';
 
 export default function ToleNervureeProduct({ product }: { product: any }) {
-    if (!product || !product.features) return <p>Données produit non disponibles.</p>;
-
-    const { features, tables } = product;
-
+    if (!product) {
+      return <p>Données produit non disponibles.</p>;
+    }
+  
     return (
-        <div className="bg-background min-h-screen p-8 font-sans relative">
-            <div className="max-w-7xl mx-auto">
-                <div className="border-l-8 border-accent pl-4 mb-6">
-                    <h1 className="text-2xl font-bold text-accent uppercase">
-                        {product.title}
-                    </h1>
-                </div>
-
-                <div className="space-y-8">
-                    <h2 className="text-xl font-bold text-accent mb-4">CARACTÉRISTIQUES PRODUIT</h2>
-
-                    <div>
-                        <h3 className="font-bold text-lg mb-2">Utilisation</h3>
-                        <ul className="list-disc ml-5 mt-2 text-base space-y-1">
-                            {features.utilisation.map((item: string, i: number) => <li key={i}>{item}</li>)}
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 className="font-bold text-lg mt-3 mb-2">Revêtement</h3>
-                        <p className="text-base mt-1">{features.revetement}</p>
-                    </div>
-
-                    <div>
-                        <h3 className="font-bold text-lg mt-3 mb-2">Réaction au feu</h3>
-                        <p className="text-base mt-1">{features.reactionAuFeu}</p>
-                    </div>
-
-                    <div>
-                        <h3 className="font-bold text-lg mt-3 mb-2">{features.miseEnOeuvre.title}</h3>
-                        <p className="text-base mt-1"><strong>Manutention:</strong> {features.miseEnOeuvre.manutention}</p>
-                    </div>
-
-                    {tables.dimensionnement?.rows?.length > 0 && (
-                        <div className="mt-4">
-                            <h3 className="font-bold text-lg mb-3">{tables.dimensionnement.title}</h3>
-                            <div className="overflow-auto mt-2 border rounded-lg">
-                                <Table>
-                                    <TableHeader>
-                                        <TableRow className="bg-accent text-accent-foreground">
-                                            {tables.dimensionnement.headers.map((h: string) => <TableHead key={h} className="text-accent-foreground">{h}</TableHead>)}
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        {tables.dimensionnement.rows.map((row: any, i: number) => (
-                                            row.details && Array.isArray(row.details) && row.details.map((detail: any, j: number) => (
-                                                <TableRow key={`${i}-${j}`} className={i % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
-                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle font-medium">{row['Type']}</TableCell>}
-                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle text-center">{row['Longueur (ml)']}</TableCell>}
-                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle text-center">{row['Largueur standard (mm)']}</TableCell>}
-                                                    <TableCell className="text-center">{detail['Epaisseurs (mm)']}</TableCell>
-                                                    <TableCell className="text-center">{detail['Poids (kg/m2)']}</TableCell>
-                                                    <TableCell className="text-center">{detail['j']}</TableCell>
-                                                    <TableCell className="text-center">{detail['w']}</TableCell>
-                                                    {j === 0 && <TableCell rowSpan={row.details.length} className="align-middle">{row.details[0]['Système de revêtement']}</TableCell>}
-                                                </TableRow>
-                                            ))
-                                        ))}
-                                    </TableBody>
-                                </Table>
-                            </div>
-                        </div>
-                    )}
-
-                    {tables.proprietes?.rows?.length > 0 && (
-                        <div className="mt-8">
-                            <h3 className="font-bold text-lg mb-3">{tables.proprietes.title}</h3>
-                             <div className="overflow-auto mt-2 border rounded-lg">
-                                <Table>
-                                    <TableHeader>
-                                       <TableRow className="bg-accent text-accent-foreground">
-                                        {tables.proprietes.headers.map((h: string, i: number) => (
-                                            <TableHead key={i} colSpan={tables.proprietes.subheaders[h]?.length || 1} className="text-center text-accent-foreground">{h}</TableHead>
-                                        ))}
-                                        </TableRow>
-                                        <TableRow className="bg-secondary/50">
-                                            {Object.values(tables.proprietes.subheaders).flat().map((sh: any, i: number) => (
-                                                <TableHead key={i} className="text-center text-foreground font-semibold">{sh}</TableHead>
-                                            ))}
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                    {tables.proprietes.rows.map((row: any, i: number) => (
-                                        <TableRow key={i} className={i % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
-                                            <TableCell className="text-center font-medium">{row['ÉP']}</TableCell>
-                                            <TableCell className="text-center">{row['Poids-Kg/m']}</TableCell>
-                                            {Object.keys(row.haut_compression).map(key => <TableCell key={key} className="text-center">{row.haut_compression[key]}</TableCell>)}
-                                            {Object.keys(row.bas_compression).map(key => <TableCell key={key} className="text-center">{row.bas_compression[key]}</TableCell>)}
-                                            {Object.keys(row.cisaillement_voilement).map(key => <TableCell key={key} className="text-center">{row.cisaillement_voilement[key]}</TableCell>)}
-                                        </TableRow>
-                                    ))}
-                                    </TableBody>
-                                </Table>
-                            </div>
-                        </div>
-                    )}
-
-                    {tables.chargesPortees?.rows?.length > 0 && (
-                         <div className="mt-8">
-                            <h3 className="font-bold text-lg mb-3">{tables.chargesPortees.title}</h3>
-                            <div className="overflow-auto mt-2 border rounded-lg">
-                                <Table>
-                                    <TableHeader>
-                                       <TableRow className="bg-accent text-accent-foreground">
-                                           <TableHead className="text-accent-foreground">Portée (m)</TableHead>
-                                           <TableHead className="text-accent-foreground">Support</TableHead>
-                                           <TableHead className="text-accent-foreground">Ép (mm)</TableHead>
-                                           {(tables.chargesPortees.espacements_header || []).map((h: number) => (
-                                               <TableHead key={h} className="text-center text-accent-foreground">{h.toFixed(2)}</TableHead>
-                                           ))}
-                                       </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                    {tables.chargesPortees.rows.map((row: any, i: number) => (
-                                        <TableRow key={i} className={i % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
-                                            <TableCell className="font-medium">{row.epaisseur_mm}</TableCell>
-                                            <TableCell className="font-medium">{row.nombre_espacement}</TableCell>
-                                            <TableCell className="font-medium">{row.cas}</TableCell>
-                                            {row.valeurs.map((val: number, j: number) => (
-                                                <TableCell key={j} className="text-center">{val.toFixed(2)}</TableCell>
-                                            ))}
-                                        </TableRow>
-                                    ))}
-                                    </TableBody>
-                                </Table>
-                            </div>
-                        </div>
-                    )}
-                </div>
+      <div className="bg-background min-h-screen p-8 font-sans">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="border-l-8 border-accent pl-4 mb-6">
+            <h1 className="text-2xl font-bold text-accent uppercase">
+              ■ 4-TÔLE NERVURÉE
+            </h1>
+          </div>
+  
+          {/* Title */}
+          <h2 className="text-2xl font-bold text-accent mb-6">TÔLE NERVURÉE TN40</h2>
+  
+          {/* Utilisation */}
+          <div className="mb-6">
+            <h3 className="font-bold mb-2 text-lg">Utilisation :</h3>
+            <ul className="list-disc ml-5 text-base space-y-1">
+                <li>Bâtiments industriels</li>
+                <li>Ateliers de production</li>
+                <li>Entrepôts agricoles</li>
+                <li>Centres commerciaux</li>
+            </ul>
+          </div>
+  
+          {/* Image placeholder */}
+          <div className="mb-8 bg-secondary/10 h-48 flex items-center justify-center border rounded-lg">
+             <Image 
+                src="https://i.imghippo.com/files/tqXJd1721663116.png" 
+                alt="TN40 Profile Image" 
+                width={600} 
+                height={150}
+                className="object-contain"
+                data-ai-hint="technical drawing"
+             />
+          </div>
+  
+          {/* Specifications Table */}
+          <div className="mb-8 overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow className="bg-accent text-accent-foreground">
+                  <TableHead className="text-accent-foreground">Type</TableHead>
+                  <TableHead className="text-accent-foreground">Longueur<br />(m)</TableHead>
+                  <TableHead className="text-accent-foreground">Largeur<br />Standard<br />(mm)</TableHead>
+                  <TableHead className="text-accent-foreground">Épaisseurs<br />(mm)</TableHead>
+                  <TableHead className="text-accent-foreground">Poids<br />(kg/m²)</TableHead>
+                  <TableHead className="text-accent-foreground">I (cm⁴/m)</TableHead>
+                  <TableHead className="text-accent-foreground">W (cm³/m)</TableHead>
+                  <TableHead className="text-accent-foreground">Système de<br />revêtement</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-semibold" rowSpan={4}>TN 40</TableCell>
+                  <TableCell className="text-center" rowSpan={4}>1500</TableCell>
+                  <TableCell className="text-center" rowSpan={4}>1000</TableCell>
+                  <TableCell className="text-center">0.6</TableCell>
+                  <TableCell className="text-center">4.91</TableCell>
+                  <TableCell className="text-center">12.3</TableCell>
+                  <TableCell className="text-center">3.92</TableCell>
+                  <TableCell className="text-center" rowSpan={4}>Galvanisée<br />Pré laquée</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="text-center">0.6</TableCell>
+                  <TableCell className="text-center">5.90</TableCell>
+                  <TableCell className="text-center">16.05</TableCell>
+                  <TableCell className="text-center">5.30</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="text-center">0.7</TableCell>
+                  <TableCell className="text-center">6.88</TableCell>
+                  <TableCell className="text-center">18.72</TableCell>
+                  <TableCell className="text-center">6.18</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="text-center">1.0</TableCell>
+                  <TableCell className="text-center">9.81</TableCell>
+                  <TableCell className="text-center">26.75</TableCell>
+                  <TableCell className="text-center">8.83</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+  
+          {/* Revêtement */}
+          <div className="mb-6">
+            <h3 className="font-bold mb-2 text-lg">Revêtement :</h3>
+            <p className="text-base mb-2">
+              Sans spécifications particulière les profils nervurés sont livrés en qualité standard
+            </p>
+            <ul className="list-disc ml-5 text-base space-y-1">
+              <li>Galvanisé seul qualité Z200</li>
+              <li>Galvanisé pré-laqué, face extérieure finition laquée polyester ép. 25μ</li>
+            </ul>
+          </div>
+  
+          {/* Réaction au feu */}
+          <div className="mb-6">
+            <h3 className="font-bold mb-2 text-lg">Réaction au feu</h3>
+            <p className="text-base">Classement de réaction au feu M0</p>
+          </div>
+  
+          {/* Mise en œuvre */}
+          <div className="mb-8">
+            <h3 className="font-bold mb-2 text-lg">Mise en œuvre :</h3>
+            <p className="text-base">
+              <span className="font-bold">Manutention :</span> Les profils ne doivent pas être choqué ou griffés pour éviter toute mise
+              à nu du métal.
+            </p>
+          </div>
+  
+          {/* Load capacity table */}
+          <div className="mb-8">
+            <h3 className="font-semibold text-muted-foreground mb-3 text-lg">LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)</h3>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow className="bg-accent text-accent-foreground">
+                    <TableHead className="text-accent-foreground" rowSpan={2}>EP<br />(mm)</TableHead>
+                    <TableHead className="text-accent-foreground text-center" colSpan={10}>Portée (m)</TableHead>
+                  </TableRow>
+                  <TableRow className="bg-accent text-accent-foreground">
+                    <TableHead className="text-accent-foreground text-center">1.00</TableHead>
+                    <TableHead className="text-accent-foreground text-center">1.25</TableHead>
+                    <TableHead className="text-accent-foreground text-center">1.50</TableHead>
+                    <TableHead className="text-accent-foreground text-center">1.75</TableHead>
+                    <TableHead className="text-accent-foreground text-center">2.00</TableHead>
+                    <TableHead className="text-accent-foreground text-center">2.25</TableHead>
+                    <TableHead className="text-accent-foreground text-center">2.50</TableHead>
+                    <TableHead className="text-accent-foreground text-center">2.75</TableHead>
+                    <TableHead className="text-accent-foreground text-center">3</TableHead>
+                    <TableHead className="text-accent-foreground text-center">3.25</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-semibold bg-accent text-accent-foreground" rowSpan={4}>
+                      <div className="flex items-center justify-center">
+                        <OneSupportIcon className="h-8" />
+                      </div>
+                    </TableCell>
+                    <TableCell className="text-center bg-secondary/20">0.5</TableCell>
+                    <TableCell className="text-center bg-secondary/20">439</TableCell>
+                    <TableCell className="text-center bg-secondary/20">281</TableCell>
+                    <TableCell className="text-center bg-secondary/20">195</TableCell>
+                    <TableCell className="text-center bg-secondary/20">143</TableCell>
+                    <TableCell className="text-center bg-secondary/20">109</TableCell>
+                    <TableCell className="text-center bg-secondary/20">86</TableCell>
+                    <TableCell className="text-center bg-secondary/20">63</TableCell>
+                    <TableCell className="text-center bg-secondary/20">47</TableCell>
+                    <TableCell className="text-center bg-secondary/20">36</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="text-center">0.6</TableCell>
+                    <TableCell className="text-center">614</TableCell>
+                    <TableCell className="text-center">393</TableCell>
+                    <TableCell className="text-center">273</TableCell>
+                    <TableCell className="text-center">200</TableCell>
+                    <TableCell className="text-center">153</TableCell>
+                    <TableCell className="text-center">115</TableCell>
+                    <TableCell className="text-center">84</TableCell>
+                    <TableCell className="text-center">63</TableCell>
+                    <TableCell className="text-center">48</TableCell>
+                    <TableCell className="text-center">38</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="text-center bg-secondary/20">0.7</TableCell>
+                    <TableCell className="text-center bg-secondary/20">716</TableCell>
+                    <TableCell className="text-center bg-secondary/20">458</TableCell>
+                    <TableCell className="text-center bg-secondary/20">318</TableCell>
+                    <TableCell className="text-center bg-secondary/20">234</TableCell>
+                    <TableCell className="text-center bg-secondary/20">179</TableCell>
+                    <TableCell className="text-center bg-secondary/20">135</TableCell>
+                    <TableCell className="text-center bg-secondary/20">98</TableCell>
+                    <TableCell className="text-center bg-secondary/20">73</TableCell>
+                    <TableCell className="text-center bg-secondary/20">57</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="text-center">0.5</TableCell>
+                    <TableCell className="text-center">570</TableCell>
+                    <TableCell className="text-center">365</TableCell>
+                    <TableCell className="text-center">252</TableCell>
+                    <TableCell className="text-center">180</TableCell>
+                    <TableCell className="text-center">141</TableCell>
+                    <TableCell className="text-center">111</TableCell>
+                    <TableCell className="text-center">90</TableCell>
+                    <TableCell className="text-center">67</TableCell>
+                    <TableCell className="text-center">51</TableCell>
+                    <TableCell className="text-center">40</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-semibold bg-accent text-accent-foreground" rowSpan={3}>
+                      <div className="flex items-center justify-center">
+                        <TwoSupportsIcon className="h-8" />
+                      </div>
+                    </TableCell>
+                    <TableCell className="text-center bg-secondary/20">0.6</TableCell>
+                    <TableCell className="text-center bg-secondary/20">768</TableCell>
+                    <TableCell className="text-center bg-secondary/20">491</TableCell>
+                    <TableCell className="text-center bg-secondary/20">341</TableCell>
+                    <TableCell className="text-center bg-secondary/20">251</TableCell>
+                    <TableCell className="text-center bg-secondary/20">192</TableCell>
+                    <TableCell className="text-center bg-secondary/20">152</TableCell>
+                    <TableCell className="text-center bg-secondary/20">123</TableCell>
+                    <TableCell className="text-center bg-secondary/20">101</TableCell>
+                    <TableCell className="text-center bg-secondary/20">81</TableCell>
+                    <TableCell className="text-center bg-secondary/20">64</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="text-center">0.7</TableCell>
+                    <TableCell className="text-center">896</TableCell>
+                    <TableCell className="text-center">573</TableCell>
+                    <TableCell className="text-center">398</TableCell>
+                    <TableCell className="text-center">292</TableCell>
+                    <TableCell className="text-center">224</TableCell>
+                    <TableCell className="text-center">177</TableCell>
+                    <TableCell className="text-center">143</TableCell>
+                    <TableCell className="text-center">118</TableCell>
+                    <TableCell className="text-center">95</TableCell>
+                    <TableCell className="text-center">74</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">1.0</TableCell>
+                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">1280</TableCell>
+                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">819</TableCell>
+                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">569</TableCell>
+                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">418</TableCell>
+                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">320</TableCell>
+                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">253</TableCell>
+                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">204</TableCell>
+                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">169</TableCell>
+                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">135</TableCell>
+                    <TableCell className="text-center bg-accent text-accent-foreground font-bold">106</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
             </div>
+          </div>
+  
+          {/* Caractéristiques Géométriques */}
+          <div className="mb-8">
+            <h3 className="font-semibold mb-3 text-lg">Caractéristiques Géométriques</h3>
+            <div className="border-2 border-border bg-secondary/10 p-4">
+              <div className="bg-white border border-border h-32 flex items-center justify-center">
+                <Image 
+                    src="https://i.imghippo.com/files/tqXJd1721663116.png" 
+                    alt="Technical Drawing"
+                    width={600} 
+                    height={100}
+                    className="object-contain"
+                    data-ai-hint="technical drawing"
+                />
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     );
-}
+  };
+  
+
