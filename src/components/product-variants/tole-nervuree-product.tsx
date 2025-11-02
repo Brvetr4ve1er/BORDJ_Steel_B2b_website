@@ -119,6 +119,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
             <Table>
                 <TableHeader>
                     <TableRow className="bg-accent text-accent-foreground">
+                        <TableHead className="text-accent-foreground" rowSpan={3}>Support</TableHead>
                         <TableHead className="text-accent-foreground" rowSpan={2}>
                             EP(mm)
                         </TableHead>
@@ -139,13 +140,13 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                 </TableHeader>
                 <TableBody>
                 <TableRow>
-                    <TableCell className="font-semibold bg-background align-middle p-4" rowSpan={4}>
+                    <TableCell className="font-semibold bg-white align-middle p-4" rowSpan={4}>
                       <OneSupportIcon className="h-16 mx-auto" />
                     </TableCell>
                     <TableCell className="text-center bg-secondary/20">0.5</TableCell>
                     <TableCell className="text-center bg-secondary/20">439</TableCell>
                     <TableCell className="text-center bg-secondary/20">281</TableCell>
-                    <TableCell className="text-center bg-secondary/20">195</TableCell>
+                    <TableCell className="text-center bg-secondary/20">185</TableCell>
                     <TableCell className="text-center bg-secondary/20">143</TableCell>
                     <TableCell className="text-center bg-secondary/20">109</TableCell>
                     <TableCell className="text-center bg-secondary/20">86</TableCell>
@@ -180,60 +181,55 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                     <TableCell className="text-center bg-secondary/20">57</TableCell>
                     <TableCell className="text-center bg-secondary/20">-</TableCell>
                 </TableRow>
-                <TableRow>
-                    <TableCell className="text-center">1.0</TableCell>
-                    <TableCell className="text-center">570</TableCell>
-                    <TableCell className="text-center">365</TableCell>
-                    <TableCell className="text-center">252</TableCell>
-                    <TableCell className="text-center">180</TableCell>
-                    <TableCell className="text-center">141</TableCell>
-                    <TableCell className="text-center">111</TableCell>
-                    <TableCell className="text-center">90</TableCell>
-                    <TableCell className="text-center">67</TableCell>
-                    <TableCell className="text-center">51</TableCell>
-                    <TableCell className="text-center">40</TableCell>
+                 <TableRow>
+                    <TableCell className="text-center font-bold">1.0</TableCell>
+                    <TableCell className="text-center font-bold" colSpan={10}>Non applicable</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell className="font-semibold bg-background align-middle p-4" rowSpan={3}>
+                    <TableCell className="font-semibold bg-white align-middle p-4" rowSpan={4}>
                         <TwoSupportsIcon className="h-16 mx-auto" />
                     </TableCell>
-                    <TableCell className="text-center bg-secondary/20">0.6</TableCell>
-                    <TableCell className="text-center bg-secondary/20">768</TableCell>
-                    <TableCell className="text-center bg-secondary/20">491</TableCell>
-                    <TableCell className="text-center bg-secondary/20">341</TableCell>
-                    <TableCell className="text-center bg-secondary/20">251</TableCell>
-                    <TableCell className="text-center bg-secondary/20">192</TableCell>
-                    <TableCell className="text-center bg-secondary/20">152</TableCell>
-                    <TableCell className="text-center bg-secondary/20">123</TableCell>
-                    <TableCell className="text-center bg-secondary/20">101</TableCell>
-                    <TableCell className="text-center bg-secondary/20">81</TableCell>
-                    <TableCell className="text-center bg-secondary/20">64</TableCell>
+                    <TableCell className="text-center bg-secondary/20">0.5</TableCell>
+                    <TableCell className="text-center bg-secondary/20">570</TableCell>
+                    <TableCell className="text-center bg-secondary/20">365</TableCell>
+                    <TableCell className="text-center bg-secondary/20">252</TableCell>
+                    <TableCell className="text-center bg-secondary/20">180</TableCell>
+                    <TableCell className="text-center bg-secondary/20">141</TableCell>
+                    <TableCell className="text-center bg-secondary/20">111</TableCell>
+                    <TableCell className="text-center bg-secondary/20">90</TableCell>
+                    <TableCell className="text-center bg-secondary/20">67</TableCell>
+                    <TableCell className="text-center bg-secondary/20">51</TableCell>
+                    <TableCell className="text-center bg-secondary/20">40</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell className="text-center">0.7</TableCell>
-                    <TableCell className="text-center">896</TableCell>
-                    <TableCell className="text-center">573</TableCell>
-                    <TableCell className="text-center">398</TableCell>
-                    <TableCell className="text-center">292</TableCell>
-                    <TableCell className="text-center">224</TableCell>
-                    <TableCell className="text-center">177</TableCell>
-                    <TableCell className="text-center">143</TableCell>
-                    <TableCell className="text-center">118</TableCell>
-                    <TableCell className="text-center">95</TableCell>
-                    <TableCell className="text-center">74</TableCell>
+                    <TableCell className="text-center">0.6</TableCell>
+                    <TableCell className="text-center">768</TableCell>
+                    <TableCell className="text-center">491</TableCell>
+                    <TableCell className="text-center">341</TableCell>
+                    <TableCell className="text-center">251</TableCell>
+                    <TableCell className="text-center">192</TableCell>
+                    <TableCell className="text-center">152</TableCell>
+                    <TableCell className="text-center">123</TableCell>
+                    <TableCell className="text-center">101</TableCell>
+                    <TableCell className="text-center">81</TableCell>
+                    <TableCell className="text-center">64</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell className="text-center bg-secondary/20 font-bold">1.0</TableCell>
-                    <TableCell className="text-center bg-secondary/20 font-bold">1280</TableCell>
-                    <TableCell className="text-center bg-secondary/20 font-bold">819</TableCell>
-                    <TableCell className="text-center bg-secondary/20 font-bold">569</TableCell>
-                    <TableCell className="text-center bg-secondary/20 font-bold">418</TableCell>
-                    <TableCell className="text-center bg-secondary/20 font-bold">320</TableCell>
-                    <TableCell className="text-center bg-secondary/20 font-bold">253</TableCell>
-                    <TableCell className="text-center bg-secondary/20 font-bold">204</TableCell>
-                    <TableCell className="text-center bg-secondary/20 font-bold">169</TableCell>
-                    <TableCell className="text-center bg-secondary/20 font-bold">135</TableCell>
-                    <TableCell className="text-center bg-secondary/20 font-bold">106</TableCell>
+                    <TableCell className="text-center bg-secondary/20">0.7</TableCell>
+                    <TableCell className="text-center bg-secondary/20">896</TableCell>
+                    <TableCell className="text-center bg-secondary/20">573</TableCell>
+                    <TableCell className="text-center bg-secondary/20">398</TableCell>
+                    <TableCell className="text-center bg-secondary/20">292</TableCell>
+                    <TableCell className="text-center bg-secondary/20">224</TableCell>
+                    <TableCell className="text-center bg-secondary/20">177</TableCell>
+                    <TableCell className="text-center bg-secondary/20">143</TableCell>
+                    <TableCell className="text-center bg-secondary/20">118</TableCell>
+                    <TableCell className="text-center bg-secondary/20">95</TableCell>
+                    <TableCell className="text-center bg-secondary/20">74</TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell className="text-center font-bold">1.0</TableCell>
+                    <TableCell className="text-center font-bold" colSpan={10}>Non applicable</TableCell>
                 </TableRow>
                 </TableBody>
             </Table>
