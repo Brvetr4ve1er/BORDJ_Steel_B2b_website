@@ -2,6 +2,113 @@ import React from 'react';
 import Papa from 'papaparse';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
+function ChargesTableDebug() {
+  return (
+    <div className="overflow-x-auto bg-white p-4">
+      <h2 className="text-gray-800 font-bold text-sm mb-2 uppercase tracking-wide">
+        [DEBUG] Les Charges et Portées Admissibles au Coulage (kg/m)
+      </h2>
+
+      <table className="border-collapse w-full text-[13px] leading-tight font-mono">
+        <thead>
+          {/* Top red header */}
+          <tr>
+            <th
+              colSpan={12}
+              className="bg-accent text-white text-left p-2 uppercase font-semibold tracking-wide border border-black"
+            >
+              Tôle en acier épaisseur 0,5mm
+            </th>
+          </tr>
+
+          {/* Header with subgroups */}
+          <tr className="bg-gray-100 text-center text-gray-900">
+            <th
+              rowSpan={3}
+              className="border border-black p-2 bg-yellow-100 align-middle"
+            >
+              Charge utile uniformément<br />répartie
+            </th>
+            <th
+              colSpan={5}
+              className="border border-black p-2 bg-green-100 font-semibold"
+            >
+              Épaisseur du panneau en mm
+            </th>
+            <th
+              colSpan={5}
+              className="border border-black p-2 bg-blue-100 font-semibold"
+            >
+              Épaisseur du panneau en mm
+            </th>
+          </tr>
+
+          <tr className="bg-gray-100 text-gray-900 text-center">
+            <th colSpan={5} className="border border-black p-2 font-semibold">Entraxe Max cm</th>
+            <th colSpan={5} className="border border-black p-2 font-semibold">Entraxe Max cm</th>
+          </tr>
+
+          {/* Numeric headers */}
+          <tr className="bg-gray-100 text-gray-900 text-center">
+            <th className="border border-black p-2 bg-green-50">30</th>
+            <th className="border border-black p-2 bg-green-50">35</th>
+            <th className="border border-black p-2 bg-green-50">40</th>
+            <th className="border border-black p-2 bg-green-50">50</th>
+            <th className="border border-black p-2 bg-green-50">60</th>
+            <th className="border border-black p-2 bg-blue-50">30</th>
+            <th className="border border-black p-2 bg-blue-50">35</th>
+            <th className="border border-black p-2 bg-blue-50">40</th>
+            <th className="border border-black p-2 bg-blue-50">50</th>
+            <th className="border border-black p-2 bg-blue-50">60</th>
+          </tr>
+           <tr className="bg-gray-200 text-gray-900 text-center font-bold">
+              <td className="border border-black p-2">kg/m²</td>
+              <td className="border border-black p-2">daN/m²</td>
+              <td className="border border-black p-2" colSpan={4}></td>
+              <td className="border border-black p-2" colSpan={4}></td>
+          </tr>
+        </thead>
+
+        <tbody className="text-center text-gray-900">
+          {[
+            ["60", "58", "285", "315", "345", "485", "400", "400", "455", "505", "550", "560"],
+            ["80", "78", "255", "285", "315", "485", "375", "405", "445", "490", "495", ""],
+            ["100", "98", "235", "265", "300", "415", "375", "385", "410", "460", "470", ""],
+            ["120", "117", "225", "255", "280", "345", "355", "360", "385", "430", "450", ""],
+            ["140", "137", "205", "225", "250", "310", "340", "340", "370", "420", "430", ""],
+            ["160", "156", "195", "215", "235", "280", "325", "325", "345", "370", "370", ""],
+          ].map((row, rowIndex) => (
+            <tr key={rowIndex} className={rowIndex % 2 ? "bg-gray-50" : "bg-white"}>
+              {row.map((cell, colIndex) => (
+                <td
+                  key={colIndex}
+                  className={`border border-black p-2 ${
+                    !cell ? "bg-red-300 text-white" : "bg-transparent"
+                  }`}
+                >
+                  {cell || "EMPTY"}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <p className="text-xs text-gray-600 mt-4">
+        <strong>Legend:</strong>
+          <span className="inline-block bg-red-300 text-white px-1 mx-1">EMPTY</span> =
+        missing or stripped cell.
+          <span className="inline-block bg-yellow-100 px-1 mx-1">YELLOW</span> =
+        first column headers.
+          <span className="inline-block bg-green-100 px-1 mx-1">GREEN</span> /
+        <span className="inline-block bg-blue-100 px-1 mx-1">BLUE</span> =
+        grouped headers.
+      </p>
+    </div>
+  );
+}
+
+
 export default function BardageProduct({ product }: { product: any }) {
     // CSV data for thermal coefficient table
    const thermalCoefficientCSV = `Épaisseur en mm,30,35,40,50,60
@@ -15,9 +122,6 @@ LL35,15400,1000,35,9.8
 LL40,15400,1000,40,10
 LL50,15400,1000,50,10.4
 LL60,15400,1000,60,10.8`;
-
-    // CSV data for load capacity table
-   const loadCapacityCSV = `Charge utile uniformément répartie,daN/m²,Tôle en acier épaisseur 0.5mm,,,,Épaisseur du panneau en mm,,,, ,,30,35,40,50,60,30,35,40,50,60 kg/m²,daN/m²,Entraxe Max cm,,,,Entraxe Max cm,,,, 60,58,285,315,345,485,400,400,455,560,455,560 80,78,255,285,335,415,345,365,390,485,390,485 100,98,235,260,305,375,315,335,385,440,385,440 120,117,220,245,265,310,355,285,360,310,360,310 140,137,205,225,250,395,235,240,340,290,290,290 160,156,195,215,235,280,315,230,225,375,325,370`;
 
    const parsedThermalCoefficient = Papa.parse(thermalCoefficientCSV, { header: false }).data;
    const parsedPanelDimensions = Papa.parse(panelDimensionsCSV, { header: false }).data;
@@ -139,41 +243,9 @@ LL60,15400,1000,60,10.8`;
                  Tous les panneaux bardage sont munis sur la nervure femelle d'un joint d'étanchéité à l'air ; leurs parements pré-laqués sont protégés par un filmadhésif à retirer à la pose .
                </p>
              </div>
-             <div className="mb-6">
-                <h3 className="font-semibold text-gray-700 mb-3">LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)</h3>
-                 <div className="overflow-x-auto my-8">
-                    <table className="min-w-full border border-border text-xs text-center">
-                        <thead>
-                            <tr><th colSpan={12} className="bg-accent text-accent-foreground font-semibold py-2 border border-border">LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)</th></tr>
-                            <tr><th colSpan={12} className="bg-secondary/20 text-foreground font-medium py-2 border border-border">Tôle en acier épaisseur 0,5mm</th></tr>
-                            <tr className="bg-secondary/30 text-foreground font-semibold">
-                                <th rowSpan={3} className="border border-border px-1 py-2 align-middle">Charge utile<br/>uniformément<br/>répartie</th>
-                                <th rowSpan={3} className="border border-border px-1 py-2 align-middle">daN/m²</th>
-                                <th colSpan={5} className="border border-border px-1 py-2">Épaisseur du panneau en mm</th>
-                                <th colSpan={5} className="border border-border px-1 py-2">Épaisseur du panneau en mm</th>
-                            </tr>
-                            <tr className="bg-secondary/30"><th colSpan={5} className="border border-border px-1 py-2">Entraxe Max cm</th><th colSpan={5} className="border border-border px-1 py-2">Entraxe Max cm</th></tr>
-                            <tr className="bg-secondary/30"><th className="border border-border px-1 py-1">30</th><th className="border border-border px-1 py-1">35</th><th className="border border-border px-1 py-1">40</th><th className="border border-border px-1 py-1">50</th><th className="border border-border px-1 py-1">60</th><th className="border border-border px-1 py-1">30</th><th className="border border-border px-1 py-1">35</th><th className="border border-border px-1 py-1">40</th><th className="border border-border px-1 py-1">50</th><th className="border border-border px-1 py-1">60</th></tr>
-                        </thead>
-                        <tbody>
-                            {[
-                                [60, 58, 285, 315, 345, 485, 400, 400, 455, 505, 550, 560],
-                                [80, 78, 255, 285, 315, 485, 375, 405, 445, 490, 495],
-                                [100, 98, 235, 265, 300, 415, 375, 385, 410, 460, 470],
-                                [120, 117, 225, 255, 280, 345, 355, 360, 385, 430, 450],
-                                [140, 137, 205, 225, 250, 310, 340, 340, 370, 420, 430],
-                                [160, 156, 195, 215, 235, 280, 325, 325, 345, 370, 370]
-                            ].map((row, i) => (
-                                <tr key={i} className="even:bg-secondary/10">
-                                    {row.map((val, j) => (
-                                        <td key={j} className="border border-border px-1 py-2">{val}</td>
-                                    ))}
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+             
+             <ChargesTableDebug />
+
              <div className="mb-6">
                <h3 className="font-semibold mb-3">Caractéristiques Géométriques</h3>
                <div className="border-2 border-border bg-secondary/10 p-4 mb-3">
