@@ -45,6 +45,7 @@ function ToleNervureeTwoSupportsIcon({ className }: { className?: string }) {
   );
 }
 
+
 export default function ToleNervureeProduct({ product }: { product: any }) {
     if (!product) {
       return <p>Données produit non disponibles.</p>;
@@ -159,11 +160,12 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
             <Table>
                 <TableHeader>
                     <TableRow className="bg-accent text-accent-foreground">
-                        <TableHead className="text-accent-foreground" rowSpan={2}></TableHead>
-                        <TableHead className="text-accent-foreground text-center" rowSpan={2}>EP(mm)</TableHead>
+                        <TableHead className="text-accent-foreground" colSpan={2}>Portée (m)</TableHead>
                         <TableHead className="text-accent-foreground text-center" colSpan={10}>Portée (m)</TableHead>
                     </TableRow>
                     <TableRow className="bg-accent text-accent-foreground">
+                        <TableHead className="text-accent-foreground" rowSpan={2}></TableHead>
+                        <TableHead className="text-accent-foreground text-center" rowSpan={2}>EP(mm)</TableHead>
                         <TableHead className="text-accent-foreground text-center">1.00</TableHead>
                         <TableHead className="text-accent-foreground text-center">1.25</TableHead>
                         <TableHead className="text-accent-foreground text-center">1.50</TableHead>
@@ -180,7 +182,6 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                 <TableRow>
                     <TableCell className="font-semibold bg-accent text-accent-foreground" rowSpan={4}>
                         <div className="flex items-center justify-center">
-                            <ToleNervureeOneSupportIcon className="w-20" />
                         </div>
                     </TableCell>
                     <TableCell className="text-center bg-secondary/20">0.5</TableCell>
@@ -237,7 +238,6 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                 <TableRow>
                     <TableCell className="font-semibold bg-accent text-accent-foreground" rowSpan={3}>
                         <div className="flex items-center justify-center">
-                            <ToleNervureeTwoSupportsIcon className="w-20" />
                         </div>
                     </TableCell>
                     <TableCell className="text-center bg-secondary/20">0.6</TableCell>
@@ -303,3 +303,5 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
     );
   };
   
+
+    
