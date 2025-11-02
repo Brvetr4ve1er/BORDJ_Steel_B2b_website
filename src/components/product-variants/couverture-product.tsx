@@ -1,10 +1,11 @@
-
 import React from 'react';
 import Papa from 'papaparse';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { OneSupportIcon } from './one-support-icon';
+import { TwoSupportsIcon } from './two-supports-icon';
 
 
-const LoadCapacityTable = () => {
+const ChargesTable = () => {
     return (
       <div className="bg-background p-4">
         <h3 className="text-muted-foreground font-semibold mb-3 text-lg">
@@ -26,9 +27,250 @@ const LoadCapacityTable = () => {
              {/* New row for the large SVG icons */}
              <tr className="bg-secondary">
                <th className="border border-border p-2" colSpan={5}>
-               <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100" zoomAndPan="magnify" viewBox="0 0 750 517.92" height="68" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><clipPath id="d7b5d2614e"><path d="M 13.917969 171.765625 L 736.082031 171.765625 L 736.082031 245.671875 L 13.917969 245.671875 Z M 13.917969 171.765625 " clipRule="nonzero"/></clipPath><clipPath id="7747dc7390"><path d="M 0.917969 0.765625 L 723 0.765625 L 723 74.671875 L 0.917969 74.671875 Z M 0.917969 0.765625 " clipRule="nonzero"/></clipPath><clipPath id="38c88312a4"><rect x="0" width="724" y="0" height="75"/></clipPath><clipPath id="f5288c828e"><path d="M 13.953125 171.765625 L 736.046875 171.765625 L 736.046875 245.664062 L 13.953125 245.664062 Z M 13.953125 171.765625 " clipRule="nonzero"/></clipPath><clipPath id="c934e68679"><path d="M 13.917969 245.671875 L 174.683594 245.671875 L 174.683594 346.296875 L 13.917969 346.296875 Z M 13.917969 245.671875 " clipRule="nonzero"/></clipPath><clipPath id="422c1a0f15"><path d="M 94.21875 245.671875 L 174.519531 346.296875 L 13.917969 346.296875 Z M 94.21875 245.671875 " clipRule="nonzero"/></clipPath><clipPath id="c46bc51134"><path d="M 0.917969 0.671875 L 161.683594 0.671875 L 161.683594 101.296875 L 0.917969 101.296875 Z M 0.917969 0.671875 " clipRule="nonzero"/></clipPath><clipPath id="219ea61af8"><path d="M 81.21875 0.671875 L 161.519531 101.296875 L 0.917969 101.296875 Z M 81.21875 0.671875 " clipRule="nonzero"/></clipPath><clipPath id="79220ce091"><rect x="0" width="162" y="0" height="102"/></clipPath><clipPath id="577af55679"><path d="M 13.917969 245.675781 L 174.394531 245.675781 L 174.394531 346.15625 L 13.917969 346.15625 Z M 13.917969 245.675781 " clipRule="nonzero"/></clipPath><clipPath id="476e3da748"><path d="M 94.214844 245.675781 L 174.511719 346.296875 L 13.917969 346.296875 Z M 94.214844 245.675781 " clipRule="nonzero"/></clipPath><clipPath id="fe4bbc8465"><path d="M 575.480469 245.671875 L 736.246094 245.671875 L 736.246094 346.296875 L 575.480469 346.296875 Z M 575.480469 245.671875 " clipRule="nonzero"/></clipPath><clipPath id="ccb44cde5e"><path d="M 655.78125 245.671875 L 736.082031 346.296875 L 575.480469 346.296875 Z M 655.78125 245.671875 " clipRule="nonzero"/></clipPath><clipPath id="c64c9e1327"><path d="M 0.480469 0.671875 L 161.246094 0.671875 L 161.246094 101.296875 L 0.480469 101.296875 Z M 0.480469 0.671875 " clipRule="nonzero"/></clipPath><clipPath id="cd7a110029"><path d="M 80.78125 0.671875 L 161.082031 101.296875 L 0.480469 101.296875 Z M 80.78125 0.671875 " clipRule="nonzero"/></clipPath><clipPath id="ff4f73c67f"><rect x="0" width="162" y="0" height="102"/></clipPath><clipPath id="8ca98bb5de"><path d="M 575.480469 245.675781 L 735.957031 245.675781 L 735.957031 346.15625 L 575.480469 346.15625 Z M 575.480469 245.675781 " clipRule="nonzero"/></clipPath><clipPath id="d19dfff3f5"><path d="M 655.777344 245.675781 L 736.074219 346.296875 L 575.480469 346.296875 Z M 655.777344 245.675781 " clipRule="nonzero"/></clipPath></defs><g clipPath="url(#d7b5d2614e)"><g transform="matrix(1, 0, 0, 1, 13, 171)"><g clipPath="url(#38c88312a4)"><g clipPath="url(#7747dc7390)"><path fill="#ffffff" d="M 0.917969 0.765625 L 722.941406 0.765625 L 722.941406 74.671875 L 0.917969 74.671875 Z M 0.917969 0.765625 " fillOpacity="1" fillRule="nonzero"/></g></g></g></g><g clipPath="url(#f5288c828e)"><path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 13.952631, 171.766561)" fill="none" strokeLinejoin="miter" d="M 0.000658708 -0.00124831 L 962.941082 -0.00124831 L 962.941082 98.545225 L 0.000658708 98.545225 Z M 0.000658708 -0.00124831 " stroke="#000000" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/></g><g clipPath="url(#c934e68679)"><g clipPath="url(#422c1a0f15)"><g transform="matrix(1, 0, 0, 1, 13, 245)"><g clipPath="url(#79220ce091)"><g clipPath="url(#c46bc51134)"><g clipPath="url(#219ea61af8)"><path fill="#ffffff" d="M 0.917969 0.671875 L 161.683594 0.671875 L 161.683594 101.296875 L 0.917969 101.296875 Z M 0.917969 0.671875 " fillOpacity="1" fillRule="nonzero"/></g></g></g></g></g></g><g clipPath="url(#577af55679)"><g clipPath="url(#476e3da748)"><path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 13.91891, 245.673971)" fill="none" strokeLinejoin="miter" d="M 107.07778 0.00241434 L 214.156815 134.184593 L -0.00125521 134.184593 Z M 107.07778 0.00241434 " stroke="#000000" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/></g></g><g clipPath="url(#fe4bbc8465)"><g clipPath="url(#ccb44cde5e)"><g transform="matrix(1, 0, 0, 1, 575, 245)"><g clipPath="url(#ff4f73c67f)"><g clipPath="url(#c64c9e1327)"><g clipPath="url(#cd7a110029)"><path fill="#ffffff" d="M 0.480469 0.671875 L 161.246094 0.671875 L 161.246094 101.296875 L 0.480469 101.296875 Z M 0.480469 0.671875 " fillOpacity="1" fillRule="nonzero"/></g></g></g></g></g></g><g clipPath="url(#8ca98bb5de)"><g clipPath="url(#d19dfff3f5)"><path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 575.480921, 245.673971)" fill="none" strokeLinejoin="miter" d="M 107.078432 0.00241434 L 214.157467 134.184593 L -0.000603004 134.184593 Z M 107.078432 0.00241434 " stroke="#000000" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/></g></g></svg>
+                <div className="flex items-center justify-center gap-1 mb-1 px-4">
+                  <OneSupportIcon className="h-16" />
+                </div>
                </th>
                <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
                <div className="flex items-center justify-center gap-1 mb-1 px-4">
-               <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100" zoomAndPan="magnify" viewBox="0 0 750 517.92" height="68" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><clipPath id="a9107e9e82d"><path d="M 36.804688 195.21875 L 713.195312 195.21875 L 713.195312 264.4375 L 36.804688 264.4375 Z M 36.804688 195.21875 " clipRule="nonzero"/></clipPath><clipPath id="aea6dec082b"><path d="M 0.804688 0.21875 L 677.195312 0.21875 L 677.195312 69.4375 L 0.804688 69.4375 Z M 0.804688 0.21875 " clipRule="nonzero"/></clipPath><clipPath id="a8f228e6ab0"><rect x="0" width="678" y="0" height="70"/></clipPath><clipPath id="a3e20daad13"><path d="M 36.847656 195.21875 L 713.144531 195.21875 L 713.144531 264.207031 L 36.847656 264.207031 Z M 36.847656 195.21875 " clipRule="nonzero"/></clipPath><clipPath id="a5b8e07c175"><path d="M 36.804688 264.4375 L 187.378906 264.4375 L 187.378906 358.6875 L 36.804688 358.6875 Z M 36.804688 264.4375 " clipRule="nonzero"/></clipPath><clipPath id="a8267904319"><path d="M 112.015625 264.4375 L 187.226562 358.6875 L 36.804688 358.6875 Z M 112.015625 264.4375 " clipRule="nonzero"/></clipPath><clipPath id="a3bba25a047"><path d="M 0.804688 0.4375 L 151.230469 0.4375 L 151.230469 94.6875 L 0.804688 94.6875 Z M 0.804688 0.4375 " clipRule="nonzero"/></clipPath><clipPath id="ae18d13977c"><path d="M 76.015625 0.4375 L 151.226562 94.6875 L 0.804688 94.6875 Z M 76.015625 0.4375 " clipRule="nonzero"/></clipPath><clipPath id="a9635d32715"><rect x="0" width="152" y="0" height="95"/></clipPath><clipPath id="adcc3a70cc2"><path d="M 36.804688 264.4375 L 187.53125 264.4375 L 187.53125 358.925781 L 36.804688 358.925781 Z M 36.804688 264.4375 " clipRule="nonzero"/></clipPath><clipPath id="a37db387329"><path d="M 112.007812 264.4375 L 187.210938 358.679688 L 36.804688 358.679688 Z M 112.007812 264.4375 " clipRule="nonzero"/></clipPath><clipPath id="a529733bba8"><path d="M 562.773438 264.4375 L 713.351562 264.4375 L 713.351562 358.6875 L 562.773438 358.6875 Z M 562.773438 264.4375 " clipRule="nonzero"/></clipPath><clipPath id="a26d1f4e2e2"><path d="M 637.984375 264.4375 L 713.195312 358.6875 L 562.773438 358.6875 Z M 637.984375 264.4375 " clipRule="nonzero"/></clipPath><clipPath id="a867f79d513"><path d="M 0.773438 0.4375 L 151.226562 0.4375 L 151.226562 94.6875 L 0.773438 94.6875 Z M 0.773438 0.4375 " clipRule="nonzero"/></clipPath><clipPath id="a6770ec0153"><path d="M 75.984375 0.4375 L 151.195312 94.6875 L 0.773438 94.6875 Z M 75.984375 0.4375 " clipRule="nonzero"/></clipPath><clipPath id="aa37e6b44b5"><rect x="0" width="152" y="0" height="95"/></clipPath><clipPath id="abd8713aa60"><path d="M 562.777344 264.4375 L 713.5 264.4375 L 713.5 358.925781 L 562.777344 358.925781 Z M 562.777344 264.4375 " clipRule="nonzero"/></clipPath><clipPath id="a96313953d3"><path d="M 637.980469 264.4375 L 713.183594 358.679688 L 562.777344 358.679688 Z M 637.980469 264.4375 " clipRule="nonzero"/></clipPath><clipPath id="a203437d60a"><path d="M 299.789062 264.4375 L 450.367188 264.4375 L 450.367188 358.6875 L 299.789062 358.6875 Z M 299.789062 264.4375 " clipRule="nonzero"/></clipPath><clipPath id="a102fc5ab68"><path d="M 375 264.4375 L 450.210938 358.6875 L 299.789062 358.6875 Z M 375 264.4375 " clipRule="nonzero"/></clipPath><clipPath id="ab2dfaa6d40"><path d="M 0.789062 0.4375 L 151.226562 0.4375 L 151.226562 94.6875 L 0.789062 94.6875 Z M 0.789062 0.4375 " clipRule="nonzero"/></clipPath><clipPath id="afbef99f2c8"><path d="M 76 0.4375 L 151.210938 94.6875 L 0.789062 94.6875 Z M 76 0.4375 " clipRule="nonzero"/></clipPath><clipPath id="a08e274d1d7"><rect x="0" width="152" y="0" height="95"/></clipPath><clipPath id="aca3c2db77f"><path d="M 299.792969 264.4375 L 450.515625 264.4375 L 450.515625 358.925781 L 299.792969 358.925781 Z M 299.792969 264.4375 " clipRule="nonzero"/></clipPath><clipPath id="a2d96741716"><path d="M 374.996094 264.4375 L 450.199219 358.679688 L 299.792969 358.679688 Z M 374.996094 264.4375 " clipRule="nonzero"/></clipPath></defs><g clipPath="url(#a9107e9e82d)"><g transform="matrix(1, 0, 0, 1, 36, 195)"><g clipPath="url(#a8f228e6ab0)"><g clipPath="url(#aea6dec082b)"><path fill="#ffffff" d="M 0.804688 0.21875 L 677.066406 0.21875 L 677.066406 69.4375 L 0.804688 69.4375 Z M 0.804688 0.21875 " fillOpacity="1" fillRule="nonzero"/></g></g></g></g><g clipPath="url(#a3e20daad13)"><path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 36.846063, 195.217593)" fill="none" strokeLinejoin="miter" d="M 0.00212498 0.00154294 L 901.870614 0.00154294 L 901.870614 92.297051 L 0.00212498 92.297051 Z M 0.00212498 0.00154294 " stroke="#000000" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/></g><g clipPath="url(#a5b8e07c175)"><g clipPath="url(#a8267904319)"><g transform="matrix(1, 0, 0, 1, 36, 264)"><g clipPath="url(#a9635d32715)"><g clipPath="url(#a3bba25a047)"><g clipPath="url(#ae18d13977c)"><path fill="#ffffff" d="M 0.804688 0.4375 L 151.378906 0.4375 L 151.378906 94.6875 L 0.804688 94.6875 Z M 0.804688 0.4375 " fillOpacity="1" fillRule="nonzero"/></g></g></g></g></g></g><g clipPath="url(#adcc3a70cc2)"><g clipPath="url(#a37db387329)"><path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 36.805218, 264.439338)" fill="none" strokeLinejoin="miter" d="M 100.285618 -0.0024508 L 200.571943 125.673214 L -0.000708017 125.673214 Z M 100.285618 -0.0024508 " stroke="#000000" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/></g></g><g clipPath="url(#a529733bba8)"><g clipPath="url(#a26d1f4e2e2)"><g transform="matrix(1, 0, 0, 1, 562, 264)"><g clipPath="url(#aa37e6b44b5)"><g clipPath="url(#a867f79d513)"><g clipPath="url(#a6770ec0153)"><path fill="#ffffff" d="M 0.773438 0.4375 L 151.351562 0.4375 L 151.351562 94.6875 L 0.773438 94.6875 Z M 0.773438 0.4375 " fillOpacity="1" fillRule="nonzero"/></g></g></g></g></g></g><g clipPath="url(#abd8713aa60)"><g clipPath="url(#a96313953d3)"><path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 562.776996, 264.439338)" fill="none" strokeLinejoin="miter" d="M 100.28679 -0.0024508 L 200.573116 125.673214 L 0.000464056 125.673214 Z M 100.28679 -0.0024508 " stroke="#000000" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/></g></g><g clipPath="url(#a203437d60a)"><g clipPath="url(#a102fc5ab68)"><g transform="matrix(1, 0, 0, 1, 299, 264)"><g clipPath="url(#a08e274d1d7)"><g clipPath="url(#ab2dfaa6d40)"><g clipPath="url(#afbef99f2c8)"><path fill="#ffffff" d="M 0.789062 0.4375 L 151.367188 0.4375 L 151.367188 94.6875 L 0.789062 94.6875 Z M 0.789062 0.4375 " fillOpacity="1" fillRule="nonzero"/></g></g></g></g></g></g><g clipPath="url(#aca3c2db77f)"><g clipPath="url(#a2d96741716)"><path strokeLinecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 299.791117, 264.439338)" fill="none" strokeLinejoin="miter" d="M 100.288796 -0.0024508 L 200.575121 125.673214 L 0.00246995 125.673214 Z M 100.288796 -0.0024508 " stroke="#000000" strokeWidth="24" strokeOpacity="1" strokeMiterlimit="4"/></g></g></svg></div>
-               Épaisseur du panneau en mm             </th>           </tr>
+                  <TwoSupportsIcon className="h-16" />
+               </div>
+              </th>
+             </tr>
+  
+            {/* Second header row - Gray with icons */}
+            <tr className="bg-secondary">
+              <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
+                Épaisseur du panneau en mm
+              </th>
+              <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
+                Épaisseur du panneau en mm
+              </th>
+            </tr>
+  
+            {/* Third header row - Thickness values */}
+            <tr>
+              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">30</th>
+              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">35</th>
+              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">40</th>
+              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">60</th>
+              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">30</th>
+              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">35</th>
+              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">40</th>
+              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">60</th>
+              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">80</th>
+              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">100</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            {/* Sub-header row with kg/m² and daN/m² */}
+            <tr className="bg-accent text-accent-foreground">
+              <td className="border border-border px-2 py-2 font-semibold text-center">kg/m²</td>
+              <td className="border border-border px-2 py-2 font-semibold text-center">daN/m²</td>
+              <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={5}>
+                Entraxe Max cm
+              </td>
+              <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={5}>
+                Entraxe Max cm
+              </td>
+            </tr>
+  
+            {/* Data Rows */}
+            {[
+              ["80", "87", "345", "365", "390", "485", "400", "425", "455", "560"],
+              ["120", "177", "290", "310", "335", "415", "345", "365", "390", "485"],
+              ["150", "147", "265", "285", "305", "375", "315", "335", "355", "440"],
+              ["200", "196", "235", "250", "270", "340", "285", "305", "325", "400"],
+              ["250", "245", "210", "225", "245", "305", "255", "275", "295", "360"],
+            ].map((row, rowIndex) => (
+              <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
+                {row.map((val, valIndex) => (
+                  <td key={valIndex} className="border border-border px-2 py-2 text-center">
+                    {val}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+};
+
+export default function CouvertureProduct({ product }: { product: any }) {
+    if (!product) {
+      return <p>Données produit non disponibles.</p>;
+    }
+  
+    // CSV data for thermal coefficient table
+    const thermalCoefficientCSV = `Épaisseur en mm,30,35,40,60
+  W/m²K,0.55,0.49,0.44,0.31
+  Kcal/m²h°C,0.48,0.43,0.38,0.27`;
+  
+    // CSV data for panel dimensions table
+    const panelDimensionsCSV = `Type,Longueur (mm),Largeur standard (mm),Épaisseur (mm),Poids kg/m²
+  LL70,15400,1000,30,10.3
+  LL75,15400,1000,35,10.5
+  LL80,15400,1000,40,10.7
+  LL100,15400,1000,60,11.5`;
+  
+    const parsedThermalCoefficient = Papa.parse(thermalCoefficientCSV, { header: false }).data;
+    const parsedPanelDimensions = Papa.parse(panelDimensionsCSV, { header: false }).data;
+  
+    const thermalCoeffHeaders = parsedThermalCoefficient[0] as string[];
+    const thermalCoeffBody = parsedThermalCoefficient.slice(1) as string[][];
+  
+    const panelDimHeaders = parsedPanelDimensions[0] as string[];
+    const panelDimBody = parsedPanelDimensions.slice(1) as string[][];
+  
+    const {
+      productDescription: {
+        section1_caracteristiques: caracteristiques,
+        section2_etancheite_sens: etancheite,
+        section3_pose_installation: pose,
+      }
+    } = product;
+  
+    return (
+      <div className="bg-background min-h-screen p-8 font-sans relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="border-l-8 border-accent pl-4 mb-6">
+            <h1 className="text-2xl font-bold text-accent uppercase">
+            ■ {product.documentMetadata.productType}
+            </h1>
+          </div>
+  
+          <div className="grid grid-cols-1 gap-8">
+            <div>
+              <h2 className="text-xl font-bold text-accent mb-4">{caracteristiques.title}</h2>
+  
+              <div className="mb-6">
+                <h3 className="font-bold mb-2 text-lg">{caracteristiques.subsection_utilisation.heading} :</h3>
+                <p className="text-base mb-2">{caracteristiques.subsection_utilisation.description}</p>
+                <ul className="text-base space-y-1 list-disc list-inside">
+                  {caracteristiques.subsection_utilisation.items.map((item: string, index: number) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+  
+              <div className="mb-6">
+                <h3 className="font-bold mb-2 text-lg">{caracteristiques.subsection_definition.heading} :</h3>
+                {caracteristiques.subsection_definition.details.map((detail: any, index: number) => (
+                    <p className="text-base list-item ml-4" key={index}>
+                        <strong>{detail.label}:</strong> {detail.value}
+                    </p>
+                ))}
+              </div>
+  
+              <div className="mb-6">
+                <h3 className="font-bold mb-2 text-lg">{caracteristiques.subsection_revetement.heading}</h3>
+                {caracteristiques.subsection_revetement.specifications.map((spec: any, index: number) => (
+                    <p className="text-base" key={index}>
+                        <strong>{spec.type}:</strong> {spec.material}
+                    </p>
+                ))}
+              </div>
+  
+              <div className="mb-6">
+                <h3 className="font-bold mb-2 text-lg">{caracteristiques.subsection_ame_isolante.heading}</h3>
+                 {caracteristiques.subsection_ame_isolante.specifications.map((spec: any, index: number) => (
+                    <p className="text-base" key={index}>
+                        <strong>{spec.property}:</strong> {spec.value}
+                    </p>
+                ))}
+              </div>
+  
+              <div className="mb-6">
+                <h3 className="font-bold mb-2 text-lg">{caracteristiques.subsection_reaction_au_feu.heading}</h3>
+                {caracteristiques.subsection_reaction_au_feu.classifications.map((classification: string, index: number) => (
+                    <p className="text-base" key={index}>{classification}</p>
+                ))}
+              </div>
+  
+              <div className="mb-6">
+                <h3 className="font-bold mb-2 text-lg">{caracteristiques.subsection_tolerance.heading}</h3>
+                {caracteristiques.subsection_tolerance.tolerances.map((tolerance: any, index: number) => (
+                     <p className="text-base" key={index}>{tolerance.parameter} {tolerance.value}</p>
+                ))}
+              </div>
+  
+              <div className="mb-4">
+                <h3 className="font-bold mb-3 text-lg">{caracteristiques.subsection_coefficient_isolation.heading}</h3>
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-accent text-accent-foreground">
+                      {thermalCoeffHeaders.map((header: string, index: number) => <TableHead key={index} className="text-accent-foreground" dangerouslySetInnerHTML={{ __html: header.replace('en mm', 'en<br/>mm')}}></TableHead>)}
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {thermalCoeffBody.map((row: any, rowIndex: number) => (
+                      <TableRow key={rowIndex}>
+                        {row.map((cell: string, cellIndex: number) => <TableCell key={cellIndex} className={cellIndex === 0 ? 'bg-secondary/20 font-medium' : 'text-center'}>{cell}</TableCell>)}
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+  
+              <div className="mb-6">
+                <h3 className="font-bold mb-3 text-lg">{caracteristiques.subsection_dimensionnement.heading}</h3>
+                <Table>
+                    <TableHeader>
+                      <TableRow className="bg-accent text-accent-foreground">
+                        {panelDimHeaders.map((header: string, index: number) => <TableHead key={index} className="text-accent-foreground" dangerouslySetInnerHTML={{ __html: header.replace('(mm)', '<br/>(mm)').replace('kg/m²', 'Kg/m²') }}></TableHead>)}
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {panelDimBody.map((row: any, rowIndex: number) => (
+                        <TableRow key={rowIndex} className="bg-secondary/30">
+                          {row.map((cell: string, cellIndex: number) => <TableCell key={cellIndex} className={cellIndex === 0 ? 'font-semibold' : 'text-center'}>{cell}</TableCell>)}
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                </Table>
+              </div>
+
+              <div className="mb-6">
+               <h3 className="font-semibold text-lg mb-3">{etancheite.subsection_etancheite_rives.heading}</h3>
+               <p className="text-base text-justify mb-2">
+                 {etancheite.subsection_etancheite_rives.content}
+               </p>
+             </div>
+             
+             <div className="mb-6">
+               <h3 className="font-semibold text-lg mb-3">{etancheite.subsection_sens_panneaux.heading}</h3>
+               <p className="text-base text-justify">
+                {etancheite.subsection_sens_panneaux.content}
+               </p>
+             </div>
+             
+             <div className="mb-6">
+               <h3 className="font-semibold text-lg mb-3">{pose.title}</h3>
+               <p className="text-base text-justify mb-2">
+                 <strong>{pose.subsection_decoupage.heading}</strong> {pose.subsection_decoupage.instruction}
+               </p>
+                <p className="text-base text-justify mb-2">
+                 <strong>{pose.subsection_fixation.heading}</strong> {pose.subsection_fixation.instruction}
+               </p>
+             </div>
+
+             <ChargesTable />
+
+             <div className="mb-6">
+               <h3 className="font-semibold text-lg mb-3">{product.productDescription.section5_caracteristiques_geometriques.title}</h3>
+               <div className="border-2 border-border bg-secondary/10 p-4 mb-3">
+                 <div className="bg-white border border-border h-32 flex items-center justify-center mb-2">
+                   <span className="text-muted-foreground text-base">[Schéma technique]</span>
+                 </div>
+                 <p className="text-center text-sm">{product.productDescription.section5_caracteristiques_geometriques.caption}</p>
+               </div>
+             </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
