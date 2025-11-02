@@ -7,13 +7,13 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 const ChargesTable = () => {
    return (
      <div className="overflow-x-auto my-8">
-       <table className="min-w-full border border-gray-300 text-sm text-center">
+       <table className="min-w-full border border-border text-base text-center">
          {/* Top Header */}
          <thead>
            <tr>
              <th
                colSpan={11}
-               className="bg-accent text-white font-semibold py-2 border border-gray-300"
+               className="bg-accent text-accent-foreground font-semibold py-2 border border-border"
              >
                LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)
              </th>
@@ -21,56 +21,66 @@ const ChargesTable = () => {
            <tr>
              <th
                colSpan={11}
-               className="bg-gray-100 text-gray-800 font-medium py-2 border border-gray-300"
+               className="bg-secondary/20 text-foreground font-medium py-2 border border-border"
              >
                Tôle en acier épaisseur 0,5mm
              </th>
            </tr>
+            
+            {/* SVG Icon Row */}
+            <tr className="bg-secondary/20">
+              <th rowSpan={3} className="border border-border px-3 py-2 text-base align-middle"></th>
+              <th rowSpan={3} className="border border-border px-3 py-2 text-base align-middle"></th>
+              <th colSpan="8" className="border border-border p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="1000" zoomAndPan="magnify" viewBox="0 0 750 517.92" height="680" preserveAspectRatio="xMidYMid meet" version="1.0" className="w-24 h-auto mx-auto"><defs><clipPath id="d7b5d2614e"><path d="M 13.917969 171.765625 L 736.082031 171.765625 L 736.082031 245.671875 L 13.917969 245.671875 Z M 13.917969 171.765625 " clip-rule="nonzero"/></clipPath><clipPath id="7747dc7390"><path d="M 0.917969 0.765625 L 723 0.765625 L 723 74.671875 L 0.917969 74.671875 Z M 0.917969 0.765625 " clip-rule="nonzero"/></clipPath><clipPath id="38c88312a4"><rect x="0" width="724" y="0" height="75"/></clipPath><clipPath id="f5288c828e"><path d="M 13.953125 171.765625 L 736.046875 171.765625 L 736.046875 245.664062 L 13.953125 245.664062 Z M 13.953125 171.765625 " clip-rule="nonzero"/></clipPath><clipPath id="c934e68679"><path d="M 13.917969 245.671875 L 174.683594 245.671875 L 174.683594 346.296875 L 13.917969 346.296875 Z M 13.917969 245.671875 " clip-rule="nonzero"/></clipPath><clipPath id="422c1a0f15"><path d="M 94.21875 245.671875 L 174.519531 346.296875 L 13.917969 346.296875 Z M 94.21875 245.671875 " clip-rule="nonzero"/></clipPath><clipPath id="c46bc51134"><path d="M 0.917969 0.671875 L 161.683594 0.671875 L 161.683594 101.296875 L 0.917969 101.296875 Z M 0.917969 0.671875 " clip-rule="nonzero"/></clipPath><clipPath id="219ea61af8"><path d="M 81.21875 0.671875 L 161.519531 101.296875 L 0.917969 101.296875 Z M 81.21875 0.671875 " clip-rule="nonzero"/></clipPath><clipPath id="79220ce091"><rect x="0" width="162" y="0" height="102"/></clipPath><clipPath id="577af55679"><path d="M 13.917969 245.675781 L 174.394531 245.675781 L 174.394531 346.15625 L 13.917969 346.15625 Z M 13.917969 245.675781 " clip-rule="nonzero"/></clipPath><clipPath id="476e3da748"><path d="M 94.214844 245.675781 L 174.511719 346.296875 L 13.917969 346.296875 Z M 94.214844 245.675781 " clip-rule="nonzero"/></clipPath><clipPath id="fe4bbc8465"><path d="M 575.480469 245.671875 L 736.246094 245.671875 L 736.246094 346.296875 L 575.480469 346.296875 Z M 575.480469 245.671875 " clip-rule="nonzero"/></clipPath><clipPath id="ccb44cde5e"><path d="M 655.78125 245.671875 L 736.082031 346.296875 L 575.480469 346.296875 Z M 655.78125 245.671875 " clip-rule="nonzero"/></clipPath><clipPath id="c64c9e1327"><path d="M 0.480469 0.671875 L 161.246094 0.671875 L 161.246094 101.296875 L 0.480469 101.296875 Z M 0.480469 0.671875 " clip-rule="nonzero"/></clipPath><clipPath id="cd7a110029"><path d="M 80.78125 0.671875 L 161.082031 101.296875 L 0.480469 101.296875 Z M 80.78125 0.671875 " clip-rule="nonzero"/></clipPath><clipPath id="ff4f73c67f"><rect x="0" width="162" y="0" height="102"/></clipPath><clipPath id="8ca98bb5de"><path d="M 575.480469 245.675781 L 735.957031 245.675781 L 735.957031 346.15625 L 575.480469 346.15625 Z M 575.480469 245.675781 " clip-rule="nonzero"/></clipPath><clipPath id="d19dfff3f5"><path d="M 655.777344 245.675781 L 736.074219 346.296875 L 575.480469 346.296875 Z M 655.777344 245.675781 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#d7b5d2614e)"><g transform="matrix(1, 0, 0, 1, 13, 171)"><g clip-path="url(#38c88312a4)"><g clip-path="url(#7747dc7390)"><path fill="#ffffff" d="M 0.917969 0.765625 L 722.941406 0.765625 L 722.941406 74.671875 L 0.917969 74.671875 Z M 0.917969 0.765625 " fill-opacity="1" fill-rule="nonzero"/></g></g></g></g><g clip-path="url(#f5288c828e)"><path stroke-linecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 13.952631, 171.766561)" fill="none" stroke-linejoin="miter" d="M 0.000658708 -0.00124831 L 962.941082 -0.00124831 L 962.941082 98.545225 L 0.000658708 98.545225 Z M 0.000658708 -0.00124831 " stroke="#000000" stroke-width="24" stroke-opacity="1" stroke-miterlimit="4"/></g><g clip-path="url(#c934e68679)"><g clip-path="url(#422c1a0f15)"><g transform="matrix(1, 0, 0, 1, 13, 245)"><g clip-path="url(#79220ce091)"><g clip-path="url(#c46bc51134)"><g clip-path="url(#219ea61af8)"><path fill="#ffffff" d="M 0.917969 0.671875 L 161.683594 0.671875 L 161.683594 101.296875 L 0.917969 101.296875 Z M 0.917969 0.671875 " fill-opacity="1" fill-rule="nonzero"/></g></g></g></g></g></g><g clip-path="url(#577af55679)"><g clip-path="url(#476e3da748)"><path stroke-linecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 13.91891, 245.673971)" fill="none" stroke-linejoin="miter" d="M 107.07778 0.00241434 L 214.156815 134.184593 L -0.00125521 134.184593 Z M 107.07778 0.00241434 " stroke="#000000" stroke-width="24" stroke-opacity="1" stroke-miterlimit="4"/></g></g><g clip-path="url(#fe4bbc8465)"><g clip-path="url(#ccb44cde5e)"><g transform="matrix(1, 0, 0, 1, 575, 245)"><g clip-path="url(#ff4f73c67f)"><g clip-path="url(#c64c9e1327)"><g clip-path="url(#cd7a110029)"><path fill="#ffffff" d="M 0.480469 0.671875 L 161.246094 0.671875 L 161.246094 101.296875 L 0.480469 101.296875 Z M 0.480469 0.671875 " fill-opacity="1" fill-rule="nonzero"/></g></g></g></g></g></g><g clip-path="url(#8ca98bb5de)"><g clip-path="url(#d19dfff3f5)"><path stroke-linecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 575.480921, 245.673971)" fill="none" stroke-linejoin="miter" d="M 107.078432 0.00241434 L 214.157467 134.184593 L -0.000603004 134.184593 Z M 107.078432 0.00241434 " stroke="#000000" stroke-width="24" stroke-opacity="1" stroke-miterlimit="4"/></g></g></svg>
+              </th>
+            </tr>
+
 
             {/* Subheader with grouping */}
-           <tr className="bg-gray-200 text-gray-800 font-semibold">
+           <tr className="bg-secondary/20 text-foreground font-semibold">
              <th
-               rowSpan={3}
-               className="border border-gray-300 px-3 py-2 text-xs align-middle"
+               rowSpan={2}
+               className="border border-border px-3 py-2 text-base align-middle"
              >
                Charge utile uniformément<br />répartie
              </th>
              
              <th
                colSpan={4}
-               className="border border-gray-300 px-3 py-2 text-xs"
+               className="border border-border px-3 py-2 text-base"
              >
                Épaisseur du panneau en mm
              </th>
              <th
                colSpan={5}
-               className="border border-gray-300 px-3 py-2 text-xs"
+               className="border border-border px-3 py-2 text-base"
              >
                Épaisseur du panneau en mm
              </th>
            </tr>
 
             {/* Second line of headers (visual icons spacing simulated with text) */}
-           <tr className="bg-gray-200">
-            <th rowSpan={2} className="border border-gray-300 px-3 py-2 text-xs align-middle">daN/m²</th>
-             <th colSpan="4" className="border border-gray-300 px-3 py-2 text-xs">
+           <tr className="bg-secondary/20">
+            <th rowSpan={2} className="border border-border px-3 py-2 text-base align-middle">daN/m²</th>
+             <th colSpan="4" className="border border-border px-3 py-2 text-base">
                Entraxe Max cm
              </th>
-             <th colSpan={4} className="border border-gray-300 px-3 py-2 text-xs">
+             <th colSpan="4" className="border border-border px-3 py-2 text-base">
                Entraxe Max cm
              </th>
            </tr>
 
             {/* Final numeric headers */}
-           <tr className="bg-gray-200">
-             <th className="border border-gray-300 px-3 py-1">30</th>
-             <th className="border border-gray-300 px-3 py-1">35</th>
-             <th className="border border-gray-300 px-3 py-1">40</th>
-             <th className="border border-gray-300 px-3 py-1">60</th>
-             <th className="border border-gray-300 px-3 py-1">30</th>
-             <th className="border border-gray-300 px-3 py-1">35</th>
-             <th className="border border-gray-300 px-3 py-1">40</th>
-             <th className="border border-gray-300 px-3 py-1">60</th>
+           <tr className="bg-secondary/20">
+             <th className="border border-border px-3 py-1">30</th>
+             <th className="border border-border px-3 py-1">35</th>
+             <th className="border border-border px-3 py-1">40</th>
+             <th className="border border-border px-3 py-1">60</th>
+             <th className="border border-border px-3 py-1">30</th>
+             <th className="border border-border px-3 py-1">35</th>
+             <th className="border border-border px-3 py-1">40</th>
+             <th className="border border-border px-3 py-1">60</th>
            </tr>
          </thead>
 
@@ -85,7 +95,7 @@ const ChargesTable = () => {
            ].map((row, i) => (
              <tr key={i} className="even:bg-gray-50">
                {row.map((val, j) => (
-                 <td key={j} className="border border-gray-300 px-3 py-2">
+                 <td key={j} className="border border-border px-3 py-2">
                    {val}
                  </td>
                ))}
@@ -312,3 +322,5 @@ TL100,15400,1000,60,11.5`;
    );
  };
 export default CouvertureProduct;
+
+```
