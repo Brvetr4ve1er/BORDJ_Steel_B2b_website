@@ -263,7 +263,7 @@ export default function CouvertureProduct({ product }: { product: any }) {
                <div className="border-2 border-border bg-secondary/10 p-4 mb-3">
                  <div className="relative bg-white border border-border h-48 flex items-center justify-center mb-2 overflow-hidden">
                    <Image 
-                    src="https://picsum.photos/seed/schema1/600/200" 
+                    src="https://www.imghippo.com/i/xF7879PHU.png" 
                     alt="Schéma technique"
                     width={600}
                     height={200}

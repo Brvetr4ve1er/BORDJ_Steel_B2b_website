@@ -40,6 +40,12 @@ const nextConfig: NextConfig = {
         hostname: 'picsum.photos',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.imghippo.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
