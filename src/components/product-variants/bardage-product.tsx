@@ -2,8 +2,8 @@
 import React from 'react';
 import Papa from 'papaparse';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { OneSupportIcon } from '../product-variants/one-support-icon';
-import { TwoSupportsIcon } from '../product-variants/two-supports-icon';
+import { OneSupportIcon } from '../one-support-icon';
+import { TwoSupportsIcon } from '../two-supports-icon';
 import Image from 'next/image';
 
 const LoadCapacityTable = () => {
@@ -248,8 +248,8 @@ LL60,15400,1000,60,10.8`;
                 <div className="border-2 border-border bg-secondary/10 p-4 mb-3">
                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                     <Image 
-                      src="https://i.imghippo.com/files/lo9648YNk.png"
-                      alt="Schéma technique B"
+                      src="https://i.imghippo.com/files/Xii4624Ovg.png"
+                      alt="Schéma technique C"
                       width={600}
                       height={200}
                       className="object-contain w-full h-auto"
@@ -261,7 +261,7 @@ LL60,15400,1000,60,10.8`;
                <div className="border-2 border-border bg-secondary/10 p-4">
                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                     <Image 
-                      src="https://i.imghippo.com/files/Xii4624Ovg.png"
+                      src="https://i.imghippo.com/files/lo9648YNk.png"
                       alt="Schéma technique C"
                       width={600}
                       height={200}
