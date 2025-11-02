@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Papa from 'papaparse';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -17,15 +18,7 @@ LL50,15400,1000,50,10.4
 LL60,15400,1000,60,10.8`;
 
     // CSV data for load capacity table
-   const loadCapacityCSV = `Charge utile uniformément répartie,daN/m²,Tôle en acier épaisseur 0.5mm,,,,Épaisseur du panneau en mm,,,,
-,,30,35,40,50,60,30,35,40,50,60
-kg/m²,daN/m²,Entraxe Max cm,,,,Entraxe Max cm,,,,
-60,58,285,315,345,485,400,425,455,560,455,560
-80,78,255,285,335,415,345,365,390,485,390,485
-100,98,235,260,305,375,315,335,385,440,385,440
-120,117,220,245,265,310,355,285,360,310,360,310
-140,137,205,225,250,395,235,240,340,290,290,290
-160,156,195,215,235,280,315,230,225,375,325,370`;
+   const loadCapacityCSV = `Charge utile uniformément répartie,daN/m²,Tôle en acier épaisseur 0.5mm,,,,Épaisseur du panneau en mm,,,, ,,30,35,40,50,60,30,35,40,50,60 kg/m²,daN/m²,Entraxe Max cm,,,,Entraxe Max cm,,,, 60,58,285,315,345,485,400,400,455,560,455,560 80,78,255,285,335,415,345,365,390,485,390,485 100,98,235,260,305,375,315,335,385,440,385,440 120,117,220,245,265,310,355,285,360,310,360,310 140,137,205,225,250,395,235,240,340,290,290,290 160,156,195,215,235,280,315,230,225,375,325,370`;
 
    const parsedThermalCoefficient = Papa.parse(thermalCoefficientCSV, { header: false }).data;
    const parsedPanelDimensions = Papa.parse(panelDimensionsCSV, { header: false }).data;
@@ -40,7 +33,7 @@ kg/m²,daN/m²,Entraxe Max cm,,,,Entraxe Max cm,,,,
 
 
   return (
-    <div className="bg-white min-h-screen p-8 font-sans relative">
+    <div className="bg-background min-h-screen p-8 font-sans relative">
       <div className="max-w-7xl mx-auto">
         <div className="border-l-8 border-accent pl-4 mb-6">
           <h1 className="text-2xl font-bold text-accent uppercase">
@@ -138,7 +131,7 @@ kg/m²,daN/m²,Entraxe Max cm,,,,Entraxe Max cm,,,,
                 </Table>
             </div>
              <div className="mb-6">
-               <h3 className="font-bold text-base mb-2">Étanchéité des rives</h3>
+               <h3 className="font-semibold text-gray-700 mb-3">Étanchéité des rives</h3>
                <p className="text-sm text-justify mb-2">
                  Les panneaux sandwichs de bardages présentent une rive mâle et une rive femelle permettant un assemblage par emboîtement.
                </p>
@@ -152,7 +145,7 @@ kg/m²,daN/m²,Entraxe Max cm,,,,Entraxe Max cm,,,,
               <div className="mb-6">
                 <h3 className="font-semibold text-gray-700 mb-3">LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)</h3>
                  <div className="overflow-x-auto my-8">
-                    <table className="min-w-full border border-gray-300 text-xs text-center">
+                    <table className="min-w-full border border-border text-xs text-center">
                         <thead>
                             <tr><th colSpan={12} className="bg-accent text-accent-foreground font-semibold py-2 border border-border">LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)</th></tr>
                             <tr><th colSpan={12} className="bg-secondary/20 text-foreground font-medium py-2 border border-border">Tôle en acier épaisseur 0,5mm</th></tr>
@@ -167,7 +160,7 @@ kg/m²,daN/m²,Entraxe Max cm,,,,Entraxe Max cm,,,,
                         </thead>
                         <tbody>
                             {[
-                                [60, 58, 285, 315, 345, 405, 425, 455, 505, 550, 560],
+                                [60, 58, 285, 315, 345, 485, 400, 400, 455, 505, 550, 560],
                                 [80, 78, 255, 285, 315, 345, 375, 405, 445, 490, 495],
                                 [100, 98, 235, 265, 300, 335, 375, 385, 410, 460, 470],
                                 [120, 117, 225, 255, 280, 310, 355, 360, 385, 430, 450],
