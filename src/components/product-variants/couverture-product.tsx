@@ -261,17 +261,17 @@ export default function CouvertureProduct({ product }: { product: any }) {
              <div className="mb-6">
                <h3 className="font-semibold text-lg mb-3">{product.productDescription.section5_caracteristiques_geometriques.title}</h3>
                <div className="border-2 border-border bg-secondary/10 p-4 mb-3">
-                 <div className="relative bg-white border border-border h-48 flex items-center justify-center mb-2 overflow-hidden">
+                 <div className="bg-white border border-border p-4">
                    <Image 
                     src="https://www.imghippo.com/i/xF7879PHU.png" 
                     alt="Schéma technique"
                     width={600}
                     height={200}
-                    className="object-contain"
+                    className="object-contain w-full h-auto"
                     data-ai-hint="technical drawing"
                     />
                  </div>
-                 <p className="text-center text-sm">{product.productDescription.section5_caracteristiques_geometriques.caption}</p>
+                 <p className="text-center text-sm mt-2">{product.productDescription.section5_caracteristiques_geometriques.caption}</p>
                </div>
              </div>
 
