@@ -16,9 +16,8 @@ const ChargesTable = () => {
   
         <table className="w-full border-collapse text-sm">
         <thead>
-            {/* First header row - Red spanning all columns */}
             <tr className="bg-accent text-accent-foreground">
-              <th className="border border-border px-2 py-3" rowSpan={3} colSpan={2}>
+              <th className="border border-border px-2 py-3" colSpan={2} rowSpan={4}>
                 Charge utile uniformément<br />répartie
               </th>
               <th className="border border-border px-2 py-3" colSpan={8}>
@@ -26,7 +25,6 @@ const ChargesTable = () => {
               </th>
             </tr>
   
-             {/* New row for the large SVG icons */}
              <tr className="bg-secondary">
                <th className="border border-border p-2" colSpan={4}>
                 <div className="flex items-center justify-center gap-1 mb-1 px-4">
@@ -40,7 +38,6 @@ const ChargesTable = () => {
               </th>
              </tr>
   
-            {/* Second header row - Gray with icons */}
             <tr className="bg-secondary">
               <th className="border border-border px-2 py-2 text-foreground" colSpan={4}>
                 Épaisseur du panneau en mm
@@ -50,7 +47,6 @@ const ChargesTable = () => {
               </th>
             </tr>
   
-            {/* Third header row - Thickness values */}
             <tr>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">30</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">35</th>
@@ -64,7 +60,6 @@ const ChargesTable = () => {
           </thead>
   
           <tbody>
-            {/* Sub-header row with kg/m² and daN/m² */}
             <tr className="bg-accent text-accent-foreground">
               <td className="border border-border px-2 py-2 font-semibold text-center">kg/m²</td>
               <td className="border border-border px-2 py-2 font-semibold text-center">daN/m²</td>
@@ -76,7 +71,6 @@ const ChargesTable = () => {
               </td>
             </tr>
   
-            {/* Data Rows */}
             {[
               ["80", "87", "345", "365", "390", "485", "400", "425", "455", "560"],
               ["120", "177", "290", "310", "335", "415", "345", "365", "390", "485"],
