@@ -119,7 +119,9 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
             <Table>
                 <TableHeader>
                     <TableRow className="bg-accent text-accent-foreground">
-                        <TableHead className="text-accent-foreground" rowSpan={2}>EP(mm)</TableHead>
+                        <TableHead className="text-accent-foreground" rowSpan={2}>
+                            EP(mm)
+                        </TableHead>
                         <TableHead className="text-accent-foreground text-center" colSpan={10}>Portée (m)</TableHead>
                     </TableRow>
                     <TableRow className="bg-accent text-accent-foreground">
@@ -258,3 +260,5 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
     );
   };
   
+
+    
