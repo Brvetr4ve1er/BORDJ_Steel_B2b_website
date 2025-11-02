@@ -20,7 +20,7 @@ const LoadCapacityTable = () => {
             <th className="border border-border px-2 py-3" rowSpan={4} colSpan={2}>
               Charge utile uniformément<br />répartie
             </th>
-            <th className="border border-border px-2 py-3" colSpan={9}>
+            <th className="border border-border px-2 py-3" colSpan={10}>
               Tôle en acier épaisseur 0.5mm
             </th>
           </tr>
@@ -32,7 +32,7 @@ const LoadCapacityTable = () => {
                   <OneSupportIcon className="h-16" />
                 </div>
                </th>
-               <th className="border border-border px-2 py-2 text-foreground" colSpan={4}>
+               <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
                <div className="flex items-center justify-center gap-1 mb-1 px-4">
                   <TwoSupportsIcon className="h-16" />
                </div>
@@ -44,7 +44,7 @@ const LoadCapacityTable = () => {
             <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
               Épaisseur du panneau en mm
             </th>
-            <th className="border border-border px-2 py-2 text-foreground" colSpan={4}>
+            <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
               Épaisseur du panneau en mm
             </th>
           </tr>
@@ -60,6 +60,7 @@ const LoadCapacityTable = () => {
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">35</th>
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">40</th>
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">50</th>
+            <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">60</th>
           </tr>
         </thead>
 
@@ -71,7 +72,7 @@ const LoadCapacityTable = () => {
             <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={5}>
               Entraxe Max cm
             </td>
-            <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={4}>
+            <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={5}>
               Entraxe Max cm
             </td>
           </tr>
@@ -245,7 +246,7 @@ LL60,15400,1000,60,10.8`;
 
              <div className="mb-6">
                <h3 className="font-semibold text-lg mb-3">Caractéristiques Géométriques</h3>
-                <div className="border-2 border-border bg-secondary/10 p-4">
+               <div className="border-2 border-border bg-secondary/10 p-4 mt-3">
                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                     <Image 
                       src="https://i.imghippo.com/files/Xii4624Ovg.png"
