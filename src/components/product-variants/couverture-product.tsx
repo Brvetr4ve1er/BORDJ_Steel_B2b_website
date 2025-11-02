@@ -23,29 +23,31 @@ const LoadCapacityTable = () => {
             </th>
           </tr>
 
-          {/* Second header row - Gray with icons */}
+          {/* New row for the large SVG icons */}
+          <tr className="bg-secondary">
+            <th className="border border-border p-2" colSpan={5}>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100" zoomAndPan="magnify" viewBox="0 0 750 517.92" height="68" preserveAspectRatio="xMidYMid meet" version="1.0" className="inline-block"><defs><clipPath id="d7b5d2614e"><path d="M 13.917969 171.765625 L 736.082031 171.765625 L 736.082031 245.671875 L 13.917969 245.671875 Z M 13.917969 171.765625 " clip-rule="nonzero"/></clipPath><clipPath id="7747dc7390"><path d="M 0.917969 0.765625 L 723 0.765625 L 723 74.671875 L 0.917969 74.671875 Z M 0.917969 0.765625 " clip-rule="nonzero"/></clipPath><clipPath id="38c88312a4"><rect x="0" width="724" y="0" height="75"/></clipPath><clipPath id="f5288c828e"><path d="M 13.953125 171.765625 L 736.046875 171.765625 L 736.046875 245.664062 L 13.953125 245.664062 Z M 13.953125 171.765625 " clip-rule="nonzero"/></clipPath><clipPath id="c934e68679"><path d="M 13.917969 245.671875 L 174.683594 245.671875 L 174.683594 346.296875 L 13.917969 346.296875 Z M 13.917969 245.671875 " clip-rule="nonzero"/></clipPath><clipPath id="422c1a0f15"><path d="M 94.21875 245.671875 L 174.519531 346.296875 L 13.917969 346.296875 Z M 94.21875 245.671875 " clip-rule="nonzero"/></clipPath><clipPath id="c46bc51134"><path d="M 0.917969 0.671875 L 161.683594 0.671875 L 161.683594 101.296875 L 0.917969 101.296875 Z M 0.917969 0.671875 " clip-rule="nonzero"/></clipPath><clipPath id="219ea61af8"><path d="M 81.21875 0.671875 L 161.519531 101.296875 L 0.917969 101.296875 Z M 81.21875 0.671875 " clip-rule="nonzero"/></clipPath><clipPath id="79220ce091"><rect x="0" width="162" y="0" height="102"/></clipPath><clipPath id="577af55679"><path d="M 13.917969 245.675781 L 174.394531 245.675781 L 174.394531 346.15625 L 13.917969 346.15625 Z M 13.917969 245.675781 " clip-rule="nonzero"/></clipPath><clipPath id="476e3da748"><path d="M 94.214844 245.675781 L 174.511719 346.296875 L 13.917969 346.296875 Z M 94.214844 245.675781 " clip-rule="nonzero"/></clipPath><clipPath id="fe4bbc8465"><path d="M 575.480469 245.671875 L 736.246094 245.671875 L 736.246094 346.296875 L 575.480469 346.296875 Z M 575.480469 245.671875 " clip-rule="nonzero"/></clipPath><clipPath id="ccb44cde5e"><path d="M 655.78125 245.671875 L 736.082031 346.296875 L 575.480469 346.296875 Z M 655.78125 245.671875 " clip-rule="nonzero"/></clipPath><clipPath id="c64c9e1327"><path d="M 0.480469 0.671875 L 161.246094 0.671875 L 161.246094 101.296875 L 0.480469 101.296875 Z M 0.480469 0.671875 " clip-rule="nonzero"/></clipPath><clipPath id="cd7a110029"><path d="M 80.78125 0.671875 L 161.082031 101.296875 L 0.480469 101.296875 Z M 80.78125 0.671875 " clip-rule="nonzero"/></clipPath><clipPath id="ff4f73c67f"><rect x="0" width="162" y="0" height="102"/></clipPath><clipPath id="8ca98bb5de"><path d="M 575.480469 245.675781 L 735.957031 245.675781 L 735.957031 346.15625 L 575.480469 346.15625 Z M 575.480469 245.675781 " clip-rule="nonzero"/></clipPath><clipPath id="d19dfff3f5"><path d="M 655.777344 245.675781 L 736.074219 346.296875 L 575.480469 346.296875 Z M 655.777344 245.675781 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#d7b5d2614e)"><g transform="matrix(1, 0, 0, 1, 13, 171)"><g clip-path="url(#38c88312a4)"><g clip-path="url(#7747dc7390)"><path fill="#ffffff" d="M 0.917969 0.765625 L 722.941406 0.765625 L 722.941406 74.671875 L 0.917969 74.671875 Z M 0.917969 0.765625 " fill-opacity="1" fill-rule="nonzero"/></g></g></g></g><g clip-path="url(#f5288c828e)"><path stroke-linecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 13.952631, 171.766561)" fill="none" stroke-linejoin="miter" d="M 0.000658708 -0.00124831 L 962.941082 -0.00124831 L 962.941082 98.545225 L 0.000658708 98.545225 Z M 0.000658708 -0.00124831 " stroke="#000000" stroke-width="24" stroke-opacity="1" stroke-miterlimit="4"/></g><g clip-path="url(#c934e68679)"><g clip-path="url(#422c1a0f15)"><g transform="matrix(1, 0, 0, 1, 13, 245)"><g clip-path="url(#79220ce091)"><g clip-path="url(#c46bc51134)"><g clip-path="url(#219ea61af8)"><path fill="#ffffff" d="M 0.917969 0.671875 L 161.683594 0.671875 L 161.683594 101.296875 L 0.917969 101.296875 Z M 0.917969 0.671875 " fill-opacity="1" fill-rule="nonzero"/></g></g></g></g></g></g><g clip-path="url(#577af55679)"><g clip-path="url(#476e3da748)"><path stroke-linecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 13.91891, 245.673971)" fill="none" stroke-linejoin="miter" d="M 107.07778 0.00241434 L 214.156815 134.184593 L -0.00125521 134.184593 Z M 107.07778 0.00241434 " stroke="#000000" stroke-width="24" stroke-opacity="1" stroke-miterlimit="4"/></g></g><g clip-path="url(#fe4bbc8465)"><g clip-path="url(#ccb44cde5e)"><g transform="matrix(1, 0, 0, 1, 575, 245)"><g clip-path="url(#ff4f73c67f)"><g clip-path="url(#c64c9e1327)"><g clip-path="url(#cd7a110029)"><path fill="#ffffff" d="M 0.480469 0.671875 L 161.246094 0.671875 L 161.246094 101.296875 L 0.480469 101.296875 Z M 0.480469 0.671875 " fill-opacity="1" fill-rule="nonzero"/></g></g></g></g></g></g><g clip-path="url(#8ca98bb5de)"><g clip-path="url(#d19dfff3f5)"><path stroke-linecap="butt" transform="matrix(0.749884, 0, 0, 0.749884, 575.480921, 245.673971)" fill="none" stroke-linejoin="miter" d="M 107.078432 0.00241434 L 214.157467 134.184593 L -0.000603004 134.184593 Z M 107.078432 0.00241434 " stroke="#000000" stroke-width="24" stroke-opacity="1" stroke-miterlimit="4"/></g></g></svg>
+            </th>
+            <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
+                <div className="flex items-center justify-center gap-1 mb-1">
+                <svg width="40" height="20" viewBox="0 0 40 20" className="inline-block">
+                    <path d="M 2 10 L 8 10 L 8 5 L 12 5 L 12 15 L 8 15 L 8 10 L 2 10"
+                        fill="none" stroke="currentColor" strokeWidth="1.5"/>
+                    <line x1="15" y1="10" x2="20" y2="10" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M 22 10 L 26 10 L 26 5 L 30 5 L 30 15 L 26 15 L 26 10 L 22 10"
+                        fill="none" stroke="currentColor" strokeWidth="1.5"/>
+                    <line x1="33" y1="10" x2="38" y2="10" stroke="currentColor" strokeWidth="1.5"/>
+                </svg>
+                </div>
+            </th>
+          </tr>
+
+          {/* Second header row - Gray with text */}
           <tr className="bg-secondary">
             <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
-              <div className="flex items-center justify-center gap-1 mb-1">
-                <svg width="30" height="20" viewBox="0 0 30 20" className="inline-block">
-                  <path d="M 2 10 L 8 10 L 8 5 L 12 5 L 12 15 L 8 15 L 8 10 L 2 10"
-                         fill="none" stroke="currentColor" strokeWidth="1.5"/>
-                  <line x1="15" y1="10" x2="28" y2="10" stroke="currentColor" strokeWidth="1.5"/>
-                </svg>
-              </div>
               Épaisseur du panneau en mm
             </th>
             <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
-              <div className="flex items-center justify-center gap-1 mb-1">
-                <svg width="40" height="20" viewBox="0 0 40 20" className="inline-block">
-                  <path d="M 2 10 L 8 10 L 8 5 L 12 5 L 12 15 L 8 15 L 8 10 L 2 10"
-                         fill="none" stroke="currentColor" strokeWidth="1.5"/>
-                  <line x1="15" y1="10" x2="20" y2="10" stroke="currentColor" strokeWidth="1.5"/>
-                  <path d="M 22 10 L 26 10 L 26 5 L 30 5 L 30 15 L 26 15 L 26 10 L 22 10"
-                         fill="none" stroke="currentColor" strokeWidth="1.5"/>
-                  <line x1="33" y1="10" x2="38" y2="10" stroke="currentColor" strokeWidth="1.5"/>
-                </svg>
-              </div>
               Épaisseur du panneau en mm
             </th>
           </tr>
@@ -78,109 +80,30 @@ const LoadCapacityTable = () => {
             </td>
           </tr>
 
-          {/* Data Row 1 - 60 kg/m² */}
-          <tr className="bg-background">
-            <td className="border border-border px-3 py-2 font-semibold text-center">60</td>
-            <td className="border border-border px-3 py-2 text-center font-semibold">58</td>
-            <td className="border border-border px-2 py-2 text-center">285</td>
-            <td className="border border-border px-2 py-2 text-center">315</td>
-            <td className="border border-border px-2 py-2 text-center">345</td>
-            <td className="border border-border px-2 py-2 text-center">485</td>
-            <td className="border border-border px-2 py-2 text-center">400</td>
-            <td className="border border-border px-2 py-2 text-center">425</td>
-            <td className="border border-border px-2 py-2 text-center">455</td>
-            <td className="border border-border px-2 py-2 text-center">560</td>
-            <td className="border border-border px-2 py-2 text-center">455</td>
-            <td className="border border-border px-2 py-2 text-center">560</td>
-          </tr>
-
-          {/* Data Row 2 - 80 kg/m² */}
-          <tr className="bg-muted/50">
-            <td className="border border-border px-3 py-2 font-semibold text-center">80</td>
-            <td className="border border-border px-3 py-2 text-center font-semibold">78</td>
-            <td className="border border-border px-2 py-2 text-center">255</td>
-            <td className="border border-border px-2 py-2 text-center">285</td>
-            <td className="border border-border px-2 py-2 text-center">335</td>
-            <td className="border border-border px-2 py-2 text-center">415</td>
-            <td className="border border-border px-2 py-2 text-center">345</td>
-            <td className="border border-border px-2 py-2 text-center">365</td>
-            <td className="border border-border px-2 py-2 text-center">390</td>
-            <td className="border border-border px-2 py-2 text-center">485</td>
-            <td className="border border-border px-2 py-2 text-center">390</td>
-            <td className="border border-border px-2 py-2 text-center">485</td>
-          </tr>
-
-          {/* Data Row 3 - 100 kg/m² */}
-          <tr className="bg-background">
-            <td className="border border-border px-3 py-2 font-semibold text-center">100</td>
-            <td className="border border-border px-3 py-2 text-center font-semibold">98</td>
-            <td className="border border-border px-2 py-2 text-center">235</td>
-            <td className="border border-border px-2 py-2 text-center">260</td>
-            <td className="border border-border px-2 py-2 text-center">305</td>
-            <td className="border border-border px-2 py-2 text-center">375</td>
-            <td className="border border-border px-2 py-2 text-center">315</td>
-            <td className="border border-border px-2 py-2 text-center">335</td>
-            <td className="border border-border px-2 py-2 text-center">385</td>
-            <td className="border border-border px-2 py-2 text-center">440</td>
-            <td className="border border-border px-2 py-2 text-center">385</td>
-            <td className="border border-border px-2 py-2 text-center">440</td>
-          </tr>
-
-          {/* Data Row 4 - 120 kg/m² */}
-          <tr className="bg-muted/50">
-            <td className="border border-border px-3 py-2 font-semibold text-center">120</td>
-            <td className="border border-border px-3 py-2 text-center font-semibold">117</td>
-            <td className="border border-border px-2 py-2 text-center">220</td>
-            <td className="border border-border px-2 py-2 text-center">245</td>
-            <td className="border border-border px-2 py-2 text-center">265</td>
-            <td className="border border-border px-2 py-2 text-center">310</td>
-            <td className="border border-border px-2 py-2 text-center">355</td>
-            <td className="border border-border px-2 py-2 text-center">285</td>
-            <td className="border border-border px-2 py-2 text-center">360</td>
-            <td className="border border-border px-2 py-2 text-center">310</td>
-            <td className="border border-border px-2 py-2 text-center">360</td>
-            <td className="border border-border px-2 py-2 text-center">310</td>
-          </tr>
-
-          {/* Data Row 5 - 140 kg/m² */}
-          <tr className="bg-background">
-            <td className="border border-border px-3 py-2 font-semibold text-center">140</td>
-            <td className="border border-border px-3 py-2 text-center font-semibold">137</td>
-            <td className="border border-border px-2 py-2 text-center">205</td>
-            <td className="border border-border px-2 py-2 text-center">225</td>
-            <td className="border border-border px-2 py-2 text-center">250</td>
-            <td className="border border-border px-2 py-2 text-center">395</td>
-            <td className="border border-border px-2 py-2 text-center">235</td>
-            <td className="border border-border px-2 py-2 text-center">240</td>
-            <td className="border border-border px-2 py-2 text-center">340</td>
-            <td className="border border-border px-2 py-2 text-center">290</td>
-            <td className="border border-border px-2 py-2 text-center">290</td>
-            <td className="border border-border px-2 py-2 text-center">290</td>
-          </tr>
-
-          {/* Data Row 6 - 160 kg/m² */}
-          <tr className="bg-muted/50">
-            <td className="border border-border px-3 py-2 font-semibold text-center">160</td>
-            <td className="border border-border px-3 py-2 text-center font-semibold">156</td>
-            <td className="border border-border px-2 py-2 text-center">195</td>
-            <td className="border border-border px-2 py-2 text-center">215</td>
-            <td className="border border-border px-2 py-2 text-center">235</td>
-            <td className="border border-border px-2 py-2 text-center">280</td>
-            <td className="border border-border px-2 py-2 text-center">315</td>
-            <td className="border border-border px-2 py-2 text-center">230</td>
-            <td className="border border-border px-2 py-2 text-center">225</td>
-            <td className="border border-border px-2 py-2 text-center">375</td>
-            <td className="border border-border px-2 py-2 text-center">325</td>
-            <td className="border border-border px-2 py-2 text-center">370</td>
-          </tr>
+          {/* Data Rows */}
+          {[
+            ["60", "58", "285", "315", "345", "485", "400", "425", "455", "560"],
+            ["80", "78", "255", "285", "335", "415", "345", "365", "390", "485"],
+            ["100", "98", "235", "260", "305", "375", "315", "335", "385", "440"],
+            ["120", "117", "220", "245", "265", "310", "355", "285", "360", "310"],
+            ["140", "137", "205", "225", "250", "395", "235", "240", "340", "290"],
+            ["160", "156", "195", "215", "235", "280", "315", "230", "225", "375"],
+          ].map((row, rowIndex) => (
+            <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
+              {row.map((val, valIndex) => (
+                <td key={valIndex} className="border border-border px-2 py-2 text-center">
+                  {val}
+                </td>
+              ))}
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
 };
 
-
-const CouvertureProduct = ({ product }: { product: any }) => {
+export default function CouvertureProduct({ product }: { product: any }) {
 
     const thermalCoefficientCSV = `Épaisseur en mm,30,35,40,60
 W/m²K,0.55,0.49,0.44,0.31
@@ -206,7 +129,7 @@ TL100,15400,1000,60,11.5`;
            <p className="text-lg text-muted-foreground">(à 05 ondes Ép de 30 mm jusqu'au 60 mm)</p>
          </div>
 
-          <div className="grid grid-cols-1 gap-12">
+          <div className="space-y-8">
            {/* Content Column */}
            <div className="space-y-8">
              {/* Caractéristique Produit */}
@@ -393,4 +316,4 @@ TL100,15400,1000,60,11.5`;
      </div>
    );
  };
-export default CouvertureProduct;
+```
