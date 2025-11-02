@@ -1,6 +1,8 @@
 
 import React from 'react';
 import Papa from 'papaparse';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
 
 const CouvertureProduct = ({ product }: { product: any }) => {
     // This component is now self-contained with the data provided in the prompt.
@@ -137,9 +139,9 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
                <h3 className="font-bold mb-3">Coefficient d'isolation thermique</h3>
                <table className="w-full text-xs border-collapse">
                  <thead>
-                   <tr className="bg-accent text-accent-foreground">
+                   <tr className="bg-accent/20">
                     {(thermalData[0] as string[]).map((header: string, index: number) => (
-                        <th key={index} className="border border-border px-2 py-1" dangerouslySetInnerHTML={{ __html: header.replace(' ', '<br/>') }}></th>
+                        <th key={index} className="border border-border px-2 py-1 text-accent" dangerouslySetInnerHTML={{ __html: header.replace(' ', '<br/>') }}></th>
                     ))}
                    </tr>
                  </thead>
@@ -184,14 +186,6 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
 
             {/* Right Column */}
            <div>
-             {/* Image placeholder with text */}
-             <div className="mb-6 relative">
-               <div className="absolute top-0 right-0 w-48 h-48 bg-accent" style={{clipPath: 'polygon(100% 0, 100% 100%, 0 0)'}}></div>
-               <div className="bg-gray-100 p-4 min-h-[200px] flex items-center justify-center border">
-                 <span className="text-gray-400">[Installation Image]</span>
-               </div>
-             </div>
-
               {/* La pose de panneaux sandwichs */}
              <div className="mb-6">
                <h3 className="font-bold text-lg mb-3">La pose de panneaux sandwichs</h3>
