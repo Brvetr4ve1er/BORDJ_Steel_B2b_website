@@ -55,11 +55,11 @@ const ChargesTable = () => {
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">35</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">40</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">60</th>
-              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">30</th>
+              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">80</th>
+              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">30</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">35</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">40</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">60</th>
-              <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">80</th>
               <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">100</th>
             </tr>
           </thead>
@@ -79,11 +79,11 @@ const ChargesTable = () => {
   
             {/* Data Rows */}
             {[
-              ["80", "87", "345", "365", "390", "485", "400", "425", "455", "560"],
-              ["120", "177", "290", "310", "335", "415", "345", "365", "390", "485"],
-              ["150", "147", "265", "285", "305", "375", "315", "335", "355", "440"],
-              ["200", "196", "235", "250", "270", "340", "285", "305", "325", "400"],
-              ["250", "245", "210", "225", "245", "305", "255", "275", "295", "360"],
+                ["80", "87", "345", "365", "390", "485", "", "400", "425", "455", "560", ""],
+                ["120", "177", "290", "310", "335", "415", "", "345", "365", "390", "485", ""],
+                ["150", "147", "265", "285", "305", "375", "", "315", "335", "355", "440", ""],
+                ["200", "196", "235", "250", "270", "340", "", "285", "305", "325", "400", ""],
+                ["250", "245", "210", "225", "245", "305", "", "255", "275", "295", "360", ""],
             ].map((row, rowIndex) => (
               <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
                 {row.map((val, valIndex) => (
