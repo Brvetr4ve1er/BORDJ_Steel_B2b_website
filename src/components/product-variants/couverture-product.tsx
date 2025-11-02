@@ -2,8 +2,8 @@
 import React from 'react';
 import Papa from 'papaparse';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { OneSupportIcon } from '../product-variants/one-support-icon';
-import { TwoSupportsIcon } from '../product-variants/two-supports-icon';
+import { OneSupportIcon } from './one-support-icon';
+import { TwoSupportsIcon } from './two-supports-icon';
 import Image from 'next/image';
 
 
