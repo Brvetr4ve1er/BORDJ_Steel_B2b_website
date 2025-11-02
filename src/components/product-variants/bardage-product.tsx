@@ -243,19 +243,6 @@ LL60,15400,1000,60,10.8`;
 
              <div className="mb-6">
                <h3 className="font-semibold text-lg mb-3">Caractéristiques Géométriques</h3>
-               <div className="border-2 border-border bg-secondary/10 p-4 mb-3">
-                 <div className="bg-white border border-border p-4">
-                    <Image 
-                      src="https://www.imghippo.com/i/OxI3616rCI.png"
-                      alt="Schéma technique A"
-                      width={600}
-                      height={200}
-                      className="object-contain w-full h-auto"
-                      data-ai-hint="technical drawing"
-                    />
-                 </div>
-                 <p className="text-center text-sm mt-2">Panneaux sandwichs de bardage nervuré/nervuré</p>
-               </div>
                 <div className="border-2 border-border bg-secondary/10 p-4 mb-3">
                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                     <Image 
