@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Papa from 'papaparse';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -22,14 +21,12 @@ LL60,15400,1000,60,10.8`;
 
    const parsedThermalCoefficient = Papa.parse(thermalCoefficientCSV, { header: false }).data;
    const parsedPanelDimensions = Papa.parse(panelDimensionsCSV, { header: false }).data;
-   const parsedLoadCapacity = Papa.parse(loadCapacityCSV, { header: false }).data;
 
+   const thermalCoeffHeaders = parsedThermalCoefficient[0] as string[];
+   const thermalCoeffBody = parsedThermalCoefficient.slice(1) as string[][];
 
-   const thermalCoeffHeaders = parsedThermalCoefficient[0];
-   const thermalCoeffBody = parsedThermalCoefficient.slice(1);
-
-   const panelDimHeaders = parsedPanelDimensions[0];
-   const panelDimBody = parsedPanelDimensions.slice(1);
+   const panelDimHeaders = parsedPanelDimensions[0] as string[];
+   const panelDimBody = parsedPanelDimensions.slice(1) as string[][];
 
 
   return (
@@ -67,8 +64,8 @@ LL60,15400,1000,60,10.8`;
 
             <div className="mb-6">
               <h3 className="font-bold mb-2">Revêtement :</h3>
-              <p className="text-sm">polyester pour la face extérieure : 25 μm</p>
-              <p className="text-sm">polyester pour la face intérieure : 7μm</p>
+              <p className="text-sm">polyester pour la face extérieure : 25 µm</p>
+              <p className="text-sm">polyester pour la face intérieure : 7µm</p>
             </div>
 
             <div className="mb-6">
@@ -100,7 +97,7 @@ LL60,15400,1000,60,10.8`;
               <Table>
                 <TableHeader>
                   <TableRow className="bg-accent text-accent-foreground">
-                    {thermalCoeffHeaders.map((header: string, index: number) => <TableHead key={index} className="text-accent-foreground">{header.replace('en mm', 'en<br/>mm')}</TableHead>)}
+                    {thermalCoeffHeaders.map((header: string, index: number) => <TableHead key={index} className="text-accent-foreground" dangerouslySetInnerHTML={{ __html: header.replace('en mm', 'en<br/>mm')}}></TableHead>)}
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -142,7 +139,7 @@ LL60,15400,1000,60,10.8`;
                  Tous les panneaux bardage sont munis sur la nervure femelle d'un joint d'étanchéité à l'air ; leurs parements pré-laqués sont protégés par un filmadhésif à retirer à la pose .
                </p>
              </div>
-              <div className="mb-6">
+             <div className="mb-6">
                 <h3 className="font-semibold text-gray-700 mb-3">LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)</h3>
                  <div className="overflow-x-auto my-8">
                     <table className="min-w-full border border-border text-xs text-center">
@@ -161,10 +158,10 @@ LL60,15400,1000,60,10.8`;
                         <tbody>
                             {[
                                 [60, 58, 285, 315, 345, 485, 400, 400, 455, 505, 550, 560],
-                                [80, 78, 255, 285, 315, 345, 375, 405, 445, 490, 495],
-                                [100, 98, 235, 265, 300, 335, 375, 385, 410, 460, 470],
-                                [120, 117, 225, 255, 280, 310, 355, 360, 385, 430, 450],
-                                [140, 137, 205, 225, 250, 285, 340, 340, 370, 420, 430],
+                                [80, 78, 255, 285, 315, 485, 375, 405, 445, 490, 495],
+                                [100, 98, 235, 265, 300, 415, 375, 385, 410, 460, 470],
+                                [120, 117, 225, 255, 280, 345, 355, 360, 385, 430, 450],
+                                [140, 137, 205, 225, 250, 310, 340, 340, 370, 420, 430],
                                 [160, 156, 195, 215, 235, 280, 325, 325, 345, 370, 370]
                             ].map((row, i) => (
                                 <tr key={i} className="even:bg-secondary/10">
