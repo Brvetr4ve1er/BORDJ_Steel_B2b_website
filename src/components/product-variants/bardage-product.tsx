@@ -246,7 +246,7 @@ LL60,15400,1000,60,10.8`;
 
              <div className="mb-6">
                <h3 className="font-semibold text-lg mb-3">Caractéristiques Géométriques</h3>
-               <div className="border-2 border-border bg-secondary/10 p-4 mt-3">
+               <div className="border-2 border-border bg-secondary/10 p-4 mb-3">
                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                     <Image 
                       src="https://i.imghippo.com/files/Xii4624Ovg.png"
