@@ -45,7 +45,7 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
            <p className="text-base text-muted-foreground">(à 05 ondes Ép de 30 mm jusqu'au 60 mm)</p>
          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 gap-12">
            {/* Left Column */}
            <div>
              {/* Caractéristique Produit */}
@@ -86,7 +86,7 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
              <div className="mb-6">
                <h3 className="font-bold text-lg mb-2">Revêtement :</h3>
                <p className="text-base">polyester pour la face extérieure : 25 µm</p>
-               <p className="text-base">polyester pour la face intérieure : 7μm</p>
+               <p className="text-base">polyester pour la face intérieure : 7µm</p>
              </div>
 
               {/* Âme isolante */}
@@ -184,7 +184,7 @@ kg/m²,daN/m²,,Entraxe Max cm,,,Entraxe Max cm,,
              </div>
            </div>
 
-            {/* Right Column */}
+            {/* Right Column (now below Left Column) */}
            <div>
               {/* La pose de panneaux sandwichs */}
              <div className="mb-6">
