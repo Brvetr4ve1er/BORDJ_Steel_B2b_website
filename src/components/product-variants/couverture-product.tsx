@@ -124,7 +124,7 @@ TL100,15400,1000,60,11.5`;
     const dimensionsData = Papa.parse(panelDimensionsCSV).data;
     
     return (
-     <div className="bg-white p-8 font-sans text-foreground">
+     <div className="bg-background p-8 font-sans text-foreground">
        <div className="max-w-7xl mx-auto">
          {/* Header */}
          <div className="border-l-8 border-accent pl-4 mb-8">
@@ -136,7 +136,7 @@ TL100,15400,1000,60,11.5`;
 
           <div className="grid grid-cols-1 gap-12">
            {/* Left Column */}
-           <div>
+           <div className="space-y-8">
              {/* Caractéristique Produit */}
              <h2 className="text-2xl font-bold text-accent mb-4">CARACTÉRISTIQUE PRODUIT</h2>
 
@@ -209,11 +209,11 @@ TL100,15400,1000,60,11.5`;
                  <Table>
                    <TableHeader>
                      <TableRow className="bg-accent text-accent-foreground">
-                       {dimensionsData[0].map((header: string, index: number) => <TableHead key={index} className="text-accent-foreground" dangerouslySetInnerHTML={{ __html: header }}></TableHead>)}
+                       {(dimensionsData[0] as string[]).map((header: string, index: number) => <TableHead key={index} className="text-accent-foreground" dangerouslySetInnerHTML={{ __html: header }}></TableHead>)}
                      </TableRow>
                    </TableHeader>
                    <TableBody>
-                    {dimensionsData.slice(1).map((row: string[], rowIndex: number) => (
+                    {(dimensionsData.slice(1) as string[][]).map((row: string[], rowIndex: number) => (
                       <TableRow key={rowIndex} className="bg-secondary/30">
                         {row.map((cell: string, cellIndex: number) => <TableCell key={cellIndex} className="text-center text-lg">{cell}</TableCell>)}
                       </TableRow>
@@ -235,7 +235,7 @@ TL100,15400,1000,60,11.5`;
                    </TableRow>
                  </TableHeader>
                  <TableBody>
-                    {thermalData.slice(1).map((row: string[], rowIndex: number) => (
+                    {(thermalData.slice(1) as string[][]).map((row: string[], rowIndex: number) => (
                         <TableRow key={rowIndex}>
                             {row.map((cell: string, cellIndex: number) => (
                                 <TableCell key={cellIndex} className={`text-center text-lg ${cellIndex === 0 ? 'bg-secondary/30 font-semibold' : ''}`}>{cell}</TableCell>
