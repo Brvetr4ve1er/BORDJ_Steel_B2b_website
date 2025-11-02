@@ -4,6 +4,7 @@ import Papa from 'papaparse';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { OneSupportIcon } from './one-support-icon';
 import { TwoSupportsIcon } from './two-supports-icon';
+import Image from 'next/image';
 
 const LoadCapacityTable = () => {
   return (
@@ -19,19 +20,19 @@ const LoadCapacityTable = () => {
             <th className="border border-border px-2 py-3" rowSpan={4} colSpan={2}>
               Charge utile uniformément<br />répartie
             </th>
-            <th className="border border-border px-2 py-3" colSpan={10}>
+            <th className="border border-border px-2 py-3" colSpan={8}>
               Tôle en acier épaisseur 0.5mm
             </th>
           </tr>
 
           {/* New row for the large SVG icons */}
           <tr className="bg-secondary">
-               <th className="border border-border p-2" colSpan={5}>
+               <th className="border border-border p-2" colSpan={4}>
                 <div className="flex items-center justify-center gap-1 mb-1 px-4">
                   <OneSupportIcon className="h-16" />
                 </div>
                </th>
-               <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
+               <th className="border border-border px-2 py-2 text-foreground" colSpan={4}>
                <div className="flex items-center justify-center gap-1 mb-1 px-4">
                   <TwoSupportsIcon className="h-16" />
                </div>
@@ -40,10 +41,10 @@ const LoadCapacityTable = () => {
 
           {/* Second header row - Gray with icons */}
           <tr className="bg-secondary">
-            <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
+            <th className="border border-border px-2 py-2 text-foreground" colSpan={4}>
               Épaisseur du panneau en mm
             </th>
-            <th className="border border-border px-2 py-2 text-foreground" colSpan={5}>
+            <th className="border border-border px-2 py-2 text-foreground" colSpan={4}>
               Épaisseur du panneau en mm
             </th>
           </tr>
@@ -53,12 +54,10 @@ const LoadCapacityTable = () => {
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">30</th>
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">35</th>
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">40</th>
-            <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">50</th>
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary/50">60</th>
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">30</th>
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">35</th>
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">40</th>
-            <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">50</th>
             <th className="border border-border px-2 py-2 text-foreground font-semibold bg-secondary">60</th>
           </tr>
         </thead>
@@ -68,22 +67,22 @@ const LoadCapacityTable = () => {
           <tr className="bg-accent text-accent-foreground">
             <td className="border border-border px-2 py-2 font-semibold text-center">kg/m²</td>
             <td className="border border-border px-2 py-2 font-semibold text-center">daN/m²</td>
-            <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={5}>
+            <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={4}>
               Entraxe Max cm
             </td>
-            <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={5}>
+            <td className="border border-border px-2 py-2 text-center font-semibold" colSpan={4}>
               Entraxe Max cm
             </td>
           </tr>
 
           {/* Data Rows */}
           {[
-             ["60", "58", "285", "315", "345", "485", "400", "425", "455", "560", "455", "560"],
-             ["80", "78", "255", "285", "335", "415", "345", "365", "390", "485", "390", "485"],
-             ["100", "98", "235", "260", "305", "375", "315", "335", "385", "440", "385", "440"],
-             ["120", "117", "220", "245", "265", "310", "355", "285", "360", "310", "360", "310"],
-             ["140", "137", "205", "225", "250", "395", "235", "240", "340", "290", "290", "290"],
-             ["160", "156", "195", "215", "235", "280", "315", "230", "225", "375", "325", "370"],
+             ["60", "58", "285", "315", "345", "405", "455", "505", "550", "560"],
+             ["80", "78", "255", "285", "315", "345", "405", "445", "490", "495"],
+             ["100", "98", "235", "265", "300", "335", "385", "410", "460", "470"],
+             ["120", "117", "225", "255", "280", "310", "360", "385", "430", "450"],
+             ["140", "137", "205", "225", "250", "285", "340", "370", "420", "430"],
+             ["160", "156", "195", "215", "235", "280", "325", "345", "370", "370"],
           ].map((row, rowIndex) => (
             <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-background' : 'bg-muted/50'}>
               {row.map((val, valIndex) => (
@@ -246,16 +245,30 @@ LL60,15400,1000,60,10.8`;
              <div className="mb-6">
                <h3 className="font-semibold text-lg mb-3">Caractéristiques Géométriques</h3>
                <div className="border-2 border-border bg-secondary/10 p-4 mb-3">
-                 <div className="bg-white border border-border h-32 flex items-center justify-center mb-2">
-                   <span className="text-muted-foreground text-base">[Schéma technique A]</span>
+                 <div className="bg-white border border-border p-4">
+                    <Image 
+                      src="https://www.imghippo.com/i/OxI3616rCI.png"
+                      alt="Schéma technique A"
+                      width={600}
+                      height={200}
+                      className="object-contain w-full h-auto"
+                      data-ai-hint="technical drawing"
+                    />
                  </div>
-                 <p className="text-center text-sm">Panneaux sandwichs de bardage nervuré/nervuré</p>
+                 <p className="text-center text-sm mt-2">Panneaux sandwichs de bardage nervuré/nervuré</p>
                </div>
                 <div className="border-2 border-border bg-secondary/10 p-4">
-                 <div className="bg-white border border-border h-32 flex items-center justify-center mb-2">
-                   <span className="text-muted-foreground text-base">[Schéma technique B]</span>
+                 <div className="bg-white border border-border p-4 flex items-center justify-center">
+                    <Image 
+                      src="https://www.imghippo.com/i/xWkE01722369796.png"
+                      alt="Schéma technique B"
+                      width={600}
+                      height={200}
+                      className="object-contain w-full h-auto"
+                      data-ai-hint="technical drawing"
+                    />
                  </div>
-                 <p className="text-center text-sm">Panneaux sandwichs de bardage lisse/nervuré</p>
+                 <p className="text-center text-sm mt-2">Panneaux sandwichs de bardage lisse/nervuré</p>
                </div>
              </div>
           </div>
