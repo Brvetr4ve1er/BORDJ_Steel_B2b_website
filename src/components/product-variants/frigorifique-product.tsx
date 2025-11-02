@@ -65,6 +65,11 @@ export default function FrigorifiqueProduct({ product }: { product: any }) {
         tables,
     } = product;
 
+    const insulationData = tables.isolation.rows;
+    const thicknessHeaders = insulationData.map((row: any) => row['Épaisseur en mm']);
+    const wmkValues = insulationData.map((row: any) => row['W/m²K']);
+    const kcalValues = insulationData.map((row: any) => row['Kcal/m²h°c']);
+
     return (
         <div className="bg-background min-h-screen p-8 font-sans relative">
             <div className="max-w-7xl mx-auto">
@@ -74,97 +79,99 @@ export default function FrigorifiqueProduct({ product }: { product: any }) {
                     </h1>
                 </div>
 
-                <div className="grid grid-cols-1 gap-8">
-                    <div>
-                        <h2 className="text-xl font-bold text-accent mb-4">CARACTÉRISTIQUE PRODUIT</h2>
+                <div className="space-y-4">
+                    <h2 className="text-xl font-bold text-accent mb-4">CARACTÉRISTIQUE PRODUIT</h2>
 
-                        <div className="mb-6">
-                            <h3 className="font-bold mb-2 text-lg">Utilisation</h3>
-                            <ul className="list-disc ml-5 mt-2 text-base space-y-1">
-                                {features.utilisation.map((item: string, i: number) => <li key={i}>{item}</li>)}
-                            </ul>
-                        </div>
-
-                        <div className="mb-6">
-                            <h3 className="font-bold mb-2 text-lg">Définition</h3>
-                            <div className="text-base mt-1 space-y-1">
-                                <p><strong>Identification d’acier:</strong> {features.definition.acier}</p>
-                                <p><strong>Parement Externe:</strong> {features.definition.parementExterne.profil}</p>
-                                <p><strong>Épaisseur:</strong> {features.definition.parementExterne.epaisseur}</p>
-                            </div>
-                        </div>
-
-                        <div className="mb-6">
-                            <h3 className="font-bold mb-2 text-lg">Revêtement</h3>
-                            <p className="text-base mt-1">{features.revetement}</p>
-                        </div>
-
-                        <div className="mb-6">
-                            <h3 className="font-bold mb-2 text-lg">Âme isolante</h3>
-                            <div className="text-base mt-1 space-y-1">
-                                <p><strong>Type:</strong> {features.ameIsolante.type}</p>
-                                <p><strong>Conductivité thermique:</strong> {features.ameIsolante.conductivite}</p>
-                                <p><strong>Densité:</strong> {features.ameIsolante.densite}</p>
-                            </div>
-                        </div>
-
-                        <div className="mb-6">
-                            <h3 className="font-bold mb-2 text-lg">Réaction au feu</h3>
-                            <p className="text-base mt-1">{features.reactionAuFeu}</p>
-                        </div>
-
-                        <div className="mb-6">
-                            <h3 className="font-bold mb-2 text-lg">Tolérance sur panneaux</h3>
-                            <ul className="mt-1 text-base list-disc ml-5">
-                                {features.tolerance.map((t: string, i: number) => (
-                                    <li key={i}>{t}</li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {tables.isolation?.rows?.length > 0 && (
-                            <div className="mb-6">
-                                <h3 className="font-bold mb-3 text-lg">{tables.isolation.title}</h3>
-                                <Table>
-                                    <TableHeader>
-                                        <TableRow className="bg-accent text-accent-foreground">
-                                            {tables.isolation.headers.map((h: string) => <TableHead key={h} className="text-accent-foreground">{h}</TableHead>)}
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        {tables.isolation.rows.map((row: any, i: number) => (
-                                            <TableRow key={i}>
-                                                {tables.isolation.headers.map((h: string) => <TableCell key={h} className={h.includes('Épaisseur') ? 'font-medium' : 'text-center'}>{row[h as keyof typeof row] ?? ''}</TableCell>)}
-                                            </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
-                            </div>
-                        )}
-
-                        {tables.dimensionnement?.rows?.length > 0 && (
-                            <div className="mb-6">
-                                <h3 className="font-bold mb-3 text-lg">{tables.dimensionnement.title}</h3>
-                                <Table>
-                                    <TableHeader>
-                                        <TableRow className="bg-accent text-accent-foreground">
-                                            {tables.dimensionnement.headers.map((h: string) => <TableHead key={h} className="text-accent-foreground">{h}</TableHead>)}
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        {tables.dimensionnement.rows.map((row: any, i: number) => (
-                                            <TableRow key={i}>
-                                                {tables.dimensionnement.headers.map((h: string) => <TableCell key={h} className={h === 'Type' ? 'font-medium' : 'text-center'}>{row[h as keyof typeof row] ?? ''}</TableCell>)}
-                                            </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
-                            </div>
-                        )}
-
-                        <ChargesTableFrigorifique tableData={tables.chargesPortees} />
-
+                    <div className="mb-6">
+                        <h3 className="font-bold mb-2 text-lg">Utilisation</h3>
+                        <ul className="list-disc ml-5 mt-2 text-base space-y-1">
+                            {features.utilisation.map((item: string, i: number) => <li key={i}>{item}</li>)}
+                        </ul>
                     </div>
+
+                    <div className="mb-6">
+                        <h3 className="font-bold mb-2 text-lg">Définition</h3>
+                        <div className="text-base mt-1 space-y-1">
+                            <p><strong>Identification d’acier:</strong> {features.definition.acier}</p>
+                            <p><strong>Parement Externe:</strong> {features.definition.parementExterne.profil}</p>
+                            <p><strong>Épaisseur:</strong> {features.definition.parementExterne.epaisseur}</p>
+                        </div>
+                    </div>
+
+                    <div className="mb-6">
+                        <h3 className="font-bold mb-2 text-lg">Revêtement</h3>
+                        <p className="text-base mt-1">{features.revetement}</p>
+                    </div>
+
+                    <div className="mb-6">
+                        <h3 className="font-bold mb-2 text-lg">Âme isolante</h3>
+                        <div className="text-base mt-1 space-y-1">
+                            <p><strong>Type:</strong> {features.ameIsolante.type}</p>
+                            <p><strong>Conductivité thermique:</strong> {features.ameIsolante.conductivite}</p>
+                            <p><strong>Densité:</strong> {features.ameIsolante.densite}</p>
+                        </div>
+                    </div>
+
+                    <div className="mb-6">
+                        <h3 className="font-bold mb-2 text-lg">Réaction au feu</h3>
+                        <p className="text-base mt-1">{features.reactionAuFeu}</p>
+                    </div>
+
+                    <div className="mb-6">
+                        <h3 className="font-bold mb-2 text-lg">Tolérance sur panneaux</h3>
+                        <ul className="mt-1 text-base list-disc ml-5">
+                            {features.tolerance.map((t: string, i: number) => (
+                                <li key={i}>{t}</li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {tables.isolation?.rows?.length > 0 && (
+                        <div className="mb-6">
+                            <h3 className="font-bold mb-3 text-lg">{tables.isolation.title}</h3>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow className="bg-accent text-accent-foreground">
+                                        <TableHead className="text-accent-foreground">Épaisseur en mm</TableHead>
+                                        {thicknessHeaders.map((h: string) => <TableHead key={h} className="text-center text-accent-foreground">{h}</TableHead>)}
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell className="font-medium bg-secondary/20">W/m²K</TableCell>
+                                        {wmkValues.map((val: string, i: number) => <TableCell key={i} className="text-center">{val}</TableCell>)}
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell className="font-medium bg-secondary/20">Kcal/m²h°c</TableCell>
+                                        {kcalValues.map((val: string, i: number) => <TableCell key={i} className="text-center">{val}</TableCell>)}
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </div>
+                    )}
+
+                    {tables.dimensionnement?.rows?.length > 0 && (
+                        <div className="mb-6">
+                            <h3 className="font-bold mb-3 text-lg">{tables.dimensionnement.title}</h3>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow className="bg-accent text-accent-foreground">
+                                        {tables.dimensionnement.headers.map((h: string) => <TableHead key={h} className="text-accent-foreground">{h}</TableHead>)}
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {tables.dimensionnement.rows.map((row: any, i: number) => (
+                                        <TableRow key={i}>
+                                            {tables.dimensionnement.headers.map((h: string) => <TableCell key={h} className={h === 'Type' ? 'font-medium' : 'text-center'}>{row[h as keyof typeof row] ?? ''}</TableCell>)}
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </div>
+                    )}
+
+                    <ChargesTableFrigorifique tableData={tables.chargesPortees} />
+
                 </div>
             </div>
         </div>
