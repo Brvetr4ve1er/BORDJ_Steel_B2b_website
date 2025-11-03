@@ -349,12 +349,12 @@ const HiBondProduct = ({ product }: { product: any }) => {
             <div className="border-2 border-border bg-secondary/10 p-4">
               <div className="bg-white border border-border p-4 flex items-center justify-center">
                 <Image 
-                  src={features.caracteristiquesGeometriques.image.src}
-                  alt={features.caracteristiquesGeometriques.title}
+                  src="https://i.ibb.co/RpPPP4Gc/hi-bond-77.png"
+                  alt="hi-bond-77"
                   width={800}
                   height={250}
                   className="object-contain w-full"
-                  data-ai-hint={features.caracteristiquesGeometriques.image.aiHint}
+                  data-ai-hint="technical drawing"
                 />
               </div>
             </div>
@@ -366,5 +366,3 @@ const HiBondProduct = ({ product }: { product: any }) => {
 };
 
 export default HiBondProduct;
-
-    
