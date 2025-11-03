@@ -184,6 +184,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                   </tr>
                   <tr>
                     <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.7</td>
+                    <td className="border border-border text-center text-sm p-2">0.7</td>
                     <td className="border border-border text-center text-sm p-2">716</td>
                     <td className="border border-border text-center text-sm p-2">458</td>
                     <td className="border border-border text-center text-sm p-2">318</td>
@@ -193,7 +194,6 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                     <td className="border border-border text-center text-sm p-2">98</td>
                     <td className="border border-border text-center text-sm p-2">73</td>
                     <td className="border border-border text-center text-sm p-2">57</td>
-                    <td className="border border-border text-center text-sm p-2 bg-muted">-</td>
                   </tr>
                   <tr>
                     <td rowSpan={4} className="bg-accent border border-border p-4">
