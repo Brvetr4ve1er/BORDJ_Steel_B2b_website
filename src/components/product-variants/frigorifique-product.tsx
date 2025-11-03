@@ -202,13 +202,13 @@ export default function FrigorifiqueProduct({ product }: { product: any }) {
                         
                         <LoadCapacityTableFrigorifique />
 
-                        <div className="mb-6 mt-8">
+                         <div className="mb-6 mt-8">
                            <h3 className="font-semibold text-lg mb-3">Caractéristiques Géométriques</h3>
                            <div className="space-y-4">
                                <div className="border-2 border-border bg-secondary/10 p-4">
                                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                                     <Image 
-                                      src="https://i.imghippo.com/files/OrpSg1721669482.png"
+                                      src="https://i.imghippo.org/files/OrpSg1721669482.png"
                                       alt="Schéma technique Frigorifique 1"
                                       width={800}
                                       height={250}
@@ -221,7 +221,7 @@ export default function FrigorifiqueProduct({ product }: { product: any }) {
                                <div className="border-2 border-border bg-secondary/10 p-4">
                                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                                     <Image 
-                                      src="https://i.imghippo.com/files/tqXJd1721663116.png"
+                                      src="https://i.imghippo.org/files/tqXJd1721663116.png"
                                       alt="Schéma technique Frigorifique 2"
                                       width={800}
                                       height={200}
