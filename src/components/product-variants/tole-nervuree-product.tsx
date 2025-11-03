@@ -126,122 +126,132 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
            <div>
             <h3 className="font-semibold text-muted-foreground mb-3 text-lg">LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)</h3>
             <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                    <thead>
-                        <tr>
-                            <th className="bg-accent border border-border text-accent-foreground text-sm font-bold p-2 text-center" colSpan={2} rowSpan={2}>Support</th>
-                            <th className="bg-accent border border-border text-accent-foreground text-sm font-bold p-2">EP (mm)</th>
-                            <th colSpan="10" className="bg-accent border border-border text-accent-foreground text-sm font-bold p-2">Portée (m)</th>
-                        </tr>
-                        <tr>
-                            <th className="bg-accent border-border p-0"></th>
-                            <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">1.00</th>
-                            <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">1.25</th>
-                            <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">1.50</th>
-                            <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">1.75</th>
-                            <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">2.00</th>
-                            <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">2.25</th>
-                            <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">2.50</th>
-                            <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">2.75</th>
-                            <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">3</th>
-                            <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">3.25</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowSpan={4} className="bg-accent border border-border p-4 w-48">
-                                <ToleNervureeOneSupportIcon className="text-white mx-auto w-32" />
-                            </td>
-                            <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.5</td>
-                            <td className="border border-border text-center text-sm p-2">439</td>
-                            <td className="border border-border text-center text-sm p-2">281</td>
-                            <td className="border border-border text-center text-sm p-2">185</td>
-                            <td className="border border-border text-center text-sm p-2">143</td>
-                            <td className="border border-border text-center text-sm p-2">109</td>
-                            <td className="border border-border text-center text-sm p-2">86</td>
-                            <td className="border border-border text-center text-sm p-2">63</td>
-                            <td className="border border-border text-center text-sm p-2">47</td>
-                            <td className="border border-border text-center text-sm p-2">36</td>
-                            <td className="border border-border text-center text-sm p-2 bg-muted">-</td>
-                        </tr>
-                        <tr>
-                            <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.6</td>
-                            <td className="border border-border text-center text-sm p-2">614</td>
-                            <td className="border border-border text-center text-sm p-2">393</td>
-                            <td className="border border-border text-center text-sm p-2">273</td>
-                            <td className="border border-border text-center text-sm p-2">200</td>
-                            <td className="border border-border text-center text-sm p-2">153</td>
-                            <td className="border border-border text-center text-sm p-2">115</td>
-                            <td className="border border-border text-center text-sm p-2">84</td>
-                            <td className="border border-border text-center text-sm p-2">63</td>
-                            <td className="border border-border text-center text-sm p-2">48</td>
-                            <td className="border border-border text-center text-sm p-2">38</td>
-                        </tr>
-                        <tr>
-                            <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.7</td>
-                            <td className="border border-border text-center text-sm p-2">716</td>
-                            <td className="border border-border text-center text-sm p-2">458</td>
-                            <td className="border border-border text-center text-sm p-2">318</td>
-                            <td className="border border-border text-center text-sm p-2">234</td>
-                            <td className="border border-border text-center text-sm p-2">179</td>
-                            <td className="border border-border text-center text-sm p-2">135</td>
-                            <td className="border border-border text-center text-sm p-2">98</td>
-                            <td className="border border-border text-center text-sm p-2">73</td>
-                            <td className="border border-border text-center text-sm p-2">57</td>
-                            <td className="border border-border text-center text-sm p-2 bg-muted">-</td>
-                        </tr>
-                         <tr>
-                            <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">1.0</td>
-                            <td colSpan={10} className="border border-border text-center text-sm p-2 font-bold">Non applicable</td>
-                        </tr>
-                        <tr>
-                            <td rowSpan={4} className="bg-accent border border-border p-4">
-                                <ToleNervureeTwoSupportsIcon className="text-white mx-auto w-32" />
-                            </td>
-                            <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.5</td>
-                            <td className="border border-border text-center text-sm p-2">570</td>
-                            <td className="border border-border text-center text-sm p-2">365</td>
-                            <td className="border border-border text-center text-sm p-2">252</td>
-                            <td className="border border-border text-center text-sm p-2">180</td>
-                            <td className="border border-border text-center text-sm p-2">141</td>
-                            <td className="border border-border text-center text-sm p-2">111</td>
-                            <td className="border border-border text-center text-sm p-2">90</td>
-                            <td className="border border-border text-center text-sm p-2">67</td>
-                            <td className="border border-border text-center text-sm p-2">51</td>
-                            <td className="border border-border text-center text-sm p-2">40</td>
-                        </tr>
-                        <tr>
-                            <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.6</td>
-                            <td className="border border-border text-center text-sm p-2">768</td>
-                            <td className="border border-border text-center text-sm p-2">491</td>
-                            <td className="border border-border text-center text-sm p-2">341</td>
-                            <td className="border border-border text-center text-sm p-2">251</td>
-                            <td className="border border-border text-center text-sm p-2">192</td>
-                            <td className="border border-border text-center text-sm p-2">152</td>
-                            <td className="border border-border text-center text-sm p-2">123</td>
-                            <td className="border border-border text-center text-sm p-2">101</td>
-                            <td className="border border-border text-center text-sm p-2">81</td>
-                            <td className="border border-border text-center text-sm p-2">64</td>
-                        </tr>
-                        <tr>
-                            <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.7</td>
-                            <td className="border border-border text-center text-sm p-2">896</td>
-                            <td className="border border-border text-center text-sm p-2">573</td>
-                            <td className="border border-border text-center text-sm p-2">398</td>
-                            <td className="border border-border text-center text-sm p-2">292</td>
-                            <td className="border border-border text-center text-sm p-2">224</td>
-                            <td className="border border-border text-center text-sm p-2">177</td>
-                            <td className="border border-border text-center text-sm p-2">143</td>
-                            <td className="border border-border text-center text-sm p-2">118</td>
-                            <td className="border border-border text-center text-sm p-2">95</td>
-                            <td className="border border-border text-center text-sm p-2">74</td>
-                        </tr>
-                         <tr>
-                            <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">1.0</td>
-                            <td colSpan={10} className="border border-border text-center text-sm p-2 font-bold">Non applicable</td>
-                        </tr>
-                    </tbody>
-                </table>
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr>
+                    <th className="bg-accent border border-border text-accent-foreground text-sm font-bold p-0 w-48"></th>
+                    <th className="bg-accent border border-border text-accent-foreground text-sm font-bold p-2 w-16">
+                      EP<br/>(mm)
+                    </th>
+                    <th colSpan={10} className="bg-accent border border-border text-accent-foreground text-sm font-bold p-2">
+                      Portée (m)
+                    </th>
+                  </tr>
+                  <tr>
+                    <th className="bg-accent border-border p-0"></th>
+                    <th className="bg-accent border-border p-0"></th>
+                    <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">1.00</th>
+                    <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">1.25</th>
+                    <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">1.50</th>
+                    <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">1.75</th>
+                    <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">2.00</th>
+                    <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">2.25</th>
+                    <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">2.50</th>
+                    <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">2.75</th>
+                    <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">3</th>
+                    <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">3.25</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowSpan={3} className="bg-accent border border-border p-4">
+                      <ToleNervureeOneSupportIcon className="text-white mx-auto" />
+                    </td>
+                    <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.5</td>
+                    <td className="border border-border text-center text-sm p-2">439</td>
+                    <td className="border border-border text-center text-sm p-2">281</td>
+                    <td className="border border-border text-center text-sm p-2">185</td>
+                    <td className="border border-border text-center text-sm p-2">143</td>
+                    <td className="border border-border text-center text-sm p-2">109</td>
+                    <td className="border border-border text-center text-sm p-2">86</td>
+                    <td className="border border-border text-center text-sm p-2">63</td>
+                    <td className="border border-border text-center text-sm p-2">47</td>
+                    <td className="border border-border text-center text-sm p-2">36</td>
+                    <td className="border border-border text-center text-sm p-2 bg-muted">-</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.6</td>
+                    <td className="border border-border text-center text-sm p-2">614</td>
+                    <td className="border border-border text-center text-sm p-2">393</td>
+                    <td className="border border-border text-center text-sm p-2">273</td>
+                    <td className="border border-border text-center text-sm p-2">200</td>
+                    <td className="border border-border text-center text-sm p-2">153</td>
+                    <td className="border border-border text-center text-sm p-2">115</td>
+                    <td className="border border-border text-center text-sm p-2">84</td>
+                    <td className="border border-border text-center text-sm p-2">63</td>
+                    <td className="border border-border text-center text-sm p-2">48</td>
+                    <td className="border border-border text-center text-sm p-2">38</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.7</td>
+                    <td className="border border-border text-center text-sm p-2">716</td>
+                    <td className="border border-border text-center text-sm p-2">458</td>
+                    <td className="border border-border text-center text-sm p-2">318</td>
+                    <td className="border border-border text-center text-sm p-2">234</td>
+                    <td className="border border-border text-center text-sm p-2">179</td>
+                    <td className="border border-border text-center text-sm p-2">135</td>
+                    <td className="border border-border text-center text-sm p-2">98</td>
+                    <td className="border border-border text-center text-sm p-2">73</td>
+                    <td className="border border-border text-center text-sm p-2">57</td>
+                    <td className="border border-border text-center text-sm p-2 bg-muted">-</td>
+                  </tr>
+                  <tr>
+                    <td rowSpan={4} className="bg-accent border border-border p-4">
+                      <ToleNervureeTwoSupportsIcon className="text-white mx-auto" />
+                    </td>
+                    <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.5</td>
+                    <td className="border border-border text-center text-sm p-2">570</td>
+                    <td className="border border-border text-center text-sm p-2">365</td>
+                    <td className="border border-border text-center text-sm p-2">252</td>
+                    <td className="border border-border text-center text-sm p-2">180</td>
+                    <td className="border border-border text-center text-sm p-2">141</td>
+                    <td className="border border-border text-center text-sm p-2">111</td>
+                    <td className="border border-border text-center text-sm p-2">90</td>
+                    <td className="border border-border text-center text-sm p-2">67</td>
+                    <td className="border border-border text-center text-sm p-2">51</td>
+                    <td className="border border-border text-center text-sm p-2">40</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.6</td>
+                    <td className="border border-border text-center text-sm p-2">768</td>
+                    <td className="border border-border text-center text-sm p-2">491</td>
+                    <td className="border border-border text-center text-sm p-2">341</td>
+                    <td className="border border-border text-center text-sm p-2">251</td>
+                    <td className="border border-border text-center text-sm p-2">192</td>
+                    <td className="border border-border text-center text-sm p-2">152</td>
+                    <td className="border border-border text-center text-sm p-2">123</td>
+                    <td className="border border-border text-center text-sm p-2">101</td>
+                    <td className="border border-border text-center text-sm p-2">81</td>
+                    <td className="border border-border text-center text-sm p-2">64</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.7</td>
+                    <td className="border border-border text-center text-sm p-2">896</td>
+                    <td className="border border-border text-center text-sm p-2">573</td>
+                    <td className="border border-border text-center text-sm p-2">398</td>
+                    <td className="border border-border text-center text-sm p-2">292</td>
+                    <td className="border border-border text-center text-sm p-2">224</td>
+                    <td className="border border-border text-center text-sm p-2">177</td>
+                    <td className="border border-border text-center text-sm p-2">143</td>
+                    <td className="border border-border text-center text-sm p-2">118</td>
+                    <td className="border border-border text-center text-sm p-2">95</td>
+                    <td className="border border-border text-center text-sm p-2">74</td>
+                  </tr>
+                   <tr>
+                    <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">1.0</td>
+                    <td className="border border-border text-center text-sm p-2">1280</td>
+                    <td className="border border-border text-center text-sm p-2">819</td>
+                    <td className="border border-border text-center text-sm p-2">569</td>
+                    <td className="border border-border text-center text-sm p-2">418</td>
+                    <td className="border border-border text-center text-sm p-2">320</td>
+                    <td className="border border-border text-center text-sm p-2">253</td>
+                    <td className="border border-border text-center text-sm p-2">204</td>
+                    <td className="border border-border text-center text-sm p-2">169</td>
+                    <td className="border border-border text-center text-sm p-2">135</td>
+                    <td className="border border-border text-center text-sm p-2">106</td>
+                   </tr>
+                </tbody>
+              </table>
             </div>
           </div>
   
