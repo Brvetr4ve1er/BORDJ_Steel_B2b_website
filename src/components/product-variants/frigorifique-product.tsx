@@ -204,18 +204,33 @@ export default function FrigorifiqueProduct({ product }: { product: any }) {
 
                         <div className="mb-6 mt-8">
                            <h3 className="font-semibold text-lg mb-3">Caractéristiques Géométriques</h3>
-                           <div className="border-2 border-border bg-secondary/10 p-4 mt-3">
-                             <div className="bg-white border border-border p-4 flex items-center justify-center">
-                                <Image 
-                                  src="https://i.imghippo.com/files/OrpSg1721669482.png"
-                                  alt="Schéma technique Frigorifique"
-                                  width={600}
-                                  height={200}
-                                  className="object-contain w-full h-auto"
-                                  data-ai-hint="technical drawing"
-                                />
-                             </div>
-                             <p className="text-center text-sm mt-2">Panneaux sandwichs frigorifique lisse/lisse</p>
+                           <div className="space-y-4">
+                               <div className="border-2 border-border bg-secondary/10 p-4">
+                                 <div className="bg-white border border-border p-4 flex items-center justify-center">
+                                    <Image 
+                                      src="https://i.imghippo.com/files/OrpSg1721669482.png"
+                                      alt="Schéma technique Frigorifique 1"
+                                      width={800}
+                                      height={250}
+                                      className="object-contain w-full h-auto"
+                                      data-ai-hint="technical drawing"
+                                    />
+                                 </div>
+                                 <p className="text-center text-sm mt-2">Panneaux sandwichs frigorifique lisse/lisse</p>
+                               </div>
+                               <div className="border-2 border-border bg-secondary/10 p-4">
+                                 <div className="bg-white border border-border p-4 flex items-center justify-center">
+                                    <Image 
+                                      src="https://i.imghippo.com/files/tqXJd1721663116.png"
+                                      alt="Schéma technique Frigorifique 2"
+                                      width={800}
+                                      height={200}
+                                      className="object-contain w-full h-auto"
+                                      data-ai-hint="technical drawing"
+                                    />
+                                 </div>
+                                 <p className="text-center text-sm mt-2">Détail de l'assemblage</p>
+                               </div>
                            </div>
                          </div>
                     </div>
