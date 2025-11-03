@@ -209,10 +209,10 @@ export default function FrigorifiqueProduct({ product }: { product: any }) {
                                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                                     <Image 
                                       src="https://i.ibb.co/WWSRgtQH/panneaux-frigorifique-1.png"
-                                      alt="Schéma technique Frigorifique 1"
+                                      alt="panneaux-frigorifique-1"
                                       width={800}
                                       height={250}
-                                      className="object-contain w-full h-auto"
+                                      className="object-contain w-full"
                                       data-ai-hint="technical drawing"
                                     />
                                  </div>
@@ -222,10 +222,10 @@ export default function FrigorifiqueProduct({ product }: { product: any }) {
                                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                                     <Image 
                                       src="https://i.ibb.co/FLdjzM9Q/panneaux-frigorifique-2.png"
-                                      alt="Schéma technique Frigorifique 2"
+                                      alt="panneaux-frigorifique-2"
                                       width={800}
                                       height={200}
-                                      className="object-contain w-full h-auto"
+                                      className="object-contain w-full"
                                       data-ai-hint="technical drawing"
                                     />
                                  </div>
