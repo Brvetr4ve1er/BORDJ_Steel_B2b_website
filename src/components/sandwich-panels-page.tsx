@@ -5,17 +5,15 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { ChevronsRight, Snowflake, Pilcrow, Settings, ArrowRight } from 'lucide-react';
+import { ChevronsRight, Snowflake, Settings, ArrowRight } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { productData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
 import type { ProductImage } from './product-image-gallery';
 import images from '@/app/lib/placeholder-images.json';
 import dynamic from 'next/dynamic';
-import { ScrollArea } from './ui/scroll-area';
 import { DownloadButton } from './ui/download-button';
 import CouvertureProduct from './product-variants/couverture-product';
 import BardageProduct from './product-variants/bardage-product';
@@ -111,12 +109,6 @@ export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('bardage');
   const activeProduct = productData[activeProductKey];
   const heroImage = images['sandwich-panels'].hero;
-  const [displayedImage, setDisplayedImage] = useState<ProductImage>(activeProduct.galleryImages[0]);
-
-  useEffect(() => {
-    setDisplayedImage(activeProduct.galleryImages[0]);
-  }, [activeProductKey, activeProduct.galleryImages]);
-
 
   const productButtons = [
     { key: 'couverture', label: 'Panneaux de Couverture', icon: CouvertureIcon },
@@ -201,16 +193,12 @@ export function SandwichPanelsPage() {
           
           <div className="grid lg:grid-cols-3 gap-x-8 gap-y-16">
               <div className="lg:col-span-1 h-max space-y-8">
+                {activeProduct.galleryImages.slice(0, 3).map((image, index) => (
                   <ProductImageGallery 
-                      mainImage={displayedImage}
+                      key={`${activeProductKey}-${index}`}
+                      mainImage={image}
                   />
-                  <div className="grid grid-cols-2 gap-4">
-                    {activeProduct.galleryImages.slice(1, 3).map((image, index) => (
-                        <div key={index} className="cursor-pointer rounded-lg overflow-hidden border-2 hover:border-accent transition-all" onClick={() => setDisplayedImage(image)}>
-                            <Image src={image.src} alt={image.alt} width={400} height={400} className="w-full h-full object-cover aspect-square" />
-                        </div>
-                    ))}
-                  </div>
+                ))}
               </div>
 
               <div className="lg:col-span-2">
