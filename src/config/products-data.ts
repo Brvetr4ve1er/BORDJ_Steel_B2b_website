@@ -1,4 +1,5 @@
 
+
 export const productData = {
   couverture: {
     documentMetadata: {
@@ -712,9 +713,9 @@ export const productData = {
     subtitle: '',
     image: { src: 'https://i.pinimg.com/736x/53/07/e6/5307e6787500b6efff734990a41772e5.jpg', aiHint: 'composite floor' },
     galleryImages: [
-        { src: '/media/hi-bond-77/hi-bond-main.png', alt: 'Plancher collaborant Hi-Bond 77', aiHint: 'composite floor deck' },
-        { src: 'https://i.pinimg.com/736x/8c/6c/a6/8c6ca67b36f7535b68117730d173e961.jpg', alt: 'Hi-Bond 77 flooring system', aiHint: 'flooring system' },
-        { src: 'https://i.pinimg.com/736x/21/fe/92/21fe928b939f50e0e1f72babf4a86b36.jpg', alt: 'Construction with composite decking', aiHint: 'construction decking' },
+        { src: 'https://i.pinimg.com/736x/76/d6/80/76d680d6fdc50e1f996f5fe8ccc5029d.jpg', alt: 'Hi-Bond 77 Decking Profile', aiHint: 'decking profile' },
+        { src: 'https://i.pinimg.com/736x/54/07/5f/54075f273eeb525e1b437731729f78d9.jpg', alt: 'Hi-Bond 77 Installation', aiHint: 'decking installation' },
+        { src: 'https://i.pinimg.com/736x/89/36/d0/8936d00071d42e9079330a38d68f11ea.jpg', alt: 'Hi-Bond 77 Finished Floor', aiHint: 'composite floor' },
     ],
     features: {
         utilisation: [],
@@ -854,5 +855,7 @@ export const productData = {
     }
   },
 };
+
+    
 
     
