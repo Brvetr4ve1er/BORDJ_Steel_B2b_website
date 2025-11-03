@@ -2,8 +2,29 @@
 import React from 'react';
 import Image from 'next/image';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { OneSupportIcon } from './one-support-icon';
-import { TwoSupportsIcon } from './two-supports-icon';
+
+const ToleNervureeOneSupportIcon = ({ className }: { className?: string }) => (
+    <svg width="160" height="80" viewBox="0 0 160 80" className={className}>
+      <line x1="20" y1="40" x2="140" y2="40" stroke="currentColor" strokeWidth="3"/>
+      <polygon points="20,40 15,50 25,50" fill="currentColor" stroke="currentColor"/>
+      <line x1="20" y1="50" x2="20" y2="60" stroke="currentColor" strokeWidth="2"/>
+      <polygon points="140,40 135,50 145,50" fill="currentColor" stroke="currentColor"/>
+      <line x1="140" y1="50" x2="140" y2="60" stroke="currentColor" strokeWidth="2"/>
+    </svg>
+);
+
+const ToleNervureeTwoSupportsIcon = ({ className }: { className?: string }) => (
+    <svg width="160" height="80" viewBox="0 0 160 80" className={className}>
+      <line x1="20" y1="40" x2="140" y2="40" stroke="currentColor" strokeWidth="3"/>
+      <polygon points="20,40 15,50 25,50" fill="currentColor" stroke="currentColor"/>
+      <line x1="20" y1="50" x2="20" y2="60" stroke="currentColor" strokeWidth="2"/>
+      <polygon points="80,40 75,50 85,50" fill="currentColor" stroke="currentColor"/>
+      <line x1="80" y1="50" x2="80" y2="60" stroke="currentColor" strokeWidth="2"/>
+      <polygon points="140,40 135,50 145,50" fill="currentColor" stroke="currentColor"/>
+      <line x1="140" y1="50" x2="140" y2="60" stroke="currentColor" strokeWidth="2"/>
+    </svg>
+);
+
 
 export default function ToleNervureeProduct({ product }: { product: any }) {
     if (!product) {
@@ -29,17 +50,6 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                 <li>Entrepôts agricoles</li>
                 <li>Centres commerciaux</li>
             </ul>
-          </div>
-  
-          <div className="bg-secondary/10 h-48 flex items-center justify-center border rounded-lg mb-8">
-             <Image 
-                src="https://i.imghippo.com/files/tqXJd1721663116.png" 
-                alt="TN40 Profile Image" 
-                width={600} 
-                height={150}
-                className="object-contain"
-                data-ai-hint="technical drawing"
-             />
           </div>
   
           <div className="mb-8 overflow-x-auto">
@@ -116,139 +126,169 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
           <div>
             <h3 className="font-semibold text-muted-foreground mb-3 text-lg">LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)</h3>
             <div className="overflow-x-auto">
-            <Table>
-                <TableHeader>
-                    <TableRow className="bg-accent text-accent-foreground">
-                        <TableHead className="bg-white border-r"></TableHead>
-                        <TableHead className="text-accent-foreground align-middle text-center">EP<br/>(mm)</TableHead>
-                        <TableHead className="text-accent-foreground text-center" colSpan={10}>Portée (m)</TableHead>
-                    </TableRow>
-                    <TableRow className="bg-accent text-accent-foreground">
-                        <TableHead className="bg-white border-r"></TableHead>
-                        <TableHead></TableHead>
-                        <TableHead className="text-accent-foreground text-center">1.00</TableHead>
-                        <TableHead className="text-accent-foreground text-center">1.25</TableHead>
-                        <TableHead className="text-accent-foreground text-center">1.50</TableHead>
-                        <TableHead className="text-accent-foreground text-center">1.75</TableHead>
-                        <TableHead className="text-accent-foreground text-center">2.00</TableHead>
-                        <TableHead className="text-accent-foreground text-center">2.25</TableHead>
-                        <TableHead className="text-accent-foreground text-center">2.50</TableHead>
-                        <TableHead className="text-accent-foreground text-center">2.75</TableHead>
-                        <TableHead className="text-accent-foreground text-center">3</TableHead>
-                        <TableHead className="text-accent-foreground text-center">3.25</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                <TableRow>
-                    <TableCell rowSpan={4} className="bg-accent text-white align-middle p-4 border-b">
-                        <OneSupportIcon className="h-16 mx-auto" />
-                    </TableCell>
-                    <TableCell className="text-center font-bold bg-secondary/20">0.5</TableCell>
-                    <TableCell className="text-center bg-secondary/20">439</TableCell>
-                    <TableCell className="text-center bg-secondary/20">281</TableCell>
-                    <TableCell className="text-center bg-secondary/20">185</TableCell>
-                    <TableCell className="text-center bg-secondary/20">143</TableCell>
-                    <TableCell className="text-center bg-secondary/20">109</TableCell>
-                    <TableCell className="text-center bg-secondary/20">86</TableCell>
-                    <TableCell className="text-center bg-secondary/20">63</TableCell>
-                    <TableCell className="text-center bg-secondary/20">47</TableCell>
-                    <TableCell className="text-center bg-secondary/20">36</TableCell>
-                    <TableCell className="text-center bg-secondary/20">-</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell className="text-center font-bold">0.6</TableCell>
-                    <TableCell className="text-center">614</TableCell>
-                    <TableCell className="text-center">393</TableCell>
-                    <TableCell className="text-center">273</TableCell>
-                    <TableCell className="text-center">200</TableCell>
-                    <TableCell className="text-center">153</TableCell>
-                    <TableCell className="text-center">115</TableCell>
-                    <TableCell className="text-center">84</TableCell>
-                    <TableCell className="text-center">63</TableCell>
-                    <TableCell className="text-center">48</TableCell>
-                    <TableCell className="text-center">38</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell className="text-center font-bold bg-secondary/20">0.7</TableCell>
-                    <TableCell className="text-center bg-secondary/20">716</TableCell>
-                    <TableCell className="text-center bg-secondary/20">458</TableCell>
-                    <TableCell className="text-center bg-secondary/20">318</TableCell>
-                    <TableCell className="text-center bg-secondary/20">234</TableCell>
-                    <TableCell className="text-center bg-secondary/20">179</TableCell>
-                    <TableCell className="text-center bg-secondary/20">135</TableCell>
-                    <TableCell className="text-center bg-secondary/20">98</TableCell>
-                    <TableCell className="text-center bg-secondary/20">73</TableCell>
-                    <TableCell className="text-center bg-secondary/20">57</TableCell>
-                    <TableCell className="text-center bg-secondary/20">-</TableCell>
-                </TableRow>
-                 <TableRow>
-                    <TableCell className="text-center font-bold">1.0</TableCell>
-                    <TableCell className="text-center font-bold" colSpan={10}>Non applicable</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell rowSpan={4} className="bg-accent text-white align-middle p-4 border-y">
-                        <TwoSupportsIcon className="h-16 mx-auto" />
-                    </TableCell>
-                    <TableCell className="text-center font-bold bg-secondary/20">0.5</TableCell>
-                    <TableCell className="text-center bg-secondary/20">570</TableCell>
-                    <TableCell className="text-center bg-secondary/20">365</TableCell>
-                    <TableCell className="text-center bg-secondary/20">252</TableCell>
-                    <TableCell className="text-center bg-secondary/20">180</TableCell>
-                    <TableCell className="text-center bg-secondary/20">141</TableCell>
-                    <TableCell className="text-center bg-secondary/20">111</TableCell>
-                    <TableCell className="text-center bg-secondary/20">90</TableCell>
-                    <TableCell className="text-center bg-secondary/20">67</TableCell>
-                    <TableCell className="text-center bg-secondary/20">51</TableCell>
-                    <TableCell className="text-center bg-secondary/20">40</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell className="text-center font-bold">0.6</TableCell>
-                    <TableCell className="text-center">768</TableCell>
-                    <TableCell className="text-center">491</TableCell>
-                    <TableCell className="text-center">341</TableCell>
-                    <TableCell className="text-center">251</TableCell>
-                    <TableCell className="text-center">192</TableCell>
-                    <TableCell className="text-center">152</TableCell>
-                    <TableCell className="text-center">123</TableCell>
-                    <TableCell className="text-center">101</TableCell>
-                    <TableCell className="text-center">81</TableCell>
-                    <TableCell className="text-center">64</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell className="text-center font-bold bg-secondary/20">0.7</TableCell>
-                    <TableCell className="text-center bg-secondary/20">896</TableCell>
-                    <TableCell className="text-center bg-secondary/20">573</TableCell>
-                    <TableCell className="text-center bg-secondary/20">398</TableCell>
-                    <TableCell className="text-center bg-secondary/20">292</TableCell>
-                    <TableCell className="text-center bg-secondary/20">224</TableCell>
-                    <TableCell className="text-center bg-secondary/20">177</TableCell>
-                    <TableCell className="text-center bg-secondary/20">143</TableCell>
-                    <TableCell className="text-center bg-secondary/20">118</TableCell>
-                    <TableCell className="text-center bg-secondary/20">95</TableCell>
-                    <TableCell className="text-center bg-secondary/20">74</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell className="text-center font-bold">1.0</TableCell>
-                    <TableCell className="text-center font-bold" colSpan={10}>Non applicable</TableCell>
-                </TableRow>
-                </TableBody>
-            </Table>
+            <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+           <table className="w-full border-collapse">
+             {/* Header Row */}
+             <thead>
+               <tr>
+                 <th className="bg-accent border border-border p-0 w-48"></th>
+                 <th className="bg-accent border border-border text-accent-foreground text-sm font-bold p-2 w-16">
+                   EP<br/>(mm)
+                 </th>
+                 <th colSpan="10" className="bg-accent border border-border text-accent-foreground text-sm font-bold p-2">
+                   Portée (m)
+                 </th>
+               </tr>
+               <tr>
+                 <th className="bg-accent border-border p-0"></th>
+                 <th className="bg-accent border-border p-0"></th>
+                 <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">1.00</th>
+                 <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">1.25</th>
+                 <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">1.50</th>
+                 <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">1.75</th>
+                 <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">2.00</th>
+                 <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">2.25</th>
+                 <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">2.50</th>
+                 <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">2.75</th>
+                 <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">3</th>
+                 <th className="bg-accent border border-border text-accent-foreground text-xs font-bold p-2 w-20">3.25</th>
+               </tr>
+             </thead>
+             <tbody>
+               {/* First Configuration - Simple Beam */}
+               {/* Row 1 - EP 0.5 */}
+               <tr>
+                 <td rowSpan={4} className="bg-accent border border-border p-4">
+                   <ToleNervureeOneSupportIcon className="text-white mx-auto w-32" />
+                 </td>
+                 <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.5</td>
+                 <td className="border border-border text-center text-sm p-2">439</td>
+                 <td className="border border-border text-center text-sm p-2">281</td>
+                 <td className="border border-border text-center text-sm p-2">185</td>
+                 <td className="border border-border text-center text-sm p-2">143</td>
+                 <td className="border border-border text-center text-sm p-2">109</td>
+                 <td className="border border-border text-center text-sm p-2">86</td>
+                 <td className="border border-border text-center text-sm p-2">63</td>
+                 <td className="border border-border text-center text-sm p-2">47</td>
+                 <td className="border border-border text-center text-sm p-2">36</td>
+                 <td className="border border-border text-center text-sm p-2 bg-muted">-</td>
+               </tr>
+               {/* Row 2 - EP 0.6 */}
+               <tr>
+                 <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.6</td>
+                 <td className="border border-border text-center text-sm p-2">614</td>
+                 <td className="border border-border text-center text-sm p-2">393</td>
+                 <td className="border border-border text-center text-sm p-2">273</td>
+                 <td className="border border-border text-center text-sm p-2">200</td>
+                 <td className="border border-border text-center text-sm p-2">153</td>
+                 <td className="border border-border text-center text-sm p-2">115</td>
+                 <td className="border border-border text-center text-sm p-2">84</td>
+                 <td className="border border-border text-center text-sm p-2">63</td>
+                 <td className="border border-border text-center text-sm p-2">48</td>
+                 <td className="border border-border text-center text-sm p-2">38</td>
+               </tr>
+               {/* Row 3 - EP 0.7 */}
+               <tr>
+                 <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.7</td>
+                 <td className="border border-border text-center text-sm p-2">716</td>
+                 <td className="border border-border text-center text-sm p-2">458</td>
+                 <td className="border border-border text-center text-sm p-2">318</td>
+                 <td className="border border-border text-center text-sm p-2">234</td>
+                 <td className="border border-border text-center text-sm p-2">179</td>
+                 <td className="border border-border text-center text-sm p-2">135</td>
+                 <td className="border border-border text-center text-sm p-2">98</td>
+                 <td className="border border-border text-center text-sm p-2">73</td>
+                 <td className="border border-border text-center text-sm p-2">57</td>
+                 <td className="border border-border text-center text-sm p-2 bg-muted">-</td>
+               </tr>
+                <tr>
+                    <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">1.0</td>
+                    <td colSpan={10} className="border border-border text-center text-sm p-2 font-bold">Non applicable</td>
+                </tr>
+                {/* Second Configuration - Three Point Support */}
+               {/* Row 4 - EP 0.5 */}
+               <tr>
+                 <td rowSpan={4} className="bg-accent border border-border p-4">
+                   <ToleNervureeTwoSupportsIcon className="text-white mx-auto w-32" />
+                 </td>
+                 <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.5</td>
+                 <td className="border border-border text-center text-sm p-2">570</td>
+                 <td className="border border-border text-center text-sm p-2">365</td>
+                 <td className="border border-border text-center text-sm p-2">252</td>
+                 <td className="border border-border text-center text-sm p-2">180</td>
+                 <td className="border border-border text-center text-sm p-2">141</td>
+                 <td className="border border-border text-center text-sm p-2">111</td>
+                 <td className="border border-border text-center text-sm p-2">90</td>
+                 <td className="border border-border text-center text-sm p-2">67</td>
+                 <td className="border border-border text-center text-sm p-2">51</td>
+                 <td className="border border-border text-center text-sm p-2">40</td>
+               </tr>
+               {/* Row 5 - EP 0.6 */}
+               <tr>
+                 <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.6</td>
+                 <td className="border border-border text-center text-sm p-2">768</td>
+                 <td className="border border-border text-center text-sm p-2">491</td>
+                 <td className="border border-border text-center text-sm p-2">341</td>
+                 <td className="border border-border text-center text-sm p-2">251</td>
+                 <td className="border border-border text-center text-sm p-2">192</td>
+                 <td className="border border-border text-center text-sm p-2">152</td>
+                 <td className="border border-border text-center text-sm p-2">123</td>
+                 <td className="border border-border text-center text-sm p-2">101</td>
+                 <td className="border border-border text-center text-sm p-2">81</td>
+                 <td className="border border-border text-center text-sm p-2">64</td>
+               </tr>
+               {/* Row 6 - EP 0.7 */}
+               <tr>
+                 <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">0.7</td>
+                 <td className="border border-border text-center text-sm p-2">896</td>
+                 <td className="border border-border text-center text-sm p-2">573</td>
+                 <td className="border border-border text-center text-sm p-2">398</td>
+                 <td className="border border-border text-center text-sm p-2">292</td>
+                 <td className="border border-border text-center text-sm p-2">224</td>
+                 <td className="border border-border text-center text-sm p-2">177</td>
+                 <td className="border border-border text-center text-sm p-2">143</td>
+                 <td className="border border-border text-center text-sm p-2">118</td>
+                 <td className="border border-border text-center text-sm p-2">95</td>
+                 <td className="border border-border text-center text-sm p-2">74</td>
+               </tr>
+               {/* Row 7 - EP 1.0 */}
+               <tr>
+                 <td className="border border-border text-center font-bold text-sm p-2 bg-secondary/20">1.0</td>
+                  <td colSpan={10} className="border border-border text-center text-sm p-2 font-bold">Non applicable</td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
             </div>
           </div>
   
           <div className="mb-8">
             <h3 className="font-semibold mb-3 text-lg">Caractéristiques Géométriques</h3>
-            <div className="border-2 border-border bg-secondary/10 p-4">
-              <div className="bg-white border border-border h-32 flex items-center justify-center">
-                <Image 
-                    src="https://i.imghippo.com/files/tqXJd1721663116.png" 
-                    alt="Technical Drawing"
-                    width={600} 
-                    height={100}
-                    className="object-contain"
-                    data-ai-hint="technical drawing"
-                />
-              </div>
+            <div className="space-y-4">
+                <div className="border-2 border-border bg-secondary/10 p-4">
+                <div className="bg-white border border-border p-4 flex items-center justify-center">
+                    <Image 
+                        src="https://i.imghippo.com/files/tqXJd1721663116.png" 
+                        alt="Technical Drawing 1"
+                        width={800} 
+                        height={200}
+                        className="object-contain w-full h-auto"
+                        data-ai-hint="technical drawing"
+                    />
+                </div>
+                </div>
+                <div className="border-2 border-border bg-secondary/10 p-4">
+                <div className="bg-white border border-border p-4 flex items-center justify-center">
+                    <Image 
+                        src="https://i.imghippo.com/files/OrpSg1721669482.png" 
+                        alt="Technical Drawing 2"
+                        width={800} 
+                        height={250}
+                        className="object-contain w-full h-auto"
+                        data-ai-hint="technical drawing"
+                    />
+                </div>
+                </div>
             </div>
           </div>
         </div>
