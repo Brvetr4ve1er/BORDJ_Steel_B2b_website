@@ -24,6 +24,7 @@ import FinitionsProduct from './product-variants/finitions-product';
 
 
 const ProductImageGallery = dynamic(() => import('./product-image-gallery').then(mod => mod.ProductImageGallery));
+const HoverImageGallery = dynamic(() => import('./ui/hover-image-gallery').then(mod => mod.HoverImageGallery));
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -193,12 +194,16 @@ export function SandwichPanelsPage() {
           
           <div className="grid lg:grid-cols-3 gap-x-8 gap-y-16">
               <div className="lg:col-span-1 h-max space-y-8">
-                {activeProduct.galleryImages.slice(0, 3).map((image, index) => (
-                  <ProductImageGallery 
-                      key={`${activeProductKey}-${index}`}
-                      mainImage={image}
-                  />
-                ))}
+                 {activeProduct.galleryImages.length > 1 ? (
+                    <HoverImageGallery images={activeProduct.galleryImages.map(img => img.src)} />
+                 ) : (
+                    activeProduct.galleryImages.slice(0, 3).map((image, index) => (
+                        <ProductImageGallery 
+                            key={`${activeProductKey}-${index}`}
+                            mainImage={image}
+                        />
+                    ))
+                 )}
               </div>
 
               <div className="lg:col-span-2">

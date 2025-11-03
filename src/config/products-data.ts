@@ -60,7 +60,7 @@ export const productData = {
             },
             {
               type: "Face intérieure",
-              material: "polyester pour la face intérieure : 7µm"
+              material: "polyester pour la face intérieure : 7 µm"
             }
           ]
         },
@@ -602,9 +602,9 @@ export const productData = {
       aiHint: 'ribbed steel sheet',
     },
     galleryImages: [
-      { src: '/media/tole-nervuree/tole-main.png', alt: 'Tôle nervurée', aiHint: 'ribbed steel sheet' },
-      { src: 'https://i.pinimg.com/736x/c9/2f/57/c92f57c83c2c109353907c130386445b.jpg', alt: 'Ribbed metal sheets stacked', aiHint: 'metal sheets' },
-      { src: 'https://i.pinimg.com/736x/5f/88/35/5f883582451559b3433aef84cf132b49.jpg', alt: 'Architectural detail of ribbed metal', aiHint: 'architectural detail' },
+      { src: 'https://i.pinimg.com/736x/89/36/d0/8936d00071d42e9079330a38d68f11ea.jpg', alt: 'Tôle nervurée', aiHint: 'ribbed steel sheet' },
+      { src: 'https://i.pinimg.com/736x/7b/d8/0d/7bd80d24cd588606ec1bb880432ce526.jpg', alt: 'Ribbed metal sheets stacked', aiHint: 'metal sheets' },
+      { src: 'https://i.pinimg.com/736x/dd/f2/2e/ddf22eb450691c04b8be2f5dd21cbdaa.jpg', alt: 'Architectural detail of ribbed metal', aiHint: 'architectural detail' },
     ],
     features: {
         utilisation: [
@@ -855,7 +855,3 @@ export const productData = {
     }
   },
 };
-
-    
-
-    
