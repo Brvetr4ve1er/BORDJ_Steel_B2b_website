@@ -101,14 +101,14 @@ const ProductDetails = ({ product }: { product: any }) => {
                 <CardTitle className="text-4xl font-bold">{product.title || product.documentMetadata?.productCategory || product.documentMetadata?.productType}</CardTitle>
             </CardHeader>
             <CardContent className="p-8 bg-background">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div className="md:col-span-2">
-                        {renderProduct()}
-                    </div>
-                    <div className="md:col-span-1 space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div className="md:col-span-1 flex flex-col justify-between space-y-8">
                         {gallery1.length > 0 && <HoverImageGallery images={gallery1.map((img: ProductImage) => img.src)} />}
                         {gallery2.length > 0 && <HoverImageGallery images={gallery2.map((img: ProductImage) => img.src)} />}
                         {gallery3.length > 0 && <HoverImageGallery images={gallery3.map((img: ProductImage) => img.src)} />}
+                    </div>
+                    <div className="md:col-span-2">
+                        {renderProduct()}
                     </div>
                 </div>
             </CardContent>
