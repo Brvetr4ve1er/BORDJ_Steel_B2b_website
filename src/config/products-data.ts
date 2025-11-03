@@ -602,9 +602,10 @@ export const productData = {
       aiHint: 'ribbed steel sheet',
     },
     galleryImages: [
-      { src: 'https://i.pinimg.com/736x/89/36/d0/8936d00071d42e9079330a38d68f11ea.jpg', alt: 'Tôle nervurée', aiHint: 'ribbed steel sheet' },
-      { src: 'https://i.pinimg.com/736x/7b/d8/0d/7bd80d24cd588606ec1bb880432ce526.jpg', alt: 'Ribbed metal sheets stacked', aiHint: 'metal sheets' },
-      { src: 'https://i.pinimg.com/736x/dd/f2/2e/ddf22eb450691c04b8be2f5dd21cbdaa.jpg', alt: 'Architectural detail of ribbed metal', aiHint: 'architectural detail' },
+      { src: 'https://i.pinimg.com/736x/dd/f2/2e/ddf22eb450691c04b8be2f5dd21cbdaa.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
+      { src: 'https://i.pinimg.com/736x/bc/d7/68/bcd7680b25db47d125f6087409effe4b.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
+      { src: 'https://i.pinimg.com/736x/14/f4/3d/14f43d2f6b0012aeccf4ce2b6702d3aa.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' },
+      { src: 'https://i.pinimg.com/736x/7b/d8/0d/7bd80d24cd588606ec1bb880432ce526.jpg', alt: 'Tôle nervurée 4', aiHint: 'stacked sheets' },
     ],
     features: {
         utilisation: [
