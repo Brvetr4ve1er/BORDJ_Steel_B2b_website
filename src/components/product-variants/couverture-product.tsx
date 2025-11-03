@@ -257,7 +257,7 @@ export default function CouvertureProduct({ product }: { product: any }) {
                <div className="border-2 border-border bg-secondary/10 p-4">
                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                    <Image 
-                    src="https://i.pinimg.com/736x/8f/a9/a8/8fa9a8599421f15392e698889a799c9c.jpg" 
+                    src="https://i.ibb.co/W4P3mLt2/panneaux-couverture.png" 
                     alt="Schéma technique"
                     width={600}
                     height={200}
@@ -277,4 +277,6 @@ export default function CouvertureProduct({ product }: { product: any }) {
   };
 
     
+    
+
     
