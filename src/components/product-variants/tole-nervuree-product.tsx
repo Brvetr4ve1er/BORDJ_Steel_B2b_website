@@ -119,13 +119,13 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
             <Table>
                 <TableHeader>
                     <TableRow className="bg-accent text-accent-foreground">
-                        <TableHead className="text-accent-foreground align-middle text-center bg-white" rowSpan={3}>
-                            <OneSupportIcon className="h-16 mx-auto" />
-                        </TableHead>
-                        <TableHead className="text-accent-foreground" rowSpan={2}>EP(mm)</TableHead>
+                        <TableHead className="bg-white border-r"></TableHead>
+                        <TableHead className="text-accent-foreground align-middle text-center">EP<br/>(mm)</TableHead>
                         <TableHead className="text-accent-foreground text-center" colSpan={10}>Portée (m)</TableHead>
                     </TableRow>
                     <TableRow className="bg-accent text-accent-foreground">
+                        <TableHead className="bg-white border-r"></TableHead>
+                        <TableHead></TableHead>
                         <TableHead className="text-accent-foreground text-center">1.00</TableHead>
                         <TableHead className="text-accent-foreground text-center">1.25</TableHead>
                         <TableHead className="text-accent-foreground text-center">1.50</TableHead>
@@ -140,7 +140,10 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                 </TableHeader>
                 <TableBody>
                 <TableRow>
-                    <TableCell className="text-center bg-secondary/20">0.5</TableCell>
+                    <TableCell rowSpan={4} className="bg-accent text-white align-middle p-4 border-b">
+                        <OneSupportIcon className="h-16 mx-auto" />
+                    </TableCell>
+                    <TableCell className="text-center font-bold bg-secondary/20">0.5</TableCell>
                     <TableCell className="text-center bg-secondary/20">439</TableCell>
                     <TableCell className="text-center bg-secondary/20">281</TableCell>
                     <TableCell className="text-center bg-secondary/20">185</TableCell>
@@ -153,7 +156,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                     <TableCell className="text-center bg-secondary/20">-</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell className="text-center">0.6</TableCell>
+                    <TableCell className="text-center font-bold">0.6</TableCell>
                     <TableCell className="text-center">614</TableCell>
                     <TableCell className="text-center">393</TableCell>
                     <TableCell className="text-center">273</TableCell>
@@ -166,7 +169,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                     <TableCell className="text-center">38</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell className="text-center bg-secondary/20">0.7</TableCell>
+                    <TableCell className="text-center font-bold bg-secondary/20">0.7</TableCell>
                     <TableCell className="text-center bg-secondary/20">716</TableCell>
                     <TableCell className="text-center bg-secondary/20">458</TableCell>
                     <TableCell className="text-center bg-secondary/20">318</TableCell>
@@ -183,10 +186,10 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                     <TableCell className="text-center font-bold" colSpan={10}>Non applicable</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell className="font-semibold bg-white align-middle p-4" rowSpan={4}>
+                    <TableCell rowSpan={4} className="bg-accent text-white align-middle p-4 border-y">
                         <TwoSupportsIcon className="h-16 mx-auto" />
                     </TableCell>
-                    <TableCell className="text-center bg-secondary/20">0.5</TableCell>
+                    <TableCell className="text-center font-bold bg-secondary/20">0.5</TableCell>
                     <TableCell className="text-center bg-secondary/20">570</TableCell>
                     <TableCell className="text-center bg-secondary/20">365</TableCell>
                     <TableCell className="text-center bg-secondary/20">252</TableCell>
@@ -199,7 +202,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                     <TableCell className="text-center bg-secondary/20">40</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell className="text-center">0.6</TableCell>
+                    <TableCell className="text-center font-bold">0.6</TableCell>
                     <TableCell className="text-center">768</TableCell>
                     <TableCell className="text-center">491</TableCell>
                     <TableCell className="text-center">341</TableCell>
@@ -212,7 +215,7 @@ export default function ToleNervureeProduct({ product }: { product: any }) {
                     <TableCell className="text-center">64</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell className="text-center bg-secondary/20">0.7</TableCell>
+                    <TableCell className="text-center font-bold bg-secondary/20">0.7</TableCell>
                     <TableCell className="text-center bg-secondary/20">896</TableCell>
                     <TableCell className="text-center bg-secondary/20">573</TableCell>
                     <TableCell className="text-center bg-secondary/20">398</TableCell>
