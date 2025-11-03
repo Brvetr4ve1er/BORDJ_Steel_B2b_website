@@ -257,7 +257,7 @@ export default function CouvertureProduct({ product }: { product: any }) {
                <div className="border-2 border-border bg-secondary/10 p-4">
                  <div className="bg-white border border-border p-4 flex items-center justify-center">
                    <Image 
-                    src="https://i.ibb.co/ZzkydPSY/couverture.png" 
+                    src="https://i.pinimg.com/736x/76/d6/80/76d680d6fdc50e1f996f5fe8ccc5029d.jpg" 
                     alt="Schéma technique"
                     width={600}
                     height={200}
