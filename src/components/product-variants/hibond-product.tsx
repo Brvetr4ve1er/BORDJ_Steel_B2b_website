@@ -1,139 +1,209 @@
 
 import React from 'react';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-export default function HibondProduct({ product }: { product: any }) {
-    if (!product || !product.features) return <p>Données produit non disponibles.</p>;
+const HiBondProduct = () => {
+  return (
+    <div className="p-8 bg-white min-h-screen">
+      <div className="max-w-6xl mx-auto">
+        {/* Title Section */}
+        <div className="mb-6">
+          <h1 className="text-red-700 text-2xl font-bold mb-4">
+            PLANCHER COLLABORANT "HI-BOND 77"
+          </h1>
+          <p className="text-black font-bold mb-4">
+            Application conseillée : <span className="font-normal">Coffrage et armature de dalles béton</span>
+          </p>
+        </div>
 
-    const { features, tables } = product;
+        {/* Benefits Section */}
+        <div className="mb-6">
+          <h2 className="text-black font-bold text-lg mb-2">Les avantages de l'utilisation</h2>
+          <ul className="list-none ml-0 space-y-1">
+            <li className="text-black"><span className="font-bold">•</span> Rapidité de pose.</li>
+            <li className="text-black"><span className="font-bold">•</span> Participe à la structure de la dalle béton.</li>
+            <li className="text-black"><span className="font-bold">•</span> Idéal en construction et rénovation.</li>
+          </ul>
+        </div>
 
-    return (
-        <article className="max-w-6xl mx-auto bg-white text-gray-900 font-sans">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                {/* Left Column */}
-                <section className="lg:col-span-7 space-y-4">
-                    <h2 className="text-lg font-bold text-primary">{product.title}</h2>
-                    
-                    <div>
-                        <h3 className="font-semibold">Avantages</h3>
-                        <ul className="list-disc ml-5 mt-2 text-sm space-y-1">
-                            {features.avantages.map((item: string, i: number) => <li key={i}>{item}</li>)}
-                        </ul>
-                    </div>
+        {/* First Table - Technical Specifications */}
+        <div className="mb-8 overflow-x-auto">
+          <table className="w-full border-collapse border border-gray-400">
+            <thead>
+              <tr className="bg-red-700 text-white">
+                <th className="border border-white p-2 text-left text-sm font-bold">Type</th>
+                <th className="border border-white p-2 text-center text-sm font-bold">Longueur (ml)</th>
+                <th className="border border-white p-2 text-center text-sm font-bold">
+                  Largeur<br/>standard (mm)
+                </th>
+                <th className="border border-white p-2 text-center text-sm font-bold">Epaisseurs (mm)</th>
+                <th className="border border-white p-2 text-center text-sm font-bold">Poids (kg/m2)</th>
+                <th className="border border-white p-2 text-center text-sm font-bold">
+                  Système de<br/>revêtement
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* Row 1 - Galvanisée */}
+              <tr>
+                <td rowSpan={3} className="bg-red-700 text-white border border-white p-2 text-sm font-bold align-top">
+                  Plancher<br/>collaborant<br/>HI-BOND 77<br/>Galvanisée
+                </td>
+                <td rowSpan={3} className="bg-gray-300 border border-gray-400 p-2 text-center text-sm font-bold align-middle">
+                  15000
+                </td>
+                <td rowSpan={3} className="bg-gray-300 border border-gray-400 p-2 text-center text-sm font-bold align-middle">
+                  732
+                </td>
+                <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">0.70</td>
+                <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">9.17</td>
+                <td rowSpan={3} className="bg-gray-300 border border-gray-400 p-2 text-center text-sm font-bold align-middle">
+                  Galvanisée
+                </td>
+              </tr>
+              <tr>
+                <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">1.00</td>
+                <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">13.10</td>
+              </tr>
+              <tr>
+                <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">1.50</td>
+                <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">19.66</td>
+              </tr>
+                             
+              {/* Row 2 - Pré laqué */}
+              <tr>
+                <td rowSpan={3} className="bg-red-700 text-white border border-white p-2 text-sm font-bold align-top">
+                  plancher<br/>collaborant<br/>HI-BOND 77<br/>Pré laqué
+                </td>
+                <td rowSpan={3} className="bg-gray-300 border border-gray-400 p-2 text-center text-sm font-bold align-middle">
+                  15000
+                </td>
+                <td rowSpan={3} className="bg-gray-300 border border-gray-400 p-2 text-center text-sm font-bold align-middle">
+                  732
+                </td>
+                <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">0.70</td>
+                <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">9.17</td>
+                <td rowSpan={3} className="bg-gray-300 border border-gray-400 p-2 text-center text-sm font-bold align-middle">
+                  pré laqué
+                </td>
+              </tr>
+              <tr>
+                <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">1.00</td>
+                <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">13.10</td>
+              </tr>
+              <tr>
+                <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">1.50</td>
+                <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">19.66</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-                    <div>
-                        <h3 className="font-semibold mt-3">Application</h3>
-                        <p className="text-sm mt-1">{features.application}</p>
-                    </div>
+        {/* Coating Section */}
+        <div className="mb-8">
+          <h2 className="text-black font-bold text-base mb-2">Revêtement :</h2>
+          <p className="text-black text-sm mb-1">
+            Sans spécifications particulière les profils nervurés sont livrés en qualité standard
+          </p>
+          <ul className="list-none ml-0 space-y-1 text-sm">
+            <li className="text-black"><span className="font-bold">•</span> Galvanisé seul qualité <span className="font-bold">Z200</span></li>
+            <li className="text-black"><span className="font-bold">•</span> Galvanisé pré-laqué, face extérieure finition laqué polyester ép. <span className="font-bold">25μ</span></li>
+          </ul>
+          <h3 className="text-black font-bold text-base mt-3 mb-1">Réaction au feu :</h3>
+          <p className="text-black text-sm">
+            Classement de réaction au feu MO
+          </p>
+        </div>
 
-                    <div>
-                        <h3 className="font-semibold mt-3">Revêtement</h3>
-                        <p className="text-sm mt-1 whitespace-pre-line">{features.revetement}</p>
-                    </div>
-                    
-                    <div>
-                        <h3 className="font-semibold mt-3">Réaction au feu</h3>
-                        <p className="text-sm mt-1">{features.reactionAuFeu}</p>
-                    </div>
+        {/* Second Table Title */}
+        <div className="mb-4">
+          <h2 className="text-gray-600 font-bold text-lg">PROPRIÉTÉS DE LA TÔLE HI-BOND 77</h2>
+        </div>
 
-                     {tables.dimensionnement?.rows?.length > 0 && (
-                        <div className="mt-4 p-4 border rounded">
-                            <h4 className="font-semibold">{tables.dimensionnement.title}</h4>
-                             <div className="overflow-auto mt-2">
-                                <Table>
-                                    <TableHeader>
-                                        <TableRow>
-                                            {tables.dimensionnement.headers.map((h: string) => <TableHead key={h}>{h}</TableHead>)}
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        {tables.dimensionnement.rows.map((row: any, i: number) => (
-                                            row.epaisseurs && Array.isArray(row.epaisseurs) && row.epaisseurs.map((epaisseur: any, j: number) => (
-                                                <TableRow key={`${i}-${j}`}>
-                                                    {j === 0 && <TableCell rowSpan={row.epaisseurs.length} className="align-middle">{row['type']}</TableCell>}
-                                                    {j === 0 && <TableCell rowSpan={row.epaisseurs.length} className="align-middle text-center">{row['longueur']}</TableCell>}
-                                                    {j === 0 && <TableCell rowSpan={row.epaisseurs.length} className="align-middle text-center">{row['largeur_standard']}</TableCell>}
-                                                    <TableCell className="text-center">{epaisseur['valeur_mm']}</TableCell>
-                                                    <TableCell className="text-center">{epaisseur['poids_kg_m2']}</TableCell>
-                                                    {j === 0 && <TableCell rowSpan={row.epaisseurs.length} className="align-middle">{row['revetement_systeme']}</TableCell>}
-                                                </TableRow>
-                                            ))
-                                        ))}
-                                    </TableBody>
-                                </Table>
-                            </div>
-                        </div>
-                    )}
-                </section>
+        {/* Second Table - Properties */}
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse border border-gray-400 text-xs">
+            <thead>
+              <tr>
+                <th rowSpan={2} className="bg-red-700 text-white border border-white p-2 font-bold align-middle">
+                  EP
+                </th>
+                <th rowSpan={2} className="bg-red-700 text-white border border-white p-2 font-bold align-middle">
+                  Poids<br/>kg/m
+                </th>
+                <th colSpan={4} className="bg-red-700 text-white border border-white p-2 font-bold">
+                  Haut de la tôle en compression
+                </th>
+                <th colSpan={4} className="bg-red-700 text-white border border-white p-2 font-bold">
+                  Bas de la tôle en compression
+                </th>
+                <th colSpan={2} className="bg-red-700 text-white border border-white p-2 font-bold">
+                  Cisaillement<br/>voilement
+                </th>
+              </tr>
+              <tr>
+                <th className="bg-red-700 text-white border border-white p-1 font-bold text-xs">Lx (Cm4)</th>
+                <th className="bg-red-700 text-white border border-white p-1 font-bold text-xs">Zx-top (Cm3)</th>
+                <th className="bg-red-700 text-white border border-white p-1 font-bold text-xs">Zx-bot (Cm3)</th>
+                <th className="bg-red-700 text-white border border-white p-1 font-bold text-xs">Ma (Kn.m)</th>
+                <th className="bg-red-700 text-white border border-white p-1 font-bold text-xs">Lx (Cm4)</th>
+                <th className="bg-red-700 text-white border border-white p-1 font-bold text-xs">Zx-top (Cm3)</th>
+                <th className="bg-red-700 text-white border border-white p-1 font-bold text-xs">Zx-bot (Cm3)</th>
+                <th className="bg-red-700 text-white border border-white p-1 font-bold text-xs">Ma (Kn.m)</th>
+                <th className="bg-red-700 text-white border border-white p-1 font-bold text-xs">Va (KN)</th>
+                <th className="bg-red-700 text-white border border-white p-1 font-bold text-xs">Pa (KN)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center font-bold">0.70</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">6.87</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">83.27</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">14.34</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">18.87</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">2.32</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">83.27</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">21.16</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">16.56</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">2.68</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">22.18</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">11.28</td>
+              </tr>
+              <tr>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center font-bold">1.00</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">9.81</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">119.0</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">23.34</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">27.87</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">3.77</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">119.0</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">31.03</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">26.74</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">4.32</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">51.37</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">21.83</td>
+              </tr>
+              <tr>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center font-bold">1.50</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">14.72</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">178.0</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">41.11</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">43.20</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">6.65</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">178.0</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">47.27</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">43.73</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">7.07</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">91.16</td>
+                <td className="bg-gray-100 border border-gray-400 p-2 text-center">45.20</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-                {/* Right Column */}
-                <aside className="lg:col-span-5 space-y-4">
-                   {tables.proprietes?.rows?.length > 0 && (
-                        <div className="p-4 border rounded">
-                            <h4 className="font-semibold">{tables.proprietes.title}</h4>
-                             <div className="overflow-auto mt-2">
-                                <Table>
-                                    <TableHeader>
-                                        <TableRow>
-                                        {tables.proprietes.headers.map((h: string, i: number) => (
-                                            <TableHead key={i} colSpan={tables.proprietes.subheaders[h]?.length || 1} className="text-center">{h}</TableHead>
-                                        ))}
-                                        </TableRow>
-                                        <TableRow>
-                                            {Object.values(tables.proprietes.subheaders).flat().map((sh: any, i: number) => (
-                                                <TableHead key={i} className="text-center">{sh}</TableHead>
-                                            ))}
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                    {tables.proprietes.rows.map((row: any, i: number) => (
-                                        <TableRow key={i}>
-                                            <TableCell className="text-center">{row.epaisseur}</TableCell>
-                                            <TableCell className="text-center">{row.poids}</TableCell>
-                                            {Object.keys(row.haut_compression).map(key => <TableCell key={key} className="text-center">{row.haut_compression[key]}</TableCell>)}
-                                            {Object.keys(row.bas_compression).map(key => <TableCell key={key} className="text-center">{row.bas_compression[key]}</TableCell>)}
-                                            {Object.keys(row.cisaillement_voilement).map(key => <TableCell key={key} className="text-center">{row.cisaillement_voilement[key]}</TableCell>)}
-                                        </TableRow>
-                                    ))}
-                                    </TableBody>
-                                </Table>
-                            </div>
-                        </div>
-                    )}
+export default HiBondProduct;
 
-                    {tables.chargesPortees?.rows?.length > 0 && (
-                        <div className="p-4 border rounded">
-                            <h4 className="font-semibold">{tables.chargesPortees.table_title}</h4>
-                             <div className="overflow-auto mt-2">
-                                <Table>
-                                    <TableHeader>
-                                       <TableRow>
-                                           <TableHead>Ép (mm)</TableHead>
-                                           <TableHead>Nb. Espacement</TableHead>
-                                           <TableHead>Cas</TableHead>
-                                           {(tables.chargesPortees.espacements_header || []).map((h: number) => (
-                                               <TableHead key={h} className="text-center">{h.toFixed(2)}</TableHead>
-                                           ))}
-                                       </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                    {tables.chargesPortees.rows.map((row: any, i: number) => (
-                                        <TableRow key={i}>
-                                            <TableCell>{row.epaisseur_mm}</TableCell>
-                                            <TableCell>{row.nombre_espacement}</TableCell>
-                                            <TableCell>{row.cas}</TableCell>
-                                            {row.valeurs.map((val: number, j: number) => (
-                                                <TableCell key={j} className="text-center">{val.toFixed(2)}</TableCell>
-                                            ))}
-                                        </TableRow>
-                                    ))}
-                                    </TableBody>
-                                </Table>
-                            </div>
-                        </div>
-                    )}
-                </aside>
-            </div>
-        </article>
-    );
-}
+    
