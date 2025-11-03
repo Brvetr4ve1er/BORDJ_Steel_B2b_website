@@ -346,12 +346,12 @@ export const productData = {
       aiHint: 'metal sheets',
     },
     galleryImages: [
-      { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
-      { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
-      { src: 'https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
-      { src: 'https://i.pinimg.com/736x/76/d6/80/76d680d6fdc50e1f996f5fe8ccc5029d.jpg', alt: 'Hi-Bond 77 Decking Profile', aiHint: 'decking profile' },
-      { src: 'https://i.pinimg.com/736x/54/07/5f/54075f273eeb525e1b437731729f78d9.jpg', alt: 'Hi-Bond 77 Installation', aiHint: 'decking installation' },
-      { src: 'https://i.pinimg.com/736x/89/36/d0/8936d00071d42e9079330a38d68f11ea.jpg', alt: 'Hi-Bond 77 Finished Floor', aiHint: 'composite floor' },
+      { src: 'https://i.pinimg.com/736x/74/23/ad/7423ad08020ee23291bdfb37d81af2b7.jpg', alt: 'Panneaux sandwichs de couverture 1', aiHint: 'roofing sandwich panels' },
+      { src: 'https://i.pinimg.com/736x/15/b2/92/15b29294e02d11486c212e6fd345dd45.jpg', alt: 'Panneaux sandwichs de couverture 2', aiHint: 'roofing panels implementation' },
+      { src: 'https://i.pinimg.com/736x/62/77/fe/6277feb19192dabb46590e94f650efbe.jpg', alt: 'Panneaux sandwichs de couverture 3', aiHint: 'roofing panels building' },
+      { src: 'https://i.pinimg.com/736x/5e/d7/20/5ed7206a4649ac226b9e0aabab6d2541.jpg', alt: 'Panneaux sandwichs de couverture 4', aiHint: 'decking profile' },
+      { src: 'https://i.pinimg.com/736x/fb/26/dd/fb26dd2267e9e9c6c85a270d0dc48fa1.jpg', alt: 'Panneaux sandwichs de couverture 5', aiHint: 'decking installation' },
+      { src: 'https://i.pinimg.com/1200x/7a/0b/f0/7a0bf09ee8fa799dc3e5c365c92ca95c.jpg', alt: 'Panneaux sandwichs de couverture 6', aiHint: 'composite floor' },
       { src: 'https://i.pinimg.com/736x/dd/f2/2e/ddf22eb450691c04b8be2f5dd21cbdaa.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
       { src: 'https://i.pinimg.com/736x/bc/d7/68/bcd7680b25db47d125f6087409effe4b.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
       { src: 'https://i.pinimg.com/736x/14/f4/3d/14f43d2f6b0012aeccf4ce2b6702d3aa.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' }
@@ -622,7 +622,7 @@ export const productData = {
     galleryImages: [
       { src: 'https://i.pinimg.com/736x/74/23/ad/7423ad08020ee23291bdfb37d81af2b7.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
       { src: 'https://i.pinimg.com/736x/15/b2/92/15b29294e02d11486c212e6fd345dd45.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
-      { src: 'https://i.pinimg.com/736x/74/23/ad/7423ad08020ee23291bdfb37d81af2b7.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' }
+      { src: 'https://i.pinimg.com/736x/74/23/ad/7423ad08020ee23291bdfb37d81af2b7.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
     ],
     features: {
         utilisation: [
