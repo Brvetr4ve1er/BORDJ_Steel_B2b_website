@@ -14,7 +14,7 @@ export const productData = {
         subsection_utilisation: {
           heading: "Utilisation",
           items: [
-            "Bâtiments industriels et modulaires",
+          "Bâtiments industriels et modulaires",
             "Ateliers de production",
             "Entrepôts",
             "Centres commerciaux",
@@ -349,6 +349,12 @@ export const productData = {
       { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
       { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
       { src: 'https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
+      { src: 'https://i.pinimg.com/736x/76/d6/80/76d680d6fdc50e1f996f5fe8ccc5029d.jpg', alt: 'Hi-Bond 77 Decking Profile', aiHint: 'decking profile' },
+      { src: 'https://i.pinimg.com/736x/54/07/5f/54075f273eeb525e1b437731729f78d9.jpg', alt: 'Hi-Bond 77 Installation', aiHint: 'decking installation' },
+      { src: 'https://i.pinimg.com/736x/89/36/d0/8936d00071d42e9079330a38d68f11ea.jpg', alt: 'Hi-Bond 77 Finished Floor', aiHint: 'composite floor' },
+      { src: 'https://i.pinimg.com/736x/dd/f2/2e/ddf22eb450691c04b8be2f5dd21cbdaa.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
+      { src: 'https://i.pinimg.com/736x/bc/d7/68/bcd7680b25db47d125f6087409effe4b.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
+      { src: 'https://i.pinimg.com/736x/14/f4/3d/14f43d2f6b0012aeccf4ce2b6702d3aa.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' }
     ]
   },
   bardage: {
@@ -489,9 +495,15 @@ export const productData = {
       }
     },
     galleryImages: [
-      { src: '/media/bardage/bardage-main.png', alt: 'Panneaux sandwichs de bardage', aiHint: 'cladding sandwich panels' },
-       { src: 'https://i.pinimg.com/736x/8f/f4/7e/8ff47e67584c31185b37265551943445.jpg', alt: 'Bardage panel detail', aiHint: 'building facade' },
+      { src: 'https://i.pinimg.com/736x/8f/f4/7e/8ff47e67584c31185b37265551943445.jpg', alt: 'Bardage panel detail', aiHint: 'building facade' },
       { src: 'https://i.pinimg.com/736x/a2/2a/7c/a22a7c8e9b62f8350f38010375a7c295.jpg', alt: 'Industrial building with sandwich panels', aiHint: 'industrial building' },
+      { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
+      { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
+      { src: 'https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
+      { src: 'https://i.pinimg.com/736x/76/d6/80/76d680d6fdc50e1f996f5fe8ccc5029d.jpg', alt: 'Hi-Bond 77 Decking Profile', aiHint: 'decking profile' },
+      { src: 'https://i.pinimg.com/736x/54/07/5f/54075f273eeb525e1b437731729f78d9.jpg', alt: 'Hi-Bond 77 Installation', aiHint: 'decking installation' },
+      { src: 'https://i.pinimg.com/736x/89/36/d0/8936d00071d42e9079330a38d68f11ea.jpg', alt: 'Hi-Bond 77 Finished Floor', aiHint: 'composite floor' },
+      { src: 'https://i.pinimg.com/736x/dd/f2/2e/ddf22eb450691c04b8be2f5dd21cbdaa.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' }
     ]
   },
   frigorifique: {
@@ -502,9 +514,15 @@ export const productData = {
         aiHint: 'refrigeration panels',
     },
     galleryImages: [
-      { src: '/media/frigorifique/frigorifique-main.png', alt: 'Panneaux sandwichs frigorifiques', aiHint: 'refrigeration sandwich panels' },
       { src: 'https://i.pinimg.com/736x/07/7a/84/077a84358a9015c9e2b49c7173268b84.jpg', alt: 'Cold room panels', aiHint: 'cold storage' },
       { src: 'https://i.pinimg.com/736x/1a/7c/7b/1a7c7b80e466b0d911b3b27c3f3a5f82.jpg', alt: 'Refrigerated warehouse construction', aiHint: 'warehouse construction' },
+      { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
+      { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
+      { src: 'https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
+      { src: 'https://i.pinimg.com/736x/76/d6/80/76d680d6fdc50e1f996f5fe8ccc5029d.jpg', alt: 'Hi-Bond 77 Decking Profile', aiHint: 'decking profile' },
+      { src: 'https://i.pinimg.com/736x/54/07/5f/54075f273eeb525e1b437731729f78d9.jpg', alt: 'Hi-Bond 77 Installation', aiHint: 'decking installation' },
+      { src: 'https://i.pinimg.com/736x/89/36/d0/8936d00071d42e9079330a38d68f11ea.jpg', alt: 'Hi-Bond 77 Finished Floor', aiHint: 'composite floor' },
+      { src: 'https://i.pinimg.com/736x/dd/f2/2e/ddf22eb450691c04b8be2f5dd21cbdaa.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' }
     ],
     features: {
         utilisation: [
@@ -606,6 +624,11 @@ export const productData = {
       { src: 'https://i.pinimg.com/736x/bc/d7/68/bcd7680b25db47d125f6087409effe4b.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
       { src: 'https://i.pinimg.com/736x/14/f4/3d/14f43d2f6b0012aeccf4ce2b6702d3aa.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' },
       { src: 'https://i.pinimg.com/736x/7b/d8/0d/7bd80d24cd588606ec1bb880432ce526.jpg', alt: 'Tôle nervurée 4', aiHint: 'stacked sheets' },
+      { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
+      { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
+      { src: 'https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
+      { src: 'https://i.pinimg.com/736x/76/d6/80/76d680d6fdc50e1f996f5fe8ccc5029d.jpg', alt: 'Hi-Bond 77 Decking Profile', aiHint: 'decking profile' },
+      { src: 'https://i.pinimg.com/736x/54/07/5f/54075f273eeb525e1b437731729f78d9.jpg', alt: 'Hi-Bond 77 Installation', aiHint: 'decking installation' }
     ],
     features: {
         utilisation: [
@@ -717,6 +740,12 @@ export const productData = {
         { src: 'https://i.pinimg.com/736x/76/d6/80/76d680d6fdc50e1f996f5fe8ccc5029d.jpg', alt: 'Hi-Bond 77 Decking Profile', aiHint: 'decking profile' },
         { src: 'https://i.pinimg.com/736x/54/07/5f/54075f273eeb525e1b437731729f78d9.jpg', alt: 'Hi-Bond 77 Installation', aiHint: 'decking installation' },
         { src: 'https://i.pinimg.com/736x/89/36/d0/8936d00071d42e9079330a38d68f11ea.jpg', alt: 'Hi-Bond 77 Finished Floor', aiHint: 'composite floor' },
+        { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
+      { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
+      { src: 'https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
+      { src: 'https://i.pinimg.com/736x/dd/f2/2e/ddf22eb450691c04b8be2f5dd21cbdaa.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
+      { src: 'https://i.pinimg.com/736x/bc/d7/68/bcd7680b25db47d125f6087409effe4b.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
+      { src: 'https://i.pinimg.com/736x/14/f4/3d/14f43d2f6b0012aeccf4ce2b6702d3aa.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' }
     ],
     features: {
         utilisation: [],
@@ -825,9 +854,15 @@ export const productData = {
     subtitle: '',
     image: { src: '', aiHint: '' },
     galleryImages: [
-      { src: '/media/finitions/finitions-main.png', alt: 'Pièces de finition', aiHint: 'finishing parts' },
-      { src: 'https://i.pinimg.com/736x/7d/5a/33/7d5a335017e88383c6c192d192131558.jpg', alt: 'Metal flashing and trim', aiHint: 'metal trim' },
-      { src: 'https://i.pinimg.com/736x/fe/a2/12/fea212558a261239c0e5a5a17689944e.jpg', alt: 'Custom metal fabrication', aiHint: 'metal fabrication' },
+      { src: 'https://i.pinimg.com/736x/28/14/75/28147544dd82d0c459d85954e48f1b83.jpg', alt: 'Bande De Rive Sur Mur', aiHint: 'wall edge band' },
+      { src: 'https://i.pinimg.com/736x/52/70/4c/52704c1cb61fbec9f1ab6c2d24ef6b45.jpg', alt: 'Angle Droit', aiHint: 'right angle' },
+      { src: 'https://i.pinimg.com/474x/7c/46/24/7c46241638e5e1c9cbe15dea25be9613.jpg', alt: 'Bavette Rejet D\'eau', aiHint: 'water drip flashing' },
+      { src: 'https://i.pinimg.com/736x/dd/f2/2e/ddf22eb450691c04b8be2f5dd21cbdaa.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
+      { src: 'https://i.pinimg.com/736x/bc/d7/68/bcd7680b25db47d125f6087409effe4b.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
+      { src: 'https://i.pinimg.com/736x/14/f4/3d/14f43d2f6b0012aeccf4ce2b6702d3aa.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' },
+      { src: 'https://i.pinimg.com/736x/7b/d8/0d/7bd80d24cd588606ec1bb880432ce526.jpg', alt: 'Tôle nervurée 4', aiHint: 'stacked sheets' },
+      { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
+      { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' }
     ],
     features: {
         utilisation: [],

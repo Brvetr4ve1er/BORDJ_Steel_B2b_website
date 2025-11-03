@@ -22,8 +22,7 @@ import ToleNervureeProduct from './product-variants/tole-nervuree-product';
 import HibondProduct from './product-variants/hibond-product';
 import FinitionsProduct from './product-variants/finitions-product';
 
-
-const ProductImageGallery = dynamic(() => import('./product-image-gallery').then(mod => mod.ProductImageGallery));
+const HoverImageGallery = dynamic(() => import('./ui/hover-image-gallery').then(mod => mod.HoverImageGallery));
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -92,13 +91,26 @@ const ProductDetails = ({ product }: { product: any }) => {
         return <p>Sélectionnez un produit pour voir les détails.</p>;
     }
 
+    const gallery1 = product.galleryImages.slice(0, 3);
+    const gallery2 = product.galleryImages.slice(3, 6);
+    const gallery3 = product.galleryImages.slice(6, 9);
+
     return (
         <Card className="shadow-lg">
             <CardHeader className="bg-accent text-accent-foreground rounded-t-lg">
                 <CardTitle className="text-4xl font-bold">{product.title || product.documentMetadata?.productCategory || product.documentMetadata?.productType}</CardTitle>
             </CardHeader>
             <CardContent className="p-8 bg-background">
-                {renderProduct()}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="md:col-span-2">
+                        {renderProduct()}
+                    </div>
+                    <div className="md:col-span-1 space-y-8">
+                        {gallery1.length > 0 && <HoverImageGallery images={gallery1.map((img: ProductImage) => img.src)} />}
+                        {gallery2.length > 0 && <HoverImageGallery images={gallery2.map((img: ProductImage) => img.src)} />}
+                        {gallery3.length > 0 && <HoverImageGallery images={gallery3.map((img: ProductImage) => img.src)} />}
+                    </div>
+                </div>
             </CardContent>
         </Card>
     );
@@ -191,22 +203,9 @@ export function SandwichPanelsPage() {
             </div>
           </AnimatedWrapper>
           
-          <div className="grid lg:grid-cols-3 gap-x-8 gap-y-16">
-              <div className="lg:col-span-1 h-max space-y-8">
-                 {activeProduct.galleryImages.length > 0 &&
-                    <ProductImageGallery 
-                        key={activeProductKey} // Add key to ensure re-render on product change
-                        mainImage={activeProduct.galleryImages[0]}
-                    />
-                 }
-              </div>
-
-              <div className="lg:col-span-2">
-                <AnimatedWrapper key={activeProductKey} animation="fade-in">
-                    <ProductDetails product={activeProduct} />
-                </AnimatedWrapper>
-              </div>
-            </div>
+          <AnimatedWrapper key={activeProductKey} animation="fade-in">
+              <ProductDetails product={activeProduct} />
+          </AnimatedWrapper>
         </div>
       </section>
     </>
