@@ -307,38 +307,38 @@ export const productData = {
           "section4_charges_portees",
           "section5_caracteristiques_geometriques"
         ]
-      }
-    },
-    stylingGuidelines: {
-      colors: {
-        primary: "#C41E3A",
-        secondary: "#808080",
-        tableHeader: "#C41E3A",
-        tableSubHeader: "#A8A8A8",
-        tableAlternateRow: "#E8E8E8"
       },
-      typography: {
-        mainTitle: {
-          size: "18px",
-          weight: "bold",
-          color: "#C41E3A"
+      stylingGuidelines: {
+        colors: {
+          primary: "#C41E3A",
+          secondary: "#808080",
+          tableHeader: "#C41E3A",
+          tableSubHeader: "#A8A8A8",
+          tableAlternateRow: "#E8E8E8"
         },
-        sectionHeading: {
-          size: "14px",
-          weight: "bold",
-          color: "#000000"
+        typography: {
+          mainTitle: {
+            size: "18px",
+            weight: "bold",
+            color: "#C41E3A"
+          },
+          sectionHeading: {
+            size: "14px",
+            weight: "bold",
+            color: "#000000"
+          },
+          bodyText: {
+            size: "11px",
+            weight: "normal",
+            color: "#000000"
+          }
         },
-        bodyText: {
-          size: "11px",
-          weight: "normal",
-          color: "#000000"
+        tables: {
+          borderColor: "#000000",
+          cellPadding: "8px",
+          headerBackground: "#C41E3A",
+          headerTextColor: "#FFFFFF"
         }
-      },
-      tables: {
-        borderColor: "#000000",
-        cellPadding: "8px",
-        headerBackground: "#C41E3A",
-        headerTextColor: "#FFFFFF"
       }
     },
     image: {
@@ -620,15 +620,9 @@ export const productData = {
       aiHint: 'ribbed steel sheet',
     },
     galleryImages: [
-      { src: 'https://i.pinimg.com/736x/dd/f2/2e/ddf22eb450691c04b8be2f5dd21cbdaa.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
-      { src: 'https://i.pinimg.com/736x/bc/d7/68/bcd7680b25db47d125f6087409effe4b.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
-      { src: 'https://i.pinimg.com/736x/14/f4/3d/14f43d2f6b0012aeccf4ce2b6702d3aa.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' },
-      { src: 'https://i.pinimg.com/736x/7b/d8/0d/7bd80d24cd588606ec1bb880432ce526.jpg', alt: 'Tôle nervurée 4', aiHint: 'stacked sheets' },
-      { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
-      { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
-      { src: 'https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
-      { src: 'https://i.pinimg.com/736x/76/d6/80/76d680d6fdc50e1f996f5fe8ccc5029d.jpg', alt: 'Hi-Bond 77 Decking Profile', aiHint: 'decking profile' },
-      { src: 'https://i.pinimg.com/736x/54/07/5f/54075f273eeb525e1b437731729f78d9.jpg', alt: 'Hi-Bond 77 Installation', aiHint: 'decking installation' }
+      { src: 'https://i.pinimg.com/736x/74/23/ad/7423ad08020ee23291bdfb37d81af2b7.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
+      { src: 'https://i.pinimg.com/474x/15/b2/92/15b29294e02d11486c212e6fd345dd45.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
+      { src: 'https://i.pinimg.com/474x/62/77/fe/6277feb19192dabb46590e94f650efbe.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' },
     ],
     features: {
         utilisation: [
@@ -652,7 +646,7 @@ export const productData = {
             image: {
               src: '/media/hi-bond-77/hi-bond-geometrie.png',
               aiHint: 'geometric characteristics diagram',
-              blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
+              blurDataURL: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII='"
             }
         },
         avantages: [
@@ -717,17 +711,35 @@ export const productData = {
             ]
         },
         proprietes: {
-            title: 'PROPRIÉTÉS DE LA TÔLE HI-BOND 77',
-            headers: ['ÉP', 'Poids-Kg/m', 'Haut de la tôle en compression', 'Bas de la tôle en compression', 'Cisaillement voilement'],
-            subheaders: {
-                'Haut de la tôle en compression': ['Lx Cm4', 'Zx-top Cm3', 'Zx-bot Cm3', 'Ma Kn.m'],
-                'Bas de la tôle en compression': ['Lx Cm4', 'Zx-top Cm3', 'Zx-bot Cm3', 'Ma Kn.m'],
-                'Cisaillement voilement': ['Va KN', 'Pa KN']
+            "title": "PROPRIÉTÉS DE LA TÔLE HI-BOND 77",
+            "headers": ["ÉP (mm)", "Poids (Kg/m)", "Haut de la tôle en compression", "Bas de la tôle en compression", "Cisaillement voilement"],
+            "subheaders": {
+                "Haut de la tôle en compression": ["Lx (Cm4)", "Zx-top (Cm3)", "Zx-bot (Cm3)", "Ma (Kn.m)"],
+                "Bas de la tôle en compression": ["Lx (Cm4)", "Zx-top (Cm3)", "Zx-bot (Cm3)", "Ma (Kn.m)"],
+                "Cisaillement voilement": ["Va (KN)", "Pa (KN)"]
             },
-            rows: [
-                { 'ÉP': '0.70', 'Poids-Kg/m': '6.87', haut_compression: { 'Lx Cm4': '83.27', 'Zx-top Cm3': '14.34', 'Zx-bot Cm3': '18.87', 'Ma Kn.m': '2,32' }, bas_compression: { 'Lx Cm4': '83,27', 'Zx-top Cm3': '21,16', 'Zx-bot Cm3': '16,56', 'Ma Kn.m': '2.68' }, cisaillement_voilement: { 'Va KN': '22,18', 'Pa KN': '11,28' } },
-                { 'ÉP': '1.00', 'Poids-Kg/m': '9.81', haut_compression: { 'Lx Cm4': '119,0', 'Zx-top Cm3': '23,34', 'Zx-bot Cm3': '27,87', 'Ma Kn.m': '3,77' }, bas_compression: { 'Lx Cm4': '119,0', 'Zx-top Cm3': '31,03', 'Zx-bot Cm3': '26,74', 'Ma Kn.m': '4.32' }, cisaillement_voilement: { 'Va KN': '51,37', 'Pa KN': '21,83' } },
-                { 'ÉP': '1.50', 'Poids-Kg/m': '14.72', haut_compression: { 'Lx Cm4': '178.0', 'Zx-top Cm3': '41.11', 'Zx-bot Cm3': '43.20', 'Ma Kn.m': '6.65' }, bas_compression: { 'Lx Cm4': '178,0', 'Zx-top Cm3': '47,27', 'Zx-bot Cm3': '43,73', 'Ma Kn.m': '7.07' }, cisaillement_voilement: { 'Va KN': '91,16', 'Pa KN': '45,20' } },
+            "rows": [
+                {
+                    "epaisseur": 0.70,
+                    "poids": 6.87,
+                    "haut_compression": { "Lx": 83.27, "Zx_top": 14.34, "Zx_bot": 18.87, "Ma": 2.32 },
+                    "bas_compression": { "Lx": 83.27, "Zx_top": 21.16, "Zx_bot": 16.56, "Ma": 2.68 },
+                    "cisaillement_voilement": { "Va": 22.18, "Pa": 11.28 }
+                },
+                {
+                    "epaisseur": 1.00,
+                    "poids": 9.81,
+                    "haut_compression": { "Lx": 119.0, "Zx_top": 23.34, "Zx_bot": 27.87, "Ma": 3.77 },
+                    "bas_compression": { "Lx": 119.0, "Zx_top": 31.03, "Zx_bot": 26.74, "Ma": 4.32 },
+                    "cisaillement_voilement": { "Va": 51.37, "Pa": 21.83 }
+                },
+                {
+                    "epaisseur": 1.50,
+                    "poids": 14.72,
+                    "haut_compression": { "Lx": 178.0, "Zx_top": 41.11, "Zx_bot": 43.20, "Ma": 6.65 },
+                    "bas_compression": { "Lx": 178.0, "Zx_top": 47.27, "Zx_bot": 43.73, "Ma": 7.07 },
+                    "cisaillement_voilement": { "Va": 91.16, "Pa": 45.20 }
+                }
             ]
         }
     },
@@ -740,12 +752,6 @@ export const productData = {
         { src: 'https://i.pinimg.com/736x/76/d6/80/76d680d6fdc50e1f996f5fe8ccc5029d.jpg', alt: 'Hi-Bond 77 Decking Profile', aiHint: 'decking profile' },
         { src: 'https://i.pinimg.com/736x/54/07/5f/54075f273eeb525e1b437731729f78d9.jpg', alt: 'Hi-Bond 77 Installation', aiHint: 'decking installation' },
         { src: 'https://i.pinimg.com/736x/89/36/d0/8936d00071d42e9079330a38d68f11ea.jpg', alt: 'Hi-Bond 77 Finished Floor', aiHint: 'composite floor' },
-        { src: 'https://i.pinimg.com/1200x/44/25/ab/4425ab23a5683c6aeff341a8ed0003ea.jpg', alt: 'Panneaux sandwichs de couverture', aiHint: 'roofing sandwich panels' },
-      { src: 'https://i.pinimg.com/1200x/ff/96/da/ff96daf1373a332efc6a83bf1d6d83eb.jpg', alt: 'Implementation of roofing panels 1', aiHint: 'roofing panels implementation' },
-      { src: 'https://i.pinimg.com/1200x/11/77/f4/1177f4454ac3659e9619a578a1610bfe.jpg', alt: 'Implementation of roofing panels 2', aiHint: 'roofing panels building' },
-      { src: 'https://i.pinimg.com/736x/dd/f2/2e/ddf22eb450691c04b8be2f5dd21cbdaa.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
-      { src: 'https://i.pinimg.com/736x/bc/d7/68/bcd7680b25db47d125f6087409effe4b.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
-      { src: 'https://i.pinimg.com/736x/14/f4/3d/14f43d2f6b0012aeccf4ce2b6702d3aa.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' }
     ],
     features: {
         utilisation: [],
@@ -891,3 +897,6 @@ export const productData = {
     }
   },
 };
+
+
+    
