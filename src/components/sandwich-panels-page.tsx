@@ -20,9 +20,10 @@ import FrigorifiqueProduct from './product-variants/frigorifique-product';
 import ToleNervureeProduct from './product-variants/tole-nervuree-product';
 import HibondProduct from './product-variants/hibond-product';
 import FinitionsProduct from './product-variants/finitions-product';
-import { ImageDialog } from './ui/image-dialog';
 
-const HoverImageGallery = dynamic(() => import('./ui/hover-image-gallery').then(mod => mod.HoverImageGallery));
+const HoverImageGallery = dynamic(() => import('./ui/hover-image-gallery').then(mod => mod.HoverImageGallery), { ssr: false });
+const ImageDialog = dynamic(() => import('./ui/image-dialog').then(mod => mod.ImageDialog), { ssr: false });
+
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -143,7 +144,7 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
 
 
 export function SandwichPanelsPage() {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
+  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('bardage');
   const activeProduct = productData[activeProductKey];
   const heroImage = images['sandwich-panels'].hero;
 
