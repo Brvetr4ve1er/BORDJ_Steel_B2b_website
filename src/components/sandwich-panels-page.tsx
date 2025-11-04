@@ -68,18 +68,16 @@ const FinitionsIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const ProductDetails = ({ product, activeProductKey }: { product: any; activeProductKey: keyof typeof productData }) => {
     if (!product) return null;
   
-    // Rationale: useMemo is used here to prevent re-calculating the image chunks on every render.
-    // The dependency array includes `product.galleryImages` and `activeProductKey` to ensure that
-    // this logic only re-runs when the product (and thus its images) actually changes.
     const chunkedImages = useMemo(() => {
         const gallery = product.galleryImages || [];
-        const size = Math.max(1, Math.ceil(gallery.length / 3));
-        return Array.from({ length: 3 }, (_, i) =>
+        const size = Math.ceil(gallery.length / 3);
+        const chunks = Array.from({ length: 3 }, (_, i) =>
             gallery.slice(i * size, (i + 1) * size)
         );
+        // If a chunk is empty, fill it with images from the first chunk
+        return chunks.map(chunk => chunk.length > 0 ? chunk : chunks[0]);
     }, [product.galleryImages, activeProductKey]);
     
-
     const renderProduct = () => {
         if (product.documentMetadata?.productType?.includes('COUVERTURE')) {
             return <CouvertureProduct product={product} />;
@@ -108,15 +106,10 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
                 <CardTitle className="text-4xl font-bold">{product.title || product.documentMetadata?.productCategory || product.documentMetadata?.productType}</CardTitle>
             </CardHeader>
             <CardContent className="p-8 bg-background">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                     <div className="md:col-span-1 flex flex-col justify-between space-y-8">
                        {chunkedImages.map((chunk, i) =>
                          chunk.length > 0 ? (
-                           // Rationale: A unique key is critical for React's reconciliation algorithm.
-                           // By combining the active product key and the gallery index, we create a
-                           // globally unique identifier for each carousel. This forces React to
-                           // unmount the old component and mount a new one when the product changes,
-                           // effectively resetting its internal state and preventing "ghost" images.
                            <HoverImageGallery
                              key={`${activeProductKey}-gallery-${i}`}
                              images={chunk.map((img: any) => img.src)}
@@ -135,7 +128,7 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
 
 
 export function SandwichPanelsPage() {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('bardage');
+  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
   const activeProduct = productData[activeProductKey];
   const heroImage = images['sandwich-panels'].hero;
 
