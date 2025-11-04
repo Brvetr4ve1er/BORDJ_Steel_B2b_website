@@ -73,7 +73,7 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
         const chunks = Array.from({ length: 3 }, (_, i) =>
             gallery.slice(i * size, (i + 1) * size)
         );
-        return chunks.map(chunk => chunk.length > 0 ? chunk : chunks[0]);
+        return chunks.map(chunk => chunk.length > 0 ? chunk : chunks[0] || []);
     }, [product.galleryImages, activeProductKey]);
     
     const renderProduct = () => {
@@ -108,19 +108,6 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
                     <div className="md:col-span-1 flex flex-col justify-between space-y-8">
                        {chunkedImages.map((chunk, i) => {
                          if (chunk?.length > 0) {
-                           if (i === 1) {
-                             return (
-                               <div key={`${activeProductKey}-static-${i}`} className="relative w-full aspect-square overflow-hidden rounded-lg shadow-lg">
-                                 <Image
-                                   src={chunk[0].src}
-                                   alt={chunk[0].alt}
-                                   fill
-                                   className="object-contain"
-                                   data-ai-hint={chunk[0].aiHint}
-                                 />
-                               </div>
-                             );
-                           }
                            return (
                              <HoverImageGallery
                                key={`${activeProductKey}-gallery-${i}`}
@@ -142,7 +129,7 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
 
 
 export function SandwichPanelsPage() {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('bardage');
+  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
   const activeProduct = productData[activeProductKey];
   const heroImage = images['sandwich-panels'].hero;
 
