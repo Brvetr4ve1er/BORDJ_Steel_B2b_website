@@ -44,7 +44,7 @@ export default function HistoryPage() {
           </AnimatedWrapper>
         </div>
       </section>
-      <section className="bg-gray-50 py-20">
+      <section className="bg-secondary py-20">
         <Timeline />
       </section>
     </ProductPageLayout>
