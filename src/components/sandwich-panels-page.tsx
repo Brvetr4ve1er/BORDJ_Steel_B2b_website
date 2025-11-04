@@ -73,7 +73,6 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
         const chunks = Array.from({ length: 3 }, (_, i) =>
             gallery.slice(i * size, (i + 1) * size)
         );
-        // If a chunk is empty, fill it with images from the first chunk
         return chunks.map(chunk => chunk.length > 0 ? chunk : chunks[0]);
     }, [product.galleryImages, activeProductKey]);
     
@@ -105,13 +104,13 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
                 <CardTitle className="text-4xl font-bold">{product.title || product.documentMetadata?.productCategory || product.documentMetadata?.productType}</CardTitle>
             </CardHeader>
             <CardContent className="p-8 bg-background">
-                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                     <div className="md:col-span-1 flex flex-col justify-between space-y-8">
                        {chunkedImages.map((chunk, i) => {
-                         if (chunk.length > 0) {
-                           if (i === 1) { // Middle element
+                         if (chunk?.length > 0) {
+                           if (i === 1) {
                              return (
-                               <div key={`${activeProductKey}-static-${i}`} className="relative w-full aspect-[4/3] overflow-hidden rounded-lg shadow-lg">
+                               <div key={`${activeProductKey}-static-${i}`} className="relative w-full aspect-square overflow-hidden rounded-lg shadow-lg">
                                  <Image
                                    src={chunk[0].src}
                                    alt={chunk[0].alt}
@@ -143,7 +142,7 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
 
 
 export function SandwichPanelsPage() {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('couverture');
+  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('bardage');
   const activeProduct = productData[activeProductKey];
   const heroImage = images['sandwich-panels'].hero;
 
