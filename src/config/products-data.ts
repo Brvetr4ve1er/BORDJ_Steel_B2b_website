@@ -622,7 +622,7 @@ export const productData = {
     galleryImages: [
       { src: 'https://i.pinimg.com/736x/74/23/ad/7423ad08020ee23291bdfb37d81af2b7.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
       { src: 'https://i.pinimg.com/736x/15/b2/92/15b29294e02d11486c212e6fd345dd45.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
-      { src: 'https://i.pinimg.com/736x/74/23/ad/7423ad08020ee23291bdfb37d81af2b7.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
+      { src: 'https://i.pinimg.com/736x/62/77/fe/6277feb19192dabb46590e94f650efbe.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' },
     ],
     features: {
         utilisation: [
@@ -906,3 +906,4 @@ export const productData = {
     
 
     
+
