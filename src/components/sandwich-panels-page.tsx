@@ -4,14 +4,13 @@
 
 import Image from 'next/image';
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { ChevronsRight, Snowflake, Settings, ArrowRight } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { productData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
-import type { ProductImage } from './product-image-gallery';
 import images from '@/app/lib/placeholder-images.json';
 import dynamic from 'next/dynamic';
 import { DownloadButton } from './ui/download-button';
@@ -66,9 +65,21 @@ const FinitionsIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <Settings {...props} />
 );
 
-const ProductDetails = ({ product }: { product: any }) => {
+const ProductDetails = ({ product, activeProductKey }: { product: any; activeProductKey: keyof typeof productData }) => {
     if (!product) return null;
   
+    // Rationale: useMemo is used here to prevent re-calculating the image chunks on every render.
+    // The dependency array includes `product.galleryImages` and `activeProductKey` to ensure that
+    // this logic only re-runs when the product (and thus its images) actually changes.
+    const chunkedImages = useMemo(() => {
+        const gallery = product.galleryImages || [];
+        const size = Math.max(1, Math.ceil(gallery.length / 3));
+        return Array.from({ length: 3 }, (_, i) =>
+            gallery.slice(i * size, (i + 1) * size)
+        );
+    }, [product.galleryImages, activeProductKey]);
+    
+
     const renderProduct = () => {
         if (product.documentMetadata?.productType?.includes('COUVERTURE')) {
             return <CouvertureProduct product={product} />;
@@ -91,10 +102,6 @@ const ProductDetails = ({ product }: { product: any }) => {
         return <p>Sélectionnez un produit pour voir les détails.</p>;
     }
 
-    const gallery1 = product.galleryImages.slice(0, 3);
-    const gallery2 = product.galleryImages.slice(3, 6);
-    const gallery3 = product.galleryImages.slice(6, 9);
-
     return (
         <Card className="shadow-lg">
             <CardHeader className="bg-accent text-accent-foreground rounded-t-lg">
@@ -103,9 +110,19 @@ const ProductDetails = ({ product }: { product: any }) => {
             <CardContent className="p-8 bg-background">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                     <div className="md:col-span-1 flex flex-col justify-between space-y-8">
-                        {gallery1.length > 0 && <HoverImageGallery images={gallery1.map((img: ProductImage) => img.src)} />}
-                        {gallery2.length > 0 && <HoverImageGallery images={gallery2.map((img: ProductImage) => img.src)} />}
-                        {gallery3.length > 0 && <HoverImageGallery images={gallery3.map((img: ProductImage) => img.src)} />}
+                       {chunkedImages.map((chunk, i) =>
+                         chunk.length > 0 ? (
+                           // Rationale: A unique key is critical for React's reconciliation algorithm.
+                           // By combining the active product key and the gallery index, we create a
+                           // globally unique identifier for each carousel. This forces React to
+                           // unmount the old component and mount a new one when the product changes,
+                           // effectively resetting its internal state and preventing "ghost" images.
+                           <HoverImageGallery
+                             key={`${activeProductKey}-gallery-${i}`}
+                             images={chunk.map((img: any) => img.src)}
+                           />
+                         ) : null
+                       )}
                     </div>
                     <div className="md:col-span-2">
                         {renderProduct()}
@@ -204,7 +221,7 @@ export function SandwichPanelsPage() {
           </AnimatedWrapper>
           
           <AnimatedWrapper key={activeProductKey} animation="fade-in">
-              <ProductDetails product={activeProduct} />
+              <ProductDetails product={activeProduct} activeProductKey={activeProductKey} />
           </AnimatedWrapper>
         </div>
       </section>
