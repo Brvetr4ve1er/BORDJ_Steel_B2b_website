@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import Image from 'next/image';
@@ -108,14 +107,30 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
             <CardContent className="p-8 bg-background">
                  <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                     <div className="md:col-span-1 flex flex-col justify-between space-y-8">
-                       {chunkedImages.map((chunk, i) =>
-                         chunk.length > 0 ? (
-                           <HoverImageGallery
-                             key={`${activeProductKey}-gallery-${i}`}
-                             images={chunk.map((img: any) => img.src)}
-                           />
-                         ) : null
-                       )}
+                       {chunkedImages.map((chunk, i) => {
+                         if (chunk.length > 0) {
+                           if (i === 1) { // Middle element
+                             return (
+                               <div key={`${activeProductKey}-static-${i}`} className="relative w-full aspect-[4/3] overflow-hidden rounded-lg shadow-lg">
+                                 <Image
+                                   src={chunk[0].src}
+                                   alt={chunk[0].alt}
+                                   fill
+                                   className="object-contain"
+                                   data-ai-hint={chunk[0].aiHint}
+                                 />
+                               </div>
+                             );
+                           }
+                           return (
+                             <HoverImageGallery
+                               key={`${activeProductKey}-gallery-${i}`}
+                               images={chunk.map((img: any) => img.src)}
+                             />
+                           );
+                         }
+                         return null;
+                       })}
                     </div>
                     <div className="md:col-span-2">
                         {renderProduct()}
