@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { ImageDialog } from "./image-dialog";
 
 interface HoverImageGalleryProps {
   images: string[];
@@ -44,19 +45,23 @@ export function HoverImageGallery({ images }: HoverImageGalleryProps) {
   return (
     <div className="relative group">
       <div
-        className="relative w-full aspect-square overflow-hidden rounded-lg shadow-lg cursor-none"
+        className="relative w-full aspect-square overflow-hidden rounded-lg shadow-lg cursor-pointer"
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {/* Main displayed image */}
-        <Image
-          src={images[currentImageIndex]}
-          alt={`Gallery image ${currentImageIndex + 1}`}
-          fill
-          className="object-contain transition-all duration-150 ease-out"
-        />
-
+        <ImageDialog imageUrl={images[currentImageIndex]} alt={`Gallery image ${currentImageIndex + 1}`}>
+          <div className="w-full h-full">
+            {/* Main displayed image */}
+            <Image
+              src={images[currentImageIndex]}
+              alt={`Gallery image ${currentImageIndex + 1}`}
+              fill
+              className="object-contain transition-all duration-150 ease-out"
+            />
+          </div>
+        </ImageDialog>
+        
         {/* Glassmorphic Tooltip with Both Chevrons */}
         {isHovering && (
           <div

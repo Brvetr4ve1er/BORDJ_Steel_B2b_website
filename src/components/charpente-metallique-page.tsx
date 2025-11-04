@@ -14,6 +14,7 @@ import { DownloadButton } from './ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import { ImageDialog } from './ui/image-dialog';
 
 const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
 const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
@@ -132,17 +133,18 @@ const NewGallery = () => {
                     "https://i.pinimg.com/736x/53/07/e6/5307e6787500b6efff734990a41772e5.jpg",
                     "https://i.pinimg.com/736x/db/65/cd/db65cdc8fcf0205a18de1498e1a987c7.jpg"
                 ].map((src, idx) => (
-                    <div
-                        key={idx}
-                        className="relative group flex-grow transition-all w-56 rounded-lg overflow-hidden h-[400px] duration-500 hover:w-full"
-                    >
-                        <Image
-                            fill
-                            className="h-full w-full object-cover object-center"
-                            src={src}
-                            alt={`image-${idx}`}
-                        />
-                    </div>
+                    <ImageDialog key={idx} imageUrl={src} alt={`Gallery image ${idx + 1}`}>
+                        <div
+                            className="relative group flex-grow transition-all w-56 rounded-lg overflow-hidden h-[400px] duration-500 hover:w-full cursor-pointer"
+                        >
+                            <Image
+                                fill
+                                className="h-full w-full object-cover object-center"
+                                src={src}
+                                alt={`image-${idx}`}
+                            />
+                        </div>
+                    </ImageDialog>
                 ))}
             </div>
         </section>

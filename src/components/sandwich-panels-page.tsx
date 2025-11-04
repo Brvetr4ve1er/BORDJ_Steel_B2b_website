@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Image from 'next/image';
@@ -19,6 +20,7 @@ import FrigorifiqueProduct from './product-variants/frigorifique-product';
 import ToleNervureeProduct from './product-variants/tole-nervuree-product';
 import HibondProduct from './product-variants/hibond-product';
 import FinitionsProduct from './product-variants/finitions-product';
+import { ImageDialog } from './ui/image-dialog';
 
 const HoverImageGallery = dynamic(() => import('./ui/hover-image-gallery').then(mod => mod.HoverImageGallery));
 
@@ -107,15 +109,27 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                     <div className="md:col-span-1 flex flex-col justify-between space-y-8">
                        {chunkedImages.map((chunk, i) => {
-                         if (chunk?.length > 0) {
-                           return (
-                             <HoverImageGallery
-                               key={`${activeProductKey}-gallery-${i}`}
-                               images={chunk.map((img: any) => img.src)}
-                             />
-                           );
+                         if (!chunk || chunk.length === 0) return null;
+                         if (i === 1) { // Middle element is a static image
+                            return (
+                                <ImageDialog key={`${activeProductKey}-static-${i}`} imageUrl={chunk[0]?.src || chunk[0]} alt={chunk[0]?.alt || `Static product image`}>
+                                    <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer group">
+                                        <Image
+                                            src={chunk[0]?.src || chunk[0]}
+                                            alt={chunk[0]?.alt || `Static product image`}
+                                            fill
+                                            className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105"
+                                        />
+                                    </div>
+                                </ImageDialog>
+                            );
                          }
-                         return null;
+                         return (
+                           <HoverImageGallery
+                             key={`${activeProductKey}-gallery-${i}`}
+                             images={chunk.map((img: any) => img.src || img)}
+                           />
+                         );
                        })}
                     </div>
                     <div className="md:col-span-2">
