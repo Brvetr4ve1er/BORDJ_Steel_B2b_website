@@ -354,7 +354,7 @@ export const productData = {
       { src: 'https://i.pinimg.com/1200x/af/ff/24/afff240dadc8d1333590116a922f31bc.jpg', alt: 'Panneaux sandwichs de couverture 6', aiHint: 'composite floor' },
       { src: 'https://i.pinimg.com/1200x/1d/eb/ef/1debef592bb8e48c53282c775fdcd98d.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
       { src: 'https://i.pinimg.com/736x/4d/76/88/4d7688ef62f05144597c7d140109040b.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
-      { src: 'https://i.pinimg.com/736x/14/f4/3d/14f43d2f6b0012aeccf4ce2b6702d3aa.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' }
+      { src: 'https://i.pinimg.com/736x/f9/30/a1/f930a1bddf38bdc5c697d195b06102d9.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' }
     ]
   },
   bardage: {
@@ -908,5 +908,7 @@ export const productData = {
     
 
 
+
+    
 
     
