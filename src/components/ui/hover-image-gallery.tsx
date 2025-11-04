@@ -54,7 +54,7 @@ export function HoverImageGallery({ images }: HoverImageGalleryProps) {
           src={images[currentImageIndex]}
           alt={`Gallery image ${currentImageIndex + 1}`}
           fill
-          className="object-cover transition-all duration-150 ease-out"
+          className="object-contain transition-all duration-150 ease-out"
         />
 
         {/* Glassmorphic Tooltip with Both Chevrons */}
