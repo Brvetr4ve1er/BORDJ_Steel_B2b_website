@@ -242,10 +242,10 @@ export default function HistoryPage() {
           </AnimatedWrapper>
         </div>
       </section>
+      <ActivitiesSection />
       <section className="bg-secondary py-20">
         <Timeline />
       </section>
-      <ActivitiesSection />
       <HumanCapitalSection />
       <TeamsSection />
       <CertificationsSection />
