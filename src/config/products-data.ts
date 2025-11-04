@@ -351,9 +351,9 @@ export const productData = {
       { src: 'https://i.pinimg.com/736x/62/77/fe/6277feb19192dabb46590e94f650efbe.jpg', alt: 'Panneaux sandwichs de couverture 3', aiHint: 'roofing panels building' },
       { src: 'https://i.pinimg.com/736x/5e/d7/20/5ed7206a4649ac226b9e0aabab6d2541.jpg', alt: 'Panneaux sandwichs de couverture 4', aiHint: 'decking profile' },
       { src: 'https://i.pinimg.com/736x/fb/26/dd/fb26dd2267e9e9c6c85a270d0dc48fa1.jpg', alt: 'Panneaux sandwichs de couverture 5', aiHint: 'decking installation' },
-      { src: 'https://i.pinimg.com/1200x/7a/0b/f0/7a0bf09ee8fa799dc3e5c365c92ca95c.jpg', alt: 'Panneaux sandwichs de couverture 6', aiHint: 'composite floor' },
-      { src: 'https://i.pinimg.com/736x/dd/f2/2e/ddf22eb450691c04b8be2f5dd21cbdaa.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
-      { src: 'https://i.pinimg.com/736x/bc/d7/68/bcd7680b25db47d125f6087409effe4b.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
+      { src: 'https://i.pinimg.com/1200x/af/ff/24/afff240dadc8d1333590116a922f31bc.jpg', alt: 'Panneaux sandwichs de couverture 6', aiHint: 'composite floor' },
+      { src: 'https://i.pinimg.com/1200x/1d/eb/ef/1debef592bb8e48c53282c775fdcd98d.jpg', alt: 'Tôle nervurée 1', aiHint: 'ribbed steel sheet' },
+      { src: 'https://i.pinimg.com/736x/4d/76/88/4d7688ef62f05144597c7d140109040b.jpg', alt: 'Tôle nervurée 2', aiHint: 'metal sheets' },
       { src: 'https://i.pinimg.com/736x/14/f4/3d/14f43d2f6b0012aeccf4ce2b6702d3aa.jpg', alt: 'Tôle nervurée 3', aiHint: 'architectural detail' }
     ]
   },
@@ -907,3 +907,6 @@ export const productData = {
 
     
 
+
+
+    
