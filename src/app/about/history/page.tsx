@@ -42,7 +42,8 @@ const teams = [
     title: "Bureau d'études",
     description: "Véritable moteur de l'innovation, notre bureau d'études conçoit et optimise les structures métalliques.",
     detail: "Il veille à la faisabilité technique, à la solidité et à la performance de nos réalisations.",
-    color: "bg-primary"
+    color: "bg-primary",
+    image: "https://picsum.photos/seed/eng/600/800"
   },
   {
     id: 'production',
@@ -50,7 +51,8 @@ const teams = [
     title: "Équipe Production",
     description: "Au cœur de notre activité, l'équipe de production assure la fabrication, l'assemblage et le contrôle des composants.",
     detail: "Grâce à une maîtrise technique avancée et à des équipements modernes, elle garantit la fiabilité et la durabilité de nos produits.",
-    color: "bg-primary"
+    color: "bg-primary",
+    image: "https://picsum.photos/seed/prod/600/800"
   },
   {
     id: 'quality',
@@ -58,7 +60,8 @@ const teams = [
     title: "Contrôle Qualité",
     description: "Cette équipe veille à la conformité de nos produits aux normes nationales et internationales.",
     detail: "Des contrôles rigoureux sont effectués à chaque étape pour assurer une qualité irréprochable.",
-    color: "bg-primary"
+    color: "bg-primary",
+    image: "https://picsum.photos/seed/qual/600/800"
   },
   {
     id: 'hse',
@@ -66,7 +69,8 @@ const teams = [
     title: "Équipe HSE",
     description: "Notre équipe HSE veille à la sécurité de nos collaborateurs et à la protection de l'environnement.",
     detail: "La sécurité et la durabilité font partie intégrante de la culture BordjSteel.",
-    color: "bg-primary"
+    color: "bg-primary",
+    image: "https://picsum.photos/seed/hse/600/800"
   },
   {
     id: 'commercial',
@@ -74,7 +78,8 @@ const teams = [
     title: "Commercial & Marketing",
     description: "Toujours à l'écoute du marché, notre équipe accompagne nos clients à chaque étape de leurs projets.",
     detail: "Elle met un point d'honneur à offrir des solutions personnalisées, un suivi attentif et un service de qualité.",
-    color: "bg-primary"
+    color: "bg-primary",
+    image: "https://picsum.photos/seed/comm/600/800"
   },
   {
     id: 'finance',
@@ -82,7 +87,8 @@ const teams = [
     title: "Équipe Comptabilité et Finances",
     description: "Chargée de la gestion rigoureuse des ressources financières, assurant suivi comptable et contrôle budgétaire.",
     detail: "Son objectif : garantir une santé financière solide et durable.",
-    color: "bg-primary"
+    color: "bg-primary",
+    image: "https://picsum.photos/seed/fin/600/800"
   },
   {
     id: 'hr',
@@ -90,7 +96,8 @@ const teams = [
     title: "Équipe Ressources Humaines",
     description: "L'équipe RH veille au bien-être, à la formation et à l’évolution de nos collaborateurs pour un environnement motivant.",
     detail: "Elle favorise un environnement de travail motivant et valorisant, essentiel à la performance collective.",
-    color: "bg-primary"
+    color: "bg-primary",
+    image: "https://picsum.photos/seed/hr/600/800"
   },
   {
     id: 'it',
@@ -98,7 +105,8 @@ const teams = [
     title: "Équipe Système d’Information",
     description: "Responsable du développement des outils numériques, garantissant la sécurité et la performance des systèmes.",
     detail: "Elle joue un rôle clé dans la transformation digitale de BordjSteel.",
-    color: "bg-primary"
+    color: "bg-primary",
+    image: "https://picsum.photos/seed/it/600/800"
   },
   {
     id: 'assembly',
@@ -106,7 +114,8 @@ const teams = [
     title: "Équipe Réalisation et Montage",
     description: "Spécialisée dans l’installation sur site, assurant un montage précis et sécurisé de nos structures métalliques.",
     detail: "Son savoir-faire garantit la conformité, la stabilité et la qualité de chaque projet livré.",
-    color: "bg-primary"
+    color: "bg-primary",
+    image: "https://picsum.photos/seed/asm/600/800"
   }
 ];
 
@@ -173,38 +182,48 @@ const TeamFeature = ({
   description,
   icon,
   index,
+  image
 }: {
   title: string;
   description: string;
   icon: React.ReactNode;
   index: number;
+  image: string;
 }) => {
   const totalFeatures = teams.length;
   const numCols = 3; // lg:grid-cols-3
   return (
     <div
       className={cn(
-        "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
+        "flex flex-col justify-end p-8 lg:border-r py-10 relative group/feature dark:border-neutral-800 min-h-[400px] rounded-lg overflow-hidden",
         (index === 0 || index % numCols === 0) && "lg:border-l dark:border-neutral-800",
         index < totalFeatures - (totalFeatures % numCols || numCols) && "lg:border-b dark:border-neutral-800"
       )}
     >
+      <Image
+        src={image}
+        alt={title}
+        fill
+        className="object-cover absolute inset-0 z-0 transition-transform duration-300 group-hover/feature:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10" />
+
       {index < totalFeatures - (totalFeatures % numCols || numCols) && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-secondary to-transparent pointer-events-none" />
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-secondary/50 to-transparent pointer-events-none z-20" />
       )}
       {index >= totalFeatures - (totalFeatures % numCols || numCols) && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-secondary to-transparent pointer-events-none" />
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-secondary/50 to-transparent pointer-events-none z-20" />
       )}
-      <div className="mb-4 relative z-10 px-10 text-primary">
+      <div className="mb-4 relative z-20 text-white">
         {icon}
       </div>
-      <div className="text-lg font-bold mb-2 relative z-10 px-10">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-border group-hover/feature:bg-accent transition-all duration-200 origin-center" />
-        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-primary">
+      <div className="text-lg font-bold mb-2 relative z-20">
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-border group-hover/feature:bg-accent transition-all duration-200 origin-center" />
+        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-white">
           {title}
         </span>
       </div>
-      <p className="text-sm text-muted-foreground max-w-xs relative z-10 px-10">
+      <p className="text-sm text-gray-300 max-w-xs relative z-20">
         {description}
       </p>
     </div>
@@ -217,7 +236,7 @@ function TeamsSection() {
       <AnimatedWrapper animation="fade-in">
         <h2 className="text-6xl md:text-7xl font-bold text-primary mb-12 text-center">Nos équipes spécialisées</h2>
       </AnimatedWrapper>
-       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 max-w-7xl mx-auto">
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 max-w-7xl mx-auto gap-4">
         {teams.map((team, index) => (
             <TeamFeature key={team.id} {...team} index={index} />
         ))}
@@ -301,3 +320,5 @@ export default function HistoryPage() {
     </ProductPageLayout>
   );
 }
+
+    
