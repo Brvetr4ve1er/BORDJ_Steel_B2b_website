@@ -7,7 +7,7 @@ import { AnimatedNumber } from './animated-number';
 import { useEffect, useState, useRef } from 'react';
 
 export function AnimatedBaths() {
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setIsInView] = useState(() => false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

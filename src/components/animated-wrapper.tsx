@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { ReactNode } from 'react';
@@ -14,7 +15,7 @@ interface AnimatedWrapperProps {
 }
 
 export function AnimatedWrapper({ children, animation, staggerIndex = 0, className }: AnimatedWrapperProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(() => false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

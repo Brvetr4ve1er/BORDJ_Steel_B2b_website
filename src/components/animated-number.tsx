@@ -1,12 +1,13 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
 import { animate } from 'framer-motion';
 
 export const AnimatedNumber = ({ value, className }: { value: number; className?: string }) => {
-  const [animatedValue, setAnimatedValue] = useState(0);
+  const [animatedValue, setAnimatedValue] = useState(() => 0);
   const ref = useRef<HTMLSpanElement>(null);
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setIsInView] = useState(() => false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
