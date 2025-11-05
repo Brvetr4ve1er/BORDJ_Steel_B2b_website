@@ -13,12 +13,11 @@ import { DownloadButton } from './ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
-import images from '@/app/lib/placeholder-images.json';
+import { ImageDialog } from './ui/image-dialog';
 
 const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
 const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
 const HoverImageGallery = dynamic(() => import('./ui/hover-image-gallery').then(mod => mod.HoverImageGallery), { ssr: false });
-const ImageDialog = dynamic(() => import('./ui/image-dialog').then(mod => mod.ImageDialog), { ssr: false });
 
 
 const applications = [
@@ -304,7 +303,7 @@ export function CharpenteMetalliquePageContent() {
             </AnimatedWrapper>
             <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
                 {whyChooseUs.map((item, index) => (
-                    <AnimatedWrapper key={item.title} animation="fade-in-stagger" staggerIndex={index}>
+                    <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
                         <div className="text-center">
                             <div className="flex items-center justify-center h-20 w-20 rounded-full bg-background text-accent mx-auto mb-6 shadow-lg border">
                                 {item.icon}
