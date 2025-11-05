@@ -58,7 +58,7 @@ export function VisionMission() {
                 </h2>
                 <p className="text-lg text-muted-foreground">{history}</p>
             </AnimatedWrapper>
-            <AnimatedWrapper animation="slide-up" staggerIndex={1}>
+            <AnimatedWrapper animation="slide-up">
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0 w-16 h-16 rounded-full bg-red-100 flex items-center justify-center border-4 border-accent/20">
                     {VisionIcon && <VisionIcon className="w-8 h-8 text-accent" />}

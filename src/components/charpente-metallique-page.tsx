@@ -5,7 +5,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, BookCopy, TowerControl, Car, Tractor, Layers, Cog } from 'lucide-react';
+import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import React, { useState, useMemo } from 'react';
 import images from '@/app/lib/placeholder-images.json';

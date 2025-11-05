@@ -4,7 +4,7 @@
 
 import Image from 'next/image';
 import * as React from 'react';
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { ChevronsRight, Snowflake, Settings, ArrowRight } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
@@ -141,7 +141,7 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
 
 
 export function SandwichPanelsPage() {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData>('bardage');
+  const [activeProductKey, setActiveProductKey] = React.useState<keyof typeof productData>('bardage');
   const activeProduct = productData[activeProductKey];
   const heroImage = images['sandwich-panels'].hero;
 

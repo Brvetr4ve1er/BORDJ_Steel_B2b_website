@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import Link from 'next/link';
-import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View, User, GanttChartSquare, Square, Component, ToyBrick } from 'lucide-react';
+import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -32,7 +32,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import * as React from 'react';
-import { usePathname } from 'next/navigation';
 import { Cairo } from 'next/font/google';
 
 const cairo = Cairo({
@@ -45,7 +44,6 @@ const cairo = Cairo({
 
 const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string, onItemClick?: () => void, navTextColor: string }) => {
     const { navigation } = companyData;
-    const pathname = usePathname();
 
     const iconMap = useMemo(() => ({
       Info,
@@ -66,11 +64,6 @@ const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string
       View,
       User
     }), []);
-
-    const isLinkActive = (href: string) => {
-      if (href === '/') return pathname === href;
-      return pathname.startsWith(href);
-    };
     
     return (
         <NavigationMenu>
@@ -187,7 +180,6 @@ export function Navbar() {
   const [isMounted, setIsMounted] = useState(() => false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(() => false);
   const { navigation, siteMetadata } = companyData;
-  const pathname = usePathname();
   
   const iconMap = useMemo(() => ({
       Info,
