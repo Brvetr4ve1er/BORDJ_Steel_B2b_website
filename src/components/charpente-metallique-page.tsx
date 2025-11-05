@@ -5,15 +5,15 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog } from 'lucide-react';
+import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, BookCopy } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import React, { useState, useMemo } from 'react';
-import images from '@/app/lib/placeholder-images.json';
 import { AnimatedNumber } from './animated-number';
 import { DownloadButton } from './ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import images from '@/app/lib/placeholder-images.json';
 
 const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
 const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
@@ -228,7 +228,7 @@ export function CharpenteMetalliquePageContent() {
             {charpenteMetalliqueData.pillars.map((pillar, index) => {
               const Icon = iconMap[pillar.iconName as keyof typeof iconMap];
               return (
-                <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                <AnimatedWrapper key={pillar.id} animation="fade-in-stagger" staggerIndex={index}>
                   <div onClick={() => handlePillarClick(pillar.id)} className="cursor-pointer">
                     <FeatureHoverCard
                         Icon={Icon}
@@ -304,7 +304,7 @@ export function CharpenteMetalliquePageContent() {
             </AnimatedWrapper>
             <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
                 {whyChooseUs.map((item, index) => (
-                    <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                    <AnimatedWrapper key={item.title} animation="fade-in-stagger" staggerIndex={index}>
                         <div className="text-center">
                             <div className="flex items-center justify-center h-20 w-20 rounded-full bg-background text-accent mx-auto mb-6 shadow-lg border">
                                 {item.icon}
