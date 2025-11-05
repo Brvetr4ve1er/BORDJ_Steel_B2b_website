@@ -1,9 +1,7 @@
 
 import { cn } from '@/lib/utils';
-import dynamic from 'next/dynamic';
-
-const Navbar = dynamic(() => import('@/components/navbar').then(mod => mod.Navbar));
-const Footer = dynamic(() => import('@/components/footer').then(mod => mod.Footer));
+import { Navbar } from '@/components/navbar';
+import { Footer } from '@/components/footer';
 
 interface ProductPageLayoutProps {
   children: React.ReactNode;
