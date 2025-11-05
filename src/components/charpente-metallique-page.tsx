@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import Image from 'next/image';
@@ -303,7 +302,7 @@ export function CharpenteMetalliquePageContent() {
             </AnimatedWrapper>
             <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
                 {whyChooseUs.map((item, index) => (
-                    <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                    <AnimatedWrapper key={item.title} animation="fade-in-stagger" staggerIndex={index}>
                         <div className="text-center">
                             <div className="flex items-center justify-center h-20 w-20 rounded-full bg-background text-accent mx-auto mb-6 shadow-lg border">
                                 {item.icon}
@@ -335,5 +334,4 @@ export function CharpenteMetalliquePageContent() {
       </section>
 
     </div>
-  );
-}
+  
