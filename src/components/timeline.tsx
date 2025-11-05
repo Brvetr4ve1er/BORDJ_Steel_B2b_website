@@ -34,7 +34,8 @@ export function Timeline() {
             const Icon = iconMap[event.icon as keyof typeof iconMap];
 
             return (
-              <AnimatedWrapper animation="slide-up" key={i}>
+              // PATCH: Replaced key={i} with a stable key from the event title.
+              <AnimatedWrapper animation="slide-up" key={event.title}>
                 <div className="grid grid-cols-1 md:grid-cols-9 items-center">
                   
                   {isLeft ? (
