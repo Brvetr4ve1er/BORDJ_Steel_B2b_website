@@ -21,8 +21,7 @@ export const companyData = {
         "href": "#about",
         "icon": "Info",
         "children": [
-          { "name": "Notre Histoire", "href": "/about/history", "description": "Découvrez nos origines et notre parcours.", "icon": "Building2" },
-          { "name": "Politique RH", "href": "#", "description": "Découvrez notre politique de ressources humaines.", "icon": "User" }
+          { "name": "Notre Histoire", "href": "/about/history", "description": "Découvrez nos origines et notre parcours.", "icon": "Building2" }
         ]
       },
       {
@@ -248,5 +247,7 @@ export const companyData = {
 
     
 
+
+    
 
     
