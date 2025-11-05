@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import React, { useState } from 'react';
 import { Timeline } from '@/components/timeline';
-import { Building2, Users, Award, Shield, Factory, Hammer, ClipboardCheck, HardHat, UserCheck, TrendingUp, Minus, Plus } from 'lucide-react';
+import { Building2, Users, Award, Shield, Factory, Hammer, ClipboardCheck, HardHat, UserCheck, TrendingUp, Minus, Plus, DollarSign, Network, Wrench } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -74,6 +74,38 @@ const teams = [
     title: "Commercial & Marketing",
     description: "Toujours à l'écoute du marché, notre équipe accompagne nos clients à chaque étape de leurs projets.",
     detail: "Elle met un point d'honneur à offrir des solutions personnalisées, un suivi attentif et un service de qualité.",
+    color: "bg-primary"
+  },
+  {
+    id: 'finance',
+    icon: <DollarSign className="w-8 h-8" />,
+    title: "Équipe Comptabilité et Finances",
+    description: "Chargée de la gestion rigoureuse des ressources financières, assurant suivi comptable et contrôle budgétaire.",
+    detail: "Son objectif : garantir une santé financière solide et durable.",
+    color: "bg-primary"
+  },
+  {
+    id: 'hr',
+    icon: <Users className="w-8 h-8" />,
+    title: "Équipe Ressources Humaines",
+    description: "L'équipe RH veille au bien-être, à la formation et à l’évolution de nos collaborateurs pour un environnement motivant.",
+    detail: "Elle favorise un environnement de travail motivant et valorisant, essentiel à la performance collective.",
+    color: "bg-primary"
+  },
+  {
+    id: 'it',
+    icon: <Network className="w-8 h-8" />,
+    title: "Équipe Système d’Information",
+    description: "Responsable du développement des outils numériques, garantissant la sécurité et la performance des systèmes.",
+    detail: "Elle joue un rôle clé dans la transformation digitale de BordjSteel.",
+    color: "bg-primary"
+  },
+  {
+    id: 'assembly',
+    icon: <Wrench className="w-8 h-8" />,
+    title: "Équipe Réalisation et Montage",
+    description: "Spécialisée dans l’installation sur site, assurant un montage précis et sécurisé de nos structures métalliques.",
+    detail: "Son savoir-faire garantit la conformité, la stabilité et la qualité de chaque projet livré.",
     color: "bg-primary"
   }
 ];
@@ -269,7 +301,3 @@ export default function HistoryPage() {
     </ProductPageLayout>
   );
 }
-
-    
-
-    
