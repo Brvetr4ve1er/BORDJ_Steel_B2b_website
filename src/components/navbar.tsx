@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View, User, GanttChartSquare, Square, Component, ToyBrick } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -183,9 +183,9 @@ ListItem.displayName = "ListItem";
 
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(() => false);
+  const [isMounted, setIsMounted] = useState(() => false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(() => false);
   const { navigation, siteMetadata } = companyData;
   const pathname = usePathname();
   
@@ -213,15 +213,15 @@ export function Navbar() {
     setIsMounted(true);
   }, []);
 
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > 20);
+  }, []);
+
   useEffect(() => {
-    if (!isMounted) return;
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMounted]);
+  }, [handleScroll]);
 
   const headerStyle = isMounted && isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32';
   const logoContainerSize = isMounted && isScrolled ? 'h-20 w-20' : 'h-28 w-28';
@@ -252,7 +252,7 @@ export function Navbar() {
       </div>
 
       <div className="hidden md:flex flex-1 justify-center items-center">
-        {isMounted ? <NavLinks navTextColor={textColor} /> : <div className="h-10" /> /* Placeholder */}
+        {isMounted ? <NavLinks navTextColor={textColor} /> : <div className="h-10" />}
       </div>
 
       <div className="flex items-center gap-4">
@@ -272,7 +272,7 @@ export function Navbar() {
                 </Select>
               </div>
             </div>
-        ): <div className="hidden md:block w-[120px] h-[76px]" /> /* Placeholder */}
+        ): <div className="hidden md:block w-[120px] h-[76px]" />}
 
         <div className="md:hidden">
           {isMounted ? (
