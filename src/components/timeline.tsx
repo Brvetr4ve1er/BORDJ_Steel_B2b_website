@@ -1,23 +1,23 @@
 
 "use client";
-import React from "react";
+import React, { useMemo } from "react";
 import { companyData } from "@/config/company-data";
 import { Award, Lightbulb, Search, Cog, Users, BarChart, Target } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatedWrapper } from "./animated-wrapper";
 
-const iconMap: { [key: string]: React.ElementType } = {
-  Lightbulb,
-  Search,
-  Cog,
-  Users,
-  BarChart,
-  Target,
-  Award,
-};
-
 export function Timeline() {
   const events = companyData.pages.about.timelineEvents;
+  
+  const iconMap = useMemo(() => ({
+    Lightbulb,
+    Search,
+    Cog,
+    Users,
+    BarChart,
+    Target,
+    Award,
+  }), []);
 
   return (
     <div className="container mx-auto px-6">
@@ -31,7 +31,7 @@ export function Timeline() {
         <div className="space-y-12">
           {events.map((event, i) => {
             const isLeft = i % 2 === 0;
-            const Icon = iconMap[event.icon];
+            const Icon = iconMap[event.icon as keyof typeof iconMap];
 
             return (
               <AnimatedWrapper animation="slide-up" key={i}>

@@ -6,12 +6,13 @@ import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { galvanisationContent } from '@/config/galvanisation-data';
 import { ArrowRight } from 'lucide-react';
-import { iconMap } from '@/config/galvanisation-data';
+import { iconMap as galvanisationIconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
 import { DownloadButton } from './ui/download-button';
 import { BathsIcon } from './icons/baths-icon';
 import dynamic from 'next/dynamic';
+import { useMemo } from 'react';
 
 const DynamicAnimatedBaths = dynamic(() => import('./animated-baths').then(mod => mod.AnimatedBaths));
 
@@ -40,6 +41,7 @@ function UnwrappedHeroSection() {
   const { hero } = galvanisationContent;
   const largeStat = hero.stats.find(s => s.large);
   const smallStats = hero.stats.filter(s => !s.large);
+  const iconMap = useMemo(() => galvanisationIconMap, []);
 
   return (
     <section className="relative min-h-screen flex items-end bg-background pb-24 sm:pb-32">
@@ -118,6 +120,7 @@ function UnwrappedHeroSection() {
 // 2. Process Timeline Section
 function UnwrappedProcessTimeline() {
     const { galvanisation_steps } = galvanisationContent;
+    const iconMap = useMemo(() => galvanisationIconMap, []);
   
     return (
       <section className="relative w-full bg-secondary text-foreground py-32 px-6">
@@ -198,6 +201,7 @@ function UnwrappedProcessTimeline() {
 // 3. Benefits Section
 function UnwrappedBenefitsSection() {
     const { benefits } = galvanisationContent;
+    const iconMap = useMemo(() => galvanisationIconMap, []);
   
     return (
       <section className="py-32 bg-background">
@@ -235,6 +239,7 @@ function UnwrappedBenefitsSection() {
 // 4. Highlight Section
 function UnwrappedHighlightSection() {
     const { highlight } = galvanisationContent;
+    const iconMap = useMemo(() => galvanisationIconMap, []);
   
     return (
       <section className="py-32 bg-secondary">

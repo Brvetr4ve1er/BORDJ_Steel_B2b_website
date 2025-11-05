@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat, Package, Check, Ruler, Scale, Factory, Users, Square } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
@@ -32,7 +32,7 @@ export function ChaudronneriePageContent() {
   const { hero } = chaudronnerieData;
   const heroStats = hero.stats;
 
-  const iconMap: { [key: string]: React.ElementType } = {
+  const iconMap = useMemo(() => ({
     Package,
     Ruler,
     Scale,
@@ -43,7 +43,7 @@ export function ChaudronneriePageContent() {
     Database,
     Wind,
     Construction,
-  };
+  }), []);
 
 
   const productCards = [
@@ -92,7 +92,7 @@ export function ChaudronneriePageContent() {
               <AnimatedWrapper animation="slide-up" staggerIndex={1}>
                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
                     {heroStats.map((stat, index) => {
-                      const Icon = iconMap[stat.icon];
+                      const Icon = iconMap[stat.icon as keyof typeof iconMap];
                       return (
                         <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
                            <DetailedStatCard 

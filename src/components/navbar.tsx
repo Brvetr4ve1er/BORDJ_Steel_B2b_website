@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View, User, GanttChartSquare, Square, Component, ToyBrick } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -43,29 +43,29 @@ const cairo = Cairo({
 });
 
 
-const iconMap: { [key: string]: React.ElementType } = {
-  Info,
-  Factory,
-  Package,
-  Briefcase,
-  Newspaper,
-  Mail,
-  Building2,
-  HardHat,
-  ShieldCheck,
-  Award,
-  Cog,
-  FileText,
-  Anchor,
-  BookOpen,
-  Video,
-  View,
-  User
-};
-
 const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string, onItemClick?: () => void, navTextColor: string }) => {
     const { navigation } = companyData;
     const pathname = usePathname();
+
+    const iconMap = useMemo(() => ({
+      Info,
+      Factory,
+      Package,
+      Briefcase,
+      Newspaper,
+      Mail,
+      Building2,
+      HardHat,
+      ShieldCheck,
+      Award,
+      Cog,
+      FileText,
+      Anchor,
+      BookOpen,
+      Video,
+      View,
+      User
+    }), []);
 
     const isLinkActive = (href: string) => {
       if (href === '/') return pathname === href;
@@ -76,7 +76,7 @@ const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string
         <NavigationMenu>
             <NavigationMenuList className={cn("flex items-center gap-2", className)}>
                 {navigation.mainMenu.map((item) => {
-                    const Icon = iconMap[item.icon];
+                    const Icon = iconMap[item.icon as keyof typeof iconMap];
                     return (
                         <NavigationMenuItem key={item.name} >
                             {item.children ? (
@@ -133,7 +133,26 @@ const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a"> & { icon?: string }
 >(({ className, title, children, href, icon, ...props }, ref) => {
-  const Icon = icon ? iconMap[icon] : null;
+  const iconMap = useMemo(() => ({
+    Info,
+    Factory,
+    Package,
+    Briefcase,
+    Newspaper,
+    Mail,
+    Building2,
+    HardHat,
+    ShieldCheck,
+    Award,
+    Cog,
+    FileText,
+    Anchor,
+    BookOpen,
+    Video,
+    View,
+    User
+  }), []);
+  const Icon = icon ? iconMap[icon as keyof typeof iconMap] : null;
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -169,6 +188,26 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { navigation, siteMetadata } = companyData;
   const pathname = usePathname();
+  
+  const iconMap = useMemo(() => ({
+      Info,
+      Factory,
+      Package,
+      Briefcase,
+      Newspaper,
+      Mail,
+      Building2,
+      HardHat,
+      ShieldCheck,
+      Award,
+      Cog,
+      FileText,
+      Anchor,
+      BookOpen,
+      Video,
+      View,
+      User
+  }), []);
 
   useEffect(() => {
     setIsMounted(true);
@@ -262,7 +301,7 @@ export function Navbar() {
                 <div className="flex-1 p-6 flex flex-col items-start gap-4 relative overflow-y-auto">
                    <Accordion type="single" collapsible className="w-full">
                      {navigation.mainMenu.map((item, index) => {
-                      const Icon = iconMap[item.icon];
+                      const Icon = iconMap[item.icon as keyof typeof iconMap];
                       return (
                         <div key={item.name} className="w-full">
                           {item.children ? (
@@ -320,5 +359,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    

@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, BookCopy, TowerControl, Car, Tractor, Layers, Cog } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import images from '@/app/lib/placeholder-images.json';
 import { AnimatedNumber } from './animated-number';
 import { DownloadButton } from './ui/download-button';
@@ -46,16 +46,16 @@ const whyChooseUs = [
     }
 ];
 
-const iconMap: { [key: string]: React.ElementType } = {
+function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.hero }) {
+  const iconMap = useMemo(() => ({
     HardHat,
     Cog,
     Layers,
     TowerControl,
     Car,
     Tractor
-};
+  }), []);
 
-function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.hero }) {
   return (
     <section className="relative min-h-screen flex items-end bg-background pb-24 sm:pb-32">
       <div className="absolute inset-0 z-0">
@@ -160,6 +160,15 @@ export function CharpenteMetalliquePageContent() {
   const handlePillarClick = (id: string) => {
     setSelectedPillarId(id);
   };
+  
+  const iconMap = useMemo(() => ({
+    HardHat,
+    Cog,
+    Layers,
+    TowerControl,
+    Car,
+    Tractor
+  }), []);
 
   return (
     <div className="bg-background">
@@ -217,7 +226,7 @@ export function CharpenteMetalliquePageContent() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {charpenteMetalliqueData.pillars.map((pillar, index) => {
-              const Icon = iconMap[pillar.iconName];
+              const Icon = iconMap[pillar.iconName as keyof typeof iconMap];
               return (
                 <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
                   <div onClick={() => handlePillarClick(pillar.id)} className="cursor-pointer">

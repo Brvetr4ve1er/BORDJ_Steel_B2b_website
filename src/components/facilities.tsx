@@ -11,18 +11,18 @@ import { ArrowRight, HardHat, Layers, Cog, Anchor } from 'lucide-react';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import images from '@/app/lib/placeholder-images.json';
-
-const iconMap: { [key: string]: React.ElementType } = {
-  HardHat,
-  Layers,
-  Cog,
-  Anchor,
-};
-
+import { useMemo } from 'react';
 
 export function Facilities() {
   const { units } = companyData.pages;
   const facilityImages = images.facilities;
+
+  const iconMap = useMemo(() => ({
+    HardHat,
+    Layers,
+    Cog,
+    Anchor,
+  }), []);
 
   const facilitiesData = [
     { ...units.items[0], image: facilityImages.charpente },
@@ -39,7 +39,7 @@ export function Facilities() {
         </AnimatedWrapper>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {facilitiesData.map((facility, index) => {
-             const Icon = iconMap[facility.icon];
+             const Icon = iconMap[facility.icon as keyof typeof iconMap];
              return (
                 <AnimatedWrapper key={index} animation="slide-up">
                   <Link href={facility.href || '#'} className="group block">

@@ -6,16 +6,18 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import { AnimatedNumber } from "./animated-number";
 import images from '@/app/lib/placeholder-images.json';
-
-const iconMap: { [key: string]: React.ElementType } = {
-  Award: Award,
-  Cog: Cog,
-};
+import { useMemo } from "react";
+import type { ElementType } from "react";
 
 export function VisionMission() {
   const { about } = companyData.pages;
   const { vision, mission, history, completedProjects } = about.content;
   const aboutImage = images.homepage.about;
+
+  const iconMap: { [key: string]: ElementType } = useMemo(() => ({
+    Award: Award,
+    Cog: Cog,
+  }), []);
 
   const VisionIcon = iconMap[vision.icon];
   const MissionIcon = iconMap[mission.icon];
