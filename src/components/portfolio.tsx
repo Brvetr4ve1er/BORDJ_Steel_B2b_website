@@ -27,7 +27,7 @@ export function Portfolio() {
         <AnimatedWrapper animation="fade-in">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {projectsData.map((project, index) => (
-              <div key={index} className="group">
+              <div key={project.name} className="group">
                 <Card className="overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
                   <CardContent className="p-0">
                     <div className="relative aspect-square">
