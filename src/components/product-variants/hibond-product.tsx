@@ -258,7 +258,7 @@ const HiBondProduct = ({ product }: { product: any }) => {
                       </td>
                     </tr>
                     {row.epaisseurs.slice(1).map((ep: any, epIndex: number) => (
-                      <tr key={epIndex}>
+                      <tr key={`ep-${ep.valeur_mm}-${epIndex}`}>
                         <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">{ep.valeur_mm.toFixed(2)}</td>
                         <td className="bg-gray-300 border border-gray-400 p-2 text-center text-sm">{ep.poids_kg_m2.toFixed(2)}</td>
                       </tr>

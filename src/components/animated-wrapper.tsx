@@ -37,7 +37,9 @@ export function AnimatedWrapper({ children, animation, staggerIndex = 0, classNa
     observer.observe(element);
 
     return () => {
-      observer.unobserve(element);
+      if (element) {
+        observer.unobserve(element);
+      }
     };
   }, []);
 
