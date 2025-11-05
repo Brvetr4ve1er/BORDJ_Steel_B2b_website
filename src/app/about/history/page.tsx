@@ -180,7 +180,7 @@ const TeamFeature = ({
   index: number;
 }) => {
   const totalFeatures = teams.length;
-  const numCols = 3; // lg:grid-cols-3
+  const numCols = 2; // lg:grid-cols-2
   return (
     <div
       className={cn(
@@ -217,7 +217,7 @@ function TeamsSection() {
       <AnimatedWrapper animation="fade-in">
         <h2 className="text-6xl md:text-7xl font-bold text-primary mb-12 text-center">Nos équipes spécialisées</h2>
       </AnimatedWrapper>
-       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 max-w-7xl mx-auto">
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 relative z-10 py-10 max-w-7xl mx-auto">
         {teams.map((team, index) => (
             <TeamFeature key={team.id} {...team} index={index} />
         ))}
@@ -301,3 +301,5 @@ export default function HistoryPage() {
     </ProductPageLayout>
   );
 }
+
+    
