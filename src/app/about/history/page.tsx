@@ -43,7 +43,7 @@ const teams = [
     description: "Véritable moteur de l'innovation, notre bureau d'études conçoit et optimise les structures métalliques.",
     detail: "Il veille à la faisabilité technique, à la solidité et à la performance de nos réalisations.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/eng/600/800"
+    image: "https://picsum.photos/seed/eng/800/600"
   },
   {
     id: 'production',
@@ -52,7 +52,7 @@ const teams = [
     description: "Au cœur de notre activité, l'équipe de production assure la fabrication, l'assemblage et le contrôle des composants.",
     detail: "Grâce à une maîtrise technique avancée et à des équipements modernes, elle garantit la fiabilité et la durabilité de nos produits.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/prod/600/800"
+    image: "https://picsum.photos/seed/prod/800/600"
   },
   {
     id: 'quality',
@@ -61,7 +61,7 @@ const teams = [
     description: "Cette équipe veille à la conformité de nos produits aux normes nationales et internationales.",
     detail: "Des contrôles rigoureux sont effectués à chaque étape pour assurer une qualité irréprochable.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/qual/600/800"
+    image: "https://picsum.photos/seed/qual/800/600"
   },
   {
     id: 'hse',
@@ -70,7 +70,7 @@ const teams = [
     description: "Notre équipe HSE veille à la sécurité de nos collaborateurs et à la protection de l'environnement.",
     detail: "La sécurité et la durabilité font partie intégrante de la culture BordjSteel.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/hse/600/800"
+    image: "https://picsum.photos/seed/hse/800/600"
   },
   {
     id: 'commercial',
@@ -79,7 +79,7 @@ const teams = [
     description: "Toujours à l'écoute du marché, notre équipe accompagne nos clients à chaque étape de leurs projets.",
     detail: "Elle met un point d'honneur à offrir des solutions personnalisées, un suivi attentif et un service de qualité.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/comm/600/800"
+    image: "https://picsum.photos/seed/comm/800/600"
   },
   {
     id: 'finance',
@@ -88,7 +88,7 @@ const teams = [
     description: "Chargée de la gestion rigoureuse des ressources financières, assurant suivi comptable et contrôle budgétaire.",
     detail: "Son objectif : garantir une santé financière solide et durable.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/fin/600/800"
+    image: "https://picsum.photos/seed/fin/800/600"
   },
   {
     id: 'hr',
@@ -97,7 +97,7 @@ const teams = [
     description: "L'équipe RH veille au bien-être, à la formation et à l’évolution de nos collaborateurs pour un environnement motivant.",
     detail: "Elle favorise un environnement de travail motivant et valorisant, essentiel à la performance collective.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/hr/600/800"
+    image: "https://picsum.photos/seed/hr/800/600"
   },
   {
     id: 'it',
@@ -106,7 +106,7 @@ const teams = [
     description: "Responsable du développement des outils numériques, garantissant la sécurité et la performance des systèmes.",
     detail: "Elle joue un rôle clé dans la transformation digitale de BordjSteel.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/it/600/800"
+    image: "https://picsum.photos/seed/it/800/600"
   },
   {
     id: 'assembly',
@@ -115,7 +115,7 @@ const teams = [
     description: "Spécialisée dans l’installation sur site, assurant un montage précis et sécurisé de nos structures métalliques.",
     detail: "Son savoir-faire garantit la conformité, la stabilité et la qualité de chaque projet livré.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/asm/600/800"
+    image: "https://picsum.photos/seed/asm/800/600"
   }
 ];
 
@@ -191,11 +191,11 @@ const TeamFeature = ({
   image: string;
 }) => {
   const totalFeatures = teams.length;
-  const numCols = 3; // lg:grid-cols-3
+  const numCols = 2; // lg:grid-cols-2
   return (
     <div
       className={cn(
-        "flex flex-col justify-end p-8 lg:border-r py-10 relative group/feature dark:border-neutral-800 min-h-[400px] rounded-lg overflow-hidden",
+        "flex flex-col justify-end p-8 lg:border-r py-10 relative group/feature dark:border-neutral-800 min-h-[350px] rounded-lg overflow-hidden",
         (index === 0 || index % numCols === 0) && "lg:border-l dark:border-neutral-800",
         index < totalFeatures - (totalFeatures % numCols || numCols) && "lg:border-b dark:border-neutral-800"
       )}
@@ -236,7 +236,7 @@ function TeamsSection() {
       <AnimatedWrapper animation="fade-in">
         <h2 className="text-6xl md:text-7xl font-bold text-primary mb-12 text-center">Nos équipes spécialisées</h2>
       </AnimatedWrapper>
-       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 max-w-7xl mx-auto gap-4">
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 relative z-10 py-10 max-w-7xl mx-auto gap-4">
         {teams.map((team, index) => (
             <TeamFeature key={team.id} {...team} index={index} />
         ))}
@@ -320,5 +320,3 @@ export default function HistoryPage() {
     </ProductPageLayout>
   );
 }
-
-    
