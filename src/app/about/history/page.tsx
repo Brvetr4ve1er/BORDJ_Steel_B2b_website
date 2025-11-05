@@ -136,41 +136,58 @@ function HumanCapitalSection() {
   );
 }
 
-function TeamsSection() {
-  const [activeTeam, setActiveTeam] = useState<string | null>(null);
+const TeamFeature = ({
+  title,
+  description,
+  icon,
+  index,
+}: {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  index: number;
+}) => {
+  const totalFeatures = teams.length;
+  const numCols = 3; // lg:grid-cols-3
+  return (
+    <div
+      className={cn(
+        "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
+        (index === 0 || index % numCols === 0) && "lg:border-l dark:border-neutral-800",
+        index < totalFeatures - (totalFeatures % numCols || numCols) && "lg:border-b dark:border-neutral-800"
+      )}
+    >
+      {index < totalFeatures - (totalFeatures % numCols || numCols) && (
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-secondary to-transparent pointer-events-none" />
+      )}
+      {index >= totalFeatures - (totalFeatures % numCols || numCols) && (
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-secondary to-transparent pointer-events-none" />
+      )}
+      <div className="mb-4 relative z-10 px-10 text-primary">
+        {icon}
+      </div>
+      <div className="text-lg font-bold mb-2 relative z-10 px-10">
+        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-border group-hover/feature:bg-accent transition-all duration-200 origin-center" />
+        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-primary">
+          {title}
+        </span>
+      </div>
+      <p className="text-sm text-muted-foreground max-w-xs relative z-10 px-10">
+        {description}
+      </p>
+    </div>
+  );
+};
 
+function TeamsSection() {
   return (
     <section className="container mx-auto px-4">
       <AnimatedWrapper animation="fade-in">
         <h2 className="text-4xl font-bold text-primary mb-12 text-center">Nos équipes spécialisées</h2>
       </AnimatedWrapper>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {teams.map((team) => (
-          <AnimatedWrapper key={team.id} animation="fade-in-stagger" staggerIndex={teams.indexOf(team)}>
-            <Card
-              onClick={() => setActiveTeam(activeTeam === team.id ? null : team.id)}
-              className="rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
-            >
-              <CardHeader className={cn(team.color, "p-6 text-primary-foreground")}>
-                <div className="flex items-center gap-4">
-                  {team.icon}
-                  <CardTitle className="text-xl font-bold">{team.title}</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="p-6">
-                <p className="text-muted-foreground mb-4">{team.description}</p>
-                {activeTeam === team.id && (
-                  <div className="mt-4 pt-4 border-t border-border animate-accordion-down">
-                    <p className="text-muted-foreground italic">{team.detail}</p>
-                  </div>
-                )}
-                <button className="mt-4 text-accent font-semibold hover:text-accent/80 transition-colors flex items-center gap-2">
-                  {activeTeam === team.id ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                  {activeTeam === team.id ? 'Voir moins' : 'En savoir plus'}
-                </button>
-              </CardContent>
-            </Card>
-          </AnimatedWrapper>
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 max-w-7xl mx-auto">
+        {teams.map((team, index) => (
+            <TeamFeature key={team.id} {...team} index={index} />
         ))}
       </div>
     </section>
@@ -252,3 +269,5 @@ export default function HistoryPage() {
     </ProductPageLayout>
   );
 }
+
+    
