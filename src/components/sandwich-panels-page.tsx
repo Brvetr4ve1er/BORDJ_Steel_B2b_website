@@ -22,7 +22,6 @@ import HibondProduct from './product-variants/hibond-product';
 import FinitionsProduct from './product-variants/finitions-product';
 
 const HoverImageGallery = dynamic(() => import('./ui/hover-image-gallery').then(mod => mod.HoverImageGallery), { ssr: false });
-const ImageDialog = dynamic(() => import('./ui/image-dialog').then(mod => mod.ImageDialog), { ssr: false });
 
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -113,16 +112,14 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
                          if (!chunk || chunk.length === 0) return null;
                          if (i === 1) { // Middle element is a static image
                             return (
-                                <ImageDialog key={`${activeProductKey}-static-${i}`} imageUrl={chunk[0]?.src || chunk[0]} alt={chunk[0]?.alt || `Static product image`}>
-                                    <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer group">
-                                        <Image
-                                            src={chunk[0]?.src || chunk[0]}
-                                            alt={chunk[0]?.alt || `Static product image`}
-                                            fill
-                                            className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105"
-                                        />
-                                    </div>
-                                </ImageDialog>
+                                <div key={`${activeProductKey}-static-${i}`} className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer group">
+                                    <Image
+                                        src={chunk[0]?.src || chunk[0]}
+                                        alt={chunk[0]?.alt || `Static product image`}
+                                        fill
+                                        className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105"
+                                    />
+                                </div>
                             );
                          }
                          return (
