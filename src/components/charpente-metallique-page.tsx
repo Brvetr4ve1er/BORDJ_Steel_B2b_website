@@ -334,4 +334,5 @@ export function CharpenteMetalliquePageContent() {
       </section>
 
     </div>
-  
+  );
+}
