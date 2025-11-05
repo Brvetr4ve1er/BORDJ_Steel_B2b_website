@@ -183,7 +183,7 @@ function TeamsSection() {
   return (
     <section className="container mx-auto px-4">
       <AnimatedWrapper animation="fade-in">
-        <h2 className="text-4xl font-bold text-primary mb-12 text-center">Nos équipes spécialisées</h2>
+        <h2 className="text-6xl md:text-7xl font-bold text-primary mb-12 text-center">Nos équipes spécialisées</h2>
       </AnimatedWrapper>
        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 max-w-7xl mx-auto">
         {teams.map((team, index) => (
