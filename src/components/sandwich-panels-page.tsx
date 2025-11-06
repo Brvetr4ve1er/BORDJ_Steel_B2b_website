@@ -72,7 +72,6 @@ const ProductDetails = ({ product }: { product: any; }) => {
         
         if (gallerySize === 0) return [[], [], []];
 
-        // Ensure there's at least one image to pad with if needed
         const padImage = gallery[0];
 
         const size = Math.ceil(gallerySize / 3);
@@ -80,7 +79,6 @@ const ProductDetails = ({ product }: { product: any; }) => {
         const chunk2 = [...gallery.slice(size, size * 2)];
         const chunk3 = [...gallery.slice(size * 2)];
 
-        // Pad chunks if they are empty but shouldn't be
         if (chunk1.length === 0 && gallerySize > 0) chunk1.push(padImage);
         if (chunk2.length === 0 && gallerySize > size) chunk2.push(padImage);
         if (chunk3.length === 0 && gallerySize > size * 2) chunk3.push(padImage);
@@ -88,26 +86,6 @@ const ProductDetails = ({ product }: { product: any; }) => {
         return [chunk1, chunk2, chunk3];
     }, [product.galleryImages]);
     
-    const galleries = {
-      gallery1: chunkedImages[0].length > 0 ? (
-        <HoverImageGallery key={`${product.title}-gallery-0`} images={chunkedImages[0].map((img: any) => img.src || img)} />
-      ) : null,
-      gallery2: chunkedImages[1].length > 0 ? (
-        <div key={`${product.title}-static-1`} className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer group">
-          <Image
-            src={chunkedImages[1][0]?.src || chunkedImages[1][0]}
-            alt={chunkedImages[1][0]?.alt || `Static product image`}
-            fill
-            className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105"
-          />
-        </div>
-      ) : null,
-      gallery3: chunkedImages[2].length > 0 ? (
-        <HoverImageGallery key={`${product.title}-gallery-2`} images={chunkedImages[2].map((img: any) => img.src || img)} />
-      ) : null,
-  };
-
-
     const renderProduct = () => {
         const props = { product };
         if (product.documentMetadata?.productType?.includes('COUVERTURE')) return <CouvertureProduct {...props} />;
@@ -125,13 +103,13 @@ const ProductDetails = ({ product }: { product: any; }) => {
                 <CardTitle className="text-4xl font-bold">{product.title || product.documentMetadata?.productCategory || product.documentMetadata?.productType}</CardTitle>
             </CardHeader>
             <CardContent className="p-4 md:p-8 bg-background">
-                <div className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-2 xl:grid-cols-3">
+                <div className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-3">
                     <div className="space-y-8 lg:col-span-1">
-                        {galleries.gallery1}
-                        {galleries.gallery2}
-                        {galleries.gallery3}
+                        {chunkedImages[0].length > 0 && <HoverImageGallery key={`${product.title}-gallery-0`} images={chunkedImages[0].map((img: any) => img.src || img)} />}
+                        {chunkedImages[1].length > 0 && <HoverImageGallery key={`${product.title}-gallery-1`} images={chunkedImages[1].map((img: any) => img.src || img)} />}
+                        {chunkedImages[2].length > 0 && <HoverImageGallery key={`${product.title}-gallery-2`} images={chunkedImages[2].map((img: any) => img.src || img)} />}
                     </div>
-                    <div className="lg:col-span-1 xl:col-span-2">
+                    <div className="lg:col-span-2">
                         {renderProduct()}
                     </div>
                 </div>
@@ -141,51 +119,89 @@ const ProductDetails = ({ product }: { product: any; }) => {
 };
 
 
+const HeroSection = React.memo(function HeroSection() {
+  const heroImage = images['sandwich-panels'].hero;
+  return (
+    <section className="relative h-screen w-full flex items-end justify-start text-white overflow-hidden">
+      <Image
+        src={heroImage.src}
+        alt={heroImage.alt}
+        fill
+        className="z-0 object-cover"
+        data-ai-hint={heroImage.aiHint}
+        priority
+        placeholder="blur"
+        blurDataURL={heroImage.blurDataUrl}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10" />
+      <div className="relative z-20 w-full px-8 md:px-12 pb-24">
+        <AnimatedWrapper animation="zoom-in">
+          <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
+            Panneaux Sandwichs
+          </h1>
+          <p className="mt-8 text-xl md:text-2xl max-w-3xl text-gray-200">
+            Solutions d'isolation haute performance pour la construction moderne.
+          </p>
+          <div className="mt-12 flex justify-start items-center gap-4">
+            <Button size="lg" variant="destructive" className="group">
+              Explorer les produits <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+            </Button>
+            <DownloadButton text="Voir la brochure" />
+          </div>
+        </AnimatedWrapper>
+      </div>
+    </section>
+  );
+});
+
+const productButtons = [
+  { key: 'couverture', label: 'Panneaux de Couverture', icon: CouvertureIcon },
+  { key: 'bardage', label: 'Panneaux de Bardage', icon: BardageIcon },
+  { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: FrigorifiqueIcon },
+  { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
+  { key: 'hibond', label: 'Hi-Bond 77', icon: HibondIcon },
+  { key: 'finitions', label: 'Pièces de Finition', icon: FinitionsIcon },
+];
+
+const ProductSelector = React.memo(function ProductSelector({ activeProductKey, onSelectProduct }: { activeProductKey: keyof typeof productData | null, onSelectProduct: (key: keyof typeof productData) => void }) {
+  return (
+    <AnimatedWrapper animation="fade-in">
+      <div className="mb-24 flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
+        {productButtons.map(({ key, label, icon: Icon }) => (
+          <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => onSelectProduct(key as keyof typeof productData)}>
+            <div className={cn(
+              "w-32 h-32 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
+              activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
+            )}>
+              <Icon className={cn(
+                "h-14 w-14 transition-colors duration-300",
+                activeProductKey === key ? 'text-accent-foreground' : 'text-primary',
+                key === 'toleNervuree' && "rotate-[-90deg]"
+              )} />
+            </div>
+            <Button
+              variant={activeProductKey === key ? 'destructive' : 'outline'}
+              className={cn(
+                "h-auto py-2 px-6 transition-all duration-300 text-center",
+                activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
+              )}
+            >
+              <span className="text-center text-lg font-semibold">{label}</span>
+            </Button>
+          </div>
+        ))}
+      </div>
+    </AnimatedWrapper>
+  );
+});
+
 export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData | null>(null);
   const activeProduct = activeProductKey ? productData[activeProductKey] : null;
-  const heroImage = images['sandwich-panels'].hero;
-
-  const productButtons = [
-    { key: 'couverture', label: 'Panneaux de Couverture', icon: CouvertureIcon },
-    { key: 'bardage', label: 'Panneaux de Bardage', icon: BardageIcon },
-    { key: 'frigorifique', label: 'Panneaux Frigorifiques', icon: FrigorifiqueIcon },
-    { key: 'toleNervuree', label: 'Tôle Nervurée', icon: ChevronsRight },
-    { key: 'hibond', label: 'Hi-Bond 77', icon: HibondIcon },
-    { key: 'finitions', label: 'Pièces de Finition', icon: FinitionsIcon },
-  ];
 
   return (
     <>
-      <section className="relative h-screen w-full flex items-end justify-start text-white overflow-hidden">
-        <Image
-          src={heroImage.src}
-          alt={heroImage.alt}
-          fill
-          className="z-0 object-cover"
-          data-ai-hint={heroImage.aiHint}
-          priority
-          placeholder="blur"
-          blurDataURL={heroImage.blurDataUrl}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10" />
-        <div className="relative z-20 w-full px-8 md:px-12 pb-24">
-            <AnimatedWrapper animation="zoom-in">
-              <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
-                Panneaux Sandwichs
-              </h1>
-              <p className="mt-8 text-xl md:text-2xl max-w-3xl text-gray-200">
-                Solutions d'isolation haute performance pour la construction moderne.
-              </p>
-              <div className="mt-12 flex justify-start items-center gap-4">
-                <Button size="lg" variant="destructive" className="group">
-                    Explorer les produits <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
-                </Button>
-                <DownloadButton text="Voir la brochure" />
-              </div>
-            </AnimatedWrapper>
-        </div>
-      </section>
+      <HeroSection />
       
       <section id="product-details" className="bg-secondary/20 py-20">
         <div className="container mx-auto px-4 max-w-screen-2xl">
@@ -198,34 +214,7 @@ export function SandwichPanelsPage() {
               </Card>
           </AnimatedWrapper>
           
-          <AnimatedWrapper animation="fade-in">
-            <div className="mb-24 flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
-              {productButtons.map(({ key, label, icon: Icon }) => (
-                <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => setActiveProductKey(key as keyof typeof productData)}>
-                  <div className={cn(
-                      "w-32 h-32 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
-                      activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
-                  )}>
-                      <Icon className={cn(
-                          "h-14 w-14 transition-colors duration-300",
-                          activeProductKey === key ? 'text-accent-foreground' : 'text-primary',
-                          key === 'toleNervuree' && "rotate-[-90deg]"
-                      )} />
-                  </div>
-                  <Button
-                      variant={activeProductKey === key ? 'destructive' : 'outline'}
-                      onClick={() => setActiveProductKey(key as keyof typeof productData)}
-                      className={cn(
-                          "h-auto py-2 px-6 transition-all duration-300 text-center",
-                          activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
-                      )}
-                  >
-                      <span className="text-center text-lg font-semibold">{label}</span>
-                  </Button>
-                </div>
-              ))}
-            </div>
-          </AnimatedWrapper>
+          <ProductSelector activeProductKey={activeProductKey} onSelectProduct={setActiveProductKey} />
           
           {activeProduct && (
             <AnimatedWrapper key={activeProductKey} animation="zoom-in">
@@ -237,5 +226,3 @@ export function SandwichPanelsPage() {
     </>
   );
 }
-
-    
