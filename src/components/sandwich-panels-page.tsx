@@ -20,7 +20,6 @@ import HibondProduct from './product-variants/hibond-product';
 import FinitionsProduct from './product-variants/finitions-product';
 import { HoverImageGallery } from './ui/hover-image-gallery';
 
-
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -96,6 +95,8 @@ const ProductDetails = ({ product }: { product: any; }) => {
         if (product.title?.includes('FINITION')) return <FinitionsProduct {...props} />;
         return <p>Sélectionnez un produit pour voir les détails.</p>;
     }
+    
+    const isFinitions = product.title?.includes('FINITION');
 
     return (
         <Card className="shadow-lg">
@@ -106,8 +107,8 @@ const ProductDetails = ({ product }: { product: any; }) => {
                 <div className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-3">
                     <div className="space-y-8 lg:col-span-1">
                         {chunkedImages[0].length > 0 && <HoverImageGallery key={`${product.title}-gallery-0`} images={chunkedImages[0].map((img: any) => img.src || img)} />}
-                        {chunkedImages[1].length > 0 && <HoverImageGallery key={`${product.title}-gallery-1`} images={chunkedImages[1].map((img: any) => img.src || img)} />}
-                        {chunkedImages[2].length > 0 && <HoverImageGallery key={`${product.title}-gallery-2`} images={chunkedImages[2].map((img: any) => img.src || img)} />}
+                        {!isFinitions && chunkedImages[1].length > 0 && <HoverImageGallery key={`${product.title}-gallery-1`} images={chunkedImages[1].map((img: any) => img.src || img)} />}
+                        {!isFinitions && chunkedImages[2].length > 0 && <HoverImageGallery key={`${product.title}-gallery-2`} images={chunkedImages[2].map((img: any) => img.src || img)} />}
                     </div>
                     <div className="lg:col-span-2">
                         {renderProduct()}
