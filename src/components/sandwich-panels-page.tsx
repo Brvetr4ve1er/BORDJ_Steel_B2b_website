@@ -63,36 +63,37 @@ const FinitionsIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <Settings {...props} />
 );
 
-const ProductDetails = ({ product, activeProductKey }: { product: any; activeProductKey: keyof typeof productData }) => {
+const ProductDetails = ({ product }: { product: any; }) => {
     if (!product) return null;
 
     const chunkedImages = useMemo(() => {
         const gallery = product.galleryImages || [];
         const gallerySize = gallery.length;
         
-        const padIfEmpty = (chunk: any[]) => {
-            if (chunk.length === 0 && gallery.length > 0) {
-                return [gallery[0]];
-            }
-            return chunk;
-        };
-
         if (gallerySize === 0) return [[], [], []];
-        
+
+        // Ensure there's at least one image to pad with if needed
+        const padImage = gallery[0];
+
         const size = Math.ceil(gallerySize / 3);
         const chunk1 = [...gallery.slice(0, size)];
         const chunk2 = [...gallery.slice(size, size * 2)];
         const chunk3 = [...gallery.slice(size * 2)];
 
-        return [padIfEmpty(chunk1), padIfEmpty(chunk2), padIfEmpty(chunk3)];
+        // Pad chunks if they are empty but shouldn't be
+        if (chunk1.length === 0 && gallerySize > 0) chunk1.push(padImage);
+        if (chunk2.length === 0 && gallerySize > size) chunk2.push(padImage);
+        if (chunk3.length === 0 && gallerySize > size * 2) chunk3.push(padImage);
+
+        return [chunk1, chunk2, chunk3];
     }, [product.galleryImages]);
     
     const galleries = {
       gallery1: chunkedImages[0].length > 0 ? (
-        <HoverImageGallery key={`${activeProductKey}-gallery-0`} images={chunkedImages[0].map((img: any) => img.src || img)} />
+        <HoverImageGallery key={`${product.title}-gallery-0`} images={chunkedImages[0].map((img: any) => img.src || img)} />
       ) : null,
       gallery2: chunkedImages[1].length > 0 ? (
-        <div key={`${activeProductKey}-static-1`} className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer group">
+        <div key={`${product.title}-static-1`} className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer group">
           <Image
             src={chunkedImages[1][0]?.src || chunkedImages[1][0]}
             alt={chunkedImages[1][0]?.alt || `Static product image`}
@@ -102,13 +103,13 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
         </div>
       ) : null,
       gallery3: chunkedImages[2].length > 0 ? (
-        <HoverImageGallery key={`${activeProductKey}-gallery-2`} images={chunkedImages[2].map((img: any) => img.src || img)} />
+        <HoverImageGallery key={`${product.title}-gallery-2`} images={chunkedImages[2].map((img: any) => img.src || img)} />
       ) : null,
   };
 
 
     const renderProduct = () => {
-        const props = { product, ...galleries };
+        const props = { product };
         if (product.documentMetadata?.productType?.includes('COUVERTURE')) return <CouvertureProduct {...props} />;
         if (product.documentMetadata?.productCategory?.includes('BARDAGE')) return <BardageProduct {...props} />;
         if (product.title?.includes('FRIGORIFIQUE')) return <FrigorifiqueProduct {...props} />;
@@ -124,7 +125,16 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
                 <CardTitle className="text-4xl font-bold">{product.title || product.documentMetadata?.productCategory || product.documentMetadata?.productType}</CardTitle>
             </CardHeader>
             <CardContent className="p-4 md:p-8 bg-background">
-                {renderProduct()}
+                <div className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-2 xl:grid-cols-3">
+                    <div className="space-y-8 lg:col-span-1">
+                        {galleries.gallery1}
+                        {galleries.gallery2}
+                        {galleries.gallery3}
+                    </div>
+                    <div className="lg:col-span-1 xl:col-span-2">
+                        {renderProduct()}
+                    </div>
+                </div>
             </CardContent>
         </Card>
     );
@@ -219,7 +229,7 @@ export function SandwichPanelsPage() {
           
           {activeProduct && (
             <AnimatedWrapper key={activeProductKey} animation="zoom-in">
-                <ProductDetails product={activeProduct} activeProductKey={activeProductKey as keyof typeof productData} />
+                <ProductDetails product={activeProduct} />
             </AnimatedWrapper>
           )}
         </div>
@@ -227,3 +237,5 @@ export function SandwichPanelsPage() {
     </>
   );
 }
+
+    

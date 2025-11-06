@@ -1,8 +1,9 @@
+
 import React from 'react';
 import Image from 'next/image';
 import { Card, CardContent, CardTitle, CardHeader } from '@/components/ui/card';
 
-export default function FinitionsProduct({ product, gallery1, gallery2, gallery3 }: { product: any, gallery1: React.ReactNode, gallery2: React.ReactNode, gallery3: React.ReactNode }) {
+export default function FinitionsProduct({ product }: { product: any }) {
   if (!product || !product.features?.finitions) {
     return <p>Données sur les finitions non disponibles.</p>;
   }
@@ -31,3 +32,5 @@ export default function FinitionsProduct({ product, gallery1, gallery2, gallery3
     </div>
   );
 }
+
+    
