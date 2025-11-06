@@ -141,8 +141,8 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
 
 
 export function SandwichPanelsPage() {
-  const [activeProductKey, setActiveProductKey] = React.useState<keyof typeof productData>('bardage');
-  const activeProduct = productData[activeProductKey];
+  const [activeProductKey, setActiveProductKey] = React.useState<keyof typeof productData | null>(null);
+  const activeProduct = activeProductKey ? productData[activeProductKey] : null;
   const heroImage = images['sandwich-panels'].hero;
 
   const productButtons = [
@@ -226,9 +226,11 @@ export function SandwichPanelsPage() {
             </div>
           </AnimatedWrapper>
           
-          <AnimatedWrapper key={activeProductKey} animation="fade-in">
-              <ProductDetails product={activeProduct} activeProductKey={activeProductKey} />
-          </AnimatedWrapper>
+          {activeProduct && (
+            <AnimatedWrapper key={activeProductKey} animation="zoom-in">
+                <ProductDetails product={activeProduct} activeProductKey={activeProductKey as keyof typeof productData} />
+            </AnimatedWrapper>
+          )}
         </div>
       </section>
     </>
