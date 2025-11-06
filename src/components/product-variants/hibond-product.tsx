@@ -194,7 +194,7 @@ const ChargesTable = () => {
 };
 
 
-const HiBondProduct = ({ product, gallery1, gallery2, gallery3 }: { product: any, gallery1: React.ReactNode, gallery2: React.ReactNode, gallery3: React.ReactNode }) => {
+const HiBondProduct = ({ product }: { product: any}) => {
   if (!product) {
     return <p>Données produit non disponibles.</p>;
   }
@@ -216,7 +216,6 @@ const HiBondProduct = ({ product, gallery1, gallery2, gallery3 }: { product: any
           </p>
         </div>
 
-        {gallery1}
         {/* Benefits Section */}
         <div className="mb-6">
           <h2 className="text-black font-bold text-lg mb-2">Les avantages de l'utilisation</h2>
@@ -270,7 +269,6 @@ const HiBondProduct = ({ product, gallery1, gallery2, gallery3 }: { product: any
           </div>
         )}
 
-        {gallery2}
         
         {/* Coating Section */}
         <div className="mb-8">
@@ -345,7 +343,6 @@ const HiBondProduct = ({ product, gallery1, gallery2, gallery3 }: { product: any
         )}
         <ChargesTable />
         
-        {gallery3}
 
         {features.caracteristiquesGeometriques?.image?.src && (
           <div className="mb-6 mt-8">
