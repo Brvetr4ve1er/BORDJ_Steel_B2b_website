@@ -232,11 +232,13 @@ const TeamFeature = ({
 
 function TeamsSection() {
   return (
-    <section className="container mx-auto px-4">
+    <section>
       <AnimatedWrapper animation="fade-in">
-        <h2 className="text-6xl md:text-7xl font-bold text-primary mb-12 text-center">Nos équipes spécialisées</h2>
+        <div className="container mx-auto px-4">
+          <h2 className="text-6xl md:text-7xl font-bold text-primary mb-12 text-center">Nos équipes spécialisées</h2>
+        </div>
       </AnimatedWrapper>
-       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 max-w-7xl mx-auto gap-4">
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 px-4 sm:px-6 lg:px-8 gap-4">
         {teams.map((team, index) => (
             <TeamFeature key={team.id} {...team} index={index} />
         ))}
@@ -320,3 +322,5 @@ export default function HistoryPage() {
     </ProductPageLayout>
   );
 }
+
+    
