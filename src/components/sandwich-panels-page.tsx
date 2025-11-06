@@ -120,8 +120,8 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
                 <CardTitle className="text-4xl font-bold">{product.title || product.documentMetadata?.productCategory || product.documentMetadata?.productType}</CardTitle>
             </CardHeader>
             <CardContent className="p-8 bg-background">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                    <div className="md:col-span-1 flex flex-col justify-between space-y-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12">
+                    <div className="flex flex-col justify-between space-y-8">
                        {[chunkedImages[0], chunkedImages[1], chunkedImages[2]].map((chunk, i) => {
                          if (i === 1 && chunk.length > 0) {
                             return (
@@ -143,7 +143,7 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
                          );
                        })}
                     </div>
-                    <div className="md:col-span-1 lg:col-span-2">
+                    <div className="lg:col-span-1 xl:col-span-2">
                         {renderProduct()}
                     </div>
                 </div>
