@@ -132,7 +132,7 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
 
 
 export function SandwichPanelsPage() {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData | null>('bardage');
+  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData | null>(null);
   const activeProduct = activeProductKey ? productData[activeProductKey] : null;
   const heroImage = images['sandwich-panels'].hero;
 
@@ -227,5 +227,3 @@ export function SandwichPanelsPage() {
     </>
   );
 }
-
-    
