@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import Image from 'next/image';
@@ -12,7 +11,6 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { productData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
 import images from '@/app/lib/placeholder-images.json';
-import dynamic from 'next/dynamic';
 import { DownloadButton } from './ui/download-button';
 import CouvertureProduct from './product-variants/couverture-product';
 import BardageProduct from './product-variants/bardage-product';
@@ -20,8 +18,7 @@ import FrigorifiqueProduct from './product-variants/frigorifique-product';
 import ToleNervureeProduct from './product-variants/tole-nervuree-product';
 import HibondProduct from './product-variants/hibond-product';
 import FinitionsProduct from './product-variants/finitions-product';
-
-const HoverImageGallery = dynamic(() => import('./ui/hover-image-gallery').then(mod => mod.HoverImageGallery), { ssr: false });
+import { HoverImageGallery } from './ui/hover-image-gallery';
 
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -135,7 +132,7 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
 
 
 export function SandwichPanelsPage() {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData | null>(null);
+  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData | null>('bardage');
   const activeProduct = activeProductKey ? productData[activeProductKey] : null;
   const heroImage = images['sandwich-panels'].hero;
 
@@ -230,3 +227,5 @@ export function SandwichPanelsPage() {
     </>
   );
 }
+
+    
