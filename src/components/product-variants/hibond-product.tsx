@@ -362,8 +362,9 @@ const HiBondProduct = ({ product }: { product: any}) => {
           </div>
         )}
       </div>
-    </div>
   );
 };
 
 export default HiBondProduct;
+
+    
