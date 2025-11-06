@@ -4,7 +4,7 @@
 
 import Image from 'next/image';
 import * as React from 'react';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { ChevronsRight, Snowflake, Settings, ArrowRight } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
@@ -68,15 +68,34 @@ const FinitionsIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const ProductDetails = ({ product, activeProductKey }: { product: any; activeProductKey: keyof typeof productData }) => {
     if (!product) return null;
-  
+
     const chunkedImages = useMemo(() => {
         const gallery = product.galleryImages || [];
-        const size = Math.ceil(gallery.length / 3);
-        const chunks = Array.from({ length: 3 }, (_, i) =>
-            gallery.slice(i * size, (i + 1) * size)
-        );
-        return chunks.map(chunk => chunk.length > 0 ? chunk : chunks[0] || []);
-    }, [product.galleryImages, activeProductKey]);
+        const gallerySize = gallery.length;
+        
+        // Define the size of each chunk.
+        const size = Math.ceil(gallerySize / 3);
+
+        if (gallerySize === 0) {
+            // Return three empty chunks if there are no images.
+            return [[], [], []];
+        }
+
+        // Create three distinct chunks.
+        const chunk1 = [...gallery.slice(0, size)];
+        const chunk2 = [...gallery.slice(size, size * 2)];
+        const chunk3 = [...gallery.slice(size * 2, size * 3)];
+
+        // Helper to pad an array if it's empty, using the first image of the gallery.
+        const padIfEmpty = (chunk: any[]) => {
+            if (chunk.length === 0) {
+                return [gallery[0]]; // Pad with the first image
+            }
+            return chunk;
+        };
+
+        return [padIfEmpty(chunk1), padIfEmpty(chunk2), padIfEmpty(chunk3)];
+    }, [product.galleryImages]);
     
     const renderProduct = () => {
         if (product.documentMetadata?.productType?.includes('COUVERTURE')) {
@@ -108,8 +127,7 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
             <CardContent className="p-8 bg-background">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                     <div className="md:col-span-1 flex flex-col justify-between space-y-8">
-                       {chunkedImages.map((chunk, i) => {
-                         if (!chunk || chunk.length === 0) return null;
+                       {[chunkedImages[0], chunkedImages[1], chunkedImages[2]].map((chunk, i) => {
                          if (i === 1) { // Middle element is a static image
                             return (
                                 <div key={`${activeProductKey}-static-${i}`} className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer group">
@@ -141,7 +159,7 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
 
 
 export function SandwichPanelsPage() {
-  const [activeProductKey, setActiveProductKey] = React.useState<keyof typeof productData | null>(null);
+  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData | null>('bardage');
   const activeProduct = activeProductKey ? productData[activeProductKey] : null;
   const heroImage = images['sandwich-panels'].hero;
 
