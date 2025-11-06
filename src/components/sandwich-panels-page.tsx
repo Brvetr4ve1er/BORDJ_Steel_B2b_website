@@ -88,26 +88,27 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
         const chunk3 = [...gallery.slice(size * 2)];
 
         return [padIfEmpty(chunk1), padIfEmpty(chunk2), padIfEmpty(chunk3)];
-    }, [product.galleryImages, activeProductKey]);
+    }, [product.galleryImages]);
     
     const galleries = {
-        gallery1: chunkedImages[0].length > 0 ? (
-          <HoverImageGallery key={`${activeProductKey}-gallery-0`} images={chunkedImages[0].map((img: any) => img.src || img)} />
-        ) : null,
-        gallery2: chunkedImages[1].length > 0 ? (
-          <div key={`${activeProductKey}-static-1`} className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer group">
-            <Image
-              src={chunkedImages[1][0]?.src || chunkedImages[1][0]}
-              alt={chunkedImages[1][0]?.alt || `Static product image`}
-              fill
-              className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-        ) : null,
-        gallery3: chunkedImages[2].length > 0 ? (
-          <HoverImageGallery key={`${activeProductKey}-gallery-2`} images={chunkedImages[2].map((img: any) => img.src || img)} />
-        ) : null,
-    };
+      gallery1: chunkedImages[0].length > 0 ? (
+        <HoverImageGallery key={`${activeProductKey}-gallery-0`} images={chunkedImages[0].map((img: any) => img.src || img)} />
+      ) : null,
+      gallery2: chunkedImages[1].length > 0 ? (
+        <div key={`${activeProductKey}-static-1`} className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer group">
+          <Image
+            src={chunkedImages[1][0]?.src || chunkedImages[1][0]}
+            alt={chunkedImages[1][0]?.alt || `Static product image`}
+            fill
+            className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+      ) : null,
+      gallery3: chunkedImages[2].length > 0 ? (
+        <HoverImageGallery key={`${activeProductKey}-gallery-2`} images={chunkedImages[2].map((img: any) => img.src || img)} />
+      ) : null,
+  };
+
 
     const renderProduct = () => {
         const props = { product, ...galleries };
