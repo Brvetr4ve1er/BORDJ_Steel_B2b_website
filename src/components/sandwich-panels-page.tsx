@@ -80,9 +80,7 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
             return chunk;
         };
 
-        if (gallerySize === 0) {
-            return [[], [], []];
-        }
+        if (gallerySize === 0) return [[], [], []];
         
         const size = Math.ceil(gallerySize / 3);
         const chunk1 = [...gallery.slice(0, size)];
@@ -90,27 +88,35 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
         const chunk3 = [...gallery.slice(size * 2)];
 
         return [padIfEmpty(chunk1), padIfEmpty(chunk2), padIfEmpty(chunk3)];
-    }, [product.galleryImages]);
+    }, [product.galleryImages, activeProductKey]);
     
+    const galleries = {
+        gallery1: chunkedImages[0].length > 0 ? (
+          <HoverImageGallery key={`${activeProductKey}-gallery-0`} images={chunkedImages[0].map((img: any) => img.src || img)} />
+        ) : null,
+        gallery2: chunkedImages[1].length > 0 ? (
+          <div key={`${activeProductKey}-static-1`} className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer group">
+            <Image
+              src={chunkedImages[1][0]?.src || chunkedImages[1][0]}
+              alt={chunkedImages[1][0]?.alt || `Static product image`}
+              fill
+              className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+        ) : null,
+        gallery3: chunkedImages[2].length > 0 ? (
+          <HoverImageGallery key={`${activeProductKey}-gallery-2`} images={chunkedImages[2].map((img: any) => img.src || img)} />
+        ) : null,
+    };
+
     const renderProduct = () => {
-        if (product.documentMetadata?.productType?.includes('COUVERTURE')) {
-            return <CouvertureProduct product={product} />;
-        }
-        if (product.documentMetadata?.productCategory?.includes('BARDAGE')) {
-            return <BardageProduct product={product} />;
-        }
-        if (product.title?.includes('FRIGORIFIQUE')) {
-            return <FrigorifiqueProduct product={product} />;
-        }
-        if (product.title?.includes('TÔLE NERVURÉE')) {
-            return <ToleNervureeProduct product={product} />;
-        }
-        if (product.title?.includes('HI-BOND')) {
-            return <HibondProduct product={product} />;
-        }
-        if (product.title?.includes('FINITION')) {
-            return <FinitionsProduct product={product} />;
-        }
+        const props = { product, ...galleries };
+        if (product.documentMetadata?.productType?.includes('COUVERTURE')) return <CouvertureProduct {...props} />;
+        if (product.documentMetadata?.productCategory?.includes('BARDAGE')) return <BardageProduct {...props} />;
+        if (product.title?.includes('FRIGORIFIQUE')) return <FrigorifiqueProduct {...props} />;
+        if (product.title?.includes('TÔLE NERVURÉE')) return <ToleNervureeProduct {...props} />;
+        if (product.title?.includes('HI-BOND')) return <HibondProduct {...props} />;
+        if (product.title?.includes('FINITION')) return <FinitionsProduct {...props} />;
         return <p>Sélectionnez un produit pour voir les détails.</p>;
     }
 
@@ -119,34 +125,8 @@ const ProductDetails = ({ product, activeProductKey }: { product: any; activePro
             <CardHeader className="bg-accent text-accent-foreground rounded-t-lg">
                 <CardTitle className="text-4xl font-bold">{product.title || product.documentMetadata?.productCategory || product.documentMetadata?.productType}</CardTitle>
             </CardHeader>
-            <CardContent className="p-8 bg-background">
-                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12">
-                    <div className="flex flex-col justify-between space-y-8">
-                       {[chunkedImages[0], chunkedImages[1], chunkedImages[2]].map((chunk, i) => {
-                         if (i === 1 && chunk.length > 0) {
-                            return (
-                                <div key={`${activeProductKey}-static-${i}`} className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer group">
-                                    <Image
-                                        src={chunk[0]?.src || chunk[0]}
-                                        alt={chunk[0]?.alt || `Static product image`}
-                                        fill
-                                        className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105"
-                                    />
-                                </div>
-                            );
-                         }
-                         return (
-                           <HoverImageGallery
-                             key={`${activeProductKey}-gallery-${i}`}
-                             images={chunk.map((img: any) => img.src || img)}
-                           />
-                         );
-                       })}
-                    </div>
-                    <div className="lg:col-span-1 xl:col-span-2">
-                        {renderProduct()}
-                    </div>
-                </div>
+            <CardContent className="p-4 md:p-8 bg-background">
+                {renderProduct()}
             </CardContent>
         </Card>
     );

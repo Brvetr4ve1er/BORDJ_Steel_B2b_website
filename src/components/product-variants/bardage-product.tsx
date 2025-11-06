@@ -101,13 +101,11 @@ const LoadCapacityTable = () => {
 };
 
 
-export default function BardageProduct({ product }: { product: any }) {
-    // CSV data for thermal coefficient table
-   const thermalCoefficientCSV = `Épaisseur en mm,30,35,40,50,60
+export default function BardageProduct({ product, gallery1, gallery2, gallery3 }: { product: any, gallery1: React.ReactNode, gallery2: React.ReactNode, gallery3: React.ReactNode }) {
+    const thermalCoefficientCSV = `Épaisseur en mm,30,35,40,50,60
 W/m²K,0.65,0.56,0.50,0.40,0.34
 Kcal/hm²°C,0.57,0.49,0.44,0.35,0.30`;
 
-    // CSV data for panel dimensions table
    const panelDimensionsCSV = `Type,Longueur (mm),Largeur standard (mm),Épaisseur (mm),Poids Kg/m²
 LL30,15400,1000,30,9.6
 LL35,15400,1000,35,9.8
@@ -126,16 +124,18 @@ LL60,15400,1000,60,10.8`;
 
 
   return (
-    <div className="bg-background min-h-screen p-8 font-sans relative">
-      <div className="max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="space-y-8">
+            <div className="mb-8">{gallery1}</div>
+        </div>
+      <div className="lg:col-span-1 xl:col-span-2">
         <div className="border-l-8 border-accent pl-4 mb-6">
           <h1 className="text-2xl font-bold text-accent uppercase">
             ■ 2-PANNEAUX SANDWICHS DE BARDAGE
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 gap-8">
-          <div>
+        <div>
             <h2 className="text-xl font-bold text-accent mb-4">CARACTÉRISTIQUE PRODUIT</h2>
 
             <div className="mb-6">
@@ -150,6 +150,8 @@ LL60,15400,1000,60,10.8`;
                 <li>Ensembles scolaires et universitaires.</li>
               </ul>
             </div>
+
+            <div className="mb-8">{gallery2}</div>
 
             <div className="mb-6">
               <h3 className="font-bold mb-2 text-lg">Definition :</h3>
@@ -243,6 +245,7 @@ LL60,15400,1000,60,10.8`;
              </div>
              
              <LoadCapacityTable />
+            <div className="mb-8">{gallery3}</div>
 
              <div className="mb-6">
                <h3 className="font-semibold text-lg mb-3">Caractéristiques Géométriques</h3>
@@ -274,7 +277,6 @@ LL60,15400,1000,60,10.8`;
                </div>
              </div>
           </div>
-        </div>
       </div>
     </div>
   );

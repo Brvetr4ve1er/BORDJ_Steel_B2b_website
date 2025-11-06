@@ -194,7 +194,7 @@ const ChargesTable = () => {
 };
 
 
-const HiBondProduct = ({ product }: { product: any }) => {
+const HiBondProduct = ({ product, gallery1, gallery2, gallery3 }: { product: any, gallery1: React.ReactNode, gallery2: React.ReactNode, gallery3: React.ReactNode }) => {
   if (!product) {
     return <p>Données produit non disponibles.</p>;
   }
@@ -205,8 +205,11 @@ const HiBondProduct = ({ product }: { product: any }) => {
   } = product;
 
   return (
-    <div className="p-8 bg-white min-h-screen">
-      <div className="max-w-6xl mx-auto">
+    <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="space-y-8">
+            <div className="mb-8">{gallery1}</div>
+        </div>
+      <div className="lg:col-span-1 xl:col-span-2">
         {/* Title Section */}
         <div className="mb-6">
           <h1 className="text-red-700 text-2xl font-bold mb-4">
@@ -216,6 +219,8 @@ const HiBondProduct = ({ product }: { product: any }) => {
             Application conseillée : <span className="font-normal">{features.application}</span>
           </p>
         </div>
+
+        <div className="mb-8">{gallery2}</div>
 
         {/* Benefits Section */}
         <div className="mb-6">
@@ -342,6 +347,7 @@ const HiBondProduct = ({ product }: { product: any }) => {
           </>
         )}
         <ChargesTable />
+        <div className="mb-8">{gallery3}</div>
         
         {features.caracteristiquesGeometriques?.image?.src && (
           <div className="mb-6 mt-8">
