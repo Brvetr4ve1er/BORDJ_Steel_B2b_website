@@ -67,7 +67,7 @@ export function Timeline() {
 
                       {/* Middle connector and dot for left side */}
                       <div className="hidden md:block col-span-1 h-full relative">
-                        <div className="absolute left-1/2 top-1/2 h-0.5 w-full bg-accent/30 transform -translate-x-1/2" aria-hidden="true" />
+                        <div className="absolute left-1/2 top-1/2 h-0.5 w-1/2 bg-accent/30 transform -translate-x-full" aria-hidden="true" />
                         <div className="absolute left-1/2 top-1/2 w-5 h-5 bg-accent rounded-full border-4 border-secondary shadow-md z-10 transform -translate-x-1/2 -translate-y-1/2" aria-hidden="true" />
                       </div>
                       
@@ -81,7 +81,7 @@ export function Timeline() {
 
                       {/* Middle connector and dot for right side */}
                       <div className="hidden md:block col-span-1 h-full relative">
-                        <div className="absolute left-1/2 top-1/2 h-0.5 w-full bg-accent/30 transform -translate-x-1/2" aria-hidden="true" />
+                        <div className="absolute left-1/2 top-1/2 h-0.5 w-1/2 bg-accent/30" aria-hidden="true" />
                         <div className="absolute left-1/2 top-1/2 w-5 h-5 bg-accent rounded-full border-4 border-secondary shadow-md z-10 transform -translate-x-1/2 -translate-y-1/2" aria-hidden="true" />
                       </div>
                       
