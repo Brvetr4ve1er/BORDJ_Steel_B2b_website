@@ -105,7 +105,7 @@ const ProductDetails = ({ product }: { product: any; }) => {
             </CardHeader>
             <CardContent className="p-4 md:p-8 bg-background">
                 <div className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-3">
-                    <div className="space-y-8 lg:col-span-1">
+                    <div className="flex flex-col h-full justify-between gap-8 lg:col-span-1">
                         {chunkedImages[0].length > 0 && <HoverImageGallery key={`${product.title}-gallery-0`} images={chunkedImages[0].map((img: any) => img.src || img)} />}
                         {!isFinitions && chunkedImages[1].length > 0 && <HoverImageGallery key={`${product.title}-gallery-1`} images={chunkedImages[1].map((img: any) => img.src || img)} />}
                         {!isFinitions && chunkedImages[2].length > 0 && <HoverImageGallery key={`${product.title}-gallery-2`} images={chunkedImages[2].map((img: any) => img.src || img)} />}
