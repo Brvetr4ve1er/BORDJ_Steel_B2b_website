@@ -16,13 +16,11 @@ export const companyData = {
         "href": "/", 
         "icon": "Factory"
       },
-      {
-        "name": "About",
-        "href": "#about",
-        "icon": "Info",
-        "children": [
-          { "name": "Notre Histoire", "href": "/about/history", "description": "Découvrez nos origines et notre parcours.", "icon": "Building2" }
-        ]
+      { 
+        "name": "Notre Histoire", 
+        "href": "/about/history", 
+        "description": "Découvrez nos origines et notre parcours.", 
+        "icon": "Building2" 
       },
       {
         "name": "Produits",
