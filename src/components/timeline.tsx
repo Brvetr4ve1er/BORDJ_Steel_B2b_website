@@ -38,7 +38,7 @@ export function Timeline() {
 
       <div className="relative">
         {/* This is the main vertical timeline bar. Its alignment is key. */}
-        <div className="absolute left-1/2 top-0 h-full w-0.5 bg-accent/30 transform -translate-x-1/2"></div>
+        <div className="absolute left-1/2 top-8 h-[calc(100%-4rem)] w-0.5 bg-accent/30 transform -translate-x-1/2"></div>
         
         <div className="space-y-12">
           {events.map((event, i) => {
