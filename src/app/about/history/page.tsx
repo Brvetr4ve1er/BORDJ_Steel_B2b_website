@@ -66,8 +66,8 @@ const teams = [
   {
     id: 'hse',
     icon: <HardHat className="w-8 h-8 text-accent" />,
-    title: "Équipe HSE",
-    description: "Notre équipe HSE veille à la sécurité de nos collaborateurs et à la protection de l'environnement.",
+    title: "Équipe QHSE",
+    description: "Notre équipe QHSE veille à la sécurité de nos collaborateurs et à la protection de l'environnement.",
     detail: "La sécurité et la durabilité font partie intégrante de la culture BordjSteel.",
     color: "bg-primary",
     image: "https://i.pinimg.com/736x/99/14/b3/9914b30d1923fb9585db5fa692769658.jpg"
