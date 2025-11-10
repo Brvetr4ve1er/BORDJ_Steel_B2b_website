@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import * as React from 'react';
 import { useMemo, useState, useRef } from 'react';
-import { ChevronsRight, Snowflake, Settings, ArrowRight, DollarSign, Smartphone, Star, Users } from 'lucide-react';
+import { ChevronsRight, Snowflake, Settings, ArrowRight, DollarSign, Smartphone, Star, Users, Layers, Thermometer, ShieldCheck, Ruler } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
@@ -133,11 +133,15 @@ interface StatsCardsProps {
   }>
 }
 
-const iconMap = {
+const iconMap: { [key: string]: React.ElementType } = {
   DollarSign: DollarSign,
   Users: Users,
   Star: Star,
   Smartphone: Smartphone,
+  Layers: Layers,
+  Thermometer: Thermometer,
+  ShieldCheck: ShieldCheck,
+  Ruler: Ruler
 }
 
 function StatsCards({
@@ -239,7 +243,7 @@ function StatsCards({
 const HeroSection = React.memo(function HeroSection() {
   const heroImage = images['sandwich-panels'].hero;
   return (
-    <section className="relative h-screen w-full flex flex-col justify-between text-white overflow-hidden">
+    <section className="relative h-screen w-full flex flex-col justify-end text-white overflow-hidden">
       <Image
         src={heroImage.src}
         alt={heroImage.alt}
@@ -251,28 +255,28 @@ const HeroSection = React.memo(function HeroSection() {
         blurDataURL={heroImage.blurDataUrl}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10" />
-      <div className="relative z-20 w-full px-8 md:px-12 pt-48">
+      <div className="relative z-20 w-full px-8 md:px-12 pb-10">
         <AnimatedWrapper animation="zoom-in">
-          <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
-            Panneaux Sandwichs
-          </h1>
-          <p className="mt-8 text-xl md:text-2xl max-w-3xl text-gray-200">
-            Solutions d'isolation haute performance pour la construction moderne.
-          </p>
-          <div className="mt-12 flex justify-start items-center gap-4">
-            <Button size="lg" variant="destructive" className="group">
-              Explorer les produits <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
-            </Button>
-            <DownloadButton text="Voir la brochure" />
-          </div>
+            <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
+                Panneaux Sandwichs
+            </h1>
+            <p className="mt-8 text-xl md:text-2xl max-w-3xl text-gray-200">
+                Solutions d'isolation haute performance pour la construction moderne.
+            </p>
+            <div className="mt-12 flex justify-start items-center gap-4">
+                <Button size="lg" variant="destructive" className="group">
+                    Explorer les produits <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+                </Button>
+                <DownloadButton text="Voir la brochure" />
+            </div>
         </AnimatedWrapper>
+         <StatsCards stats={[
+           { value: '30-200mm', label: 'Épaisseur', description: 'Gamme complète pour tous besoins', icon: 'Layers' },
+           { value: '0.023 W/mK', label: 'Conductivité', description: 'Performance thermique optimale', icon: 'Thermometer' },
+           { value: 'B, S2-d0', label: 'Réaction au feu', description: 'Sécurité et conformité maximales', icon: 'ShieldCheck' },
+           { value: '15.4m', label: 'Longueur Max', description: 'Adapté aux grandes portées', icon: 'Ruler' },
+         ]}/>
       </div>
-       <StatsCards stats={[
-         { value: '30-200mm', label: 'Épaisseur', description: 'Gamme complète pour tous besoins', icon: 'Layers' },
-         { value: '0.023 W/mK', label: 'Conductivité', description: 'Performance thermique optimale', icon: 'Thermometer' },
-         { value: 'B, S2-d0', label: 'Réaction au feu', description: 'Sécurité et conformité maximales', icon: 'ShieldCheck' },
-         { value: '15.4m', label: 'Longueur Max', description: 'Adapté aux grandes portées', icon: 'Ruler' },
-       ]}/>
     </section>
   );
 });
@@ -349,5 +353,3 @@ export function SandwichPanelsPage() {
     </>
   );
 }
-
-    
