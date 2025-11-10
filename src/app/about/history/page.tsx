@@ -1,4 +1,3 @@
-
 "use client";
 
 import { companyData } from '@/config/company-data';
@@ -67,7 +66,7 @@ const teams = [
     id: 'hse',
     icon: <HardHat className="w-8 h-8 text-accent" />,
     title: "Équipe QHSE",
-    description: "Notre équipe QHSE veille à la sécurité de nos collaborateurs et à la protection de l'environnement.",
+    description: "(Qualité, Hygiène, Sécurité et Environnement) Notre équipe QHSE veille à la qualité de nos processus, à la sécurité de nos collaborateurs, à la prévention des risques professionnels et à la protection de l’environnement. La sécurité, la qualité et la durabilité font partie intégrante de la culture BordjSteel.",
     detail: "La sécurité et la durabilité font partie intégrante de la culture BordjSteel.",
     color: "bg-primary",
     image: "https://i.pinimg.com/736x/99/14/b3/9914b30d1923fb9585db5fa692769658.jpg"
