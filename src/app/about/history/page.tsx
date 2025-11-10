@@ -70,7 +70,7 @@ const teams = [
     description: "Notre équipe HSE veille à la sécurité de nos collaborateurs et à la protection de l'environnement.",
     detail: "La sécurité et la durabilité font partie intégrante de la culture BordjSteel.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/hse/800/600"
+    image: "https://i.pinimg.com/736x/99/14/b3/9914b30d1923fb9585db5fa692769658.jpg"
   },
   {
     id: 'commercial',
