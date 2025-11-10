@@ -106,7 +106,7 @@ const teams = [
     description: "Responsable du développement des outils numériques, garantissant la sécurité et la performance des systèmes.",
     detail: "Elle joue un rôle clé dans la transformation digitale de BordjSteel.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/it/800/600"
+    image: "https://i.pinimg.com/736x/6a/c8/6a/6ac86a94f2a9c05bf62c26abddb13d67.jpg"
   },
   {
     id: 'assembly',
