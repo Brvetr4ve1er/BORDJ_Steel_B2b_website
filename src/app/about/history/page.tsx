@@ -43,7 +43,7 @@ const teams = [
     description: "Véritable moteur de l'innovation, notre bureau d'études conçoit et optimise les structures métalliques.",
     detail: "Il veille à la faisabilité technique, à la solidité et à la performance de nos réalisations.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/eng/800/600"
+    image: "https://i.pinimg.com/736x/dd/d2/b8/ddd2b884a8cdf6c38c4fe8c6ea24c7e0.jpg"
   },
   {
     id: 'production',
