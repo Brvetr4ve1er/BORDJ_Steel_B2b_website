@@ -87,7 +87,7 @@ const teams = [
     description: "Chargée de la gestion rigoureuse des ressources financières, assurant suivi comptable et contrôle budgétaire.",
     detail: "Son objectif : garantir une santé financière solide et durable.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/fin/800/600"
+    image: "https://i.pinimg.com/736x/47/96/a1/4796a1c0ca2eeec68b8721a16d75c1a2.jpg"
   },
   {
     id: 'hr',
