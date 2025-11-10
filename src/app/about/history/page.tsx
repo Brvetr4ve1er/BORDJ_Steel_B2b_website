@@ -97,7 +97,7 @@ const teams = [
     description: "L'équipe RH veille au bien-être, à la formation et à l’évolution de nos collaborateurs pour un environnement motivant.",
     detail: "Elle favorise un environnement de travail motivant et valorisant, essentiel à la performance collective.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/hr/800/600"
+    image: "https://i.pinimg.com/736x/dd/d2/b8/ddd2b884a8cdf6c38c4fe8c6ea24c7e0.jpg"
   },
   {
     id: 'it',
