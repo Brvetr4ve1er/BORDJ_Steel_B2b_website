@@ -114,7 +114,7 @@ const teams = [
     description: "Spécialisée dans l’installation sur site, assurant un montage précis et sécurisé de nos structures métalliques.",
     detail: "Son savoir-faire garantit la conformité, la stabilité et la qualité de chaque projet livré.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/asm/800/600"
+    image: "https://i.pinimg.com/736x/a3/0d/65/a30d652c6e58b3aebe5ca3561af436a6.jpg"
   }
 ];
 
