@@ -61,7 +61,7 @@ const teams = [
     description: "Cette équipe veille à la conformité de nos produits aux normes nationales et internationales.",
     detail: "Des contrôles rigoureux sont effectués à chaque étape pour assurer une qualité irréprochable.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/qual/800/600"
+    image: "https://i.pinimg.com/736x/36/1f/d5/361fd5991471a9382f7e7cada21ff2da.jpg"
   },
   {
     id: 'hse',
