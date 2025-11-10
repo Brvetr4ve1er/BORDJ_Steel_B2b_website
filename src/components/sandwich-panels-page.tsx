@@ -3,8 +3,8 @@
 
 import Image from 'next/image';
 import * as React from 'react';
-import { useMemo, useState } from 'react';
-import { ChevronsRight, Snowflake, Settings, ArrowRight } from 'lucide-react';
+import { useMemo, useState, useRef } from 'react';
+import { ChevronsRight, Snowflake, Settings, ArrowRight, DollarSign, Smartphone, Star, Users } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
@@ -19,6 +19,7 @@ import ToleNervureeProduct from './product-variants/tole-nervuree-product';
 import HibondProduct from './product-variants/hibond-product';
 import FinitionsProduct from './product-variants/finitions-product';
 import { HoverImageGallery } from './ui/hover-image-gallery';
+import { motion } from 'framer-motion';
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -119,11 +120,126 @@ const ProductDetails = ({ product }: { product: any; }) => {
     );
 };
 
+interface StatsCardsProps {
+  stats?: Array<{
+    value: string
+    label: string
+    description?: string
+    icon?: string
+    trend?: {
+      value: string
+      direction: "up" | "down"
+    }
+  }>
+}
+
+const iconMap = {
+  DollarSign: DollarSign,
+  Users: Users,
+  Star: Star,
+  Smartphone: Smartphone,
+}
+
+function StatsCards({
+  stats = [
+    {
+      value: "2.5M",
+      label: "Revenue",
+      description: "Annual recurring revenue",
+      icon: "DollarSign",
+      trend: { value: "+12%", direction: "up" },
+    },
+    {
+      value: "45K",
+      label: "Customers",
+      description: "Happy customers worldwide",
+      icon: "Users",
+      trend: { value: "+8%", direction: "up" },
+    },
+    {
+      value: "98%",
+      label: "Satisfaction",
+      description: "Customer satisfaction rate",
+      icon: "Star",
+      trend: { value: "+2%", direction: "up" },
+    },
+    {
+      value: "1.2M",
+      label: "Downloads",
+      description: "Total app downloads",
+      icon: "Smartphone",
+      trend: { value: "+15%", direction: "up" },
+    },
+  ],
+}: StatsCardsProps) {
+  const ref = useRef(null)
+
+  return (
+      <div
+        ref={ref}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 px-4 sm:px-6 lg:px-8 gap-4"
+      >
+        {stats.map((stat, index) => (
+          <motion.div
+            key={stat.label}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.5,
+              delay: index * 0.15,
+            }}
+            className="group backdrop-blur-sm bg-white/10 from-background to-background/50 relative overflow-hidden rounded-2xl border border-white/20 p-6 transition-all hover:scale-105 hover:shadow-xl"
+          >
+            <motion.div
+              className="mb-4 text-3xl text-white"
+              initial={{ rotate: -10, scale: 0.8, opacity: 0 }}
+              animate={{ rotate: 0, scale: 1, opacity: 1}}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.1 + 0.3,
+              }}
+            >
+              {React.createElement(
+                iconMap[stat.icon as keyof typeof iconMap] || DollarSign,
+                {
+                  className: "h-8 w-8",
+                }
+              )}
+            </motion.div>
+
+            <motion.div
+              className="text-white mb-1 text-2xl font-bold lg:text-3xl"
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.1 + 0.4,
+              }}
+            >
+              {stat.value}
+            </motion.div>
+
+            <h3 className="text-white/90 mb-2 text-sm font-semibold tracking-wide uppercase">
+              {stat.label}
+            </h3>
+
+            {stat.description && (
+              <p className="text-white/70 mb-3 text-xs">
+                {stat.description}
+              </p>
+            )}
+
+          </motion.div>
+        ))}
+      </div>
+  )
+}
+
 
 const HeroSection = React.memo(function HeroSection() {
   const heroImage = images['sandwich-panels'].hero;
   return (
-    <section className="relative h-screen w-full flex items-end justify-start text-white overflow-hidden">
+    <section className="relative h-screen w-full flex flex-col justify-between text-white overflow-hidden">
       <Image
         src={heroImage.src}
         alt={heroImage.alt}
@@ -135,7 +251,7 @@ const HeroSection = React.memo(function HeroSection() {
         blurDataURL={heroImage.blurDataUrl}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10" />
-      <div className="relative z-20 w-full px-8 md:px-12 pb-24">
+      <div className="relative z-20 w-full px-8 md:px-12 pt-48">
         <AnimatedWrapper animation="zoom-in">
           <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
             Panneaux Sandwichs
@@ -151,6 +267,12 @@ const HeroSection = React.memo(function HeroSection() {
           </div>
         </AnimatedWrapper>
       </div>
+       <StatsCards stats={[
+         { value: '30-200mm', label: 'Épaisseur', description: 'Gamme complète pour tous besoins', icon: 'Layers' },
+         { value: '0.023 W/mK', label: 'Conductivité', description: 'Performance thermique optimale', icon: 'Thermometer' },
+         { value: 'B, S2-d0', label: 'Réaction au feu', description: 'Sécurité et conformité maximales', icon: 'ShieldCheck' },
+         { value: '15.4m', label: 'Longueur Max', description: 'Adapté aux grandes portées', icon: 'Ruler' },
+       ]}/>
     </section>
   );
 });
@@ -227,3 +349,5 @@ export function SandwichPanelsPage() {
     </>
   );
 }
+
+    

@@ -1,14 +1,14 @@
 
-import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship, HardHat, CircleDollarSign, Check, Beaker, SprayCan, Fan, Pipette } from 'lucide-react';
+import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship, HardHat, CircleDollarSign, Check, Beaker, SprayCan, Fan, Pipette, Ruler } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import images from '@/app/lib/placeholder-images.json';
 
 // Using an object to map string names to actual Lucide components
 export const iconMap: { [key: string]: LucideIcon } = {
-  factory: Factory,
-  thermometer: Thermometer,
-  shield: Shield,
-  layers: Layers,
+  Factory,
+  Thermometer,
+  Shield,
+  Layers,
   cleaning: SprayCan,
   chemical: Pipette,
   fire: Thermometer,
@@ -22,7 +22,9 @@ export const iconMap: { [key: string]: LucideIcon } = {
   truss: Construction,
   ship: Ship,
   water: Droplets,
-  acid: Beaker
+  acid: Beaker,
+  ShieldCheck: ShieldCheck,
+  Ruler: Ruler
 };
 
 export const galvanisationContent = {
@@ -136,3 +138,5 @@ export const galvanisationContent = {
     "form_url": "/contact"
   }
 };
+
+    
