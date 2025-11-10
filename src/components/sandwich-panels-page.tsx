@@ -254,7 +254,7 @@ const HeroSection = React.memo(function HeroSection() {
         placeholder="blur"
         blurDataURL={heroImage.blurDataUrl}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
       <div className="relative z-20 w-full px-8 md:px-12 pb-10">
         <AnimatedWrapper animation="zoom-in">
             <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
