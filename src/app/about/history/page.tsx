@@ -38,7 +38,7 @@ const activities = [
 const teams = [
   {
     id: 'engineering',
-    icon: <TrendingUp className="w-8 h-8" />,
+    icon: <TrendingUp className="w-8 h-8 text-accent" />,
     title: "Bureau d'études",
     description: "Véritable moteur de l'innovation, notre bureau d'études conçoit et optimise les structures métalliques.",
     detail: "Il veille à la faisabilité technique, à la solidité et à la performance de nos réalisations.",
@@ -47,7 +47,7 @@ const teams = [
   },
   {
     id: 'production',
-    icon: <Factory className="w-8 h-8" />,
+    icon: <Factory className="w-8 h-8 text-accent" />,
     title: "Équipe Production",
     description: "Au cœur de notre activité, l'équipe de production assure la fabrication, l'assemblage et le contrôle des composants.",
     detail: "Grâce à une maîtrise technique avancée et à des équipements modernes, elle garantit la fiabilité et la durabilité de nos produits.",
@@ -56,7 +56,7 @@ const teams = [
   },
   {
     id: 'quality',
-    icon: <ClipboardCheck className="w-8 h-8" />,
+    icon: <ClipboardCheck className="w-8 h-8 text-accent" />,
     title: "Contrôle Qualité",
     description: "Cette équipe veille à la conformité de nos produits aux normes nationales et internationales.",
     detail: "Des contrôles rigoureux sont effectués à chaque étape pour assurer une qualité irréprochable.",
@@ -65,7 +65,7 @@ const teams = [
   },
   {
     id: 'hse',
-    icon: <HardHat className="w-8 h-8" />,
+    icon: <HardHat className="w-8 h-8 text-accent" />,
     title: "Équipe HSE",
     description: "Notre équipe HSE veille à la sécurité de nos collaborateurs et à la protection de l'environnement.",
     detail: "La sécurité et la durabilité font partie intégrante de la culture BordjSteel.",
@@ -74,7 +74,7 @@ const teams = [
   },
   {
     id: 'commercial',
-    icon: <UserCheck className="w-8 h-8" />,
+    icon: <UserCheck className="w-8 h-8 text-accent" />,
     title: "Commercial & Marketing",
     description: "Toujours à l'écoute du marché, notre équipe accompagne nos clients à chaque étape de leurs projets.",
     detail: "Elle met un point d'honneur à offrir des solutions personnalisées, un suivi attentif et un service de qualité.",
@@ -83,7 +83,7 @@ const teams = [
   },
   {
     id: 'finance',
-    icon: <DollarSign className="w-8 h-8" />,
+    icon: <DollarSign className="w-8 h-8 text-accent" />,
     title: "Équipe Comptabilité et Finances",
     description: "Chargée de la gestion rigoureuse des ressources financières, assurant suivi comptable et contrôle budgétaire.",
     detail: "Son objectif : garantir une santé financière solide et durable.",
@@ -92,7 +92,7 @@ const teams = [
   },
   {
     id: 'hr',
-    icon: <Users className="w-8 h-8" />,
+    icon: <Users className="w-8 h-8 text-accent" />,
     title: "Équipe Ressources Humaines",
     description: "L'équipe RH veille au bien-être, à la formation et à l’évolution de nos collaborateurs pour un environnement motivant.",
     detail: "Elle favorise un environnement de travail motivant et valorisant, essentiel à la performance collective.",
@@ -101,7 +101,7 @@ const teams = [
   },
   {
     id: 'it',
-    icon: <Network className="w-8 h-8" />,
+    icon: <Network className="w-8 h-8 text-accent" />,
     title: "Équipe Système d’Information",
     description: "Responsable du développement des outils numériques, garantissant la sécurité et la performance des systèmes.",
     detail: "Elle joue un rôle clé dans la transformation digitale de BordjSteel.",
@@ -110,7 +110,7 @@ const teams = [
   },
   {
     id: 'assembly',
-    icon: <Wrench className="w-8 h-8" />,
+    icon: <Wrench className="w-8 h-8 text-accent" />,
     title: "Équipe Réalisation et Montage",
     description: "Spécialisée dans l’installation sur site, assurant un montage précis et sécurisé de nos structures métalliques.",
     detail: "Son savoir-faire garantit la conformité, la stabilité et la qualité de chaque projet livré.",
@@ -181,54 +181,36 @@ const TeamFeature = ({
   title,
   description,
   icon,
-  index,
   image
 }: {
   title: string;
   description: string;
   icon: React.ReactNode;
-  index: number;
   image: string;
 }) => {
-  const totalFeatures = teams.length;
-  const numCols = 3; // lg:grid-cols-3
   return (
-    <div
-      className={cn(
-        "flex flex-col justify-end p-8 lg:border-r py-10 relative group/feature dark:border-neutral-800 min-h-[350px] rounded-lg overflow-hidden",
-        (index === 0 || index % numCols === 0) && "lg:border-l dark:border-neutral-800",
-        index < totalFeatures - (totalFeatures % numCols || numCols) && "lg:border-b dark:border-neutral-800"
-      )}
-    >
-      <Image
-        src={image}
-        alt={title}
-        fill
-        className="object-cover absolute inset-0 z-0 transition-transform duration-300 group-hover/feature:scale-105"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10" />
-
-      {index < totalFeatures - (totalFeatures % numCols || numCols) && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-secondary/50 to-transparent pointer-events-none z-20" />
-      )}
-      {index >= totalFeatures - (totalFeatures % numCols || numCols) && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-secondary/50 to-transparent pointer-events-none z-20" />
-      )}
-      <div className="mb-4 relative z-20 text-white">
-        {icon}
+    <div className="group bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 flex overflow-hidden border border-border">
+      <div className="w-[35%] flex-shrink-0 relative aspect-square">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+        />
       </div>
-      <div className="text-lg font-bold mb-2 relative z-20">
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-border group-hover/feature:bg-accent transition-all duration-200 origin-center" />
-        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-white">
-          {title}
-        </span>
+      <div className="w-[65%] p-6 flex flex-col justify-center">
+        <div className="flex items-center gap-4 mb-3">
+          <div className="bg-secondary p-3 rounded-full">
+            {icon}
+          </div>
+          <h3 className="text-xl font-bold text-primary">{title}</h3>
+        </div>
+        <p className="text-muted-foreground">{description}</p>
       </div>
-      <p className="text-sm text-gray-300 max-w-xs relative z-20">
-        {description}
-      </p>
     </div>
   );
 };
+
 
 function TeamsSection() {
   return (
@@ -238,9 +220,11 @@ function TeamsSection() {
           <h2 className="text-6xl md:text-7xl font-bold text-primary mb-12 text-center">Nos équipes spécialisées</h2>
         </div>
       </AnimatedWrapper>
-       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 px-4 sm:px-6 lg:px-8 gap-4">
+       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
         {teams.map((team, index) => (
-            <TeamFeature key={team.id} {...team} index={index} />
+            <AnimatedWrapper key={team.id} animation="fade-in-stagger" staggerIndex={index}>
+              <TeamFeature {...team} />
+            </AnimatedWrapper>
         ))}
       </div>
     </section>
@@ -322,5 +306,3 @@ export default function HistoryPage() {
     </ProductPageLayout>
   );
 }
-
-    
