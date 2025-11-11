@@ -1,5 +1,5 @@
 
-import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship, HardHat, CircleDollarSign, Check, Beaker, SprayCan, Fan, Pipette, Ruler, ShieldCheck } from 'lucide-react';
+import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship, HardHat, CircleDollarSign, Check, Beaker, SprayCan, Fan, Pipette, Ruler, ShieldCheck, Weight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import images from '@/app/lib/placeholder-images.json';
 
@@ -24,7 +24,8 @@ export const iconMap: { [key: string]: LucideIcon } = {
   water: Droplets,
   acid: Beaker,
   ShieldCheck: ShieldCheck,
-  Ruler: Ruler
+  Ruler: Ruler,
+  Weight: Weight,
 };
 
 export const galvanisationContent = {
@@ -33,7 +34,7 @@ export const galvanisationContent = {
     "subtitle": "Notre unité de galvanisation traite jusqu’à 25.000 tonnes/an, avec des bains de zinc de 12m x 1,5m x 3m, offrant une protection anticorrosion homogène, certifiée et durable.",
     "stats": [
       { "title": "Bains de traitement", "value": "13", "icon": "baths", "large": true },
-      { "title": "Capacité annuelle", "value": "25.000 tonnes", "icon": "factory" },
+      { "title": "Capacité annuelle", "value": "25.000 tonnes", "icon": "Weight" },
       { "title": "Température du bain", "value": "450 °C", "icon": "thermometer" },
       { "title": "Durée de vie", "value": "> 50 ans", "icon": "shield" },
       { "title": "Produits", "value": "Profils | Panneaux | Structures", "icon": "layers" }
