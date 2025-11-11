@@ -57,7 +57,7 @@ export const galvanisationContent = {
       "step": 2,
       "title": "RINÇAGE",
       "shortDesc": "Neutralisation des résidus alcalins.",
-      "longDesc": "Un rinçage est eectué après le dégraissage afin de ne pas polluer les opérations suivantes.",
+      "longDesc": "Un rinçage est effectué après le dégraissage afin de ne pas polluer les opérations suivantes.",
       "icon": "water",
       "meta": { "temperature": "Ambiante", "duration": "2–4 min" }
     },
@@ -139,11 +139,3 @@ export const galvanisationContent = {
     "form_url": "/contact"
   }
 };
-
-    
-
-
-
-    
-
-    
