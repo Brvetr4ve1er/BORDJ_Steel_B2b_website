@@ -67,9 +67,11 @@ function UnwrappedHeroSection() {
                 <h2 className="font-headline text-5xl md:text-8xl font-bold text-white leading-tight">
                   {hero.title}
                 </h2>
-                <p className="mt-4 text-lg text-gray-300 max-w-xl">
-                  {hero.subtitle}
-                </p>
+                <div className="mt-4 text-lg text-gray-300 max-w-xl">
+                    <p className="font-bold">UNITE DE PRODUCTION</p>
+                    <p>Surface de 40.000 m2 dont 6.000 m2 couvert Démarrage de la production : Octobre 2016 Budget d’investissement : 8</p>
+                    <p>Constitué de Bains d’immersion de 13x1,8x3,5 m, permettant de traiter des articles métalliques de diverses longueurs allant jusqu’à 13m. Capacité de production: (08 heures) 1600 t / mois. 20.000 t/an.</p>
+                </div>
               </div>
               <div className="flex flex-row items-center gap-4">
                  <Button size="lg" variant="destructive">{hero.cta_primary} <ArrowRight className="ml-2" /></Button>
@@ -216,27 +218,32 @@ function UnwrappedBenefitsSection() {
               </Card>
           </AnimatedWrapper>
 
-          <div className="grid lg:grid-cols-5 gap-12 items-start">
+          <div className="grid lg:grid-cols-5 gap-8 items-start">
+            <div className="lg:col-span-3">
+                <AnimatedWrapper animation="fade-in" staggerIndex={1}>
+                    <TechniquesAndStandardsSection />
+                </AnimatedWrapper>
+            </div>
             <div className="lg:col-span-2 space-y-8">
                 <AnimatedWrapper animation="fade-in">
-                    <Card className="bg-secondary border-border p-8 transition-all duration-300 hover:border-accent hover:-translate-y-2">
-                      <CardContent className="p-0">
-                          <div className="flex flex-col items-center gap-6">
-                              <div className="flex-shrink-0">
-                                  {React.createElement(iconMap['ShieldCheck'], { className: "h-16 w-16 text-accent" })}
-                              </div>
-                              <div className="flex-grow text-center">
-                                  <CardTitle className="text-accent text-3xl mb-3">SPÉCIFICITÉ DE LA GALVANISATION À CHAUD</CardTitle>
-                                  <p className="text-xl text-accent/80 mb-4">
-                                  « Une protection anticorrosion qui va au-delà d’un simple dépôt de zinc »
-                                  </p>
-                              </div>
-                          </div>
-                           <p className="text-lg text-muted-foreground mt-4 text-justify">
-                            La galvanisation à chaud ne consiste pas uniquement à déposer du zinc à la surface de l’acier. Le revêtement de zinc est métallurgiquement lié à l’acier de base, car il se produit une réaction métallurgique de diffusion entre le zinc et le fer. Quand on retire l’acier du bain, il s’est formé à sa surface plusieurs couches d’alliages zinc-fer sur lesquelles le zinc entraîné se solidifie. <strong className="text-accent font-bold">Ces différentes couches d’alliages plus dures que l’acier de base ont une teneur en zinc de plus en plus élevée au fur et à mesure que l’on se rapproche de la surface du revêtement.</strong> Ainsi, cette spécificité liée au procédé de galvanisation offre au revêtement protecteur adhérence, imperméabilité, et résistance mécanique. De plus, l’épaisseur de ce est supérieure à celle obtenue avec les autres techniques de protection
-                           </p>
-                      </CardContent>
-                  </Card>
+                    <Card className="bg-secondary border-border p-6 transition-all duration-300 hover:border-accent hover:-translate-y-2">
+                        <CardContent className="p-0">
+                            <div className="flex flex-col items-center gap-6">
+                                <div className="flex-shrink-0">
+                                    {React.createElement(iconMap['ShieldCheck'], { className: "h-16 w-16 text-accent" })}
+                                </div>
+                                <div className="flex-grow text-center">
+                                    <CardTitle className="text-accent text-3xl mb-3">SPÉCIFICITÉ DE LA GALVANISATION À CHAUD</CardTitle>
+                                    <p className="text-xl text-accent/80 mb-4">
+                                    « Une protection anticorrosion qui va au-delà d’un simple dépôt de zinc »
+                                    </p>
+                                </div>
+                            </div>
+                             <p className="text-lg text-muted-foreground mt-4 text-justify">
+                              La galvanisation à chaud ne consiste pas uniquement à déposer du zinc à la surface de l’acier. Le revêtement de zinc est métallurgiquement lié à l’acier de base, car il se produit une réaction métallurgique de diffusion entre le zinc et le fer. Quand on retire l’acier du bain, il s’est formé à sa surface plusieurs couches d’alliages zinc-fer sur lesquelles le zinc entraîné se solidifie. <strong className="text-accent font-bold">Ces différentes couches d’alliages plus dures que l’acier de base ont une teneur en zinc de plus en plus élevée au fur et à mesure que l’on se rapproche de la surface du revêtement.</strong> Ainsi, cette spécificité liée au procédé de galvanisation offre au revêtement protecteur adhérence, imperméabilité, et résistance mécanique. De plus, l’épaisseur de ce est supérieure à celle obtenue avec les autres techniques de protection
+                             </p>
+                        </CardContent>
+                    </Card>
                 </AnimatedWrapper>
                 <div className="grid md:grid-cols-1 gap-8">
                     {benefits.map((benefit, index) => {
@@ -260,11 +267,6 @@ function UnwrappedBenefitsSection() {
                       );
                     })}
                   </div>
-            </div>
-             <div className="lg:col-span-3">
-                <AnimatedWrapper animation="fade-in" staggerIndex={1}>
-                    <TechniquesAndStandardsSection />
-                </AnimatedWrapper>
             </div>
           </div>
         </div>
@@ -494,6 +496,8 @@ function UnwrappedCTASection() {
       </section>
     );
 }
+
+    
 
     
 
