@@ -116,14 +116,16 @@ export function Timeline() {
              <div className="absolute left-1/2 top-12 w-5 h-5 bg-accent rounded-full border-4 border-secondary shadow-md z-10 transform -translate-x-1/2" aria-hidden="true" />
             <div className="pt-20">
                 <AnimatedWrapper animation="fade-in">
-                    <Card className="bg-primary text-primary-foreground shadow-2xl overflow-hidden">
+                    <Card className="bg-background shadow-lg hover:shadow-2xl transition-shadow duration-300">
                         <CardContent className="p-10 text-center">
-                            <Users className="w-20 h-20 mx-auto mb-6 opacity-90" />
-                            <h2 className="text-4xl font-bold mb-4">Notre capital humain</h2>
-                            <p className="text-xl text-primary-foreground/80 max-w-3xl mx-auto">
-                                Avec plus de <span className="font-bold text-3xl"><AnimatedNumber value={700} /> collaborateurs</span>, BordjSteel s'appuie sur une équipe compétente, engagée et passionnée par l'excellence industrielle.
+                            <div className="w-24 h-24 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6 border-4 border-accent/20">
+                                <Users className="w-12 h-12 text-accent" />
+                            </div>
+                            <h2 className="text-4xl font-bold text-primary mb-4">Notre capital humain</h2>
+                            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                                Avec plus de <span className="font-bold text-accent text-3xl"><AnimatedNumber value={700} /> collaborateurs</span>, BordjSteel s'appuie sur une équipe compétente, engagée et passionnée par l'excellence industrielle.
                             </p>
-                            <p className="text-primary-foreground/80 mt-4 max-w-2xl mx-auto">
+                            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
                                 Chaque membre contribue au succès de l'entreprise à travers son savoir-faire, sa rigueur et son professionnalisme.
                             </p>
                         </CardContent>
