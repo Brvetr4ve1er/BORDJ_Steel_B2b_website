@@ -93,7 +93,7 @@ const teams = [
     id: 'hr',
     icon: <Users className="w-8 h-8 text-accent" />,
     title: "Équipe Ressources Humaines",
-    description: "L'équipe RH veille au bien-être, à la formation et à l’évolution de nos collaborateurs pour un environnement motivant.",
+    description: "(Au centre de la vie de l’entreprise, l’équipe RH veille au bien-être, à la formation et à l’évolution de nos collaborateurs. Elle favorise un environnement de travail motivant et valorisant, essentiel à la performance collective.)",
     detail: "Elle favorise un environnement de travail motivant et valorisant, essentiel à la performance collective.",
     color: "bg-primary",
     image: "https://i.pinimg.com/736x/f1/51/10/f151108391838728e14d8cfa85af221b.jpg"
@@ -305,5 +305,3 @@ export default function HistoryPage() {
     </ProductPageLayout>
   );
 }
-
-    
