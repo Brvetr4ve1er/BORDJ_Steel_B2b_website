@@ -207,6 +207,14 @@ function UnwrappedBenefitsSection() {
     return (
       <section className="py-32 bg-background">
         <div className="container mx-auto px-4">
+          <AnimatedWrapper animation="fade-in">
+              <Card className="text-center mb-20 p-8 bg-secondary shadow-lg">
+                  <h2 className="font-headline text-5xl font-bold text-primary mb-6">Notre Expertise en Galvanisation</h2>
+                  <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
+                  Explorez les avantages de notre processus de galvanisation à chaud, une méthode éprouvée pour une protection anti-corrosion supérieure. Nous combinons technologie de pointe et savoir-faire pour garantir la longévité et la fiabilité de chaque pièce traitée.
+                  </p>
+              </Card>
+          </AnimatedWrapper>
             <AnimatedWrapper animation="fade-in">
               <Card className="bg-secondary border-border p-8 transition-all duration-300 hover:border-accent hover:-translate-y-2">
                   <CardContent className="p-6 flex flex-col md:flex-row items-center gap-10">
