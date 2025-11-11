@@ -1,3 +1,4 @@
+
 "use client";
 
 import { companyData } from '@/config/company-data';
@@ -111,7 +112,7 @@ const teams = [
     id: 'assembly',
     icon: <Wrench className="w-8 h-8 text-accent" />,
     title: "Équipe Réalisation et Montage",
-    description: "Spécialisée dans l’installation sur site, assurant un montage précis et sécurisé de nos structures métalliques.",
+    description: "Spécialisée dans l’installation sur site, cette équipe assure le montage précis et sécurisé de nos structures métalliques. Son savoir-faire garantit la conformité, la stabilité et la qualité de chaque projet livré.",
     detail: "Son savoir-faire garantit la conformité, la stabilité et la qualité de chaque projet livré.",
     color: "bg-primary",
     image: "https://i.pinimg.com/736x/a3/0d/65/a30d652c6e58b3aebe5ca3561af436a6.jpg"
