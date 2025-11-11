@@ -14,7 +14,7 @@ export const iconMap: { [key: string]: LucideIcon } = {
   fire: Thermometer,
   snowflake: Fan,
   check: Check,
-  clock: Shield,
+  clock: ShieldCheck,
   coin: CircleDollarSign,
   Poutre: HardHat,
   Panneau: Layers,
@@ -36,7 +36,7 @@ export const galvanisationContent = {
       { "title": "Bains de traitement", "value": "13", "icon": "baths", "large": true },
       { "title": "Capacité annuelle", "value": "25.000 tonnes", "icon": "Weight" },
       { "title": "Température du bain", "value": "450 °C", "icon": "Thermometer" },
-      { "title": "Durée de vie", "value": "> 50 ans", "icon": "shield" },
+      { "title": "Durée de vie", "value": "> 50 ans", "icon": "clock" },
       { "title": "Produits", "value": "Profils | Panneaux | Structures", "icon": "layers" }
     ],
     "image_url": images.galvanisation.hero.src,
@@ -114,7 +114,7 @@ export const galvanisationContent = {
     {
       "title": "Résistance à la corrosion",
       "text": "Bouclier contre humidité, intempéries et environnements agressifs.",
-      "icon": "shield"
+      "icon": "ShieldCheck"
     },
     {
       "title": "Durabilité exceptionnelle",
@@ -142,3 +142,6 @@ export const galvanisationContent = {
 
     
 
+
+
+    
