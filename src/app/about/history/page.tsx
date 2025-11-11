@@ -57,7 +57,7 @@ const teams = [
   {
     id: 'quality',
     icon: <ClipboardCheck className="w-8 h-8 text-accent" />,
-    title: "Contrôle Qualité",
+    title: "Équipe Contrôle Qualité",
     description: "Cette équipe veille à la conformité de nos produits aux normes nationales et internationales. Des contrôles rigoureux sont effectués à chaque étape – de la conception à la livraison – afin d’assurer une qualité irréprochable.",
     detail: "Des contrôles rigoureux sont effectués à chaque étape pour assurer une qualité irréprochable.",
     color: "bg-primary",
@@ -75,7 +75,7 @@ const teams = [
   {
     id: 'commercial',
     icon: <UserCheck className="w-8 h-8 text-accent" />,
-    title: "Commercial & Marketing",
+    title: "Équipe Commerciale et Marketing",
     description: "Toujours à l’écoute du marché, notre équipe commerciale et marketing accompagne nos clients à chaque étape de leurs projets. Elle met un point d’honneur à offrir des solutions personnalisées, un suivi attentif et un service de qualité.",
     detail: "Elle met un point d'honneur à offrir des solutions personnalisées, un suivi attentif et un service de qualité.",
     color: "bg-primary",
@@ -153,25 +153,6 @@ function ActivitiesSection() {
             </Card>
           </AnimatedWrapper>
         ))}
-      </div>
-    </section>
-  );
-}
-
-function HumanCapitalSection() {
-  return (
-    <section className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 text-center">
-        <AnimatedWrapper animation="fade-in">
-          <Users className="w-20 h-20 mx-auto mb-6 opacity-90" />
-          <h2 className="text-4xl font-bold mb-4">Notre capital humain</h2>
-          <p className="text-xl text-primary-foreground/80 max-w-3xl mx-auto">
-            Avec plus de <span className="font-bold text-3xl">700 collaborateurs</span>, BordjSteel s'appuie sur une équipe compétente, engagée et passionnée par l'excellence industrielle.
-          </p>
-          <p className="text-primary-foreground/80 mt-4 max-w-2xl mx-auto">
-            Chaque membre contribue au succès de l'entreprise à travers son savoir-faire, sa rigueur et son professionnalisme.
-          </p>
-        </AnimatedWrapper>
       </div>
     </section>
   );
@@ -300,7 +281,6 @@ export default function HistoryPage() {
       <section className="bg-secondary py-20">
         <Timeline />
       </section>
-      <HumanCapitalSection />
       <TeamsSection />
       <CertificationsSection />
     </ProductPageLayout>
