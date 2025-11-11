@@ -1,5 +1,5 @@
 
-import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship, HardHat, CircleDollarSign, Check, Beaker, SprayCan, Fan, Pipette, Ruler } from 'lucide-react';
+import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship, HardHat, CircleDollarSign, Check, Beaker, SprayCan, Fan, Pipette, Ruler, ShieldCheck } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import images from '@/app/lib/placeholder-images.json';
 
