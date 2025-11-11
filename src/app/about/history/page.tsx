@@ -123,7 +123,7 @@ const teams = [
 const certifications = [
   { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/1b/c3/3a/1bc33a6cbdf6d1c416b32699f6e5802b.jpg" },
   { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg" },
-  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.ibb.co/2MLj5Vp/certificate-template-vector-3770483-1-1.png" }
+  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/fc/ea/fb/fceafbcc5c3f0645268534eed8924cb3.jpg" }
 ];
 
 
