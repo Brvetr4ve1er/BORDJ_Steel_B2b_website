@@ -263,7 +263,7 @@ function CertificationsSection() {
             Forte de son expérience et de son savoir-faire, BordjSteel s'engage à respecter les plus hauts standards de qualité et de sécurité.
           </p>
         </AnimatedWrapper>
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex flex-wrap justify-center gap-12">
           {certifications.map((cert, index) => (
             <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
               <CertificationCard cert={cert} />
