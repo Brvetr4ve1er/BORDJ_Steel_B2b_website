@@ -192,47 +192,49 @@ function StatsCards({
               duration: 0.5,
               delay: index * 0.15,
             }}
-            className="group backdrop-blur-sm bg-white/10 from-background to-background/50 relative overflow-hidden rounded-2xl border border-white/20 p-6 transition-all hover:scale-105 hover:shadow-xl"
+            className="group backdrop-blur-sm bg-white/10 relative overflow-hidden rounded-2xl border border-white/20 p-6 transition-all duration-500"
           >
-            <motion.div
-              className="mb-4 text-3xl text-white"
-              initial={{ rotate: -10, scale: 0.8, opacity: 0 }}
-              animate={{ rotate: 0, scale: 1, opacity: 1}}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.1 + 0.3,
-              }}
-            >
-              {React.createElement(
-                iconMap[stat.icon as keyof typeof iconMap] || DollarSign,
-                {
-                  className: "h-8 w-8",
-                }
+            <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
+            <div className="relative">
+              <motion.div
+                className="mb-4 text-3xl text-white"
+                initial={{ rotate: -10, scale: 0.8, opacity: 0 }}
+                animate={{ rotate: 0, scale: 1, opacity: 1}}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.1 + 0.3,
+                }}
+              >
+                {React.createElement(
+                  iconMap[stat.icon as keyof typeof iconMap] || DollarSign,
+                  {
+                    className: "h-8 w-8",
+                  }
+                )}
+              </motion.div>
+
+              <motion.div
+                className="text-white mb-1 text-2xl font-bold lg:text-3xl"
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.1 + 0.4,
+                }}
+              >
+                {stat.value}
+              </motion.div>
+
+              <h3 className="text-white/90 mb-2 text-sm font-semibold tracking-wide uppercase">
+                {stat.label}
+              </h3>
+
+              {stat.description && (
+                <p className="text-white/70 mb-3 text-xs">
+                  {stat.description}
+                </p>
               )}
-            </motion.div>
-
-            <motion.div
-              className="text-white mb-1 text-2xl font-bold lg:text-3xl"
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.1 + 0.4,
-              }}
-            >
-              {stat.value}
-            </motion.div>
-
-            <h3 className="text-white/90 mb-2 text-sm font-semibold tracking-wide uppercase">
-              {stat.label}
-            </h3>
-
-            {stat.description && (
-              <p className="text-white/70 mb-3 text-xs">
-                {stat.description}
-              </p>
-            )}
-
+            </div>
           </motion.div>
         ))}
       </div>
@@ -355,3 +357,5 @@ export function SandwichPanelsPage() {
     </>
   );
 }
+
+    
