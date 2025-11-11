@@ -97,18 +97,20 @@ function UnwrappedHeroSection() {
                   const Icon = iconMap[stat.icon];
                   return (
                     <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index + 2}>
-                      <Card className="group bg-background/50 backdrop-blur-md border-border text-white relative overflow-hidden transition-all duration-500 hover:border-accent">
+                      <div className="group relative overflow-hidden rounded-lg">
                         <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
-                        <CardContent className="relative p-4 flex items-center gap-3">
-                          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center transition-colors duration-300 group-hover:bg-accent-foreground/10">
-                            {Icon && <Icon className="h-6 w-6 text-accent transition-colors duration-300 group-hover:text-white" />}
-                          </div>
-                          <div>
-                            <p className="text-xl font-bold">{stat.value}</p>
-                            <p className="text-xs text-gray-300 group-hover:text-gray-100">{stat.title}</p>
-                          </div>
-                        </CardContent>
-                      </Card>
+                          <Card className="bg-background/50 backdrop-blur-md border-border text-white relative transition-colors duration-300 group-hover:bg-transparent group-hover:border-accent">
+                            <CardContent className="relative p-4 flex items-center gap-3">
+                              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center transition-colors duration-300 group-hover:bg-accent-foreground/10">
+                                {Icon && <Icon className="h-6 w-6 text-accent transition-colors duration-300 group-hover:text-white" />}
+                              </div>
+                              <div>
+                                <p className="text-xl font-bold">{stat.value}</p>
+                                <p className="text-xs text-gray-300 group-hover:text-gray-100">{stat.title}</p>
+                              </div>
+                            </CardContent>
+                          </Card>
+                      </div>
                     </AnimatedWrapper>
                   );
                 })}
@@ -235,7 +237,7 @@ function UnwrappedBenefitsSection() {
                                 </p>
                             </div>
                         </CardContent>
-                          <p className="text-lg text-muted-foreground mt-4 text-justify">La galvanisation à chaud ne consiste pas uniquement à déposer du zinc à la surface de l’acier. Le revêtement de zinc est métallurgiquement lié à l’acier de base, car il se produit une réaction métallurgique de diffusion entre le zinc et le fer. Quand on retire l’acier du bain, il s’est formé à sa surface plusieurs couches d’alliages zinc-fer sur lesquelles le zinc entraîné se solidifie. <strong className="font-bold text-accent">Ces différentes couches d’alliages plus dures que l’acier de base ont une teneur en zinc de plus en plus élevée au fur et à mesure que l’on se rapproche de la surface du revêtement.</strong> Ainsi, cette spécificité liée au procédé de galvanisation offre au revêtement protecteur adhérence, imperméabilité, et résistance mécanique. De plus, l’épaisseur de ce est supérieure à celle obtenue avec les autres techniques de protection</p>
+                          <p className="text-xl text-foreground mt-4 text-justify">La galvanisation à chaud ne consiste pas uniquement à déposer du zinc à la surface de l’acier. Le revêtement de zinc est métallurgiquement lié à l’acier de base, car il se produit une réaction métallurgique de diffusion entre le zinc et le fer. Quand on retire l’acier du bain, il s’est formé à sa surface plusieurs couches d’alliages zinc-fer sur lesquelles le zinc entraîné se solidifie. <strong className="font-bold text-accent">Ces différentes couches d’alliages plus dures que l’acier de base ont une teneur en zinc de plus en plus élevée au fur et à mesure que l’on se rapproche de la surface du revêtement.</strong> Ainsi, cette spécificité liée au procédé de galvanisation offre au revêtement protecteur adhérence, imperméabilité, et résistance mécanique. De plus, l’épaisseur de ce est supérieure à celle obtenue avec les autres techniques de protection</p>
                     </Card>
                 </AnimatedWrapper>
                  <div className="grid md:grid-cols-1 gap-8 mt-8">
@@ -494,5 +496,3 @@ function UnwrappedCTASection() {
       </section>
     );
 }
-
-    
