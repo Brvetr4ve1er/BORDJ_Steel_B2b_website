@@ -121,9 +121,9 @@ const teams = [
 ];
 
 const certifications = [
-  { name: "ISO 9001", description: "Management de la qualité" },
-  { name: "ISO 14001", description: "Management environnemental" },
-  { name: "ISO 45001", description: "Santé et sécurité au travail" }
+  { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/1b/c3/3a/1bc33a6cbdf6d1c416b32699f6e5802b.jpg" },
+  { name: "ISO 14001", description: "Management environnemental", image: "https://i.ibb.co/2MLj5Vp/certificate-template-vector-3770483-1-1.png" },
+  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.ibb.co/2MLj5Vp/certificate-template-vector-3770483-1-1.png" }
 ];
 
 
@@ -213,7 +213,7 @@ function TeamsSection() {
   );
 }
 
-function CertificationCard({ cert }: { cert: { name: string; description: string } }) {
+function CertificationCard({ cert }: { cert: { name: string; description: string; image: string; } }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -226,7 +226,7 @@ function CertificationCard({ cert }: { cert: { name: string; description: string
       {/* Content inside the book */}
       <div className="absolute inset-0 bg-background rounded-lg shadow-inner flex items-center justify-center p-4">
         <Image
-          src="https://i.ibb.co/2MLj5Vp/certificate-template-vector-3770483-1-1.png"
+          src={cert.image}
           alt="Certificate frame"
           width={220}
           height={320}
