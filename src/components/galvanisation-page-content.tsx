@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { galvanisationContent } from '@/config/galvanisation-data';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Info } from 'lucide-react';
 import { iconMap as galvanisationIconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
@@ -206,18 +206,29 @@ function UnwrappedBenefitsSection() {
     return (
       <section className="py-32 bg-background">
         <div className="max-w-screen-xl mx-auto px-4">
-          <AnimatedWrapper animation="fade-in" className="text-center">
-            <h2 className="font-headline text-5xl font-bold text-accent mb-4">
-              SPÉCIFICITÉ DE LA GALVANISATION À CHAUD
-            </h2>
-            <p className="text-xl text-accent/80 mb-8">
-              « Une protection anticorrosion qui va au-delà d’un simple dépôt de zinc »
-            </p>
-             <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-16 text-left">
-                La galvanisation à chaud ne consiste pas uniquement à déposer du zinc à la surface de l’acier. Le revêtement de zinc est métallurgiquement lié à l’acier de base, car il se produit une réaction métallurgique de diffusion entre le zinc et le fer. Quand on retire l’acier du bain, il s’est formé à sa surface plusieurs couches d’alliages zinc-fer sur lesquelles le zinc entraîné se solidifie. <span className="text-accent font-bold">Ces différentes couches d’alliages plus dures que l’acier de base ont une teneur en zinc de plus en plus élevée au fur et à mesure que l’on se rapproche de la surface du revêtement.</span> Ainsi, cette spécificité liée au procédé de galvanisation offre au revêtement protecteur adhérence, imperméabilité, et résistance mécanique. De plus, l’épaisseur de ce est supérieure à celle obtenue avec les autres techniques de protection
-            </p>
-          </AnimatedWrapper>
-          <div className="grid md:grid-cols-3 gap-8">
+            <AnimatedWrapper animation="fade-in">
+              <Card className="shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                <CardContent className="p-10 flex flex-col md:flex-row items-center gap-10">
+                   <div className="flex-shrink-0">
+                      <div className="w-24 h-24 rounded-full bg-accent/10 flex items-center justify-center border-4 border-accent/20">
+                          <Info className="w-12 h-12 text-accent" />
+                      </div>
+                    </div>
+                    <div className="flex-grow text-center md:text-left">
+                        <h2 className="font-headline text-5xl font-bold text-accent mb-4">
+                        SPÉCIFICITÉ DE LA GALVANISATION À CHAUD
+                        </h2>
+                        <p className="text-xl text-accent/80 mb-8">
+                        « Une protection anticorrosion qui va au-delà d’un simple dépôt de zinc »
+                        </p>
+                        <p className="text-xl text-muted-foreground max-w-4xl mx-auto text-left">
+                            La galvanisation à chaud ne consiste pas uniquement à déposer du zinc à la surface de l’acier. Le revêtement de zinc est métallurgiquement lié à l’acier de base, car il se produit une réaction métallurgique de diffusion entre le zinc et le fer. Quand on retire l’acier du bain, il s’est formé à sa surface plusieurs couches d’alliages zinc-fer sur lesquelles le zinc entraîné se solidifie. <span className="font-bold text-accent">Ces différentes couches d’alliages plus dures que l’acier de base ont une teneur en zinc de plus en plus élevée au fur et à mesure que l’on se rapproche de la surface du revêtement.</span> Ainsi, cette spécificité liée au procédé de galvanisation offre au revêtement protecteur adhérence, imperméabilité, et résistance mécanique. De plus, l’épaisseur de ce est supérieure à celle obtenue avec les autres techniques de protection
+                        </p>
+                    </div>
+                </CardContent>
+              </Card>
+            </AnimatedWrapper>
+          <div className="grid md:grid-cols-3 gap-8 mt-16">
             {benefits.map((benefit, index) => {
               const Icon = iconMap[benefit.icon];
               return (
@@ -310,3 +321,4 @@ function UnwrappedCTASection() {
     
 
     
+
