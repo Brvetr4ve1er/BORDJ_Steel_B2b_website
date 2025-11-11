@@ -64,7 +64,7 @@ export const galvanisationContent = {
       "step": 3,
       "title": "DÉCAPAGE",
       "shortDesc": "Élimination des oxydes.",
-      "longDesc": "Immersion en bain d’acide chlorhydrique enrichi en inhibiteurs. Surface brillante et chimiquement active.",
+      "longDesc": "Il a pour but d’enlever la calamine et les autres oxydes présents à la surface de l’acier. Le décapage est eectué dans une solution d’acide chlorhydrique dilué à température ambiante, additionné d’un inhibiteur qui permet d’éviter l’attaque de l’acier lorsqu’il est débarrassé de ses oxydes. Des solutions d’acide sulfurique sont parfois utilisées avec l’inconvénient d’une mise en œuvre à 70°C nécessitant un chauage. Un décapage mécanique (grenaillage) peut parfois remplacer le décapage chimique, en particulier dans le cas de la fonte, afin d’éliminer la silice se trouvant en surface.",
       "icon": "acid",
       "meta": { "temperature": "Ambiante", "duration": "10–20 min" }
     },
