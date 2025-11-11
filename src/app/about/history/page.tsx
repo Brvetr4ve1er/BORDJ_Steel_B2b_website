@@ -226,13 +226,24 @@ function CertificationsSection() {
         <div className="grid md:grid-cols-3 gap-8">
           {certifications.map((cert, index) => (
             <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-              <Card className="bg-background rounded-xl p-8 text-center shadow-md hover:shadow-xl transition-shadow border-2 border-transparent hover:border-accent">
-                <div className="bg-secondary rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 shadow-inner">
-                  <Award className="w-12 h-12 text-accent" />
+              <div className="group relative">
+                <Card className="bg-background rounded-xl p-8 text-center shadow-md transition-all duration-500 transform group-hover:-translate-y-4 group-hover:shadow-2xl">
+                  <div className="bg-secondary rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 shadow-inner">
+                    <Award className="w-12 h-12 text-accent" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-primary mb-2">{cert.name}</h3>
+                  <p className="text-muted-foreground">{cert.description}</p>
+                </Card>
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <Image
+                    src="https://i.ibb.co/2MLj5Vp/certificate-template-vector-3770483-1-1.png"
+                    alt="Certificate frame"
+                    width={500}
+                    height={350}
+                    className="object-contain transition-all duration-500 transform scale-90 group-hover:scale-100 rotate-[-10deg] group-hover:rotate-0"
+                  />
                 </div>
-                <h3 className="text-2xl font-bold text-primary mb-2">{cert.name}</h3>
-                <p className="text-muted-foreground">{cert.description}</p>
-              </Card>
+              </div>
             </AnimatedWrapper>
           ))}
         </div>
