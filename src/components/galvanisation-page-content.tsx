@@ -218,11 +218,6 @@ function UnwrappedBenefitsSection() {
           </AnimatedWrapper>
 
           <div className="grid lg:grid-cols-5 gap-8 items-start">
-            <div className="lg:col-span-3">
-              <AnimatedWrapper animation="fade-in">
-                  <UnwrappedTechniquesAndStandardsSection />
-              </AnimatedWrapper>
-            </div>
             <div className="lg:col-span-2">
               <AnimatedWrapper animation="fade-in">
                 <Card className="bg-secondary border-border p-8 transition-all duration-300 hover:border-accent hover:-translate-y-2">
@@ -239,6 +234,11 @@ function UnwrappedBenefitsSection() {
                         </p>
                     </CardContent>
                 </Card>
+              </AnimatedWrapper>
+            </div>
+            <div className="lg:col-span-3">
+              <AnimatedWrapper animation="fade-in">
+                  <UnwrappedTechniquesAndStandardsSection />
               </AnimatedWrapper>
             </div>
           </div>
@@ -490,4 +490,3 @@ function UnwrappedCTASection() {
       </section>
     );
 }
-
