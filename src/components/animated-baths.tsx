@@ -36,7 +36,7 @@ export function AnimatedBaths() {
   return (
     <div ref={ref} className="w-full relative flex items-center justify-between gap-4 p-4 h-full">
       <div className="flex-shrink-0 w-24 h-24 rounded-full bg-white flex items-center justify-center">
-        <BathsIcon className={cn("w-16 h-16 text-accent flex-shrink-0 transition-colors duration-300", "group-hover:text-white")} />
+        <BathsIcon className={cn("w-16 h-16 text-accent flex-shrink-0 transition-colors duration-300")} />
       </div>
       <div className="flex-grow flex flex-col items-center justify-center text-white">
         <div className="relative w-full flex items-center justify-center">
