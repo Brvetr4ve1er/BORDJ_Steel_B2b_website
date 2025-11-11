@@ -206,7 +206,7 @@ function UnwrappedBenefitsSection() {
   
     return (
       <section className="py-32 bg-background">
-        <div className="max-w-screen-xl mx-auto">
+        <div className="container mx-auto px-4">
             <AnimatedWrapper animation="fade-in">
               <Card className="bg-secondary border-border p-8 transition-all duration-300 hover:border-accent hover:-translate-y-2">
                   <CardContent className="p-6 flex flex-col md:flex-row items-center gap-10">
@@ -223,7 +223,7 @@ function UnwrappedBenefitsSection() {
                   </CardContent>
               </Card>
             </AnimatedWrapper>
-          <div className="grid md:grid-cols-3 gap-8 mt-16 px-4">
+          <div className="grid md:grid-cols-3 gap-8 mt-16">
             {benefits.map((benefit, index) => {
               const Icon = iconMap[benefit.icon];
               return (
