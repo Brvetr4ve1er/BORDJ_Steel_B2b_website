@@ -40,7 +40,7 @@ const teams = [
     id: 'engineering',
     icon: <TrendingUp className="w-8 h-8 text-accent" />,
     title: "Bureau d'études",
-    description: "Véritable moteur de l'innovation, notre bureau d'études conçoit et optimise les structures métalliques.",
+    description: "Véritable moteur de l’innovation, notre bureau d’études conçoit et optimise les structures métalliques selon les besoins spécifiques de chaque client. Il veille à la faisabilité technique, à la solidité et à la performance de nos réalisations.",
     detail: "Il veille à la faisabilité technique, à la solidité et à la performance de nos réalisations.",
     color: "bg-primary",
     image: "https://i.pinimg.com/736x/dd/d2/b8/ddd2b884a8cdf6c38c4fe8c6ea24c7e0.jpg"
