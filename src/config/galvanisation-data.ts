@@ -48,7 +48,7 @@ export const galvanisationContent = {
       "step": 1,
       "title": "DÉGRAISSAGE",
       "shortDesc": "Nettoyage alcalin à 60–80°C.",
-      "longDesc": "Élimination des huiles et graisses en bains alcalins chauffés, garantissant une surface propre pour le décapage.",
+      "longDesc": "Il a pour but d’enlever toutes les salissures et graisses qui empêcheraient la dissolution des oxydes de fer superficiels. Le dégraissage est effectué dans des bains contenant du carbonate de sodium ou de la soude avec addition de détergents et de tensioactifs à 60°C / 80°C. Parfois, des dégraissants acides peuvent être utilisés.",
       "icon": "cleaning",
       "meta": { "temperature": "60–80°C", "duration": "5–10 min" }
     },
@@ -138,5 +138,3 @@ export const galvanisationContent = {
     "form_url": "/contact"
   }
 };
-
-    
