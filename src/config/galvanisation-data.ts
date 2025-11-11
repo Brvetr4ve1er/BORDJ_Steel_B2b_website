@@ -96,7 +96,7 @@ export const galvanisationContent = {
       "step": 7,
       "title": "GALVANISATION",
       "shortDesc": "Immersion dans zinc fondu à 450°C.",
-      "longDesc": "Immersion contrôlée du métal dans le bain de zinc fondu. Formation de couches d’alliages Zn-Fe.",
+      "longDesc": "Les pièces sont ensuite immergées dans le bain de zinc fondu à 450°C. Les temps d’immersion varient suivant l’importance des charges, des dimensions et de l’épaisseur des pièces : de 3 à 4 minutes pour des pièces de forme simple, et de 10 à 15 minutes pour des ensembles massifs ou des corps creux de grandes dimensions.",
       "icon": "fire",
       "meta": { "temperature": "450°C", "duration": "3–15 min" }
     },
