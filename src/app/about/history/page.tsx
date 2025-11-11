@@ -7,6 +7,7 @@ import { ProductPageLayout } from '@/components/product-page-layout';
 import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Timeline } from '@/components/timeline';
 import { Building2, Users, Award, Shield, Factory, Hammer, ClipboardCheck, HardHat, UserCheck, TrendingUp, Minus, Plus, DollarSign, Network, Wrench } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -212,42 +213,64 @@ function TeamsSection() {
   );
 }
 
+function CertificationCard({ cert }: { cert: { name: string; description: string } }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      className="relative w-[240px] h-[340px]"
+      style={{ perspective: 1000 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      {/* Content inside the book */}
+      <div className="absolute inset-0 bg-background rounded-lg shadow-inner flex items-center justify-center p-4">
+        <Image
+          src="https://i.ibb.co/2MLj5Vp/certificate-template-vector-3770483-1-1.png"
+          alt="Certificate frame"
+          width={220}
+          height={320}
+          className="object-contain"
+        />
+      </div>
+      
+      {/* Cover of the book */}
+      <motion.div
+        className="absolute inset-0 bg-card rounded-lg shadow-lg p-6 text-center flex flex-col items-center justify-center cursor-pointer"
+        style={{ transformOrigin: 'left', transformStyle: 'preserve-3d' }}
+        animate={{ rotateY: isHovered ? -140 : 0 }}
+        transition={{ duration: 0.7, ease: 'easeInOut' }}
+      >
+        <div className="bg-secondary rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 shadow-inner">
+          <Award className="w-12 h-12 text-accent" />
+        </div>
+        <h3 className="text-2xl font-bold text-primary mb-2">{cert.name}</h3>
+        <p className="text-muted-foreground">{cert.description}</p>
+        <p className="absolute bottom-4 text-xs text-muted-foreground/50">Passez pour ouvrir</p>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 function CertificationsSection() {
   return (
     <section className="bg-secondary">
       <div className="container mx-auto px-4">
-        <AnimatedWrapper animation="fade-in" className="text-center mb-12">
+        <AnimatedWrapper animation="fade-in" className="text-center mb-16">
           <Award className="w-20 h-20 mx-auto mb-6 text-accent" />
           <h2 className="text-4xl font-bold text-primary mb-4">Nos certifications et engagements</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Forte de son expérience et de son savoir-faire, BordjSteel s'engage à respecter les plus hauts standards de qualité et de sécurité.
           </p>
         </AnimatedWrapper>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="flex flex-wrap justify-center gap-12">
           {certifications.map((cert, index) => (
             <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-              <div className="group relative">
-                <Card className="bg-background rounded-xl p-8 text-center shadow-md transition-all duration-500 transform group-hover:-translate-y-4 group-hover:shadow-2xl">
-                  <div className="bg-secondary rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 shadow-inner">
-                    <Award className="w-12 h-12 text-accent" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-primary mb-2">{cert.name}</h3>
-                  <p className="text-muted-foreground">{cert.description}</p>
-                </Card>
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <Image
-                    src="https://i.ibb.co/2MLj5Vp/certificate-template-vector-3770483-1-1.png"
-                    alt="Certificate frame"
-                    width={500}
-                    height={350}
-                    className="object-contain transition-all duration-500 transform scale-90 group-hover:scale-100 rotate-[-10deg] group-hover:rotate-0"
-                  />
-                </div>
-              </div>
+              <CertificationCard cert={cert} />
             </AnimatedWrapper>
           ))}
         </div>
-        <AnimatedWrapper animation="fade-in" className="mt-12 text-center">
+        <AnimatedWrapper animation="fade-in" className="mt-16 text-center">
           <p className="text-muted-foreground italic">
             La société détient plusieurs certifications reconnues, témoignant de son sérieux et de sa conformité aux exigences internationales.
           </p>
@@ -297,3 +320,5 @@ export default function HistoryPage() {
     </ProductPageLayout>
   );
 }
+
+    
