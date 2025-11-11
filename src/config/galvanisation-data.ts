@@ -36,7 +36,7 @@ export const galvanisationContent = {
       { "title": "Bains de traitement", "value": "13", "icon": "baths", "large": true },
       { "title": "Capacité annuelle", "value": "25.000 tonnes", "icon": "Weight" },
       { "title": "Température du bain", "value": "450 °C", "icon": "Thermometer" },
-      { "title": "Durée de vie", "value": "> 50 ans", "icon": "clock" },
+      { "title": "Durée de vie", "value": "> 50 ans", "icon": "ShieldCheck" },
       { "title": "Produits", "value": "Profils | Panneaux | Structures", "icon": "layers" }
     ],
     "image_url": images.galvanisation.hero.src,
@@ -57,7 +57,7 @@ export const galvanisationContent = {
       "step": 2,
       "title": "RINÇAGE",
       "shortDesc": "Neutralisation des résidus alcalins.",
-      "longDesc": "Rinçage intensif à l’eau claire, parfois en cascade, pour neutraliser et purifier l’acier avant le décapage.",
+      "longDesc": "Un rinçage est eectué après le dégraissage afin de ne pas polluer les opérations suivantes.",
       "icon": "water",
       "meta": { "temperature": "Ambiante", "duration": "2–4 min" }
     },
@@ -143,5 +143,7 @@ export const galvanisationContent = {
     
 
 
+
+    
 
     
