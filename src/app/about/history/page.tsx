@@ -49,7 +49,7 @@ const teams = [
     id: 'production',
     icon: <Factory className="w-8 h-8 text-accent" />,
     title: "Équipe Production",
-    description: "Au cœur de notre activité, l'équipe de production assure la fabrication, l'assemblage et le contrôle des composants.",
+    description: "Au cœur de notre activité, l’équipe de production assure la fabrication, l’assemblage et le contrôle des différents composants. Grâce à une maîtrise technique avancée et à des équipements modernes, elle garantit la fiabilité et la durabilité de nos produits.",
     detail: "Grâce à une maîtrise technique avancée et à des équipements modernes, elle garantit la fiabilité et la durabilité de nos produits.",
     color: "bg-primary",
     image: "https://i.pinimg.com/736x/c1/22/d0/c122d0a87b9a67655d2af2921bc6b69a.jpg"
