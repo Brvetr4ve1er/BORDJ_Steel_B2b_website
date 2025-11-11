@@ -48,7 +48,7 @@ export const galvanisationContent = {
       "step": 1,
       "title": "DÉGRAISSAGE",
       "shortDesc": "Nettoyage alcalin à 60–80°C.",
-      "longDesc": "Il a pour but d’enlever toutes les salissures et graisses qui empêcheraient la dissolution des oxydes de fer superficiels. Le dégraissage est eectué dans des bains contenant du carbonate de sodium ou de la soude avec addition de détergents et de tensioactifs à 60°C / 80°C. Parfois, des dégraissants acides peuvent être utilisés.",
+      "longDesc": "Il a pour but d’enlever toutes les salissures et graisses qui empêcheraient la dissolution des oxydes de fer superficiels. Le dégraissage est effectué dans des bains contenant du carbonate de sodium ou de la soude avec addition de détergents et de tensioactifs à 60°C / 80°C. Parfois, des dégraissants acides peuvent être utilisés.",
       "icon": "cleaning",
       "meta": { "temperature": "60–80°C", "duration": "5–10 min" }
     },
@@ -64,7 +64,7 @@ export const galvanisationContent = {
       "step": 3,
       "title": "DÉCAPAGE",
       "shortDesc": "Élimination des oxydes.",
-      "longDesc": "Il a pour but d’enlever la calamine et les autres oxydes présents à la surface de l’acier. Le décapage est e ectué dans une solution d’acide chlorhydrique dilué à température ambiante, additionné d’un inhibiteur qui permet d’éviter l’attaque de l’acier lorsqu’il est débarrassé de ses oxydes. Des solutions d’acide sulfurique sont parfois utilisées avec l’inconvénient d’une mise en œuvre à 70°C nécessitant un chau age. Un décapage mécanique (grenaillage) peut parfois remplacer le décapage chimique, en particulier dans le cas de la fonte, afin d’éliminer la silice se trouvant en surface.",
+      "longDesc": "Il a pour but d’enlever la calamine et les autres oxydes présents à la surface de l’acier. Le décapage est effectué dans une solution d’acide chlorhydrique dilué à température ambiante, additionné d’un inhibiteur qui permet d’éviter l’attaque de l’acier lorsqu’il est débarrassé de ses oxydes. Des solutions d’acide sulfurique sont parfois utilisées avec l’inconvénient d’une mise en œuvre à 70°C nécessitant un chauffage. Un décapage mécanique (grenaillage) peut parfois remplacer le décapage chimique, en particulier dans le cas de la fonte, afin d’éliminer la silice se trouvant en surface.",
       "icon": "acid",
       "meta": { "temperature": "Ambiante", "duration": "10–20 min" }
     },
@@ -72,7 +72,7 @@ export const galvanisationContent = {
       "step": 4,
       "title": "RINÇAGE",
       "shortDesc": "Élimination sels et acides.",
-      "longDesc": "Un rinçage est également e ectué après le décapage afin de laver les pièces des sels de fer et des traces d’acide qui pollueraient l’opération suivante.",
+      "longDesc": "Un rinçage est également effectué après le décapage afin de laver les pièces des sels de fer et des traces d’acide qui pollueraient l’opération suivante.",
       "icon": "water",
       "meta": { "temperature": "Ambiante", "duration": "2–4 min" }
     },
@@ -80,7 +80,7 @@ export const galvanisationContent = {
       "step": 5,
       "title": "FLUXAGE",
       "shortDesc": "Prévenir l’oxydation.",
-      "longDesc": "Bain aqueux de chlorure de zinc et ammonium formant une pellicule protectrice. Active la réaction Fe/Zn.",
+      "longDesc": "Il permet d’éviter que l’acier ne se ré-oxyde avant l’entrée dans le bain de zinc. La décomposition du flux permet également de favoriser la réaction métallurgique fer/zinc lors de l’immersion de la pièce dans le bain de zinc. Le fluxage est effectué par une solution aqueuse de chlorure de zinc et de chlorure d’ammonium.",
       "icon": "chemical",
       "meta": { "temperature": "60-70°C", "duration": "3–5 min" }
     },
