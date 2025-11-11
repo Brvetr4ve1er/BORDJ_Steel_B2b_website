@@ -35,7 +35,7 @@ export const galvanisationContent = {
     "stats": [
       { "title": "Bains de traitement", "value": "13", "icon": "baths", "large": true },
       { "title": "Capacité annuelle", "value": "25.000 tonnes", "icon": "Weight" },
-      { "title": "Température du bain", "value": "450 °C", "icon": "thermometer" },
+      { "title": "Température du bain", "value": "450 °C", "icon": "Thermometer" },
       { "title": "Durée de vie", "value": "> 50 ans", "icon": "shield" },
       { "title": "Produits", "value": "Profils | Panneaux | Structures", "icon": "layers" }
     ],
@@ -141,3 +141,4 @@ export const galvanisationContent = {
 };
 
     
+
