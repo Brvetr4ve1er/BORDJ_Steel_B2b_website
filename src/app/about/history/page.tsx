@@ -102,7 +102,7 @@ const teams = [
     id: 'it',
     icon: <Network className="w-8 h-8 text-accent" />,
     title: "Équipe Système d’Information",
-    description: "Responsable du développement des outils numériques, garantissant la sécurité et la performance des systèmes.",
+    description: "Responsable de la gestion et du développement des outils numériques, cette équipe garantit la sécurité, la performance et la continuité des systèmes informatiques. Elle joue un rôle clé dans la transformation digitale de BordjSteel.",
     detail: "Elle joue un rôle clé dans la transformation digitale de BordjSteel.",
     color: "bg-primary",
     image: "https://i.pinimg.com/736x/6a/c8/6a/6ac86a94f2a9c05bf62c26abddb13d67.jpg"
