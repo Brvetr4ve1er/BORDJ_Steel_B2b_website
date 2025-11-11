@@ -2,7 +2,7 @@
 "use client";
 
 import Image from 'next/image';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { galvanisationContent } from '@/config/galvanisation-data';
@@ -13,7 +13,6 @@ import { AnimatedWrapper } from './animated-wrapper';
 import { DownloadButton } from './ui/download-button';
 import { BathsIcon } from './icons/baths-icon';
 import dynamic from 'next/dynamic';
-import { useMemo } from 'react';
 
 const DynamicAnimatedBaths = dynamic(() => import('./animated-baths').then(mod => mod.AnimatedBaths));
 
@@ -130,8 +129,8 @@ function UnwrappedProcessTimeline() {
             animation="fade-in"
             className="text-center mb-24 max-w-screen-xl mx-auto"
         >
-            <h2 className="font-headline text-4xl font-bold text-center text-primary mb-4">
-                Le processus de galvanisation pas à pas
+            <h2 className="font-headline text-5xl font-bold text-center text-accent mb-4">
+                LE PROCEDE D'APPLICATION
             </h2>
             <p className='text-center text-lg text-muted-foreground max-w-3xl mx-auto'>
                 Chaque pièce d’acier passe par une transformation alchimique. De brute et vulnérable, elle ressort invincible, gainée d’un bouclier de zinc. Voici le voyage, étape par étape.
@@ -207,7 +206,7 @@ function UnwrappedBenefitsSection() {
   
     return (
       <section className="py-32 bg-background">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto">
           <AnimatedWrapper animation="fade-in">
               <Card className="text-center mb-20 p-8 bg-secondary shadow-lg">
                   <h2 className="font-headline text-5xl font-bold text-primary mb-6">Notre Expertise en Galvanisation</h2>
@@ -217,29 +216,34 @@ function UnwrappedBenefitsSection() {
               </Card>
           </AnimatedWrapper>
 
-          <div className="grid lg:grid-cols-3 gap-8 items-start">
-            <div className="lg:col-span-3 space-y-8">
+          <div className="grid lg:grid-cols-5 gap-8 items-start">
+            <div className="lg:col-span-3">
                 <AnimatedWrapper animation="fade-in">
-                    <Card className="bg-secondary border-border p-8 transition-all duration-300 hover:border-accent hover:-translate-y-2">
+                    <TechniquesAndStandardsSection />
+                </AnimatedWrapper>
+            </div>
+            <div className="lg:col-span-2 space-y-8">
+                <AnimatedWrapper animation="fade-in" staggerIndex={1}>
+                    <Card className="bg-secondary border-border p-6 transition-all duration-300 hover:border-accent hover:-translate-y-2">
                         <CardContent className="p-0">
-                            <div className="flex flex-col md:flex-row items-center gap-10">
+                            <div className="flex flex-col md:flex-row items-center gap-6">
                                 <div className="flex-shrink-0">
-                                    {React.createElement(iconMap['ShieldCheck'], { className: "h-24 w-24 text-accent" })}
+                                    {React.createElement(iconMap['ShieldCheck'], { className: "h-20 w-20 text-accent" })}
                                 </div>
                                 <div className="flex-grow text-left">
-                                    <CardTitle className="text-accent text-4xl mb-4">SPÉCIFICITÉ DE LA GALVANISATION À CHAUD</CardTitle>
-                                    <p className="text-xl text-accent/80 mb-8">
+                                    <CardTitle className="text-accent text-3xl mb-3">SPÉCIFICITÉ DE LA GALVANISATION À CHAUD</CardTitle>
+                                    <p className="text-lg text-accent/80 mb-4">
                                     « Une protection anticorrosion qui va au-delà d’un simple dépôt de zinc »
-                                    </p>
-                                    <p className="text-lg text-muted-foreground">
-                                    La galvanisation à chaud ne consiste pas uniquement à déposer du zinc à la surface de l’acier. Le revêtement de zinc est métallurgiquement lié à l’acier de base, car il se produit une réaction métallurgique de diffusion entre le zinc et le fer. Quand on retire l’acier du bain, il s’est formé à sa surface plusieurs couches d’alliages zinc-fer sur lesquelles le zinc entraîné se solidifie. Ces différentes couches d’alliages plus dures que l’acier de base ont une teneur en zinc de plus en plus élevée au fur et à mesure que l’on se rapproche de la surface du revêtement. Ainsi, cette spécificité liée au procédé de galvanisation offre au revêtement protecteur adhérence, imperméabilité, et résistance mécanique. De plus, l’épaisseur de ce est supérieure à celle obtenue avec les autres techniques de protection
                                     </p>
                                 </div>
                             </div>
+                            <p className="text-lg text-muted-foreground mt-4">
+                            La galvanisation à chaud ne consiste pas uniquement à déposer du zinc à la surface de l’acier. Le revêtement de zinc est métallurgiquement lié à l’acier de base, car il se produit une réaction métallurgique de diffusion entre le zinc et le fer. Quand on retire l’acier du bain, il s’est formé à sa surface plusieurs couches d’alliages zinc-fer sur lesquelles le zinc entraîné se solidifie. Ces différentes couches d’alliages plus dures que l’acier de base ont une teneur en zinc de plus en plus élevée au fur et à mesure que l’on se rapproche de la surface du revêtement. Ainsi, cette spécificité liée au procédé de galvanisation offre au revêtement protecteur adhérence, imperméabilité, et résistance mécanique. De plus, l’épaisseur de ce est supérieure à celle obtenue avec les autres techniques de protection
+                            </p>
                         </CardContent>
                     </Card>
                 </AnimatedWrapper>
-                <div className="grid md:grid-cols-3 gap-8 pt-8">
+                <div className="grid md:grid-cols-1 gap-8">
                     {benefits.map((benefit, index) => {
                       const Icon = iconMap[benefit.icon];
                       return (
@@ -248,22 +252,19 @@ function UnwrappedBenefitsSection() {
                           animation="slide-up"
                           staggerIndex={index}
                         >
-                            <Card className="bg-secondary border-border text-center p-8 h-full transition-all duration-300 hover:border-accent hover:-translate-y-2">
-                                {Icon && <Icon className="h-12 w-12 text-accent mx-auto mb-4" />}
-                                <CardTitle className="text-primary text-2xl">{benefit.title}</CardTitle>
-                                <CardContent className="p-0 mt-4">
-                                    <p className="text-muted-foreground">{benefit.text}</p>
+                            <Card className="bg-secondary border-border p-6 h-full transition-all duration-300 hover:border-accent hover:-translate-y-2">
+                                <CardContent className="p-0 flex items-center gap-6">
+                                    {Icon && <Icon className="h-12 w-12 text-accent flex-shrink-0" />}
+                                    <div>
+                                      <CardTitle className="text-primary text-2xl mb-2">{benefit.title}</CardTitle>
+                                      <p className="text-muted-foreground">{benefit.text}</p>
+                                    </div>
                                 </CardContent>
                             </Card>
                         </AnimatedWrapper>
                       );
                     })}
                   </div>
-            </div>
-            <div className="lg:col-span-3">
-              <AnimatedWrapper animation="fade-in">
-                  <UnwrappedTechniquesAndStandardsSection />
-              </AnimatedWrapper>
             </div>
           </div>
         </div>
