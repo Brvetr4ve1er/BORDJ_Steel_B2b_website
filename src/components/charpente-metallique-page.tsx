@@ -94,16 +94,17 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
                 const Icon = iconMap[stat.icon as keyof typeof iconMap];
                 return (
                   <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                    <Card className="bg-background/50 backdrop-blur-md border-border text-white">
-                      <CardHeader className="flex-row items-center gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center">
-                          {Icon && <Icon className="h-6 w-6 text-accent" />}
-                        </div>
-                        <div>
-                          <CardTitle className="text-2xl font-bold text-white"><AnimatedNumber value={stat.value} />{stat.unit}</CardTitle>
-                          <p className="text-sm text-gray-200">{stat.title}</p>
-                        </div>
-                      </CardHeader>
+                     <Card className="group bg-background/50 backdrop-blur-md border-border text-white relative overflow-hidden transition-all duration-500 hover:border-accent">
+                        <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
+                        <CardHeader className="relative flex-row items-center gap-4">
+                            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center transition-colors duration-300 group-hover:bg-accent-foreground/10">
+                            {Icon && <Icon className="h-6 w-6 text-accent transition-colors duration-300 group-hover:text-white" />}
+                            </div>
+                            <div>
+                            <CardTitle className="text-2xl font-bold text-white"><AnimatedNumber value={stat.value} />{stat.unit}</CardTitle>
+                            <p className="text-sm text-gray-200 group-hover:text-gray-100">{stat.title}</p>
+                            </div>
+                        </CardHeader>
                     </Card>
                   </AnimatedWrapper>
                 );
@@ -336,3 +337,5 @@ export function CharpenteMetalliquePageContent() {
     </div>
   );
 }
+
+    

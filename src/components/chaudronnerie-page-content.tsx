@@ -95,13 +95,17 @@ export function ChaudronneriePageContent() {
                       const Icon = iconMap[stat.icon as keyof typeof iconMap];
                       return (
                         <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                           <DetailedStatCard 
-                            icon={Icon}
-                            title={stat.title}
-                            value={stat.value}
-                            secondaryValue={(stat as any).secondaryValue}
-                            description={stat.description}
-                           />
+                           <div className="group relative overflow-hidden rounded-lg">
+                                <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
+                                <DetailedStatCard 
+                                    icon={Icon}
+                                    title={stat.title}
+                                    value={stat.value}
+                                    secondaryValue={(stat as any).secondaryValue}
+                                    description={stat.description}
+                                    className="bg-background/50 backdrop-blur-md border-border text-white transition-colors duration-300 group-hover:bg-transparent group-hover:border-accent"
+                                />
+                           </div>
                         </AnimatedWrapper>
                       );
                     })}
@@ -225,3 +229,5 @@ export function ChaudronneriePageContent() {
     </div>
   );
 }
+
+    
