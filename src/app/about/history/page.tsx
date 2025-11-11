@@ -58,7 +58,7 @@ const teams = [
     id: 'quality',
     icon: <ClipboardCheck className="w-8 h-8 text-accent" />,
     title: "Contrôle Qualité",
-    description: "Cette équipe veille à la conformité de nos produits aux normes nationales et internationales.",
+    description: "Cette équipe veille à la conformité de nos produits aux normes nationales et internationales. Des contrôles rigoureux sont effectués à chaque étape – de la conception à la livraison – afin d’assurer une qualité irréprochable.",
     detail: "Des contrôles rigoureux sont effectués à chaque étape pour assurer une qualité irréprochable.",
     color: "bg-primary",
     image: "https://i.pinimg.com/736x/36/1f/d5/361fd5991471a9382f7e7cada21ff2da.jpg"
