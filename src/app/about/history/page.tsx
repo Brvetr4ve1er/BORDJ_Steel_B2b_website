@@ -78,7 +78,7 @@ const teams = [
     description: "Toujours à l'écoute du marché, notre équipe accompagne nos clients à chaque étape de leurs projets.",
     detail: "Elle met un point d'honneur à offrir des solutions personnalisées, un suivi attentif et un service de qualité.",
     color: "bg-primary",
-    image: "https://picsum.photos/seed/comm/800/600"
+    image: "https://i.pinimg.com/736x/2c/79/22/2c792262ee0e5c2f3a1290cd06825f9a.jpg"
   },
   {
     id: 'finance',
@@ -305,3 +305,5 @@ export default function HistoryPage() {
     </ProductPageLayout>
   );
 }
+
+    
