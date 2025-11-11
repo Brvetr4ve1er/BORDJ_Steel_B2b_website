@@ -214,41 +214,25 @@ function TeamsSection() {
 }
 
 function CertificationCard({ cert }: { cert: { name: string; description: string; image: string; } }) {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <motion.div
-      className="relative w-[300px] h-[420px]"
-      style={{ perspective: 1000 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-    >
-      {/* Content inside the book */}
-      <div className="absolute inset-0 bg-background rounded-lg shadow-inner flex items-center justify-center p-4">
-        <Image
-          src={cert.image}
-          alt="Certificate frame"
-          width={280}
-          height={400}
-          className="object-contain"
-        />
-      </div>
-      
-      {/* Cover of the book */}
-      <motion.div
-        className="absolute inset-0 bg-card rounded-lg shadow-lg p-6 text-center flex flex-col items-center justify-center cursor-pointer"
-        style={{ transformOrigin: 'left', transformStyle: 'preserve-3d' }}
-        animate={{ rotateY: isHovered ? -140 : 0 }}
-        transition={{ duration: 0.7, ease: 'easeInOut' }}
-      >
-        <div className="bg-secondary rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 shadow-inner">
-          <Award className="w-12 h-12 text-accent" />
+    <Card className="group overflow-hidden text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+      <CardHeader className="p-0">
+        <div className="bg-secondary p-4">
+          <h3 className="text-xl font-bold text-primary">{cert.name}</h3>
+          <p className="text-muted-foreground">{cert.description}</p>
         </div>
-        <h3 className="text-2xl font-bold text-primary mb-2">{cert.name}</h3>
-        <p className="text-muted-foreground">{cert.description}</p>
-        <p className="absolute bottom-4 text-xs text-muted-foreground/50">Passez pour ouvrir</p>
-      </motion.div>
-    </motion.div>
+      </CardHeader>
+      <CardContent className="p-4 bg-background">
+        <div className="aspect-[3/4] relative rounded-md overflow-hidden border-4 border-secondary shadow-inner">
+          <Image
+            src={cert.image}
+            alt={`Certification ${cert.name}`}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -263,7 +247,7 @@ function CertificationsSection() {
             Forte de son expérience et de son savoir-faire, BordjSteel s'engage à respecter les plus hauts standards de qualité et de sécurité.
           </p>
         </AnimatedWrapper>
-        <div className="flex flex-wrap justify-center gap-12">
+        <div className="grid md:grid-cols-3 gap-8">
           {certifications.map((cert, index) => (
             <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
               <CertificationCard cert={cert} />
