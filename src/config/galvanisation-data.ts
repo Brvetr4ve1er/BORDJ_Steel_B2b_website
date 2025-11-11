@@ -16,11 +16,11 @@ export const iconMap: { [key: string]: LucideIcon } = {
   check: Check,
   clock: Shield,
   coin: CircleDollarSign,
-  beam: HardHat,
-  panel: Layers,
-  pylon: TowerControl,
-  truss: Construction,
-  ship: Ship,
+  Poutre: HardHat,
+  Panneau: Layers,
+  Pylône: TowerControl,
+  Charpente: Construction,
+  Navire: Ship,
   water: Droplets,
   acid: Beaker,
   ShieldCheck: ShieldCheck,
@@ -129,7 +129,7 @@ export const galvanisationContent = {
   "highlight": {
     "title": "Applicable à tous types de produits en acier",
     "text": "Des poutrelles industrielles aux structures légères, en passant par les panneaux et pylônes — notre unité s’adapte à vos projets.",
-    "icons": ["beam", "panel", "pylon", "truss", "ship"]
+    "icons": ["Poutre", "Panneau", "Pylône", "Charpente", "Navire"]
   },
   "cta": {
     "title": "Confiez votre projet de galvanisation à BordjSteel",
