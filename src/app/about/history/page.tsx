@@ -84,7 +84,7 @@ const teams = [
     id: 'finance',
     icon: <DollarSign className="w-8 h-8 text-accent" />,
     title: "Équipe Comptabilité et Finances",
-    description: "Chargée de la gestion rigoureuse des ressources financières, assurant suivi comptable et contrôle budgétaire.",
+    description: "(Chargée de la gestion rigoureuse des ressources financières, cette équipe assure le suivi comptable, le contrôle budgétaire et la transparence de toutes les opérations économiques de l’entreprise. Son objectif : garantir une santé financière solide et durable.)",
     detail: "Son objectif : garantir une santé financière solide et durable.",
     color: "bg-primary",
     image: "https://i.pinimg.com/736x/47/96/a1/4796a1c0ca2eeec68b8721a16d75c1a2.jpg"
