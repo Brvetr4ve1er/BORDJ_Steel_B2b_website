@@ -207,8 +207,8 @@ function UnwrappedBenefitsSection() {
       <section className="py-32 bg-background">
         <div className="max-w-screen-xl mx-auto px-4">
           <AnimatedWrapper animation="fade-in">
-            <h2 className="font-headline text-4xl font-bold text-center text-primary mb-16">
-              Les avantages de la galvanisation
+            <h2 className="font-headline text-5xl font-bold text-center text-accent mb-16">
+              SPÉCIFICITÉ DE LA GALVANISATION À CHAUD
             </h2>
           </AnimatedWrapper>
           <div className="grid md:grid-cols-3 gap-8">
