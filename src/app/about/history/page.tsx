@@ -218,7 +218,7 @@ function CertificationCard({ cert }: { cert: { name: string; description: string
 
   return (
     <motion.div
-      className="relative w-[240px] h-[340px]"
+      className="relative w-[300px] h-[420px]"
       style={{ perspective: 1000 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -228,8 +228,8 @@ function CertificationCard({ cert }: { cert: { name: string; description: string
         <Image
           src={cert.image}
           alt="Certificate frame"
-          width={220}
-          height={320}
+          width={280}
+          height={400}
           className="object-contain"
         />
       </div>
@@ -263,7 +263,7 @@ function CertificationsSection() {
             Forte de son expérience et de son savoir-faire, BordjSteel s'engage à respecter les plus hauts standards de qualité et de sécurité.
           </p>
         </AnimatedWrapper>
-        <div className="flex flex-wrap justify-center gap-12">
+        <div className="flex flex-wrap justify-center gap-8">
           {certifications.map((cert, index) => (
             <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
               <CertificationCard cert={cert} />
