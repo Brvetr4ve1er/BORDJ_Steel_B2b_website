@@ -22,6 +22,7 @@ const ProcessTimeline = dynamic(() => Promise.resolve(UnwrappedProcessTimeline))
 const BenefitsSection = dynamic(() => Promise.resolve(UnwrappedBenefitsSection));
 const HighlightSection = dynamic(() => Promise.resolve(UnwrappedHighlightSection));
 const CTASection = dynamic(() => Promise.resolve(UnwrappedCTASection));
+const TechniquesAndStandardsSection = dynamic(() => Promise.resolve(UnwrappedTechniquesAndStandardsSection));
 
 
 // Main Page Component
@@ -31,7 +32,6 @@ export function GalvanisationPageContent() {
       <HeroSection />
       <ProcessTimeline />
       <BenefitsSection />
-      <TechniquesAndStandardsSection />
       <HighlightSection />
       <CTASection />
     </div>
@@ -216,24 +216,33 @@ function UnwrappedBenefitsSection() {
                   </p>
               </Card>
           </AnimatedWrapper>
-            <AnimatedWrapper animation="fade-in">
-              <div className="container mx-auto">
+
+          <div className="grid lg:grid-cols-5 gap-8 items-start">
+            <div className="lg:col-span-3">
+              <AnimatedWrapper animation="fade-in">
+                  <UnwrappedTechniquesAndStandardsSection />
+              </AnimatedWrapper>
+            </div>
+            <div className="lg:col-span-2">
+              <AnimatedWrapper animation="fade-in">
                 <Card className="bg-secondary border-border p-8 transition-all duration-300 hover:border-accent hover:-translate-y-2">
-                    <CardContent className="p-6 flex flex-col md:flex-row items-center gap-10">
-                      <div className="flex-shrink-0">
-                        {React.createElement(iconMap['ShieldCheck'], { className: "h-24 w-24 text-accent mx-auto mb-4" })}
-                      </div>
-                      <div className="text-left">
-                        <CardTitle className="text-accent text-4xl mb-4">SPÉCIFICITÉ DE LA GALVANISATION À CHAUD</CardTitle>
-                        <p className="text-xl text-accent/80 mb-8">
-                        « Une protection anticorrosion qui va au-delà d’un simple dépôt de zinc »
+                    <CardContent className="p-0">
+                        <div className="flex flex-col items-center text-center">
+                          {React.createElement(iconMap['ShieldCheck'], { className: "h-12 w-12 text-accent mx-auto mb-4" })}
+                          <CardTitle className="text-accent text-4xl mb-4">SPÉCIFICITÉ DE LA GALVANISATION À CHAUD</CardTitle>
+                          <p className="text-xl text-accent/80 mb-8">
+                          « Une protection anticorrosion qui va au-delà d’un simple dépôt de zinc »
+                          </p>
+                        </div>
+                        <p className="text-lg text-muted-foreground text-left">
+                          La galvanisation à chaud ne consiste pas uniquement à déposer du zinc à la surface de l’acier. Le revêtement de zinc est métallurgiquement lié à l’acier de base, car il se produit une réaction métallurgique de diffusion entre le zinc et le fer. Quand on retire l’acier du bain, il s’est formé à sa surface plusieurs couches d’alliages zinc-fer sur lesquelles le zinc entraîné se solidifie. <span className="font-bold text-accent">Ces différentes couches d’alliages plus dures que l’acier de base ont une teneur en zinc de plus en plus élevée au fur et à mesure que l’on se rapproche de la surface du revêtement.</span> Ainsi, cette spécificité liée au procédé de galvanisation offre au revêtement protecteur adhérence, imperméabilité, et résistance mécanique. De plus, l’épaisseur de ce est supérieure à celle obtenue avec les autres techniques de protection
                         </p>
-                        <p className="text-xl text-muted-foreground max-w-none">La galvanisation à chaud ne consiste pas uniquement à déposer du zinc à la surface de l’acier. Le revêtement de zinc est métallurgiquement lié à l’acier de base, car il se produit une réaction métallurgique de diffusion entre le zinc et le fer. Quand on retire l’acier du bain, il s’est formé à sa surface plusieurs couches d’alliages zinc-fer sur lesquelles le zinc entraîné se solidifie. <span className="font-bold text-accent">Ces différentes couches d’alliages plus dures que l’acier de base ont une teneur en zinc de plus en plus élevée au fur et à mesure que l’on se rapproche de la surface du revêtement.</span> Ainsi, cette spécificité liée au procédé de galvanisation offre au revêtement protecteur adhérence, imperméabilité, et résistance mécanique. De plus, l’épaisseur de ce est supérieure à celle obtenue avec les autres techniques de protection</p>
-                      </div>
                     </CardContent>
                 </Card>
-              </div>
-            </AnimatedWrapper>
+              </AnimatedWrapper>
+            </div>
+          </div>
+            
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             {benefits.map((benefit, index) => {
               const Icon = iconMap[benefit.icon];
@@ -259,13 +268,12 @@ function UnwrappedBenefitsSection() {
     );
 }
 
-function TechniquesAndStandardsSection() {
+function UnwrappedTechniquesAndStandardsSection() {
   return (
-    <section className="bg-secondary py-20">
-      <div className="max-w-6xl mx-auto bg-background rounded-2xl shadow-xl overflow-hidden">
+    <div className="bg-background rounded-2xl shadow-xl overflow-hidden h-full">
         <div className="bg-accent px-8 py-10">
           <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground mb-4">
-            TECHNIQUES ET NORMES DE LA GALVANISATION À CHAUD :
+            TECHNIQUES ET NORMES
           </h2>
           <p className="text-xl text-accent-foreground/80 italic font-medium">
             « Une technique qui repose sur un choix pertinent de l'acier »
@@ -414,7 +422,6 @@ function TechniquesAndStandardsSection() {
           </div>
         </div>
       </div>
-    </section>
   );
 }
 
@@ -483,3 +490,4 @@ function UnwrappedCTASection() {
       </section>
     );
 }
+
