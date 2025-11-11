@@ -105,7 +105,7 @@ export const galvanisationContent = {
       "step": 8,
       "title": "REFROIDISSEMENT & CONTRÔLE",
       "shortDesc": "Stabilisation + inspection.",
-      "longDesc": "Refroidissement à l’air ou eau. Contrôle visuel, mesure d’épaisseur (50–200 µm), et tests d’adhérence.",
+      "longDesc": "Refroidissement et contrôle : Les pièces galvanisées sont ensuite refroidies et contrôlées.",
       "icon": "check",
       "meta": { "temperature": "Refroidissement", "duration": "Variable" }
     }
