@@ -39,12 +39,18 @@ function ContactCard({
   className,
   style,
 }: ContactCardProps) {
-  const [isCopied, setIsCopied] = useState(false);
+  const [isPhoneCopied, setIsPhoneCopied] = useState(false);
+  const [isEmailCopied, setIsEmailCopied] = useState(false);
 
-  const handlePhoneClick = (numberToCopy: string) => {
-    navigator.clipboard.writeText(numberToCopy).then(() => {
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000);
+  const handleCopy = (textToCopy: string, type: 'phone' | 'email') => {
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      if (type === 'phone') {
+        setIsPhoneCopied(true);
+        setTimeout(() => setIsPhoneCopied(false), 2000);
+      } else {
+        setIsEmailCopied(true);
+        setTimeout(() => setIsEmailCopied(false), 2000);
+      }
     });
   };
 
@@ -87,13 +93,13 @@ function ContactCard({
             <div className="flex items-center justify-between gap-3 rounded-lg border border-border bg-muted/50 p-3">
               <div
                 className="group/copy flex-grow cursor-pointer"
-                onClick={() => handlePhoneClick(phone)}
+                onClick={() => handleCopy(phone, 'phone')}
               >
                 <span className="text-2xl font-bold text-foreground transition-colors group-hover/copy:text-accent">
                   {phone}
                 </span>
                 <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                  {isCopied ? (
+                  {isPhoneCopied ? (
                     <>
                       <Check className="h-3 w-3 text-green-500" />
                       <span>Copié!</span>
@@ -117,18 +123,36 @@ function ContactCard({
           )}
 
           {email && (
-            <button
-              onClick={handleEmailClick}
-              className="flex items-center gap-3 rounded-lg border border-border bg-muted/50 p-3 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:translate-x-1"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400">
+            <div className="flex items-center justify-between gap-3 rounded-lg border border-border bg-muted/50 p-3">
+              <div
+                className="group/copy flex-grow cursor-pointer"
+                onClick={() => handleCopy(email, 'email')}
+              >
+                <span className="text-lg font-medium text-foreground transition-colors group-hover/copy:text-accent break-all">
+                  {email}
+                </span>
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                  {isEmailCopied ? (
+                    <>
+                      <Check className="h-3 w-3 text-green-500" />
+                      <span>Copié!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-3 w-3" />
+                      <span>Cliquer pour copier</span>
+                    </>
+                  )}
+                </div>
+              </div>
+              <button
+                onClick={handleEmailClick}
+                className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-500/10 text-blue-600 transition-all duration-300 hover:bg-blue-500 hover:text-white hover:scale-110"
+                aria-label="Envoyer un email"
+              >
                 <Mail className="h-6 w-6" />
-              </div>
-              <div className="flex flex-col items-start">
-                <span className="text-xs text-muted-foreground">Email</span>
-                <span className="text-sm font-medium text-foreground">{email}</span>
-              </div>
-            </button>
+              </button>
+            </div>
           )}
         </div>
       </div>
