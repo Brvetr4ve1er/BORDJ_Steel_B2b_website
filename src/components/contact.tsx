@@ -20,6 +20,20 @@ import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
 import { companyData } from '@/config/company-data';
 
+const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    {...props}
+  >
+    <path d="M16.75 13.96c.25.13.41.2.46.3.05.1.03.61-.23 1.15-.25.54-1.03 1.03-1.59 1.03s-.63-.07-.94-.13a6.83 6.83 0 01-2.07-.6c-1.3-.8-2.26-1.89-2.9-2.81-.64-.92-1.03-1.63-1.03-2.15s.23-1 .48-1.28c.25-.28.48-.33.6-.33s.25.02.38.03l.13.01c.25.03.38.05.5.33.13.28.2.68.2.68s.05.13.03.25a.36.36 0 01-.1.2c-.08.08-.13.13-.23.23s-.18.15-.25.23a.46.46 0 00-.1.28c0 .13.05.28.1.33.1.13.25.33.88.96.63.63 1.17.86 1.32.91s.28.05.38-.03c.1-.08.25-.23.38-.46s.25-.41.38-.51.25-.13.43-.05zM12 2a10 10 0 00-9.8 12.18l-1.03 3.8 3.9-1.02A10 10 0 1012 2z"/>
+  </svg>
+);
+
+
 interface ContactCardProps {
   icon: React.ReactNode;
   title: string;
@@ -117,7 +131,7 @@ function ContactCard({
                 className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-green-500/10 text-green-600 transition-all duration-300 hover:bg-green-500 hover:text-white hover:scale-110"
                 aria-label="Contacter sur WhatsApp"
               >
-                <MessageCircle className="h-6 w-6" />
+                <WhatsappIcon className="h-6 w-6" />
               </button>
             </div>
           )}
@@ -232,3 +246,5 @@ export function Contact() {
     </section>
   );
 }
+
+    
