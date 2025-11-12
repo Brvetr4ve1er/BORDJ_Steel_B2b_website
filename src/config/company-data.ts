@@ -248,21 +248,3 @@ export const companyData = {
 };
 
     
-
-    
-
-    
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
