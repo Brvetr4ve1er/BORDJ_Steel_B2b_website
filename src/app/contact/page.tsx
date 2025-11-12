@@ -41,7 +41,7 @@ export default function ContactPage() {
           </AnimatedWrapper>
         </div>
       </section>
-      <section className="py-16 md:py-24 lg:py-32 bg-background">
+      <section className="py-16 md:py-24 lg:py-32 bg-secondary">
         <Contact />
       </section>
     </ProductPageLayout>

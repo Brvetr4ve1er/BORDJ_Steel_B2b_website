@@ -165,13 +165,10 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="bg-secondary w-full py-16">
+    <section id="contact" className="w-full">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <AnimatedWrapper animation="fade-in">
-            <h2 className="mb-4 text-4xl font-bold text-primary">
-              {contact.title}
-            </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               {contact.content.info.description}
             </p>
