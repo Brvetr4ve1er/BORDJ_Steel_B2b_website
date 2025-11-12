@@ -130,7 +130,7 @@ export function Contact() {
     {
       icon: <HardHat className="h-6 w-6" />,
       title: "Charpente Métallique",
-      phone: "+213 770 35 66 86",
+      phone: "+213 770 98 43 14",
       email: "commercial.charpente@bordjsteel.dz",
       image: "https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg",
     },
