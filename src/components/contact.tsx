@@ -168,7 +168,7 @@ export function Contact() {
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <AnimatedWrapper animation="fade-in">
-            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+            <p className="mx-auto max-w-2xl text-xl text-accent">
               {contact.content.info.description}
             </p>
           </AnimatedWrapper>
