@@ -67,7 +67,7 @@ function ContactCard({
       <div className="relative flex flex-col gap-4 p-6">
         {/* Icon and Title */}
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-accent-foreground">
             {icon}
           </div>
           <h3 className="text-xl font-semibold text-foreground">{title}</h3>
@@ -120,42 +120,42 @@ export function Contact() {
 
   const contactSections: ContactCardProps[] = [
     {
-      icon: <Building2 className="h-6 w-6" />,
+      icon: <Building2 className="h-8 w-8" />,
       title: "Bureaux Commercial",
       email: "commercial@bordjsteel.dz",
       phone: "+213 561 61 60 05",
       image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
     },
     {
-      icon: <HardHat className="h-6 w-6" />,
+      icon: <HardHat className="h-8 w-8" />,
       title: "Charpente Métallique",
       phone: "+213 770 98 43 14",
       email: "commercial.charpente@bordjsteel.dz",
       image: "https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg",
     },
     {
-      icon: <Package className="h-6 w-6" />,
+      icon: <Package className="h-8 w-8" />,
       title: "Panneaux Sandwich",
       phone: "+213 770 70 59 78",
       email: "commercial.panneaux@bordjsteel.dz",
       image: "https://i.pinimg.com/736x/ce/22/71/ce227152b9fed3c117cbaad50450656a.jpg",
     },
     {
-      icon: <Zap className="h-6 w-6" />,
+      icon: <Zap className="h-8 w-8" />,
       title: "Galvanisation",
       email: "commercial@bordjsteel.dz",
       phone: "+213 770 35 73 47",
       image: "https://i.pinimg.com/736x/5c/c4/bd/5cc4bd370f1bd95024acf54e7b1ff667.jpg",
     },
     {
-      icon: <Headphones className="h-6 w-6" />,
+      icon: <Headphones className="h-8 w-8" />,
       title: "Ecoute Client",
       email: "marketing@bordjsteel.dz",
       phone: "+213 770 83 25 96",
       image: "https://i.pinimg.com/736x/f1/51/10/f151108391838728e14d8cfa85af221b.jpg",
     },
     {
-      icon: <Wrench className="h-6 w-6" />,
+      icon: <Wrench className="h-8 w-8" />,
       title: "Réalisation et Montage",
       email: "commercial@bordjsteel.dz",
       phone: "+213 770 98 01 48",
