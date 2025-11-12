@@ -39,7 +39,7 @@ export function Clients() {
             <CarouselContent>
               {clients.logos.map((client, index) => (
                 <CarouselItem key={client.name} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6">
-                   <div className="group relative flex justify-center items-center p-4 transition-transform duration-300 ease-in-out hover:scale-110 h-32">
+                   <div className="group relative flex justify-center items-center p-4 transition-transform duration-300 ease-in-out hover:scale-110 h-48">
                     <Image
                       src={client.image.src}
                       alt={client.name}
@@ -57,4 +57,3 @@ export function Clients() {
     </section>
   );
 }
-
