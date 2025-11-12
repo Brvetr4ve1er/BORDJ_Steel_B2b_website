@@ -197,7 +197,7 @@ export const companyData = {
         { name: "Imetal", image: { "src": "/logos/imetal.webp", "aiHint": "Imetal logo" } },
         { name: "Sonelgaz", image: { "src": "https://i.pinimg.com/736x/bd/81/8b/bd818bea09014d23bfcf6520791027ae.jpg", "aiHint": "Sonelgaz logo" } },
         { name: "Maxtor", image: { "src": "https://www.maxtor.dz/images/logo1.png", "aiHint": "Maxtor logo" } },
-        { name: "Tazedj", image: { src: "https://instagram.faae1-2.fna.fbcdn.net/v/t51.2885-19/250264553_121897680245771_6855158334415598248_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby45NDMuYzIifQ&_nc_ht=instagram.faae1-2.fna.fbcdn.net&_nc_cat=111&_nc_oc=Q6cZ2QF_ZBt8S2Lukv1pst-6NN5otkKW-QvQv3VFQEdNJAEVhvawlm5nroCvglAN0xHjjKU&_nc_ohc=t0BrFMVlr8kQ7kNvwF4hiVD&_nc_gid=1aw9gmnNDrAKNKYC6f6PhQ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfiffeOGfB0jV7JwODxU3hNMnxgZ4RXMWPDTFranjhbsJQ&oe=691A238F&_nc_sid=8b3546", aiHint: "Tazedj logo"} }
+        { name: "Tazedj", image: { src: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/392766429_643897171187275_4759564167078248932_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Q5zTPInJAvMQ7kNvwEsnE69&_nc_oc=AdmwENqX8N2X65uDgKl0f1LQJ83UEp9UiPTDEIO74fKpmanADP_wV4-LXRvgfN03xbA&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=2FVtYgEaBkwMS3hwJPyo1w&oh=00_AfhzvXSWLr8z7apgfuzCC1fvfTDTAUQ-sfNQrHa7ie-__g&oe=691A3A01", aiHint: "Tazedj logo"} }
       ]
     },
     contact: {
@@ -259,4 +259,5 @@ export const companyData = {
 
 
     
+
 
