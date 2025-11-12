@@ -176,7 +176,7 @@ export const companyData = {
     clients: {
       title: "Nos Précieux Clients",
       logos: [
-        { name: "Condor", image: { src: "/logos/condor.webp", aiHint: "Condor logo" } },
+        { name: "Condor", image: { src: "https://www.condor.dz/wp-content/uploads/2024/10/cropped-logo-condor-light-300x103.png", aiHint: "Condor logo" } },
         { name: "Cosider", image: { src: "/logos/cosider.webp", aiHint: "Cosider logo" } },
         { name: "UTEC", image: { src: "/logos/utec.webp", aiHint: "UTEC logo" } },
         { name: "Biolab", image: { src: "/logos/biolab.webp", aiHint: "Biolab logo" } },
@@ -252,4 +252,5 @@ export const companyData = {
     
 
     
+
 
