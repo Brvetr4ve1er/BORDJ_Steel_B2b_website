@@ -94,6 +94,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.maxtor.dz',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.cevital.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
