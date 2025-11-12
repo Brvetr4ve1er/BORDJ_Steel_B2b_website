@@ -144,21 +144,21 @@ export function Contact() {
     {
       icon: <Zap className="h-6 w-6" />,
       title: "Galvanisation",
-      email: "galvanisation@bordjsteel.dz",
+      email: "commercial@bordjsteel.dz",
       phone: "+213 770 35 73 47",
       image: "https://i.pinimg.com/736x/5c/c4/bd/5cc4bd370f1bd95024acf54e7b1ff667.jpg",
     },
     {
       icon: <Headphones className="h-6 w-6" />,
       title: "Ecoute Client",
-      email: "ecoute.client@bordjsteel.dz",
+      email: "commercial@bordjsteel.dz",
       phone: "+213 770 83 25 96",
       image: "https://i.pinimg.com/736x/f1/51/10/f151108391838728e14d8cfa85af221b.jpg",
     },
     {
       icon: <Wrench className="h-6 w-6" />,
       title: "Réalisation et Montage",
-      email: "realisation@bordjsteel.dz",
+      email: "commercial@bordjsteel.dz",
       phone: "+213 770 98 01 48",
       image: "https://i.pinimg.com/736x/a3/0d/65/a30d652c6e58b3aebe5ca3561af436a6.jpg",
     }
