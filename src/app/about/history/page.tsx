@@ -80,7 +80,7 @@ const teams = [
     description: "Toujours à l’écoute du marché, notre équipe commerciale et marketing accompagne nos clients à chaque étape de leurs projets. Elle met un point d’honneur à offrir des solutions personnalisées, un suivi attentif et un service de qualité.",
     detail: "Elle met un point d'honneur à offrir des solutions personnalisées, un suivi attentif et un service de qualité.",
     color: "bg-primary",
-    image: "https://i.pinimg.com/736x/2c/79/22/2c792262ee0e5c2f3a1290cd06825f9a.jpg"
+    image: "https://i.pinimg.com/474x/2c/79/22/2c792262ee0e5c2f3a1290cd06825f9a.jpg"
   },
   {
     id: 'finance',
@@ -98,7 +98,7 @@ const teams = [
     description: "(Au centre de la vie de l’entreprise, l’équipe RH veille au bien-être, à la formation et à l’évolution de nos collaborateurs. Elle favorise un environnement de travail motivant et valorisant, essentiel à la performance collective.)",
     detail: "Elle favorise un environnement de travail motivant et valorisant, essentiel à la performance collective.",
     color: "bg-primary",
-    image: "https://i.pinimg.com/736x/f1/51/10/f151108391838728e14d8cfa85af221b.jpg"
+    image: "https://i.pinimg.com/736x/f1_51_10/f151108391838728e14d8cfa85af221b.jpg"
   },
   {
     id: 'it',

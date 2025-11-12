@@ -197,7 +197,7 @@ export function Contact() {
       title: "Ecoute Client",
       phone: "+213 770 83 25 96",
       email: "marketing@bordjsteel.dz",
-      image: "https://i.pinimg.com/736x/f1/51/10/f151108391838728e14d8cfa85af221b.jpg",
+      image: "https://i.pinimg.com/474x/2c/79/22/2c792262ee0e5c2f3a1290cd06825f9a.jpg",
     },
     {
       icon: <Wrench className="h-8 w-8" />,
