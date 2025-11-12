@@ -124,11 +124,20 @@ const nextConfig: NextConfig = {
         hostname: 'scontent.faae1-2.fna.fbcdn.net',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'groupesim.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
 };
 
 export default nextConfig;
+
+    
+
 
     

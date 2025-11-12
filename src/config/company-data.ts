@@ -187,7 +187,7 @@ export const companyData = {
         { name: "Cevital", image: { src: "https://www.cevital.com/wp-content/uploads/2022/10/logo.svg", aiHint: "Cevital logo" } },
         { name: "Metidji", image: { src: "https://metidji.com/wp-content/themes/MetidjiTheme/images/logo.svg", aiHint: "Metidji logo" } },
         { name: "Soummam", image: { src: "https://www.soummam-dz.com/cms/Paragraphes/su164384/footer-logo-ombre-1.png", aiHint: "Soummam logo" } },
-        { name: "Sim", image: { src: "/logos/sim.webp", aiHint: "Sim logo" } },
+        { name: "Sim", image: { src: "https://groupesim.com/wp-content/uploads/2021/10/logo-groupe-sim-1-scaled.png", aiHint: "Sim logo" } },
         { name: "Mobilis", image: { "src": "/logos/mobilis.webp", "aiHint": "Mobilis logo" } },
         { name: "Amimer Energie", image: { "src": "/logos/amimer_energie.webp", "aiHint": "Amimer Energie logo" } },
         { name: "Danone", image: { "src": "https://smartmedia.digital4danone.com//is/image/danonecs/danone-logo-12?wid=320&fmt=png-alpha&fit=wrap", "aiHint": "Danone logo" } },
@@ -261,3 +261,6 @@ export const companyData = {
     
 
 
+
+
+    
