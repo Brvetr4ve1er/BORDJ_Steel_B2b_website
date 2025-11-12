@@ -145,7 +145,7 @@ export function Contact() {
       icon: <Zap className="h-6 w-6" />,
       title: "Galvanisation",
       email: "galvanisation@bordjsteel.dz",
-      phone: "+213 560 99 99 28",
+      phone: "+213 770 35 73 47",
       image: "https://i.pinimg.com/736x/5c/c4/bd/5cc4bd370f1bd95024acf54e7b1ff667.jpg",
     },
     {
