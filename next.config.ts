@@ -130,6 +130,12 @@ const nextConfig: NextConfig = {
         hostname: 'groupesim.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.colinco-dz.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
