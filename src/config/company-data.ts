@@ -184,19 +184,20 @@ export const companyData = {
         { name: "Softal", image: { src: "/logos/softal.webp", aiHint: "Softal logo" } },
         { name: "Batimetal", image: { src: "/logos/batimetal.webp", aiHint: "Batimetal logo" } },
         { name: "Man", image: { src: "/logos/man.webp", aiHint: "Man logo" } },
-        { name: "Cevital", image: { src: "/logos/cevital.webp", aiHint: "Cevital logo" } },
+        { name: "Cevital", image: { src: "https://www.cevital.com/wp-content/uploads/2022/10/logo.svg", aiHint: "Cevital logo" } },
         { name: "Metidji", image: { src: "https://metidji.com/wp-content/themes/MetidjiTheme/images/logo.svg", aiHint: "Metidji logo" } },
-        { name: "Soummam", image: { src: "/logos/soummam.webp", aiHint: "Soummam logo" } },
+        { name: "Soummam", image: { src: "https://www.soummam-dz.com/cms/Paragraphes/su164384/footer-logo-ombre-1.png", aiHint: "Soummam logo" } },
         { name: "Sim", image: { src: "/logos/sim.webp", aiHint: "Sim logo" } },
         { name: "Mobilis", image: { "src": "/logos/mobilis.webp", "aiHint": "Mobilis logo" } },
         { name: "Amimer Energie", image: { "src": "/logos/amimer_energie.webp", "aiHint": "Amimer Energie logo" } },
-        { name: "Danone", image: { "src": "/logos/danone.webp", "aiHint": "Danone logo" } },
+        { name: "Danone", image: { "src": "https://smartmedia.digital4danone.com//is/image/danonecs/danone-logo-12?wid=320&fmt=png-alpha&fit=wrap", "aiHint": "Danone logo" } },
         { name: "Ifri", image: { "src": "https://ifri-dz.com/wp-content/uploads/2020/09/IFRI_logo.jpg", "aiHint": "Ifri logo" } },
         { name: "Sonatrach", image: { "src": "https://sonatrach.com/wp-content/uploads/2024/05/logo-sonatrach-white-text.svg", "aiHint": "Sonatrach logo" } },
         { name: "GCB", image: { "src": "/logos/gcb.webp", "aiHint": "GCB logo" } },
         { name: "Imetal", image: { "src": "/logos/imetal.webp", "aiHint": "Imetal logo" } },
         { name: "Sonelgaz", image: { "src": "https://i.pinimg.com/736x/bd/81/8b/bd818bea09014d23bfcf6520791027ae.jpg", "aiHint": "Sonelgaz logo" } },
-        { name: "Maxtor", image: { "src": "https://www.maxtor.dz/images/logo1.png", "aiHint": "Maxtor logo" } }
+        { name: "Maxtor", image: { "src": "https://www.maxtor.dz/images/logo1.png", "aiHint": "Maxtor logo" } },
+        { name: "Tazedj", image: { src: "https://instagram.faae1-2.fna.fbcdn.net/v/t51.2885-19/250264553_121897680245771_6855158334415598248_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby45NDMuYzIifQ&_nc_ht=instagram.faae1-2.fna.fbcdn.net&_nc_cat=111&_nc_oc=Q6cZ2QF_ZBt8S2Lukv1pst-6NN5otkKW-QvQv3VFQEdNJAEVhvawlm5nroCvglAN0xHjjKU&_nc_ohc=t0BrFMVlr8kQ7kNvwF4hiVD&_nc_gid=1aw9gmnNDrAKNKYC6f6PhQ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfiffeOGfB0jV7JwODxU3hNMnxgZ4RXMWPDTFranjhbsJQ&oe=691A238F&_nc_sid=8b3546", aiHint: "Tazedj logo"} }
       ]
     },
     contact: {
@@ -258,3 +259,4 @@ export const companyData = {
 
 
     
+

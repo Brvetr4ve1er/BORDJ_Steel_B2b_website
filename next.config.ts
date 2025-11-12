@@ -100,6 +100,24 @@ const nextConfig: NextConfig = {
         hostname: 'www.cevital.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.soummam-dz.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'smartmedia.digital4danone.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'instagram.faae1-2.fna.fbcdn.net',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
