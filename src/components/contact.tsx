@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { MapPin, Phone, Mail, ArrowRight, MessageCircle, Send, Linkedin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
