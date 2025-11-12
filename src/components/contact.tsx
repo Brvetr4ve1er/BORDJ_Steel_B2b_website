@@ -159,7 +159,7 @@ export function Contact() {
       icon: <Wrench className="h-6 w-6" />,
       title: "Réalisation et Montage",
       email: "realisation@bordjsteel.dz",
-      phone: "+213 560 99 99 30",
+      phone: "+213 770 98 01 48",
       image: "https://i.pinimg.com/736x/a3/0d/65/a30d652c6e58b3aebe5ca3561af436a6.jpg",
     }
   ];
