@@ -67,7 +67,7 @@ function ContactCard({
       <div className="relative flex flex-col gap-4 p-6">
         {/* Icon and Title */}
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-accent-foreground">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-accent transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-accent-foreground">
             {icon}
           </div>
           <h3 className="text-xl font-semibold text-foreground">{title}</h3>
@@ -168,9 +168,9 @@ export function Contact() {
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <AnimatedWrapper animation="fade-in">
-            <p className="mx-auto max-w-2xl text-xl text-accent">
+            <h2 className="mx-auto max-w-2xl text-4xl text-accent font-bold">
               {contact.content.info.description}
-            </p>
+            </h2>
           </AnimatedWrapper>
         </div>
 
