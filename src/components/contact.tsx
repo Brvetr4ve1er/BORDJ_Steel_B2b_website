@@ -175,14 +175,14 @@ export function Contact() {
       icon: <HardHat className="h-8 w-8" />,
       title: "Charpente Métallique",
       phone: "+213 770 98 43 14",
-      email: "commercial.charpente@bordjsteel.dz",
+      email: "commercial@bordjsteel.dz",
       image: "https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg",
     },
     {
       icon: <Package className="h-8 w-8" />,
       title: "Panneaux Sandwich",
       phone: "+213 770 70 59 78",
-      email: "commercial.panneaux@bordjsteel.dz",
+      email: "commercial@bordjsteel.dz",
       image: "https://i.pinimg.com/736x/ce/22/71/ce227152b9fed3c117cbaad50450656a.jpg",
     },
     {
