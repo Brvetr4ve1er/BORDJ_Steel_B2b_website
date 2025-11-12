@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { MapPin, Phone, Mail, ArrowRight, MessageCircle, Send, Linkedin, HardHat, Layers, Cog, Users, Briefcase } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowRight, MessageCircle, Send, Linkedin, HardHat, Layers, Cog, Users, Briefcase, Wrench } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { AnimatedWrapper } from './animated-wrapper';
@@ -61,6 +60,16 @@ const contactMethods = [
     bgColor: 'bg-teal-500/10',
     iconColor: 'text-teal-500',
     href: 'mailto:ecoute.client@bordjsteel.dz',
+  },
+  {
+    icon: <Wrench />,
+    title: 'REALISATION ET MONTAGE',
+    details: [''],
+    image: 'https://i.pinimg.com/736x/a3/0d/65/a30d652c6e58b3aebe5ca3561af436a6.jpg',
+    aiHint: 'steel assembly',
+    bgColor: 'bg-purple-500/10',
+    iconColor: 'text-purple-500',
+    href: 'mailto:realisation@bordjsteel.dz',
   }
 ];
 
@@ -109,7 +118,7 @@ export function Contact() {
             {contact.content.info.description}
           </p>
         </AnimatedWrapper>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {contactMethods.map((method, index) => (
             <ContactCard key={index} method={method} />
           ))}
