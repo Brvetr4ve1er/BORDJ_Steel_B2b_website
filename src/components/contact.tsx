@@ -26,10 +26,16 @@ const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
     width="24"
     height="24"
     viewBox="0 0 24 24"
-    fill="currentColor"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     {...props}
   >
-    <path d="M16.75 13.96c.25.13.41.2.46.3.05.1.03.61-.23 1.15-.25.54-1.03 1.03-1.59 1.03s-.63-.07-.94-.13a6.83 6.83 0 01-2.07-.6c-1.3-.8-2.26-1.89-2.9-2.81-.64-.92-1.03-1.63-1.03-2.15s.23-1 .48-1.28c.25-.28.48-.33.6-.33s.25.02.38.03l.13.01c.25.03.38.05.5.33.13.28.2.68.2.68s.05.13.03.25a.36.36 0 01-.1.2c-.08.08-.13.13-.23.23s-.18.15-.25.23a.46.46 0 00-.1.28c0 .13.05.28.1.33.1.13.25.33.88.96.63.63 1.17.86 1.32.91s.28.05.38-.03c.1-.08.25-.23.38-.46s.25-.41.38-.51.25-.13.43-.05zM12 2a10 10 0 00-9.8 12.18l-1.03 3.8 3.9-1.02A10 10 0 1012 2z"/>
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    <path d="M14.05 2.9A15.9 15.9 0 0 1 21 8.95" />
+    <path d="M14.05 6.4A11.9 11.9 0 0 1 17.6 10" />
   </svg>
 );
 
@@ -189,14 +195,14 @@ export function Contact() {
       icon: <HardHat className="h-8 w-8" />,
       title: "Charpente Métallique",
       phone: "+213 770 98 43 14",
-      email: "commercial@bordjsteel.dz",
+      email: "commercial.charpente@bordjsteel.dz",
       image: "https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg",
     },
     {
       icon: <Package className="h-8 w-8" />,
       title: "Panneaux Sandwich",
       phone: "+213 770 70 59 78",
-      email: "commercial@bordjsteel.dz",
+      email: "commercial.panneaux@bordjsteel.dz",
       image: "https://i.pinimg.com/736x/ce/22/71/ce227152b9fed3c117cbaad50450656a.jpg",
     },
     {
@@ -246,5 +252,7 @@ export function Contact() {
     </section>
   );
 }
+
+    
 
     
