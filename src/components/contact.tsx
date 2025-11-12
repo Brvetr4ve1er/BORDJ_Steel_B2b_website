@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MapPin, Phone, Mail, ArrowRight, MessageCircle, Send, Linkedin } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowRight, MessageCircle, Send, Linkedin, HardHat, Layers, Cog, Users, Briefcase } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { AnimatedWrapper } from './animated-wrapper';
@@ -13,51 +13,54 @@ import { SocialButton } from './social-button';
 
 const contactMethods = [
   {
-    icon: <Phone />,
-    title: 'Par Téléphone',
-    details: companyData.pages.contact.content.phones,
-    image: 'https://i.pinimg.com/736x/21/5f/09/215f096b7971773722b528e93233b8c3.jpg',
-    aiHint: 'phone call',
-    bgColor: 'bg-green-500/10',
-    iconColor: 'text-green-500'
-  },
-  {
-    icon: <Mail />,
-    title: 'Par Email',
+    icon: <Briefcase />,
+    title: 'CONTACT COMMERCIAL',
     details: companyData.pages.contact.content.emails,
-    image: 'https://i.pinimg.com/736x/87/16/e4/8716e456623c21a44e59003c200c0a31.jpg',
-    aiHint: 'email correspondence',
+    image: 'https://i.pinimg.com/736x/2c/79/22/2c792262ee0e5c2f3a1290cd06825f9a.jpg',
+    aiHint: 'business meeting',
     bgColor: 'bg-blue-500/10',
-    iconColor: 'text-blue-500'
+    iconColor: 'text-blue-500',
+    href: `mailto:${companyData.pages.contact.content.emails[0]}`,
   },
   {
-    icon: <MapPin />,
-    title: 'Notre Adresse',
-    details: [companyData.pages.contact.content.address],
-    image: 'https://i.pinimg.com/736x/95/c0/5d/95c05d762f6b5791986422b403f295b9.jpg',
-    aiHint: 'office location',
+    icon: <HardHat />,
+    title: 'CONTACT CHARPENTE',
+    details: ['+213 770 35 66 86'],
+    image: 'https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg',
+    aiHint: 'steel structure',
     bgColor: 'bg-orange-500/10',
-    iconColor: 'text-orange-500'
+    iconColor: 'text-orange-500',
+    href: `tel:${companyData.pages.contact.content.phones[0]}`,
   },
   {
-    icon: <Linkedin />,
-    title: 'LinkedIn',
-    details: ['Suivez-nous sur LinkedIn'],
-    image: 'https://i.pinimg.com/736x/be/a8/19/bea8192809f48cc70a7e8b610842e47e.jpg',
-    aiHint: 'social media',
-    bgColor: 'bg-sky-500/10',
-    iconColor: 'text-sky-500',
-    href: companyData.socials.linkedin,
+    icon: <Layers />,
+    title: 'CONTACT PANNEAUX',
+    details: ['+213 561 61 60 05'],
+    image: 'https://i.pinimg.com/736x/ce/22/71/ce227152b9fed3c117cbaad50450656a.jpg',
+    aiHint: 'sandwich panels',
+    bgColor: 'bg-green-500/10',
+    iconColor: 'text-green-500',
+    href: `tel:${companyData.pages.contact.content.phones[1]}`,
   },
   {
-    icon: <MessageCircle />,
-    title: 'WhatsApp',
-    details: ['Discutez avec nous'],
-    image: 'https://i.pinimg.com/736x/28/94/a3/2894a3822a101413a17e089d46f5cec8.jpg',
-    aiHint: 'mobile chat',
+    icon: <Cog />,
+    title: 'CONTACT GALVANISATION',
+    details: ['galvanisation@bordjsteel.dz'],
+    image: 'https://i.pinimg.com/736x/5c/c4/bd/5cc4bd370f1bd95024acf54e7b1ff667.jpg',
+    aiHint: 'hot-dip galvanization',
+    bgColor: 'bg-gray-500/10',
+    iconColor: 'text-gray-500',
+    href: 'mailto:galvanisation@bordjsteel.dz',
+  },
+  {
+    icon: <Users />,
+    title: 'ECOUTE CLIENT',
+    details: ['ecoute.client@bordjsteel.dz'],
+    image: 'https://i.pinimg.com/736x/f1/51/10/f151108391838728e14d8cfa85af221b.jpg',
+    aiHint: 'customer service',
     bgColor: 'bg-teal-500/10',
     iconColor: 'text-teal-500',
-    href: companyData.socials.whatsapp,
+    href: 'mailto:ecoute.client@bordjsteel.dz',
   }
 ];
 
@@ -65,7 +68,7 @@ const ContactCard = ({ method }: { method: (typeof contactMethods)[0] }) => (
   <AnimatedWrapper animation="fade-in-stagger">
     <Link href={method.href || `tel:${method.details[0]}`} target="_blank" rel="noopener noreferrer" className="block group">
       <Card className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
-        <div className="relative aspect-square">
+        <div className="relative aspect-video">
           <Image
             src={method.image}
             alt={method.title}
