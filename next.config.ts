@@ -136,6 +136,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.colinco-dz.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'utec.com.sa',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
@@ -147,3 +153,4 @@ export default nextConfig;
 
 
     
+

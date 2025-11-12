@@ -178,7 +178,7 @@ export const companyData = {
       logos: [
         { name: "Condor", image: { src: "https://www.condor.dz/wp-content/uploads/2024/10/cropped-logo-condor-light-300x103.png", aiHint: "Condor logo" } },
         { name: "Cosider", image: { src: "/logos/cosider.webp", aiHint: "Cosider logo" } },
-        { name: "UTEC", image: { src: "/logos/utec.webp", aiHint: "UTEC logo" } },
+        { name: "UTEC", image: { src: "https://utec.com.sa/wp-content/uploads/2025/01/UTECLogo.png", aiHint: "UTEC logo" } },
         { name: "Biolab", image: { src: "/logos/biolab.webp", aiHint: "Biolab logo" } },
         { name: "Hyundai", image: { src: "https://i.pinimg.com/736x/60/3b/83/603b83b35cd26e797e200d9aea13978b.jpg", aiHint: "Hyundai logo" } },
         { name: "Softal", image: { src: "/logos/softal.webp", aiHint: "Softal logo" } },
@@ -262,4 +262,5 @@ export const companyData = {
 
 
     
+
 
