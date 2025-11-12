@@ -1,126 +1,190 @@
+
+"use client";
+
 import React from 'react';
-import { MapPin, Phone, Mail, ArrowRight, MessageCircle, Send, Linkedin, HardHat, Layers, Cog, Users, Briefcase, Wrench } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import {
+  Building2,
+  Wrench,
+  Package,
+  Zap,
+  Headphones,
+  HardHat,
+  Phone,
+  Mail
+} from "lucide-react";
+import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
 import { companyData } from '@/config/company-data';
-import '../app/shiny-button.css';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
-import Link from 'next/link';
-import { SocialButton } from './social-button';
 
-const contactMethods = [
-  {
-    icon: <Briefcase />,
-    title: 'Bureaux Commercial',
-    details: companyData.pages.contact.content.emails,
-    image: 'https://i.pinimg.com/736x/2c/79/22/2c792262ee0e5c2f3a1290cd06825f9a.jpg',
-    aiHint: 'business meeting',
-    bgColor: 'bg-blue-500/10',
-    iconColor: 'text-blue-500',
-    href: `mailto:${companyData.pages.contact.content.emails[0]}`,
-  },
-  {
-    icon: <HardHat />,
-    title: 'Charpente Métallique',
-    details: ['+213 770 35 66 86'],
-    image: 'https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg',
-    aiHint: 'steel structure',
-    bgColor: 'bg-orange-500/10',
-    iconColor: 'text-orange-500',
-    href: `tel:${companyData.pages.contact.content.phones[0]}`,
-  },
-  {
-    icon: <Layers />,
-    title: 'Panneaux Sandwich',
-    details: ['+213 561 61 60 05'],
-    image: 'https://i.pinimg.com/736x/ce/22/71/ce227152b9fed3c117cbaad50450656a.jpg',
-    aiHint: 'sandwich panels',
-    bgColor: 'bg-green-500/10',
-    iconColor: 'text-green-500',
-    href: `tel:${companyData.pages.contact.content.phones[1]}`,
-  },
-  {
-    icon: <Cog />,
-    title: 'Galvanisation',
-    details: ['galvanisation@bordjsteel.dz'],
-    image: 'https://i.pinimg.com/736x/5c/c4/bd/5cc4bd370f1bd95024acf54e7b1ff667.jpg',
-    aiHint: 'hot-dip galvanization',
-    bgColor: 'bg-gray-500/10',
-    iconColor: 'text-gray-500',
-    href: 'mailto:galvanisation@bordjsteel.dz',
-  },
-  {
-    icon: <Users />,
-    title: 'Ecoute Client',
-    details: ['ecoute.client@bordjsteel.dz'],
-    image: 'https://i.pinimg.com/736x/f1/51/10/f151108391838728e14d8cfa85af221b.jpg',
-    aiHint: 'customer service',
-    bgColor: 'bg-teal-500/10',
-    iconColor: 'text-teal-500',
-    href: 'mailto:ecoute.client@bordjsteel.dz',
-  },
-  {
-    icon: <Wrench />,
-    title: 'Réalisation et Montage',
-    details: [''],
-    image: 'https://i.pinimg.com/736x/a3/0d/65/a30d652c6e58b3aebe5ca3561af436a6.jpg',
-    aiHint: 'steel assembly',
-    bgColor: 'bg-purple-500/10',
-    iconColor: 'text-purple-500',
-    href: 'mailto:realisation@bordjsteel.dz',
-  }
-];
+interface ContactCardProps {
+  icon: React.ReactNode;
+  title: string;
+  phone?: string;
+  email?: string;
+  image?: string;
+  className?: string;
+  style?: React.CSSProperties;
+}
 
-const ContactCard = ({ method }: { method: (typeof contactMethods)[0] }) => (
-  <AnimatedWrapper animation="fade-in-stagger">
-    <Link href={method.href || `tel:${method.details[0]}`} target="_blank" rel="noopener noreferrer" className="block group">
-      <Card className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
-        <div className="relative aspect-video">
-          <Image
-            src={method.image}
-            alt={method.title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-110"
-            data-ai-hint={method.aiHint}
-          />
-          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors" />
-          <div className={cn("absolute top-4 right-4 w-12 h-12 rounded-full flex items-center justify-center border-2 border-white/20 transition-all duration-300 group-hover:scale-125", method.bgColor)}>
-            {React.cloneElement(method.icon, { className: cn("w-6 h-6", method.iconColor) })}
+function ContactCard({
+  icon,
+  title,
+  phone,
+  email,
+  image,
+  className,
+  style,
+}: ContactCardProps) {
+  const handlePhoneClick = () => {
+    if (!phone) return;
+    const cleanPhone = phone.replace(/\s/g, "");
+    window.open(`https://wa.me/${cleanPhone}`, "_blank");
+  };
+
+  const handleEmailClick = () => {
+    if (!email) return;
+    window.open(`mailto:${email}`, "_blank");
+  };
+
+  return (
+    <Card
+      className={cn(
+        "relative flex flex-col overflow-hidden rounded-xl border-2 bg-background/70 backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:shadow-xl hover:-translate-y-2 group",
+        className
+      )}
+      style={style}
+    >
+      {/* Image Section */}
+      <div className="relative h-48 w-full overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+          style={{ backgroundImage: `url(${image})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+      </div>
+
+      {/* Content Section */}
+      <div className="relative flex flex-col gap-4 p-6">
+        {/* Icon and Title */}
+        <div className="flex items-center gap-3">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
+            {icon}
           </div>
+          <h3 className="text-xl font-semibold text-foreground">{title}</h3>
         </div>
-        <CardContent className="p-4 bg-background flex-grow flex flex-col">
-          <h3 className="font-headline text-xl font-bold text-primary">{method.title}</h3>
-          <div className="text-muted-foreground mt-2 flex-grow">
-            {method.details.map((detail, i) => (
-              <p key={i}>{detail}</p>
-            ))}
-          </div>
-          <Button variant="link" className="text-accent p-0 mt-4 self-start">
-            Contacter <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </CardContent>
-      </Card>
-    </Link>
-  </AnimatedWrapper>
-);
+
+        {/* Contact Information */}
+        <div className="flex flex-col gap-3">
+          {/* Phone */}
+          {phone && (
+            <button
+              onClick={handlePhoneClick}
+              className="flex items-center gap-3 rounded-lg border border-border bg-muted/50 p-3 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:translate-x-1"
+            >
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-green-500/10 text-green-600 dark:text-green-400">
+                <Phone className="h-4 w-4" />
+              </div>
+              <div className="flex flex-col items-start">
+                <span className="text-xs text-muted-foreground">WhatsApp</span>
+                <span className="text-sm font-medium text-foreground">{phone}</span>
+              </div>
+            </button>
+          )}
+
+          {/* Email */}
+          {email && (
+            <button
+              onClick={handleEmailClick}
+              className="flex items-center gap-3 rounded-lg border border-border bg-muted/50 p-3 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:translate-x-1"
+            >
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                <Mail className="h-4 w-4" />
+              </div>
+              <div className="flex flex-col items-start">
+                <span className="text-xs text-muted-foreground">Email</span>
+                <span className="text-sm font-medium text-foreground">{email}</span>
+              </div>
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Hover Effect Overlay */}
+      <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+    </Card>
+  );
+}
 
 export function Contact() {
   const { contact } = companyData.pages;
 
+  const contactSections: ContactCardProps[] = [
+    {
+      icon: <Building2 className="h-6 w-6" />,
+      title: "Bureaux Commercial",
+      email: "marketing@bordjsteel.dz",
+      phone: "",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
+    },
+    {
+      icon: <HardHat className="h-6 w-6" />,
+      title: "Charpente Métallique",
+      phone: "+213 770 35 66 86",
+      email: "",
+      image: "https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg",
+    },
+    {
+      icon: <Package className="h-6 w-6" />,
+      title: "Panneaux Sandwich",
+      phone: "+213 561 61 60 05",
+      email: "",
+      image: "https://i.pinimg.com/736x/ce/22/71/ce227152b9fed3c117cbaad50450656a.jpg",
+    },
+    {
+      icon: <Zap className="h-6 w-6" />,
+      title: "Galvanisation",
+      email: "galvanisation@bordjsteel.dz",
+      phone: "",
+      image: "https://i.pinimg.com/736x/5c/c4/bd/5cc4bd370f1bd95024acf54e7b1ff667.jpg",
+    },
+    {
+      icon: <Headphones className="h-6 w-6" />,
+      title: "Ecoute Client",
+      email: "ecoute.client@bordjsteel.dz",
+      phone: "",
+      image: "https://i.pinimg.com/736x/f1/51/10/f151108391838728e14d8cfa85af221b.jpg",
+    },
+    {
+      icon: <Wrench className="h-6 w-6" />,
+      title: "Réalisation et Montage",
+      email: "realisation@bordjsteel.dz",
+      phone: "",
+      image: "https://i.pinimg.com/736x/a3/0d/65/a30d652c6e58b3aebe5ca3561af436a6.jpg",
+    }
+  ];
+
   return (
-    <section id="contact" className="bg-secondary">
+    <section id="contact" className="bg-secondary w-full py-16">
       <div className="container mx-auto px-4">
-        <AnimatedWrapper animation="fade-in">
-          <h2 className="font-headline text-4xl font-bold text-center text-primary mb-4">{contact.title}</h2>
-          <p className="text-lg text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
-            {contact.content.info.description}
-          </p>
-        </AnimatedWrapper>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {contactMethods.map((method, index) => (
-            <ContactCard key={index} method={method} />
+        <div className="mb-12 text-center">
+          <AnimatedWrapper animation="fade-in">
+            <h2 className="mb-4 text-4xl font-bold text-primary">
+              {contact.title}
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+              {contact.content.info.description}
+            </p>
+          </AnimatedWrapper>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {contactSections.map((section, index) => (
+             <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                <ContactCard
+                {...section}
+                />
+            </AnimatedWrapper>
           ))}
         </div>
       </div>
