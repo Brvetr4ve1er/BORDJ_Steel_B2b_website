@@ -152,7 +152,7 @@ export function Contact() {
       icon: <Headphones className="h-6 w-6" />,
       title: "Ecoute Client",
       email: "ecoute.client@bordjsteel.dz",
-      phone: "+213 560 99 99 25",
+      phone: "+213 770 83 25 96",
       image: "https://i.pinimg.com/736x/f1/51/10/f151108391838728e14d8cfa85af221b.jpg",
     },
     {
