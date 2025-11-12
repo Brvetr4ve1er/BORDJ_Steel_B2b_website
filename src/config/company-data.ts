@@ -185,17 +185,18 @@ export const companyData = {
         { name: "Batimetal", image: { src: "/logos/batimetal.webp", aiHint: "Batimetal logo" } },
         { name: "Man", image: { src: "/logos/man.webp", aiHint: "Man logo" } },
         { name: "Cevital", image: { src: "/logos/cevital.webp", aiHint: "Cevital logo" } },
-        { name: "Metidji", image: { src: "/logos/metidji.webp", aiHint: "Metidji logo" } },
+        { name: "Metidji", image: { src: "https://metidji.com/wp-content/themes/MetidjiTheme/images/logo.svg", aiHint: "Metidji logo" } },
         { name: "Soummam", image: { src: "/logos/soummam.webp", aiHint: "Soummam logo" } },
         { name: "Sim", image: { src: "/logos/sim.webp", aiHint: "Sim logo" } },
         { name: "Mobilis", image: { "src": "/logos/mobilis.webp", "aiHint": "Mobilis logo" } },
         { name: "Amimer Energie", image: { "src": "/logos/amimer_energie.webp", "aiHint": "Amimer Energie logo" } },
         { name: "Danone", image: { "src": "/logos/danone.webp", "aiHint": "Danone logo" } },
-        { name: "Ifri", image: { "src": "/logos/ifri.webp", "aiHint": "Ifri logo" } },
-        { name: "Sonatrach", image: { "src": "/logos/sonatrach.webp", "aiHint": "Sonatrach logo" } },
+        { name: "Ifri", image: { "src": "https://ifri-dz.com/wp-content/uploads/2020/09/IFRI_logo.jpg", "aiHint": "Ifri logo" } },
+        { name: "Sonatrach", image: { "src": "https://sonatrach.com/wp-content/uploads/2024/05/logo-sonatrach-white-text.svg", "aiHint": "Sonatrach logo" } },
         { name: "GCB", image: { "src": "/logos/gcb.webp", "aiHint": "GCB logo" } },
         { name: "Imetal", image: { "src": "/logos/imetal.webp", "aiHint": "Imetal logo" } },
-        { name: "Sonelgaz", image: { "src": "https://i.pinimg.com/736x/bd/81/8b/bd818bea09014d23bfcf6520791027ae.jpg", "aiHint": "Sonelgaz logo" } }
+        { name: "Sonelgaz", image: { "src": "https://i.pinimg.com/736x/bd/81/8b/bd818bea09014d23bfcf6520791027ae.jpg", "aiHint": "Sonelgaz logo" } },
+        { name: "Maxtor", image: { "src": "https://www.maxtor.dz/images/logo1.png", "aiHint": "Maxtor logo" } }
       ]
     },
     contact: {
@@ -254,3 +255,6 @@ export const companyData = {
     
 
 
+
+
+    
