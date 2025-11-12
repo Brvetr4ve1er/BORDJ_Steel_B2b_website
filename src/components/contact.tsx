@@ -124,7 +124,7 @@ export function Contact() {
       icon: <Building2 className="h-6 w-6" />,
       title: "Bureaux Commercial",
       email: "commercial@bordjsteel.dz",
-      phone: "+213 560 99 99 26",
+      phone: "+213 561 61 60 05",
       image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
     },
     {
