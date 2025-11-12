@@ -13,7 +13,7 @@ import { SocialButton } from './social-button';
 const contactMethods = [
   {
     icon: <Briefcase />,
-    title: 'CONTACT COMMERCIAL',
+    title: 'Bureaux Commercial',
     details: companyData.pages.contact.content.emails,
     image: 'https://i.pinimg.com/736x/2c/79/22/2c792262ee0e5c2f3a1290cd06825f9a.jpg',
     aiHint: 'business meeting',
@@ -23,7 +23,7 @@ const contactMethods = [
   },
   {
     icon: <HardHat />,
-    title: 'CONTACT CHARPENTE',
+    title: 'Charpente Métallique',
     details: ['+213 770 35 66 86'],
     image: 'https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg',
     aiHint: 'steel structure',
@@ -33,7 +33,7 @@ const contactMethods = [
   },
   {
     icon: <Layers />,
-    title: 'CONTACT PANNEAUX',
+    title: 'Panneaux Sandwich',
     details: ['+213 561 61 60 05'],
     image: 'https://i.pinimg.com/736x/ce/22/71/ce227152b9fed3c117cbaad50450656a.jpg',
     aiHint: 'sandwich panels',
@@ -43,7 +43,7 @@ const contactMethods = [
   },
   {
     icon: <Cog />,
-    title: 'CONTACT GALVANISATION',
+    title: 'Galvanisation',
     details: ['galvanisation@bordjsteel.dz'],
     image: 'https://i.pinimg.com/736x/5c/c4/bd/5cc4bd370f1bd95024acf54e7b1ff667.jpg',
     aiHint: 'hot-dip galvanization',
@@ -53,7 +53,7 @@ const contactMethods = [
   },
   {
     icon: <Users />,
-    title: 'ECOUTE CLIENT',
+    title: 'Ecoute Client',
     details: ['ecoute.client@bordjsteel.dz'],
     image: 'https://i.pinimg.com/736x/f1/51/10/f151108391838728e14d8cfa85af221b.jpg',
     aiHint: 'customer service',
@@ -63,7 +63,7 @@ const contactMethods = [
   },
   {
     icon: <Wrench />,
-    title: 'REALISATION ET MONTAGE',
+    title: 'Réalisation et Montage',
     details: [''],
     image: 'https://i.pinimg.com/736x/a3/0d/65/a30d652c6e58b3aebe5ca3561af436a6.jpg',
     aiHint: 'steel assembly',
