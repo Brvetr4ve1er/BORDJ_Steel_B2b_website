@@ -21,22 +21,18 @@ import { AnimatedWrapper } from './animated-wrapper';
 import { companyData } from '@/config/company-data';
 
 const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-    <path d="M14.05 2.9A15.9 15.9 0 0 1 21 8.95" />
-    <path d="M14.05 6.4A11.9 11.9 0 0 1 17.6 10" />
-  </svg>
+    <svg
+      height="24"
+      width="24"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M16.75,13.96c.25.42.58.8.91,1.15.34.35.67.66.97.92.42.36.93.8.94,1.41.02.77-.33,1.48-1.12,1.95-.79.47-1.85.5-2.83.13-.98-.37-2.02-.95-3.03-1.74-1.02-.79-1.95-1.7-2.77-2.71-1.22-1.51-1.93-3.23-2.12-4.98-.19-1.75.43-3.32,1.63-4.42.2-.18.42-.35.66-.5.42-.26.89-.48,1.4-.48.25,0,.48.04.68.09.43.11.83.27,1.17.48.24.15.45.31.64.48.51.48.79,1.1.79,1.76,0,.42-.1.83-.3,1.22-.2.39-.5.78-.81,1.16-.09.11-.18.23-.27.34-.3.37-.2,1.03.17,1.4.37.37.98.54,1.46.16.11-.09.22-.18.33-.27.09-.08.18-.16.27-.25.4-.4.87-.72,1.4-.72.65,0,1.2.36,1.54.91z"
+        fill="currentColor"
+      />
+    </svg>
 );
 
 
@@ -195,14 +191,14 @@ export function Contact() {
       icon: <HardHat className="h-8 w-8" />,
       title: "Charpente Métallique",
       phone: "+213 770 98 43 14",
-      email: "commercial.charpente@bordjsteel.dz",
+      email: "commercial@bordjsteel.dz",
       image: "https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg",
     },
     {
       icon: <Package className="h-8 w-8" />,
       title: "Panneaux Sandwich",
       phone: "+213 770 70 59 78",
-      email: "commercial.panneaux@bordjsteel.dz",
+      email: "commercial@bordjsteel.dz",
       image: "https://i.pinimg.com/736x/ce/22/71/ce227152b9fed3c117cbaad50450656a.jpg",
     },
     {
