@@ -194,7 +194,8 @@ export const companyData = {
         { name: "Ifri", image: { "src": "/logos/ifri.webp", "aiHint": "Ifri logo" } },
         { name: "Sonatrach", image: { "src": "/logos/sonatrach.webp", "aiHint": "Sonatrach logo" } },
         { name: "GCB", image: { "src": "/logos/gcb.webp", "aiHint": "GCB logo" } },
-        { name: "Imetal", image: { "src": "/logos/imetal.webp", "aiHint": "Imetal logo" } }
+        { name: "Imetal", image: { "src": "/logos/imetal.webp", "aiHint": "Imetal logo" } },
+        { name: "Sonelgaz", image: { "src": "https://i.pinimg.com/736x/bd/81/8b/bd818bea09014d23bfcf6520791027ae.jpg", "aiHint": "Sonelgaz logo" } }
       ]
     },
     contact: {
@@ -251,3 +252,4 @@ export const companyData = {
     
 
     
+
