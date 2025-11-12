@@ -61,7 +61,6 @@ function ContactCard({
           className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
           style={{ backgroundImage: `url(${image})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
       </div>
 
       {/* Content Section */}
