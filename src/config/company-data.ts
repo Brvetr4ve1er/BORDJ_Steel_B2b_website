@@ -180,7 +180,7 @@ export const companyData = {
         { name: "Cosider", image: { src: "/logos/cosider.webp", aiHint: "Cosider logo" } },
         { name: "UTEC", image: { src: "/logos/utec.webp", aiHint: "UTEC logo" } },
         { name: "Biolab", image: { src: "/logos/biolab.webp", aiHint: "Biolab logo" } },
-        { name: "Hyundai", image: { src: "/logos/hyundai.webp", aiHint: "Hyundai logo" } },
+        { name: "Hyundai", image: { src: "https://i.pinimg.com/736x/60/3b/83/603b83b35cd26e797e200d9aea13978b.jpg", aiHint: "Hyundai logo" } },
         { name: "Softal", image: { src: "/logos/softal.webp", aiHint: "Softal logo" } },
         { name: "Batimetal", image: { src: "/logos/batimetal.webp", aiHint: "Batimetal logo" } },
         { name: "Man", image: { src: "/logos/man.webp", aiHint: "Man logo" } },
@@ -245,6 +245,8 @@ export const companyData = {
 
     
 
+
+    
 
     
 
