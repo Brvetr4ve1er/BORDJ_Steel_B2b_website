@@ -47,7 +47,7 @@ export const companyData = {
             { "name": "Video & 3D", "href": "#videos", "description": "Explorez nos produits en vidéos et modèles 3D.", "icon": "View" }
         ]
       },
-      { "name": "Contact", "href": "#contact", "icon": "Mail" }
+      { "name": "Contact", "href": "/contact", "icon": "Mail" }
     ],
   },
   pages: {
@@ -245,9 +245,6 @@ export const companyData = {
     whatsapp: "#"
   },
 };
-
-    
-
 
     
 

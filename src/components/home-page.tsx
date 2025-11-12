@@ -21,7 +21,6 @@ export function HomePage() {
         <Portfolio />
         <Certifications />
         <Clients />
-        <Contact />
       </main>
       <Footer />
     </div>
