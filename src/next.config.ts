@@ -84,7 +84,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
+        protocol: 'https,
         hostname: 'metidji.com',
         port: '',
         pathname: '/**',
@@ -142,6 +142,12 @@ const nextConfig: NextConfig = {
         hostname: 'utec.com.sa',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'softal-construction.dz',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
@@ -158,3 +164,5 @@ export default nextConfig;
 
 
 
+
+    
