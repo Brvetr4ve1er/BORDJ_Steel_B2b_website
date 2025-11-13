@@ -7,6 +7,8 @@ import { Search, MapPin, Clock, Briefcase, Building2, ChevronDown } from 'lucide
 import { companyData } from '@/config/company-data';
 import { Logo } from '@/components/logo';
 import { Cairo } from 'next/font/google';
+import Image from 'next/image';
+import { AnimatedWrapper } from '@/components/animated-wrapper';
 
 const cairo = Cairo({
   subsets: ['latin'],
@@ -43,59 +45,43 @@ const RecruitmentPage = () => {
       location: "BORDJ BOU ARRERIDJ - ALGERIE"
     }
   ];
+  
+  const heroImage = {
+      src: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80",
+      alt: "Team of professionals in a modern office",
+      aiHint: "professional team office"
+  }
+
 
   return (
     <ProductPageLayout>
       <div className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <div className="relative bg-white overflow-hidden" style={{ height: '400px' }}>
-          {/* Red geometric background */}
-          <div className="absolute inset-0">
-            <div className="absolute left-0 top-0 w-1/3 h-full bg-accent"
-                 style={{ clipPath: 'polygon(0 0, 100% 0, 70% 100%, 0% 100%)' }}>
-            </div>
-          </div>
-          
-          {/* Chair image area - Simplified as per request */}
-          <div className="absolute left-8 bottom-0" style={{ width: '250px', height: '250px' }}>
-            <div className="relative w-full h-full">
-              <div className="absolute inset-0 flex items-end justify-center">
-                <div className="relative" style={{ width: '180px', height: '180px' }}>
-                  <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-32 h-20 bg-primary rounded-3xl shadow-2xl"
-                       style={{ transform: 'translateX(-50%) perspective(400px) rotateX(-10deg)' }}>
-                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-28 h-16 bg-primary rounded-t-3xl"></div>
-                  </div>
-                  <div className="absolute bottom-0 left-8 w-2 h-16 bg-yellow-600 rounded"></div>
-                  <div className="absolute bottom-0 right-8 w-2 h-16 bg-yellow-600 rounded"></div>
+        <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
+            <Image
+              src={heroImage.src}
+              alt={heroImage.alt}
+              fill
+              className="z-0 object-cover"
+              priority
+              data-ai-hint={heroImage.aiHint}
+            />
+            <div className="absolute inset-0 bg-black/60 z-10" />
+             <div className="relative z-20 container mx-auto px-4 text-center">
+              <AnimatedWrapper animation="zoom-in">
+                <div className="mb-6 inline-block">
+                    <div className="flex flex-col items-center">
+                    <div className="w-24 mb-2 bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                        <Logo />
+                    </div>
+                    <div className={`text-xs text-gray-200 mt-1 ${cairo.variable} font-cairo`}>{companyData.siteMetadata.sloganArabic}</div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="relative z-10 h-full flex items-center justify-center">
-            <div className="text-center">
-              {/* Logo */}
-              <div className="mb-6 inline-block">
-                <div className="flex flex-col items-center">
-                  <div className="w-24 mb-2">
-                    <Logo />
-                  </div>
-                  <div className={`text-xs text-muted-foreground mt-1 ${cairo.variable} font-cairo`}>{companyData.siteMetadata.sloganArabic}</div>
-                </div>
-              </div>
-              
-              {/* Main Title */}
-              <div className="relative inline-block">
-                <span className="absolute -left-12 top-1/2 transform -translate-y-1/2 text-3xl font-bold text-foreground">\</span>
-                <span className="absolute -right-12 top-1/2 transform -translate-y-1/2 text-3xl font-bold text-foreground">/</span>
-                <h1 className="text-5xl md:text-6xl font-bold text-foreground">
-                  Nous<br/>recrutons
+                <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
+                  Nous recrutons
                 </h1>
-              </div>
+              </AnimatedWrapper>
             </div>
-          </div>
-        </div>
+        </section>
 
         {/* Divider */}
         <div className="h-1 bg-gradient-to-r from-accent via-gray-300 to-gray-300"></div>
@@ -255,3 +241,5 @@ const RecruitmentPage = () => {
 };
 
 export default RecruitmentPage;
+
+    
