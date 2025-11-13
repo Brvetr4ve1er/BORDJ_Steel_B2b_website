@@ -192,7 +192,7 @@ export const companyData = {
         { name: "Softal", image: { src: "https://softal-construction.dz/wp-content/uploads/2025/04/logo.png", aiHint: "Softal logo" } },
         { name: "Batimetal", image: { src: "/logos/batimetal.webp", aiHint: "Batimetal logo" } },
         { name: "Man", image: { src: "/logos/man.webp", aiHint: "Man logo" } },
-        { name: "Cevital", image: { src: "https://www.cevital.com/wp-content/uploads/2022/10/logo.svg", aiHint: "Cevital logo" } },
+        { name: "Cevital", image: { src: "https://cdn.brandfetch.io/idJEGI1qzz/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B", aiHint: "Cevital logo" } },
         { name: "Metidji", image: { src: "https://metidji.com/wp-content/themes/MetidjiTheme/images/logo.svg", aiHint: "Metidji logo" } },
         { name: "Soummam", image: { src: "https://www.soummam-dz.com/cms/Paragraphes/su164384/footer-logo-ombre-1.png", aiHint: "Soummam logo" } },
         { name: "Sim", image: { src: "https://groupesim.com/wp-content/uploads/2021/10/logo-groupe-sim-1-scaled.png", aiHint: "Sim logo" } },

@@ -148,6 +148,12 @@ const nextConfig: NextConfig = {
         hostname: 'softal-construction.dz',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.brandfetch.io',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
@@ -159,6 +165,7 @@ export default nextConfig;
 
 
     
+
 
 
 
