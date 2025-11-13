@@ -193,7 +193,7 @@ export const companyData = {
         { name: "Danone", image: { "src": "https://smartmedia.digital4danone.com//is/image/danonecs/danone-logo-12?wid=320&fmt=png-alpha&fit=wrap", "aiHint": "Danone logo" } },
         { name: "Ifri", image: { "src": "https://ifri-dz.com/wp-content/uploads/2020/09/IFRI_logo.jpg", "aiHint": "Ifri logo" } },
         { name: "Sonatrach", image: { "src": "https://sonatrach.com/wp-content/uploads/2024/05/logo-sonatrach-white-text.svg", "aiHint": "Sonatrach logo" } },
-        { name: "GCB", image: { "src": "/logos/gcb.webp", "aiHint": "GCB logo" } },
+        { name: "GCB", image: { "src": "https://i.ibb.co/hZJc7Q5/gcb.png", "aiHint": "GCB logo" } },
         { name: "Imetal", image: { "src": "/logos/imetal.webp", "aiHint": "Imetal logo" } },
         { name: "Sonelgaz", image: { "src": "https://i.pinimg.com/736x/bd/81/8b/bd818bea09014d23bfcf6520791027ae.jpg", "aiHint": "Sonelgaz logo" } },
         { name: "Maxtor", image: { "src": "https://www.maxtor.dz/images/logo1.png", "aiHint": "Maxtor logo" } },
