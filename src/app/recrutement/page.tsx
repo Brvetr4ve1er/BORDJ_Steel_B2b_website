@@ -113,10 +113,21 @@ const RecruitmentPage = () => {
                   value={filters.category}
                   onChange={(e) => setFilters({...filters, category: e.target.value})}
                 >
-                  <option value="">Toutes les catégories</option>
-                  <option value="ingenieur">Ingénieur</option>
-                  <option value="technicien">Technicien</option>
-                  <option value="administratif">Administratif</option>
+                  <option value="">Catégorie</option>
+                  <option value="achats">Achats</option>
+                  <option value="approvisionnement">Approvisionnement</option>
+                  <option value="bureau-detudes">Bureau d’études</option>
+                  <option value="commercial">Commercial</option>
+                  <option value="direction-generale">Direction Générale</option>
+                  <option value="finance-comptabilite">Finance et Comptabilité</option>
+                  <option value="informatique">Informatique</option>
+                  <option value="juridique">Juridique</option>
+                  <option value="maintenance">Maintenance</option>
+                  <option value="marketing">Marketing</option>
+                  <option value="procces-developpement">Procces et Développement (P&D)</option>
+                  <option value="production">Production</option>
+                  <option value="qhse">Qhse</option>
+                  <option value="ressources-humaines">Ressources Humaines (RH)</option>
                 </select>
                 <ChevronDown className="absolute right-3 top-11 w-5 h-5 text-gray-400 pointer-events-none" />
               </div>
