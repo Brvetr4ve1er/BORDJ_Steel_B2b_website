@@ -55,7 +55,7 @@ const RecruitmentPage = () => {
   return (
     <ProductPageLayout>
       <div className="min-h-screen bg-gray-50">
-        <section className="relative h-[80vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
+        <section className="relative h-[80vh] w-full flex items-center justify-start text-white overflow-hidden p-0">
             <Image
               src={heroImage.src}
               alt={heroImage.alt}
@@ -64,10 +64,10 @@ const RecruitmentPage = () => {
               priority
               data-ai-hint={heroImage.aiHint}
             />
-             <div className="relative z-20 container mx-auto px-4 text-center">
+             <div className="relative z-20 container mx-auto px-4 text-left">
               <AnimatedWrapper animation="zoom-in">
-                <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
-                  Nous recrutons
+                <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-accent">
+                  Nous recrutons...
                 </h1>
               </AnimatedWrapper>
             </div>
@@ -80,7 +80,7 @@ const RecruitmentPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Search Filters */}
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Category Filter */}
               <div className="relative">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Catégorie</label>
@@ -128,7 +128,7 @@ const RecruitmentPage = () => {
               </div>
 
               {/* Search Button */}
-              <div className="flex items-end col-span-1 md:col-span-1">
+              <div className="flex items-end col-span-1 md:col-span-2">
                 <button className="w-full bg-accent hover:bg-accent/90 text-white font-semibold py-3 px-6 rounded-md transition-colors duration-200 flex items-center justify-center">
                   <Search className="w-5 h-5 mr-2" />
                   Rechercher
