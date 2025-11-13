@@ -185,7 +185,7 @@ export const companyData = {
       title: "Nos Précieux Clients",
       logos: [
         { name: "Condor", image: { src: "https://www.condor.dz/wp-content/uploads/2024/10/cropped-logo-condor-light-300x103.png", aiHint: "Condor logo" } },
-        { name: "Cosider", image: { src: "/logos/cosider.webp", aiHint: "Cosider logo" } },
+        { name: "Cosider", image: { src: "https://www.cosider-groupe.dz/fr/themes/default/images/logo.png", aiHint: "Cosider logo" } },
         { name: "UTEC", image: { src: "https://utec.com.sa/wp-content/uploads/2025/01/UTECLogo.png", aiHint: "UTEC logo" } },
         { name: "Biolab", image: { src: "/logos/biolab.webp", aiHint: "Biolab logo" } },
         { name: "Hyundai", image: { src: "https://i.pinimg.com/736x/60/3b/83/603b83b35cd26e797e200d9aea13978b.jpg", aiHint: "Hyundai logo" } },
@@ -254,9 +254,3 @@ export const companyData = {
     whatsapp: "#"
   },
 };
-
-    
-
-    
-
-    

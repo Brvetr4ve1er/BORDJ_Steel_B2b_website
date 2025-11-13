@@ -160,6 +160,12 @@ const nextConfig: NextConfig = {
         hostname: 'upload.wikimedia.org',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.cosider-groupe.dz',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
