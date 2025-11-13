@@ -68,14 +68,6 @@ const RecruitmentPage = () => {
             <div className="absolute inset-0 bg-black/60 z-10" />
              <div className="relative z-20 container mx-auto px-4 text-center">
               <AnimatedWrapper animation="zoom-in">
-                <div className="mb-6 inline-block">
-                    <div className="flex flex-col items-center">
-                    <div className="w-24 mb-2 bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                        <Logo />
-                    </div>
-                    <div className={`text-xs text-gray-200 mt-1 ${cairo.variable} font-cairo`}>{companyData.siteMetadata.sloganArabic}</div>
-                    </div>
-                </div>
                 <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
                   Nous recrutons
                 </h1>
@@ -241,5 +233,3 @@ const RecruitmentPage = () => {
 };
 
 export default RecruitmentPage;
-
-    
