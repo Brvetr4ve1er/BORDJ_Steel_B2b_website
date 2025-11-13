@@ -66,7 +66,7 @@ const RecruitmentPage = () => {
             />
              <div className="relative z-20 container mx-auto px-4 text-left">
               <AnimatedWrapper animation="zoom-in">
-                <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-accent">
+                <h1 className="font-headline text-5xl md:text-6xl font-bold tracking-tighter uppercase text-accent">
                   Nous recrutons...
                 </h1>
               </AnimatedWrapper>
