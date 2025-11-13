@@ -79,7 +79,7 @@ const RecruitmentPage = () => {
         <div className="h-1 bg-gradient-to-r from-accent via-gray-300 to-gray-300"></div>
 
         {/* Main Content */}
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Search Filters */}
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
