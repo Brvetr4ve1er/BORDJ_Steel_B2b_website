@@ -11,6 +11,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
+import { cn } from '@/lib/utils';
 
 export function Clients() {
   const { clients } = companyData.pages;
@@ -39,7 +40,10 @@ export function Clients() {
             <CarouselContent>
               {clients.logos.map((client, index) => (
                 <CarouselItem key={client.name} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6">
-                   <div className="group relative flex justify-center items-center p-4 transition-transform duration-300 ease-in-out hover:scale-110 h-48">
+                   <div className={cn(
+                       "group relative flex justify-center items-center p-4 transition-transform duration-300 ease-in-out hover:scale-110 h-48",
+                       client.name === 'Cosider' && 'bg-gray-800 rounded-lg'
+                    )}>
                     <Image
                       src={client.image.src}
                       alt={client.name}
