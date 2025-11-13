@@ -196,7 +196,7 @@ export const companyData = {
         { name: "Metidji", image: { src: "https://metidji.com/wp-content/themes/MetidjiTheme/images/logo.svg", aiHint: "Metidji logo" } },
         { name: "Soummam", image: { src: "https://www.soummam-dz.com/cms/Paragraphes/su164384/footer-logo-ombre-1.png", aiHint: "Soummam logo" } },
         { name: "Sim", image: { src: "https://groupesim.com/wp-content/uploads/2021/10/logo-groupe-sim-1-scaled.png", aiHint: "Sim logo" } },
-        { name: "Mobilis", image: { "src": "/logos/mobilis.webp", "aiHint": "Mobilis logo" } },
+        { name: "Mobilis", image: { "src": "https://cdn.brandfetch.io/idCPr4aU5R/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B", "aiHint": "Mobilis logo" } },
         { name: "Amimer Energie", image: { "src": "/logos/amimer_energie.webp", "aiHint": "Amimer Energie logo" } },
         { name: "Danone", image: { "src": "https://smartmedia.digital4danone.com//is/image/danonecs/danone-logo-12?wid=320&fmt=png-alpha&fit=wrap", "aiHint": "Danone logo" } },
         { name: "Ifri", image: { "src": "https://ifri-dz.com/wp-content/uploads/2020/09/IFRI_logo.jpg", "aiHint": "Ifri logo" } },
@@ -260,3 +260,4 @@ export const companyData = {
     
 
     
+
