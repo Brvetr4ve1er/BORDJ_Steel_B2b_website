@@ -154,6 +154,12 @@ const nextConfig: NextConfig = {
         hostname: 'cdn.brandfetch.io',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
@@ -165,6 +171,7 @@ export default nextConfig;
 
 
     
+
 
 
 
