@@ -82,7 +82,7 @@ const RecruitmentPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Search Filters */}
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Category Filter */}
               <div className="relative">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Catégorie</label>
@@ -123,22 +123,6 @@ const RecruitmentPage = () => {
                   <option value="temps-partiel">Temps partiel</option>
                   <option value="cdd">CDD</option>
                   <option value="cdi">CDI</option>
-                </select>
-                <ChevronDown className="absolute right-3 top-11 w-5 h-5 text-gray-400 pointer-events-none" />
-              </div>
-
-              {/* Location Filter */}
-              <div className="relative">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Lieu</label>
-                <select
-                  className="w-full border border-gray-300 rounded-md px-4 py-3 pr-10 appearance-none focus:outline-none focus:ring-2 focus:ring-accent bg-white"
-                  value={filters.location}
-                  onChange={(e) => setFilters({...filters, location: e.target.value})}
-                >
-                  <option value="">Tous les lieux</option>
-                  <option value="bordj">Bordj Bou Arreridj</option>
-                  <option value="alger">Alger</option>
-                  <option value="oran">Oran</option>
                 </select>
                 <ChevronDown className="absolute right-3 top-11 w-5 h-5 text-gray-400 pointer-events-none" />
               </div>
