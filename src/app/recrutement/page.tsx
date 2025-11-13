@@ -47,7 +47,7 @@ const RecruitmentPage = () => {
   ];
   
   const heroImage = {
-      src: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80",
+      src: "https://i.pinimg.com/736x/8c/d3/e8/8cd3e8544c17356b4049442f2957e521.jpg",
       alt: "Team of professionals in a modern office",
       aiHint: "professional team office"
   }
@@ -82,30 +82,32 @@ const RecruitmentPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Search Filters */}
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Category Filter */}
               <div className="relative">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Catégorie</label>
                 <select
-                  className="w-full border border-gray-300 rounded-md px-4 py-3 pr-10 appearance-none focus:outline-none focus:ring-2 focus:ring-accent bg-white"
+                  name="selected_category"
+                  id="category"
+                  className="form-control w-full border border-gray-300 rounded-md px-4 py-3 pr-10 appearance-none focus:outline-none focus:ring-2 focus:ring-accent bg-white"
                   value={filters.category}
                   onChange={(e) => setFilters({...filters, category: e.target.value})}
                 >
-                  <option value="">Catégorie</option>
-                  <option value="achats">Achats</option>
-                  <option value="approvisionnement">Approvisionnement</option>
-                  <option value="bureau-detudes">Bureau d’études</option>
-                  <option value="commercial">Commercial</option>
-                  <option value="direction-generale">Direction Générale</option>
-                  <option value="finance-comptabilite">Finance et Comptabilité</option>
-                  <option value="informatique">Informatique</option>
-                  <option value="juridique">Juridique</option>
-                  <option value="maintenance">Maintenance</option>
-                  <option value="marketing">Marketing</option>
-                  <option value="procces-developpement">Procces et Développement (P&D)</option>
-                  <option value="production">Production</option>
-                  <option value="qhse">Qhse</option>
-                  <option value="ressources-humaines">Ressources Humaines (RH)</option>
+                  <option value="-1">Catégorie</option>
+                  <option className="level-0" value="achats">Achats</option>
+                  <option className="level-0" value="approvisionnement">Approvisionnement</option>
+                  <option className="level-0" value="bureau-detudes">Bureau d’études</option>
+                  <option className="level-0" value="commercial">Commercial</option>
+                  <option className="level-0" value="direction-generale">Direction Générale</option>
+                  <option className="level-0" value="finance-comptabilite">Finance et Comptabilité</option>
+                  <option className="level-0" value="informatique">Informatique</option>
+                  <option className="level-0" value="juridique">Juridique</option>
+                  <option className="level-0" value="maintenance">Maintenance</option>
+                  <option className="level-0" value="marketing">Marketing</option>
+                  <option className="level-0" value="procces-developpement">Procces et Développement (P&D)</option>
+                  <option className="level-0" value="production">Production</option>
+                  <option className="level-0" value="qhse">Qhse</option>
+                  <option className="level-0" value="ressources-humaines">Ressources Humaines (RH)</option>
                 </select>
                 <ChevronDown className="absolute right-3 top-11 w-5 h-5 text-gray-400 pointer-events-none" />
               </div>
@@ -128,7 +130,7 @@ const RecruitmentPage = () => {
               </div>
 
               {/* Search Button */}
-              <div className="flex items-end">
+              <div className="flex items-end col-span-1 md:col-span-2">
                 <button className="w-full bg-accent hover:bg-accent/90 text-white font-semibold py-3 px-6 rounded-md transition-colors duration-200 flex items-center justify-center">
                   <Search className="w-5 h-5 mr-2" />
                   Rechercher
