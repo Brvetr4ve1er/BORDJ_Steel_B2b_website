@@ -47,7 +47,15 @@ export const companyData = {
             { "name": "Video & 3D", "href": "#videos", "description": "Explorez nos produits en vidéos et modèles 3D.", "icon": "View" }
         ]
       },
-      { "name": "Contact", "href": "/contact", "icon": "Mail" }
+      { 
+        "name": "Contact & Carrières", 
+        "href": "/contact", 
+        "icon": "Mail",
+        "children": [
+          { "name": "Contact", "href": "/contact", "description": "Contactez-nous pour toute demande.", "icon": "Mail" },
+          { "name": "Recrutement", "href": "/recrutement", "description": "Rejoignez nos équipes.", "icon": "User" }
+        ]
+      }
     ],
   },
   pages: {
@@ -207,7 +215,7 @@ export const companyData = {
       content: {
         address: 'N°1 lieu-dit Mechta Fatima, Bordj Bou Arréridj, Algérie',
         phones: ['+213 770 35 66 86', '+213 561 61 60 05'],
-        emails: ['marketing@bordjsteel.dz'],
+        emails: ['commercial@bordjsteel.dz'],
         form: {
             name: "Nom",
             namePlaceholder: "Votre Nom",
@@ -246,5 +254,7 @@ export const companyData = {
     whatsapp: "#"
   },
 };
+
+    
 
     
