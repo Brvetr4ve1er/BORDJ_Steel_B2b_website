@@ -66,7 +66,7 @@ export default function BlogPage() {
       </section>
       <section className="bg-secondary/50">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 gap-12 md:gap-32">
+            <div className="grid grid-cols-1 gap-12 md:gap-16">
                 {featuredPost && (
                     <AnimatedWrapper animation="slide-up">
                         <BlogPostCard
@@ -76,11 +76,10 @@ export default function BlogPage() {
                     </AnimatedWrapper>
                 )}
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {otherPosts.map((post, index) => (
                          <AnimatedWrapper key={post.title} animation="fade-in-stagger" staggerIndex={index}>
                            <BlogPostCard
-                                variant="default"
                                 {...post}
                                 className="h-full"
                            />
