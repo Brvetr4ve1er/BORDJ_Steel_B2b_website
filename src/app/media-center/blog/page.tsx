@@ -309,7 +309,7 @@ export default function BlogPage() {
                             <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
                                 Téléchargez notre catalogue complet pour découvrir en détail l'ensemble de nos produits et solutions de construction métallique.
                             </p>
-                            <a href="/documents/catalogue.pdf" download="Bordj-Steel-Catalogue.pdf">
+                            <a href="/documents/catallogue de produi Final.pdf" download="Bordj-Steel-Catalogue.pdf">
                                 <DownloadButton text="Télécharger le Catalogue" />
                             </a>
                         </div>
