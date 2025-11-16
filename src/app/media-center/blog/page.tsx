@@ -2,6 +2,34 @@
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
+import { BlogPostCard } from '@/components/ui/blog-post-card';
+
+const blogPosts = [
+    {
+      href: '#',
+      tag: 'Innovation',
+      date: '30 Juillet 2025',
+      title: 'BordjSteel inaugure une nouvelle ligne de production de PRS',
+      description: 'Découvrez comment notre nouvelle ligne de production de Profils Reconstitués Soudés (PRS) repousse les limites de la construction métallique en Algérie.',
+      imageUrl: 'https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg'
+    },
+    {
+      href: '#',
+      tag: 'Qualité',
+      date: '15 Juin 2025',
+      title: 'Notre engagement pour la certification ISO 9001:2015 renouvelé',
+      description: 'La qualité est au coeur de notre ADN. BordjSteel est fier d\'annoncer le renouvellement de sa certification, un gage de confiance pour nos clients.',
+      imageUrl: 'https://i.pinimg.com/736x/fc/ea/fb/fceafbcc5c3f0645268534eed8924cb3.jpg'
+    },
+    {
+      href: '#',
+      tag: 'Développement durable',
+      date: '02 Mai 2025',
+      title: 'La galvanisation à chaud : un procédé écologique et durable',
+      description: 'Plongez dans les avantages environnementaux de la galvanisation à chaud, une solution de protection de l\'acier qui allie longévité et respect de l\'environnement.',
+      imageUrl: 'https://i.pinimg.com/736x/5c/c4/bd/5cc4bd370f1bd95024acf54e7b1ff667.jpg'
+    }
+  ];
 
 export default function BlogPage() {
   const heroImage = {
@@ -9,6 +37,9 @@ export default function BlogPage() {
     alt: "Person reading a book in a library",
     aiHint: "reading library"
   }
+
+  const featuredPost = blogPosts[0];
+  const otherPosts = blogPosts.slice(1);
 
   return (
     <ProductPageLayout>
@@ -33,14 +64,32 @@ export default function BlogPage() {
           </AnimatedWrapper>
         </div>
       </section>
-      <section>
-          <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Content Coming Soon</h2>
-            <p className="text-lg text-muted-foreground mt-4">This page is under construction.</p>
+      <section className="bg-secondary/50">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 gap-8">
+                {featuredPost && (
+                    <AnimatedWrapper animation="slide-up">
+                        <BlogPostCard
+                            variant="featured"
+                            {...featuredPost}
+                        />
+                    </AnimatedWrapper>
+                )}
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {otherPosts.map((post, index) => (
+                         <AnimatedWrapper key={post.title} animation="fade-in-stagger" staggerIndex={index}>
+                           <BlogPostCard
+                                variant="default"
+                                {...post}
+                                className="h-full"
+                           />
+                        </AnimatedWrapper>
+                    ))}
+                </div>
+            </div>
           </div>
       </section>
     </ProductPageLayout>
   );
 }
-
-    
