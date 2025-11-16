@@ -31,16 +31,16 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
         isFeatured: true,
     },
     {
-        id: "article-3",
-        title: "Building your API stack",
-        description: "The rise of RESTful APIs has been met by a rise in tools for creating, testing, and managing them.",
+        id: "article-2",
+        title: "Votre hangar de rêve devient réalité",
+        description: "Chez Bordj Steel, nous transformons vos idées en structures solides, durables et parfaitement adaptées à vos besoins.",
         href: "#",
-        tag: "Software Engineering",
-        imageUrl: "https://www.untitledui.com/blog/two-mobile-shapes-pattern.webp",
-        date: "18 Jan 2025",
+        tag: "Projet",
+        imageUrl: "https://scontent.faae1-1.fna.fbcdn.net/v/t39.30808-6/583911799_1271059981492659_6000260096783447748_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEsFDsYysC6VmB4UMNVh-gy3NBJVO2b5JTc0ElU7ZvklL0GZen1WjfaZYyfX35tjSWK3jO7bLSk08HN4QX3ArvS&_nc_ohc=AkEkvzXKc9UQ7kNvwHXhElp&_nc_oc=AdkCw_Kht4CMWDfipv9XMPkJJeuOo9Ud15OhgZwZlZ8sf4g_l4yMJ4Hn71RDQDxgMwE&_nc_zt=23&_nc_ht=scontent.faae1-1.fna&_nc_gid=hiOg2otb4p3lVzFsVm0jGw&oh=00_Afg66z48AVQZpRXX74046QGcXNgq0pf_kD6ppxOqIaAYpQ&oe=691FC01C",
+        date: "30 Jul 2025",
         author: {
-            name: "Lana Steiner",
-            avatarUrl: "https://www.untitledui.com/images/avatars/lana-steiner?fm=webp&q=80",
+            name: "Bordj Steel",
+            avatarUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/305985822_415848520658809_8245524316773822026_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=xW0m_0uG6ooQ7kNvgEWk937&_nc_oc=AdgM-33BYPEiK7iW5PN2a1z3eD7j0V6sT8xGg8aT-u4xG5k74JBYkS6A29sYp17T5pQ&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=AXXJg0s2sL47_1v7UAnqA8&oh=00_AfBw-IqV1y_J3b_c0n7vB9iHn6Jb9i3E7dK5nO9f-cZ3wA&oe=691FB599",
         },
     },
     {
@@ -307,3 +307,5 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
+
+    
