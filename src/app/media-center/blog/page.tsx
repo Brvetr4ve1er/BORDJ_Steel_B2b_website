@@ -283,7 +283,6 @@ export default function BlogPage() {
                             <BlogPostCard {...featuredArticle} />
                         </div>
                         <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3 mt-12">
-                            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fweb.facebook.com%2Fspabordjsteel%2Fposts%2Fpfbid0kfNiWFJnQffG7zHGubXWWrQf4AZ4ZAbxC7pX3f3XMnnwRSnhgWLeCrxdXNCnEsWdl&show_text=true&width=500" width="500" height="250" style={{border:'none',overflow:'hidden'}} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                             {articles.slice(1).map((article, index) => (
                                 <li key={index} className={cn(!isDesktop && "nth-[n+7]:hidden")}>
                                     <BlogPostCard {...article} />
@@ -308,5 +307,3 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
-
-    
