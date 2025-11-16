@@ -175,7 +175,7 @@ export function Contact() {
       title: "Bureaux Commercial",
       email: "commercial@bordjsteel.dz",
       phone: "+213 561 61 60 05",
-      image: "https://i.pinimg.com/736x/47/96/a1/4796a1c0ca2eeec68b8721a16d75c1a2.jpg",
+      image: "https://i.ibb.co/8g8NcMmj/Chat-GPT-Image-16-nov-2025-15-22-10.png",
     },
     {
       icon: <HardHat className="h-8 w-8" />,
