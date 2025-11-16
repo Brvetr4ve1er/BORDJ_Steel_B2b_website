@@ -37,7 +37,12 @@ export const companyData = {
       { 
         "name": "Media Center", 
         "href": "/media-center", 
-        "icon": "Newspaper"
+        "icon": "Newspaper",
+        "children": [
+          { "name": "Blog/Actualités", "href": "/media-center/blog", "description": "Nos dernières nouvelles et articles.", "icon": "BookOpen" },
+          { "name": "Vidéos", "href": "/media-center/videos", "description": "Découvrez nos projets en vidéo.", "icon": "Video" },
+          { "name": "Galerie", "href": "/media-center/gallery", "description": "Explorez nos réalisations en images.", "icon": "View" }
+        ]
       },
       { 
         "name": "Contact & Carrières", 
@@ -246,3 +251,5 @@ export const companyData = {
     whatsapp: "#"
   },
 };
+
+    
