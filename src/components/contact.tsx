@@ -189,7 +189,7 @@ export function Contact() {
       title: "Panneaux Sandwich",
       phone: "+213 770 70 59 78",
       email: "commercial@bordjsteel.dz",
-      image: "https://i.ibb.co/L6vjZ63/Chat-GPT-Image-16-nov-2025-15-28-56.png",
+      image: "https://i.ibb.co/JjHNr2m6/Chat-GPT-Image-16-nov-2025-16-06-59.png",
     },
     {
       icon: <Zap className="h-8 w-8" />,
