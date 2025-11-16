@@ -172,6 +172,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.untitledui.com',
         port: '',
         pathname: '/**',
+      },
+       {
+        protocol: 'https',
+        hostname: 'scontent.faae1-1.fna.fbcdn.net',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
