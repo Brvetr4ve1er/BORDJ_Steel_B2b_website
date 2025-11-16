@@ -34,10 +34,14 @@ export interface BlogPostCardProps extends React.HTMLAttributes<HTMLDivElement>,
   imageUrl?: string;
   href: string;
   readMoreText?: string;
+  author?: {
+    name: string;
+    avatarUrl: string;
+  };
 }
 
 const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
-  ({ className, variant, tag, date, title, description, imageUrl, href, readMoreText = 'Lire l\'article complet', ...props }, ref) => {
+  ({ className, variant, tag, date, title, description, imageUrl, href, readMoreText = 'Lire l\'article complet', author, ...props }, ref) => {
     const cardHover = {
       hover: {
         y: -5,
@@ -72,6 +76,14 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
               </span>
             </h3>
             <p className="text-muted-foreground">{description}</p>
+          </div>
+          <div className="mt-6 flex items-center gap-4">
+              {author && (
+                <div className="flex items-center gap-3">
+                  <Image src={author.avatarUrl} alt={author.name} width={40} height={40} className="rounded-full" />
+                  <span className="font-semibold text-sm">{author.name}</span>
+                </div>
+              )}
           </div>
           {variant === 'featured' && (
             <div className="mt-8">

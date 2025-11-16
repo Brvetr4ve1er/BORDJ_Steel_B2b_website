@@ -166,11 +166,15 @@ const nextConfig: NextConfig = {
         hostname: 'www.cosider-groupe.dz',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.untitledui.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
 };
 
 export default nextConfig;
-
-    
