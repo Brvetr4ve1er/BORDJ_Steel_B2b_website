@@ -202,12 +202,13 @@ const RecruitmentPage = () => {
             
             {/* Content */}
             <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
-              <h2 className="text-4xl font-bold text-white mb-6 tracking-wide">
+              <h2 className="text-4xl font-bold text-white mb-4 tracking-wide">
                 CANDIDATURE SPONTANÉE
               </h2>
-              <button className="bg-accent hover:bg-accent/90 text-white font-bold py-4 px-10 rounded-lg transition-colors duration-200 text-lg shadow-lg">
-                Cliquez ici
-              </button>
+              <p className="text-white font-bold mb-6">recrutement@bordjsteel.dz</p>
+              <a href="mailto:recrutement@bordjsteel.dz?subject=Candidature%20Spontanée" className="bg-accent hover:bg-accent/90 text-white font-bold py-4 px-10 rounded-lg transition-colors duration-200 text-lg shadow-lg">
+                Envoyez nous votre CV
+              </a>
             </div>
           </div>
         </div>
@@ -217,5 +218,3 @@ const RecruitmentPage = () => {
 };
 
 export default RecruitmentPage;
-
-    
