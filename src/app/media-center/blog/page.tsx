@@ -4,15 +4,15 @@
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
-import { BlogPostCard } from '@/components/ui/blog-post-card';
+import { BlogPostCard, type BlogPostCardProps } from '@/components/ui/blog-post-card';
 import { useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ArrowUpRight, Award } from 'lucide-react';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { cn } from "@/lib/utils";
-import type { BlogPostCardProps } from '@/components/ui/blog-post-card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, isFeatured?: boolean})[] = [
     {
@@ -151,6 +151,42 @@ const sortByOptions = [
 
 const featuredArticle = articles[0];
 
+const certifications = [
+  { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/1b/c3/3a/1bc33a6cbdf6d1c416b32699f6e5802b.jpg" },
+  { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg" },
+  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/fc/ea/fb/fceafbcc5c3f0645268534eed8924cb3.jpg" }
+];
+
+function CertificationCard({ cert }: { cert: { name: string; description: string; image: string; } }) {
+    return (
+      <Card className="group overflow-hidden text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+        <CardHeader className="p-0">
+          <div className="bg-secondary p-4">
+            <h3 className="text-xl font-bold text-primary">{cert.name}</h3>
+            <p className="text-muted-foreground">{cert.description}</p>
+          </div>
+        </CardHeader>
+        <CardContent className="p-4 bg-background">
+          <div className="aspect-[3/4] relative rounded-md overflow-hidden border-4 border-secondary shadow-inner">
+            <Image
+              src={cert.image}
+              alt={`Certification ${cert.name}`}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+        </CardContent>
+      </Card>
+    );
+}
+
+const EmptyContent = ({tab}: {tab: string}) => (
+    <div className="text-center py-16">
+        <h2 className="text-2xl font-bold">Content for {tab} Coming Soon</h2>
+        <p className="text-muted-foreground mt-2">This section is under construction.</p>
+    </div>
+)
+
 export default function BlogPage() {
     const isDesktop = useBreakpoint("lg");
     const [sortBy, setSortBy] = useState(sortByOptions[0].id);
@@ -184,76 +220,91 @@ export default function BlogPage() {
                 </div>
             </section>
             <main className="mx-auto flex w-full flex-col gap-12 px-4 py-16 md:gap-16 md:px-8 md:pb-24">
-                {featuredArticle && (
-                  <a
-                      href={featuredArticle.href}
-                      className="relative hidden w-full overflow-hidden rounded-2xl outline-none select-none focus-visible:outline-2 focus-visible:outline-offset-4 md:block h-[480px]"
-                  >
-                      <Image src={featuredArticle.imageUrl!} alt={featuredArticle.title} className="absolute inset-0 size-full object-cover" fill/>
-                      <div className="absolute inset-x-0 bottom-0 w-full bg-gradient-to-t from-black/60 to-transparent pt-24">
-                          <div className="flex w-full flex-col gap-6 p-8">
-                              <div className="flex flex-col gap-2">
-                                  <div className="flex gap-4 items-center">
-                                      <p className="flex-1 text-3xl font-semibold text-white">{featuredArticle.title}</p>
-                                      <ArrowUpRight className="size-6 shrink-0 text-white" />
-                                  </div>
-                                  <p className="line-clamp-2 text-md text-white">{featuredArticle.description}</p>
-                              </div>
-                              <div className="flex gap-6 items-center">
-                                  <div className="flex flex-1 gap-8">
-                                      <div className="flex flex-col gap-2">
-                                          <p className="text-sm font-semibold text-white">Written by</p>
-                                          <div className="flex items-center gap-2">
-                                              <Avatar>
-                                                <AvatarImage src={featuredArticle.author!.avatarUrl} alt={featuredArticle.author!.name} />
-                                                <AvatarFallback>{featuredArticle.author!.name.charAt(0)}</AvatarFallback>
-                                              </Avatar>
-                                              <p className="text-sm font-semibold text-white">{featuredArticle.author!.name}</p>
-                                          </div>
-                                      </div>
-                                      <div className="flex flex-col gap-2">
-                                          <p className="text-sm font-semibold text-white">Published on</p>
-                                          <div className="flex h-10 items-center">
-                                              <p className="text-md font-semibold text-white">{featuredArticle.date}</p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </a>
-                )}
-                 <div className="md:hidden">
-                    <BlogPostCard {...featuredArticle} />
-                 </div>
-
-                 <div className="flex flex-col items-end gap-8 md:flex-row">
-                    <Tabs defaultValue={tabs[0].id} className="w-full">
+                 <Tabs defaultValue={tabs[0].id} className="w-full">
+                    <div className="flex flex-col items-end gap-8 md:flex-row">
                         <TabsList>
                             {tabs.map(tab => <TabsTrigger key={tab.id} value={tab.id}>{tab.label}</TabsTrigger>)}
                         </TabsList>
-                    </Tabs>
-                     <div className="relative w-full md:max-w-44">
-                        <Select value={sortBy} onValueChange={setSortBy}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Sort by" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {sortByOptions.map(option => (
-                              <SelectItem key={option.id} value={option.id}>{option.label}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                     </div>
-                 </div>
+                        <div className="relative w-full md:max-w-44">
+                            <Select value={sortBy} onValueChange={setSortBy}>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Sort by" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {sortByOptions.map(option => (
+                                <SelectItem key={option.id} value={option.id}>{option.label}</SelectItem>
+                                ))}
+                            </SelectContent>
+                            </Select>
+                        </div>
+                    </div>
 
-                 <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
-                     {articles.slice(1).map((article, index) => (
-                         <li key={index} className={cn(!isDesktop && "nth-[n+7]:hidden")}>
-                             <BlogPostCard {...article} />
-                         </li>
-                     ))}
-                 </ul>
+                    <TabsContent value="iso" className="mt-12">
+                        <AnimatedWrapper animation="fade-in">
+                            <div className="grid md:grid-cols-3 gap-8">
+                                {certifications.map((cert, index) => (
+                                    <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                                    <CertificationCard cert={cert} />
+                                    </AnimatedWrapper>
+                                ))}
+                            </div>
+                        </AnimatedWrapper>
+                    </TabsContent>
+                    <TabsContent value="news"><EmptyContent tab="News" /></TabsContent>
+                    <TabsContent value="blog">
+                        {featuredArticle && (
+                            <a
+                                href={featuredArticle.href}
+                                className="relative hidden w-full overflow-hidden rounded-2xl outline-none select-none focus-visible:outline-2 focus-visible:outline-offset-4 md:block h-[480px] mt-12"
+                            >
+                                <Image src={featuredArticle.imageUrl!} alt={featuredArticle.title} className="absolute inset-0 size-full object-cover" fill/>
+                                <div className="absolute inset-x-0 bottom-0 w-full bg-gradient-to-t from-black/60 to-transparent pt-24">
+                                    <div className="flex w-full flex-col gap-6 p-8">
+                                        <div className="flex flex-col gap-2">
+                                            <div className="flex gap-4 items-center">
+                                                <p className="flex-1 text-3xl font-semibold text-white">{featuredArticle.title}</p>
+                                                <ArrowUpRight className="size-6 shrink-0 text-white" />
+                                            </div>
+                                            <p className="line-clamp-2 text-md text-white">{featuredArticle.description}</p>
+                                        </div>
+                                        <div className="flex gap-6 items-center">
+                                            <div className="flex flex-1 gap-8">
+                                                <div className="flex flex-col gap-2">
+                                                    <p className="text-sm font-semibold text-white">Written by</p>
+                                                    <div className="flex items-center gap-2">
+                                                        <Avatar>
+                                                            <AvatarImage src={featuredArticle.author!.avatarUrl} alt={featuredArticle.author!.name} />
+                                                            <AvatarFallback>{featuredArticle.author!.name.charAt(0)}</AvatarFallback>
+                                                        </Avatar>
+                                                        <p className="text-sm font-semibold text-white">{featuredArticle.author!.name}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="flex flex-col gap-2">
+                                                    <p className="text-sm font-semibold text-white">Published on</p>
+                                                    <div className="flex h-10 items-center">
+                                                        <p className="text-md font-semibold text-white">{featuredArticle.date}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        )}
+                        <div className="md:hidden mt-12">
+                            <BlogPostCard {...featuredArticle} />
+                        </div>
+                        <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3 mt-12">
+                            {articles.slice(1).map((article, index) => (
+                                <li key={index} className={cn(!isDesktop && "nth-[n+7]:hidden")}>
+                                    <BlogPostCard {...article} />
+                                </li>
+                            ))}
+                        </ul>
+                    </TabsContent>
+                    <TabsContent value="catalogue"><EmptyContent tab="Catalogue" /></TabsContent>
+                    <TabsContent value="videos"><EmptyContent tab="Videos" /></TabsContent>
+                 </Tabs>
             </main>
         </ProductPageLayout>
     );
