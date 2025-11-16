@@ -6,7 +6,7 @@ import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
 import { BlogPostCard, type BlogPostCardProps } from '@/components/ui/blog-post-card';
 import { useState } from 'react';
-import { ArrowUpRight, Award } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Award } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -71,15 +71,15 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
     },
     {
         id: "article-5",
-        title: "What is wireframing?",
-        description: "Introduction to Wireframing and its Principles. Learn from the best in the industry.",
+        title: "Le secret de nos panneaux sandwich : le Polyuréthane (PUR)",
+        description: "هل تعلم أن السر وراء مقاومةالحرارة و الماء في ألواح الساندويتش هو مادة البوليوريثان (PUR)؟ هذه المادة الخفيفة والفعالة تخلق حاجزًا يمنع تسرب الماء والرطوبة، وفي نفس الوقت توفر عزلًا حراريًا قويًا يخليك مرتاح في كل الفصول مع Bordj Steel، الجودة ماشي صدفة — بل نتيجة اختيار مواد مدروسة بعناية تجمع بين المتانة، العزل، والابتكار. تواصلوا معنا للحصول على مزيد من المعلومات أو لدراسة مخصصة لمشروعكم!",
         href: "#",
-        tag: "Design",
-        imageUrl: "https://www.untitledui.com/marketing/wireframing-layout.webp",
-        date: "15 Jan 2025",
+        tag: "Innovation",
+        imageUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/565127683_1245286394070018_2241164913418861999_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFd7te9WmM-tAfyiwQ2gbTLThS_q2SAW3tOFL-rZIBbe8wCRfCEnPq3SrJX7w6s-OCloKmplFjSsA3Wv00F6qZs&_nc_ohc=23Iycb070owQ7kNvwHjaUDM&_nc_oc=AdnJs8kiX2A87or8l5jBXFFU0TGwUMOVjwcDt7dZ3X1Ws-3W2FHgx6l7OTFrimQjlMg&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=jwKqt9VubLfKZy35xgI5ng&oh=00_AfiXcVsVI5OQFz3bLYwEE5HFyzIEmokEsJtYzlQIAiIDJg&oe=691FCBDA",
+        date: "26 Jul 2025",
         author: {
-            name: "Candice Wu",
-            avatarUrl: "https://www.untitledui.com/images/avatars/candice-wu?fm=webp&q=80",
+            name: "Bordj Steel",
+            avatarUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/305985822_415848520658809_8245524316773822026_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=xW0m_0uG6ooQ7kNvgEWk937&_nc_oc=AdgM-33BYPEiK7iW5PN2a1z3eD7j0V6sT8xGg8aT-u4xG5k74JBYkS6A29sYp17T5pQ&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=AXXJg0s2sL47_1v7UAnqA8&oh=00_AfBw-IqV1y_J3b_c0n7vB9iHn6Jb9i3E7dK5nO9f-cZ3wA&oe=691FB599",
         },
     },
     {
