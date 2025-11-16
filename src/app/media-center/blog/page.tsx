@@ -33,7 +33,7 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
     {
         id: "article-2",
         title: "Votre hangar de rêve devient réalité",
-        description: "Chez Bordj Steel, nous transformons vos idées en structures solides, durables et parfaitement adaptées à vos besoins.",
+        description: "Chez Bordj Steel, nous transformons vos idées en structures solides, durables et parfaitement adaptées à vos besoins. Grâce à notre expertise dans la fabrication et le montage de charpentes métalliques, nous vous offrons : 🔹 Des solutions sur mesure 🔹 Une qualité irréprochable 🔹 Une exécution rapide et maîtrisée 🔹 Des matériaux certifiés et performants Quel que soit votre projet — industriel, agricole ou logistique — nous vous accompagnons de la conception à la réalisation pour vous livrer un hangar à la hauteur de vos ambitions. 📞 Contactez-nous pour une étude personnalisée !📞 Contactez-nous : ✉️ commercial@bordjsteel.dz | marketing@bordjsteel.dz 📞 +213 770 83 25 96 / +213 770 98 43 14/ +213 561 61 60 05 🌐 www.bordjsteel.dz #BordjSteel #CharpenteMetallique #Construction #Innovation #Acier #MadeInAlgeria",
         href: "#",
         tag: "Projet",
         imageUrl: "https://scontent.faae1-1.fna.fbcdn.net/v/t39.30808-6/583911799_1271059981492659_6000260096783447748_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEsFDsYysC6VmB4UMNVh-gy3NBJVO2b5JTc0ElU7ZvklL0GZen1WjfaZYyfX35tjSWK3jO7bLSk08HN4QX3ArvS&_nc_ohc=AkEkvzXKc9UQ7kNvwHXhElp&_nc_oc=AdkCw_Kht4CMWDfipv9XMPkJJeuOo9Ud15OhgZwZlZ8sf4g_l4yMJ4Hn71RDQDxgMwE&_nc_zt=23&_nc_ht=scontent.faae1-1.fna&_nc_gid=hiOg2otb4p3lVzFsVm0jGw&oh=00_Afg66z48AVQZpRXX74046QGcXNgq0pf_kD6ppxOqIaAYpQ&oe=691FC01C",
@@ -137,7 +137,7 @@ const sortByOptions = [
     { id: "viewed", label: "Most viewed" },
 ];
 
-const featuredArticle = articles[0];
+const featuredArticle = articles.find(a => a.isFeatured);
 
 const certifications = [
   { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/1b/c3/3a/1bc33a6cbdf6d1c416b32699f6e5802b.jpg" },
@@ -208,7 +208,7 @@ export default function BlogPage() {
                 </div>
             </section>
             <main className="mx-auto flex w-full flex-col gap-12 px-4 py-16 md:gap-16 md:px-8 md:pb-24">
-                 <Tabs defaultValue={tabs[0].id} className="w-full">
+                 <Tabs defaultValue={tabs[2].id} className="w-full">
                     <div className="flex flex-col items-end gap-8 md:flex-row">
                         <TabsList>
                             {tabs.map(tab => <TabsTrigger key={tab.id} value={tab.id}>{tab.label}</TabsTrigger>)}
@@ -241,49 +241,10 @@ export default function BlogPage() {
                     <TabsContent value="news"><EmptyContent tab="News" /></TabsContent>
                     <TabsContent value="blog">
                         {featuredArticle && (
-                            <a
-                                href={featuredArticle.href}
-                                className="relative hidden w-full overflow-hidden rounded-2xl outline-none select-none focus-visible:outline-2 focus-visible:outline-offset-4 md:block h-[480px] mt-12"
-                            >
-                                <Image src={featuredArticle.imageUrl!} alt={featuredArticle.title} className="absolute inset-0 size-full object-cover" fill/>
-                                <div className="absolute inset-x-0 bottom-0 w-full bg-gradient-to-t from-black/60 to-transparent pt-24">
-                                    <div className="flex w-full flex-col gap-6 p-8">
-                                        <div className="flex flex-col gap-2">
-                                            <div className="flex gap-4 items-center">
-                                                <p className="flex-1 text-3xl font-semibold text-white">{featuredArticle.title}</p>
-                                                <ArrowUpRight className="size-6 shrink-0 text-white" />
-                                            </div>
-                                            <p className="line-clamp-2 text-md text-white">{featuredArticle.description}</p>
-                                        </div>
-                                        <div className="flex gap-6 items-center">
-                                            <div className="flex flex-1 gap-8">
-                                                <div className="flex flex-col gap-2">
-                                                    <p className="text-sm font-semibold text-white">Written by</p>
-                                                    <div className="flex items-center gap-2">
-                                                        <Avatar>
-                                                            <AvatarImage src={featuredArticle.author!.avatarUrl} alt={featuredArticle.author!.name} />
-                                                            <AvatarFallback>{featuredArticle.author!.name.charAt(0)}</AvatarFallback>
-                                                        </Avatar>
-                                                        <p className="text-sm font-semibold text-white">{featuredArticle.author!.name}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="flex flex-col gap-2">
-                                                    <p className="text-sm font-semibold text-white">Published on</p>
-                                                    <div className="flex h-10 items-center">
-                                                        <p className="text-md font-semibold text-white">{featuredArticle.date}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                           <BlogPostCard {...featuredArticle} variant="featured" />
                         )}
-                        <div className="md:hidden mt-12">
-                            <BlogPostCard {...featuredArticle} />
-                        </div>
                         <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3 mt-12">
-                            {articles.slice(1).map((article, index) => (
+                            {articles.filter(a => !a.isFeatured).map((article, index) => (
                                 <li key={index} className={cn(!isDesktop && "nth-[n+7]:hidden")}>
                                     <BlogPostCard {...article} />
                                 </li>
@@ -307,5 +268,3 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
-
-    
