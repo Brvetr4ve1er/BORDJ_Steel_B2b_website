@@ -46,7 +46,7 @@ const RecruitmentPage = () => {
   ];
   
   const heroImage = {
-      src: "https://i.ibb.co/67GMw55s/Chat-GPT-Image-13-nov-2025-15-28-02.png",
+      src: "https://i.ibb.co/b5M7sxTW/Chat-GPT-Image-16-nov-2025-10-56-58.png",
       alt: "Team of professionals in a modern office",
       aiHint: "professional team office"
   }
