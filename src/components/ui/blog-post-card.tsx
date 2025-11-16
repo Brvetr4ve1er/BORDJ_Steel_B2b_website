@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from 'react';
@@ -8,6 +9,7 @@ import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Logo } from '../logo';
 
 const cardVariants = cva(
   'group relative flex flex-col overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1',
@@ -94,7 +96,13 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
             <div className="mt-6 flex items-center justify-between">
                 {author && (
                   <div className="flex items-center gap-3">
-                    <Image src={author.avatarUrl} alt={author.name} width={40} height={40} className="rounded-full" />
+                    {author.avatarUrl.endsWith('.svg') ? (
+                       <div className="h-10 w-10">
+                          <Logo />
+                       </div>
+                    ) : (
+                      <Image src={author.avatarUrl} alt={author.name} width={40} height={40} className="rounded-full" />
+                    )}
                     <span className="font-semibold text-sm">{author.name}</span>
                   </div>
                 )}
@@ -123,3 +131,5 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
 BlogPostCard.displayName = 'BlogPostCard';
 
 export { BlogPostCard };
+
+    

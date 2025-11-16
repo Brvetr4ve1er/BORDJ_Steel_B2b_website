@@ -14,6 +14,7 @@ import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { DownloadButton } from '@/components/ui/download-button';
+import { Logo } from '@/components/logo';
 
 const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, isFeatured?: boolean})[] = [
     {
@@ -25,8 +26,8 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
         imageUrl: "https://www.untitledui.com/marketing/spirals.webp",
         date: "20 Jan 2025",
         author: {
-            name: "Olivia Rhye",
-            avatarUrl: "https://www.untitledui.com/images/avatars/olivia-rhye?fm=webp&q=80",
+            name: "Bordj Steel",
+            avatarUrl: "/bordj-steel-logo.svg",
         },
         isFeatured: true,
     },
@@ -40,7 +41,7 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
         date: "30 Jul 2025",
         author: {
             name: "Bordj Steel",
-            avatarUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/305985822_415848520658809_8245524316773822026_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=xW0m_0uG6ooQ7kNvgEWk937&_nc_oc=AdgM-33BYPEiK7iW5PN2a1z3eD7j0V6sT8xGg8aT-u4xG5k74JBYkS6A29sYp17T5pQ&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=AXXJg0s2sL47_1v7UAnqA8&oh=00_AfBw-IqV1y_J3b_c0n7vB9iHn6Jb9i3E7dK5nO9f-cZ3wA&oe=691FB599",
+            avatarUrl: "/bordj-steel-logo.svg",
         },
     },
     {
@@ -53,7 +54,7 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
         date: "28 Jul 2025",
         author: {
             name: "Bordj Steel",
-            avatarUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/305985822_415848520658809_8245524316773822026_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=xW0m_0uG6ooQ7kNvgEWk937&_nc_oc=AdgM-33BYPEiK7iW5PN2a1z3eD7j0V6sT8xGg8aT-u4xG5k74JBYkS6A29sYp17T5pQ&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=AXXJg0s2sL47_1v7UAnqA8&oh=00_AfBw-IqV1y_J3b_c0n7vB9iHn6Jb9i3E7dK5nO9f-cZ3wA&oe=691FB599",
+            avatarUrl: "/bordj-steel-logo.svg",
         },
     },
     {
@@ -66,7 +67,7 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
         date: "27 Jul 2025",
         author: {
             name: "Bordj Steel",
-            avatarUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/305985822_415848520658809_8245524316773822026_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=xW0m_0uG6ooQ7kNvgEWk937&_nc_oc=AdgM-33BYPEiK7iW5PN2a1z3eD7j0V6sT8xGg8aT-u4xG5k74JBYkS6A29sYp17T5pQ&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=AXXJg0s2sL47_1v7UAnqA8&oh=00_AfBw-IqV1y_J3b_c0n7vB9iHn6Jb9i3E7dK5nO9f-cZ3wA&oe=691FB599",
+            avatarUrl: "/bordj-steel-logo.svg",
         },
     },
     {
@@ -79,7 +80,7 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
         date: "26 Jul 2025",
         author: {
             name: "Bordj Steel",
-            avatarUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/305985822_415848520658809_8245524316773822026_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=xW0m_0uG6ooQ7kNvgEWk937&_nc_oc=AdgM-33BYPEiK7iW5PN2a1z3eD7j0V6sT8xGg8aT-u4xG5k74JBYkS6A29sYp17T5pQ&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=AXXJg0s2sL47_1v7UAnqA8&oh=00_AfBw-IqV1y_J3b_c0n7vB9iHn6Jb9i3E7dK5nO9f-cZ3wA&oe=691FB599",
+            avatarUrl: "/bordj-steel-logo.svg",
         },
     },
     {
@@ -92,7 +93,7 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
         date: "25 Jul 2025",
         author: {
             name: "Bordj Steel",
-            avatarUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/305985822_415848520658809_8245524316773822026_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=xW0m_0uG6ooQ7kNvgEWk937&_nc_oc=AdgM-33BYPEiK7iW5PN2a1z3eD7j0V6sT8xGg8aT-u4xG5k74JBYkS6A29sYp17T5pQ&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=AXXJg0s2sL47_1v7UAnqA8&oh=00_AfBw-IqV1y_J3b_c0n7vB9iHn6Jb9i3E7dK5nO9f-cZ3wA&oe=691FB599",
+            avatarUrl: "/bordj-steel-logo.svg",
         },
     },
     {
@@ -104,8 +105,8 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
         imageUrl: "https://www.untitledui.com/marketing/workspace-5.webp",
         date: "13 Jan 2025",
         author: {
-            name: "Drew Cano",
-            avatarUrl: "https://www.untitledui.com/images/avatars/drew-cano?fm=webp&q=80",
+            name: "Bordj Steel",
+            avatarUrl: "/bordj-steel-logo.svg",
         },
     },
     {
@@ -117,8 +118,8 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
         imageUrl: "https://www.untitledui.com/marketing/sythesize.webp",
         date: "12 Jan 2025",
         author: {
-            name: "Orlando Diggs",
-            avatarUrl: "https://www.untitledui.com/images/avatars/orlando-diggs?fm=webp&q=80",
+            name: "Bordj Steel",
+            avatarUrl: "/bordj-steel-logo.svg",
         },
     },
 ];
@@ -268,7 +269,5 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
-
-    
 
     
