@@ -84,7 +84,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https,
+        protocol: 'https',
         hostname: 'metidji.com',
         port: '',
         pathname: '/**',
@@ -116,6 +116,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'instagram.faae1-2.fna.fbcdn.net',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'scontent.faae1-1.fna.fbcdn.net',
         port: '',
         pathname: '/**',
       },
@@ -154,15 +160,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
-    
-
-
-    
-
-
-
-
-
-
-    
