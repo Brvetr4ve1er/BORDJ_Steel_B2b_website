@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { DownloadButton } from '@/components/ui/download-button';
 
 const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, isFeatured?: boolean})[] = [
     {
@@ -302,7 +303,17 @@ export default function BlogPage() {
                             ))}
                         </ul>
                     </TabsContent>
-                    <TabsContent value="catalogue"><EmptyContent tab="Catalogue" /></TabsContent>
+                    <TabsContent value="catalogue">
+                        <div className="flex flex-col items-center justify-center text-center py-16">
+                            <h2 className="text-3xl font-bold text-primary mb-4">Notre Catalogue</h2>
+                            <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
+                                Téléchargez notre catalogue complet pour découvrir en détail l'ensemble de nos produits et solutions de construction métallique.
+                            </p>
+                            <a href="/documents/catalogue.pdf" download="Bordj-Steel-Catalogue.pdf">
+                                <DownloadButton text="Télécharger le Catalogue" />
+                            </a>
+                        </div>
+                    </TabsContent>
                     <TabsContent value="videos"><EmptyContent tab="Videos" /></TabsContent>
                  </Tabs>
             </main>
