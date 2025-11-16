@@ -84,15 +84,15 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
     },
     {
         id: "article-6",
-        title: "How collaboration makes us better designers",
-        description: "Collaboration can make our teams stronger, and our individual designs better.",
+        title: "Merci de votre visite à BATI EST EXPO 2025",
+        description: "نودّ أن نتقدّم بجزيل الشكر لإدارة المعرض على التنظيم الرائع، ولكل الزوّار والمهنيين الذين شرفونا بزيارتهم لجناح BordjSteel. كان المعرض فرصة مميزة للتبادل وتقاسم الخبرات، والتعرّف على شركاء جدد في قطاع البناء والأشغال العمومية.",
         href: "#",
-        tag: "Design",
-        imageUrl: "https://www.untitledui.com/marketing/two-people.webp",
-        date: "14 Jan 2025",
+        tag: "Événement",
+        imageUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/557848153_1234783215120336_1124929936421243318_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFCzNlBis3kZJ8tgY51Gw0IpIg5NUPp1oqkiDk1Q-nWiipnCP7FLn_t5A_CAXAAsmdiM6J0vdWx106JqjpxoALI&_nc_ohc=vylDLaWMPjkQ7kNvwHmbDov&_nc_oc=AdlZzTrAmdfnXpMaOFSKO_-g8btgEfNufl1PPm0lDuiVtVhtCFyGgmHgsyE-TPkxym4&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=RiBNy4UDtBmGDriIuz37uw&oh=00_AfgItwa167dUTjk7ZS4It95fcmgyu4b9hpzDVJzyab_FXA&oe=691FC3B2",
+        date: "25 Jul 2025",
         author: {
-            name: "Natali Craig",
-            avatarUrl: "https://www.untitledui.com/images/avatars/natali-craig?fm=webp&q=80",
+            name: "Bordj Steel",
+            avatarUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/305985822_415848520658809_8245524316773822026_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=xW0m_0uG6ooQ7kNvgEWk937&_nc_oc=AdgM-33BYPEiK7iW5PN2a1z3eD7j0V6sT8xGg8aT-u4xG5k74JBYkS6A29sYp17T5pQ&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=AXXJg0s2sL47_1v7UAnqA8&oh=00_AfBw-IqV1y_J3b_c0n7vB9iHn6Jb9i3E7dK5nO9f-cZ3wA&oe=691FB599",
         },
     },
     {
@@ -268,5 +268,7 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
+
+    
 
     
