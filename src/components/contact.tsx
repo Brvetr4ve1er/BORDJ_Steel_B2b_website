@@ -182,14 +182,14 @@ export function Contact() {
       title: "Charpente Métallique",
       phone: "+213 770 98 43 14",
       email: "commercial@bordjsteel.dz",
-      image: "https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg",
+      image: "https://i.ibb.co/zTj0R52/Chat-GPT-Image-16-nov-2025-16-22-41.png",
     },
     {
       icon: <Package className="h-8 w-8" />,
       title: "Panneaux Sandwich",
       phone: "+213 770 70 59 78",
       email: "commercial@bordjsteel.dz",
-      image: "https://i.ibb.co/JjHNr2m6/Chat-GPT-Image-16-nov-2025-16-06-59.png",
+      image: "https://i.ibb.co/JjHNr2m/Chat-GPT-Image-16-nov-2025-16-06-59.png",
     },
     {
       icon: <Zap className="h-8 w-8" />,
