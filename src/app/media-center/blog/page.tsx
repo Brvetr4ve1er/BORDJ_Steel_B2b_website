@@ -31,19 +31,6 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
         isFeatured: true,
     },
     {
-        id: "article-2",
-        title: "Migrating to Linear 101",
-        description: "Linear helps streamline software projects, sprints, tasks, and bug tracking. Here's how to get started.",
-        href: "#",
-        tag: "Product",
-        imageUrl: "https://www.untitledui.com/marketing/conversation.webp",
-        date: "19 Jan 2025",
-        author: {
-            name: "Phoenix Baker",
-            avatarUrl: "https://www.untitledui.com/images/avatars/phoenix-baker?fm=webp&q=80",
-        },
-    },
-    {
         id: "article-3",
         title: "Building your API stack",
         description: "The rise of RESTful APIs has been met by a rise in tools for creating, testing, and managing them.",
@@ -296,6 +283,7 @@ export default function BlogPage() {
                             <BlogPostCard {...featuredArticle} />
                         </div>
                         <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3 mt-12">
+                            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fweb.facebook.com%2Fspabordjsteel%2Fposts%2Fpfbid0kfNiWFJnQffG7zHGubXWWrQf4AZ4ZAbxC7pX3f3XMnnwRSnhgWLeCrxdXNCnEsWdl&show_text=true&width=500" width="500" height="250" style={{border:'none',overflow:'hidden'}} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                             {articles.slice(1).map((article, index) => (
                                 <li key={index} className={cn(!isDesktop && "nth-[n+7]:hidden")}>
                                     <BlogPostCard {...article} />
@@ -320,3 +308,5 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
+
+    
