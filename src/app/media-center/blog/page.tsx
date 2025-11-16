@@ -136,11 +136,11 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
 ];
 
 const tabs = [
-    { id: "all", label: "View all" },
-    { id: "design", label: "Design" },
-    { id: "product", label: "Product" },
-    { id: "software-engineering", label: "Software Engineering" },
-    { id: "customer-success", label: "Customer Success" },
+    { id: "iso", label: "ISO" },
+    { id: "news", label: "News" },
+    { id: "blog", label: "Blog" },
+    { id: "catalogue", label: "Catalogue" },
+    { id: "videos", label: "Vidéos" },
 ];
 
 const sortByOptions = [
