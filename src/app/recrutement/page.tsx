@@ -217,6 +217,3 @@ const RecruitmentPage = () => {
 };
 
 export default RecruitmentPage;
-
-    
-    
