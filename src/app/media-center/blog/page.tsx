@@ -210,11 +210,11 @@ export default function BlogPage() {
             </section>
             <main className="mx-auto flex w-full flex-col gap-12 px-4 py-16 md:gap-16 md:px-8 md:pb-24">
                  <Tabs defaultValue={tabs[2].id} className="w-full">
-                    <div className="flex flex-col items-end gap-8 md:flex-row">
-                        <TabsList>
-                            {tabs.map(tab => <TabsTrigger key={tab.id} value={tab.id}>{tab.label}</TabsTrigger>)}
+                    <div className="flex flex-col items-center gap-8">
+                        <TabsList className="h-auto">
+                            {tabs.map(tab => <TabsTrigger key={tab.id} value={tab.id} className="text-lg py-2 px-6">{tab.label}</TabsTrigger>)}
                         </TabsList>
-                        <div className="relative w-full md:max-w-44">
+                        <div className="relative w-full max-w-xs mx-auto">
                             <Select value={sortBy} onValueChange={setSortBy}>
                             <SelectTrigger>
                                 <SelectValue placeholder="Sort by" />
