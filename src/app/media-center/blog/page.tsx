@@ -19,11 +19,11 @@ import { Logo } from '@/components/logo';
 const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, isFeatured?: boolean})[] = [
     {
         id: "article-1",
-        title: "BordjSteel inaugure une nouvelle ligne de production de PRS",
-        description: "Découvrez comment notre nouvelle ligne de production de Profils Reconstitués Soudés (PRS) repousse les limites de la construction métallique en Algérie.",
+        title: "Découvrez notre gamme complète de panneaux sandwich",
+        description: "🏗️ Découvrez notre gamme complète de panneaux sandwich chez Bordj Steel : ✅ Panneau sandwich de bardage ✅ Panneau sandwich de couverture ✅ Panneau sandwich frigorifique ✅ Tole nervurée TN40 ✅ Plancher collaborant \"Hi-Bond 77\" 🔧 Pièces de finition disponibles ✨ Qualité supérieure, isolation optimale et durabilité garantie pour tous vos projets. 👉 Contactez-nous dès aujourd’hui et obtenez votre consultation gratuite ! 📩 marketing@bordjsteel.dz | commercial@bordjsteel.dz 📞 +213 770 83 25 96 / +213 770 98 43 14",
         href: "#",
         tag: "Innovation",
-        imageUrl: "https://www.untitledui.com/marketing/spirals.webp",
+        imageUrl: "https://scontent.faae1-1.fna.fbcdn.net/v/t39.30808-6/549388013_1220983809833610_1149533220390155880_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEHFuUSHW2lLWeBPd_bKrL5eRAE6Huw4YV5EAToe7DhhQBwHbeF9OPLG8IjJNJRWFhQUpbdACMWxL1FdxNGDyhH&_nc_ohc=0arx7LMxbeAQ7kNvwFQarul&_nc_oc=AdkNVRfLvWEky8y-N3RcsuGNc0ptqOAgfQUlJgenxbv8zubD3TjFb_Pu3vWFEldNSgw&_nc_zt=23&_nc_ht=scontent.faae1-1.fna&_nc_gid=83-zVBgCT5FhAFvfk0nIYQ&oh=00_AfhGWNFUmG3GilsFLx8flv0Rdr6d2e1lnYgB6KOpeN_jSg&oe=6920D4BA",
         date: "20 Jan 2025",
         author: {
             name: "Bordj Steel",
@@ -47,7 +47,7 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
     {
         id: "article-3",
         title: "La perfection se cache dans les détails",
-        description: "Chez Bordj Steel, nous portons une attention particulière à chaque détail. Nos pièces de finition sont conçues pour garantir : Une qualité irréprochable, une précision d’assemblage optimale, et une esthétique soignée qui valorise vos structures métalliques.",
+        description: "Chez Bordj Steel, nous portons une attention particulière à chaque détail. Nos pièces de finition sont conçues pour garantir : Une qualité irréprochable, une précision d’assemblage optimale, et une esthétique soignée qui valorise vos structures métalliques. Parce que la perfection se cache dans les détails, Bordj Steel met tout son savoir-faire au service de la durabilité et du design. 📞 Contactez-nous pour plus d’informations ou une étude personnalisée ! +213 770 83 25 96 / +213 770 70 59 78 / +213 561 61 60 05 📧 commercial@bordjsteel.dz 📧 marketing@bordjsteel.dz 🌐 www.bordjsteel.dz #BordjSteel #Finition #Acier #Construction #Métallique #SavoirFaireAlgérien #Qualité #Industrie",
         href: "#",
         tag: "Qualité",
         imageUrl: "https://scontent.faae1-1.fna.fbcdn.net/v/t39.30808-6/571375868_1253603903238267_7359372654458876570_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFGPRMdAWAjmwK5sXbG-zRi1TXAWeWysVvVNcBZ5bKxW4_pnl1wYQtgBEHDdKT9quazCZ4rGAW2R9GfMomJT7mx&_nc_ohc=y53gj6-1jfIQ7kNvwH_fwwl&_nc_oc=Adnze2IPD-wjmczjE6KwvcttrF74kUTFog7GSA5BWgwpbDqyraH_fer0eVlIe0hghD8&_nc_zt=23&_nc_ht=scontent.faae1-1.fna&_nc_gid=GFe-el5slBBK7mvcpCCM3A&oh=00_AfgfYtAiEAMSa9wRUQ_QIQAcFkZ6x_UGXFi33cNr0ASAnQ&oe=691F94A7",
@@ -60,7 +60,7 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
     {
         id: "article-4",
         title: "Pourquoi choisir la charpente métallique Bordj Steel ?",
-        description: "Chez Bordj Steel, nous allions solidité, durabilité et précision. Nos charpentes métalliques sont conçues pour offrir : Une résistance exceptionnelle, une installation rapide et économique, et un design sur mesure.",
+        description: "Chez Bordj Steel, nous allions solidité, durabilité et précision. Nos charpentes métalliques sont conçues pour offrir : ✅ Une résistance exceptionnelle face aux conditions climatiques. ✅ Une installation rapide et économique. ✅ Un design sur mesure qui s’adapte à tous vos projets industriels, agricoles ou tertiaires. Faites le choix de la performance et de la fiabilité 100% algérienne 📞 Contactez-nous pour plus d’informations ou une étude personnalisée. +213 770 83 25 96 / +213 770 98 43 14/ +213 561 61 60 05 📧 Email : commercial@bordjsteel.dz marketing@bordjsteel.dz 🌐 Site Web : www.bordjsteel.dz",
         href: "#",
         tag: "Savoir-Faire",
         imageUrl: "https://scontent.faae1-1.fna.fbcdn.net/v/t39.30808-6/568389363_1249499766982014_8120807308806462573_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFPt14qcpl7kjw2yCqA1eTvxea1cNTkhBDF5rVw1OSEEG9CT_W6XCTlCagBJUEIPsZmhdPLBPeGDkvqnH4_MfGg&_nc_ohc=LWWgQEGHIl0Q7kNvwFrO8-o&_nc_oc=Admzduc-kM5R6LWzFSmHqzTjJzeNMM0XBUaua4fY3GTgvo6jT8eChZfNFHkNm57v6Cs&_nc_zt=23&_nc_ht=scontent.faae1-1.fna&_nc_gid=GFe-el5slBBK7mvcpCCM3A&oh=00_AfjiV5vZGdizDM25FWs5ThgKTsCLmE7tXiuhasbUj9ShFw&oe=691F9EFE",
@@ -73,7 +73,7 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
     {
         id: "article-5",
         title: "Le secret de nos panneaux sandwich : le Polyuréthane (PUR)",
-        description: "هل تعلم أن السر وراء مقاومةالحرارة و الماء في ألواح الساندويتش هو مادة البوليوريثان (PUR)؟ هذه المادة الخفيفة والفعالة تخلق حاجزًا يمنع تسرب الماء والرطوبة، وفي نفس الوقت توفر عزلًا حراريًا قويًا يخليك مرتاح في كل الفصول مع Bordj Steel، الجودة ماشي صدفة — بل نتيجة اختيار مواد مدروسة بعناية تجمع بين المتانة، العزل، والابتكار. تواصلوا معنا للحصول على مزيد من المعلومات أو لدراسة مخصصة لمشروعكم!",
+        description: "هل تعلم أن السر وراء مقاومةالحرارة و الماء في ألواح الساندويتش هو مادة البوليوريثان (PUR)؟ هذه المادة الخفيفة والفعالة تخلق حاجزًا يمنع تسرب الماء والرطوبة، وفي نفس الوقت توفر عزلًا حراريًا قويًا يخليك مرتاح في كل الفصول مع Bordj Steel، الجودة ماشي صدفة — بل نتيجة اختيار مواد مدروسة بعناية تجمع بين المتانة، العزل، والابتكار. تواصلوا معنا للحصول على مزيد من المعلومات أو لدراسة مخصصة لمشروعكم! 📞 الهاتف: +213 770 83 25 96 / +213 770 70 59 78 / +213 561 61 60 05 📧 البريد الإلكتروني: commercial@bordjsteel.dz / marketing@bordjsteel.dz 🌐 الموقع الإلكتروني: www.bordjsteel.dz",
         href: "#",
         tag: "Innovation",
         imageUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/565127683_1245286394070018_2241164913418861999_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFd7te9WmM-tAfyiwQ2gbTLThS_q2SAW3tOFL-rZIBbe8wCRfCEnPq3SrJX7w6s-OCloKmplFjSsA3Wv00F6qZs&_nc_ohc=23Iycb070owQ7kNvwHjaUDM&_nc_oc=AdnJs8kiX2A87or8l5jBXFFU0TGwUMOVjwcDt7dZ3X1Ws-3W2FHgx6l7OTFrimQjlMg&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=jwKqt9VubLfKZy35xgI5ng&oh=00_AfiXcVsVI5OQFz3bLYwEE5HFyzIEmokEsJtYzlQIAiIDJg&oe=691FCBDA",
@@ -270,4 +270,5 @@ export default function BlogPage() {
     );
 };
 
+    
     

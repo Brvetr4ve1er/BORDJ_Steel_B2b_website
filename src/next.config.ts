@@ -154,9 +154,17 @@ const nextConfig: NextConfig = {
         hostname: 'softal-construction.dz',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.untitledui.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
 };
 
 export default nextConfig;
+
+    
