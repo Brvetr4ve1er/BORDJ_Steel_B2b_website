@@ -182,7 +182,7 @@ export function Contact() {
       title: "Charpente Métallique",
       phone: "+213 770 98 43 14",
       email: "commercial@bordjsteel.dz",
-      image: "https://i.ibb.co/zTj0R52/Chat-GPT-Image-16-nov-2025-16-22-41.png",
+      image: "https://i.ibb.co/5gBmNhs/Chat-GPT-Image-16-nov-2025-16-22-41.png",
     },
     {
       icon: <Package className="h-8 w-8" />,
