@@ -243,5 +243,3 @@ export function Contact() {
     </section>
   );
 }
-
-    
