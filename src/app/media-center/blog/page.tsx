@@ -86,7 +86,7 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
     {
         id: "article-6",
         title: "Merci de votre visite à BATI EST EXPO 2025",
-        description: "نودّ أن نتقدّم بجزيل الشكر لإدارة المعرض على التنظيم الرائع، ولكل الزوّار والمهنيين الذين شرفونا بزيارتهم لجناح BordjSteel. كان المعرض فرصة مميزة للتبادل وتقاسم الخبرات، والتعرّف على شركاء جدد في قطاع البناء والأشغال العمومية.",
+        description: "شكر خاص لكل من زارنا في معرض BATI EST EXPO 2025 نودّ أن نتقدّم بجزيل الشكر لإدارة المعرض على التنظيم الرائع، ولكل الزوّار والمهنيين الذين شرفونا بزيارتهم لجناح BordjSteel 🤝 كان المعرض فرصة مميزة للتبادل وتقاسم الخبرات، والتعرّف على شركاء جدد في قطاع البناء والأشغال العمومية 🏗️ شهد جناحنا إقبالًا كبيرًا من المهنيين والمهتمين الذين اكتشفوا منتجاتنا وحلولنا المبتكرة في مجالات الشاربونت، الغلفنة، والبانو ساندويتش 💡 📸 إليكم بعض المقتطفات من أجواء جناحنا خلال أيام الصالون! #BordjSteel #BATI_EST_EXPO2025",
         href: "#",
         tag: "Événement",
         imageUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/557848153_1234783215120336_1124929936421243318_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFCzNlBis3kZJ8tgY51Gw0IpIg5NUPp1oqkiDk1Q-nWiipnCP7FLn_t5A_CAXAAsmdiM6J0vdWx106JqjpxoALI&_nc_ohc=vylDLaWMPjkQ7kNvwHmbDov&_nc_oc=AdlZzTrAmdfnXpMaOFSKO_-g8btgEfNufl1PPm0lDuiVtVhtCFyGgmHgsyE-TPkxym4&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=RiBNy4UDtBmGDriIuz37uw&oh=00_AfgItwa167dUTjk7ZS4It95fcmgyu4b9hpzDVJzyab_FXA&oe=691FC3B2",
@@ -111,12 +111,12 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
     },
     {
         id: "article-8",
-        title: "Podcast: Creating a better CX Community",
-        description: "Starting a community doesn't need to be complicated, but how do you get started?",
+        title: "Charpente métallique by BordjSteel",
+        description: "🔹 La solidité, la précision et la qualité… trois valeurs qui définissent chacun de nos projets. ✅ Structures conçues pour supporter les charges les plus lourdes ✅ Fabrication selon des standards internationaux ✅ Robustesse qui garantit la durabilité de vos investissements Avec BordjSteel, choisissez une charpente métallique qui allie force et fiabilité. 📞 +213 770 98 43 14",
         href: "#",
-        tag: "Podcasts",
-        imageUrl: "https://www.untitledui.com/marketing/sythesize.webp",
-        date: "12 Jan 2025",
+        tag: "Savoir-Faire",
+        imageUrl: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/539585734_1204873731444618_3505337654299472358_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeE1araSmD9ZGHv5fgHxOgOJ_ZlquzeEni39mWq7N4SeLXIjr4DygmEcA--FdBoNGHZCo7lugz5PEXnmjP5579YV&_nc_ohc=p0d_TXkJM3IQ7kNvwFKxRke&_nc_oc=AdmoFaebAa5ywkDjNMSpzh7xbwAzLzxV35ZlKb_EWlhWfFNhOYg39Y_fqTXFHNlBW7U&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=wuxQhIoWbPhBme_RH_2JiA&oh=00_Afi3158cK21eBkB8P-RXj3tl6KW40q0Vy495FKpKCIG2sg&oe=6920DF6E",
+        date: "20 Jul 2025",
         author: {
             name: "Bordj Steel",
             avatarUrl: "/bordj-steel-logo.svg",
@@ -271,6 +271,8 @@ export default function BlogPage() {
 };
 
     
+    
+
     
 
     
