@@ -98,12 +98,12 @@ const articles: (Omit<BlogPostCardProps, 'href'> & {id: string, href: string, is
     },
     {
         id: "article-7",
-        title: "Our top 10 Javascript frameworks to use",
-        description: "JavaScript frameworks make development easy with extensive features and functionalities.",
+        title: "La galvanisation, notre garantie anti-rouille !",
+        description: "✨ La rouille n’a plus sa chance ! ✨ Chez nous, la galvanisation c’est : ✅ Qualité certifiée ✅ Durabilité garantie ✅ Service professionnel ✅ Prix compétitifs et adaptés à vos besoins 👉 Faites le choix de la fiabilité et de la performance. 📱 Téléphone : 0770 98 43 14 / 0561 61 60 05 🌐 Site web : www.bordjsteel.dz 📧 Email : commercial@bordjsteel.dz",
         href: "#",
-        tag: "Software Development",
-        imageUrl: "https://www.untitledui.com/marketing/workspace-5.webp",
-        date: "13 Jan 2025",
+        tag: "Savoir-Faire",
+        imageUrl: "https://scontent.faae1-1.fna.fbcdn.net/v/t39.30808-6/542752894_1209181164347208_8145503418422825860_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE3yHVjV7eGBXBBy_sFmC9V333iFZQiAAHffeIVlCIAAfRDcC25xwgxOrKNggrAtqwM-Gdj6UwHJbatwplUqX_R&_nc_ohc=b-bkBC-_-xwQ7kNvwEvmQvK&_nc_oc=AdlupLlTWPVaTMRoYbZ-Q0dz0RbEJ0adCX6oOU62vtdXSY9O2NCxsmKOnqCN1_IKx48&_nc_zt=23&_nc_ht=scontent.faae1-1.fna&_nc_gid=wuxQhIoWbPhBme_RH_2JiA&oh=00_AfhbGhtJsExgKpeuXX2KLpE9MntXkeZ956gd9myyU92rGg&oe=6920E7C1",
+        date: "22 Jul 2025",
         author: {
             name: "Bordj Steel",
             avatarUrl: "/bordj-steel-logo.svg",
@@ -242,7 +242,7 @@ export default function BlogPage() {
                     <TabsContent value="news"><EmptyContent tab="News" /></TabsContent>
                     <TabsContent value="blog">
                         {featuredArticle && (
-                           <BlogPostCard {...featuredArticle} variant="featured" />
+                           <BlogPostCard {...featuredArticle} variant="featured" className="h-[600px]"/>
                         )}
                         <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3 mt-12">
                             {articles.filter(a => !a.isFeatured).map((article, index) => (
@@ -271,4 +271,6 @@ export default function BlogPage() {
 };
 
     
+    
+
     
