@@ -121,6 +121,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'scontent.faae1-1.fna.fbcdn.net',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'scontent.faae1-2.fna.fbcdn.net',
         port: '',
         pathname: '/**',
@@ -149,7 +155,7 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
-      {
+       {
         protocol: 'https',
         hostname: 'cdn.brandfetch.io',
         port: '',
@@ -170,12 +176,6 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'www.untitledui.com',
-        port: '',
-        pathname: '/**',
-      },
-       {
-        protocol: 'https',
-        hostname: 'scontent.faae1-1.fna.fbcdn.net',
         port: '',
         pathname: '/**',
       }
