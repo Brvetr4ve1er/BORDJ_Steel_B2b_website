@@ -242,7 +242,7 @@ export default function BlogPage() {
                     <TabsContent value="news"><EmptyContent tab="News" /></TabsContent>
                     <TabsContent value="blog">
                         {featuredArticle && (
-                           <BlogPostCard {...featuredArticle} variant="featured" className="h-[600px]"/>
+                           <BlogPostCard {...featuredArticle} variant="featured" />
                         )}
                         <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3 mt-12">
                             {articles.filter(a => !a.isFeatured).map((article, index) => (
@@ -276,3 +276,4 @@ export default function BlogPage() {
     
 
     
+
