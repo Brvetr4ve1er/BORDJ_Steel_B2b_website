@@ -19,6 +19,7 @@ import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
 import { companyData } from '@/config/company-data';
 import { useState } from 'react';
+import Image from 'next/image';
 
 const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -80,10 +81,14 @@ function ContactCard({
       style={style}
     >
       <div className="relative h-48 w-full overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-          style={{ backgroundImage: `url(${image})` }}
-        />
+        {image && (
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+        )}
       </div>
 
       <div className="relative flex flex-col gap-4 p-6">
@@ -238,3 +243,5 @@ export function Contact() {
     </section>
   );
 }
+
+    
