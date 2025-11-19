@@ -147,24 +147,27 @@ const certifications = [
 
 function CertificationCard({ cert }: { cert: { name: string; description: string; image: string; } }) {
     return (
-      <Card className="group overflow-hidden text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-        <CardHeader className="p-0">
-          <div className="bg-secondary p-4">
-            <h3 className="text-xl font-bold text-primary">{cert.name}</h3>
-            <p className="text-muted-foreground">{cert.description}</p>
-          </div>
-        </CardHeader>
-        <CardContent className="p-4 bg-background">
-          <div className="aspect-[3/4] relative rounded-md overflow-hidden border-4 border-secondary shadow-inner">
-            <Image
-              src={cert.image}
-              alt={`Certification ${cert.name}`}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-        </CardContent>
-      </Card>
+        <div className="relative group w-full max-w-sm mx-auto">
+            <div className="relative bg-card p-6 rounded-lg shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex items-center gap-4">
+                <div className="flex-shrink-0">
+                    <Award className="h-10 w-10 text-accent" />
+                </div>
+                <div className="flex-grow">
+                    <h3 className="text-lg font-bold text-primary">{cert.name}</h3>
+                    <p className="text-sm text-muted-foreground">{cert.description}</p>
+                </div>
+            </div>
+            <div className="absolute left-full top-1/2 -translate-y-1/2 ml-4 w-48 h-64 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out pointer-events-none group-hover:pointer-events-auto">
+                <div className="relative w-full h-full bg-white rounded-lg shadow-2xl border-2 border-accent overflow-hidden">
+                    <Image
+                        src={cert.image}
+                        alt={`Certification ${cert.name}`}
+                        fill
+                        className="object-contain"
+                    />
+                </div>
+            </div>
+        </div>
     );
 }
 
@@ -232,7 +235,7 @@ export default function BlogPage() {
                             <div className="grid md:grid-cols-3 gap-8">
                                 {certifications.map((cert, index) => (
                                     <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                                    <CertificationCard cert={cert} />
+                                      <CertificationCard cert={cert} />
                                     </AnimatedWrapper>
                                 ))}
                             </div>
@@ -267,5 +270,7 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
+
+    
 
     
