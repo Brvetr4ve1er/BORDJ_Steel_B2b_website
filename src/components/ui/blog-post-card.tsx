@@ -65,12 +65,12 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
         </a>
         <div className={cn(
           "relative z-0 flex h-full w-full",
-          variant === 'featured' ? 'flex-col md:flex-row' : 'flex-col'
+          variant === 'featured' ? 'flex-col' : 'flex-col'
         )}>
           {imageUrl && (
             <div className={cn(
               "relative overflow-hidden",
-               variant === 'featured' ? 'w-full md:w-2/5 aspect-[9/16]' : 'w-full aspect-[3/4]'
+               "w-full aspect-[3/4]"
             )}>
               <Image
                 src={imageUrl}
@@ -80,7 +80,7 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
               />
             </div>
           )}
-          <div className="flex flex-1 flex-col justify-between p-6 md:p-8">
+          <div className="flex flex-1 flex-col justify-between p-6">
             <div>
               <div className="mb-4 flex items-center gap-4 text-xs font-semibold uppercase text-muted-foreground">
                 <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">{tag}</span>
@@ -91,7 +91,7 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
                   {title}
                 </span>
               </h3>
-              <p className="text-muted-foreground text-base">{description}</p>
+              <p className="text-muted-foreground text-base line-clamp-3">{description}</p>
             </div>
             <div className="mt-6 flex items-center justify-between">
                 {author && (
@@ -107,7 +107,7 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
                   </div>
                 )}
                 {variant !== 'featured' && (
-                   <Button variant="ghost" size="sm" className="group/button text-primary hover:text-primary">
+                   <Button variant="ghost" size="sm" className="group/button text-primary hover:text-primary z-20">
                       {readMoreText}
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
                   </Button>
@@ -115,7 +115,7 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
             </div>
             {variant === 'featured' && (
               <div className="mt-8">
-                  <Button variant="default" className="group/button">
+                  <Button variant="default" className="group/button z-20">
                       {readMoreText}
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
                   </Button>
@@ -131,3 +131,5 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
 BlogPostCard.displayName = 'BlogPostCard';
 
 export { BlogPostCard };
+
+    

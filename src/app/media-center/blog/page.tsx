@@ -41,10 +41,10 @@ const certifications = [
 function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: string; description: string; image: string; }, hoverDirection?: 'left' | 'right' }) {
     return (
         <div className="relative group w-full max-w-sm mx-auto">
-            <div className="relative bg-card p-6 rounded-full shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex flex-col items-center justify-center text-center h-48 w-48 mx-auto">
-                <Award className="h-16 w-16 text-accent mb-2" />
-                <h3 className="text-lg font-bold text-primary">{cert.name}</h3>
-                <p className="text-sm text-muted-foreground">{cert.description}</p>
+            <div className="relative bg-card p-6 rounded-full shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex flex-col items-center justify-center text-center h-56 w-56 mx-auto">
+                <Award className="h-20 w-20 text-accent mb-2" />
+                <h3 className="text-xl font-bold text-primary">{cert.name}</h3>
+                <p className="text-md text-muted-foreground">{cert.description}</p>
             </div>
             <div className={cn(
                 "absolute top-1/2 -translate-y-1/2 w-[32rem] h-[40rem] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out pointer-events-none group-hover:pointer-events-auto z-50",
@@ -98,20 +98,33 @@ export default function BlogPage() {
                 return <EmptyContent tab="News" />;
             case 'blog':
                 return (
-                    <>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {featuredArticle && (
-                           <div className="w-full">
-                                <BlogPostCard {...featuredArticle} variant="featured" />
+                           <div className="md:col-span-2 md:row-span-2 h-full">
+                                <BlogPostCard {...featuredArticle} variant="featured" className="h-full" />
                            </div>
                         )}
-                        <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3 mt-12">
-                            {articles.map((article, index) => (
-                                <li key={index} className={cn(!isDesktop && "nth-[n+7]:hidden")}>
-                                    <BlogPostCard {...article} />
-                                </li>
-                            ))}
-                        </ul>
-                    </>
+                        {articles.slice(0, 1).map((article) => (
+                           <div key={article.id} className="md:col-span-2">
+                               <BlogPostCard {...article} />
+                           </div>
+                        ))}
+                        {articles.slice(1, 3).map((article) => (
+                           <div key={article.id}>
+                               <BlogPostCard {...article} />
+                           </div>
+                        ))}
+                        {articles.slice(3, 4).map((article) => (
+                           <div key={article.id} className="md:col-span-2">
+                               <BlogPostCard {...article} />
+                           </div>
+                        ))}
+                        {articles.slice(4).map((article) => (
+                           <div key={article.id}>
+                               <BlogPostCard {...article} />
+                           </div>
+                        ))}
+                    </div>
                 );
             case 'catalogue':
                 return (
@@ -196,3 +209,5 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
+
+    
