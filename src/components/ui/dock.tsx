@@ -85,7 +85,7 @@ function Dock({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        'mx-auto flex h-16 items-end gap-4 rounded-2xl bg-secondary/80 backdrop-blur-md px-4 pb-2',
+        'mx-auto flex h-16 items-end gap-4',
         className
       )}
       style={{ height: panelHeight }}
@@ -158,13 +158,21 @@ function DockIcon({ children, className, ...rest }: DockIconProps) {
   const width = restProps['width'] as MotionValue<number>;
 
   const size = useTransform(width, (val) => {
-      return 0.5 * val;
+      return 0.8 * val;
   });
 
   return (
     <motion.div
-      style={{ width: size, height: size }}
-      className={cn('flex items-center justify-center', className)}
+      style={{
+        width: size,
+        height: size,
+        backgroundColor: 'hsl(var(--secondary))',
+        backdropFilter: 'blur(10px)',
+      }}
+      className={cn(
+        'flex items-center justify-center rounded-full border border-border/50',
+        className
+      )}
     >
       {children}
     </motion.div>
