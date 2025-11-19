@@ -162,7 +162,7 @@ export default function BlogPage() {
                             <DockIcon>
                               <tab.icon className={cn("h-8 w-8", activeTab === tab.id ? 'text-accent' : 'text-primary/50')} />
                             </DockIcon>
-                            <DockLabel>{tab.label}</DockLabel>
+                            <DockLabel className={cn(activeTab === tab.id ? 'text-accent' : 'text-primary/50')}>{tab.label}</DockLabel>
                           </DockItem>
                         ))}
                       </Dock>

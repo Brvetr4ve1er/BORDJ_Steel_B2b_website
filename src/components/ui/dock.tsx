@@ -110,7 +110,7 @@ function Dock({
           mouseX.set(Infinity);
         }}
         className={cn(
-          'mx-auto flex w-fit items-end gap-4 rounded-2xl bg-secondary/80 backdrop-blur-md px-4 dark:bg-neutral-900',
+          'mx-auto flex w-fit items-end gap-4 rounded-2xl bg-secondary/80 backdrop-blur-md px-4',
           className
         )}
         style={{ height: panelHeight }}
@@ -126,7 +126,7 @@ function Dock({
 }
 
 function DockItem({ children, className, onClick }: DockItemProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLButtonElement>(null);
 
   const { distance, magnification, mouseX, spring } = useDock();
 
@@ -146,7 +146,7 @@ function DockItem({ children, className, onClick }: DockItemProps) {
   const width = useSpring(widthTransform, spring);
 
   return (
-    <motion.div
+    <motion.button
       ref={ref}
       style={{ width }}
       onHoverStart={() => isHovered.set(1)}
@@ -155,7 +155,7 @@ function DockItem({ children, className, onClick }: DockItemProps) {
       onBlur={() => isHovered.set(0)}
       onClick={onClick}
       className={cn(
-        'relative inline-flex cursor-pointer items-center justify-center',
+        'relative flex flex-col items-center justify-end gap-1 pb-2',
         className
       )}
       tabIndex={0}
@@ -165,43 +165,23 @@ function DockItem({ children, className, onClick }: DockItemProps) {
       {Children.map(children, (child) =>
         cloneElement(child as React.ReactElement, { width, isHovered })
       )}
-    </motion.div>
+    </motion.button>
   );
 }
 
 function DockLabel({ children, className, ...rest }: DockLabelProps) {
-  const restProps = rest as Record<string, unknown>;
-  const isHovered = restProps['isHovered'] as MotionValue<number>;
-  const [isVisible, setIsVisible] = useState(false);
+    const { width } = rest as any;
+    const opacity = useTransform(width, [40, 80], [0, 1]);
+    const y = useTransform(width, [40, 80], [4, 0]);
 
-  useEffect(() => {
-    const unsubscribe = isHovered.on('change', (latest) => {
-      setIsVisible(latest === 1);
-    });
-
-    return () => unsubscribe();
-  }, [isHovered]);
-
-  return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 1, y: -10 }}
-          exit={{ opacity: 0, y: 0 }}
-          transition={{ duration: 0.2 }}
-          className={cn(
-            'absolute -top-6 left-1/2 w-fit whitespace-pre rounded-md border border-border bg-background px-2 py-0.5 text-xs text-foreground shadow-md',
-            className
-          )}
-          role='tooltip'
-          style={{ x: '-50%' }}
+    return (
+        <motion.span
+            style={{ opacity, y }}
+            className={cn('text-xs', className)}
         >
-          {children}
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+            {children}
+        </motion.span>
+    );
 }
 
 function DockIcon({ children, className, ...rest }: DockIconProps) {
