@@ -120,9 +120,17 @@ export default function BlogPage() {
                         <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
                             Téléchargez notre catalogue complet pour découvrir en détail l'ensemble de nos produits et solutions de construction métallique.
                         </p>
-                        <a href="/documents/catallogue de produi Final.pdf" download="Bordj-Steel-Catalogue.pdf">
-                            <DownloadButton text="Télécharger le Catalogue" />
-                        </a>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            <a href="/documents/catalogue-fr.pdf" download="Bordj-Steel-Catalogue-FR.pdf">
+                                <DownloadButton text="Catalogue Français" />
+                            </a>
+                            <a href="/documents/catalogue-en.pdf" download="Bordj-Steel-Catalogue-EN.pdf">
+                                <DownloadButton text="English Catalog" />
+                            </a>
+                            <a href="/documents/catalogue-ar.pdf" download="Bordj-Steel-Catalogue-AR.pdf">
+                                <DownloadButton text="الكتالوج العربي" />
+                            </a>
+                        </div>
                     </div>
                 );
             default:
