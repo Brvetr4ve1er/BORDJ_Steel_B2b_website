@@ -157,7 +157,7 @@ function CertificationCard({ cert }: { cert: { name: string; description: string
                     <p className="text-sm text-muted-foreground">{cert.description}</p>
                 </div>
             </div>
-            <div className="absolute left-full top-1/2 -translate-y-1/2 ml-4 w-48 h-64 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out pointer-events-none group-hover:pointer-events-auto">
+            <div className="absolute left-full top-1/2 -translate-y-1/2 ml-4 w-64 h-80 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out pointer-events-none group-hover:pointer-events-auto">
                 <div className="relative w-full h-full bg-white rounded-lg shadow-2xl border-2 border-accent overflow-hidden">
                     <Image
                         src={cert.image}
@@ -270,7 +270,5 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
-
-    
 
     
