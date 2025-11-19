@@ -148,16 +148,12 @@ const certifications = [
 function CertificationCard({ cert }: { cert: { name: string; description: string; image: string; } }) {
     return (
         <div className="relative group w-full max-w-sm mx-auto">
-            <div className="relative bg-card p-6 rounded-lg shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex items-center gap-4">
-                <div className="flex-shrink-0">
-                    <Award className="h-10 w-10 text-accent" />
-                </div>
-                <div className="flex-grow">
-                    <h3 className="text-lg font-bold text-primary">{cert.name}</h3>
-                    <p className="text-sm text-muted-foreground">{cert.description}</p>
-                </div>
+            <div className="relative bg-card p-6 rounded-full shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex flex-col items-center justify-center text-center h-48 w-48 mx-auto">
+                <Award className="h-16 w-16 text-accent mb-2" />
+                <h3 className="text-lg font-bold text-primary">{cert.name}</h3>
+                <p className="text-sm text-muted-foreground">{cert.description}</p>
             </div>
-            <div className="absolute left-full top-1/2 -translate-y-1/2 ml-4 w-64 h-80 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out pointer-events-none group-hover:pointer-events-auto">
+            <div className="absolute left-full top-1/2 -translate-y-1/2 ml-4 w-[32rem] h-[40rem] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out pointer-events-none group-hover:pointer-events-auto">
                 <div className="relative w-full h-full bg-white rounded-lg shadow-2xl border-2 border-accent overflow-hidden">
                     <Image
                         src={cert.image}
@@ -270,5 +266,7 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
+
+    
 
     
