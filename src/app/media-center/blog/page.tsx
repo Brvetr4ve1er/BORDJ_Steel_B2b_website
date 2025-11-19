@@ -6,9 +6,7 @@ import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
 import { BlogPostCard, type BlogPostCardProps } from '@/components/ui/blog-post-card';
 import { useState } from 'react';
-import { ArrowRight, ArrowUpRight, Award } from 'lucide-react';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ArrowRight, ArrowUpRight, Award, Newspaper, BookOpen, FileText } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { cn } from "@/lib/utils";
@@ -16,12 +14,13 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { DownloadButton } from '@/components/ui/download-button';
 import { Logo } from '@/components/logo';
 import { articles as allArticles } from '@/config/blog-data';
+import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
 
 const tabs = [
-    { id: "iso", label: "ISO" },
-    { id: "news", label: "News" },
-    { id: "blog", label: "Blog" },
-    { id: "catalogue", label: "Catalogue" },
+    { id: "iso", label: "ISO", icon: Award },
+    { id: "news", label: "News", icon: Newspaper },
+    { id: "blog", label: "Blog", icon: BookOpen },
+    { id: "catalogue", label: "Catalogue", icon: FileText },
 ];
 
 const sortByOptions = [
@@ -74,11 +73,62 @@ const EmptyContent = ({tab}: {tab: string}) => (
 export default function BlogPage() {
     const isDesktop = useBreakpoint("lg");
     const [sortBy, setSortBy] = useState(sortByOptions[0].id);
+    const [activeTab, setActiveTab] = useState('blog');
     const heroImage = {
         src: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&q=80",
         alt: "Person reading a book in a library",
         aiHint: "reading library"
     }
+
+    const renderContent = () => {
+        switch (activeTab) {
+            case 'iso':
+                return (
+                    <AnimatedWrapper animation="fade-in">
+                        <div className="grid md:grid-cols-3 gap-8">
+                            {certifications.map((cert, index) => (
+                                <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                                  <CertificationCard cert={cert} hoverDirection={index === 2 ? 'left' : 'right'} />
+                                </AnimatedWrapper>
+                            ))}
+                        </div>
+                    </AnimatedWrapper>
+                );
+            case 'news':
+                return <EmptyContent tab="News" />;
+            case 'blog':
+                return (
+                    <>
+                        {featuredArticle && (
+                           <div className="w-full">
+                                <BlogPostCard {...featuredArticle} variant="featured" />
+                           </div>
+                        )}
+                        <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3 mt-12">
+                            {articles.map((article, index) => (
+                                <li key={index} className={cn(!isDesktop && "nth-[n+7]:hidden")}>
+                                    <BlogPostCard {...article} />
+                                </li>
+                            ))}
+                        </ul>
+                    </>
+                );
+            case 'catalogue':
+                return (
+                    <div className="flex flex-col items-center justify-center text-center py-16">
+                        <h2 className="text-3xl font-bold text-primary mb-4">Notre Catalogue</h2>
+                        <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
+                            Téléchargez notre catalogue complet pour découvrir en détail l'ensemble de nos produits et solutions de construction métallique.
+                        </p>
+                        <a href="/documents/catallogue de produi Final.pdf" download="Bordj-Steel-Catalogue.pdf">
+                            <DownloadButton text="Télécharger le Catalogue" />
+                        </a>
+                    </div>
+                );
+            default:
+                return null;
+        }
+    };
 
     return (
         <ProductPageLayout>
@@ -104,65 +154,36 @@ export default function BlogPage() {
                 </div>
             </section>
             <main className="mx-auto flex w-full flex-col gap-12 px-4 py-16 md:gap-16 md:px-8 md:pb-24">
-                 <Tabs defaultValue={tabs[2].id} className="w-full">
-                     <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                        <div className="w-full md:w-auto md:flex-1 flex justify-center">
-                           <TabsList className="h-auto scale-125">
-                                {tabs.map(tab => <TabsTrigger key={tab.id} value={tab.id} className="text-lg py-2 px-6">{tab.label}</TabsTrigger>)}
-                           </TabsList>
-                        </div>
-                        <div className="w-full md:w-auto md:max-w-xs">
-                            <Select value={sortBy} onValueChange={setSortBy}>
-                            <SelectTrigger>
-                                <SelectValue placeholder="Sort by" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {sortByOptions.map(option => (
-                                <SelectItem key={option.id} value={option.id}>{option.label}</SelectItem>
-                                ))}
-                            </SelectContent>
-                            </Select>
-                        </div>
+                 <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div className="w-full md:w-auto md:flex-1 flex justify-center">
+                       <Dock>
+                        {tabs.map((tab) => (
+                          <DockItem key={tab.id} onClick={() => setActiveTab(tab.id)}>
+                            <DockIcon>
+                              <tab.icon className={cn("h-8 w-8", activeTab === tab.id ? 'text-accent' : 'text-primary/50')} />
+                            </DockIcon>
+                            <DockLabel>{tab.label}</DockLabel>
+                          </DockItem>
+                        ))}
+                      </Dock>
                     </div>
-
-                    <TabsContent value="iso" className="mt-12">
-                        <AnimatedWrapper animation="fade-in">
-                            <div className="grid md:grid-cols-3 gap-8">
-                                {certifications.map((cert, index) => (
-                                    <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                                      <CertificationCard cert={cert} hoverDirection={index === 2 ? 'left' : 'right'} />
-                                    </AnimatedWrapper>
-                                ))}
-                            </div>
-                        </AnimatedWrapper>
-                    </TabsContent>
-                    <TabsContent value="news"><EmptyContent tab="News" /></TabsContent>
-                    <TabsContent value="blog">
-                        {featuredArticle && (
-                           <div className="w-full">
-                                <BlogPostCard {...featuredArticle} variant="featured" />
-                           </div>
-                        )}
-                        <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3 mt-12">
-                            {articles.map((article, index) => (
-                                <li key={index} className={cn(!isDesktop && "nth-[n+7]:hidden")}>
-                                    <BlogPostCard {...article} />
-                                </li>
+                    <div className="w-full md:w-auto md:max-w-xs">
+                        <Select value={sortBy} onValueChange={setSortBy}>
+                        <SelectTrigger>
+                            <SelectValue placeholder="Sort by" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {sortByOptions.map(option => (
+                            <SelectItem key={option.id} value={option.id}>{option.label}</SelectItem>
                             ))}
-                        </ul>
-                    </TabsContent>
-                    <TabsContent value="catalogue">
-                        <div className="flex flex-col items-center justify-center text-center py-16">
-                            <h2 className="text-3xl font-bold text-primary mb-4">Notre Catalogue</h2>
-                            <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
-                                Téléchargez notre catalogue complet pour découvrir en détail l'ensemble de nos produits et solutions de construction métallique.
-                            </p>
-                            <a href="/documents/catallogue de produi Final.pdf" download="Bordj-Steel-Catalogue.pdf">
-                                <DownloadButton text="Télécharger le Catalogue" />
-                            </a>
-                        </div>
-                    </TabsContent>
-                 </Tabs>
+                        </SelectContent>
+                        </Select>
+                    </div>
+                </div>
+
+                <div className="mt-12">
+                  {renderContent()}
+                </div>
             </main>
         </ProductPageLayout>
     );
