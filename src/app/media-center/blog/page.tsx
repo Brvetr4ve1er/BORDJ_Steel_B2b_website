@@ -145,7 +145,7 @@ const certifications = [
   { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/fc/ea/fb/fceafbcc5c3f0645268534eed8924cb3.jpg" }
 ];
 
-function CertificationCard({ cert }: { cert: { name: string; description: string; image: string; } }) {
+function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: string; description: string; image: string; }, hoverDirection?: 'left' | 'right' }) {
     return (
         <div className="relative group w-full max-w-sm mx-auto">
             <div className="relative bg-card p-6 rounded-full shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex flex-col items-center justify-center text-center h-48 w-48 mx-auto">
@@ -153,7 +153,10 @@ function CertificationCard({ cert }: { cert: { name: string; description: string
                 <h3 className="text-lg font-bold text-primary">{cert.name}</h3>
                 <p className="text-sm text-muted-foreground">{cert.description}</p>
             </div>
-            <div className="absolute left-full top-1/2 -translate-y-1/2 ml-4 w-[32rem] h-[40rem] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out pointer-events-none group-hover:pointer-events-auto z-50">
+            <div className={cn(
+                "absolute top-1/2 -translate-y-1/2 w-[32rem] h-[40rem] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out pointer-events-none group-hover:pointer-events-auto z-50",
+                hoverDirection === 'right' ? "left-full ml-4" : "right-full mr-4"
+            )}>
                 <div className="relative w-full h-full bg-white rounded-lg shadow-2xl border-2 border-accent overflow-hidden">
                     <Image
                         src={cert.image}
@@ -208,11 +211,11 @@ export default function BlogPage() {
             </section>
             <main className="mx-auto flex w-full flex-col gap-12 px-4 py-16 md:gap-16 md:px-8 md:pb-24">
                  <Tabs defaultValue={tabs[2].id} className="w-full">
-                    <div className="flex flex-col items-center gap-8">
+                    <div className="flex flex-col items-center gap-8 md:flex-row md:justify-center">
                         <TabsList className="h-auto scale-125">
                             {tabs.map(tab => <TabsTrigger key={tab.id} value={tab.id} className="text-lg py-2 px-6">{tab.label}</TabsTrigger>)}
                         </TabsList>
-                        <div className="relative w-full max-w-xs mx-auto">
+                        <div className="relative w-full max-w-xs mx-auto md:mx-0">
                             <Select value={sortBy} onValueChange={setSortBy}>
                             <SelectTrigger>
                                 <SelectValue placeholder="Sort by" />
@@ -231,7 +234,7 @@ export default function BlogPage() {
                             <div className="grid md:grid-cols-3 gap-8">
                                 {certifications.map((cert, index) => (
                                     <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                                      <CertificationCard cert={cert} />
+                                      <CertificationCard cert={cert} hoverDirection={index === 2 ? 'left' : 'right'} />
                                     </AnimatedWrapper>
                                 ))}
                             </div>
@@ -240,7 +243,9 @@ export default function BlogPage() {
                     <TabsContent value="news"><EmptyContent tab="News" /></TabsContent>
                     <TabsContent value="blog">
                         {featuredArticle && (
-                           <BlogPostCard {...featuredArticle} variant="featured" />
+                           <div className="w-full">
+                                <BlogPostCard {...featuredArticle} variant="featured" />
+                           </div>
                         )}
                         <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3 mt-12">
                             {articles.filter(a => !a.isFeatured).map((article, index) => (
