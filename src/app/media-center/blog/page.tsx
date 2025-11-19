@@ -98,30 +98,20 @@ export default function BlogPage() {
                 return <EmptyContent tab="News" />;
             case 'blog':
                 return (
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {featuredArticle && (
-                           <div className="md:col-span-2 md:row-span-2 h-full">
-                                <BlogPostCard {...featuredArticle} variant="featured" className="h-full" />
+                           <div className="md:col-span-2 md:row-span-2">
+                               <BlogPostCard {...featuredArticle} variant="featured" className="h-full" />
                            </div>
                         )}
-                        {articles.slice(0, 1).map((article) => (
-                           <div key={article.id} className="md:col-span-2">
-                               <BlogPostCard {...article} />
-                           </div>
-                        ))}
-                        {articles.slice(1, 3).map((article) => (
+                        {articles.slice(0, 2).map((article) => (
                            <div key={article.id}>
-                               <BlogPostCard {...article} />
+                               <BlogPostCard {...article} className="h-full" />
                            </div>
                         ))}
-                        {articles.slice(3, 4).map((article) => (
-                           <div key={article.id} className="md:col-span-2">
-                               <BlogPostCard {...article} />
-                           </div>
-                        ))}
-                        {articles.slice(4).map((article) => (
+                        {articles.slice(2, 5).map((article) => (
                            <div key={article.id}>
-                               <BlogPostCard {...article} />
+                               <BlogPostCard {...article} className="h-full" />
                            </div>
                         ))}
                     </div>
@@ -209,5 +199,3 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
-
-    
