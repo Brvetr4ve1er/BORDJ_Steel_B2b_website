@@ -70,7 +70,7 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
           {imageUrl && (
             <div className={cn(
               "relative overflow-hidden",
-               variant === 'featured' ? 'w-full md:w-2/5 aspect-video md:aspect-[3/4]' : 'w-full aspect-[3/4]'
+               variant === 'featured' ? 'w-full md:w-2/5 aspect-[9/16]' : 'w-full aspect-[3/4]'
             )}>
               <Image
                 src={imageUrl}
@@ -91,7 +91,7 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
                   {title}
                 </span>
               </h3>
-              <p className="text-muted-foreground line-clamp-3">{description}</p>
+              <p className="text-muted-foreground text-base">{description}</p>
             </div>
             <div className="mt-6 flex items-center justify-between">
                 {author && (
