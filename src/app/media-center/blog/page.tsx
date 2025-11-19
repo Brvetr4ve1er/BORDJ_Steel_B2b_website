@@ -129,7 +129,6 @@ const tabs = [
     { id: "news", label: "News" },
     { id: "blog", label: "Blog" },
     { id: "catalogue", label: "Catalogue" },
-    { id: "videos", label: "Vidéos" },
 ];
 
 const sortByOptions = [
@@ -211,7 +210,7 @@ export default function BlogPage() {
             <main className="mx-auto flex w-full flex-col gap-12 px-4 py-16 md:gap-16 md:px-8 md:pb-24">
                  <Tabs defaultValue={tabs[2].id} className="w-full">
                     <div className="flex flex-col items-center gap-8">
-                        <TabsList className="h-auto">
+                        <TabsList className="h-auto scale-125">
                             {tabs.map(tab => <TabsTrigger key={tab.id} value={tab.id} className="text-lg py-2 px-6">{tab.label}</TabsTrigger>)}
                         </TabsList>
                         <div className="relative w-full max-w-xs mx-auto">
@@ -263,7 +262,6 @@ export default function BlogPage() {
                             </a>
                         </div>
                     </TabsContent>
-                    <TabsContent value="videos"><EmptyContent tab="Videos" /></TabsContent>
                  </Tabs>
             </main>
         </ProductPageLayout>
@@ -271,9 +269,3 @@ export default function BlogPage() {
 };
 
     
-    
-
-    
-
-    
-
