@@ -81,7 +81,7 @@ function ContactCard({
       )}
       style={style}
     >
-      <div className="relative h-48 w-full overflow-hidden">
+      <div className="relative h-64 w-full overflow-hidden">
         {image && (
           <Image
             src={image}
