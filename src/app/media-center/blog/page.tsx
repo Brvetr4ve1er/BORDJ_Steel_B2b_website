@@ -95,25 +95,22 @@ export default function BlogPage() {
                 return <EmptyContent tab="News" />;
             case 'blog':
                 return (
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {featuredArticle && (
-                           <div className="md:col-span-2 md:row-span-2">
+                           <div className="md:col-span-2">
                                <BlogPostCard {...featuredArticle} variant="featured" className="h-full" />
                            </div>
                         )}
-                        {articles.slice(0, 2).map((article) => (
-                           <div key={article.id} className="md:col-span-1">
-                               <BlogPostCard {...article} className="h-full" />
-                           </div>
-                        ))}
-                        {articles.slice(2, 4).map((article) => (
-                           <div key={article.id} className="md:col-span-1">
-                               <BlogPostCard {...article} className="h-full" />
-                           </div>
-                        ))}
-                         <div className="md:col-span-2">
-                           <BlogPostCard {...articles[4]} className="h-full" />
+                        <div className="md:col-span-1 space-y-6">
+                          {articles.slice(0, 2).map((article) => (
+                            <BlogPostCard key={article.id} {...article} className="h-full" />
+                          ))}
                         </div>
+                        {articles.slice(2, 5).map((article) => (
+                          <div key={article.id} className="md:col-span-1">
+                              <BlogPostCard {...article} className="h-full" />
+                          </div>
+                        ))}
                     </div>
                 );
             case 'catalogue':
@@ -142,14 +139,14 @@ export default function BlogPage() {
     };
     
     const heroImage = {
-        src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+        src: "https://i.pinimg.com/736x/1f/3d/a2/1f3da28625335403956d26a2163a1567.jpg",
         alt: "Digital world concept",
         aiHint: "digital world"
     }
 
     return (
         <ProductPageLayout>
-            <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
+            <section className="relative h-96 w-full flex items-center justify-center text-white overflow-hidden p-0">
                 <Image
                 src={heroImage.src}
                 alt={heroImage.alt}
