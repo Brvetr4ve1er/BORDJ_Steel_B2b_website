@@ -140,9 +140,36 @@ export default function BlogPage() {
                 return null;
         }
     };
+    
+    const heroImage = {
+        src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+        alt: "Digital world concept",
+        aiHint: "digital world"
+    }
 
     return (
         <ProductPageLayout>
+            <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
+                <Image
+                src={heroImage.src}
+                alt={heroImage.alt}
+                fill
+                className="z-0 object-cover"
+                priority
+                data-ai-hint={heroImage.aiHint}
+                />
+                <div className="absolute inset-0 bg-black/60 z-10" />
+                <div className="relative z-20 container mx-auto px-4 text-center">
+                <AnimatedWrapper animation="zoom-in">
+                    <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
+                    Notre Blog
+                    </h1>
+                    <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 mx-auto">
+                    Actualités, innovations et savoir-faire de l'industrie de l'acier.
+                    </p>
+                </AnimatedWrapper>
+                </div>
+            </section>
             <main className="mx-auto flex w-full flex-col gap-12 px-4 py-16 md:gap-16 md:px-8 md:pb-24">
                  <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                     <div className="w-full md:w-auto md:flex-1 relative">
@@ -182,5 +209,3 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
-
-    
