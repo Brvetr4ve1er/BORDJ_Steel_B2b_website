@@ -95,18 +95,13 @@ export default function BlogPage() {
                 return <EmptyContent tab="News" />;
             case 'blog':
                 return (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6">
                         {featuredArticle && (
-                           <div className="md:col-span-2">
+                           <div className="md:col-span-2 md:row-span-2">
                                <BlogPostCard {...featuredArticle} variant="featured" className="h-full" />
                            </div>
                         )}
-                        <div className="md:col-span-1 space-y-6">
-                          {articles.slice(0, 2).map((article) => (
-                            <BlogPostCard key={article.id} {...article} className="h-full" />
-                          ))}
-                        </div>
-                        {articles.slice(2, 5).map((article) => (
+                        {articles.slice(0, 2).map((article) => (
                           <div key={article.id} className="md:col-span-1">
                               <BlogPostCard {...article} className="h-full" />
                           </div>

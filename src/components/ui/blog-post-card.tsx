@@ -91,7 +91,7 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
                   {title}
                 </span>
               </h3>
-              <p className="text-muted-foreground text-base line-clamp-2">{description}</p>
+              <p className="text-muted-foreground text-base line-clamp-2">{description.split('\n').slice(0, 2).join('\n')}</p>
             </div>
             <div className="mt-6 flex items-center justify-between">
                 {author && (
