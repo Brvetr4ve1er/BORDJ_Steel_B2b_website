@@ -50,7 +50,7 @@ export default function RootLayout({
     <html lang="fr" className={`${montserrat.variable} ${roboto.variable}`}>
       <head>
       </head>
-      <body className="font-body antialiased" suppressHydrationWarning>
+      <body>
           {children}
           <Toaster />
       </body>

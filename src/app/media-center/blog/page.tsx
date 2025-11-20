@@ -6,7 +6,7 @@ import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
 import { BlogPostCard, type BlogPostCardProps } from '@/components/ui/blog-post-card';
 import { useState } from 'react';
-import { ArrowRight, ArrowUpRight, Award, Newspaper, BookOpen, FileText } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Award, Newspaper, BookOpen, FileText, Search } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { cn } from "@/lib/utils";
@@ -15,6 +15,8 @@ import { DownloadButton } from '@/components/ui/download-button';
 import { Logo } from '@/components/logo';
 import { articles as allArticles } from '@/config/blog-data';
 import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
+import { Input } from '@/components/ui/input';
+
 
 const tabs = [
     { id: "iso", label: "ISO", icon: Award },
@@ -74,11 +76,6 @@ export default function BlogPage() {
     const isDesktop = useBreakpoint("lg");
     const [sortBy, setSortBy] = useState(sortByOptions[0].id);
     const [activeTab, setActiveTab] = useState('blog');
-    const heroImage = {
-        src: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&q=80",
-        alt: "Person reading a book in a library",
-        aiHint: "reading library"
-    }
 
     const renderContent = () => {
         switch (activeTab) {
@@ -98,22 +95,25 @@ export default function BlogPage() {
                 return <EmptyContent tab="News" />;
             case 'blog':
                 return (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {featuredArticle && (
                            <div className="md:col-span-2 md:row-span-2">
                                <BlogPostCard {...featuredArticle} variant="featured" className="h-full" />
                            </div>
                         )}
                         {articles.slice(0, 2).map((article) => (
-                           <div key={article.id}>
+                           <div key={article.id} className="md:col-span-1">
                                <BlogPostCard {...article} className="h-full" />
                            </div>
                         ))}
-                        {articles.slice(2, 5).map((article) => (
-                           <div key={article.id}>
+                        {articles.slice(2, 4).map((article) => (
+                           <div key={article.id} className="md:col-span-1">
                                <BlogPostCard {...article} className="h-full" />
                            </div>
                         ))}
+                         <div className="md:col-span-2">
+                           <BlogPostCard {...articles[4]} className="h-full" />
+                        </div>
                     </div>
                 );
             case 'catalogue':
@@ -143,51 +143,34 @@ export default function BlogPage() {
 
     return (
         <ProductPageLayout>
-            <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
-                <Image
-                    src={heroImage.src}
-                    alt={heroImage.alt}
-                    fill
-                    className="z-0 object-cover"
-                    priority
-                    data-ai-hint={heroImage.aiHint}
-                />
-                <div className="absolute inset-0 bg-black/60 z-10" />
-                <div className="relative z-20 container mx-auto px-4 text-center">
-                    <AnimatedWrapper animation="zoom-in">
-                        <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
-                            Blog & Actualités
-                        </h1>
-                        <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 mx-auto">
-                            Nos dernières nouvelles et articles.
-                        </p>
-                    </AnimatedWrapper>
-                </div>
-            </section>
             <main className="mx-auto flex w-full flex-col gap-12 px-4 py-16 md:gap-16 md:px-8 md:pb-24">
                  <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div className="w-full md:w-auto md:flex-1 flex justify-center">
-                       <Dock>
-                        {tabs.map((tab) => (
-                          <DockItem key={tab.id} onClick={() => setActiveTab(tab.id)}>
-                            <DockIcon>
-                              <tab.icon className={cn("h-8 w-8", activeTab === tab.id ? 'text-accent' : 'text-primary/50')} />
-                            </DockIcon>
-                            <DockLabel className={cn(activeTab === tab.id ? 'text-accent' : 'text-primary/50')}>{tab.label}</DockLabel>
-                          </DockItem>
-                        ))}
-                      </Dock>
-                    </div>
-                    <div className="w-full md:w-auto md:max-w-xs">
-                        <Select value={sortBy} onValueChange={setSortBy}>
-                        <SelectTrigger>
-                            <SelectValue placeholder="Sort by" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            {sortByOptions.map(option => (
-                            <SelectItem key={option.id} value={option.id}>{option.label}</SelectItem>
+                    <div className="w-full md:w-[30%]">
+                        <Dock>
+                            {tabs.map((tab) => (
+                              <DockItem key={tab.id} onClick={() => setActiveTab(tab.id)}>
+                                <DockIcon>
+                                  <tab.icon className={cn("h-8 w-8", activeTab === tab.id ? 'text-accent' : 'text-primary/50')} />
+                                </DockIcon>
+                                <DockLabel className={cn(activeTab === tab.id ? 'text-accent' : 'text-primary/50')}>{tab.label}</DockLabel>
+                              </DockItem>
                             ))}
-                        </SelectContent>
+                        </Dock>
+                    </div>
+                    <div className="w-full md:w-[40%] relative">
+                       <Input placeholder="Rechercher des articles..." className="h-12 text-lg pl-12" />
+                       <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
+                    </div>
+                    <div className="w-full md:w-[30%] flex justify-end">
+                        <Select value={sortBy} onValueChange={setSortBy}>
+                            <SelectTrigger className="md:max-w-xs h-12 text-lg">
+                                <SelectValue placeholder="Sort by" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {sortByOptions.map(option => (
+                                <SelectItem key={option.id} value={option.id}>{option.label}</SelectItem>
+                                ))}
+                            </SelectContent>
                         </Select>
                     </div>
                 </div>
