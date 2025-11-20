@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   const heroImage = {
-      src: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80",
+      src: "https://i.pinimg.com/736x/1f/3d/a2/1f3da28625335403956d26a2163a1567.jpg",
       alt: "Contact center with operators",
       aiHint: "contact center"
   }
