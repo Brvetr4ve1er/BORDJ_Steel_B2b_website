@@ -145,7 +145,11 @@ export default function BlogPage() {
         <ProductPageLayout>
             <main className="mx-auto flex w-full flex-col gap-12 px-4 py-16 md:gap-16 md:px-8 md:pb-24">
                  <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div className="w-full md:w-[30%]">
+                    <div className="w-full md:w-auto md:flex-1 relative">
+                       <Input placeholder="Rechercher des articles..." className="h-12 text-lg pl-12" />
+                       <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
+                    </div>
+                    <div className="w-full md:w-auto md:flex-1 flex justify-center">
                         <Dock>
                             {tabs.map((tab) => (
                               <DockItem key={tab.id} onClick={() => setActiveTab(tab.id)}>
@@ -157,11 +161,7 @@ export default function BlogPage() {
                             ))}
                         </Dock>
                     </div>
-                    <div className="w-full md:w-[40%] relative">
-                       <Input placeholder="Rechercher des articles..." className="h-12 text-lg pl-12" />
-                       <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
-                    </div>
-                    <div className="w-full md:w-[30%] flex justify-end">
+                    <div className="w-full md:w-auto md:flex-1 flex justify-end">
                         <Select value={sortBy} onValueChange={setSortBy}>
                             <SelectTrigger className="md:max-w-xs h-12 text-lg">
                                 <SelectValue placeholder="Sort by" />
@@ -182,3 +182,5 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
+
+    
