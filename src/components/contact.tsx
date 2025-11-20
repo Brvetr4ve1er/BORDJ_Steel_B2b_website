@@ -20,6 +20,7 @@ import { AnimatedWrapper } from './animated-wrapper';
 import { companyData } from '@/config/company-data';
 import { useState } from 'react';
 import Image from 'next/image';
+import images from '@/app/lib/placeholder-images.json';
 
 const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -201,7 +202,7 @@ export function Contact() {
       title: "Galvanisation",
       phone: "+213 770 35 73 47",
       email: "commercial@bordjsteel.dz",
-      image: "https://i.pinimg.com/736x/5c/c4/bd/5cc4bd370f1bd95024acf54e7b1ff667.jpg",
+      image: images.galvanisation.hero.src,
     },
     {
       icon: <Headphones className="h-8 w-8" />,
