@@ -102,7 +102,7 @@ export default function BlogPage() {
                                <BlogPostCard {...featuredArticle} variant="featured" className="h-full" />
                            </div>
                         )}
-                        <ScrollArea className="md:col-span-1 h-[70vh]">
+                        <ScrollArea className="md:col-span-1 h-[100vh]">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pr-4">
                                 {articles.map((article) => (
                                   <div key={article.id}>
