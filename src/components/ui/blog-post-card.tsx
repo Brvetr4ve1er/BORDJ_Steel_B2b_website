@@ -70,7 +70,7 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
           {imageUrl && (
             <div className={cn(
               "relative overflow-hidden w-full",
-               "aspect-[3/4]"
+               "aspect-[4/3]"
             )}>
               <Image
                 src={imageUrl}
