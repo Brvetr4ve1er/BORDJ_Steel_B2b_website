@@ -13,8 +13,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 import { DownloadButton } from './ui/download-button';
 import dynamic from 'next/dynamic';
 
-const ProductImageGallery = dynamic(() => import('./product-image-gallery').then(mod => mod.ProductImageGallery));
-const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
 const DetailedStatCard = dynamic(() => import('./detailed-stat-card').then(mod => mod.DetailedStatCard));
 
 
@@ -27,8 +25,7 @@ const SubSectionTitle = ({ children }: { children: React.ReactNode }) => (
 );
 
 export function ChaudronneriePageContent() {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof chaudronnerieData.products>('silos');
-  const activeProduct = chaudronnerieData.products[activeProductKey];
+  const activeProduct = chaudronnerieData.products.silos;
   const { hero } = chaudronnerieData;
   const heroStats = hero.stats;
 
@@ -45,13 +42,6 @@ export function ChaudronneriePageContent() {
     Construction,
   }), []);
 
-
-  const productCards = [
-    { key: 'silos', icon: Database, title: 'Silos & Réservoirs', description: 'Solutions de stockage sur mesure pour solides, liquides et gaz.' },
-    { key: 'conduites', icon: Wind, title: 'Conduites & Gaines', description: 'Réseaux de tuyauterie pour le transport de fluides et de gaz.' },
-    { key: 'structures', icon: Construction, title: 'Structures Spéciales', description: 'Ensembles mécano-soudés complexes et bâtis de machines.' },
-    { key: 'equipements', icon: Cog, title: 'Équipements Industriels', description: 'Fabrication de trémies, convoyeurs et équipements sur mesure.' },
-  ];
 
   return (
     <div className="bg-background text-foreground">
@@ -115,27 +105,6 @@ export function ChaudronneriePageContent() {
           </div>
         </section>
 
-      {/* Feature Cards Section */}
-      <section className="bg-secondary py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {productCards.map((card, index) => {
-              return (
-                <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                    <div onClick={() => setActiveProductKey(card.key as keyof typeof chaudronnerieData.products)} className="cursor-pointer">
-                        <FeatureHoverCard
-                            Icon={card.icon}
-                            title={card.title}
-                            description={card.description}
-                        />
-                    </div>
-                </AnimatedWrapper>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* 2. Product Details Section */}
       <section id="product-details" className="bg-white py-20">
         <div className="container mx-auto px-4 max-w-screen-2xl">
@@ -148,86 +117,73 @@ export function ChaudronneriePageContent() {
             </div>
           </AnimatedWrapper>
           
-          <div className="grid lg:grid-cols-3 gap-x-24 gap-y-16">
-              <div className="lg:col-span-1 h-max space-y-8">
-                  <ProductImageGallery 
-                      galleryImages={activeProduct.galleryImages}
-                  />
-              </div>
-
-              <div className="lg:col-span-2">
-                <AnimatedWrapper animation="fade-in">
-                  <div>
-                      <h2 className="font-headline text-5xl font-bold text-accent mb-16">{activeProduct.title}</h2>
-                      <Card className="border-none shadow-none p-0">
-                          <CardContent className="p-0">
-                              <SectionTitle>DESCRIPTION</SectionTitle>
-                              <div className="space-y-12 text-lg">
-                                  <p>{activeProduct.features.description}</p>
-                                  
-                                  {activeProduct.features.avantages && activeProduct.features.avantages.length > 0 &&
-                                      <div>
-                                          <SubSectionTitle>Avantages Clés</SubSectionTitle>
-                                          <ul className="list-disc pl-6 space-y-2">
-                                              {activeProduct.features.avantages.map(item => <li key={item}>{item}</li>)}
-                                          </ul>
-                                      </div>
-                                  }
-                                  {activeProduct.features.applications && activeProduct.features.applications.length > 0 &&
+            <AnimatedWrapper animation="fade-in">
+              <div>
+                  <Card className="border-none shadow-none p-0">
+                      <CardContent className="p-0">
+                          <SectionTitle>DESCRIPTION</SectionTitle>
+                          <div className="space-y-12 text-lg">
+                              <p>{activeProduct.features.description}</p>
+                              
+                              {activeProduct.features.avantages && activeProduct.features.avantages.length > 0 &&
                                   <div>
-                                      <SubSectionTitle>Applications Courantes</SubSectionTitle>
+                                      <SubSectionTitle>Avantages Clés</SubSectionTitle>
                                       <ul className="list-disc pl-6 space-y-2">
-                                          {activeProduct.features.applications.map(item => <li key={item}>{item}</li>)}
+                                          {activeProduct.features.avantages.map(item => <li key={item}>{item}</li>)}
                                       </ul>
                                   </div>
-                                  }
+                              }
+                              {activeProduct.features.applications && activeProduct.features.applications.length > 0 &&
+                              <div>
+                                  <SubSectionTitle>Applications Courantes</SubSectionTitle>
+                                  <ul className="list-disc pl-6 space-y-2">
+                                      {activeProduct.features.applications.map(item => <li key={item}>{item}</li>)}
+                                  </ul>
                               </div>
+                              }
+                          </div>
 
-                              <section className="mt-24">
-                                  <SectionTitle>SPÉCIFICATIONS TECHNIQUES</SectionTitle>
-                                  {activeProduct.tables.materiaux && (
-                                      <div className="mb-16">
-                                          <SubSectionTitle>Matériaux Utilisés</SubSectionTitle>
-                                          <p className="text-lg">{activeProduct.tables.materiaux}</p>
-                                      </div>
-                                  )}
-                                  {activeProduct.tables.capacites?.rows && activeProduct.tables.capacites.rows.length > 0 && (
-                                      <div className="mb-16">
-                                          <SubSectionTitle>{activeProduct.tables.capacites.title}</SubSectionTitle>
-                                          <Table>
-                                              <TableHeader>
-                                                  <TableRow className="bg-accent/10">
-                                                      {activeProduct.tables.capacites.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
+                          <section className="mt-24">
+                              <SectionTitle>SPÉCIFICATIONS TECHNIQUES</SectionTitle>
+                              {activeProduct.tables.materiaux && (
+                                  <div className="mb-16">
+                                      <SubSectionTitle>Matériaux Utilisés</SubSectionTitle>
+                                      <p className="text-lg">{activeProduct.tables.materiaux}</p>
+                                  </div>
+                              )}
+                              {activeProduct.tables.capacites?.rows && activeProduct.tables.capacites.rows.length > 0 && (
+                                  <div className="mb-16">
+                                      <SubSectionTitle>{activeProduct.tables.capacites.title}</SubSectionTitle>
+                                      <Table>
+                                          <TableHeader>
+                                              <TableRow className="bg-accent/10">
+                                                  {activeProduct.tables.capacites.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
+                                              </TableRow>
+                                          </TableHeader>
+                                          <TableBody>
+                                              {activeProduct.tables.capacites.rows.map((row: any, i: number) => (
+                                                  <TableRow key={i}>
+                                                      <TableCell>{row.caracteristique}</TableCell>
+                                                      <TableCell>{row.valeur}</TableCell>
                                                   </TableRow>
-                                              </TableHeader>
-                                              <TableBody>
-                                                  {activeProduct.tables.capacites.rows.map((row: any, i: number) => (
-                                                      <TableRow key={i}>
-                                                          <TableCell>{row.caracteristique}</TableCell>
-                                                          <TableCell>{row.valeur}</TableCell>
-                                                      </TableRow>
-                                                  ))}
-                                              </TableBody>
-                                          </Table>
-                                      </div>
-                                  )}
-                                   {activeProduct.tables.normes && (
-                                      <div className="mb-16">
-                                          <SubSectionTitle>Normes et Conformité</SubSectionTitle>
-                                          <p className="text-lg">{activeProduct.tables.normes}</p>
-                                      </div>
-                                  )}
-                              </section>
-                          </CardContent>
-                      </Card>
-                  </div>
-                </AnimatedWrapper>
+                                              ))}
+                                          </TableBody>
+                                      </Table>
+                                  </div>
+                              )}
+                               {activeProduct.tables.normes && (
+                                  <div className="mb-16">
+                                      <SubSectionTitle>Normes et Conformité</SubSectionTitle>
+                                      <p className="text-lg">{activeProduct.tables.normes}</p>
+                                  </div>
+                              )}
+                          </section>
+                      </CardContent>
+                  </Card>
               </div>
-            </div>
+            </AnimatedWrapper>
         </div>
       </section>
     </div>
   );
 }
-
-    
