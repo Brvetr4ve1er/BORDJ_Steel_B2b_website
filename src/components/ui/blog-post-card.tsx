@@ -17,7 +17,7 @@ const cardVariants = cva(
     variants: {
       variant: {
         default: '',
-        featured: 'flex-col md:flex-col items-stretch',
+        featured: 'md:flex-row items-stretch',
       },
     },
     defaultVariants: {
@@ -65,12 +65,13 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
         </a>
         <div className={cn(
           "relative z-0 flex h-full w-full",
-          variant === 'featured' ? 'flex-col' : 'flex-col'
+          variant === 'featured' ? 'flex-col md:flex-row' : 'flex-col'
         )}>
           {imageUrl && (
             <div className={cn(
-              "relative overflow-hidden w-full",
-               "aspect-[4/3]"
+              "relative overflow-hidden",
+              variant === 'featured' ? "w-full md:w-2/5" : "w-full",
+               "aspect-[3/4]"
             )}>
               <Image
                 src={imageUrl}
@@ -131,3 +132,5 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
 BlogPostCard.displayName = 'BlogPostCard';
 
 export { BlogPostCard };
+
+    

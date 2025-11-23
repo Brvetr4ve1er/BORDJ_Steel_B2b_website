@@ -97,8 +97,8 @@ export default function BlogPage() {
                 return (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {featuredArticle && (
-                           <div className="md:col-span-2 md:row-span-2">
-                               <BlogPostCard {...featuredArticle} variant="featured" className="h-full" />
+                           <div className="md:col-span-1">
+                               <BlogPostCard {...featuredArticle} variant="default" className="h-full" />
                            </div>
                         )}
                         {articles.map((article) => (
@@ -201,3 +201,5 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
+
+    
