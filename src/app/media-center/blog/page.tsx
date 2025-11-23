@@ -16,6 +16,7 @@ import { Logo } from '@/components/logo';
 import { articles as allArticles } from '@/config/blog-data';
 import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
 import { Input } from '@/components/ui/input';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 
 const tabs = [
@@ -95,17 +96,21 @@ export default function BlogPage() {
                 return <EmptyContent tab="News" />;
             case 'blog':
                 return (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {featuredArticle && (
                            <div className="md:col-span-1">
-                               <BlogPostCard {...featuredArticle} variant="default" className="h-full" />
+                               <BlogPostCard {...featuredArticle} variant="featured" className="h-full" />
                            </div>
                         )}
-                        {articles.map((article) => (
-                          <div key={article.id} className="md:col-span-1">
-                              <BlogPostCard {...article} className="h-full" />
-                          </div>
-                        ))}
+                        <ScrollArea className="md:col-span-1 h-[70vh]">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pr-4">
+                                {articles.map((article) => (
+                                  <div key={article.id}>
+                                      <BlogPostCard {...article} className="h-full" />
+                                  </div>
+                                ))}
+                            </div>
+                        </ScrollArea>
                     </div>
                 );
             case 'catalogue':
@@ -201,5 +206,3 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
-
-    

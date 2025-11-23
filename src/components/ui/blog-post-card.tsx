@@ -16,8 +16,8 @@ const cardVariants = cva(
   {
     variants: {
       variant: {
-        default: '',
-        featured: 'md:flex-row items-stretch',
+        default: 'flex-col',
+        featured: 'flex-col',
       },
     },
     defaultVariants: {
@@ -65,13 +65,12 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
         </a>
         <div className={cn(
           "relative z-0 flex h-full w-full",
-          variant === 'featured' ? 'flex-col md:flex-row' : 'flex-col'
+          variant === 'featured' ? 'flex-col' : 'flex-col'
         )}>
           {imageUrl && (
             <div className={cn(
-              "relative overflow-hidden",
-              variant === 'featured' ? "w-full md:w-2/5" : "w-full",
-               "aspect-[3/4]"
+              "relative overflow-hidden w-full",
+              variant === 'featured' ? "aspect-video" : "aspect-[4/3]"
             )}>
               <Image
                 src={imageUrl}
@@ -107,21 +106,11 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
                     <span className="font-semibold text-sm">{author.name}</span>
                   </div>
                 )}
-                {variant !== 'featured' && (
-                   <Button variant="ghost" size="sm" className="group/button text-primary hover:text-primary z-20">
-                      {readMoreText}
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
-                  </Button>
-                )}
+                 <Button variant="ghost" size="sm" className="group/button text-primary hover:text-primary z-20">
+                    {readMoreText}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
+                </Button>
             </div>
-            {variant === 'featured' && (
-              <div className="mt-8">
-                  <Button variant="default" className="group/button z-20">
-                      {readMoreText}
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
-                  </Button>
-              </div>
-            )}
           </div>
         </div>
       </motion.div>
@@ -132,5 +121,3 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
 BlogPostCard.displayName = 'BlogPostCard';
 
 export { BlogPostCard };
-
-    
