@@ -4,25 +4,30 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
-import { ArrowRight, Database, Wind, Construction, Cog, ShieldCheck, Zap, HardHat, Package, Check, Ruler, Scale, Factory, Users, Square } from 'lucide-react';
+import { ArrowRight, Package, Users, Square, Factory } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
-import { cn } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { DownloadButton } from './ui/download-button';
 import dynamic from 'next/dynamic';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel"
+import { cn } from '@/lib/utils';
 
 const DetailedStatCard = dynamic(() => import('./detailed-stat-card').then(mod => mod.DetailedStatCard));
 
 
-const GeometricTechnicalTable = () => {
+const GeometricTechnicalTable = ({ api, setCurrent, current }: { api: CarouselApi, setCurrent: (index: number) => void, current: number }) => {
   const tableData = [
     { capacite: 3, format: "1 250", epaisseur: 4, longVirole: "2 200.00", longTotale: "2 730.00", poidsUnite: "468,00", nbreTrous: "1", pressionEpreuve: "3 Bars" },
     { capacite: 5, format: "1 250", epaisseur: 5, longVirole: "3 850.00", longTotale: "4 290.00", poidsUnite: "469,00", nbreTrous: "1", pressionEpreuve: "3 Bars" },
     { capacite: 10, format: "1 900", epaisseur: 6, longVirole: "3 200.00", longTotale: "4 010.00", poidsUnite: "1 387,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
     { capacite: 15, format: "1 900", epaisseur: 6, longVirole: "5 000.00", longTotale: "5 810.00", poidsUnite: "1 908,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
-    { capacite: 20, format: "2 500", epaisseur: 6, longVirole: "5 810.00", longTotale: "4 692.00", poidsUnite: "2 102,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
+    { capacite: 20, format: "2 500", epaisseur: 6, longVirole: "4 692.00", longTotale: "5 810.00", poidsUnite: "2 102,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
     { capacite: 30, format: "2 500", epaisseur: 6, longVirole: "5 700.00", longTotale: "6 742.00", poidsUnite: "2 909,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
     { capacite: 40, format: "3 000", epaisseur: 6, longVirole: "5 130.00", longTotale: "6 193.00", poidsUnite: "3 363,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
     { capacite: 50, format: "3 000", epaisseur: 6, longVirole: "6 560.00", longTotale: "7 626.00", poidsUnite: "4 133,00", nbreTrous: "1", pressionEpreuve: "3 Bars" },
@@ -32,82 +37,80 @@ const GeometricTechnicalTable = () => {
 
   return (
     <div className="bg-white">
-      <div className="max-w-7xl mx-auto">
-        {/* Title */}
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-red-700 leading-tight">
-            CARACTÉRISTIQUES GÉOMÉTRIQUES<br/>ET TECHNIQUES
-          </h1>
-        </div>
-
-        {/* Table Container */}
         <div className="overflow-x-auto shadow-lg rounded-lg">
           <table className="w-full border-collapse">
             <thead>
-              <tr className="bg-red-200">
-                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+              <tr className="bg-accent/10">
+                <th className="border border-border px-3 py-3 text-center text-xs font-bold text-accent">
                   CAPACITÉ
                 </th>
-                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                <th className="border border-border px-3 py-3 text-center text-xs font-bold text-accent">
                   FORMAT
                 </th>
-                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                <th className="border border-border px-3 py-3 text-center text-xs font-bold text-accent">
                   ÉPAISSEUR
                 </th>
-                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                <th className="border border-border px-3 py-3 text-center text-xs font-bold text-accent">
                   LONGUEUR<br/>VIROLE
                 </th>
-                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                <th className="border border-border px-3 py-3 text-center text-xs font-bold text-accent">
                   LONGUEUR<br/>TOTALE
                 </th>
-                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                <th className="border border-border px-3 py-3 text-center text-xs font-bold text-accent">
                   Poids en<br/>unité
                 </th>
-                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                <th className="border border-border px-3 py-3 text-center text-xs font-bold text-accent">
                   NBRE<br/>trous D'homme
                 </th>
-                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                <th className="border border-border px-3 py-3 text-center text-xs font-bold text-accent">
                   pression<br/>de service
                 </th>
-                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                <th className="border border-border px-3 py-3 text-center text-xs font-bold text-accent">
                   pression<br/>d'épreuve
                 </th>
               </tr>
             </thead>
             <tbody>
               {tableData.map((row, index) => (
-                <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-red-50'}>
-                  <td className="border border-gray-300 px-3 py-3 text-center text-sm font-semibold text-gray-800">
+                <tr 
+                  key={index} 
+                  className={cn("transition-colors", index % 2 === 0 ? 'bg-white' : 'bg-muted/50', current === index + 1 ? 'bg-accent/20' : '')}
+                  onMouseEnter={() => {
+                    setCurrent(index + 1);
+                    api?.scrollTo(index);
+                  }}
+                >
+                  <td className="border border-border px-3 py-3 text-center text-sm font-semibold text-foreground">
                     {row.capacite}
                   </td>
-                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                  <td className="border border-border px-3 py-3 text-center text-sm text-muted-foreground">
                     {row.format}
                   </td>
-                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                  <td className="border border-border px-3 py-3 text-center text-sm text-muted-foreground">
                     {row.epaisseur}
                   </td>
-                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                  <td className="border border-border px-3 py-3 text-center text-sm text-muted-foreground">
                     {row.longVirole}
                   </td>
-                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                  <td className="border border-border px-3 py-3 text-center text-sm text-muted-foreground">
                     {row.longTotale}
                   </td>
-                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                  <td className="border border-border px-3 py-3 text-center text-sm text-muted-foreground">
                     {row.poidsUnite}
                   </td>
-                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                  <td className="border border-border px-3 py-3 text-center text-sm text-muted-foreground">
                     {row.nbreTrous}
                   </td>
                   {index === 0 && (
-                    <td rowSpan={tableData.length} className="border border-gray-300 bg-white relative" style={{ width: '50px' }}>
+                    <td rowSpan={tableData.length} className="border border-border bg-white relative" style={{ width: '50px' }}>
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="transform -rotate-90 whitespace-nowrap text-xs font-bold text-gray-800 tracking-wider">
+                        <div className="transform -rotate-90 whitespace-nowrap text-xs font-bold text-foreground tracking-wider">
                           ATMOSPHERIQUE
                         </div>
                       </div>
                     </td>
                   )}
-                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                  <td className="border border-border px-3 py-3 text-center text-sm text-muted-foreground">
                     {row.pressionEpreuve}
                   </td>
                 </tr>
@@ -115,55 +118,54 @@ const GeometricTechnicalTable = () => {
             </tbody>
           </table>
         </div>
-      </div>
     </div>
   );
 };
 
 const TechnicalSpecsSection = () => {
    return (
-     <div className="p-8 bg-white">
+     <div className="p-8 bg-background">
        <div className="max-w-6xl mx-auto">
          <div className="grid md:grid-cols-2 gap-6">
            {/* Left Column - Assembly and Welding Process */}
-           <div className="bg-white">
-             <h2 className="text-red-700 font-bold text-sm mb-4 uppercase tracking-wide">
+           <div className="bg-background">
+             <h2 className="text-accent font-bold text-sm mb-4 uppercase tracking-wide">
                PROCÉDÉ D'ASSEMBLAGE ET SOUDAGE
              </h2>
              <div className="space-y-2 text-xs leading-relaxed">
-               <p className="text-gray-800">
+               <p className="text-foreground">
                  <span className="font-bold">ROBÉ ET FOND:</span> PAR RECOUVREMENT EN V
                </p>
-               <p className="text-gray-800">
+               <p className="text-foreground">
                  <span className="font-bold">TUBULURE, BRIDE, ANNEAU DE LEVAGE:</span> EN V RENFORCÉ
                </p>
-               <p className="text-gray-800">
+               <p className="text-foreground">
                  <span className="font-bold">SOUDURES :</span> CONFORMES AUX NORMES API 650 STD
                </p>
-               <p className="text-gray-800">
+               <p className="text-foreground">
                  <span className="font-bold">TOLÉRANCE DE FABRICATION:</span> + 0,1%
                </p>
-               <p className="text-gray-800">
+               <p className="text-foreground">
                  <span className="font-bold">ÉPREUVE HYDRAULIQUE:</span> TEST D'ÉTANCHÉITÉ
                </p>
-               <p className="text-gray-800">
+               <p className="text-foreground">
                  <span className="font-bold">TRAITEMENT DE SURFACE:</span> SABLAGE EXTÉRIEUR + PEINTURE (SELON PRODUIT STOCKÉ)
                </p>
              </div>
            </div>
            {/* Right Column - Materials */}
-           <div className="bg-white">
-             <h2 className="text-red-700 font-bold text-sm mb-4 uppercase tracking-wide">
+           <div className="bg-background">
+             <h2 className="text-accent font-bold text-sm mb-4 uppercase tracking-wide">
                MATÉRIAUX
              </h2>
              <div className="space-y-2 text-xs leading-relaxed">
-               <p className="text-gray-800">
+               <p className="text-foreground">
                  <span className="font-bold">TÔLE:</span> S 275JR / E28
                </p>
-               <p className="text-gray-800">
+               <p className="text-foreground">
                  <span className="font-bold">PROFILÉ:</span> IDEM
                </p>
-               <p className="text-gray-800">
+               <p className="text-foreground">
                  <span className="font-bold">JOINT :</span> KLINGERIT EP: 3mm
                </p>
              </div>
@@ -177,18 +179,42 @@ const TechnicalSpecsSection = () => {
 export function ChaudronneriePageContent() {
   const { hero } = chaudronnerieData;
   const heroStats = hero.stats;
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [current, setCurrent] = React.useState(0)
+  const [count, setCount] = React.useState(0)
+
+  const drawingImages = [
+    "https://i.pinimg.com/736x/05/76/f1/0576f18a52e3a3bb870dfe46089eae54.jpg",
+    "https://i.pinimg.com/736x/51/a9/e3/51a9e370aa2ddbb7439c177612e9a1d2.jpg",
+    "https://i.pinimg.com/736x/57/a7/2b/57a72be37dbd74bf3de07deacdf9aa1f.jpg",
+    "https://i.pinimg.com/736x/6e/10/d6/6e10d64b38329f46cd84e03b5256f2f3.jpg",
+    "https://i.pinimg.com/736x/2a/df/0b/2adf0bc95fdf6b023316e8b398fc7cf9.jpg",
+    "https://i.pinimg.com/736x/15/4d/42/154d42e3d73c5e6fdac5e49213e0b2bb.jpg",
+    "https://i.pinimg.com/736x/11/67/cd/1167cd7b335b19a5d1695a0993b20d31.jpg",
+    "https://i.pinimg.com/736x/22/2e/41/222e41debeda041c6485c8d2ee91f2d5.jpg",
+    "https://i.pinimg.com/736x/7d/80/e2/7d80e268117ead2bd32b20f760c46543.jpg",
+    "https://i.pinimg.com/736x/0b/9e/6f/0b9e6f0a129b6b060b180e4a575ab74a.jpg"
+  ];
+
+  React.useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap() + 1)
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+  }, [api])
+
 
   const iconMap = useMemo(() => ({
     Package,
-    Ruler,
-    Scale,
-    Cog,
-    Factory,
     Users,
     Square,
-    Database,
-    Wind,
-    Construction,
+    Factory,
   }), []);
 
 
@@ -255,19 +281,33 @@ export function ChaudronneriePageContent() {
         </section>
 
       {/* 2. Product Details Section */}
-      <section id="product-details" className="bg-white py-20">
+      <section id="product-details" className="bg-secondary/20 py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-10 gap-12">
             <div className="lg:col-span-4">
               <AnimatedWrapper animation="fade-in">
-                <Card>
+                <Card className="p-4">
                   <CardHeader>
                     <CardTitle>Dessins Techniques</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    {/* Placeholder for technical drawings */}
-                    <div className="aspect-square bg-gray-200 rounded-lg flex items-center justify-center">
-                      <p className="text-muted-foreground">Dessin technique à venir</p>
+                    <Carousel setApi={setApi} className="w-full">
+                      <CarouselContent>
+                        {drawingImages.map((src, index) => (
+                          <CarouselItem key={index} onMouseEnter={() => setCurrent(index + 1)}>
+                            <div className="p-1">
+                              <Card>
+                                <CardContent className="flex aspect-square items-center justify-center p-6 relative">
+                                  <Image src={src} alt={`Drawing ${index + 1}`} fill className="object-contain rounded-lg" />
+                                </CardContent>
+                              </Card>
+                            </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                    </Carousel>
+                    <div className="py-2 text-center text-sm text-muted-foreground">
+                      Schéma {current} sur {count}
                     </div>
                   </CardContent>
                 </Card>
@@ -275,10 +315,17 @@ export function ChaudronneriePageContent() {
             </div>
             <div className="lg:col-span-6">
               <AnimatedWrapper animation="fade-in" staggerIndex={1}>
-                <GeometricTechnicalTable />
-                <div className="mt-8 prose prose-lg max-w-none">
-                    <TechnicalSpecsSection />
-                </div>
+                <Card>
+                   <CardHeader>
+                    <CardTitle className="text-2xl font-bold text-accent">CARACTÉRISTIQUES GÉOMÉTRIQUES ET TECHNIQUES</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <GeometricTechnicalTable api={api} setCurrent={setCurrent} current={current} />
+                    <div className="mt-8 prose prose-lg max-w-none">
+                        <TechnicalSpecsSection />
+                    </div>
+                  </CardContent>
+                </Card>
               </AnimatedWrapper>
             </div>
           </div>
@@ -287,3 +334,5 @@ export function ChaudronneriePageContent() {
     </div>
   );
 }
+
+    
