@@ -117,18 +117,8 @@ export default function ExpandableCards({
                 src={card.image || "/placeholder.svg"}
               />
               <div className="absolute inset-0 bg-black/20" />
-              <div className="absolute inset-0 flex flex-col justify-between p-6 text-white">
+              <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                 <h2 className="font-bold text-2xl">{card.title}</h2>
-                <div className="flex items-center gap-2">
-                  <button
-                    aria-label="Play video"
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-background/30 backdrop-blur-sm transition-transform hover:scale-110"
-                    type="button"
-                  >
-                    <Play className="h-6 w-6 text-white" />
-                  </button>
-                  <span className="font-medium text-sm">Play video</span>
-                </div>
               </div>
             </div>
             <AnimatePresence mode="popLayout">
