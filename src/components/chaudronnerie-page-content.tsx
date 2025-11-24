@@ -16,16 +16,111 @@ import dynamic from 'next/dynamic';
 const DetailedStatCard = dynamic(() => import('./detailed-stat-card').then(mod => mod.DetailedStatCard));
 
 
-const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="font-headline text-3xl font-bold text-primary mb-8">{children}</h3>
-);
+const GeometricTechnicalTable = () => {
+  const tableData = [
+    { capacite: 3, format: "1 250", epaisseur: 4, longVirole: "2 200.00", longTotale: "2 730.00", poidsUnite: "468,00", nbreTrous: "1", pressionEpreuve: "3 Bars" },
+    { capacite: 5, format: "1 250", epaisseur: 5, longVirole: "3 850.00", longTotale: "4 290.00", poidsUnite: "469,00", nbreTrous: "1", pressionEpreuve: "3 Bars" },
+    { capacite: 10, format: "1 900", epaisseur: 6, longVirole: "3 200.00", longTotale: "4 010.00", poidsUnite: "1 387,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
+    { capacite: 15, format: "1 900", epaisseur: 6, longVirole: "5 000.00", longTotale: "5 810.00", poidsUnite: "1 908,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
+    { capacite: 20, format: "2 500", epaisseur: 6, longVirole: "5 810.00", longTotale: "4 692.00", poidsUnite: "2 102,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
+    { capacite: 30, format: "2 500", epaisseur: 6, longVirole: "5 700.00", longTotale: "6 742.00", poidsUnite: "2 909,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
+    { capacite: 40, format: "3 000", epaisseur: 6, longVirole: "5 130.00", longTotale: "6 193.00", poidsUnite: "3 363,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
+    { capacite: 50, format: "3 000", epaisseur: 6, longVirole: "6 560.00", longTotale: "7 626.00", poidsUnite: "4 133,00", nbreTrous: "1", pressionEpreuve: "3 Bars" },
+    { capacite: 60, format: "3 000", epaisseur: 6, longVirole: "8 000.00", longTotale: "9 066.00", poidsUnite: "4 803,00", nbreTrous: "1", pressionEpreuve: "3 Bars" },
+    { capacite: 100, format: "3 000", epaisseur: 6, longVirole: "13 600.00", longTotale: "14 886.00", poidsUnite: "7 611,00", nbreTrous: "1", pressionEpreuve: "3 Bars" }
+  ];
 
-const SubSectionTitle = ({ children }: { children: React.ReactNode }) => (
-    <h4 className="font-headline text-2xl font-bold text-primary mt-10 mb-6">{children}</h4>
-);
+  return (
+    <div className="p-8 bg-white min-h-screen">
+      <div className="max-w-7xl mx-auto">
+        {/* Title */}
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold text-red-700 leading-tight">
+            CARACTÉRISTIQUES GÉOMÉTRIQUES<br/>ET TECHNIQUES
+          </h1>
+        </div>
+
+        {/* Table Container */}
+        <div className="overflow-x-auto shadow-lg rounded-lg">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="bg-red-200">
+                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                  CAPACITÉ
+                </th>
+                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                  FORMAT
+                </th>
+                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                  ÉPAISSEUR
+                </th>
+                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                  LONGUEUR<br/>VIROLE
+                </th>
+                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                  LONGUEUR<br/>TOTALE
+                </th>
+                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                  Poids en<br/>unité
+                </th>
+                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                  NBRE<br/>trous D'homme
+                </th>
+                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                  pression<br/>de service
+                </th>
+                <th className="border border-red-300 px-3 py-3 text-center text-xs font-bold text-gray-800">
+                  pression<br/>d'épreuve
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableData.map((row, index) => (
+                <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-red-50'}>
+                  <td className="border border-gray-300 px-3 py-3 text-center text-sm font-semibold text-gray-800">
+                    {row.capacite}
+                  </td>
+                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                    {row.format}
+                  </td>
+                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                    {row.epaisseur}
+                  </td>
+                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                    {row.longVirole}
+                  </td>
+                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                    {row.longTotale}
+                  </td>
+                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                    {row.poidsUnite}
+                  </td>
+                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                    {row.nbreTrous}
+                  </td>
+                  {index === 0 && (
+                    <td rowSpan={tableData.length} className="border border-gray-300 bg-white relative" style={{ width: '50px' }}>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="transform -rotate-90 whitespace-nowrap text-xs font-bold text-gray-800 tracking-wider">
+                          ATMOSPHERIQUE
+                        </div>
+                      </div>
+                    </td>
+                  )}
+                  <td className="border border-gray-300 px-3 py-3 text-center text-sm text-gray-700">
+                    {row.pressionEpreuve}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export function ChaudronneriePageContent() {
-  const activeProduct = chaudronnerieData.products.silos;
   const { hero } = chaudronnerieData;
   const heroStats = hero.stats;
 
@@ -107,82 +202,7 @@ export function ChaudronneriePageContent() {
 
       {/* 2. Product Details Section */}
       <section id="product-details" className="bg-white py-20">
-        <div className="container mx-auto px-4 max-w-screen-2xl">
-          <AnimatedWrapper animation="fade-in">
-            <div className="text-center mb-20">
-                <h2 className="font-headline text-5xl font-bold text-primary mb-6">Nos Capacités en Chaudronnerie</h2>
-                <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
-                  Notre unité de chaudronnerie est spécialisée dans la conception et la fabrication sur mesure d'équipements pour les secteurs industriels, agroalimentaires et de la construction. Nous transformons l'acier pour donner vie à des projets complexes avec une précision et une qualité inégalées.
-                </p>
-            </div>
-          </AnimatedWrapper>
-          
-            <AnimatedWrapper animation="fade-in">
-              <div>
-                  <Card className="border-none shadow-none p-0">
-                      <CardContent className="p-0">
-                          <SectionTitle>DESCRIPTION</SectionTitle>
-                          <div className="space-y-12 text-lg">
-                              <p>{activeProduct.features.description}</p>
-                              
-                              {activeProduct.features.avantages && activeProduct.features.avantages.length > 0 &&
-                                  <div>
-                                      <SubSectionTitle>Avantages Clés</SubSectionTitle>
-                                      <ul className="list-disc pl-6 space-y-2">
-                                          {activeProduct.features.avantages.map(item => <li key={item}>{item}</li>)}
-                                      </ul>
-                                  </div>
-                              }
-                              {activeProduct.features.applications && activeProduct.features.applications.length > 0 &&
-                              <div>
-                                  <SubSectionTitle>Applications Courantes</SubSectionTitle>
-                                  <ul className="list-disc pl-6 space-y-2">
-                                      {activeProduct.features.applications.map(item => <li key={item}>{item}</li>)}
-                                  </ul>
-                              </div>
-                              }
-                          </div>
-
-                          <section className="mt-24">
-                              <SectionTitle>SPÉCIFICATIONS TECHNIQUES</SectionTitle>
-                              {activeProduct.tables.materiaux && (
-                                  <div className="mb-16">
-                                      <SubSectionTitle>Matériaux Utilisés</SubSectionTitle>
-                                      <p className="text-lg">{activeProduct.tables.materiaux}</p>
-                                  </div>
-                              )}
-                              {activeProduct.tables.capacites?.rows && activeProduct.tables.capacites.rows.length > 0 && (
-                                  <div className="mb-16">
-                                      <SubSectionTitle>{activeProduct.tables.capacites.title}</SubSectionTitle>
-                                      <Table>
-                                          <TableHeader>
-                                              <TableRow className="bg-accent/10">
-                                                  {activeProduct.tables.capacites.headers.map(h => <TableHead key={h} className="text-accent font-bold">{h}</TableHead>)}
-                                              </TableRow>
-                                          </TableHeader>
-                                          <TableBody>
-                                              {activeProduct.tables.capacites.rows.map((row: any, i: number) => (
-                                                  <TableRow key={i}>
-                                                      <TableCell>{row.caracteristique}</TableCell>
-                                                      <TableCell>{row.valeur}</TableCell>
-                                                  </TableRow>
-                                              ))}
-                                          </TableBody>
-                                      </Table>
-                                  </div>
-                              )}
-                               {activeProduct.tables.normes && (
-                                  <div className="mb-16">
-                                      <SubSectionTitle>Normes et Conformité</SubSectionTitle>
-                                      <p className="text-lg">{activeProduct.tables.normes}</p>
-                                  </div>
-                              )}
-                          </section>
-                      </CardContent>
-                  </Card>
-              </div>
-            </AnimatedWrapper>
-        </div>
+        <GeometricTechnicalTable />
       </section>
     </div>
   );
