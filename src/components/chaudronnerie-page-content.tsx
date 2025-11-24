@@ -285,33 +285,7 @@ export function ChaudronneriePageContent() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-10 gap-12">
             <div className="lg:col-span-4">
-              <AnimatedWrapper animation="fade-in">
-                <Card className="p-4">
-                  <CardHeader>
-                    <CardTitle>Dessins Techniques</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <Carousel setApi={setApi} className="w-full">
-                      <CarouselContent>
-                        {drawingImages.map((src, index) => (
-                          <CarouselItem key={index} onMouseEnter={() => setCurrent(index + 1)}>
-                            <div className="p-1">
-                              <Card>
-                                <CardContent className="flex aspect-square items-center justify-center p-6 relative">
-                                  <Image src={src} alt={`Drawing ${index + 1}`} fill className="object-contain rounded-lg" />
-                                </CardContent>
-                              </Card>
-                            </div>
-                          </CarouselItem>
-                        ))}
-                      </CarouselContent>
-                    </Carousel>
-                    <div className="py-2 text-center text-sm text-muted-foreground">
-                      Schéma {current} sur {count}
-                    </div>
-                  </CardContent>
-                </Card>
-              </AnimatedWrapper>
+               {/* This space is reserved for drawings, will be implemented next */}
             </div>
             <div className="lg:col-span-6">
               <AnimatedWrapper animation="fade-in" staggerIndex={1}>
@@ -320,10 +294,30 @@ export function ChaudronneriePageContent() {
                     <CardTitle className="text-2xl font-bold text-accent">CARACTÉRISTIQUES GÉOMÉTRIQUES ET TECHNIQUES</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    <GeometricTechnicalTable api={api} setCurrent={setCurrent} current={current} />
+                    <GeometricTechnicalTable api={api as CarouselApi} setCurrent={setCurrent} current={current} />
                     <div className="mt-8 prose prose-lg max-w-none">
                         <TechnicalSpecsSection />
                     </div>
+                     <div className="mt-8">
+                        <Carousel setApi={setApi} className="w-full">
+                          <CarouselContent>
+                            {drawingImages.map((src, index) => (
+                              <CarouselItem key={index} onMouseEnter={() => setCurrent(index + 1)}>
+                                <div className="p-1">
+                                  <Card>
+                                    <CardContent className="flex aspect-square items-center justify-center p-6 relative">
+                                      <Image src={src} alt={`Drawing ${index + 1}`} fill className="object-contain rounded-lg" />
+                                    </CardContent>
+                                  </Card>
+                                </div>
+                              </CarouselItem>
+                            ))}
+                          </CarouselContent>
+                        </Carousel>
+                        <div className="py-2 text-center text-sm text-muted-foreground">
+                          Schéma {current} sur {count}
+                        </div>
+                      </div>
                   </CardContent>
                 </Card>
               </AnimatedWrapper>
@@ -334,5 +328,7 @@ export function ChaudronneriePageContent() {
     </div>
   );
 }
+
+    
 
     
