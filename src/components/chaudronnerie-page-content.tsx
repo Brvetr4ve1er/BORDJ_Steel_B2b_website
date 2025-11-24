@@ -31,7 +31,7 @@ const GeometricTechnicalTable = () => {
   ];
 
   return (
-    <div className="p-8 bg-white min-h-screen">
+    <div className="bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <div className="mb-6">
@@ -202,7 +202,43 @@ export function ChaudronneriePageContent() {
 
       {/* 2. Product Details Section */}
       <section id="product-details" className="bg-white py-20">
-        <GeometricTechnicalTable />
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-10 gap-12">
+            <div className="lg:col-span-4">
+              <AnimatedWrapper animation="fade-in">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Dessins Techniques</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    {/* Placeholder for technical drawings */}
+                    <div className="aspect-square bg-gray-200 rounded-lg flex items-center justify-center">
+                      <p className="text-muted-foreground">Dessin technique à venir</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </AnimatedWrapper>
+            </div>
+            <div className="lg:col-span-6">
+              <AnimatedWrapper animation="fade-in" staggerIndex={1}>
+                <GeometricTechnicalTable />
+                <div className="mt-8 prose prose-lg max-w-none">
+                  <h3 className="font-bold">Description</h3>
+                  <p>
+                    Nos cuves et silos sont fabriqués sur mesure pour répondre aux besoins spécifiques de stockage de produits solides (ciment, céréales), liquides (eau, produits chimiques) et gazeux. Nous concevons des solutions optimisées pour garantir la sécurité, la durabilité et une conservation idéale du contenu.
+                  </p>
+                  <h3 className="font-bold mt-4">Applications Courantes</h3>
+                  <ul>
+                    <li>Industrie agroalimentaire (stockage de grains)</li>
+                    <li>Cimenteries et centrales à béton</li>
+                    <li>Industrie chimique</li>
+                    <li>Stations de traitement des eaux</li>
+                  </ul>
+                </div>
+              </AnimatedWrapper>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );
