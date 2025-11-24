@@ -285,7 +285,26 @@ export function ChaudronneriePageContent() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-10 gap-12">
             <div className="lg:col-span-4">
-               {/* This space is reserved for drawings, will be implemented next */}
+              <div className="space-y-4">
+                <Carousel setApi={setApi} className="w-full">
+                  <CarouselContent>
+                    {drawingImages.map((src, index) => (
+                      <CarouselItem key={index} onMouseEnter={() => setCurrent(index + 1)}>
+                        <div className="p-1">
+                          <Card>
+                            <CardContent className="flex aspect-square items-center justify-center p-6 relative">
+                              <Image src={src} alt={`Drawing ${index + 1}`} fill className="object-contain rounded-lg" />
+                            </CardContent>
+                          </Card>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
+                <div className="py-2 text-center text-sm text-muted-foreground">
+                  Schéma {current} sur {count}
+                </div>
+              </div>
             </div>
             <div className="lg:col-span-6">
               <AnimatedWrapper animation="fade-in" staggerIndex={1}>
@@ -298,26 +317,14 @@ export function ChaudronneriePageContent() {
                     <div className="mt-8 prose prose-lg max-w-none">
                         <TechnicalSpecsSection />
                     </div>
-                     <div className="mt-8">
-                        <Carousel setApi={setApi} className="w-full">
-                          <CarouselContent>
-                            {drawingImages.map((src, index) => (
-                              <CarouselItem key={index} onMouseEnter={() => setCurrent(index + 1)}>
-                                <div className="p-1">
-                                  <Card>
-                                    <CardContent className="flex aspect-square items-center justify-center p-6 relative">
-                                      <Image src={src} alt={`Drawing ${index + 1}`} fill className="object-contain rounded-lg" />
-                                    </CardContent>
-                                  </Card>
-                                </div>
-                              </CarouselItem>
-                            ))}
-                          </CarouselContent>
-                        </Carousel>
-                        <div className="py-2 text-center text-sm text-muted-foreground">
-                          Schéma {current} sur {count}
+                     <div className="mt-8 grid grid-cols-2 gap-4">
+                        <div className="bg-muted rounded-lg aspect-square flex items-center justify-center">
+                            <Image src="https://picsum.photos/seed/tech1/400/400" alt="Tech drawing 1" width={400} height={400} className="rounded-lg" data-ai-hint="technical drawing" />
                         </div>
-                      </div>
+                        <div className="bg-muted rounded-lg aspect-square flex items-center justify-center">
+                            <Image src="https://picsum.photos/seed/tech2/400/400" alt="Tech drawing 2" width={400} height={400} className="rounded-lg" data-ai-hint="technical drawing" />
+                        </div>
+                     </div>
                   </CardContent>
                 </Card>
               </AnimatedWrapper>
