@@ -317,12 +317,9 @@ export function ChaudronneriePageContent() {
                     <div className="mt-8 prose prose-lg max-w-none">
                         <TechnicalSpecsSection />
                     </div>
-                     <div className="mt-8 grid grid-cols-2 gap-4">
-                        <div className="bg-muted rounded-lg aspect-square flex items-center justify-center">
-                            <Image src="https://picsum.photos/seed/tech1/400/400" alt="Tech drawing 1" width={400} height={400} className="rounded-lg" data-ai-hint="technical drawing" />
-                        </div>
-                        <div className="bg-muted rounded-lg aspect-square flex items-center justify-center">
-                            <Image src="https://picsum.photos/seed/tech2/400/400" alt="Tech drawing 2" width={400} height={400} className="rounded-lg" data-ai-hint="technical drawing" />
+                     <div className="mt-8">
+                        <div className="bg-muted rounded-lg aspect-video flex items-center justify-center">
+                            <Image src="https://i.pinimg.com/736x/ac/f1/1d/acf11d05445a30a0c57c86ab75fe9990.jpg" alt="Technical drawing" width={800} height={450} className="rounded-lg object-contain" data-ai-hint="technical drawing" />
                         </div>
                      </div>
                   </CardContent>
@@ -335,7 +332,5 @@ export function ChaudronneriePageContent() {
     </div>
   );
 }
-
-    
 
     
