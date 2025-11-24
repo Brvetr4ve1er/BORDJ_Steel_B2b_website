@@ -103,7 +103,7 @@ export default function BlogPage() {
                            </div>
                         )}
                         <ScrollArea className="md:col-span-1 h-[100vh]">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pr-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pr-4">
                                 {articles.map((article) => (
                                   <div key={article.id}>
                                       <BlogPostCard {...article} className="h-full" />
