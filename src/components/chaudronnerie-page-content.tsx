@@ -17,8 +17,36 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel"
 import { cn } from '@/lib/utils';
+import ExpandableCards from './ui/expandable-cards';
+import type { CardData } from './ui/expandable-cards';
 
 const DetailedStatCard = dynamic(() => import('./detailed-stat-card').then(mod => mod.DetailedStatCard));
+
+const activityCards: CardData[] = [
+    { id: 1, title: 'Hydrocarbures', image: 'https://picsum.photos/seed/hydro/400/400', content: 'Solutions de stockage et de traitement pour le secteur pétrolier et gazier.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author1/96/96' } },
+    { id: 2, title: 'Énergie et Mines', image: 'https://picsum.photos/seed/energy/400/400', content: 'Équipements robustes pour les centrales électriques et les exploitations minières.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author2/96/96' } },
+    { id: 3, title: 'Hydraulique', image: 'https://picsum.photos/seed/hydro2/400/400', content: 'Fabrication de conduites forcées, réservoirs et équipements pour le traitement de l\'eau.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author3/96/96' } },
+    { id: 4, title: 'Pharmaceutique', image: 'https://picsum.photos/seed/pharma/400/400', content: 'Cuves et tuyauteries en acier inoxydable conformes aux normes sanitaires les plus strictes.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author4/96/96' } },
+    { id: 5, title: 'Travaux Publics', image: 'https://picsum.photos/seed/public/400/400', content: 'Éléments de ponts, passerelles et autres structures métalliques pour les infrastructures publiques.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author5/96/96' } },
+    { id: 6, title: 'Environnement', image: 'https://picsum.photos/seed/env/400/400', content: 'Solutions pour le traitement des déchets et la filtration industrielle.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author6/96/96' } },
+    { id: 7, title: 'Traitement des Eaux', image: 'https://picsum.photos/seed/water/400/400', content: 'Équipements pour stations d\'épuration et de potabilisation.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author7/96/96' } }
+];
+
+const ActivitiesSection = () => {
+    return (
+        <section className="bg-secondary py-16">
+            <div className="container mx-auto px-4">
+                <AnimatedWrapper animation="fade-in">
+                    <h2 className="text-4xl font-bold text-primary text-center mb-4">Nos Domaines d’Activités</h2>
+                    <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-8">
+                        Notre expertise en chaudronnerie s'étend à de multiples secteurs industriels, où nous fournissons des solutions sur mesure, fiables et performantes.
+                    </p>
+                </AnimatedWrapper>
+                <ExpandableCards cards={activityCards} />
+            </div>
+        </section>
+    );
+};
 
 
 const GeometricTechnicalTable = ({ api, setCurrent, current }: { api: CarouselApi, setCurrent: (index: number) => void, current: number }) => {
@@ -36,7 +64,7 @@ const GeometricTechnicalTable = ({ api, setCurrent, current }: { api: CarouselAp
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-background">
         <div className="overflow-x-auto shadow-lg rounded-lg">
           <table className="w-full border-collapse">
             <thead>
@@ -76,8 +104,10 @@ const GeometricTechnicalTable = ({ api, setCurrent, current }: { api: CarouselAp
                   key={index} 
                   className={cn("transition-colors", index % 2 === 0 ? 'bg-white' : 'bg-muted/50', current === index + 1 ? 'bg-accent/20' : '')}
                   onMouseEnter={() => {
-                    setCurrent(index + 1);
-                    api?.scrollTo(index);
+                    if (api) {
+                        setCurrent(index + 1);
+                        api.scrollTo(index);
+                    }
                   }}
                 >
                   <td className="border border-border px-3 py-3 text-center text-sm font-semibold text-foreground">
@@ -281,6 +311,7 @@ export function ChaudronneriePageContent() {
         </section>
 
       {/* 2. Product Details Section */}
+      <ActivitiesSection />
       <section id="product-details" className="bg-secondary/20 py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-10 gap-12">
