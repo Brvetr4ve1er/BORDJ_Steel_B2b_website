@@ -120,6 +120,60 @@ const GeometricTechnicalTable = () => {
   );
 };
 
+const TechnicalSpecsSection = () => {
+   return (
+     <div className="p-8 bg-white">
+       <div className="max-w-6xl mx-auto">
+         <div className="grid md:grid-cols-2 gap-6">
+           {/* Left Column - Assembly and Welding Process */}
+           <div className="bg-white">
+             <h2 className="text-red-700 font-bold text-sm mb-4 uppercase tracking-wide">
+               PROCÉDÉ D'ASSEMBLAGE ET SOUDAGE
+             </h2>
+             <div className="space-y-2 text-xs leading-relaxed">
+               <p className="text-gray-800">
+                 <span className="font-bold">ROBÉ ET FOND:</span> PAR RECOUVREMENT EN V
+               </p>
+               <p className="text-gray-800">
+                 <span className="font-bold">TUBULURE, BRIDE, ANNEAU DE LEVAGE:</span> EN V RENFORCÉ
+               </p>
+               <p className="text-gray-800">
+                 <span className="font-bold">SOUDURES :</span> CONFORMES AUX NORMES API 650 STD
+               </p>
+               <p className="text-gray-800">
+                 <span className="font-bold">TOLÉRANCE DE FABRICATION:</span> + 0,1%
+               </p>
+               <p className="text-gray-800">
+                 <span className="font-bold">ÉPREUVE HYDRAULIQUE:</span> TEST D'ÉTANCHÉITÉ
+               </p>
+               <p className="text-gray-800">
+                 <span className="font-bold">TRAITEMENT DE SURFACE:</span> SABLAGE EXTÉRIEUR + PEINTURE (SELON PRODUIT STOCKÉ)
+               </p>
+             </div>
+           </div>
+           {/* Right Column - Materials */}
+           <div className="bg-white">
+             <h2 className="text-red-700 font-bold text-sm mb-4 uppercase tracking-wide">
+               MATÉRIAUX
+             </h2>
+             <div className="space-y-2 text-xs leading-relaxed">
+               <p className="text-gray-800">
+                 <span className="font-bold">TÔLE:</span> S 275JR / E28
+               </p>
+               <p className="text-gray-800">
+                 <span className="font-bold">PROFILÉ:</span> IDEM
+               </p>
+               <p className="text-gray-800">
+                 <span className="font-bold">JOINT :</span> KLINGERIT EP: 3mm
+               </p>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   );
+};
+
 export function ChaudronneriePageContent() {
   const { hero } = chaudronnerieData;
   const heroStats = hero.stats;
@@ -222,19 +276,8 @@ export function ChaudronneriePageContent() {
             <div className="lg:col-span-6">
               <AnimatedWrapper animation="fade-in" staggerIndex={1}>
                 <GeometricTechnicalTable />
-                <div className="mt-8 prose prose-lg max-w-none whitespace-pre-wrap">
-                  <h3 className="font-bold">PROCEDE D’ASSEMEBLAGE ET SOUDAGE</h3>
-                  <p>
-MATERIAUX ROBE ET FOND: PAR RECOUVREMENT EN V
-TUBULURE, BRIDE, ANNEAU DE LEVAGE: EN V RENFORCE
-LES SOUDURES : CONFORMES AUX NORMES API 650 STD
-TOLERANCE DE FABRICATION: + 0,1%
-EPREUVE HYDRAULIQUE: TEST D’ETANCHEITE
-TAITEMENT DE SURFACE: SABLAGE EXTERIEUR + PEINTURE (SELON PRODUIT STOCKE)
-TÔLE: S 275JR / E28
-PROFILE: IDEM
-JOINT : KLINGERIT EP: 3mm
-                  </p>
+                <div className="mt-8 prose prose-lg max-w-none">
+                    <TechnicalSpecsSection />
                 </div>
               </AnimatedWrapper>
             </div>
