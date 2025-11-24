@@ -222,18 +222,19 @@ export function ChaudronneriePageContent() {
             <div className="lg:col-span-6">
               <AnimatedWrapper animation="fade-in" staggerIndex={1}>
                 <GeometricTechnicalTable />
-                <div className="mt-8 prose prose-lg max-w-none">
-                  <h3 className="font-bold">Description</h3>
+                <div className="mt-8 prose prose-lg max-w-none whitespace-pre-wrap">
+                  <h3 className="font-bold">PROCEDE D’ASSEMEBLAGE ET SOUDAGE</h3>
                   <p>
-                    Nos cuves et silos sont fabriqués sur mesure pour répondre aux besoins spécifiques de stockage de produits solides (ciment, céréales), liquides (eau, produits chimiques) et gazeux. Nous concevons des solutions optimisées pour garantir la sécurité, la durabilité et une conservation idéale du contenu.
+MATERIAUX ROBE ET FOND: PAR RECOUVREMENT EN V
+TUBULURE, BRIDE, ANNEAU DE LEVAGE: EN V RENFORCE
+LES SOUDURES : CONFORMES AUX NORMES API 650 STD
+TOLERANCE DE FABRICATION: + 0,1%
+EPREUVE HYDRAULIQUE: TEST D’ETANCHEITE
+TAITEMENT DE SURFACE: SABLAGE EXTERIEUR + PEINTURE (SELON PRODUIT STOCKE)
+TÔLE: S 275JR / E28
+PROFILE: IDEM
+JOINT : KLINGERIT EP: 3mm
                   </p>
-                  <h3 className="font-bold mt-4">Applications Courantes</h3>
-                  <ul>
-                    <li>Industrie agroalimentaire (stockage de grains)</li>
-                    <li>Cimenteries et centrales à béton</li>
-                    <li>Industrie chimique</li>
-                    <li>Stations de traitement des eaux</li>
-                  </ul>
                 </div>
               </AnimatedWrapper>
             </div>
