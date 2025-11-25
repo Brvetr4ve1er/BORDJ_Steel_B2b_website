@@ -1,12 +1,10 @@
 "use client";
 
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, type MotionValue, type SpringOptions } from "framer-motion";
-import React, { useState, useRef, useEffect, createContext, useContext, Children, cloneElement } from "react";
-import { Play } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-const AVATAR_SIZE = 96;
 const EASING_X1 = 0.4;
 const EASING_Y1 = 0.0;
 const EASING_X2 = 0.2;
@@ -15,7 +13,8 @@ const EASING_Y2 = 1;
 export type CardData = {
   id: number;
   title: string;
-  image: string;
+  icon?: React.ReactNode;
+  image?: string;
   content: string;
   author?: {
     name: string;
@@ -24,9 +23,9 @@ export type CardData = {
   };
 };
 
-const smoothEasing: SpringOptions["bounce"] | number[] = [EASING_X1, EASING_Y1, EASING_X2, EASING_Y2];
+const smoothEasing: number[] = [EASING_X1, EASING_Y1, EASING_X2, EASING_Y2];
 
-type ExpandableCardsProps = {
+export type ExpandableCardsProps = {
   cards: CardData[];
   selectedCard?: number | null;
   onSelect?: (id: number | null) => void;
@@ -109,13 +108,17 @@ export default function ExpandableCards({
               ease: smoothEasing as any,
             }}
           >
-            <div className="relative h-full w-[200px]">
-              <Image
-                alt={card.title}
-                className="h-full w-full object-cover"
-                fill
-                src={card.image || "/placeholder.svg"}
-              />
+            <div className="relative h-full w-[200px] bg-secondary flex items-center justify-center">
+              {card.image ? (
+                <Image
+                  alt={card.title}
+                  className="h-full w-full object-cover"
+                  fill
+                  src={card.image}
+                />
+              ) : card.icon ? (
+                <div className="text-accent">{card.icon}</div>
+              ) : null}
               <div className="absolute inset-0 bg-black/20" />
               <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                 <h2 className="font-bold text-2xl">{card.title}</h2>

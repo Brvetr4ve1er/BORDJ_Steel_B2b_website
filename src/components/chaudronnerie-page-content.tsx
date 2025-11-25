@@ -1,10 +1,9 @@
-
 "use client";
 
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
-import { ArrowRight, Package, Users, Square, Factory } from 'lucide-react';
+import { ArrowRight, Package, Users, Square, Factory, Flame, Bolt, Droplets, Beaker, Construction, Leaf, Filter } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
@@ -23,13 +22,13 @@ import type { CardData } from './ui/expandable-cards';
 const DetailedStatCard = dynamic(() => import('./detailed-stat-card').then(mod => mod.DetailedStatCard));
 
 const activityCards: CardData[] = [
-    { id: 1, title: 'Hydrocarbures', image: 'https://picsum.photos/seed/hydro/400/400', content: 'Solutions de stockage et de traitement pour le secteur pétrolier et gazier.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author1/96/96' } },
-    { id: 2, title: 'Énergie et Mines', image: 'https://picsum.photos/seed/energy/400/400', content: 'Équipements robustes pour les centrales électriques et les exploitations minières.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author2/96/96' } },
-    { id: 3, title: 'Hydraulique', image: 'https://picsum.photos/seed/hydro2/400/400', content: 'Fabrication de conduites forcées, réservoirs et équipements pour le traitement de l\'eau.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author3/96/96' } },
-    { id: 4, title: 'Pharmaceutique', image: 'https://picsum.photos/seed/pharma/400/400', content: 'Cuves et tuyauteries en acier inoxydable conformes aux normes sanitaires les plus strictes.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author4/96/96' } },
-    { id: 5, title: 'Travaux Publics', image: 'https://picsum.photos/seed/public/400/400', content: 'Éléments de ponts, passerelles et autres structures métalliques pour les infrastructures publiques.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author5/96/96' } },
-    { id: 6, title: 'Environnement', image: 'https://picsum.photos/seed/env/400/400', content: 'Solutions pour le traitement des déchets et la filtration industrielle.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author6/96/96' } },
-    { id: 7, title: 'Traitement des Eaux', image: 'https://picsum.photos/seed/water/400/400', content: 'Équipements pour stations d\'épuration et de potabilisation.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author7/96/96' } }
+    { id: 1, title: 'Hydrocarbures', icon: <Flame size={64} />, content: 'Solutions de stockage et de traitement pour le secteur pétrolier et gazier.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author1/96/96' } },
+    { id: 2, title: 'Énergie et Mines', icon: <Bolt size={64} />, content: 'Équipements robustes pour les centrales électriques et les exploitations minières.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author2/96/96' } },
+    { id: 3, title: 'Hydraulique', icon: <Droplets size={64} />, content: 'Fabrication de conduites forcées, réservoirs et équipements pour le traitement de l\'eau.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author3/96/96' } },
+    { id: 4, title: 'Pharmaceutique', icon: <Beaker size={64} />, content: 'Cuves et tuyauteries en acier inoxydable conformes aux normes sanitaires les plus strictes.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author4/96/96' } },
+    { id: 5, title: 'Travaux Publics', icon: <Construction size={64} />, content: 'Éléments de ponts, passerelles et autres structures métalliques pour les infrastructures publiques.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author5/96/96' } },
+    { id: 6, title: 'Environnement', icon: <Leaf size={64} />, content: 'Solutions pour le traitement des déchets et la filtration industrielle.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author6/96/96' } },
+    { id: 7, title: 'Traitement des Eaux', icon: <Filter size={64} />, content: 'Équipements pour stations d\'épuration et de potabilisation.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author7/96/96' } }
 ];
 
 const ActivitiesSection = () => {
