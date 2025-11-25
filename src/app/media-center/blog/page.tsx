@@ -21,7 +21,6 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 
 const tabs = [
     { id: "iso", label: "ISO", icon: Award },
-    { id: "news", label: "News", icon: Newspaper },
     { id: "blog", label: "Blog", icon: BookOpen },
     { id: "catalogue", label: "Catalogue", icon: FileText },
 ];
@@ -92,8 +91,6 @@ export default function BlogPage() {
                         </div>
                     </AnimatedWrapper>
                 );
-            case 'news':
-                return <EmptyContent tab="News" />;
             case 'blog':
                 return (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
