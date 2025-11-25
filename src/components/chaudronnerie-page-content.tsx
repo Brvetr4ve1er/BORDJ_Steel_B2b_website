@@ -16,20 +16,31 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel"
 import { cn } from '@/lib/utils';
-import ExpandableCards from './ui/expandable-cards';
 import type { CardData } from './ui/expandable-cards';
 
 const DetailedStatCard = dynamic(() => import('./detailed-stat-card').then(mod => mod.DetailedStatCard));
 
-const activityCards: CardData[] = [
-    { id: 1, title: 'Hydrocarbures', icon: <Flame size={64} />, content: 'Solutions de stockage et de traitement pour le secteur pétrolier et gazier.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author1/96/96' } },
-    { id: 2, title: 'Énergie et Mines', icon: <Bolt size={64} />, content: 'Équipements robustes pour les centrales électriques et les exploitations minières.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author2/96/96' } },
-    { id: 3, title: 'Hydraulique', icon: <Droplets size={64} />, content: 'Fabrication de conduites forcées, réservoirs et équipements pour le traitement de l\'eau.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author3/96/96' } },
-    { id: 4, title: 'Pharmaceutique', icon: <Beaker size={64} />, content: 'Cuves et tuyauteries en acier inoxydable conformes aux normes sanitaires les plus strictes.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author4/96/96' } },
-    { id: 5, title: 'Travaux Publics', icon: <Construction size={64} />, content: 'Éléments de ponts, passerelles et autres structures métalliques pour les infrastructures publiques.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author5/96/96' } },
-    { id: 6, title: 'Environnement', icon: <Leaf size={64} />, content: 'Solutions pour le traitement des déchets et la filtration industrielle.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author6/96/96' } },
-    { id: 7, title: 'Traitement des Eaux', icon: <Filter size={64} />, content: 'Équipements pour stations d\'épuration et de potabilisation.', author: { name: 'Bordj Steel', role: 'Expertise Industrielle', image: 'https://picsum.photos/seed/author7/96/96' } }
+const activityCards = [
+    { title: 'Hydrocarbures', icon: <Flame className="h-10 w-10" /> },
+    { title: 'Énergie et Mines', icon: <Bolt className="h-10 w-10" /> },
+    { title: 'Hydraulique', icon: <Droplets className="h-10 w-10" /> },
+    { title: 'Pharmaceutique', icon: <Beaker className="h-10 w-10" /> },
+    { title: 'Travaux Publics', icon: <Construction className="h-10 w-10" /> },
+    { title: 'Environnement', icon: <Leaf className="h-10 w-10" /> },
+    { title: 'Traitement des Eaux', icon: <Filter className="h-10 w-10" /> }
 ];
+
+const ActivityCard = ({ title, icon, className }: { title: string; icon: React.ReactNode, className?: string }) => (
+    <Card className={cn(
+        "group relative flex h-full flex-col items-center justify-center p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-secondary/50",
+        className
+    )}>
+        <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-accent/10 text-accent transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-accent-foreground">
+            {icon}
+        </div>
+        <h3 className="text-xl font-bold text-primary">{title}</h3>
+    </Card>
+);
 
 const ActivitiesSection = () => {
     return (
@@ -37,11 +48,49 @@ const ActivitiesSection = () => {
             <div className="container mx-auto px-4">
                 <AnimatedWrapper animation="fade-in">
                     <h2 className="text-4xl font-bold text-primary text-center mb-4">Nos Domaines d’Activités</h2>
-                    <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-8">
+                    <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-12">
                         Notre expertise en chaudronnerie s'étend à de multiples secteurs industriels, où nous fournissons des solutions sur mesure, fiables et performantes.
                     </p>
                 </AnimatedWrapper>
-                <ExpandableCards cards={activityCards} />
+                <div className="grid grid-cols-12 gap-6">
+                    <div className="col-span-12 lg:col-span-8">
+                        <div className="grid grid-cols-12 gap-6 h-full">
+                            <div className="col-span-12 sm:col-span-8">
+                                 <AnimatedWrapper animation="fade-in">
+                                    <ActivityCard title={activityCards[0].title} icon={activityCards[0].icon} className="h-full"/>
+                                 </AnimatedWrapper>
+                            </div>
+                            <div className="col-span-12 sm:col-span-4">
+                                <AnimatedWrapper animation="fade-in" staggerIndex={1}>
+                                    <ActivityCard title={activityCards[1].title} icon={activityCards[1].icon} className="h-full"/>
+                                 </AnimatedWrapper>
+                            </div>
+                            <div className="col-span-12 sm:col-span-4">
+                                 <AnimatedWrapper animation="fade-in" staggerIndex={2}>
+                                    <ActivityCard title={activityCards[2].title} icon={activityCards[2].icon} className="h-full"/>
+                                </AnimatedWrapper>
+                            </div>
+                             <div className="col-span-12 sm:col-span-8">
+                                 <AnimatedWrapper animation="fade-in" staggerIndex={3}>
+                                    <ActivityCard title={activityCards[3].title} icon={activityCards[3].icon} className="h-full"/>
+                                </AnimatedWrapper>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-span-12 lg:col-span-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 h-full">
+                           <AnimatedWrapper animation="fade-in" staggerIndex={4}>
+                                <ActivityCard title={activityCards[4].title} icon={activityCards[4].icon} className="h-full"/>
+                           </AnimatedWrapper>
+                           <AnimatedWrapper animation="fade-in" staggerIndex={5}>
+                                <ActivityCard title={activityCards[5].title} icon={activityCards[5].icon} className="h-full"/>
+                           </AnimatedWrapper>
+                           <AnimatedWrapper animation="fade-in" staggerIndex={6}>
+                                <ActivityCard title={activityCards[6].title} icon={activityCards[6].icon} className="h-full"/>
+                           </AnimatedWrapper>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     );
@@ -362,5 +411,3 @@ export function ChaudronneriePageContent() {
     </div>
   );
 }
-
-    
