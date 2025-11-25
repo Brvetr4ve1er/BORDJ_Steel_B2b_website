@@ -90,20 +90,20 @@ export default function BlogPage() {
                 );
             case 'blog':
                 return (
-                    <div>
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {featuredArticle && (
-                            <div className="mb-8">
+                            <div className="lg:col-span-1">
                                 <ArticleCard article={featuredArticle} />
                             </div>
                         )}
                         {Array.isArray(articles) && articles.length > 0 ? (
-                           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">
+                           <div className="lg:col-span-2 columns-1 sm:columns-2 gap-8 [column-fill:_balance]">
                              {articles.map((t, i) => (
                                <ArticleCard key={i} article={t} />
                              ))}
                            </div>
                          ) : (
-                           <p className="text-center text-muted-foreground">
+                           <p className="text-center text-muted-foreground lg:col-span-2">
                              No articles yet.
                            </p>
                          )}
@@ -202,3 +202,5 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
+
+    
