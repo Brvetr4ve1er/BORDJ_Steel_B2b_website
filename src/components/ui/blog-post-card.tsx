@@ -17,7 +17,7 @@ const cardVariants = cva(
     variants: {
       variant: {
         default: 'flex-col',
-        featured: 'flex-col',
+        featured: 'md:flex-row',
       },
     },
     defaultVariants: {
@@ -52,6 +52,8 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
       },
     };
 
+    const isFeatured = variant === 'featured';
+
     return (
       <motion.div
         ref={ref}
@@ -65,12 +67,12 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
         </a>
         <div className={cn(
           "relative z-0 flex h-full w-full",
-          variant === 'featured' ? 'flex-col' : 'flex-col'
+          isFeatured ? 'flex-col md:flex-row' : 'flex-col'
         )}>
           {imageUrl && (
             <div className={cn(
-              "relative overflow-hidden w-full",
-              variant === 'featured' ? "aspect-video" : "aspect-[4/3]"
+              "relative overflow-hidden",
+              isFeatured ? "md:w-1/2 w-full aspect-video" : "w-full aspect-[4/3]"
             )}>
               <Image
                 src={imageUrl}
@@ -80,18 +82,27 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
               />
             </div>
           )}
-          <div className="flex flex-1 flex-col justify-between p-6">
+          <div className={cn(
+              "flex flex-1 flex-col justify-between p-6",
+               isFeatured ? "md:w-1/2 w-full" : "w-full"
+            )}>
             <div>
               <div className="mb-4 flex items-center gap-4 text-xs font-semibold uppercase text-muted-foreground">
                 <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">{tag}</span>
                 <span>{date}</span>
               </div>
-              <h3 className="mb-3 text-xl font-bold leading-tight text-foreground lg:text-2xl">
+              <h3 className={cn(
+                  "mb-3 font-bold leading-tight text-foreground",
+                  isFeatured ? "text-2xl lg:text-3xl" : "text-xl lg:text-2xl"
+                )}>
                 <span className="bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 group-hover:bg-[length:100%_2px]">
                   {title}
                 </span>
               </h3>
-              <p className="text-muted-foreground text-base line-clamp-2">{description.split('\n').slice(0, 2).join('\n')}</p>
+              <p className={cn(
+                  "text-muted-foreground",
+                   isFeatured ? "text-lg line-clamp-4" : "text-base line-clamp-2"
+                )}>{description.split('\n').slice(0, isFeatured ? 4: 2).join('\n')}</p>
             </div>
             <div className="mt-6 flex items-center justify-between">
                 {author && (

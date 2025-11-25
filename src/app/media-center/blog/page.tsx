@@ -4,7 +4,7 @@
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
-import { BlogPostCard, type BlogPostCardProps } from '@/components/ui/blog-post-card';
+import ArticleCard from '@/components/ui/multi-media-testimonial';
 import { useState } from 'react';
 import { ArrowRight, ArrowUpRight, Award, Newspaper, BookOpen, FileText, Search } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -12,12 +12,9 @@ import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { DownloadButton } from '@/components/ui/download-button';
-import { Logo } from '@/components/logo';
 import { articles as allArticles } from '@/config/blog-data';
 import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
 import { Input } from '@/components/ui/input';
-import { ScrollArea } from '@/components/ui/scroll-area';
-
 
 const tabs = [
     { id: "iso", label: "ISO", icon: Award },
@@ -93,21 +90,23 @@ export default function BlogPage() {
                 );
             case 'blog':
                 return (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
                         {featuredArticle && (
-                           <div className="md:col-span-1">
-                               <BlogPostCard {...featuredArticle} variant="featured" />
-                           </div>
-                        )}
-                        <ScrollArea className="md:col-span-1 h-[100vh]">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pr-4">
-                                {articles.map((article) => (
-                                  <div key={article.id}>
-                                      <BlogPostCard {...article} className="h-full" />
-                                  </div>
-                                ))}
+                            <div className="mb-8">
+                                <ArticleCard article={featuredArticle} />
                             </div>
-                        </ScrollArea>
+                        )}
+                        {Array.isArray(articles) && articles.length > 0 ? (
+                           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">
+                             {articles.map((t, i) => (
+                               <ArticleCard key={i} article={t} />
+                             ))}
+                           </div>
+                         ) : (
+                           <p className="text-center text-muted-foreground">
+                             No articles yet.
+                           </p>
+                         )}
                     </div>
                 );
             case 'catalogue':
