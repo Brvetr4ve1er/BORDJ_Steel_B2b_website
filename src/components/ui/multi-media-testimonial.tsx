@@ -45,12 +45,14 @@ const ArticleCard = React.forwardRef<HTMLDivElement, ArticleCardProps>(
         </Link>
         <div className="relative z-0">
           {article.imageUrl && (
-            <div className="relative overflow-hidden w-full aspect-video">
+            <div className="relative overflow-hidden w-full">
               <Image
                 src={article.imageUrl}
                 alt={article.title}
-                fill
-                className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="h-auto w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
               />
             </div>
           )}
@@ -94,3 +96,4 @@ const ArticleCard = React.forwardRef<HTMLDivElement, ArticleCardProps>(
 
 ArticleCard.displayName = "ArticleCard";
 export default ArticleCard;
+
