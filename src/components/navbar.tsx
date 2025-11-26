@@ -153,19 +153,16 @@ const ListItem = React.forwardRef<
           href={href!}
           ref={ref}
           className={cn(
-            "group flex select-none items-start gap-4 space-y-1 rounded-md p-6 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "group flex select-none items-center gap-4 rounded-md p-4 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
         >
-          <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg bg-secondary transition-colors group-hover:bg-accent-foreground/10">
-            {Icon && <Icon className="h-8 w-8 text-accent transition-colors group-hover:text-accent-foreground" />}
+          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-lg bg-secondary transition-colors group-hover:bg-accent-foreground/10">
+            {Icon && <Icon className="h-6 w-6 text-accent transition-colors group-hover:text-accent-foreground" />}
           </div>
           <div className="flex-grow">
             <div className="text-base font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-base leading-snug text-muted-foreground">
-              {children}
-            </p>
           </div>
         </Link>
       </NavigationMenuLink>
@@ -351,3 +348,5 @@ export function Navbar() {
     </header>
   );
 }
+
+    
