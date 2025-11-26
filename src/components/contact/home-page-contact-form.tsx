@@ -17,6 +17,40 @@ export function HomePageContactForm() {
         <section id="contact" className="w-full">
             <div className="container mx-auto px-4">
                 <div className="grid lg:grid-cols-12 gap-12 items-center">
+                    <div className="lg:col-span-7">
+                        <AnimatedWrapper animation="slide-up" staggerIndex={1}>
+                            <Card className="shadow-lg">
+                                <CardHeader>
+                                    <CardTitle className="text-3xl font-bold text-primary">Contactez-nous</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <form className="space-y-6">
+                                        <div className="grid sm:grid-cols-2 gap-6">
+                                            <div className="space-y-2">
+                                                <label htmlFor="name" className="text-sm font-medium text-primary">{contact.content.form.name}</label>
+                                                <Input id="name" placeholder={contact.content.form.namePlaceholder} />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label htmlFor="email" className="text-sm font-medium text-primary">{contact.content.form.email}</label>
+                                                <Input id="email" type="email" placeholder={contact.content.form.emailPlaceholder} />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label htmlFor="subject" className="text-sm font-medium text-primary">{contact.content.form.subject}</label>
+                                            <Input id="subject" placeholder={contact.content.form.subjectPlaceholder} />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label htmlFor="message" className="text-sm font-medium text-primary">{contact.content.form.message}</label>
+                                            <Textarea id="message" placeholder={contact.content.form.messagePlaceholder} rows={5} />
+                                        </div>
+                                        <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90">
+                                            {contact.content.form.button} <Send className="ml-2 h-5 w-5" />
+                                        </Button>
+                                    </form>
+                                </CardContent>
+                            </Card>
+                        </AnimatedWrapper>
+                    </div>
                     <div className="lg:col-span-5">
                         <AnimatedWrapper animation="slide-up">
                             <Card className="bg-secondary/50 border-none shadow-lg">
@@ -59,41 +93,6 @@ export function HomePageContactForm() {
                                         referrerPolicy="no-referrer-when-downgrade"
                                         ></iframe>
                                     </div>
-                                </CardContent>
-                            </Card>
-                        </AnimatedWrapper>
-                    </div>
-
-                    <div className="lg:col-span-7">
-                        <AnimatedWrapper animation="slide-up" staggerIndex={1}>
-                            <Card className="shadow-lg">
-                                <CardHeader>
-                                    <CardTitle className="text-3xl font-bold text-primary">Contactez-nous</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <form className="space-y-6">
-                                        <div className="grid sm:grid-cols-2 gap-6">
-                                            <div className="space-y-2">
-                                                <label htmlFor="name" className="text-sm font-medium text-primary">{contact.content.form.name}</label>
-                                                <Input id="name" placeholder={contact.content.form.namePlaceholder} />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <label htmlFor="email" className="text-sm font-medium text-primary">{contact.content.form.email}</label>
-                                                <Input id="email" type="email" placeholder={contact.content.form.emailPlaceholder} />
-                                            </div>
-                                        </div>
-                                        <div className="space-y-2">
-                                            <label htmlFor="subject" className="text-sm font-medium text-primary">{contact.content.form.subject}</label>
-                                            <Input id="subject" placeholder={contact.content.form.subjectPlaceholder} />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <label htmlFor="message" className="text-sm font-medium text-primary">{contact.content.form.message}</label>
-                                            <Textarea id="message" placeholder={contact.content.form.messagePlaceholder} rows={5} />
-                                        </div>
-                                        <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90">
-                                            {contact.content.form.button} <Send className="ml-2 h-5 w-5" />
-                                        </Button>
-                                    </form>
                                 </CardContent>
                             </Card>
                         </AnimatedWrapper>
