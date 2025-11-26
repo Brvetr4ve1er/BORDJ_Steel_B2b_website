@@ -40,7 +40,7 @@ export const galvanisationContent = {
       { "title": "Produits", "value": "Profils | Panneaux | Structures", "icon": "layers" }
     ],
     "image_url": images.galvanisation.hero.src,
-    "blurDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=",
+    "blurDataUrl": images.galvanisation.hero.blurDataUrl,
     "cta_primary": "Demander un devis",
     "cta_secondary": "Télécharger la fiche technique"
   },
@@ -139,3 +139,5 @@ export const galvanisationContent = {
     "form_url": "/contact"
   }
 };
+
+    
