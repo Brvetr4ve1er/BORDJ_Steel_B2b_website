@@ -5,6 +5,7 @@ import { ContactInfo } from '@/components/contact-info';
 import { companyData } from '@/config/company-data';
 import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { AlgeriaMap } from '@/components/algeria-map';
 
 export const metadata: Metadata = {
   title: `Contact | ${companyData.siteMetadata.title}`,
@@ -52,19 +53,7 @@ export default function ContactPage() {
               Trouvez le distributeur ou le point de vente Bordj Steel le plus proche de chez vous.
             </p>
           </AnimatedWrapper>
-          <AnimatedWrapper animation="zoom-in" staggerIndex={1}>
-            <div className="border-4 border-secondary rounded-lg shadow-lg overflow-hidden aspect-video">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15887532.126588265!2d-3.373200000000001!3d28.527376000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd7cf9a96e85555d%3A0x463421796d453664!2sAlgeria!5e0!3m2!1sen!2sus!4v1700000000000"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </AnimatedWrapper>
+          <AlgeriaMap />
         </div>
       </section>
     </ProductPageLayout>
