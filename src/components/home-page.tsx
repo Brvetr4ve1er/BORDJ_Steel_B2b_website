@@ -1,3 +1,4 @@
+
 import { Navbar } from '@/components/navbar';
 import { Hero } from '@/components/hero';
 import dynamic from 'next/dynamic';
@@ -21,6 +22,7 @@ export function HomePage() {
         <Portfolio />
         <Certifications />
         <Clients />
+        <Contact />
       </main>
       <Footer />
     </div>

@@ -1,7 +1,7 @@
 
 import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
-import { Contact } from '@/components/contact';
+import { ContactInfo } from '@/components/contact-info';
 import { companyData } from '@/config/company-data';
 import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
@@ -42,7 +42,7 @@ export default function ContactPage() {
         </div>
       </section>
       <section className="py-16 md:py-24 lg:py-32 bg-secondary">
-        <Contact />
+        <ContactInfo />
       </section>
     </ProductPageLayout>
   );
