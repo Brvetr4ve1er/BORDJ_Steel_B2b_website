@@ -47,7 +47,7 @@ export default function ContactPage() {
       </section>
       <section className="py-16 md:py-24 lg:py-32 bg-background">
         <div className="container mx-auto px-4">
-          <AnimatedWrapper animation="fade-in">
+           <AnimatedWrapper animation="fade-in">
             <h2 className="font-headline text-4xl font-bold text-center text-primary mb-4">Notre Réseau de Distribution</h2>
             <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-12">
               Trouvez le distributeur ou le point de vente Bordj Steel le plus proche de chez vous.
