@@ -53,9 +53,7 @@ export default function ContactPage() {
               Trouvez le distributeur ou le point de vente Bordj Steel le plus proche de chez vous.
             </p>
           </AnimatedWrapper>
-          <AnimatedWrapper animation="zoom-in" staggerIndex={1}>
-            <AlgeriaMap />
-          </AnimatedWrapper>
+          <AlgeriaMap />
         </div>
       </section>
     </ProductPageLayout>

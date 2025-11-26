@@ -5,6 +5,7 @@ import './download-button.css';
 import { Toaster } from "@/components/ui/toaster"
 import { Montserrat, Roboto } from 'next/font/google';
 import { companyData } from '@/config/company-data';
+import Script from 'next/script';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -49,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${montserrat.variable} ${roboto.variable}`}>
       <head>
+        <Script src="/countrymap.js" strategy="beforeInteractive" />
       </head>
       <body>
           {children}
