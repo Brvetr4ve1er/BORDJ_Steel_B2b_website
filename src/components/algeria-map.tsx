@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -38,10 +39,10 @@ export function AlgeriaMap() {
         <div className="border-4 border-secondary rounded-lg shadow-lg overflow-hidden">
             <TooltipProvider>
                 <ComposableMap
-                    projection="geoAzimuthalEqualArea"
+                    projection="geoMercator"
                     projectionConfig={{
-                        rotate: [-8.0, -31.0, 0],
-                        scale: 3000,
+                        rotate: [-3.0, -28.0, 0],
+                        scale: 2200,
                     }}
                     style={{ width: '100%', height: 'auto' }}
                 >
