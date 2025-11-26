@@ -8,9 +8,9 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { MapPin, Phone, Mail, Send } from "lucide-react";
 import { companyData } from '@/config/company-data';
-import { AnimatedWrapper } from './animated-wrapper';
+import { AnimatedWrapper } from '../animated-wrapper';
 
-export function ContactForm() {
+export function HomePageContactForm() {
     const { contact } = companyData.pages;
 
     return (
