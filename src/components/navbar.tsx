@@ -163,6 +163,9 @@ const ListItem = React.forwardRef<
           </div>
           <div className="flex-grow">
             <div className="text-base font-medium leading-none">{title}</div>
+             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground group-hover:text-accent-foreground/80">
+              {children}
+            </p>
           </div>
         </Link>
       </NavigationMenuLink>
@@ -348,5 +351,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    
