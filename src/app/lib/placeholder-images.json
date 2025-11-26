@@ -125,6 +125,13 @@
       "alt": "Bain de galvanisation à chaud",
       "aiHint": "hot-dip galvanization",
       "blurDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
+    },
+    "contactCard": {
+      "src": "https://i.pinimg.com/736x/f1/51/10/f151108391838728e14d8cfa85af221b.jpg",
+      "width": 736,
+      "height": 920,
+      "alt": "Bain de galvanisation à chaud",
+      "aiHint": "hot-dip galvanization"
     }
   },
   "sandwich-panels": {

@@ -202,7 +202,7 @@ export function ContactInfo() {
       title: "Galvanisation",
       phone: "+213 770 35 73 47",
       email: "commercial@bordjsteel.dz",
-      image: images.galvanisation.hero.src,
+      image: images.galvanisation.contactCard.src,
     },
     {
       icon: <Headphones className="h-8 w-8" />,
