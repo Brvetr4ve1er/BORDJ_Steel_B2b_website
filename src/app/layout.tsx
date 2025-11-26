@@ -50,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${montserrat.variable} ${roboto.variable}`}>
       <head>
-        <Script src="/countrymap.js" strategy="beforeInteractive" />
+        
       </head>
       <body>
           {children}
