@@ -36,6 +36,7 @@ const ArticleCard = React.forwardRef<HTMLDivElement, ArticleCardProps>(
         ref={ref}
         className={cn(
           "group relative mb-4 break-inside-avoid overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl",
+          !article.isFeatured && "max-w-md mx-auto", // This will constrain the width of non-featured cards
           className
         )}
         {...props}
@@ -61,7 +62,10 @@ const ArticleCard = React.forwardRef<HTMLDivElement, ArticleCardProps>(
               <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">{article.tag}</span>
               <span>{article.date}</span>
             </div>
-            <h3 className="mb-3 text-xl font-bold leading-tight text-foreground lg:text-2xl">
+            <h3 className={cn(
+                "mb-3 font-bold leading-tight text-foreground",
+                article.isFeatured ? "text-xl lg:text-2xl" : "text-lg"
+              )}>
               <span className="bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 group-hover:bg-[length:100%_2px]">
                 {article.title}
               </span>
@@ -96,4 +100,3 @@ const ArticleCard = React.forwardRef<HTMLDivElement, ArticleCardProps>(
 
 ArticleCard.displayName = "ArticleCard";
 export default ArticleCard;
-
