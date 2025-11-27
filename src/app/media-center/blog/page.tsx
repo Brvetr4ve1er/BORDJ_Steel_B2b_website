@@ -97,7 +97,7 @@ export default function BlogPage() {
                             </div>
                         )}
                         {Array.isArray(articles) && articles.length > 0 ? (
-                           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-12">
+                           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
                              {articles.map((t, i) => (
                                <ArticleCard key={i} article={t} />
                              ))}
