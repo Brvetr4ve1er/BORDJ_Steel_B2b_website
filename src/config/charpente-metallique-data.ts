@@ -125,24 +125,15 @@ export const charpenteMetalliqueData = {
       description: "Ligne complète pour la transformation métallique automobile de haute précision.",
       galleryImages: allGalleryImages.slice(12, 16).map(img => img.src),
       specifications: {
-        description: "Bordj Steel possède une expertise spécifique dans la fabrication de composants et de structures pour l'industrie automobile. Notre ligne de production dédiée permet de répondre aux exigences de haute précision, de cadence élevée et de qualité rigoureuse de ce secteur.",
+        description: "Notre complexe est agrée par le ministère d’énergie et des mines pour fabriquer :",
         applications: [
-          'Pièces de châssis et de carrosserie',
-          'Supports moteurs et berceaux',
-          'Lignes d\'assemblage et convoyeurs spécifiques',
-          'Outillages et gabarits de production',
+          'Carrossage des véhicules complets',
+          'Véhicules à châssis nu et véhicules à châssis cabines',
+          'Aménagements notables',
         ],
-        technicalTable: {
-          title: "Spécifications Techniques Automobile",
-          headers: ["Caractéristique", "Valeur"],
-          rows: [
-            { "Caractéristique": "Tolérances", "Valeur": "Précision sub-millimétrique" },
-            { "Caractéristique": "Procédés", "Valeur": "Découpe laser, pliage CNC, soudage robotisé" },
-            { "Caractéristique": "Matériaux", "Valeur": "Aciers HLE (Haute Limite Élastique), aciers emboutissables" },
-            { "Caractéristique": "Contrôle Qualité", "Valeur": "Contrôle tridimensionnel (CMM), Poka-Yoke" },
-            { "Caractéristique": "Certifications", "Valeur": "Conformité aux standards IATF 16949 (via partenaires)" },
-          ],
-        },
+        notes: [
+          "<span class='font-bold text-accent'>Ligne de fabrication Carrosserie automobile</span>"
+        ],
         additionalImages: [
             { src: "https://i.ibb.co/0j8hzdNq/carroserie.jpg", alt: "Carrosserie automobile", aiHint: "car body" },
         ]
