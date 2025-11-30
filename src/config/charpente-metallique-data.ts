@@ -27,7 +27,7 @@ export const charpenteMetalliqueData = {
       description: "Fabrication sur mesure pour bâtiments industriels, ponts et charpentes lourdes.",
       galleryImages: allGalleryImages.slice(0, 4).map(img => img.src),
       specifications: {
-        mainDescription: "Notre complexe Bordj Steel est apte à fabriqué ce type de profilé (P.R.S) selon la demande du client et en respectent les normes en vigueurs. Nous pouvons vous accompagné durant toutes les phases de réalisation du projet (Etude, fabrication et Montage). Notre ligne PRS permet la production massive de poutres en PRS de forme L ou en caissons.",
+        mainDescription: "Profilés reconstitués soudés (PRS) Notre complexe Bordj Steel est apte a fabriqué ce type de profilé ( P.R.S ) selon la demande du client et en respectent les normes en vigueurs . Nous pouvons vous accompagné durant toutes les phases de réalisation du projet ( Etude , fabrication et Montage ) Notre ligne PRS permet la production massive de poutres en PRS de forme L ou en caissons .",
         details: [
           { label: "Notre plage de fabrication est de", value: "350mm à 2000mm de largeur et de maximum 16 000mm de longueur" },
           { label: "La portée", value: "selon la demande du client" }
@@ -38,18 +38,6 @@ export const charpenteMetalliqueData = {
           'Ponts et ouvrages d\'art',
           'Structures pour charges lourdes (ponts roulants)',
         ],
-        technicalTable: {
-          title: "Spécifications Techniques PRS",
-          headers: ["Caractéristique", "Valeur"],
-          rows: [
-            { "Caractéristique": "Nuances d'acier", "Valeur": "S235, S275, S355 et autres sur demande" },
-            { "Caractéristique": "Hauteur du profil", "Valeur": "Jusqu'à 2500 mm" },
-            { "Caractéristique": "Largeur des semelles", "Valeur": "Jusqu'à 800 mm" },
-            { "Caractéristique": "Épaisseur (âme/semelle)", "Valeur": "De 6 mm à 40 mm" },
-            { "Caractéristique": "Procédé de soudage", "Valeur": "Arc submergé (SAW) automatisé" },
-            { "Caractéristique": "Contrôles", "Valeur": "Ultrasons (UT), Magnétoscopie (MT)" },
-          ],
-        }
       }
     },
     {
@@ -129,7 +117,7 @@ export const charpenteMetalliqueData = {
       description: "Ligne complète pour la transformation métallique automobile de haute précision.",
       galleryImages: allGalleryImages.slice(12, 16).map(img => img.src),
       specifications: {
-        mainDescription: "Notre complexe est agrée par le ministère d’énergie et des mines pour fabriquer :",
+        mainDescription: "Notre complexe est agrée par le ministère d’énergie et des mines pour fabriqué :",
         applications: [
           'Carrossage des véhicules complets',
           'Véhicules à châssis nu et véhicules à châssis cabines',
