@@ -22,24 +22,22 @@ import type { CardData } from './ui/expandable-cards';
 const DetailedStatCard = dynamic(() => import('./detailed-stat-card').then(mod => mod.DetailedStatCard));
 
 const activityCards = [
-    { title: 'Hydrocarbures', icon: <Flame className="h-12 w-12" />, colSpan: 'col-span-4' },
-    { title: 'Énergie et Mines', icon: <Bolt className="h-12 w-12" />, colSpan: 'col-span-4' },
-    { title: 'Hydraulique', icon: <Droplets className="h-12 w-12" />, colSpan: 'col-span-4' },
-    { title: 'Pharmaceutique', icon: <Beaker className="h-12 w-12" />, colSpan: 'col-span-6' },
-    { title: 'Travaux Publics', icon: <Construction className="h-12 w-12" />, colSpan: 'col-span-6' },
-    { title: 'Environnement', icon: <Leaf className="h-12 w-12" />, colSpan: 'col-span-7' },
-    { title: 'Traitement des Eaux', icon: <Filter className="h-12 w-12" />, colSpan: 'col-span-5' }
+    { title: 'Hydrocarbures', icon: <Flame className="h-10 w-10" /> },
+    { title: 'Énergie et Mines', icon: <Bolt className="h-10 w-10" /> },
+    { title: 'Hydraulique', icon: <Droplets className="h-10 w-10" /> },
+    { title: 'Pharmaceutique', icon: <Beaker className="h-10 w-10" /> },
+    { title: 'Travaux Publics', icon: <Construction className="h-10 w-10" /> },
+    { title: 'Environnement', icon: <Leaf className="h-10 w-10" /> },
+    { title: 'Traitement des Eaux', icon: <Filter className="h-10 w-10" /> }
 ];
 
-const ActivityCard = ({ title, icon, className }: { title: string; icon: React.ReactNode, className?: string }) => (
+const ActivityCard = ({ icon }: { icon: React.ReactNode }) => (
     <Card className={cn(
-        "group relative flex aspect-square flex-col items-center justify-center p-4 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-secondary/50",
-        className
+        "group relative flex aspect-square flex-col items-center justify-center p-4 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-secondary/50"
     )}>
-        <div className="mb-2 flex h-20 w-20 items-center justify-center rounded-full bg-accent/10 text-accent transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-accent-foreground">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 text-accent transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-accent-foreground">
             {icon}
         </div>
-        <h3 className="text-base font-bold text-primary">{title}</h3>
     </Card>
 );
 
@@ -53,10 +51,10 @@ const ActivitiesSection = () => {
                         Notre expertise en chaudronnerie s'étend à de multiples secteurs industriels, où nous fournissons des solutions sur mesure, fiables et performantes.
                     </p>
                 </AnimatedWrapper>
-                <div className="grid grid-cols-12 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
                     {activityCards.map((card, index) => (
-                        <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index} className={card.colSpan}>
-                            <ActivityCard title={card.title} icon={card.icon} />
+                        <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                            <ActivityCard icon={card.icon} />
                         </AnimatedWrapper>
                     ))}
                 </div>
