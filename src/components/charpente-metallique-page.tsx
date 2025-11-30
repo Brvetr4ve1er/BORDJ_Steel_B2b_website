@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, BookCopy } from 'lucide-react';
+import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, BookCopy, Dot } from 'lucide-react';
 import { AnimatedWrapper } from './animated-wrapper';
 import React, { useState, useMemo } from 'react';
 import { AnimatedNumber } from './animated-number';
@@ -257,35 +257,72 @@ export function CharpenteMetalliquePageContent() {
                   <CardContent className="space-y-8">
                     <p className="text-lg text-muted-foreground">{selectedPillar.specifications.description}</p>
                     
-                    <div>
-                      <h4 className="font-headline text-2xl font-bold text-primary mb-4">Applications typiques</h4>
-                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 list-disc pl-5">
-                        {selectedPillar.specifications.applications.map((app, index) => (
-                          <li key={index} className="text-lg">{app}</li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="font-headline text-2xl font-bold text-primary mb-4">{selectedPillar.specifications.technicalTable.title}</h4>
-                      <Table>
-                        <TableHeader>
-                          <TableRow className="bg-accent/10">
-                            {selectedPillar.specifications.technicalTable.headers.map(header => (
-                              <TableHead key={header} className="text-accent font-bold">{header}</TableHead>
-                            ))}
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {selectedPillar.specifications.technicalTable.rows.map((row, index) => (
-                            <TableRow key={index}>
-                              <TableCell>{row.Caractéristique}</TableCell>
-                              <TableCell>{row.Valeur}</TableCell>
-                            </TableRow>
+                    {selectedPillar.specifications.applications && (
+                      <div>
+                        <h4 className="font-headline text-2xl font-bold text-primary mb-4">Applications typiques</h4>
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 list-disc pl-5">
+                          {selectedPillar.specifications.applications.map((app, index) => (
+                            <li key={index} className="text-lg">{app}</li>
                           ))}
-                        </TableBody>
-                      </Table>
-                    </div>
+                        </ul>
+                      </div>
+                    )}
+                     
+                    {selectedPillar.specifications.supportLines && (
+                        <div className="space-y-6">
+                            {selectedPillar.specifications.supportLines.map((line, lineIndex) => (
+                                <div key={lineIndex}>
+                                    <h4 className="font-headline text-2xl font-bold text-primary mb-3">{line.title}</h4>
+                                    <ul className="space-y-2 pl-5">
+                                        {line.items.map((item, itemIndex) => (
+                                            <li key={itemIndex} className="flex items-start">
+                                                <Dot className="text-accent h-6 w-6 flex-shrink-0 mr-2 mt-0.5" />
+                                                <span className="text-lg">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <p className="mt-3 text-right font-semibold">
+                                        Capacité de production : <span className="text-accent font-bold">{line.capacity}</span>
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {selectedPillar.specifications.notes && (
+                        <div className="mt-6 space-y-3">
+                             {selectedPillar.specifications.notes.map((note, index) => (
+                                <p key={index} className="text-lg text-muted-foreground italic border-l-4 border-accent pl-4">{note.replace(/SONALGAZ|SONELGAZ/g, '<span class="font-bold text-accent">$&</span>')
+                                .replace(/9T/g, '<span class="font-bold text-accent">$&</span>')
+                                .replace(/BS/g, '<span class="font-bold text-accent">$&</span>')
+                                .replace(/en 1461/g, '<span class="font-bold text-accent">$&</span>')
+                                }</p>
+                            ))}
+                        </div>
+                    )}
+
+                    {selectedPillar.specifications.technicalTable && (
+                      <div>
+                        <h4 className="font-headline text-2xl font-bold text-primary mb-4">{selectedPillar.specifications.technicalTable.title}</h4>
+                        <Table>
+                          <TableHeader>
+                            <TableRow className="bg-accent/10">
+                              {selectedPillar.specifications.technicalTable.headers.map(header => (
+                                <TableHead key={header} className="text-accent font-bold">{header}</TableHead>
+                              ))}
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {selectedPillar.specifications.technicalTable.rows.map((row, index) => (
+                              <TableRow key={index}>
+                                <TableCell>{row.Caractéristique}</TableCell>
+                                <TableCell>{row.Valeur}</TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </div>
+                    )}
 
                   </CardContent>
                 </Card>
@@ -337,5 +374,3 @@ export function CharpenteMetalliquePageContent() {
     </div>
   );
 }
-
-    

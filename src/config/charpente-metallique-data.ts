@@ -55,24 +55,32 @@ export const charpenteMetalliqueData = {
       description: "Structures pour l’énergie, la communication et l’affichage.",
       galleryImages: allGalleryImages.slice(4, 8).map(img => img.src),
       specifications: {
-        description: "Nous fabriquons une large gamme de supports métalliques destinés au transport et à la distribution de l'énergie électrique, ainsi qu'aux télécommunications. Nos structures sont conçues pour résister aux conditions environnementales les plus extrêmes tout en garantissant la sécurité et la fiabilité des réseaux.",
-        applications: [
-          'Pylônes pour lignes à haute et très haute tension (THT)',
-          'Supports pour lignes de distribution moyenne et basse tension',
-          'Pylônes de télécommunication (antennes, relais)',
-          'Mâts d\'éclairage public et de stade',
+        description: "Une ligne dédiée à la fabrication de candélabres et supports.",
+        supportLines: [
+          {
+            title: "Candélabres et supports",
+            items: [
+              "Candélabres et support d’éclairage public de différentes dimensions",
+              "Support tubulaires de transport d’électricité",
+              "Mats de grandes hauteurs selon la demande du client",
+              "Mats et support télésurveillance"
+            ],
+            capacity: "100T /mois"
+          },
+          {
+            title: "Support BS",
+            items: [
+              "Support BSG –MT&BT pour le transport de l’électricité",
+              "Accessoires pour candélabres et mats"
+            ],
+            capacity: "350 T /mois"
+          }
         ],
-        technicalTable: {
-          title: "Spécifications Techniques Supports",
-          headers: ["Caractéristique", "Valeur"],
-          rows: [
-            { "Caractéristique": "Type de structure", "Valeur": "Treillis (cornières), Tubulaire" },
-            { "Caractéristique": "Hauteur", "Valeur": "Jusqu'à 100 mètres et plus" },
-            { "Caractéristique": "Assemblage", "Valeur": "Boulonné" },
-            { "Caractéristique": "Protection anticorrosion", "Valeur": "Galvanisation à chaud selon ISO 1461" },
-            { "Caractéristique": "Normes de conception", "Valeur": "Eurocodes, normes nationales (NTE, CSTR)" },
-          ],
-        }
+        notes: [
+          "Produits homologuées par SONALGAZ",
+          "Galvanisé au sein de notre complexe selon la norme en 1461",
+          "L’homologation SONELGAZ dont nous nous sommes dotés nous permet de proposer à nos clients des supports tubulaires de type 9T et en barres soudées de type BS pour le transport d’électricité à basse et à moyenne tension."
+        ]
       }
     },
     {
