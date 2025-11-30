@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Image from 'next/image';
@@ -255,7 +256,21 @@ export function CharpenteMetalliquePageContent() {
                     <CardTitle className="font-headline text-4xl text-accent">{selectedPillar.title}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-8">
-                    <p className="text-lg text-muted-foreground">{selectedPillar.specifications.description}</p>
+                     {selectedPillar.specifications.mainDescription && (
+                        <p className="text-lg text-muted-foreground">{selectedPillar.specifications.mainDescription}</p>
+                     )}
+                     
+                     {selectedPillar.specifications.details && (
+                        <ul className="space-y-3">
+                           {selectedPillar.specifications.details.map((item, index) => (
+                              <li key={index} className="flex items-start text-lg">
+                                 <Dot className="text-accent h-6 w-6 flex-shrink-0 mr-2 mt-0.5" />
+                                 <span className="font-semibold text-primary mr-2">{item.label}:</span>
+                                 <span dangerouslySetInnerHTML={{ __html: item.value.replace(/(\d+)/g, '<strong class="text-accent font-bold">$1</strong>') }}></span>
+                              </li>
+                           ))}
+                        </ul>
+                     )}
                     
                     {selectedPillar.specifications.applications && (
                       <div>
@@ -321,9 +336,12 @@ export function CharpenteMetalliquePageContent() {
                     )}
 
                     {selectedPillar.specifications.additionalImages && (
-                      <div className="mt-8 grid grid-cols-1 gap-4">
+                      <div className={cn(
+                          "mt-8 grid gap-4",
+                          selectedPillar.specifications.additionalImages.length > 1 ? "grid-cols-2" : "grid-cols-1"
+                      )}>
                         {selectedPillar.specifications.additionalImages.map((image, index) => (
-                          <div key={index} className="relative w-full h-96 rounded-lg overflow-hidden shadow-md">
+                          <div key={index} className="relative w-full h-64 rounded-lg overflow-hidden shadow-md">
                             <Image
                               src={image.src}
                               alt={image.alt}
@@ -386,5 +404,3 @@ export function CharpenteMetalliquePageContent() {
     </div>
   );
 }
-
-    

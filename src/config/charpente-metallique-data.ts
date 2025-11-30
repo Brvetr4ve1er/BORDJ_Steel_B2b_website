@@ -27,7 +27,11 @@ export const charpenteMetalliqueData = {
       description: "Fabrication sur mesure pour bâtiments industriels, ponts et charpentes lourdes.",
       galleryImages: allGalleryImages.slice(0, 4).map(img => img.src),
       specifications: {
-        description: "Profilés reconstitués soudés (PRS) Notre complexe Bordj Steel est apte a fabriqué ce type de profilé ( P.R.S ) selon la demande du client et en respectent les normes en vigueurs . Nous pouvons vous accompagné durant toutes les phases de réalisation du projet ( Etude , fabrication et Montage ) Notre ligne PRS permet la production massive de poutres en PRS de forme L ou en caissons . • Notre plage de fabrication est de : 350mm à 2000mm de largeur et de maximum 16 000mm de longueur • La portée : selon la demande du client.",
+        mainDescription: "Notre complexe Bordj Steel est apte à fabriqué ce type de profilé (P.R.S) selon la demande du client et en respectent les normes en vigueurs. Nous pouvons vous accompagné durant toutes les phases de réalisation du projet (Etude, fabrication et Montage). Notre ligne PRS permet la production massive de poutres en PRS de forme L ou en caissons.",
+        details: [
+          { label: "Notre plage de fabrication est de", value: "350mm à 2000mm de largeur et de maximum 16 000mm de longueur" },
+          { label: "La portée", value: "selon la demande du client" }
+        ],
         applications: [
           'Bâtiments industriels de grande portée',
           'Entrepôts logistiques',
@@ -55,7 +59,7 @@ export const charpenteMetalliqueData = {
       description: "Structures pour l’énergie, la communication et l’affichage.",
       galleryImages: allGalleryImages.slice(4, 8).map(img => img.src),
       specifications: {
-        description: "Une ligne dédiée à la fabrication de candélabres et supports.",
+        mainDescription: "Une ligne dédiée à la fabrication de candélabres et supports.",
         supportLines: [
           {
             title: "Candélabres et supports",
@@ -94,7 +98,7 @@ export const charpenteMetalliqueData = {
       description: "Solutions de manutention lourde avec options mono-poutre et bi-poutre.",
       galleryImages: allGalleryImages.slice(8, 12).map(img => img.src),
       specifications: {
-        description: "Nous concevons et fabriquons les structures métalliques complètes pour les ponts roulants, un équipement essentiel pour la manutention dans les usines, les entrepôts et les ateliers. Nos solutions sont adaptées pour des configurations monopoutre (plus légères) et bipoutre (pour charges très lourdes et grandes portées).",
+        mainDescription: "Nous concevons et fabriquons les structures métalliques complètes pour les ponts roulants, un équipement essentiel pour la manutention dans les usines, les entrepôts et les ateliers. Nos solutions sont adaptées pour des configurations monopoutre (plus légères) et bipoutre (pour charges très lourdes et grandes portées).",
         applications: [
           'Ateliers de production et d\'assemblage',
           'Aciéries et métallurgie',
@@ -125,7 +129,7 @@ export const charpenteMetalliqueData = {
       description: "Ligne complète pour la transformation métallique automobile de haute précision.",
       galleryImages: allGalleryImages.slice(12, 16).map(img => img.src),
       specifications: {
-        description: "Notre complexe est agrée par le ministère d’énergie et des mines pour fabriquer :",
+        mainDescription: "Notre complexe est agrée par le ministère d’énergie et des mines pour fabriquer :",
         applications: [
           'Carrossage des véhicules complets',
           'Véhicules à châssis nu et véhicules à châssis cabines',
