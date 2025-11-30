@@ -77,9 +77,9 @@ export const charpenteMetalliqueData = {
           }
         ],
         notes: [
-          "Produits homologuées par SONALGAZ",
-          "Galvanisé au sein de notre complexe selon la norme en 1461",
-          "L’homologation SONELGAZ dont nous nous sommes dotés nous permet de proposer à nos clients des supports tubulaires de type 9T et en barres soudées de type BS pour le transport d’électricité à basse et à moyenne tension."
+          "Produits homologuées par <span class='font-bold text-accent'>SONALGAZ</span>",
+          "Galvanisé au sein de notre complexe selon la norme <span class='font-bold text-accent'>en 1461</span>",
+          "L’homologation <span class='font-bold text-accent'>SONELGAZ</span> dont nous nous sommes dotés nous permet de proposer à nos clients des supports tubulaires de type <span class='font-bold text-accent'>9T</span> et en barres soudées de type <span class='font-bold text-accent'>BS</span> pour le transport d’électricité à basse et à moyenne tension."
         ]
       }
     },
@@ -107,7 +107,11 @@ export const charpenteMetalliqueData = {
             { "Caractéristique": "Chemin de roulement", "Valeur": "Fabrication et alignement de précision" },
             { "Caractéristique": "Conformité", "Valeur": "FEM (Fédération Européenne de la Manutention)" },
           ],
-        }
+        },
+        additionalImages: [
+          { src: "https://i.ibb.co/S4x6CVKH/pont-rouklant-jaune.jpg", alt: "Pont roulant jaune vue 1", aiHint: "overhead crane" },
+          { src: "https://i.ibb.co/8QQNyHZ/pont-roulant-jaune.jpg", alt: "Pont roulant jaune vue 2", aiHint: "industrial crane" },
+        ]
       }
     },
     {

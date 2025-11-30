@@ -155,6 +155,24 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+       {
+        protocol: 'https',
+        hostname: 'cdn.brandfetch.io',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.cosider-groupe.dz',
+        port: '',
+        pathname: '/**',
+      },
       {
         protocol: 'https',
         hostname: 'www.untitledui.com',
@@ -166,5 +184,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
-    

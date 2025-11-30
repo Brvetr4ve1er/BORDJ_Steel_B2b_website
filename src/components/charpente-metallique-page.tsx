@@ -292,17 +292,13 @@ export function CharpenteMetalliquePageContent() {
                     {selectedPillar.specifications.notes && (
                         <div className="mt-6 space-y-3">
                              {selectedPillar.specifications.notes.map((note, index) => (
-                                <p key={index} className="text-lg text-muted-foreground italic border-l-4 border-accent pl-4">{note.replace(/SONALGAZ|SONELGAZ/g, '<span class="font-bold text-accent">$&</span>')
-                                .replace(/9T/g, '<span class="font-bold text-accent">$&</span>')
-                                .replace(/BS/g, '<span class="font-bold text-accent">$&</span>')
-                                .replace(/en 1461/g, '<span class="font-bold text-accent">$&</span>')
-                                }</p>
+                                <p key={index} className="text-lg text-muted-foreground italic border-l-4 border-accent pl-4" dangerouslySetInnerHTML={{ __html: note }}></p>
                             ))}
                         </div>
                     )}
 
                     {selectedPillar.specifications.technicalTable && (
-                      <div>
+                      <div className="mt-6">
                         <h4 className="font-headline text-2xl font-bold text-primary mb-4">{selectedPillar.specifications.technicalTable.title}</h4>
                         <Table>
                           <TableHeader>
@@ -321,6 +317,22 @@ export function CharpenteMetalliquePageContent() {
                             ))}
                           </TableBody>
                         </Table>
+                      </div>
+                    )}
+
+                    {selectedPillar.specifications.additionalImages && (
+                      <div className="mt-8 grid grid-cols-2 gap-4">
+                        {selectedPillar.specifications.additionalImages.map((image, index) => (
+                          <div key={index} className="relative aspect-[16/9] rounded-lg overflow-hidden shadow-md">
+                            <Image
+                              src={image.src}
+                              alt={image.alt}
+                              fill
+                              className="object-cover"
+                              data-ai-hint={image.aiHint}
+                            />
+                          </div>
+                        ))}
                       </div>
                     )}
 
