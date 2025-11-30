@@ -31,13 +31,14 @@ const activityCards = [
     { title: 'Traitement des Eaux', icon: <Filter className="h-10 w-10" /> }
 ];
 
-const ActivityCard = ({ icon }: { icon: React.ReactNode }) => (
+const ActivityCard = ({ title, icon }: { title: string; icon: React.ReactNode }) => (
     <Card className={cn(
         "group relative flex aspect-square flex-col items-center justify-center p-4 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-secondary/50"
     )}>
         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 text-accent transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-accent-foreground">
             {icon}
         </div>
+        <h3 className="mt-4 text-sm font-bold text-primary">{title}</h3>
     </Card>
 );
 
@@ -54,7 +55,7 @@ const ActivitiesSection = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
                     {activityCards.map((card, index) => (
                         <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                            <ActivityCard icon={card.icon} />
+                            <ActivityCard title={card.title} icon={card.icon} />
                         </AnimatedWrapper>
                     ))}
                 </div>
