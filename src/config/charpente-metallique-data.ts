@@ -27,7 +27,7 @@ export const charpenteMetalliqueData = {
       description: "Fabrication sur mesure pour bâtiments industriels, ponts et charpentes lourdes.",
       galleryImages: allGalleryImages.slice(0, 4).map(img => img.src),
       specifications: {
-        description: "Notre complexe Bordj Steel est apte a fabriqué ce type de profilé ( P.R.S ) selon la demande du client et en respectent les normes en vigueurs . Nous pouvons vous accompagné durant toutes les phases de réalisation du projet ( Etude , fabrication et Montage ) Notre ligne PRS permet la production massive de poutres en PRS de forme L ou en caissons . • Notre plage de fabrication est de : 350mm à 2000mm de largeur et de maximum 16 000mm de longueur • La portée : selon la demande du client.",
+        description: "Profilés reconstitués soudés (PRS) Notre complexe Bordj Steel est apte a fabriqué ce type de profilé ( P.R.S ) selon la demande du client et en respectent les normes en vigueurs . Nous pouvons vous accompagné durant toutes les phases de réalisation du projet ( Etude , fabrication et Montage ) Notre ligne PRS permet la production massive de poutres en PRS de forme L ou en caissons . • Notre plage de fabrication est de : 350mm à 2000mm de largeur et de maximum 16 000mm de longueur • La portée : selon la demande du client.",
         applications: [
           'Bâtiments industriels de grande portée',
           'Entrepôts logistiques',
