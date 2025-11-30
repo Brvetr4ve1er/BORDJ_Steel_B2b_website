@@ -14,6 +14,7 @@ import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { ImageDialog } from './ui/image-dialog';
+import { cn } from '@/lib/utils';
 
 const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
 const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
