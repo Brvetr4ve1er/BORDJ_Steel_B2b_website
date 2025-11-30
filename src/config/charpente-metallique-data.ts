@@ -33,7 +33,7 @@ export const charpenteMetalliqueData = {
       specifications: {
         mainDescription: "Profilés reconstitués soudés (PRS) Notre complexe Bordj Steel est apte a fabriqué ce type de profilé ( P.R.S ) selon la demande du client et en respectent les normes en vigueurs . Nous pouvons vous accompagné durant toutes les phases de réalisation du projet ( Etude , fabrication et Montage ) Notre ligne PRS permet la production massive de poutres en PRS de forme L ou en caissons .",
         details: [
-          { label: "Notre plage de fabrication est de", value: "350mm à 2000mm de largeur et de maximum 16 000mm de longueur" },
+          { label: "Notre plage de fabrication est de", value: "<strong class='text-accent font-bold'>350mm</strong> à <strong class='text-accent font-bold'>2000mm</strong> de largeur et de maximum <strong class='text-accent font-bold'>16 000mm</strong> de longueur" },
           { label: "La portée", value: "selon la demande du client" }
         ],
         applications: [
@@ -49,7 +49,10 @@ export const charpenteMetalliqueData = {
       iconName: 'TowerControl',
       title: "Supports de Transport d'Énergie",
       description: "Structures pour l’énergie, la communication et l’affichage.",
-      galleryImages: allGalleryImages.slice(4, 8).map(img => img.src),
+      galleryImages: [
+        "https://i.ibb.co/tMvKpnJc/support-electrique.jpg",
+        "https://i.ibb.co/SDk15wLd/support-electrique-2.jpg",
+      ],
       specifications: {
         mainDescription: "Une ligne dédiée à la fabrication de candélabres et supports.",
         supportLines: [
@@ -88,7 +91,10 @@ export const charpenteMetalliqueData = {
       iconName: 'Tractor',
       title: "Pont Roulant – Mono et Bipoutre",
       description: "Solutions de manutention lourde avec options mono-poutre et bi-poutre.",
-      galleryImages: allGalleryImages.slice(8, 12).map(img => img.src),
+      galleryImages: [
+        "https://i.ibb.co/S4x6CVKH/pont-rouklant-jaune.jpg",
+        "https://i.ibb.co/8QQNyHZ/pont-roulant-jaune.jpg",
+      ],
       specifications: {
         mainDescription: "Nous concevons et fabriquons les structures métalliques complètes pour les ponts roulants, un équipement essentiel pour la manutention dans les usines, les entrepôts et les ateliers. Nos solutions sont adaptées pour des configurations monopoutre (plus légères) et bipoutre (pour charges très lourdes et grandes portées).",
         applications: [
@@ -119,7 +125,9 @@ export const charpenteMetalliqueData = {
       iconName: 'Car',
       title: "Ligne de Fabrication Automobile",
       description: "Ligne complète pour la transformation métallique automobile de haute précision.",
-      galleryImages: allGalleryImages.slice(12, 16).map(img => img.src),
+      galleryImages: [
+        "https://i.ibb.co/0j8hzdNq/carroserie.jpg",
+      ],
       specifications: {
         mainDescription: "Notre complexe est agrée par le ministère d’énergie et des mines pour fabriqué :",
         applications: [
