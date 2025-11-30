@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   ComposableMap,
   Geographies,
@@ -52,6 +52,13 @@ export function AlgeriaMap() {
       setSelectedWilaya({ name: name, address: "Aucun distributeur officiel dans cette zone.", phone: "" });
     }
   };
+  
+  const geoUrl = useMemo(() => {
+    return {
+      type: "FeatureCollection",
+      features: algeriaGeoJson.features
+    }
+  }, []);
 
   return (
     <div className="grid lg:grid-cols-12 gap-8">
@@ -68,7 +75,7 @@ export function AlgeriaMap() {
                       style={{ width: '100%', height: 'auto' }}
                   >
                       <ZoomableGroup center={[3, 33]} zoom={1.2}>
-                          <Geographies geography={algeriaGeoJson}>
+                          <Geographies geography={geoUrl}>
                               {({ geographies }) =>
                                   geographies.map((geo) => {
                                       const isHighlighted = highlightedWilayas.includes(geo.properties.name);
