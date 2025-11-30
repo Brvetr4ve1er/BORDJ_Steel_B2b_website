@@ -25,7 +25,11 @@ export const charpenteMetalliqueData = {
       iconName: 'HardHat',
       title: "PRS – Profils Reconstitués Soudés",
       description: "Fabrication sur mesure pour bâtiments industriels, ponts et charpentes lourdes.",
-      galleryImages: allGalleryImages.slice(0, 4).map(img => img.src),
+      galleryImages: [
+        "https://i.ibb.co/qFcXfnqd/charpente.jpg",
+        "https://i.ibb.co/NP2NZtW/charpente.jpg",
+        "https://i.ibb.co/dJWKv6rp/projet-charpente.jpg"
+      ],
       specifications: {
         mainDescription: "Profilés reconstitués soudés (PRS) Notre complexe Bordj Steel est apte a fabriqué ce type de profilé ( P.R.S ) selon la demande du client et en respectent les normes en vigueurs . Nous pouvons vous accompagné durant toutes les phases de réalisation du projet ( Etude , fabrication et Montage ) Notre ligne PRS permet la production massive de poutres en PRS de forme L ou en caissons .",
         details: [
