@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -21,24 +22,24 @@ import type { CardData } from './ui/expandable-cards';
 const DetailedStatCard = dynamic(() => import('./detailed-stat-card').then(mod => mod.DetailedStatCard));
 
 const activityCards = [
-    { title: 'Hydrocarbures', icon: <Flame className="h-10 w-10" /> },
-    { title: 'Énergie et Mines', icon: <Bolt className="h-10 w-10" /> },
-    { title: 'Hydraulique', icon: <Droplets className="h-10 w-10" /> },
-    { title: 'Pharmaceutique', icon: <Beaker className="h-10 w-10" /> },
-    { title: 'Travaux Publics', icon: <Construction className="h-10 w-10" /> },
-    { title: 'Environnement', icon: <Leaf className="h-10 w-10" /> },
-    { title: 'Traitement des Eaux', icon: <Filter className="h-10 w-10" /> }
+    { title: 'Hydrocarbures', icon: <Flame className="h-12 w-12" />, colSpan: 'col-span-4' },
+    { title: 'Énergie et Mines', icon: <Bolt className="h-12 w-12" />, colSpan: 'col-span-4' },
+    { title: 'Hydraulique', icon: <Droplets className="h-12 w-12" />, colSpan: 'col-span-4' },
+    { title: 'Pharmaceutique', icon: <Beaker className="h-12 w-12" />, colSpan: 'col-span-6' },
+    { title: 'Travaux Publics', icon: <Construction className="h-12 w-12" />, colSpan: 'col-span-6' },
+    { title: 'Environnement', icon: <Leaf className="h-12 w-12" />, colSpan: 'col-span-7' },
+    { title: 'Traitement des Eaux', icon: <Filter className="h-12 w-12" />, colSpan: 'col-span-5' }
 ];
 
 const ActivityCard = ({ title, icon, className }: { title: string; icon: React.ReactNode, className?: string }) => (
     <Card className={cn(
-        "group relative flex h-full flex-col items-center justify-center p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-secondary/50",
+        "group relative flex h-48 flex-col items-center justify-center p-4 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-secondary/50",
         className
     )}>
-        <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-accent/10 text-accent transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-accent-foreground">
+        <div className="mb-3 flex h-24 w-24 items-center justify-center rounded-full bg-accent/10 text-accent transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-accent-foreground">
             {icon}
         </div>
-        <h3 className="text-xl font-bold text-primary">{title}</h3>
+        <h3 className="text-lg font-bold text-primary">{title}</h3>
     </Card>
 );
 
@@ -53,43 +54,11 @@ const ActivitiesSection = () => {
                     </p>
                 </AnimatedWrapper>
                 <div className="grid grid-cols-12 gap-6">
-                    <div className="col-span-12 lg:col-span-8">
-                        <div className="grid grid-cols-12 gap-6 h-full">
-                            <div className="col-span-12 sm:col-span-8">
-                                 <AnimatedWrapper animation="fade-in">
-                                    <ActivityCard title={activityCards[0].title} icon={activityCards[0].icon} className="h-full"/>
-                                 </AnimatedWrapper>
-                            </div>
-                            <div className="col-span-12 sm:col-span-4">
-                                <AnimatedWrapper animation="fade-in" staggerIndex={1}>
-                                    <ActivityCard title={activityCards[1].title} icon={activityCards[1].icon} className="h-full"/>
-                                 </AnimatedWrapper>
-                            </div>
-                            <div className="col-span-12 sm:col-span-4">
-                                 <AnimatedWrapper animation="fade-in" staggerIndex={2}>
-                                    <ActivityCard title={activityCards[2].title} icon={activityCards[2].icon} className="h-full"/>
-                                </AnimatedWrapper>
-                            </div>
-                             <div className="col-span-12 sm:col-span-8">
-                                 <AnimatedWrapper animation="fade-in" staggerIndex={3}>
-                                    <ActivityCard title={activityCards[3].title} icon={activityCards[3].icon} className="h-full"/>
-                                </AnimatedWrapper>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-span-12 lg:col-span-4">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 h-full">
-                           <AnimatedWrapper animation="fade-in" staggerIndex={4}>
-                                <ActivityCard title={activityCards[4].title} icon={activityCards[4].icon} className="h-full"/>
-                           </AnimatedWrapper>
-                           <AnimatedWrapper animation="fade-in" staggerIndex={5}>
-                                <ActivityCard title={activityCards[5].title} icon={activityCards[5].icon} className="h-full"/>
-                           </AnimatedWrapper>
-                           <AnimatedWrapper animation="fade-in" staggerIndex={6}>
-                                <ActivityCard title={activityCards[6].title} icon={activityCards[6].icon} className="h-full"/>
-                           </AnimatedWrapper>
-                        </div>
-                    </div>
+                    {activityCards.map((card, index) => (
+                        <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index} className={card.colSpan}>
+                            <ActivityCard title={card.title} icon={card.icon} />
+                        </AnimatedWrapper>
+                    ))}
                 </div>
             </div>
         </section>
@@ -411,3 +380,5 @@ export function ChaudronneriePageContent() {
     </div>
   );
 }
+
+    
