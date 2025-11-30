@@ -33,13 +33,13 @@ const activityCards = [
 
 const ActivityCard = ({ title, icon, className }: { title: string; icon: React.ReactNode, className?: string }) => (
     <Card className={cn(
-        "group relative flex h-48 flex-col items-center justify-center p-4 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-secondary/50",
+        "group relative flex aspect-square flex-col items-center justify-center p-4 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-secondary/50",
         className
     )}>
-        <div className="mb-3 flex h-24 w-24 items-center justify-center rounded-full bg-accent/10 text-accent transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-accent-foreground">
+        <div className="mb-2 flex h-20 w-20 items-center justify-center rounded-full bg-accent/10 text-accent transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-accent-foreground">
             {icon}
         </div>
-        <h3 className="text-lg font-bold text-primary">{title}</h3>
+        <h3 className="text-base font-bold text-primary">{title}</h3>
     </Card>
 );
 
@@ -380,5 +380,3 @@ export function ChaudronneriePageContent() {
     </div>
   );
 }
-
-    
