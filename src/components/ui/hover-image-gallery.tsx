@@ -15,6 +15,7 @@ export function HoverImageGallery({ images }: HoverImageGalleryProps) {
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!images || images.length === 0) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -38,7 +39,7 @@ export function HoverImageGallery({ images }: HoverImageGalleryProps) {
     setIsHovering(false);
   };
 
-  if (!images || images.length === 0) {
+  if (!images || images.length === 0 || !images[currentImageIndex]) {
     return null;
   }
 
