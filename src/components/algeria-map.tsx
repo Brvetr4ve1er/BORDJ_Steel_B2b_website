@@ -11,7 +11,7 @@ import {
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { motion, AnimatePresence } from 'framer-motion';
 import { AnimatedWrapper } from './animated-wrapper';
-import geoUrl from "@/lib/algeria-wilayas.json";
+import algeriaGeoJson from "@/lib/algeria-wilayas.json";
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { MapPin, Phone } from 'lucide-react';
 
@@ -68,7 +68,7 @@ export function AlgeriaMap() {
                       style={{ width: '100%', height: 'auto' }}
                   >
                       <ZoomableGroup center={[3, 33]} zoom={1.2}>
-                          <Geographies geography={geoUrl}>
+                          <Geographies geography={algeriaGeoJson}>
                               {({ geographies }) =>
                                   geographies.map((geo) => {
                                       const isHighlighted = highlightedWilayas.includes(geo.properties.name);
