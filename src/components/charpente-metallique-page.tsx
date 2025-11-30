@@ -249,7 +249,7 @@ export function CharpenteMetalliquePageContent() {
           {selectedPillar && (
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <AnimatedWrapper animation="fade-in">
-                <HoverImageGallery images={selectedPillar.galleryImages} />
+                <HoverImageGallery images={(selectedPillar.galleryImages || []).filter(img => img)} />
               </AnimatedWrapper>
               <AnimatedWrapper key={selectedPillar.id} animation="fade-in" staggerIndex={1}>
                 <Card className="shadow-lg border-border">
