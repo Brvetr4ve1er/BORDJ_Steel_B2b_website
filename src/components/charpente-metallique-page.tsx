@@ -15,6 +15,7 @@ import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { ImageDialog } from './ui/image-dialog';
 import { cn } from '@/lib/utils';
+import { ProductionTables } from './production-tables';
 
 const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
 const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
@@ -181,17 +182,20 @@ export function CharpenteMetalliquePageContent() {
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <AnimatedWrapper animation="fade-in">
-                    <div className="grid grid-cols-2 gap-8">
-                        <div className="text-center p-6 bg-background rounded-lg shadow-md border">
-                            <p className="font-headline text-4xl font-bold text-accent"><AnimatedNumber value={25000} /></p>
-                            <p className="text-sm uppercase tracking-wider text-muted-foreground mt-1">Tonnes / an</p>
-                            <p className="font-semibold text-primary mt-2">Capacité de production<br/>Charpente</p>
+                    <div className="space-y-8">
+                        <div className="grid grid-cols-2 gap-8">
+                            <div className="text-center p-6 bg-background rounded-lg shadow-md border">
+                                <p className="font-headline text-4xl font-bold text-accent"><AnimatedNumber value={25000} /></p>
+                                <p className="text-sm uppercase tracking-wider text-muted-foreground mt-1">Tonnes / an</p>
+                                <p className="font-semibold text-primary mt-2">Capacité de production<br/>Charpente</p>
+                            </div>
+                            <div className="text-center p-6 bg-background rounded-lg shadow-md border">
+                                <p className="font-headline text-4xl font-bold text-accent"><AnimatedNumber value={3000} /></p>
+                                <p className="text-sm uppercase tracking-wider text-muted-foreground mt-1">Tonnes / an</p>
+                                <p className="font-semibold text-primary mt-2">Capacité de production<br/>PRS</p>
+                            </div>
                         </div>
-                        <div className="text-center p-6 bg-background rounded-lg shadow-md border">
-                            <p className="font-headline text-4xl font-bold text-accent"><AnimatedNumber value={3000} /></p>
-                            <p className="text-sm uppercase tracking-wider text-muted-foreground mt-1">Tonnes / an</p>
-                            <p className="font-semibold text-primary mt-2">Capacité de production<br/>PRS</p>
-                        </div>
+                         <ProductionTables />
                     </div>
                 </AnimatedWrapper>
                 <AnimatedWrapper animation="fade-in" staggerIndex={1}>
@@ -266,8 +270,7 @@ export function CharpenteMetalliquePageContent() {
                            {selectedPillar.specifications.details.map((item, index) => (
                               <li key={index} className="flex items-start text-lg">
                                  <Dot className="text-accent h-6 w-6 flex-shrink-0 mr-2 mt-0.5" />
-                                 <span className="font-semibold text-primary mr-2">{item.label}:</span>
-                                 <span dangerouslySetInnerHTML={{ __html: item.value.replace(/(\d+)/g, '<strong class="text-accent font-bold">$1</strong>') }}></span>
+                                 <span dangerouslySetInnerHTML={{ __html: item.value.replace(/(\d+mm|\d+\s*mm|\d+\s*m)/g, '<strong class="text-accent font-bold">$1</strong>') }}></span>
                               </li>
                            ))}
                         </ul>
@@ -311,29 +314,6 @@ export function CharpenteMetalliquePageContent() {
                                 <p key={index} className="text-lg text-muted-foreground italic border-l-4 border-accent pl-4" dangerouslySetInnerHTML={{ __html: note }}></p>
                             ))}
                         </div>
-                    )}
-
-                    {selectedPillar.specifications.technicalTable && (
-                      <div className="mt-6">
-                        <h4 className="font-headline text-2xl font-bold text-primary mb-4">{selectedPillar.specifications.technicalTable.title}</h4>
-                        <Table>
-                          <TableHeader>
-                            <TableRow className="bg-accent/10">
-                              {selectedPillar.specifications.technicalTable.headers.map(header => (
-                                <TableHead key={header} className="text-accent font-bold">{header}</TableHead>
-                              ))}
-                            </TableRow>
-                          </TableHeader>
-                          <TableBody>
-                            {selectedPillar.specifications.technicalTable.rows.map((row, index) => (
-                              <TableRow key={index}>
-                                <TableCell>{row.Caractéristique}</TableCell>
-                                <TableCell>{row.Valeur}</TableCell>
-                              </TableRow>
-                            ))}
-                          </TableBody>
-                        </Table>
-                      </div>
                     )}
 
                     {selectedPillar.specifications.additionalImages && (
