@@ -323,12 +323,12 @@ export function CharpenteMetalliquePageContent() {
                     {selectedPillar.specifications.additionalImages && (
                       <div className="mt-8 grid grid-cols-1 gap-4">
                         {selectedPillar.specifications.additionalImages.map((image, index) => (
-                          <div key={index} className="relative aspect-[16/9] rounded-lg overflow-hidden shadow-md">
+                          <div key={index} className="relative w-full h-96 rounded-lg overflow-hidden shadow-md">
                             <Image
                               src={image.src}
                               alt={image.alt}
                               fill
-                              className="object-cover"
+                              className="object-contain"
                               data-ai-hint={image.aiHint}
                             />
                           </div>
@@ -386,3 +386,5 @@ export function CharpenteMetalliquePageContent() {
     </div>
   );
 }
+
+    
