@@ -142,7 +142,10 @@ export const charpenteMetalliqueData = {
             { "Caractéristique": "Contrôle Qualité", "Valeur": "Contrôle tridimensionnel (CMM), Poka-Yoke" },
             { "Caractéristique": "Certifications", "Valeur": "Conformité aux standards IATF 16949 (via partenaires)" },
           ],
-        }
+        },
+        additionalImages: [
+            { src: "https://i.ibb.co/0j8hzdNq/carroserie.jpg", alt: "Carrosserie automobile", aiHint: "car body" },
+        ]
       }
     }
   ]
