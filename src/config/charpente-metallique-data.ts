@@ -80,6 +80,10 @@ export const charpenteMetalliqueData = {
           "Produits homologuées par <span class='font-bold text-accent'>SONALGAZ</span>",
           "Galvanisé au sein de notre complexe selon la norme <span class='font-bold text-accent'>en 1461</span>",
           "L’homologation <span class='font-bold text-accent'>SONELGAZ</span> dont nous nous sommes dotés nous permet de proposer à nos clients des supports tubulaires de type <span class='font-bold text-accent'>9T</span> et en barres soudées de type <span class='font-bold text-accent'>BS</span> pour le transport d’électricité à basse et à moyenne tension."
+        ],
+        additionalImages: [
+          { src: "https://i.ibb.co/tMvKpnJc/support-electrique.jpg", alt: "Support électrique 1", aiHint: "electrical support" },
+          { src: "https://i.ibb.co/SDk15wLd/support-electrique-2.jpg", alt: "Support électrique 2", aiHint: "power line support" },
         ]
       }
     },
