@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { ProductPageLayout } from '@/components/product-page-layout';
@@ -60,7 +61,12 @@ function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: s
             )}>
                 <a href={cert.pdf} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
                     <div className="relative w-full h-full bg-white rounded-lg shadow-2xl border-2 border-accent overflow-hidden">
-                        <embed src={cert.pdf} type="application/pdf" className="w-full h-full" />
+                         <Image
+                            src={cert.image}
+                            alt={`${cert.name} document preview`}
+                            fill
+                            className="object-contain"
+                        />
                     </div>
                 </a>
             </div>
