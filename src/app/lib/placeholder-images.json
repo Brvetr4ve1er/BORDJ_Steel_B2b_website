@@ -48,9 +48,9 @@
     "utec": { "src": "https://i.pinimg.com/736x/51/f0/46/51f046b8f7f21a773a8975416bf8e7bc.jpg", "width": 736, "height": 490, "aiHint": "industrial warehouse" },
     "star-good": { "src": "https://i.pinimg.com/736x/ec/93/b8/ec93b8a90b0c088c23cdf817613dd183.jpg", "width": 736, "height": 736, "aiHint": "commercial building" },
     "cfce": { "src": "https://images.unsplash.com/photo-1636905879476-b86b9dfa24f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxleGhpYml0aW9uJTIwY2VudGVyfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "aiHint": "exhibition center" },
-    "condor-logistics": { "src": "https://i.pinimg.com/736x/00/76/16/007616ecbd431edcf76d88c251f336e2.jpg", "width": 736, "height": 491, "aiHint": "logistics warehouse" },
+    "base-logistique-condor": { "src": "https://i.pinimg.com/736x/00/76/16/007616ecbd431edcf76d88c251f336e2.jpg", "width": 736, "height": 491, "aiHint": "logistics warehouse" },
     "softal": { "src": "https://images.unsplash.com/photo-1696194145126-32e22fc61ace?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxpbmR1c3RyaWFsJTIwZmFjdG9yeXxlbnwwfHx8fDE3NTU2ODIzMzF8MA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1350, "aiHint": "industrial factory" },
-    "duct-piping": { "src": "https://images.unsplash.com/photo-1725916631452-b411a5991fce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwaXBpbmclMjBzeXN0ZW18ZW58MHx8fHwxNzU1NjgyMzMxfDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1350, "aiHint": "piping system" }
+    "unité-duct-piping": { "src": "https://i.pinimg.com/736x/34/9a/c5/349ac528cf2b299e8e9d38dcf88e029d.jpg", "width": 736, "height": 490, "aiHint": "piping system" }
   },
   "charpente-metallique": {
     "main": {
@@ -87,7 +87,8 @@
   "chaudronnerie": {
     "hero": {
         "src": "https://i.pinimg.com/736x/ef/2e/99/ef2e9977bd5bfca70c8ebd557e614faf.jpg",
-        "width": 736, "height": 920,
+        "width": 736,
+        "height": 920,
         "alt": "Fabrication sur mesure en chaudronnerie",
         "aiHint": "metal fabrication",
         "blurDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
