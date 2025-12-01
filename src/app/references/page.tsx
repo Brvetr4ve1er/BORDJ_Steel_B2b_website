@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { companyData } from '@/config/company-data';
 import { Card, CardContent } from '@/components/ui/card';
 import images from '@/app/lib/placeholder-images.json';
+import { Layers, Weight, MapPin } from 'lucide-react';
 
 export default function ReferencesPage() {
   const heroImage = {
@@ -64,9 +65,36 @@ export default function ReferencesPage() {
                   <div className="p-8 flex flex-col justify-center">
                     <h2 className="text-3xl font-bold text-primary mb-2">{project.name}</h2>
                     {project.location && (
-                      <p className="text-md font-semibold text-accent mb-4">{project.location}</p>
+                      <p className="flex items-center text-md font-semibold text-accent mb-4">
+                        <MapPin className="mr-2 h-5 w-5" />
+                        {project.location}
+                      </p>
                     )}
-                    <p className="text-lg text-muted-foreground leading-relaxed">{project.description}</p>
+                    <p className="text-lg text-muted-foreground leading-relaxed mb-6">{project.description}</p>
+                    
+                    <div className="space-y-3 border-t pt-6">
+                        {project.details?.tonnage && (
+                            <div className="flex items-center gap-3">
+                                <Weight className="h-6 w-6 text-primary/70" />
+                                <span className="font-semibold text-lg text-primary">Tonnage :</span>
+                                <span className="text-lg text-muted-foreground">{project.details.tonnage}</span>
+                            </div>
+                        )}
+                        {project.details?.couverture && (
+                            <div className="flex items-center gap-3">
+                                <Layers className="h-6 w-6 text-primary/70" />
+                                <span className="font-semibold text-lg text-primary">Couverture :</span>
+                                <span className="text-lg text-muted-foreground">{project.details.couverture}</span>
+                            </div>
+                        )}
+                        {project.details?.bardage && (
+                            <div className="flex items-center gap-3">
+                                <Layers className="h-6 w-6 text-primary/70" />
+                                <span className="font-semibold text-lg text-primary">Bardage :</span>
+                                <span className="text-lg text-muted-foreground">{project.details.bardage}</span>
+                            </div>
+                        )}
+                    </div>
                   </div>
                 </div>
               </Card>
@@ -77,5 +105,3 @@ export default function ReferencesPage() {
     </ProductPageLayout>
   );
 }
-
-    
