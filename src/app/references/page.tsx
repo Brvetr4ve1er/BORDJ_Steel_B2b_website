@@ -1,0 +1,81 @@
+
+import { ProductPageLayout } from '@/components/product-page-layout';
+import { AnimatedWrapper } from '@/components/animated-wrapper';
+import Image from 'next/image';
+import { companyData } from '@/config/company-data';
+import { Card, CardContent } from '@/components/ui/card';
+import images from '@/app/lib/placeholder-images.json';
+
+export default function ReferencesPage() {
+  const heroImage = {
+    src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+    alt: "Équipe de construction examinant des plans",
+    aiHint: "construction team blueprints"
+  }
+
+  const projectsData = companyData.pages.references.projects.map(project => {
+    const imageName = project.name.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '');
+    const imageInfo = (images.portfolio as any)[imageName] || { src: 'https://placehold.co/600x400', width: 600, height: 400, aiHint: 'placeholder' };
+    return {
+      ...project,
+      image: imageInfo
+    };
+  });
+
+  return (
+    <ProductPageLayout>
+      <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
+        <Image
+          src={heroImage.src}
+          alt={heroImage.alt}
+          fill
+          className="z-0 object-cover"
+          priority
+          data-ai-hint={heroImage.aiHint}
+        />
+        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="relative z-20 container mx-auto px-4 text-center">
+          <AnimatedWrapper animation="zoom-in">
+            <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
+              Nos Références
+            </h1>
+            <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 mx-auto">
+              La confiance de nos clients, la fierté de nos réalisations.
+            </p>
+          </AnimatedWrapper>
+        </div>
+      </section>
+
+      <section className="bg-secondary">
+        <div className="container mx-auto px-4 space-y-16">
+          {projectsData.map((project, index) => (
+            <AnimatedWrapper key={project.name} animation="fade-in-stagger" staggerIndex={index}>
+              <Card className="overflow-hidden shadow-lg border-none">
+                <div className="grid lg:grid-cols-2">
+                  <div className="relative aspect-video lg:aspect-[4/3] group">
+                    <Image
+                      src={project.image.src}
+                      alt={project.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      data-ai-hint={project.image.aiHint}
+                    />
+                  </div>
+                  <div className="p-8 flex flex-col justify-center">
+                    <h2 className="text-3xl font-bold text-primary mb-2">{project.name}</h2>
+                    {project.location && (
+                      <p className="text-md font-semibold text-accent mb-4">{project.location}</p>
+                    )}
+                    <p className="text-lg text-muted-foreground leading-relaxed">{project.description}</p>
+                  </div>
+                </div>
+              </Card>
+            </AnimatedWrapper>
+          ))}
+        </div>
+      </section>
+    </ProductPageLayout>
+  );
+}
+
+    
