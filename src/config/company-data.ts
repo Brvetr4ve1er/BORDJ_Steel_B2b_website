@@ -203,9 +203,14 @@ export const companyData = {
             description: 'Construction d’une usine de production avec des spécifications techniques précises pour intégrer des lignes de production automatisées.' 
           },
           { 
-            name: 'Duct & Piping', 
-            location: '(Bordj Steel)', 
-            description: 'Projet interne de fabrication de gaines de ventilation et de tuyauterie, démontrant notre expertise en chaudronnerie complexe et en soudures de haute précision.' 
+            name: 'Unité Duct & Piping', 
+            location: 'Bordj Bou Arréridj', 
+            description: 'Fourniture et montage de la Charpente Métallique (PRS) et panneaux sandwich.',
+            details: {
+              tonnage: '120 tonnes (Type PRS)',
+              couverture: '1400 m²',
+              bardage: '1150 m²'
+            }
           },
       ]
     },
@@ -289,3 +294,5 @@ export const companyData = {
     whatsapp: "#"
   },
 };
+
+    
