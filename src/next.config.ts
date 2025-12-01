@@ -108,7 +108,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
+        protocol: 'https://',
         hostname: 'smartmedia.digital4danone.com',
         port: '',
         pathname: '/**',
