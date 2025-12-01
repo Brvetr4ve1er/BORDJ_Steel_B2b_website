@@ -9,9 +9,9 @@ import { Layers, Weight, MapPin } from 'lucide-react';
 
 export default function ReferencesPage() {
   const heroImage = {
-    src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
-    alt: "Équipe de construction examinant des plans",
-    aiHint: "construction team blueprints"
+    src: "https://i.pinimg.com/736x/53/07/e6/5307e6787500b6efff734990a41772e5.jpg",
+    alt: "Structure en acier en construction",
+    aiHint: "steel structure"
   }
 
   const projectsData = companyData.pages.references.projects.map(project => {
