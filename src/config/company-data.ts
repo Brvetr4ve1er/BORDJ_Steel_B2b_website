@@ -42,7 +42,8 @@ export const companyData = {
           { "name": "Blog", "href": "/media-center/blog", "description": "Nos derniers articles de blog.", "icon": "BookOpen" },
           { "name": "Actualités", "href": "/media-center/actualites", "description": "Les dernières nouvelles de Bordj Steel.", "icon": "Newspaper" },
           { "name": "Vidéos", "href": "/media-center/videos", "description": "Découvrez nos projets en vidéo.", "icon": "Video" },
-          { "name": "Galerie", "href": "/media-center/gallery", "description": "Explorez nos réalisations en images.", "icon": "View" }
+          { "name": "Galerie", "href": "/media-center/gallery", "description": "Explorez nos réalisations en images.", "icon": "View" },
+          { "name": "ISO", "href": "/media-center/blog", "description": "Voir nos certifications ISO.", "icon": "Award" }
         ]
       },
       { 
@@ -300,5 +301,7 @@ export const companyData = {
     whatsapp: "#"
   },
 };
+
+    
 
     
