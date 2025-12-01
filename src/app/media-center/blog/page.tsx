@@ -5,7 +5,8 @@ import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
 import ArticleCard from '@/components/ui/multi-media-testimonial';
-import { useState } from 'react';
+import React, { Suspense, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { ArrowRight, ArrowUpRight, Award, Newspaper, BookOpen, FileText, Search } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useBreakpoint } from '@/hooks/use-breakpoint';
@@ -82,10 +83,12 @@ const EmptyContent = ({tab}: {tab: string}) => (
     </div>
 )
 
-export default function BlogPage() {
+function BlogPageContent() {
     const isDesktop = useBreakpoint("lg");
+    const searchParams = useSearchParams();
+    const initialTab = searchParams.get('tab');
     const [sortBy, setSortBy] = useState(sortByOptions[0].id);
-    const [activeTab, setActiveTab] = useState('blog');
+    const [activeTab, setActiveTab] = useState(initialTab && tabs.some(t => t.id === initialTab) ? initialTab : 'blog');
 
     const renderContent = () => {
         switch (activeTab) {
@@ -215,3 +218,11 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
+
+export default function BlogPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <BlogPageContent />
+        </Suspense>
+    )
+}
