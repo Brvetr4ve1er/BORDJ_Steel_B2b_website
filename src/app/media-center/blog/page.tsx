@@ -32,17 +32,17 @@ const featuredArticle = allArticles.find(a => a.isFeatured);
 const articles = allArticles.filter(a => !a.isFeatured);
 
 const certifications = [
-  { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/1b/c3/3a/1bc33a6cbdf6d1c416b32699f6e5802b.jpg" },
-  { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/6f/3f/856f3f85dd8452ba3580e8280f62e093.jpg" },
-  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/15/a6/0a/15a60ad54ea9e34e77b39205320bd3ae.jpg" }
+  { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/1b/c3/3a/1bc33a6cbdf6d1c416b32699f6e5802b.jpg", logo: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg" },
+  { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/6f/3f/856f3f85dd8452ba3580e8280f62e093.jpg", logo: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg" },
+  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/15/a6/0a/15a60ad54ea9e34e77b39205320bd3ae.jpg", logo: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg" }
 ];
 
-function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: string; description: string; image: string; }, hoverDirection?: 'left' | 'right' }) {
+function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: string; description: string; image: string; logo: string; }, hoverDirection?: 'left' | 'right' }) {
     return (
         <div className="relative group w-full max-w-sm mx-auto">
             <div className="relative bg-card p-6 rounded-full shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex flex-col items-center justify-center text-center h-56 w-56 mx-auto overflow-hidden">
                 <Image
-                    src={cert.image}
+                    src={cert.logo}
                     alt={cert.name}
                     fill
                     className="object-contain p-4 transition-transform duration-300 group-hover:scale-110"
