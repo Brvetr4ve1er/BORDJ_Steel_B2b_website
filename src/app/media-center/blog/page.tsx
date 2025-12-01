@@ -15,6 +15,7 @@ import { DownloadButton } from '@/components/ui/download-button';
 import { articles as allArticles } from '@/config/blog-data';
 import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 const tabs = [
     { id: "iso", label: "ISO", icon: Award },
@@ -32,15 +33,15 @@ const featuredArticle = allArticles.find(a => a.isFeatured);
 const articles = allArticles.filter(a => !a.isFeatured);
 
 const certifications = [
-  { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/f0/4b/62/f04b6287977e56982f6ccb2a9b65cee7.jpg", logo: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg" },
-  { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/6f/3f/856f3f85dd8452ba3580e8280f62e093.jpg", logo: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg" },
-  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/15/a6/0a/15a60ad54ea9e34e77b39205320bd3ae.jpg", logo: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg" }
+  { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/f0/4b/62/f04b6287977e56982f6ccb2a9b65cee7.jpg", logo: "https://i.pinimg.com/736x/1b/c3/3a/1bc33a6cbdf6d1c416b32699f6e5802b.jpg", pdf: "/documents/Bordj-Steel-ISO-9001.pdf" },
+  { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/6f/3f/856f3f85dd8452ba3580e8280f62e093.jpg", logo: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg", pdf: "/documents/Bordj-Steel-ISO-14001.pdf" },
+  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/15/a6/0a/15a60ad54ea9e34e77b39205320bd3ae.jpg", logo: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg", pdf: "/documents/Bordj-Steel-ISO-45001.pdf" }
 ];
 
-function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: string; description: string; image: string; logo: string; }, hoverDirection?: 'left' | 'right' }) {
+function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: string; description: string; image: string; logo: string; pdf: string; }, hoverDirection?: 'left' | 'right' }) {
     return (
         <div className="relative group w-full max-w-sm mx-auto">
-            <div className="relative bg-card p-6 rounded-full shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex flex-col items-center justify-center text-center h-56 w-56 mx-auto overflow-hidden">
+            <div className="relative bg-card p-6 rounded-lg shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex flex-col items-center justify-center text-center h-56 w-56 mx-auto overflow-hidden">
                 <Image
                     src={cert.logo}
                     alt={cert.name}
@@ -51,19 +52,24 @@ function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: s
              <div className="mt-4 text-center">
                 <h3 className="text-xl font-bold text-primary">{cert.name}</h3>
                 <p className="text-md text-muted-foreground">{cert.description}</p>
+                <a href={cert.pdf} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block">
+                    <Button variant="outline">Voir le document</Button>
+                </a>
             </div>
-            <div className={cn(
+             <div className={cn(
                 "absolute top-1/2 -translate-y-1/2 w-[32rem] h-[40rem] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out pointer-events-none group-hover:pointer-events-auto z-50",
                 hoverDirection === 'right' ? "left-full ml-4" : "right-full mr-4"
             )}>
-                <div className="relative w-full h-full bg-white rounded-lg shadow-2xl border-2 border-accent overflow-hidden">
-                    <Image
-                        src={cert.image}
-                        alt={`Certification ${cert.name}`}
-                        fill
-                        className="object-contain"
-                    />
-                </div>
+                <a href={cert.pdf} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                    <div className="relative w-full h-full bg-white rounded-lg shadow-2xl border-2 border-accent overflow-hidden">
+                        <Image
+                            src={cert.image}
+                            alt={`Certification ${cert.name}`}
+                            fill
+                            className="object-contain"
+                        />
+                    </div>
+                </a>
             </div>
         </div>
     );
