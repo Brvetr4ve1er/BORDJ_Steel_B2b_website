@@ -40,8 +40,15 @@ const certifications = [
 function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: string; description: string; image: string; }, hoverDirection?: 'left' | 'right' }) {
     return (
         <div className="relative group w-full max-w-sm mx-auto">
-            <div className="relative bg-card p-6 rounded-full shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex flex-col items-center justify-center text-center h-56 w-56 mx-auto">
-                <Award className="h-20 w-20 text-accent mb-2" />
+            <div className="relative bg-card p-6 rounded-full shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex flex-col items-center justify-center text-center h-56 w-56 mx-auto overflow-hidden">
+                <Image
+                    src={cert.image}
+                    alt={cert.name}
+                    fill
+                    className="object-contain p-4 transition-transform duration-300 group-hover:scale-110"
+                />
+            </div>
+             <div className="mt-4 text-center">
                 <h3 className="text-xl font-bold text-primary">{cert.name}</h3>
                 <p className="text-md text-muted-foreground">{cert.description}</p>
             </div>
@@ -202,3 +209,5 @@ export default function BlogPage() {
         </ProductPageLayout>
     );
 };
+
+    
