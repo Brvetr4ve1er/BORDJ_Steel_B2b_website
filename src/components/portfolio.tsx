@@ -12,7 +12,7 @@ export function Portfolio() {
   const projectsData = [
     { ...references.projects[0], image: projectImages.utec },
     { ...references.projects[1], image: projectImages['star-good'] },
-    { ...references.projects[2], image: projectImages.cfce },
+    { ...references.projects[2], image: projectImages['zenteck-bba'] },
     { ...references.projects[3], image: projectImages['base-logistique-condor'] },
     { ...references.projects[4], image: projectImages.softal },
     { ...references.projects[5], image: projectImages['unité-duct-piping'] },

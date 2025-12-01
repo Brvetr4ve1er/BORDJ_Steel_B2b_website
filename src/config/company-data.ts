@@ -166,7 +166,7 @@ export const companyData = {
           { 
             name: 'UTEC', 
             location: 'Ain Oulmen - Sétif', 
-            description: 'Fourniture et montage de la Charpente Métallique et des panneaux sandwichs pour le projet United Technologie (UTEC).',
+            description: 'Fourniture et montage de la Charpente Métallique et panneaux sandwichs.',
             details: {
               tonnage: '2000 tonnes',
               couverture: '22000 m²',
@@ -176,21 +176,24 @@ export const companyData = {
           {
             name: 'Star Good',
             location: 'Z.IND oued Smar - Alger',
-            description: 'Réalisation d’un bâtiment commercial moderne, alliant esthétique et fonctionnalité avec une structure métallique apparente et des panneaux sandwich pour une isolation optimale.',
+            description: 'Fourniture et montage de la Charpente Métallique et panneaux sandwich.',
             details: {
               tonnage: '360 tonnes',
               couverture: '4750 m²'
             }
           },
           { 
-            name: 'CFCE', 
-            location: 'Oran', 
-            description: 'Construction du Centre de Foires et de Conventions d’Oran, un projet d’envergure avec des portées exceptionnelles sans poteaux intermédiaires grâce à nos Profils Reconstitués Soudés (PRS).' 
+            name: 'Zenteck- BBA', 
+            location: 'route de msila BBA', 
+            description: 'Fourniture et montage de la Charpente Métallique et panneaux sandwich.',
+            details: {
+                tonnage: '1200 tonnes'
+            }
           },
           {
             name: 'Base Logistique Condor',
             location: 'Route de Msila, BBA',
-            description: 'Mise en place d’une base logistique stratégique pour le groupe CONDOR, avec la construction de plusieurs entrepôts de grande hauteur optimisés pour le stockage et la manutention.',
+            description: 'Fourniture et montage de la Charpente Métallique et panneaux sandwich classe M1(PIR).',
             details: {
               tonnage: '4700 tonnes',
               couverture: '6500 m² (Classe M1 PIR)',
@@ -200,7 +203,7 @@ export const companyData = {
           { 
             name: 'Softal', 
             location: 'Boufarik - Blida', 
-            description: 'Fourniture et montage de la Charpente Métallique R+1 pour une usine de production à Boufarik-Blida.',
+            description: 'Fourniture et montage de la Charpente Métallique R+1.',
             details: {
               tonnage: '800 tonnes',
             }
