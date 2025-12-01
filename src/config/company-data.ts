@@ -187,10 +187,15 @@ export const companyData = {
             location: 'Oran', 
             description: 'Construction du Centre de Foires et de Conventions d’Oran, un projet d’envergure avec des portées exceptionnelles sans poteaux intermédiaires grâce à nos Profils Reconstitués Soudés (PRS).' 
           },
-          { 
-            name: 'Base Logistique CONDOR', 
-            location: '', 
-            description: 'Mise en place d’une base logistique stratégique pour le groupe CONDOR, avec la construction de plusieurs entrepôts de grande hauteur optimisés pour le stockage et la manutention.' 
+          {
+            name: 'Base Logistique CONDOR',
+            location: 'Route de Msila, BBA',
+            description: 'Fourniture et montage de la Charpente Métallique et panneaux sandwich classe M1(PIR).',
+            details: {
+              tonnage: '4700 tonnes',
+              couverture: '6500 m² (Classe M1 PIR)',
+              bardage: '14000 m² (Classe M1)'
+            }
           },
           { 
             name: 'Softal', 
@@ -284,5 +289,3 @@ export const companyData = {
     whatsapp: "#"
   },
 };
-
-    
