@@ -174,9 +174,9 @@ export const companyData = {
             }
           },
           {
-            name: 'STAR GOOD',
-            location: 'Z.IND Oued Smar - Alger',
-            description: 'Fourniture et montage de la Charpente Métallique et panneaux sandwich.',
+            name: 'Star Good',
+            location: 'Z.IND oued Smar - Alger',
+            description: 'Réalisation d’un bâtiment commercial moderne, alliant esthétique et fonctionnalité avec une structure métallique apparente et des panneaux sandwich pour une isolation optimale.',
             details: {
               tonnage: '360 tonnes',
               couverture: '4750 m²'
@@ -190,7 +190,7 @@ export const companyData = {
           {
             name: 'Base Logistique Condor',
             location: 'Route de Msila, BBA',
-            description: 'Fourniture et montage de la Charpente Métallique et panneaux sandwich classe M1(PIR).',
+            description: 'Mise en place d’une base logistique stratégique pour le groupe CONDOR, avec la construction de plusieurs entrepôts de grande hauteur optimisés pour le stockage et la manutention.',
             details: {
               tonnage: '4700 tonnes',
               couverture: '6500 m² (Classe M1 PIR)',
@@ -199,11 +199,14 @@ export const companyData = {
           },
           { 
             name: 'Softal', 
-            location: 'Boufarik', 
-            description: 'Construction d’une usine de production avec des spécifications techniques précises pour intégrer des lignes de production automatisées.' 
+            location: 'Boufarik - Blida', 
+            description: 'Fourniture et montage de la Charpente Métallique R+1 pour une usine de production à Boufarik-Blida.',
+            details: {
+              tonnage: '800 tonnes',
+            }
           },
           { 
-            name: 'Unité Duct Piping', 
+            name: 'Unité Duct & Piping', 
             location: 'Bordj Bou Arréridj', 
             description: 'Fourniture et montage de la Charpente Métallique (PRS) et panneaux sandwich.',
             details: {
@@ -296,3 +299,4 @@ export const companyData = {
 };
 
     
+

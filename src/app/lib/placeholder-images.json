@@ -49,7 +49,7 @@
     "star-good": { "src": "https://i.pinimg.com/736x/ec/93/b8/ec93b8a90b0c088c23cdf817613dd183.jpg", "width": 736, "height": 736, "aiHint": "commercial building" },
     "cfce": { "src": "https://images.unsplash.com/photo-1636905879476-b86b9dfa24f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxleGhpYml0aW9uJTIwY2VudGVyfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "aiHint": "exhibition center" },
     "base-logistique-condor": { "src": "https://i.pinimg.com/736x/00/76/16/007616ecbd431edcf76d88c251f336e2.jpg", "width": 736, "height": 491, "aiHint": "logistics warehouse" },
-    "softal": { "src": "https://images.unsplash.com/photo-1696194145126-32e22fc61ace?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxpbmR1c3RyaWFsJTIwZmFjdG9yeXxlbnwwfHx8fDE3NTU2ODIzMzF8MA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1350, "aiHint": "industrial factory" },
+    "softal": { "src": "https://i.pinimg.com/736x/5f/00/6f/5f006fef04a5f7af462ba580abbb2adc.jpg", "width": 736, "height": 491, "aiHint": "industrial factory" },
     "unité-duct-piping": { "src": "https://i.pinimg.com/736x/34/9a/c5/349ac528cf2b299e8e9d38dcf88e029d.jpg", "width": 736, "height": 490, "aiHint": "piping system" }
   },
   "charpente-metallique": {
