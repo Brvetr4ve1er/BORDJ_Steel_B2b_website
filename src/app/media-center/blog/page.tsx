@@ -30,9 +30,6 @@ const sortByOptions = [
     { id: "viewed", label: "Most viewed" },
 ];
 
-const featuredArticle = allArticles.find(a => a.isFeatured);
-const articles = allArticles.filter(a => !a.isFeatured);
-
 const certifications = [
   { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/f0/4b/62/f04b6287977e56982f6ccb2a9b65cee7.jpg", logo: "https://i.pinimg.com/736x/1b/c3/3a/1bc33a6cbdf6d1c416b32699f6e5802b.jpg", pdf: "/documents/Bordj-Steel-ISO-9001.pdf" },
   { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/6f/3f/856f3f85dd8452ba3580e8280f62e093.jpg", logo: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg", pdf: "/documents/Bordj-Steel-ISO-14001.pdf" },
@@ -106,23 +103,12 @@ function BlogPageContent() {
                 );
             case 'blog':
                 return (
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                        {featuredArticle && (
-                            <div className="lg:col-span-1">
-                                <ArticleCard article={featuredArticle} />
-                            </div>
-                        )}
-                        {Array.isArray(articles) && articles.length > 0 ? (
-                           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
-                             {articles.map((t, i) => (
-                               <ArticleCard key={i} article={t} />
-                             ))}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                         {allArticles.map((t, i) => (
+                           <div key={t.id} className={cn(t.isFeatured ? "sm:col-span-2 lg:col-span-2 xl:col-span-2" : "")}>
+                              <ArticleCard article={t} />
                            </div>
-                         ) : (
-                           <p className="text-center text-muted-foreground lg:col-span-2">
-                             No articles yet.
-                           </p>
-                         )}
+                         ))}
                     </div>
                 );
             case 'catalogue':
