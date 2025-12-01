@@ -166,17 +166,21 @@ export const companyData = {
           { 
             name: 'UTEC', 
             location: 'Ain Oulmen - Sétif', 
-            description: 'Fourniture et montage de la charpente métallique et des panneaux sandwichs pour le projet United Technologie (UTEC).',
+            description: 'Fourniture et montage de la Charpente Métallique et des panneaux sandwichs pour le projet United Technologie (UTEC).',
             details: {
               tonnage: '2000 tonnes',
               couverture: '22000 m²',
               bardage: '3800 m²'
             }
           },
-          { 
-            name: 'STAR GOOD', 
-            location: 'Oued Smar', 
-            description: 'Réalisation d’un bâtiment commercial moderne, alliant esthétique et fonctionnalité avec une structure métallique apparente et des panneaux sandwich pour une isolation optimale.' 
+          {
+            name: 'STAR GOOD',
+            location: 'Z.IND Oued Smar - Alger',
+            description: 'Fourniture et montage de la Charpente Métallique et panneaux sandwich.',
+            details: {
+              tonnage: '360 tonnes',
+              couverture: '4750 m²'
+            }
           },
           { 
             name: 'CFCE', 
@@ -252,7 +256,6 @@ export const companyData = {
             subjectPlaceholder: "Sujet de votre message",
             message: "Message",
             messagePlaceholder: "Votre Message",
-            button: "Envoyer le Message",
         },
         info: {
           title: "Informations de Contact",
@@ -281,3 +284,5 @@ export const companyData = {
     whatsapp: "#"
   },
 };
+
+    
