@@ -45,7 +45,7 @@
     }
   },
   "portfolio": {
-    "utec": { "src": "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxpbmR1c3RyaWFsJTIwd2FyZWhvdXNlfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "aiHint": "industrial warehouse" },
+    "utec": { "src": "https://i.pinimg.com/736x/51/f0/46/51f046b8f7f21a773a8975416bf8e7bc.jpg", "width": 736, "height": 490, "aiHint": "industrial warehouse" },
     "star-good": { "src": "https://images.unsplash.com/photo-1603779931001-a6b508e5da81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb21tZXJjaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzU1NjM2MzgyfDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1350, "aiHint": "commercial building" },
     "cfce": { "src": "https://images.unsplash.com/photo-1636905879476-b86b9dfa24f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxleGhpYml0aW9uJTIwY2VudGVyfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "aiHint": "exhibition center" },
     "condor-logistics": { "src": "https://images.unsplash.com/photo-1720382248625-dc19de24834c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsb2dpc3RpY3MlMjBiYXNlfGVufDB8fHx8MTc1NTY4MjMzMXww&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "aiHint": "logistics base" },

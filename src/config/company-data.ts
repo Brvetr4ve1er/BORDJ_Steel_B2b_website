@@ -163,7 +163,7 @@ export const companyData = {
       slug: '/projets',
       title: 'Nos Références',
       projects: [
-          { name: 'UTEC', location: 'Ain Oulmen', description: 'Construction d’une unité de production de classe mondiale pour UTEC, spécialisée dans l’électronique. Le projet a nécessité une charpente métallique complexe pour supporter des équipements lourds et garantir de grands espaces ouverts, optimisant ainsi le flux de production. Notre intervention a couvert la conception, la fabrication et le montage de la structure, en respectant des délais stricts.' },
+          { name: 'UTEC', location: 'Ain Oulmen', description: 'Projet : United technologie -UTEC Lieu d\'implantation : Ain Oulmen -Sétif Fourniture et montage de la Charpente Métallique et panneaux sandwichs Tonnage : 2000 tonnes Panneaux sandwichs  Couverture 22000m² /  Bardage 3800m' },
           { name: 'STAR GOOD', location: 'Oued Smar', description: 'Réalisation d’un bâtiment commercial moderne pour STAR GOOD, alliant esthétique et fonctionnalité. La structure métallique apparente a été conçue comme un élément de design, avec des finitions soignées. Le projet a mis en œuvre des panneaux sandwich pour une isolation thermique et acoustique optimale, créant un espace de vente confortable et économe en énergie.' },
           { name: 'CFCE', location: 'Oran', description: 'Construction du Centre de Foires et de Conventions d’Oran, un projet d’envergure nécessitant des portées exceptionnelles sans poteaux intermédiaires. Nous avons déployé notre expertise en PRS (Profils Reconstitués Soudés) pour créer un espace d’exposition vaste et modulable. La galvanisation à chaud de tous les éléments assure une protection durable contre la corrosion dans l’environnement salin d’Oran.' },
           { name: 'Base Logistique CONDOR', location: '', description: 'Mise en place d’une base logistique stratégique pour le groupe CONDOR. Ce projet a impliqué la construction de plusieurs entrepôts de grande hauteur, optimisés pour le stockage et la manutention. La rapidité d’exécution et la robustesse de nos structures ont été des facteurs clés pour la réussite de ce projet vital pour la chaîne d’approvisionnement de notre client.' },
@@ -252,5 +252,3 @@ export const companyData = {
     whatsapp: "#"
   },
 };
-
-    
