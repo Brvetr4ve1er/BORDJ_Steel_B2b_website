@@ -60,12 +60,7 @@ function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: s
             )}>
                 <a href={cert.pdf} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
                     <div className="relative w-full h-full bg-white rounded-lg shadow-2xl border-2 border-accent overflow-hidden">
-                        <Image
-                            src={cert.image}
-                            alt={`Certification ${cert.name}`}
-                            fill
-                            className="object-contain"
-                        />
+                        <embed src={cert.pdf} type="application/pdf" className="w-full h-full" />
                     </div>
                 </a>
             </div>
@@ -119,13 +114,13 @@ function BlogPageContent() {
                             Téléchargez notre catalogue complet pour découvrir en détail l'ensemble de nos produits et solutions de construction métallique.
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                            <a href="/documents/catalogue-fr.pdf" download="Bordj-Steel-Catalogue-FR.pdf">
+                            <a href="/documents/Bordj-Steel-Catalogue-FR.pdf" download="Bordj-Steel-Catalogue-FR.pdf">
                                 <DownloadButton text="Catalogue Français" />
                             </a>
-                            <a href="/documents/catalogue-en.pdf" download="Bordj-Steel-Catalogue-EN.pdf">
+                            <a href="/documents/Bordj-Steel-Catalogue-EN.pdf" download="Bordj-Steel-Catalogue-EN.pdf">
                                 <DownloadButton text="English Catalog" />
                             </a>
-                            <a href="/documents/catalogue-ar.pdf" download="Bordj-Steel-Catalogue-AR.pdf">
+                            <a href="/documents/Bordj-Steel-Catalogue-AR.pdf" download="Bordj-Steel-Catalogue-AR.pdf">
                                 <DownloadButton text="الكتالوج العربي" />
                             </a>
                         </div>
