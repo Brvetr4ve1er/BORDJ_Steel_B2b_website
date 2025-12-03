@@ -8,7 +8,7 @@ import { ChevronsRight, Snowflake, Settings, ArrowRight, DollarSign, Smartphone,
 import { AnimatedWrapper } from './animated-wrapper';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { productData } from '@/config/products-data';
+import type { productData as ProductData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
 import images from '@/app/lib/placeholder-images.json';
 import { DownloadButton } from './ui/download-button';
@@ -294,12 +294,12 @@ const productButtons = [
   { key: 'finitions', label: 'Pièces de Finition', icon: FinitionsIcon },
 ];
 
-const ProductSelector = React.memo(function ProductSelector({ activeProductKey, onSelectProduct }: { activeProductKey: keyof typeof productData | null, onSelectProduct: (key: keyof typeof productData) => void }) {
+const ProductSelector = React.memo(function ProductSelector({ activeProductKey, onSelectProduct }: { activeProductKey: keyof ProductData | null, onSelectProduct: (key: keyof ProductData) => void }) {
   return (
     <AnimatedWrapper animation="fade-in">
       <div className="mb-24 flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
         {productButtons.map(({ key, label, icon: Icon }) => (
-          <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => onSelectProduct(key as keyof typeof productData)}>
+          <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => onSelectProduct(key as keyof ProductData)}>
             <div className={cn(
               "w-32 h-32 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
               activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
@@ -326,7 +326,11 @@ const ProductSelector = React.memo(function ProductSelector({ activeProductKey, 
   );
 });
 
-export function SandwichPanelsPage() {
+interface SandwichPanelsPageProps {
+  productData: typeof ProductData;
+}
+
+export function SandwichPanelsPage({ productData }: SandwichPanelsPageProps) {
   const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData | null>(null);
   const activeProduct = activeProductKey ? productData[activeProductKey] : null;
 
@@ -357,5 +361,3 @@ export function SandwichPanelsPage() {
     </>
   );
 }
-
-    

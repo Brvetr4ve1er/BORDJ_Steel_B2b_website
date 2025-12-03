@@ -176,9 +176,9 @@ ListItem.displayName = "ListItem";
 
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(() => false);
-  const [isMounted, setIsMounted] = useState(() => false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(() => false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { navigation, siteMetadata } = companyData;
   
   const iconMap = useMemo(() => ({
@@ -212,7 +212,9 @@ export function Navbar() {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [handleScroll]);
 
   const headerStyle = isMounted && isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm h-24' : 'bg-transparent h-32';

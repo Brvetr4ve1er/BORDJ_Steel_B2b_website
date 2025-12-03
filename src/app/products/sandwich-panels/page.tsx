@@ -1,6 +1,7 @@
 
 import { SandwichPanelsPage } from '@/components/sandwich-panels-page';
 import { companyData } from '@/config/company-data';
+import { productData } from '@/config/products-data';
 import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 export default function SandwichPanelsProductPage() {
   return (
     <ProductPageLayout>
-      <SandwichPanelsPage />
+      <SandwichPanelsPage productData={productData} />
     </ProductPageLayout>
   );
 }

@@ -15,7 +15,7 @@ interface AnimatedWrapperProps {
 }
 
 export function AnimatedWrapper({ children, animation, staggerIndex = 0, className }: AnimatedWrapperProps) {
-  const [isVisible, setIsVisible] = useState(() => false);
+  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export function AnimatedWrapper({ children, animation, staggerIndex = 0, classNa
       ref={ref}
       className={cn(
         'transition-all duration-700 ease-out',
-        animationClasses[animation],
+        !isVisible && animationClasses[animation],
         isVisible && visibleClasses[animation],
         className
       )}

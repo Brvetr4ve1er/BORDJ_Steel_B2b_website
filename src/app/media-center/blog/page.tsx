@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { ProductPageLayout } from '@/components/product-page-layout';
