@@ -85,7 +85,7 @@ function Dock({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        'mx-auto flex h-16 items-end gap-4',
+        'mx-auto flex h-16 items-end gap-8',
         className
       )}
       style={{ height: panelHeight }}
