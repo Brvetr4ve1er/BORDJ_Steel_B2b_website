@@ -53,7 +53,7 @@ export const companyData = {
         "icon": "Mail",
         "children": [
           { "name": "Contact", "href": "/contact", "description": "Contactez-nous pour toute demande.", "icon": "Mail" },
-          { "name": "Recrutement", "href": "/recrutement", "description": "Rejoignez nos équipes.", "icon": "User" }
+          { "name": "RH", "href": "/recrutement", "description": "Rejoignez nos équipes.", "icon": "User" }
         ]
       }
     ],
