@@ -27,13 +27,13 @@ const tabs = [
 const sortByOptions = [
     { id: "recent", label: "Most recent" },
     { id: "popular", label: "Most popular" },
-    { id: "viewed", label: "Most viewed" },
+    { id: "viewed", "label": "Most viewed" },
 ];
 
 const certifications = [
   { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/f0/4b/62/f04b6287977e56982f6ccb2a9b65cee7.jpg", logo: "https://i.pinimg.com/736x/d5/07/71/d50771a5dd8b1531bf87691475628522.jpg", pdf: "/documents/Bordj-Steel-ISO-9001.pdf" },
   { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/6f/3f/856f3f85dd8452ba3580e8280f62e093.jpg", logo: "https://i.pinimg.com/736x/79/01/a5/7901a543069366724bf173d772a1502f.jpg", pdf: "/documents/Bordj-Steel-ISO-14001.pdf" },
-  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/15/a6/0a/15a60ad54ea9e34e77b39205320bd3ae.jpg", logo: "https://i.pinimg.com/736x/3b/39/39/3b393928fb7e4a5e97606eac25a28056.jpg", pdf: "/documents/Bordj-Steel-ISO-45001.pdf" }
+  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/15/a6/0a/15a60ad54ea9e34e77b39205320bd3ae.jpg", logo: "https://i.pinimg.com/736x/5f/6b/69/5f6b696fc21fdd205c98c9fdb27bcf7a.jpg", pdf: "/documents/Bordj-Steel-ISO-45001.pdf" }
 ];
 
 function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: string; description: string; image: string; logo: string; pdf: string; }, hoverDirection?: 'left' | 'right' }) {
@@ -103,9 +103,9 @@ function BlogPageContent() {
                 );
             case 'blog':
                 return (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <div className="masonry-grid">
                          {allArticles.map((t, i) => (
-                           <div key={t.id} className={cn(t.isFeatured ? "sm:col-span-2 lg:col-span-2 xl:col-span-2" : "")}>
+                           <div key={t.id} className="masonry-grid_item">
                               <ArticleCard article={t} />
                            </div>
                          ))}
