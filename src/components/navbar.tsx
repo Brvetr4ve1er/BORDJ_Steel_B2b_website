@@ -253,7 +253,6 @@ export function Navbar() {
         {isMounted ? (
             <div className="hidden md:flex flex-col items-end gap-1 text-right">
                 <p className={cn('text-xs font-semibold uppercase tracking-wider', textColor)}>{siteMetadata.slogan}</p>
-                <p className={cn('font-cairo font-bold text-sm', textColor)}>{siteMetadata.sloganArabic}</p>
               <div className="mt-1">
                  <Select defaultValue="fr">
                     <SelectTrigger className={cn("w-[120px] bg-transparent border-white/50", selectTextColor)}>
