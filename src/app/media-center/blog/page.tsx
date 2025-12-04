@@ -4,7 +4,6 @@
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
-import ArticleCard from '@/components/ui/multi-media-testimonial';
 import React, { Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ArrowRight, ArrowUpRight, Award, Newspaper, BookOpen, FileText, Search } from 'lucide-react';
@@ -17,6 +16,7 @@ import { articles as allArticles } from '@/config/blog-data';
 import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { BlogPostCard } from '@/components/ui/blog-post-card';
 
 const tabs = [
     { id: "iso", label: "ISO", icon: Award },
@@ -103,13 +103,31 @@ function BlogPageContent() {
                 );
             case 'blog':
                 return (
-                    <div className="masonry-grid">
-                         {allArticles.map((t, i) => (
-                           <div key={t.id} className="masonry-grid_item">
-                              <ArticleCard article={t} />
-                           </div>
-                         ))}
-                    </div>
+                     <div className="bg-background py-8 sm:py-16 lg:py-24">
+                        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                          <div className="mb-12 space-y-4 text-center sm:mb-16 lg:mb-24">
+                            <p className="text-primary text-sm font-medium uppercase">Notre Blog</p>
+                            <h2 className="text-foreground text-2xl font-semibold md:text-3xl lg:text-4xl">Actualités, innovations et savoir-faire.</h2>
+                            <p className="text-foreground/80 text-xl">
+                              Explorez nos articles pour rester à jour sur l'industrie de l'acier.
+                            </p>
+                          </div>
+                          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                            {allArticles.map((article) => (
+                               <BlogPostCard 
+                                 key={article.id}
+                                 tag={article.tag}
+                                 date={article.date}
+                                 title={article.title}
+                                 description={article.description}
+                                 imageUrl={article.imageUrl}
+                                 href={article.href}
+                                 author={article.author}
+                               />
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                 );
             case 'catalogue':
                 return (

@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from 'react';
@@ -6,6 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -62,9 +62,9 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
         whileHover="hover"
         {...props}
       >
-        <a href={href} className="absolute inset-0 z-10" aria-label={`Read more about ${title}`}>
+        <Link href={href} className="absolute inset-0 z-10" aria-label={`Read more about ${title}`}>
           <span className="sr-only">Read More</span>
-        </a>
+        </Link>
         <div className={cn(
           "relative z-0 flex h-full w-full",
           isFeatured ? 'flex-col md:flex-row' : 'flex-col'
