@@ -10,9 +10,10 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Logo } from '../logo';
+import { Article } from '@/config/blog-data';
 
 const cardVariants = cva(
-  'group relative flex flex-col overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1',
+  'group relative flex flex-col overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 h-full',
   {
     variants: {
       variant: {
@@ -27,21 +28,13 @@ const cardVariants = cva(
 );
 
 export interface BlogPostCardProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof cardVariants> {
-  tag: string;
-  date: string;
-  title: string;
-  description: string;
-  imageUrl?: string;
-  href: string;
+  article: Article;
   readMoreText?: string;
-  author?: {
-    name: string;
-    avatarUrl: string;
-  };
 }
 
 const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
-  ({ className, variant, tag, date, title, description, imageUrl, href, readMoreText = 'Lire l\'article complet', author, ...props }, ref) => {
+  ({ className, variant, article, readMoreText = 'Lire l\'article complet', ...props }, ref) => {
+    const { title, date, tag, description, imageUrl, href, author } = article;
     const cardHover = {
       hover: {
         y: -5,
@@ -93,7 +86,7 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
               </div>
               <h3 className={cn(
                   "mb-3 font-bold leading-tight text-foreground",
-                  isFeatured ? "text-2xl lg:text-3xl" : "text-xl lg:text-2xl"
+                  isFeatured ? "text-2xl lg:text-3xl" : "text-xl"
                 )}>
                 <span className="bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 group-hover:bg-[length:100%_2px]">
                   {title}
@@ -101,8 +94,8 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
               </h3>
               <p className={cn(
                   "text-muted-foreground",
-                   isFeatured ? "text-lg line-clamp-4" : "text-base line-clamp-2"
-                )}>{description.split('\n').slice(0, isFeatured ? 4: 2).join('\n')}</p>
+                   isFeatured ? "text-lg line-clamp-4" : "text-base line-clamp-3"
+                )}>{description.split('\n').slice(0, isFeatured ? 4 : 3).join('\n')}</p>
             </div>
             <div className="mt-6 flex items-center justify-between">
                 {author && (

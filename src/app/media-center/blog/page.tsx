@@ -1,4 +1,3 @@
-
 "use client";
 
 import { ProductPageLayout } from '@/components/product-page-layout';
@@ -102,9 +101,11 @@ function BlogPageContent() {
                     </AnimatedWrapper>
                 );
             case 'blog':
+                const featuredArticle = allArticles.find(a => a.isFeatured);
+                const otherArticles = allArticles.filter(a => !a.isFeatured);
                 return (
                      <div className="bg-background py-8 sm:py-16 lg:py-24">
-                        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
                           <div className="mb-12 space-y-4 text-center sm:mb-16 lg:mb-24">
                             <p className="text-primary text-sm font-medium uppercase">Notre Blog</p>
                             <h2 className="text-foreground text-2xl font-semibold md:text-3xl lg:text-4xl">Actualités, innovations et savoir-faire.</h2>
@@ -112,17 +113,19 @@ function BlogPageContent() {
                               Explorez nos articles pour rester à jour sur l'industrie de l'acier.
                             </p>
                           </div>
-                          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                            {allArticles.map((article) => (
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {featuredArticle && (
+                                <div className="lg:col-span-2">
+                                    <BlogPostCard 
+                                        variant="featured"
+                                        article={featuredArticle}
+                                    />
+                                </div>
+                            )}
+                            {otherArticles.map((article) => (
                                <BlogPostCard 
                                  key={article.id}
-                                 tag={article.tag}
-                                 date={article.date}
-                                 title={article.title}
-                                 description={article.description}
-                                 imageUrl={article.imageUrl}
-                                 href={article.href}
-                                 author={article.author}
+                                 article={article}
                                />
                             ))}
                           </div>
