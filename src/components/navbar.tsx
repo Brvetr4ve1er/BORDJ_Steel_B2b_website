@@ -75,7 +75,7 @@ const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string
                             {item.children ? (
                                 <>
                                     <NavigationMenuTrigger
-                                        className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent", navTextColor)}
+                                        className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent font-bold", navTextColor)}
                                     >
                                        {Icon && <Icon className="h-5 w-5 mr-2" />}
                                         {item.name}
@@ -103,7 +103,7 @@ const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string
                                 <NavigationMenuLink asChild>
                                   <Link
                                     href={item.href}
-                                    className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent", navTextColor)}
+                                    className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent font-bold", navTextColor)}
                                     onClick={onItemClick}
                                   >
                                       <div className="flex items-center">
