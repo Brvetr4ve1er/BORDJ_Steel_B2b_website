@@ -48,7 +48,7 @@ export const companyData = {
         ]
       },
       { 
-        "name": "Contact & Carrières", 
+        "name": "Contact & RH", 
         "href": "/contact", 
         "icon": "Mail",
         "children": [
