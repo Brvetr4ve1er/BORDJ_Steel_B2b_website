@@ -126,7 +126,7 @@ function BlogPageContent() {
                                 <DownloadButton text="English Catalog" />
                             </a>
                             <a href="/documents/Bordj-Steel-Catalogue-AR.pdf" download="Bordj-Steel-Catalogue-AR.pdf">
-                                <DownloadButton text="الكتالوج العربي" />
+                                <DownloadButton text="دليل المنتجات" />
                             </a>
                         </div>
                     </div>
