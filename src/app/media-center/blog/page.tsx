@@ -31,9 +31,9 @@ const sortByOptions = [
 ];
 
 const certifications = [
-  { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/f0/4b/62/f04b6287977e56982f6ccb2a9b65cee7.jpg", logo: "https://i.pinimg.com/736x/1b/c3/3a/1bc33a6cbdf6d1c416b32699f6e5802b.jpg", pdf: "/documents/Bordj-Steel-ISO-9001.pdf" },
-  { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/6f/3f/856f3f85dd8452ba3580e8280f62e093.jpg", logo: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg", pdf: "/documents/Bordj-Steel-ISO-14001.pdf" },
-  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/15/a6/0a/15a60ad54ea9e34e77b39205320bd3ae.jpg", logo: "https://i.pinimg.com/736x/85/14/f2/8514f22dc44e52cd093ec0f1be9f641d.jpg", pdf: "/documents/Bordj-Steel-ISO-45001.pdf" }
+  { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/f0/4b/62/f04b6287977e56982f6ccb2a9b65cee7.jpg", logo: "https://i.pinimg.com/736x/d5/07/71/d50771a5dd8b1531bf87691475628522.jpg", pdf: "/documents/Bordj-Steel-ISO-9001.pdf" },
+  { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/6f/3f/856f3f85dd8452ba3580e8280f62e093.jpg", logo: "https://i.pinimg.com/736x/79/01/a5/7901a543069366724bf173d772a1502f.jpg", pdf: "/documents/Bordj-Steel-ISO-14001.pdf" },
+  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/15/a6/0a/15a60ad54ea9e34e77b39205320bd3ae.jpg", logo: "https://i.pinimg.com/736x/3b/39/39/3b393928fb7e4a5e97606eac25a28056.jpg", pdf: "/documents/Bordj-Steel-ISO-45001.pdf" }
 ];
 
 function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: string; description: string; image: string; logo: string; pdf: string; }, hoverDirection?: 'left' | 'right' }) {
@@ -172,7 +172,7 @@ function BlogPageContent() {
                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
                     </div>
                     <div className="w-full md:w-auto md:flex-1 flex justify-center">
-                        <Dock magnification={140} panelHeight={120}>
+                        <Dock magnification={140} panelHeight={120} className="gap-8">
                             {tabs.map((tab) => (
                               <DockItem key={tab.id} onClick={() => setActiveTab(tab.id)}>
                                 <DockIcon>
@@ -212,5 +212,3 @@ export default function BlogPage() {
         </Suspense>
     )
 }
-
-    
