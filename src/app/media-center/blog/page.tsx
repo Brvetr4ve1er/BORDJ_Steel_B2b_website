@@ -172,11 +172,11 @@ function BlogPageContent() {
                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
                     </div>
                     <div className="w-full md:w-auto md:flex-1 flex justify-center">
-                        <Dock>
+                        <Dock magnification={100} panelHeight={80}>
                             {tabs.map((tab) => (
                               <DockItem key={tab.id} onClick={() => setActiveTab(tab.id)}>
                                 <DockIcon>
-                                  <tab.icon className={cn("h-8 w-8", activeTab === tab.id ? 'text-accent' : 'text-primary/50')} />
+                                  <tab.icon className={cn("h-10 w-10", activeTab === tab.id ? 'text-accent' : 'text-primary/50')} />
                                 </DockIcon>
                                 <DockLabel className={cn(activeTab === tab.id ? 'text-accent' : 'text-primary/50')}>{tab.label}</DockLabel>
                               </DockItem>
@@ -212,3 +212,5 @@ export default function BlogPage() {
         </Suspense>
     )
 }
+
+    
