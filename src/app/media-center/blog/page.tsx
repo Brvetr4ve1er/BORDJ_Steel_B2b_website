@@ -179,7 +179,7 @@ function BlogPageContent() {
                 <div className="relative z-20 container mx-auto px-4 text-center">
                 <AnimatedWrapper animation="zoom-in">
                     <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
-                    Notre Blog
+                    BLOG
                     </h1>
                     <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 mx-auto">
                     Actualités, innovations et savoir-faire de l'industrie de l'acier.
