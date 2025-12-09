@@ -159,7 +159,7 @@ function BlogPageContent() {
     };
     
     const heroImage = {
-        src: "https://i.pinimg.com/736x/39/c9/ab/39c9abc136387e207cc511fac6f2a108.jpg",
+        src: "https://i.pinimg.com/736x/b7/34/22/b734224f87df52359e2d98cd4ff7f5fb.jpg",
         alt: "Digital world concept",
         aiHint: "digital world"
     }
@@ -234,5 +234,3 @@ export default function BlogPage() {
         </Suspense>
     )
 }
-
-    
