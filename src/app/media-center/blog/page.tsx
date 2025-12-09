@@ -1,3 +1,4 @@
+
 "use client";
 
 import { ProductPageLayout } from '@/components/product-page-layout';
@@ -158,7 +159,7 @@ function BlogPageContent() {
     };
     
     const heroImage = {
-        src: "https://i.pinimg.com/736x/1f/3d/a2/1f3da28625335403956d26a2163a1567.jpg",
+        src: "https://i.pinimg.com/736x/39/c9/ab/39c9abc136387e207cc511fac6f2a108.jpg",
         alt: "Digital world concept",
         aiHint: "digital world"
     }
@@ -186,14 +187,14 @@ function BlogPageContent() {
                 </AnimatedWrapper>
                 </div>
             </section>
-            <main className="mx-auto flex w-full flex-col gap-12 px-4 py-16 md:gap-16 md:px-8 md:pb-24">
+            <main className="mx-auto flex w-full flex-col gap-8 px-4 py-16 md:px-8 md:pb-24">
                  <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                     <div className="w-full md:w-auto md:flex-1 relative">
                        <Input placeholder="Rechercher des articles..." className="h-12 text-lg pl-12" />
                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
                     </div>
                     <div className="w-full md:w-auto md:flex-1 flex justify-center">
-                        <Dock magnification={140} panelHeight={120} className="gap-8">
+                        <Dock magnification={140} panelHeight={120} className="gap-12">
                             {tabs.map((tab) => (
                               <DockItem key={tab.id} onClick={() => setActiveTab(tab.id)}>
                                 <DockIcon>
