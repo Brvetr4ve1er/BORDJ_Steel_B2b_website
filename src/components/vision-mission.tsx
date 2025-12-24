@@ -1,3 +1,4 @@
+"use client";
 
 import { AnimatedWrapper } from "./animated-wrapper";
 import { companyData } from '@/config/company-data';

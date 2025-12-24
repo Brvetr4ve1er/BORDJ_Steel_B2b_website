@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
@@ -75,7 +74,7 @@ const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string
                             {item.children ? (
                                 <>
                                     <NavigationMenuTrigger
-                                        className={cn("bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent font-bold", navTextColor)}
+                                        className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent hover:text-accent font-bold", navTextColor)}
                                     >
                                        {Icon && <Icon className="h-5 w-5 mr-2" />}
                                         {item.name}
@@ -252,7 +251,7 @@ export function Navbar() {
       <div className="flex items-center gap-4">
         {isMounted ? (
             <div className="hidden md:flex flex-col items-end gap-1 text-right">
-                <p className={cn('text-xs font-semibold uppercase tracking-wider', textColor)}>{siteMetadata.slogan}</p>
+                <p className={cn('text-xs font-semibold uppercase tracking-wider', textColor)}>NOUS DONNONS DU STEEL A VOS PROJETS</p>
               <div className="mt-1">
                  <Select defaultValue="fr">
                     <SelectTrigger className={cn("w-[120px] bg-transparent border-white/50", selectTextColor)}>
@@ -327,7 +326,6 @@ export function Navbar() {
                  <div className="p-6 border-t mt-auto">
                     <div className="flex flex-col items-center gap-4">
                        <p className="text-xs font-semibold uppercase tracking-wider text-primary">{siteMetadata.slogan}</p>
-                       <p className={cn('font-cairo font-bold text-sm text-primary', cairo.variable)}>{siteMetadata.sloganArabic}</p>
                        <Select defaultValue="fr">
                             <SelectTrigger className="w-[120px]">
                                 <SelectValue />
