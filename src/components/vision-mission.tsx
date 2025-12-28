@@ -1,3 +1,4 @@
+
 "use client";
 
 import { AnimatedWrapper } from "./animated-wrapper";
@@ -45,7 +46,7 @@ export function VisionMission() {
                         <div className="font-headline font-bold text-6xl flex items-center justify-center">
                             <AnimatedNumber value={completedProjects} />+
                         </div>
-                        <p className="font-semibold uppercase tracking-wider mt-2">Projets Réalisés</p>
+                        <p className="font-semibold uppercase tracking-wider mt-2">Projets Réalisés par an</p>
                     </div>
                 </div>
               </div>
