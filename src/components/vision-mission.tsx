@@ -50,7 +50,7 @@ export function VisionMission() {
                         <p className="font-semibold uppercase tracking-wider mt-2">
                             Projets Réalisés{' '}
                             <motion.span
-                                className="font-bold"
+                                className="font-bold font-headline text-2xl"
                                 animate={{ scale: [1, 1.05, 1], opacity: [1, 0.9, 1] }}
                                 transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
                             >
