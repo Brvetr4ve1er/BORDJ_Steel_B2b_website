@@ -10,6 +10,7 @@ import { AnimatedNumber } from "./animated-number";
 import images from '@/app/lib/placeholder-images.json';
 import { useMemo } from "react";
 import type { ElementType } from "react";
+import { motion } from "framer-motion";
 
 export function VisionMission() {
   const { about } = companyData.pages;
@@ -46,7 +47,16 @@ export function VisionMission() {
                         <div className="font-headline font-bold text-6xl flex items-center justify-center">
                             <AnimatedNumber value={completedProjects} />+
                         </div>
-                        <p className="font-semibold uppercase tracking-wider mt-2">Projets Réalisés par an</p>
+                        <p className="font-semibold uppercase tracking-wider mt-2">
+                            Projets Réalisés{' '}
+                            <motion.span
+                                className="font-bold"
+                                animate={{ scale: [1, 1.05, 1], opacity: [1, 0.9, 1] }}
+                                transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
+                            >
+                                par an
+                            </motion.span>
+                        </p>
                     </div>
                 </div>
               </div>
