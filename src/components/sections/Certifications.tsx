@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatedWrapper } from './animated-wrapper';
+import { AnimatedWrapper } from '../shared/AnimatedWrapper';
 import { Award } from 'lucide-react';
 import { companyData } from '@/config/company-data';
 

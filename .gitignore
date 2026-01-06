@@ -1,53 +1,62 @@
-
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # Dependencies
 /node_modules
-/.pnp
-.pnp.js
 
-# Testing
-/coverage
-
-# Next.js build output
+# Next.js build artifacts
 /.next/
 /out/
+/build/
 
-# Production
+# Production build
+/dist
 /build
 
-# Vercel
-.vercel
+# Local Environment Variables
+# Never commit secrets!
+.env.local
+.env.*.local
 
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
+# Firebase
+# Emulator-specific files
+.firebase/
+firebase-debug.log
+firestore.rules.bak
 
-# Misc
+# Genkit state
+.genkit/
+.genkit-cache/
+
+# Test-related
+/coverage
+junit.xml
+.nyc_output
+
+# Miscellaneous
+# OS-generated files
 .DS_Store
-*.pem
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# Environment variables
-.env
-.env*.local
-*.env
-
-# Log files
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
 
-# Firebase
-.firebase
-firebase-debug.log
-database-debug.log
-
-# Editor directories and files
-.vscode
-.idea
+# IDE directories
+.idea/
+.vscode/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Other artifacts
+depcheck-report.json
