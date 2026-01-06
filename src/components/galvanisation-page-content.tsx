@@ -1,20 +1,21 @@
 
+
 "use client";
 
 import Image from 'next/image';
 import React, { useMemo } from 'react';
-import { Button } from './ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { galvanisationContent } from '@/config/galvanisation-data';
 import { ArrowRight, Info } from 'lucide-react';
 import { iconMap as galvanisationIconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
-import { AnimatedWrapper } from './animated-wrapper';
-import { DownloadButton } from './ui/download-button';
-import { BathsIcon } from './icons/baths-icon';
+import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { DownloadButton } from '@/components/ui/download-button';
+import { BathsIcon } from '@/components/icons/baths-icon';
 import dynamic from 'next/dynamic';
 
-const DynamicAnimatedBaths = dynamic(() => import('./animated-baths').then(mod => mod.AnimatedBaths));
+const DynamicAnimatedBaths = dynamic(() => import('@/components/animated-baths').then(mod => mod.AnimatedBaths));
 
 const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
 const ProcessTimeline = dynamic(() => Promise.resolve(UnwrappedProcessTimeline));
@@ -496,3 +497,5 @@ function UnwrappedCTASection() {
       </section>
     );
 }
+
+    

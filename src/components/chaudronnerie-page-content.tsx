@@ -1,14 +1,15 @@
 
+
 "use client";
 
 import Image from 'next/image';
-import { AnimatedWrapper } from './animated-wrapper';
-import { Button } from './ui/button';
+import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { Button } from '@/components/ui/button';
 import { ArrowRight, Package, Users, Square, Factory, Flame, Bolt, Droplets, Beaker, Construction, Leaf, Filter } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { DownloadButton } from './ui/download-button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { DownloadButton } from '@/components/ui/download-button';
 import dynamic from 'next/dynamic';
 import {
   Carousel,
@@ -17,9 +18,9 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel"
 import { cn } from '@/lib/utils';
-import type { CardData } from './ui/expandable-cards';
+import type { CardData } from '@/components/ui/expandable-cards';
 
-const DetailedStatCard = dynamic(() => import('./detailed-stat-card').then(mod => mod.DetailedStatCard));
+const DetailedStatCard = dynamic(() => import('@/components/detailed-stat-card').then(mod => mod.DetailedStatCard));
 
 const activityCards = [
     { title: 'Hydrocarbures', icon: <Flame className="h-10 w-10" /> },
@@ -379,3 +380,5 @@ export function ChaudronneriePageContent() {
     </div>
   );
 }
+
+    

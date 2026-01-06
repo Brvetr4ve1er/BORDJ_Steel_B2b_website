@@ -1,7 +1,8 @@
+
 "use client";
 
 import Image from 'next/image';
-import { AnimatedWrapper } from '../shared/AnimatedWrapper';
+import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { companyData } from '@/config/company-data';
 import * as React from "react";
 import {
@@ -60,3 +61,5 @@ export function Clients() {
     </section>
   );
 }
+
+    

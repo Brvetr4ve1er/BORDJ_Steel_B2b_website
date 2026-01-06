@@ -1,19 +1,20 @@
 
+
 "use client";
 
 import Image from 'next/image';
 import * as React from 'react';
 import { useMemo, useState } from 'react';
 import { ChevronsRight, Snowflake, Settings, ArrowRight, DollarSign, Smartphone, Star, Users, Layers, Thermometer, ShieldCheck, Ruler } from 'lucide-react';
-import { AnimatedWrapper } from './shared/AnimatedWrapper';
-import { Button } from './ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import images from '@/app/lib/placeholder-images.json';
-import { DownloadButton } from './ui/download-button';
+import { DownloadButton } from '@/components/ui/download-button';
 import { motion } from 'framer-motion';
 import { productVariants } from '@/config/product-variants.config';
-import { ProductVariantDetails } from './product-variants/ProductVariantDetails';
+import { ProductVariantDetails } from '@/components/product-variants/ProductVariantDetails';
 import type { ProductVariant } from '@/config/product-variant-schema';
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (

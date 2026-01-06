@@ -1,7 +1,8 @@
 
+
 "use client";
 
-import { AnimatedWrapper } from '@/components/shared/AnimatedWrapper';
+import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Award } from 'lucide-react';
 import Image from 'next/image';
@@ -63,3 +64,5 @@ export function CertificationsSection() {
     </section>
   );
 }
+
+    

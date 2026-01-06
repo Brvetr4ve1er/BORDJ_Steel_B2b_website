@@ -1,6 +1,7 @@
+
 "use client";
 
-import { AnimatedWrapper } from '../shared/AnimatedWrapper';
+import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { Award } from 'lucide-react';
 import { companyData } from '@/config/company-data';
 
@@ -39,3 +40,5 @@ export function Certifications() {
     </section>
   );
 }
+
+    

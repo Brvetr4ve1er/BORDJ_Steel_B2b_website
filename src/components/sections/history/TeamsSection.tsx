@@ -1,7 +1,8 @@
 
+
 "use client";
 
-import { AnimatedWrapper } from '@/components/shared/AnimatedWrapper';
+import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
 import { Users, TrendingUp, Factory, ClipboardCheck, HardHat, UserCheck, DollarSign, Network, Wrench } from 'lucide-react';
 
@@ -142,3 +143,5 @@ export function TeamsSection() {
     </section>
   );
 }
+
+    

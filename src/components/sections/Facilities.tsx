@@ -1,11 +1,12 @@
+
 "use client";
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
-import { AnimatedWrapper } from '../shared/AnimatedWrapper';
+import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { companyData } from '@/config/company-data';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 import { ArrowRight, HardHat, Layers, Cog, Anchor } from 'lucide-react';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
@@ -96,3 +97,5 @@ export function Facilities() {
     </section>
   );
 }
+
+    

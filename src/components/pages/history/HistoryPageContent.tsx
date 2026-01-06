@@ -1,8 +1,9 @@
 
+
 "use client";
 
 import Image from 'next/image';
-import { AnimatedWrapper } from '@/components/shared/AnimatedWrapper';
+import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { ActivitiesSection } from '@/components/sections/history/ActivitiesSection';
 import { HistoryTimeline } from '@/components/sections/HistoryTimeline';
 import { TeamsSection } from '@/components/sections/history/TeamsSection';
@@ -49,3 +50,4 @@ export function HistoryPageContent() {
   );
 }
 
+    
