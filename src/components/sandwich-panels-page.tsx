@@ -7,20 +7,13 @@ import { useMemo, useState } from 'react';
 import { ChevronsRight, Snowflake, Settings, ArrowRight, DollarSign, Smartphone, Star, Users, Layers, Thermometer, ShieldCheck, Ruler } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import images from '@/app/lib/placeholder-images.json';
 import { DownloadButton } from '@/components/ui/download-button';
 import { motion } from 'framer-motion';
-import { productData } from '@/config/products-data';
-
-import CouvertureProduct from '@/components/product-variants/couverture-product';
-import BardageProduct from '@/components/product-variants/bardage-product';
-import FrigorifiqueProduct from '@/components/product-variants/frigorifique-product';
-import ToleNervureeProduct from '@/components/product-variants/tole-nervuree-product';
-import HibondProduct from '@/components/product-variants/hibond-product';
-import FinitionsProduct from '@/components/product-variants/finitions-product';
-
+import { productVariants } from '@/config/product-variants.config';
+import { ProductVariantDetails } from '@/components/product-variants/ProductVariantDetails';
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -229,15 +222,6 @@ const HeroSection = React.memo(function HeroSection() {
   );
 });
 
-const productComponents: { [key: string]: React.FC<any> } = {
-  couverture: CouvertureProduct,
-  bardage: BardageProduct,
-  frigorifique: FrigorifiqueProduct,
-  toleNervuree: ToleNervureeProduct,
-  hibond: HibondProduct,
-  finitions: FinitionsProduct
-};
-
 const productButtons = [
   { key: 'couverture', label: 'Panneaux de Couverture', icon: CouvertureIcon },
   { key: 'bardage', label: 'Panneaux de Bardage', icon: BardageIcon },
@@ -282,12 +266,8 @@ const ProductSelector = React.memo(function ProductSelector({ activeProductKey, 
 export function SandwichPanelsPage() {
   const [activeProductKey, setActiveProductKey] = useState<string>('couverture');
   
-  const ActiveProductComponent = useMemo(() => {
-    return productComponents[activeProductKey];
-  }, [activeProductKey]);
-
   const activeProductData = useMemo(() => {
-    return (productData as any)[activeProductKey];
+    return productVariants[activeProductKey];
   }, [activeProductKey])
 
   return (
@@ -307,11 +287,11 @@ export function SandwichPanelsPage() {
           
           <ProductSelector activeProductKey={activeProductKey} onSelectProduct={setActiveProductKey} />
           
-          {ActiveProductComponent && (
+          {activeProductData && (
             <AnimatedWrapper key={activeProductKey} animation="zoom-in">
                 <Card className="shadow-lg">
                     <CardContent className="p-4 md:p-8">
-                       <ActiveProductComponent product={activeProductData} />
+                       <ProductVariantDetails product={activeProductData} />
                     </CardContent>
                 </Card>
             </AnimatedWrapper>
