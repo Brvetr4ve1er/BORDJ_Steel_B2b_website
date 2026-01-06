@@ -366,7 +366,7 @@ export const productData = {
         heading: "Définition",
         specifications: [
           { parameter: "Identification d’acier", value: "Nuance S250, S280, S320" },
-          { parameter: "Profil", value: "Profil à nervurations en faible profondeur, pour le type lisse pas de nervurations." },
+          { parameter: "Profil", value: "Profil à nervurassions en faible profondeur, pour le type lisse pas de nervurassions." },
           { parameter: "Épaisseur", value: "0,5mm – 0,6mm – 0,7mm (selon la demande du client)" }
         ]
       },
@@ -695,3 +695,5 @@ export const productData = {
     }
   },
 };
+
+    
