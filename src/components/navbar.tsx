@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
@@ -173,32 +174,53 @@ const ListItem = React.forwardRef<
 });
 ListItem.displayName = "ListItem";
 
+const MobileNavMenu = ({ setIsMobileMenuOpen }: { setIsMobileMenuOpen: (isOpen: boolean) => void }) => {
+  const { navigation } = companyData;
+  const iconMap = useMemo(() => ({
+      Info, Factory, Package, Briefcase, Newspaper, Mail, Building2, HardHat, ShieldCheck, Award, Cog, FileText, Anchor, BookOpen, Video, View, User
+  }), []);
+
+  return (
+    <Accordion type="single" collapsible className="w-full">
+      {navigation.mainMenu.map((item, index) => {
+        const Icon = iconMap[item.icon as keyof typeof iconMap];
+        return (
+          <div key={item.name} className="w-full">
+            {item.children ? (
+               <AccordionItem value={`item-${index}`} className="border-b-0">
+                <AccordionTrigger className="w-full flex justify-between items-center py-4 font-headline text-lg hover:no-underline">
+                   <span className="flex items-center gap-3">
+                    {Icon && <Icon className="h-5 w-5" />}
+                    {item.name}
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="pl-8 flex flex-col items-start gap-2 mt-1">
+                    {item.children.map((child) => (
+                      <Link key={child.name} href={child.href} className="py-2 text-lg text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>{child.name}</Link>
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ) : (
+              <Link href={item.href} className="flex items-center gap-3 py-4 font-headline text-lg" onClick={() => setIsMobileMenuOpen(false)}>
+                 {Icon && <Icon className="h-5 w-5" />}
+                 {item.name}
+              </Link>
+            )}
+          </div>
+        )
+      })}
+     </Accordion>
+  );
+};
+
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { navigation, siteMetadata } = companyData;
-  
-  const iconMap = useMemo(() => ({
-      Info,
-      Factory,
-      Package,
-      Briefcase,
-      Newspaper,
-      Mail,
-      Building2,
-      HardHat,
-      ShieldCheck,
-      Award,
-      Cog,
-      FileText,
-      Anchor,
-      BookOpen,
-      Video,
-      View,
-      User
-  }), []);
+  const { siteMetadata } = companyData;
 
   useEffect(() => {
     setIsMounted(true);
@@ -291,37 +313,7 @@ export function Navbar() {
                   </SheetDescription>
                 </SheetHeader>
                 <div className="flex-1 p-6 flex flex-col items-start gap-4 relative overflow-y-auto">
-                   <Accordion type="single" collapsible className="w-full">
-                     {navigation.mainMenu.map((item, index) => {
-                      const Icon = iconMap[item.icon as keyof typeof iconMap];
-                      return (
-                        <div key={item.name} className="w-full">
-                          {item.children ? (
-                             <AccordionItem value={`item-${index}`} className="border-b-0">
-                              <AccordionTrigger className="w-full flex justify-between items-center py-4 font-headline text-lg hover:no-underline">
-                                 <span className="flex items-center gap-3">
-                                  {Icon && <Icon className="h-5 w-5" />}
-                                  {item.name}
-                                </span>
-                              </AccordionTrigger>
-                              <AccordionContent>
-                                <div className="pl-8 flex flex-col items-start gap-2 mt-1">
-                                  {item.children.map((child) => (
-                                    <Link key={child.name} href={child.href} className="py-2 text-lg text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>{child.name}</Link>
-                                  ))}
-                                </div>
-                              </AccordionContent>
-                            </AccordionItem>
-                          ) : (
-                            <Link href={item.href} className="flex items-center gap-3 py-4 font-headline text-lg" onClick={() => setIsMobileMenuOpen(false)}>
-                               {Icon && <Icon className="h-5 w-5" />}
-                               {item.name}
-                            </Link>
-                          )}
-                        </div>
-                      )
-                    })}
-                   </Accordion>
+                   <MobileNavMenu setIsMobileMenuOpen={setIsMobileMenuOpen} />
                 </div>
                  <div className="p-6 border-t mt-auto">
                     <div className="flex flex-col items-center gap-4">
