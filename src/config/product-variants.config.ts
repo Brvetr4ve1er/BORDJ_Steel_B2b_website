@@ -11,7 +11,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
       aiHint: 'metal sheets',
     },
     sections: [
-      {
+       {
         type: 'keyValue',
         title: 'CARACTÉRISTIQUE PRODUIT',
         items: [
@@ -46,8 +46,8 @@ export const productVariants: { [key: string]: ProductVariant } = {
         title: "Coefficient d'isolation thermique",
         headers: ['Épaisseur en mm', '30', '35', '40', '60'],
         rows: [
-          ['W/m²K', '0.55', '0.49', '0.44', '0.31'],
-          ['Kcal/m²h°C', '0.48', '0.43', '0.38', '0.27'],
+          ['W/m²K', 0.55, 0.49, 0.44, 0.31],
+          ['Kcal/m²h°C', 0.48, 0.43, 0.38, 0.27],
         ],
       },
       {
@@ -55,10 +55,10 @@ export const productVariants: { [key: string]: ProductVariant } = {
         title: 'Dimensionnement du panneau',
         headers: ['Type', 'Longueur (mm)', 'Largeur standard (mm)', 'Épaisseur (mm)', 'Poids kg/m²'],
         rows: [
-          ['LL70', '15400', '1000', '30', '10.3'],
-          ['LL75', '15400', '1000', '35', '10.5'],
-          ['LL80', '15400', '1000', '40', '10.7'],
-          ['LL100', '15400', '1000', '60', '11.5'],
+          ['LL70', 15400, 1000, 30, 10.3],
+          ['LL75', 15400, 1000, 35, 10.5],
+          ['LL80', 15400, 1000, 40, 10.7],
+          ['LL100', 15400, 1000, 60, 11.5],
         ],
       },
       {
@@ -66,28 +66,28 @@ export const productVariants: { [key: string]: ProductVariant } = {
         title: 'Etanchéité des rives',
         content: "Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une nervure femelle (sans mousse) permettant un assemblage par emboîtement. La nervure mâle est fermée par une bande adhésive. et la nervure femelle d'un joint d'étanchéité à l'air",
       },
-      {
+       {
         type: 'text',
         title: 'Sens des panneaux',
         content: "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. Il est de type gauche dans le sens inverse.",
       },
-      {
+       {
         type: 'text',
         title: 'La pose de panneaux sandwichs',
         content: 'Découpage des panneaux : Pour avoir un bon résultat il est conseillé d\'utiliser une scie sauteuse électrique à lame d\'acier.\nFixation des panneaux : Les panneaux doivent être rivés au sommet de chaque nervure sur les pannes d\'extrémité. Sur les pannes intermédiaires. lors de la pose. les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d\'étanchéité à l\'air remplisse son effet. Il est recommandé d\'utiliser un joint d\'étanchéité à l\'air avec une face adhésive sur les faces d\'appuis du panneau situées sur les pannes d\'extrémité. les chéneaux. les gouttières, les recouvrements.',
       },
-      {
+       {
         type: 'table',
         title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)',
         subtitle: 'Tôle en acier épaisseur 0.5mm',
         icon: 'two-supports',
-        headers: ['kg/m²', 'daN/m²', '30', '35', '40', '60', '30', '35', '40', '60'],
+        headers: ["kg/m²", "daN/m²", "30", "35", "40", "60", "30", "35", "40", "60"],
         rows: [
-          ['80', '87', '345', '365', '390', '485', '400', '425', '455', '560'],
-          ['120', '177', '290', '310', '335', '415', '345', '365', '390', '485'],
-          ['150', '147', '265', '285', '305', '375', '315', '335', '355', '440'],
-          ['200', '196', '235', '250', '270', '340', '285', '305', '325', '400'],
-          ['250', '245', '210', '225', '245', '305', '255', '275', '295', '360'],
+          [80, 87, 345, 365, 390, 485, 400, 425, 455, 560],
+          [120, 177, 290, 310, 335, 415, 345, 365, 390, 485],
+          [150, 147, 265, 285, 305, 375, 315, 335, 355, 440],
+          [200, 196, 235, 250, 270, 340, 285, 305, 325, 400],
+          [250, 245, 210, 225, 245, 305, 255, 275, 295, 360],
         ]
       },
       {
@@ -154,14 +154,14 @@ export const productVariants: { [key: string]: ProductVariant } = {
             title: "Coefficient d'isolation thermique",
             headers: ["Épaisseur en mm", "30", "35", "40", "50", "60"],
             rows: [
-                ["W/m²K", "0.65", "0.56", "0.50", "0.40", "0.34"],
-                ["Kcal/hm²°C", "0.57", "0.49", "0.44", "0.35", "0.30"]
+                ["W/m².K", "0.55", "0.50", "0.45", "0.39", "0.35"],
+                ["Kcal/m².h.°C", "0.47", "0.43", "0.40", "0.33", "0.30"]
             ]
         },
         {
             type: 'table',
             title: 'Dimensionnement du panneau',
-            headers: ["Type", "Longueur (mm)", "Largeur standard (mm)", "Épaisseur (mm)", "Poids Kg/m²"],
+            headers: ["Type", "Longueur (mm)", "Largeur utile (mm)", "Epaisseur (mm)", "Poids (kg/m²)"],
             rows: [
                 ["LL30", "15400", "1000", "30", "9.6"],
                 ["LL35", "15400", "1000", "35", "9.8"],
@@ -182,12 +182,12 @@ export const productVariants: { [key: string]: ProductVariant } = {
             icon: 'two-supports',
             headers: ["kg/m²", "daN/m²", "30", "35", "40", "50", "60", "30", "35", "40", "50", "60"],
             rows: [
-                ["60", "58", "285", "315", "345", "485", "400", "425", "455", "560", "455", "560"],
-                ["80", "78", "255", "285", "335", "415", "345", "365", "390", "485", "390", "485"],
-                ["100", "98", "235", "260", "305", "375", "315", "335", "385", "440", "385", "440"],
-                ["120", "117", "220", "245", "265", "310", "355", "285", "360", "310", "360", "310"],
-                ["140", "137", "205", "225", "250", "395", "235", "240", "340", "290", "290", "290"],
-                ["160", "156", "195", "215", "235", "280", "315", "230", "225", "375", "325", "370"]
+                ["60", "58", "285", "315", "345", "405", "425", "455", "505", "550", "560", ""],
+                ["80", "78", "255", "285", "315", "345", "375", "405", "445", "490", "495", ""],
+                ["100", "98", "235", "265", "300", "335", "375", "385", "410", "460", "470", ""],
+                ["120", "117", "225", "255", "280", "310", "355", "360", "385", "430", "450", ""],
+                ["140", "137", "205", "225", "250", "285", "340", "340", "370", "420", "430", ""],
+                ["160", "156", "195", "215", "235", "280", "325", "325", "345", "370", "370", ""]
             ]
         },
         {
@@ -270,7 +270,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
                 ["LL80", 15400, 1000, 80, 11.6],
                 ["LL100", 15400, 1000, 100, 12.40],
                 ["LL120", 15400, 1000, 120, 13.40],
-                ["LL150", 15400, 1000, 150, 10.40],
+                ["LL150", 15400, 1000, 150, 14.40],
                 ["LL180", 15400, 1000, 180, 15.6],
                 ["LL200", 15400, 1000, 200, 16.4]
             ]
@@ -331,36 +331,37 @@ export const productVariants: { [key: string]: ProductVariant } = {
         {
             type: 'table',
             title: '',
-            headers: ["Type", "Longueur (m)", "Largeur Standard (mm)", "Épaisseurs (mm)", "Poids (kg/m²)", "I (cm⁴/m)", "W (cm³/m)", "Système de revêtement"],
+            headers: ["Type", "Longueur (ml)", "Largueur standard (mm)", "Epaisseurs (mm)", "Poids (kg/m2)", "I (cm4/m)", "W (cm3/m)", "Système de revêtement"],
             rows: [
-                ["TN 40", "1500", "1000", "0.5", "4.91", "12.3", "3.92", "Galvanisée"],
-                ["", "", "", "0.6", "5.90", "16.05", "5.30", ""],
-                ["", "", "", "0.7", "6.88", "18.72", "6.18", ""],
-                ["", "", "", "1.0", "9.81", "26.75", "8.83", ""]
+                ['TN 40', 15000, 1000, 0.50, 4.91, 12.3, 3.92, 'Galvanisée'],
+                ['', '', '', 0.60, 5.90, 16.05, 5.30, ''],
+                ['', '', '', 0.70, 6.88, 18.72, 6.18, ''],
+                ['', '', '', 1.00, 9.81, 26.75, 8.83, '']
             ]
         },
         {
             type: 'keyValue',
             title: '',
             items: [
-                { key: 'Revêtement', value: 'Sans spécifications particulière les profils nervurés sont livrés en qualité standard\n- Galvanisé seul qualité Z200\n- Galvanisé pré-laqué, face extérieure finition laquée polyester ép. 25μ' },
-                { key: 'Réaction au feu', value: 'Classement de réaction au feu M0' },
-                { key: 'Mise en œuvre', value: 'Manutention : Les profils ne doivent pas être choqué ou griffés pour éviter toute mise à nu du métal.' }
+                {key: 'Revêtement', value: 'Sans spécifications particulière les profils nervurés sont livrés en qualité standard\n- Galvanisé seul qualité Z200\n- Galvanisé pré-laqué, face extérieure finition laquée polyester ép. 25μ'},
+                {key: 'Réaction au feu', value: 'Classement de réaction au feu M0'},
+                {key: 'Mise en œuvre', value: 'Manutention : Les profils ne doivent pas être choqué ou griffés pour éviter toute mise à nu du métal.'}
             ]
         },
         {
             type: 'table',
-            title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)',
+            title: 'Tableau de charges et portées admissibles',
+            subtitle: 'Charges uniformément réparties exprimées en KN/m²',
             icon: 'two-supports',
-            headers: ["EP (mm)", "1.00", "1.25", "1.50", "1.75", "2.00", "2.25", "2.50", "2.75", "3", "3.25"],
+            headers: ["EP (mm)", "1.00", "1.25", "1.50", "1.75", "2.00", "2.25", "2.50", "2.75", "3.00", "3.25"],
             rows: [
-                ["0.5", "439", "281", "185", "143", "109", "86", "63", "47", "36", "-"],
-                ["0.6", "614", "393", "273", "200", "153", "115", "84", "63", "48", "38"],
-                ["0.7", "716", "458", "318", "234", "179", "135", "98", "73", "57", ''],
-                ["0.5", "570", "365", "252", "180", "141", "111", "90", "67", "51", "40"],
-                ["0.6", "768", "491", "341", "251", "192", "152", "123", "101", "81", "64"],
-                ["0.7", "896", "573", "398", "292", "224", "177", "143", "118", "95", "74"],
-                ["1.0", "1280", "819", "569", "418", "320", "253", "204", "169", "135", "106"]
+              ['0.5', 439, 281, 185, 143, 109, 86, 63, 47, 36, '-'],
+              ['0.6', 614, 393, 273, 200, 153, 115, 84, 63, 48, 38],
+              ['0.7', 716, 458, 318, 234, 179, 135, 98, 73, 57, ''],
+              ['0.5', 570, 365, 252, 180, 141, 111, 90, 67, 51, 40],
+              ['0.6', 768, 491, 341, 251, 192, 152, 123, 101, 81, 64],
+              ['0.7', 896, 573, 398, 292, 224, 177, 143, 118, 95, 74],
+              ['1.0', 1280, 819, 569, 418, 320, 253, 204, 169, 135, 106]
             ]
         },
         {
@@ -382,8 +383,8 @@ export const productVariants: { [key: string]: ProductVariant } = {
     sections: [
         {
             type: 'text',
-            title: '',
-            content: 'Application conseillée : Coffrage et armature de dalles béton'
+            title: 'Application conseillée : Coffrage et armature de dalles béton',
+            content: ''
         },
         {
             type: 'list',
@@ -394,24 +395,24 @@ export const productVariants: { [key: string]: ProductVariant } = {
                 'Idéal en construction et rénovation.',
             ]
         },
-        {
+         {
             type: 'table',
             title: '',
-            headers: ['Type', 'Longueur (ml)', 'Largeur standard (mm)', 'Epaisseurs (mm)', 'Poids (kg/m2)', 'Système de revêtement'],
+            headers: ['Type', 'Longueur (ml)', 'Largeur standard (mm)', 'Épaisseurs (mm)', 'Poids (kg/m2)', 'Système de revêtement'],
             rows: [
-                ['Plancher collaborant HI-BOND 77 Galvanisé', '15000', '732', '0.70', '9.17', 'Galvanisée'],
-                ['', '', '', '1.00', '13.10', ''],
-                ['', '', '', '1.50', '19.66', ''],
-                ['Plancher collaborant HI-BOND 77 Pré laqué', '15000', '732', '0.70', '9.17', 'Pré laqué'],
-                ['', '', '', '1.00', '13.10', ''],
-                ['', '', '', '1.50', '19.66', '']
+                ['Plancher collaborant HI-BOND 77 Galvanisé', 15000, 732, 0.70, 9.17, 'Galvanisée'],
+                ['', '', '', 1.00, 13.10, ''],
+                ['', '', '', 1.50, 19.66, ''],
+                ['Plancher collaborant HI-BOND 77 Pré laqué', 15000, 732, 0.70, 9.17, 'Pré laqué'],
+                ['', '', '', 1.00, 13.10, ''],
+                ['', '', '', 1.50, 19.66, '']
             ]
         },
         {
             type: 'keyValue',
             title: '',
             items: [
-                {key: 'Revêtement', value: 'Sans spécifications particulière les profils nervurés sont livrés en qualité standard.\nTypes:\n- Galvanisé seul: qualité Z200\n- Galvanisé pré-laqué: Face extérieure Finition laquée polyester ép. 25µ'},
+                {key: 'Revêtement', value: "Sans spécifications particulières, les profils nervurés sont livrés en qualité standard.\nTypes:\n- Galvanisé seul: qualité Z200\n- Galvanisé pré-laqué: Face extérieure Finition laquée polyester ép. 25µ"},
                 {key: 'Réaction au feu', value: 'Classement de réaction au feu M0'}
             ]
         },
@@ -425,25 +426,25 @@ export const productVariants: { [key: string]: ProductVariant } = {
                 "Cisaillement voilement": ["Va (KN)", "Pa (KN)"]
             },
             rows: [
-                ["0.70", "6.87", "83.27", "14.34", "18.87", "2.32", "83.27", "21.16", "16.56", "2.68", "22.18", "11.28"],
-                ["1.00", "9.81", "119.0", "23.34", "27.87", "3.77", "119.0", "31.03", "26.74", "4.32", "51.37", "21.83"],
-                ["1.50", "14.72", "178.0", "41.11", "43.20", "6.65", "178.0", "47.27", "43.73", "7.07", "91.16", "45.20"]
+                [0.70, 6.87, 83.27, 14.34, 18.87, 2.32, 83.27, 21.16, 16.56, 2.68, 22.18, 11.28],
+                [1.00, 9.81, 119.0, 23.34, 27.87, 3.77, 119.0, 31.03, 26.74, 4.32, 51.37, 21.83],
+                [1.50, 14.72, 178.0, 41.11, 43.20, 6.65, 178.0, 47.27, 43.73, 7.07, 91.16, 45.20]
             ]
         },
-        {
+         {
             type: 'table',
             title: 'TABLEAU DES CHARGES SUR LA TÔLE HI-BOND 77 (KN/M²)',
             headers: ["EP", "NOMBRE D'ESPACES", "CAS DES CHARGES", "1.00", "1.25", "1.50", "1.75", "2.00", "2.25", "2.50", "2.75", "3.00", "3.50"],
             rows: [
-              ["0.70", "1", "G+Q", "19.55", "11.87", "8.25", "6.06", "4.64", "3.66", "2.97", "2.45", "2.06", "1.51"],
-              ["0.70", "2", "", "9.02", "7.22", "6.02", "5.16", "4.51", "4.01", "3.43", "2.83", "2.38", "1.75"],
-              ["0.70", "3", "", "10.26", "8.21", "6.84", "5.87", "5.13", "4.56", "4.11", "3.54", "2.98", "2.19"],
-              ["1.00", "1", "G+Q", "30.16", "19.30", "13.40", "9.85", "7.54", "5.96", "4.83", "3.99", "3.35", "2.44"],
-              ["1.00", "2", "", "17.46", "13.97", "11.64", "9.98", "8.64", "6.83", "5.53", "4.50", "3.84", "2.82"],
-              ["1.00", "3", "", "19.87", "15.89", "13.24", "11.35", "9.93", "8.53", "6.91", "5.71", "4.80", "3.53"],
-              ["1.50", "1", "G+Q", "53.20", "34.05", "23.64", "17.37", "13.30", "10.57", "8.51", "7.03", "5.80", "3.65"],
-              ["1.50", "2", "", "36.16", "28.93", "24.11", "18.47", "14.40", "11.17", "9.05", "7.48", "6.28", "4.26"],
-              ["1.50", "3", "", "41.13", "32.91", "27.42", "23.09", "17.68", "13.97", "11.31", "9.35", "7.86", "5.77"]
+              [0.70, 1, "G+Q", 19.55, 11.87, 8.25, 6.06, 4.64, 3.66, 2.97, 2.45, 2.06, 1.51],
+              [0.70, 2, "", 9.02, 7.22, 6.02, 5.16, 4.51, 4.01, 3.43, 2.83, 2.38, 1.75],
+              [0.70, 3, "", 10.26, 8.21, 6.84, 5.87, 5.13, 4.56, 4.11, 3.54, 2.98, 2.19],
+              [1.00, 1, "G+Q", 30.16, 19.30, 13.40, 9.85, 7.54, 5.96, 4.83, 3.99, 3.35, 2.44],
+              [1.00, 2, "", 17.46, 13.97, 11.64, 9.98, 8.64, 6.83, 5.53, 4.50, 3.84, 2.82],
+              [1.00, 3, "", 19.87, 15.89, 13.24, 11.35, 9.93, 8.53, 6.91, 5.71, 4.80, 3.53],
+              [1.50, 1, "G+Q", 53.20, 34.05, 23.64, 17.37, 13.30, 10.57, 8.51, 7.03, 5.80, 3.65],
+              [1.50, 2, "", 36.16, 28.93, 24.11, 18.47, 14.40, 11.17, 9.05, 7.48, 6.28, 4.26],
+              [1.50, 3, "", 41.13, 32.91, 27.42, 23.09, 17.68, 13.97, 11.31, 9.35, 7.86, 5.77]
             ]
         },
         {
@@ -479,3 +480,5 @@ export const productVariants: { [key: string]: ProductVariant } = {
     ]
   }
 };
+
+    
