@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import Image from 'next/image';
@@ -13,9 +12,15 @@ import { cn } from '@/lib/utils';
 import images from '@/app/lib/placeholder-images.json';
 import { DownloadButton } from '@/components/ui/download-button';
 import { motion } from 'framer-motion';
-import { productVariants } from '@/config/product-variants.config';
-import { ProductVariantDetails } from '@/components/product-variants/ProductVariantDetails';
-import type { ProductVariant } from '@/config/product-variant-schema';
+import { productData } from '@/config/products-data';
+
+import CouvertureProduct from '@/components/product-variants/couverture-product';
+import BardageProduct from '@/components/product-variants/bardage-product';
+import FrigorifiqueProduct from '@/components/product-variants/frigorifique-product';
+import ToleNervureeProduct from '@/components/product-variants/tole-nervuree-product';
+import HibondProduct from '@/components/product-variants/hibond-product';
+import FinitionsProduct from '@/components/product-variants/finitions-product';
+
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -224,6 +229,15 @@ const HeroSection = React.memo(function HeroSection() {
   );
 });
 
+const productComponents: { [key: string]: React.FC<any> } = {
+  couverture: CouvertureProduct,
+  bardage: BardageProduct,
+  frigorifique: FrigorifiqueProduct,
+  toleNervuree: ToleNervureeProduct,
+  hibond: HibondProduct,
+  finitions: FinitionsProduct
+};
+
 const productButtons = [
   { key: 'couverture', label: 'Panneaux de Couverture', icon: CouvertureIcon },
   { key: 'bardage', label: 'Panneaux de Bardage', icon: BardageIcon },
@@ -233,12 +247,12 @@ const productButtons = [
   { key: 'finitions', label: 'Pièces de Finition', icon: FinitionsIcon },
 ];
 
-const ProductSelector = React.memo(function ProductSelector({ activeProductKey, onSelectProduct }: { activeProductKey: keyof typeof productVariants | null, onSelectProduct: (key: keyof typeof productVariants) => void }) {
+const ProductSelector = React.memo(function ProductSelector({ activeProductKey, onSelectProduct }: { activeProductKey: string | null, onSelectProduct: (key: string) => void }) {
   return (
     <AnimatedWrapper animation="fade-in">
       <div className="mb-24 flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
         {productButtons.map(({ key, label, icon: Icon }) => (
-          <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => onSelectProduct(key as keyof typeof productVariants)}>
+          <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => onSelectProduct(key)}>
             <div className={cn(
               "w-32 h-32 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
               activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
@@ -265,17 +279,16 @@ const ProductSelector = React.memo(function ProductSelector({ activeProductKey, 
   );
 });
 
-interface SandwichPanelsPageProps {
-  productData: typeof productVariants;
-}
-
-export function SandwichPanelsPage({ productData }: SandwichPanelsPageProps) {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productVariants | null>(null);
+export function SandwichPanelsPage() {
+  const [activeProductKey, setActiveProductKey] = useState<string>('couverture');
   
-  const activeProduct = useMemo(() => {
-    if (!activeProductKey) return null;
-    return productData[activeProductKey];
-  }, [activeProductKey, productData]);
+  const ActiveProductComponent = useMemo(() => {
+    return productComponents[activeProductKey];
+  }, [activeProductKey]);
+
+  const activeProductData = useMemo(() => {
+    return (productData as any)[activeProductKey];
+  }, [activeProductKey])
 
   return (
     <>
@@ -294,11 +307,11 @@ export function SandwichPanelsPage({ productData }: SandwichPanelsPageProps) {
           
           <ProductSelector activeProductKey={activeProductKey} onSelectProduct={setActiveProductKey} />
           
-          {activeProduct && (
+          {ActiveProductComponent && (
             <AnimatedWrapper key={activeProductKey} animation="zoom-in">
                 <Card className="shadow-lg">
                     <CardContent className="p-4 md:p-8">
-                        <ProductVariantDetails product={activeProduct} />
+                       <ActiveProductComponent product={activeProductData} />
                     </CardContent>
                 </Card>
             </AnimatedWrapper>
@@ -308,5 +321,3 @@ export function SandwichPanelsPage({ productData }: SandwichPanelsPageProps) {
     </>
   );
 }
-
-    
