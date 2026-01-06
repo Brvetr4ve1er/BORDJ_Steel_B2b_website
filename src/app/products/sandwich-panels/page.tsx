@@ -4,6 +4,9 @@ import { companyData } from '@/config/company-data';
 import { productData } from '@/config/products-data';
 import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
+import dynamic from 'next/dynamic';
+
+const SandwichPanelsPageContent = dynamic(() => import('@/components/sandwich-panels-page').then(mod => mod.SandwichPanelsPage));
 
 export const metadata: Metadata = {
   title: `Panneaux Sandwichs PEB | ${companyData.siteMetadata.title}`,
@@ -13,7 +16,7 @@ export const metadata: Metadata = {
 export default function SandwichPanelsProductPage() {
   return (
     <ProductPageLayout>
-      <SandwichPanelsPage productData={productData} />
+      <SandwichPanelsPageContent productData={productData} />
     </ProductPageLayout>
   );
 }

@@ -1,8 +1,10 @@
 
 import { companyData } from '@/config/company-data';
 import type { Metadata } from 'next';
-import { ChaudronneriePageContent } from '@/components/chaudronnerie-page-content';
 import { ProductPageLayout } from '@/components/product-page-layout';
+import dynamic from 'next/dynamic';
+
+const ChaudronneriePageContent = dynamic(() => import('@/components/chaudronnerie-page-content').then(mod => mod.ChaudronneriePageContent));
 
 export const metadata: Metadata = {
   title: `Chaudronnerie | ${companyData.siteMetadata.title}`,

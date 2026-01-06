@@ -5,21 +5,21 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, BookCopy, Dot } from 'lucide-react';
-import { AnimatedWrapper } from './animated-wrapper';
+import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, Dot } from 'lucide-react';
+import { AnimatedWrapper } from '@/components/shared/AnimatedWrapper';
 import React, { useState, useMemo } from 'react';
-import { AnimatedNumber } from './animated-number';
-import { DownloadButton } from './ui/download-button';
+import { AnimatedNumber } from '@/components/shared/AnimatedNumber';
+import { DownloadButton } from '../ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
-import { ImageDialog } from './ui/image-dialog';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
+import { ImageDialog } from '../ui/image-dialog';
 import { cn } from '@/lib/utils';
-import { ProductionTables } from './production-tables';
+import { ProductionTables } from '../production-tables';
 
-const FeatureHoverCard = dynamic(() => import('./feature-hover-card').then(mod => mod.FeatureHoverCard));
+const FeatureHoverCard = dynamic(() => import('../feature-hover-card').then(mod => mod.FeatureHoverCard));
 const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
-const HoverImageGallery = dynamic(() => import('./ui/hover-image-gallery').then(mod => mod.HoverImageGallery), { ssr: false });
+const HoverImageGallery = dynamic(() => import('../ui/hover-image-gallery').then(mod => mod.HoverImageGallery), { ssr: false });
 
 
 const applications = [
