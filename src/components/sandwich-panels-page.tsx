@@ -3,23 +3,18 @@
 
 import Image from 'next/image';
 import * as React from 'react';
-import { useMemo, useState, useRef } from 'react';
+import { useMemo, useState } from 'react';
 import { ChevronsRight, Snowflake, Settings, ArrowRight, DollarSign, Smartphone, Star, Users, Layers, Thermometer, ShieldCheck, Ruler } from 'lucide-react';
-import { AnimatedWrapper } from './animated-wrapper';
+import { AnimatedWrapper } from './shared/AnimatedWrapper';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import type { productData as ProductData } from '@/config/products-data';
 import { cn } from '@/lib/utils';
 import images from '@/app/lib/placeholder-images.json';
 import { DownloadButton } from './ui/download-button';
-import CouvertureProduct from './product-variants/couverture-product';
-import BardageProduct from './product-variants/bardage-product';
-import FrigorifiqueProduct from './product-variants/frigorifique-product';
-import ToleNervureeProduct from './product-variants/tole-nervuree-product';
-import HibondProduct from './product-variants/hibond-product';
-import FinitionsProduct from './product-variants/finitions-product';
-import { HoverImageGallery } from './ui/hover-image-gallery';
 import { motion } from 'framer-motion';
+import { productVariants } from '@/config/product-variants.config';
+import { ProductVariantDetails } from './product-variants/ProductVariantDetails';
+import type { ProductVariant } from '@/config/product-variant-schema';
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -62,63 +57,6 @@ const HibondIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const FinitionsIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <Settings {...props} />
 );
-
-const ProductDetails = ({ product }: { product: any; }) => {
-    if (!product) return null;
-
-    const chunkedImages = useMemo(() => {
-        const gallery = product.galleryImages || [];
-        const gallerySize = gallery.length;
-        
-        if (gallerySize === 0) return [[], [], []];
-
-        const padImage = gallery[0];
-
-        const size = Math.ceil(gallerySize / 3);
-        const chunk1 = [...gallery.slice(0, size)];
-        const chunk2 = [...gallery.slice(size, size * 2)];
-        const chunk3 = [...gallery.slice(size * 2)];
-
-        if (chunk1.length === 0 && gallerySize > 0) chunk1.push(padImage);
-        if (chunk2.length === 0 && gallerySize > size) chunk2.push(padImage);
-        if (chunk3.length === 0 && gallerySize > size * 2) chunk3.push(padImage);
-
-        return [chunk1, chunk2, chunk3];
-    }, [product.galleryImages]);
-    
-    const renderProduct = () => {
-        const props = { product };
-        if (product.documentMetadata?.productType?.includes('COUVERTURE')) return <CouvertureProduct {...props} />;
-        if (product.documentMetadata?.productCategory?.includes('BARDAGE')) return <BardageProduct {...props} />;
-        if (product.title?.includes('FRIGORIFIQUE')) return <FrigorifiqueProduct {...props} />;
-        if (product.title?.includes('TÔLE NERVURÉE')) return <ToleNervureeProduct {...props} />;
-        if (product.title?.includes('HI-BOND')) return <HibondProduct {...props} />;
-        if (product.title?.includes('FINITION')) return <FinitionsProduct {...props} />;
-        return <p>Sélectionnez un produit pour voir les détails.</p>;
-    }
-    
-    const isFinitions = product.title?.includes('FINITION');
-
-    return (
-        <Card className="shadow-lg">
-            <CardHeader className="bg-accent text-accent-foreground rounded-t-lg">
-                <CardTitle className="text-4xl font-bold">{product.title || product.documentMetadata?.productCategory || product.documentMetadata?.productType}</CardTitle>
-            </CardHeader>
-            <CardContent className="p-4 md:p-8 bg-background">
-                <div className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-3">
-                    <div className="flex flex-col h-full justify-between gap-8 lg:col-span-1">
-                        {chunkedImages[0].length > 0 && <HoverImageGallery key={`${product.title}-gallery-0`} images={chunkedImages[0].map((img: any) => img.src || img)} />}
-                        {!isFinitions && chunkedImages[1].length > 0 && <HoverImageGallery key={`${product.title}-gallery-1`} images={chunkedImages[1].map((img: any) => img.src || img)} />}
-                        {!isFinitions && chunkedImages[2].length > 0 && <HoverImageGallery key={`${product.title}-gallery-2`} images={chunkedImages[2].map((img: any) => img.src || img)} />}
-                    </div>
-                    <div className="lg:col-span-2">
-                        {renderProduct()}
-                    </div>
-                </div>
-            </CardContent>
-        </Card>
-    );
-};
 
 interface StatsCardsProps {
   stats?: Array<{
@@ -176,7 +114,7 @@ function StatsCards({
     },
   ],
 }: StatsCardsProps) {
-  const ref = useRef(null)
+  const ref = React.useRef(null)
 
   return (
       <div
@@ -294,12 +232,12 @@ const productButtons = [
   { key: 'finitions', label: 'Pièces de Finition', icon: FinitionsIcon },
 ];
 
-const ProductSelector = React.memo(function ProductSelector({ activeProductKey, onSelectProduct }: { activeProductKey: keyof ProductData | null, onSelectProduct: (key: keyof ProductData) => void }) {
+const ProductSelector = React.memo(function ProductSelector({ activeProductKey, onSelectProduct }: { activeProductKey: keyof typeof productVariants | null, onSelectProduct: (key: keyof typeof productVariants) => void }) {
   return (
     <AnimatedWrapper animation="fade-in">
       <div className="mb-24 flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
         {productButtons.map(({ key, label, icon: Icon }) => (
-          <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => onSelectProduct(key as keyof ProductData)}>
+          <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => onSelectProduct(key as keyof typeof productVariants)}>
             <div className={cn(
               "w-32 h-32 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
               activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
@@ -327,12 +265,16 @@ const ProductSelector = React.memo(function ProductSelector({ activeProductKey, 
 });
 
 interface SandwichPanelsPageProps {
-  productData: typeof ProductData;
+  productData: typeof productVariants;
 }
 
 export function SandwichPanelsPage({ productData }: SandwichPanelsPageProps) {
-  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productData | null>(null);
-  const activeProduct = activeProductKey ? productData[activeProductKey] : null;
+  const [activeProductKey, setActiveProductKey] = useState<keyof typeof productVariants | null>(null);
+  
+  const activeProduct = useMemo(() => {
+    if (!activeProductKey) return null;
+    return productData[activeProductKey];
+  }, [activeProductKey, productData]);
 
   return (
     <>
@@ -353,7 +295,11 @@ export function SandwichPanelsPage({ productData }: SandwichPanelsPageProps) {
           
           {activeProduct && (
             <AnimatedWrapper key={activeProductKey} animation="zoom-in">
-                <ProductDetails product={activeProduct} />
+                <Card className="shadow-lg">
+                    <CardContent className="p-4 md:p-8">
+                        <ProductVariantDetails product={activeProduct} />
+                    </CardContent>
+                </Card>
             </AnimatedWrapper>
           )}
         </div>
@@ -361,3 +307,5 @@ export function SandwichPanelsPage({ productData }: SandwichPanelsPageProps) {
     </>
   );
 }
+
+    
