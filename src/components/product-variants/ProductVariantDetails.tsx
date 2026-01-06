@@ -209,14 +209,18 @@ export function ProductVariantDetails({ product }: { product: ProductVariant }) 
   if (!product) {
     return <div className="text-center p-8">Veuillez sélectionner un produit pour voir les détails.</div>;
   }
+  
+  const hasMainImage = product.mainImage && product.mainImage.src;
 
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        <div className="md:sticky top-24">
-            <ProductImageGallery mainImage={product.mainImage} />
-        </div>
-        <div>
+        {hasMainImage && (
+            <div className="md:sticky top-24">
+                <ProductImageGallery mainImage={product.mainImage} />
+            </div>
+        )}
+        <div className={!hasMainImage ? 'md:col-span-2' : ''}>
           <div className="border-l-8 border-accent pl-4 mb-6">
             <h1 className="text-2xl font-bold text-accent uppercase">{product.title}</h1>
           </div>

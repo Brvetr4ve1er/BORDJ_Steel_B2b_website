@@ -18,7 +18,7 @@ interface ProductImageGalleryProps {
 
 export function ProductImageGallery({ mainImage }: ProductImageGalleryProps) {
   
-  if (!mainImage) {
+  if (!mainImage || !mainImage.src) {
     return null;
   }
 
