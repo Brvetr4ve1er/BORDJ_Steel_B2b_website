@@ -1,62 +1,61 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Dependencies
-/node_modules
+# Node.js
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
 
-# Next.js build artifacts
-/.next/
-/out/
-/build/
-
-# Production build
-/dist
-/build
-
-# Local Environment Variables
-# Never commit secrets!
-.env.local
-.env.*.local
+# Next.js
+.next/
+out/
+build/
 
 # Firebase
-# Emulator-specific files
 .firebase/
 firebase-debug.log
-firestore.rules.bak
+*-debug.log
+firestore-debug.log
+*.emulators.export/
+database-debug.log
 
-# Genkit state
-.genkit/
-.genkit-cache/
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
 
-# Test-related
-/coverage
-junit.xml
-.nyc_output
+# IDE / Editor specific
+.idea/
+.vscode/
+*.swp
+*.swo
 
-# Miscellaneous
-# OS-generated files
+# macOS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
+.AppleDouble
+.LSOverride
+
+# Windows
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 
 # Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 lerna-debug.log*
+.pnpm-debug.log*
 
-# IDE directories
-.idea/
-.vscode/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Other artifacts
+# Other
+coverage
+dist
+.nyc_output
+.temp
+*.tsbuildinfo
 depcheck-report.json
