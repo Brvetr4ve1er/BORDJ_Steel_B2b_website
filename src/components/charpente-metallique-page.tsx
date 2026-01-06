@@ -17,7 +17,7 @@ import { ImageDialog } from '../ui/image-dialog';
 import { cn } from '@/lib/utils';
 import { ProductionTables } from '../production-tables';
 
-const FeatureHoverCard = dynamic(() => import('../feature-hover-card').then(mod => mod.FeatureHoverCard));
+const FeatureHoverCard = dynamic(() => import('@/components/feature-hover-card').then(mod => mod.FeatureHoverCard));
 const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
 const HoverImageGallery = dynamic(() => import('../ui/hover-image-gallery').then(mod => mod.HoverImageGallery), { ssr: false });
 
