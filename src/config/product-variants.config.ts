@@ -119,7 +119,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
                 "Entrepôts.",
                 "Bâtiments industrielle & modulaires.",
                 "Centres commerciaux.",
-                "Complexe sportifs.",
+                "Complexes sportifs.",
                 "Ensembles scolaires et universitaires."
             ]
         },
@@ -356,7 +356,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
             rows: [
                 ["0.5", "439", "281", "185", "143", "109", "86", "63", "47", "36", "-"],
                 ["0.6", "614", "393", "273", "200", "153", "115", "84", "63", "48", "38"],
-                ["0.7", "0.7", "716", "458", "318", "234", "179", "135", "98", "73", "57"],
+                ["0.7", "716", "458", "318", "234", "179", "135", "98", "73", "57", ''],
                 ["0.5", "570", "365", "252", "180", "141", "111", "90", "67", "51", "40"],
                 ["0.6", "768", "491", "341", "251", "192", "152", "123", "101", "81", "64"],
                 ["0.7", "896", "573", "398", "292", "224", "177", "143", "118", "95", "74"],
@@ -419,6 +419,11 @@ export const productVariants: { [key: string]: ProductVariant } = {
             type: 'table',
             title: 'PROPRIÉTÉS DE LA TÔLE HI-BOND 77',
             headers: ["ÉP (mm)", "Poids (Kg/m)", "Lx (Cm4)", "Zx-top (Cm3)", "Zx-bot (Cm3)", "Ma (Kn.m)", "Lx (Cm4)", "Zx-top (Cm3)", "Zx-bot (Cm3)", "Ma (Kn.m)", "Va (KN)", "Pa (KN)"],
+            subheaders: {
+                "Haut de la tôle en compression": ["Lx (Cm4)", "Zx-top (Cm3)", "Zx-bot (Cm3)", "Ma (Kn.m)"],
+                "Bas de la tôle en compression": ["Lx (Cm4)", "Zx-top (Cm3)", "Zx-bot (Cm3)", "Ma (Kn.m)"],
+                "Cisaillement voilement": ["Va (KN)", "Pa (KN)"]
+            },
             rows: [
                 ["0.70", "6.87", "83.27", "14.34", "18.87", "2.32", "83.27", "21.16", "16.56", "2.68", "22.18", "11.28"],
                 ["1.00", "9.81", "119.0", "23.34", "27.87", "3.77", "119.0", "31.03", "26.74", "4.32", "51.37", "21.83"],

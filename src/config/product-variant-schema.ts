@@ -10,6 +10,7 @@ export type TableSection = {
   title: string;
   subtitle?: string;
   headers: string[];
+  subheaders?: { [key: string]: string[] };
   rows: (string | number)[][];
   icon?: 'one-support' | 'two-supports';
 };
@@ -94,6 +95,7 @@ export const exampleSkeleton: ProductVariant = {
       type: 'table',
       title: 'Spécifications Techniques',
       headers: ["", ""],
+      subheaders: {},
       rows: [
         ["", 0],
         ["", 0]

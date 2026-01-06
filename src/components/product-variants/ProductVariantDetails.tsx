@@ -35,11 +35,8 @@ const ListSection: React.FC<{ section: Extract<ProductVariantSection, { type: 'l
 
 const TableSection: React.FC<{ section: Extract<ProductVariantSection, { type: 'table' }> }> = ({ section }) => {
     const isChargesTable = section.title.includes('CHARGES ET PORTÉES');
-    const isHibondChargesTable = section.title.includes('HI-BOND');
-    const isProprietesTable = section.title.includes('PROPRIÉTÉS');
-
-    if (isHibondChargesTable) {
-        // Special render for HI-BOND charges table due to its unique structure
+    
+    if (section.title.includes('HI-BOND')) {
         return (
             <div className="mt-8">
                 <h2 className="text-gray-700 text-lg font-bold mb-6">{section.title}</h2>
@@ -61,8 +58,8 @@ const TableSection: React.FC<{ section: Extract<ProductVariantSection, { type: '
                             {section.rows.map((row, rowIndex) => (
                                 <tr key={rowIndex}>
                                     {row.map((cell, cellIndex) => (
-                                        <td key={cellIndex} rowSpan={cellIndex === 0 && (row[0] !== section.rows[rowIndex-1]?.[0]) ? 3 : 1} className={`border border-gray-300 text-center text-sm p-2 ${cellIndex > 2 ? 'bg-gray-200' : 'bg-gray-200 font-bold align-middle'}`}>
-                                            {(cellIndex !== 0 || (row[0] !== section.rows[rowIndex-1]?.[0])) ? cell : null}
+                                        <td key={cellIndex} rowSpan={cellIndex === 0 && (rowIndex === 0 || row[0] !== section.rows[rowIndex-1]?.[0]) ? 3 : 1} className={`border border-gray-300 text-center text-sm p-2 ${cellIndex > 2 ? 'bg-gray-200' : 'bg-gray-200 font-bold align-middle'}`}>
+                                            {(cellIndex !== 0 || rowIndex === 0 || row[0] !== section.rows[rowIndex-1]?.[0]) ? cell : null}
                                         </td>
                                     )).filter(c => c)}
                                 </tr>
@@ -74,7 +71,7 @@ const TableSection: React.FC<{ section: Extract<ProductVariantSection, { type: '
         );
     }
     
-    if(isProprietesTable) {
+    if(section.title.includes('PROPRIÉTÉS')) {
         return (
              <div className="mb-4 overflow-x-auto">
                 <h2 className="text-gray-600 font-bold text-lg mb-4">{section.title}</h2>
@@ -83,14 +80,12 @@ const TableSection: React.FC<{ section: Extract<ProductVariantSection, { type: '
                         <tr>
                             <th rowSpan={2} className="bg-red-700 text-white border border-white p-2 font-bold align-middle">{section.headers[0]}</th>
                             <th rowSpan={2} className="bg-red-700 text-white border border-white p-2 font-bold align-middle" dangerouslySetInnerHTML={{ __html: section.headers[1].replace(' ', '<br/>') }}></th>
-                            <th colSpan={4} className="bg-red-700 text-white border border-white p-2 font-bold">{section.headers[2]}</th>
-                            <th colSpan={4} className="bg-red-700 text-white border border-white p-2 font-bold">{section.headers[3]}</th>
-                            <th colSpan={2} className="bg-red-700 text-white border border-white p-2 font-bold" dangerouslySetInnerHTML={{ __html: section.headers[4].replace(' ', '<br/>') }}></th>
+                            {Object.keys(section.subheaders || {}).map(key => (
+                                <th key={key} colSpan={section.subheaders?.[key]?.length} className="bg-red-700 text-white border border-white p-2 font-bold">{key}</th>
+                            ))}
                         </tr>
                         <tr>
-                           {(section.subheaders?.['Haut de la tôle en compression'] || []).map((sh, i) => <th key={i} className="bg-red-700 text-white border border-white p-1 font-bold">{sh}</th>)}
-                           {(section.subheaders?.['Bas de la tôle en compression'] || []).map((sh, i) => <th key={i} className="bg-red-700 text-white border border-white p-1 font-bold">{sh}</th>)}
-                           {(section.subheaders?.['Cisaillement voilement'] || []).map((sh, i) => <th key={i} className="bg-red-700 text-white border border-white p-1 font-bold">{sh}</th>)}
+                           {Object.values(section.subheaders || {}).flat().map((sh, i) => <th key={i} className="bg-red-700 text-white border border-white p-1 font-bold">{sh}</th>)}
                         </tr>
                     </thead>
                      <tbody>
