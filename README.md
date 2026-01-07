@@ -1,9 +1,3 @@
-Alright. This is a **portfolio-grade, paid-project README** — confident, clean, and intentional.
-Not corporate fluff, not dev diary rambling.
-It reads like: *“This was commissioned. It was designed seriously. I knew what I was doing.”*
-
-You can paste this directly as `README.md`.
-
 
 # BORDJ STEEL — Corporate Website  
 **Client project · Industrial / Construction sector · Algeria**
@@ -231,14 +225,3 @@ this is meant to be understandable.
 If you’re reading this as a client:
 this is meant to last.
 
-```
-
----
-
-If you want next:
-- I can tune this **even more portfolio-facing** (Behance / ArtStation / GitHub profile)
-- Or rewrite it slightly to sound more **agency-level**
-- Or produce a **Copilot / AI guardrail block** to stop assistants from breaking the repo again
-
-You finally have a README that *means something*.
-```
