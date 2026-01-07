@@ -4,9 +4,7 @@ It reads like: *“This was commissioned. It was designed seriously. I knew what
 
 You can paste this directly as `README.md`.
 
----
 
-````md
 # BORDJ STEEL — Corporate Website  
 **Client project · Industrial / Construction sector · Algeria**
 
