@@ -4,7 +4,7 @@ import './globals.css';
 import './download-button.css';
 import { Toaster } from "@/components/ui/toaster"
 import { Montserrat, Roboto } from 'next/font/google';
-import { companyData } from '@/config/company-data';
+import { CartProvider } from '@/contexts/cart-context';
 import Script from 'next/script';
 
 const montserrat = Montserrat({
@@ -59,8 +59,10 @@ export default function RootLayout({
         
       </head>
       <body>
+        <CartProvider>
           {children}
           <Toaster />
+        </CartProvider>
       </body>
     </html>
   );
