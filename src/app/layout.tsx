@@ -22,23 +22,29 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: {
-    default: companyData.siteMetadata.title,
-    template: `%s | ${companyData.siteMetadata.title}`,
+    default: 'BORDJ Home Appliances - Modern E-commerce Platform',
+    template: `%s | BORDJ Home Appliances`,
   },
-  description: companyData.siteMetadata.description,
+  description: 'Modern B2B/B2C e-commerce platform for home appliances in Algeria. Shop refrigerators, washing machines, and more with secure monthly payment options.',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'BORDJ Home Appliances',
+  },
   openGraph: {
-    title: companyData.siteMetadata.title,
-    description: companyData.siteMetadata.description,
-    siteName: companyData.siteMetadata.title,
+    title: 'BORDJ Home Appliances - Modern E-commerce Platform',
+    description: 'Modern B2B/B2C e-commerce platform for home appliances in Algeria',
+    siteName: 'BORDJ Home Appliances',
     type: 'website',
-    locale: 'fr_FR',
+    locale: 'ar_DZ',
   },
   twitter: {
     card: 'summary_large_image',
-    title: companyData.siteMetadata.title,
-    description: companyData.siteMetadata.description,
+    title: 'BORDJ Home Appliances',
+    description: 'Modern B2B/B2C e-commerce platform for home appliances in Algeria',
   },
-  metadataBase: new URL('https://bordj-steel.com'), // Replace with your actual domain
+  metadataBase: new URL('https://bordj-appliances.com'), // Replace with your actual domain
 };
 
 

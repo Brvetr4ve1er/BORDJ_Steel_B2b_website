@@ -59,3 +59,9 @@ dist
 .temp
 *.tsbuildinfo
 depcheck-report.json
+
+# PWA
+public/sw.js
+public/sw.js.map
+public/workbox-*.js
+public/workbox-*.js.map
