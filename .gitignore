@@ -59,3 +59,12 @@ dist
 .temp
 *.tsbuildinfo
 depcheck-report.json
+
+# Build artifacts that should not be committed
+tsconfig.tsbuildinfo
+.next
+.vercel
+
+# Temporary files
+.modified
+*.tmp

@@ -1,0 +1,22 @@
+# Dependencies
+node_modules
+
+# Build outputs
+.next
+out
+build
+dist
+
+# Logs
+*.log
+
+# Environment files
+.env*
+
+# IDE
+.vscode
+.idea
+
+# Misc
+*.tsbuildinfo
+.DS_Store
