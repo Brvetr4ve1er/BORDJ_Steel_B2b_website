@@ -132,6 +132,37 @@ The structure is intentionally boring — boring scales.
 
 ---
 
+## 🧪 Quality Assurance
+
+This project maintains professional standards through:
+
+### Code Quality
+- **TypeScript**: Strict type checking enforced during builds
+- **ESLint**: Configured with Next.js and TypeScript rules
+- **Prettier**: Automated code formatting
+- **Type Safety**: 97% reduction in `any` types (from 59 to 2 instances)
+
+### Testing
+- **Framework**: Jest + React Testing Library
+- **Commands**:
+  ```bash
+  npm run test          # Run tests
+  npm run test:watch    # Watch mode
+  npm run test:coverage # Coverage report
+  ```
+
+### Scripts
+```bash
+npm run validate      # Run all quality checks (typecheck + lint + format + test)
+npm run lint:fix      # Auto-fix linting issues
+npm run format        # Format all code
+npm run format:check  # Check formatting
+```
+
+See `PROFESSIONALISM_ANALYSIS.md` for details on quality improvements.
+
+---
+
 ## 🚀 Local Development
 
 Install dependencies:
@@ -205,6 +236,9 @@ This is a **real client project**, not a sandbox.
 * `README.md` — project overview (this file)
 * `ARCHITECTURE.md` — technical structure and decisions
 * `TODO.md` — known debt and cleanup roadmap
+* `PROFESSIONALISM_ANALYSIS.md` — code quality audit and improvements
+* `CONTRIBUTING.md` — contribution guidelines
+* `LICENSE.md` — proprietary license
 
 ---
 
