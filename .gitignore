@@ -68,3 +68,7 @@ tsconfig.tsbuildinfo
 # Temporary files
 .modified
 *.tmp
+
+# Test coverage
+coverage/
+.jest-cache/

@@ -63,9 +63,9 @@ const TableSection: React.FC<{ section: Extract<ProductVariantSection, { type: '
             )}
             </TableHeader>
             <TableBody>
-                {section.rows.map((row: any, rowIndex: number) => (
+                {section.rows.map((row: (string | number)[], rowIndex: number) => (
                     <TableRow key={rowIndex}>
-                    {row.map((cell: string, cellIndex: number) => (
+                    {row.map((cell: string | number, cellIndex: number) => (
                         <TableCell key={cellIndex} className={cellIndex === 0 ? 'bg-secondary/20 font-medium' : 'text-center'}>{cell}</TableCell>
                     ))}
                     </TableRow>
