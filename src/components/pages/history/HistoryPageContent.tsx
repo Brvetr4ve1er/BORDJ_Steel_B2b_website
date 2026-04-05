@@ -5,7 +5,7 @@
 import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { ActivitiesSection } from '@/components/sections/history/ActivitiesSection';
-import { HistoryTimeline } from '@/components/sections/HistoryTimeline';
+import { Timeline as HistoryTimeline } from '@/components/timeline';
 import { TeamsSection } from '@/components/sections/history/TeamsSection';
 import { CertificationsSection } from '@/components/sections/history/CertificationsSection';
 

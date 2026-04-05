@@ -1,4 +1,11 @@
 
+/**
+ * Sandwich Panels Page Content Component
+ *
+ * Displays the product details for the Sandwich Panels category, including
+ * a dynamic hero section with statistical cards, and a toggleable product
+ * variant display section mapping over available sandwich panel configurations.
+ */
 "use client";
 
 import Image from 'next/image';

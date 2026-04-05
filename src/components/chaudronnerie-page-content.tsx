@@ -1,5 +1,12 @@
 
 
+/**
+ * Chaudronnerie Page Content Component
+ *
+ * Showcases the Chaudronnerie capabilities. Contains a dynamic carousel
+ * of technical drawings, tables detailing geometric specifications,
+ * and sections illustrating the various industrial domains covered.
+ */
 "use client";
 
 import Image from 'next/image';

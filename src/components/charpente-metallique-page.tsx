@@ -1,26 +1,30 @@
-
-
+/**
+ * Main Content Component for the Charpente Métallique Page
+ *
+ * Orchestrates the layout of the page by dynamically importing and assembling
+ * all sub-sections. Manages state for the selected production pillar to drive
+ * the dynamic specifications display.
+ */
 "use client";
 
+import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, Dot } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import React, { useState, useMemo } from 'react';
 import { AnimatedNumber } from '@/components/animated-number';
 import { DownloadButton } from '@/components/ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { ImageDialog } from '@/components/ui/image-dialog';
 import { cn } from '@/lib/utils';
 import { ProductionTables } from '@/components/production-tables';
 
 const FeatureHoverCard = dynamic(() => import('@/components/feature-hover-card').then(mod => mod.FeatureHoverCard));
-const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
 const HoverImageGallery = dynamic(() => import('@/components/ui/hover-image-gallery').then(mod => mod.HoverImageGallery), { ssr: false });
 
+const HeroSection = dynamic(() => import('@/components/pages/charpente-metallique/hero-section').then(mod => mod.HeroSection));
+const GallerySection = dynamic(() => import('@/components/pages/charpente-metallique/gallery-section').then(mod => mod.GallerySection));
 
 const applications = [
   { icon: <Building className="w-8 h-8" />, text: "Bâtiments industriels & commerciaux" },
@@ -47,113 +51,6 @@ const whyChooseUs = [
     }
 ];
 
-function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.hero }) {
-  const iconMap = useMemo(() => ({
-    HardHat,
-    Cog,
-    Layers,
-    TowerControl,
-    Car,
-    Tractor
-  }), []);
-
-  return (
-    <section className="relative min-h-screen flex items-end bg-background pb-24 sm:pb-32">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={hero.image_url}
-          alt={hero.alt}
-          fill
-          className="object-cover"
-          priority
-          data-ai-hint={hero.aiHint}
-          placeholder="blur"
-          blurDataURL={hero.blurDataUrl}
-        />
-        <div className="absolute inset-0 bg-black/50 z-10" />
-      </div>
-      <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">
-        <div className="space-y-12">
-          <AnimatedWrapper animation="slide-up">
-            <div className="text-left space-y-8">
-              <div>
-                <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                  {hero.title}
-                </h1>
-                <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]">
-                  {hero.subtitle}
-                </p>
-              </div>
-              <div className="flex flex-row items-center gap-4">
-                <Button size="lg" variant="destructive">{hero.cta_primary} <ArrowRight className="ml-2" /></Button>
-                <DownloadButton text={hero.cta_secondary} />
-              </div>
-            </div>
-          </AnimatedWrapper>
-
-          <AnimatedWrapper animation="slide-up" staggerIndex={1}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-              {hero.stats.map((stat, index) => {
-                const Icon = iconMap[stat.icon as keyof typeof iconMap];
-                return (
-                  <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                     <Card className="group bg-background/50 backdrop-blur-md border-border text-white relative overflow-hidden transition-all duration-500 hover:border-accent">
-                        <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
-                        <CardHeader className="relative flex-row items-center gap-4">
-                            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center transition-colors duration-300 group-hover:bg-accent-foreground/10">
-                            {Icon && <Icon className="h-6 w-6 text-accent transition-colors duration-300 group-hover:text-white" />}
-                            </div>
-                            <div>
-                            <CardTitle className="text-2xl font-bold text-white"><AnimatedNumber value={stat.value} />{stat.unit}</CardTitle>
-                            <p className="text-sm text-gray-200 group-hover:text-gray-100">{stat.title}</p>
-                            </div>
-                        </CardHeader>
-                    </Card>
-                  </AnimatedWrapper>
-                );
-              })}
-            </div>
-          </AnimatedWrapper>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const NewGallery = () => {
-    return (
-        <section className="w-full flex flex-col items-center justify-start py-12">
-            <div className="max-w-3xl text-center px-4">
-                <h1 className="text-3xl font-semibold">Nos Projets</h1>
-            </div>
-            <div className="flex items-center gap-2 h-[400px] w-full max-w-7xl mt-10 px-4">
-                {[
-                    "https://i.pinimg.com/736x/ec/93/b8/ec93b8a90b0c088c23cdf817613dd183.jpg",
-                    "https://i.pinimg.com/736x/34/9a/c5/349ac528cf2b299e8e9d38dcf88e029d.jpg",
-                    "https://i.pinimg.com/736x/5f/00/6f/5f006fef04a5f7af462ba580abbb2adc.jpg",
-                    "https://i.pinimg.com/736x/7a/da/ff/7adaff64dfee8fb4467082a0a5daa933.jpg",
-                    "https://i.pinimg.com/736x/53/07/e6/5307e6787500b6efff734990a41772e5.jpg",
-                    "https://i.pinimg.com/736x/db/65/cd/db65cdc8fcf0205a18de1498e1a987c7.jpg"
-                ].map((src, idx) => (
-                    <ImageDialog key={idx} imageUrl={src} alt={`Gallery image ${idx + 1}`}>
-                        <div
-                            className="relative group flex-grow transition-all w-56 rounded-lg overflow-hidden h-[400px] duration-500 hover:w-full cursor-pointer"
-                        >
-                            <Image
-                                fill
-                                className="h-full w-full object-cover object-center"
-                                src={src}
-                                alt={`image-${idx}`}
-                            />
-                        </div>
-                    </ImageDialog>
-                ))}
-            </div>
-        </section>
-    );
-};
-
-
 export function CharpenteMetalliquePageContent() {
   const [selectedPillarId, setSelectedPillarId] = useState<string | null>(charpenteMetalliqueData.pillars[0].id);
 
@@ -176,7 +73,7 @@ export function CharpenteMetalliquePageContent() {
     <div className="bg-background">
       <HeroSection hero={charpenteMetalliqueData.hero} />
 
-      <NewGallery />
+      <GallerySection />
       
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -385,5 +282,3 @@ export function CharpenteMetalliquePageContent() {
     </div>
   );
 }
-
-    
