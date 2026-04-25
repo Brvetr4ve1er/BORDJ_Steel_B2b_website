@@ -1,227 +1,199 @@
+<div align="center">
 
-# BORDJ STEEL — Corporate Website  
-**Client project · Industrial / Construction sector · Algeria**
+<img src="public/bordj-steel-logo.svg" alt="BORDJ STEEL Logo" height="72" />
 
-This repository contains the source code for the **official corporate website of Bordj Steel**, a company specializing in steel construction systems and metal fabrication.
+# BORDJ STEEL — Site Web Officiel
 
-This was a **paid, professional project**, designed and built to modern standards, with a strong focus on clarity, performance, scalability, and long-term maintainability.
+**Projet professionnel livré · Secteur industriel / Construction métallique · Algérie**
 
-The website serves as Bordj Steel’s **primary digital presence** — not a demo, not a concept, but a real production-facing platform.
+![License](https://img.shields.io/badge/license-Proprietary-red)
+![Status](https://img.shields.io/badge/status-Archived%20%E2%80%94%20Delivered-blue)
+![Stack](https://img.shields.io/badge/stack-Next.js%2015%20%7C%20TypeScript%20%7C%20Firebase-black)
+![Language](https://img.shields.io/badge/language-Fran%C3%A7ais-blueviolet)
 
----
-
-## 🧭 Project Intent
-
-The goal of this project was to give Bordj Steel a website that:
-
-- Clearly communicates their **industrial expertise**
-- Presents complex steel products in a **structured, understandable way**
-- Feels **modern, solid, and trustworthy** — not templated or generic
-- Can evolve over time without collapsing under technical debt
-
-This is not a flashy marketing toy.  
-It is an **industrial-grade website**, built with the same mindset as the company’s work.
+</div>
 
 ---
 
-## 🏗️ What the Website Covers
+Ce dépôt contient le code source du **site web officiel de SPA BORDJ STEEL**, entreprise spécialisée dans la construction métallique et la fabrication d'acier, filiale du Groupe CONDOR.
 
-The website is designed to showcase:
+Ce projet a été conçu, développé et livré en tant que **commande professionnelle**. Il constitue la **vitrine digitale principale** de BORDJ STEEL — une plateforme de production réelle, pas une démo.
 
-- Steel construction systems (charpente métallique, sandwich panels, galvanisation, etc.)
-- Technical product variants and specifications
-- Company history and positioning
-- Past projects and references
-- Contact and inquiry entry points
-
-It is **purely informational and branding-oriented**.
-
-### Explicitly out of scope
-This project does **not** include:
-- E-commerce
-- ERP or internal business tooling
-- User authentication flows
-- Dashboards or admin panels
-
-Those were intentionally excluded to keep the system focused and robust.
+> **Statut du projet : Livré et archivé.**
+> Ce dépôt représente l'état final du projet tel qu'il a été remis au client.
 
 ---
 
-## 🧠 Source of Truth
+## Aperçu du Site
 
-> **Firebase Studio is the canonical source of truth for this project.**
-
-All major refactors, layout decisions, and product system changes were done inside Firebase Studio first, then mirrored into this GitHub repository.
-
-This repo exists to:
-- Track changes
-- Ensure build stability
-- Enable collaboration and review
-- Support long-term maintenance
-
-If something in this repo conflicts with Firebase Studio, **Firebase Studio wins**.
-
----
-
-## 🧩 Technology Stack
-
-This project uses a modern, production-ready stack:
-
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript
-- **UI**: React
-- **Styling**: Tailwind CSS
-- **Component system**: shadcn/ui
-- **Animations**: Framer Motion
-- **AI tooling**: Genkit (non-critical, experimental)
-- **Hosting**: Firebase App Hosting
-
-The stack was chosen to balance:
-- Performance
-- Developer velocity
-- Long-term maintainability
-- Industry relevance
+| Page | Capture |
+|------|---------|
+| **Accueil** | ![Accueil](docs/screenshots/homepage.png) |
+| **Notre Histoire** | ![Histoire](docs/screenshots/about-history.png) |
+| **Charpente Métallique** | ![Charpente](docs/screenshots/products-charpente-metallique.png) |
+| **Panneaux Sandwich** | ![Panneaux](docs/screenshots/products-sandwich-panels.png) |
+| **Galvanisation à Chaud** | ![Galvanisation](docs/screenshots/products-galvanisation-a-chaud.png) |
+| **Chaudronnerie** | ![Chaudronnerie](docs/screenshots/products-chaudronnerie.png) |
+| **Références** | ![Références](docs/screenshots/references.png) |
+| **Contact** | ![Contact](docs/screenshots/contact.png) |
+| **Media Center** | ![Media Center](docs/screenshots/media-center.png) |
 
 ---
 
-## 🧱 Architectural Philosophy
+## Ce que le Site Couvre
 
-- **Server Components by default**
-- Client Components only where interaction or animation is required
-- Clear separation between:
-  - UI components
-  - Content/configuration
-  - Routing
-- Data-driven product rendering (no hardcoded pages per product)
+Le site est conçu pour présenter :
 
-The system favors **clarity over cleverness**.
+- Les systèmes de construction métallique (charpente, panneaux sandwich, galvanisation, chaudronnerie)
+- Les variantes techniques et spécifications produits
+- L'histoire et le positionnement de l'entreprise
+- Les références et projets réalisés
+- Les points d'entrée pour le contact et les demandes commerciales
 
-A detailed breakdown lives in `ARCHITECTURE.md`.
+Il est **purement informationnel et orienté branding**.
+
+### Hors périmètre (intentionnel)
+
+| Fonctionnalité | Statut |
+|---|---|
+| E-commerce | Hors scope |
+| ERP / outils internes | Hors scope |
+| Authentification utilisateurs | Hors scope |
+| Tableaux de bord / admin | Hors scope |
 
 ---
 
-## 📁 Project Structure (High Level)
+## Stack Technique
+
+| Couche | Technologie |
+|--------|-------------|
+| Framework | Next.js 15 (App Router) |
+| Langage | TypeScript |
+| Interface | React + shadcn/ui |
+| Styles | Tailwind CSS |
+| Animations | Framer Motion |
+| Hébergement | Firebase App Hosting |
+| IA (expérimental) | Genkit / Google AI |
+
+---
+
+## Structure du Projet
 
 ```text
 src/
-├─ app/                # Next.js App Router (public routes)
-├─ components/         # Reusable UI and page components
-│  ├─ ui/              # shadcn/ui primitives
-│  └─ product-variants/# Product rendering logic
-├─ config/             # Static content & configuration
-├─ hooks/              # Custom React hooks
-├─ lib/                # Utilities & static assets
-├─ ai/                 # Genkit / AI-related code
-public/                # Static assets (logos, images)
-````
-
-The structure is intentionally boring — boring scales.
-
----
-
-## 🖼️ Visuals (Placeholders)
-
-> These will be added to document the final UI and structure.
-
-```md
-![Homepage](docs/screenshots/homepage.png)
-![Product Page](docs/screenshots/product-page.png)
-![Architecture Diagram](docs/diagrams/architecture-overview.png)
-![UI Interactions](docs/gifs/ui-interactions.gif)
+├─ app/                  # Next.js App Router — routes publiques
+├─ components/           # Composants React réutilisables
+│  ├─ ui/                # Primitives shadcn/ui
+│  ├─ sections/          # Sections de page (hero, about, etc.)
+│  ├─ shared/            # Composants partagés (navbar, footer)
+│  └─ product-variants/  # Logique de rendu des variantes produit
+├─ config/               # Contenu statique et configuration
+├─ hooks/                # Hooks React personnalisés
+├─ lib/                  # Utilitaires et assets statiques
+├─ ai/                   # Code Genkit / IA
+public/                  # Assets statiques (logos, images)
+docs/
+└─ screenshots/          # Captures d'écran du site final
 ```
 
 ---
 
-## 🚀 Local Development
+## Développement Local
 
-Install dependencies:
+**Prérequis :** Node.js 18+
 
 ```bash
+# Installer les dépendances
 npm install
-```
 
-Run the development server:
-
-```bash
+# Lancer le serveur de développement
 npm run dev
 ```
 
-The app usually runs on:
-
-```
-http://localhost:9002
-```
-
-For AI-related experimentation:
+L'application tourne sur : `http://localhost:9002`
 
 ```bash
-npm run genkit:dev
+# Vérification TypeScript
+npm run typecheck
+
+# Linting
+npm run lint
+
+# Build de production
+npm run build
 ```
 
 ---
 
-## ☁️ Deployment
+## Déploiement
 
-The project is deployed via **Firebase App Hosting**.
+Le projet est déployé via **Firebase App Hosting**.
 
-* Pushes to `main` trigger automatic builds and deployments
-* Configuration lives in:
+- Les push sur `main` déclenchent automatiquement les builds et déploiements.
+- La configuration se trouve dans `firebase.json` et `apphosting.yaml`.
 
-  * `firebase.json`
-  * `apphosting.yaml`
-
-No manual deployment steps are required.
+Aucune étape de déploiement manuel n'est requise.
 
 ---
 
-## ⚠️ Known Technical Debt (Honest Section)
+## Philosophie Architecturale
 
-This project is stable, but not perfect. Known issues include:
+- **Server Components par défaut** — Client Components uniquement là où l'interaction ou l'animation l'exige
+- Séparation claire entre UI, contenu/configuration, et routing
+- Rendu data-driven des produits (pas de pages hardcodées par produit)
+- La clarté prime sur l'ingéniosité
 
-* Some large, monolithic page components
-* Overuse of `"use client"` driven by animation wrappers
-* Historical duplication in product variant components
-* A small amount of unused legacy code pending cleanup
-
-These are documented and tracked in `TODO.md`.
-
-No architectural shortcuts were taken to hide these — they’re visible and intentional.
+Voir [`ARCHITECTURE.md`](ARCHITECTURE.md) pour le détail complet.
 
 ---
 
-## 🧹 Editing Rules (Read This First)
+## Dette Technique Connue
 
-* Do not introduce parallel product systems
-* Do not normalize or rewrite product content unless restoring it verbatim
-* Prefer deleting or archiving legacy code over keeping hybrids
-* Stability beats novelty
+Ce projet est stable, mais non parfait. Les points identifiés :
 
-This is a **real client project**, not a sandbox.
+| Point | Détail |
+|-------|--------|
+| Composants monolithiques | Certaines pages sont de grands fichiers mono-responsabilité |
+| Suremploi de `"use client"` | Imposé par les wrappers d'animation |
+| Duplication dans `/product-variants/` | Logique quasi-identique entre variantes produit |
+| Code legacy résiduel | Quelques fichiers non utilisés en attente de nettoyage |
 
----
-
-## 📚 Documentation
-
-* `README.md` — project overview (this file)
-* `ARCHITECTURE.md` — technical structure and decisions
-* `TODO.md` — known debt and cleanup roadmap
+Voir [`TODO.md`](TODO.md) pour le suivi complet.
 
 ---
 
-## Final Note
+## Documentation
 
-This repository represents **professional work delivered to a real company**.
+| Fichier | Contenu |
+|---------|---------|
+| `README.md` | Vue d'ensemble du projet (ce fichier) |
+| `ARCHITECTURE.md` | Structure technique et décisions d'architecture |
+| `TECHNICAL_REPORT.md` | Rapport technique détaillé |
+| `TODO.md` | Dette technique connue et roadmap de nettoyage |
+| `docs/blueprint.md` | Blueprint initial de l'application |
+| `LICENSE` | Licence propriétaire — SPA BORDJ STEEL |
 
-Every decision here was made with:
+---
 
-* Constraints
-* Deadlines
-* Maintainability
-* And future developers in mind
+## Licence
 
-If you’re reading this as a developer:
-this is meant to be understandable.
+Ce logiciel est la propriété exclusive de **SPA BORDJ STEEL**.
+Tout usage, reproduction ou distribution non autorisé est strictement interdit.
 
-If you’re reading this as a client:
-this is meant to last.
+Voir [`LICENSE`](LICENSE) pour les conditions complètes.
 
+---
+
+## A Propos de BORDJ STEEL
+
+**SPA BORDJ STEEL** est un complexe métallurgique algérien, filiale du Groupe CONDOR, spécialisé dans :
+
+- La charpente métallique (25 000 T/an)
+- Les panneaux sandwich (1 500 000 m²/an)
+- La galvanisation à chaud (60 000 T/an)
+- La chaudronnerie industrielle
+
+**Certifications :** ISO 9001:2015 · ISO 14001:2015 · ISO 45001:2018
+
+**Adresse :** N°1 Lieu-dit Mechta Fatima, Bordj Bou Arréridj, Algérie
+**Email :** commercial@bordjsteel.dz
