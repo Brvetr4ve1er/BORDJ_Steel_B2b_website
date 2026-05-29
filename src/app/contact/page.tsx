@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import dynamic from 'next/dynamic';
 
-const ContactInfo = dynamic(() => import('@/components/sections/ContactInfo').then(mod => mod.ContactInfo));
+const ContactInfo = dynamic(() => import('@/components/contact-info').then(mod => mod.ContactInfo));
 
 export const metadata: Metadata = {
   title: `Contact | ${companyData.siteMetadata.title}`,

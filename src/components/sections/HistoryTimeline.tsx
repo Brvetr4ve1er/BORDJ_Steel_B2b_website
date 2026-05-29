@@ -3,9 +3,9 @@
 import React, { useMemo } from "react";
 import { Award, Lightbulb, Search, Cog, Users, BarChart, Target } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { AnimatedWrapper } from "./animated-wrapper";
-import { Card, CardContent } from "./ui/card";
-import { AnimatedNumber } from "./animated-number";
+import { AnimatedWrapper } from "@/components/animated-wrapper";
+import { Card, CardContent } from "@/components/ui/card";
+import { AnimatedNumber } from "@/components/animated-number";
 
 // Data for the timeline events, moved here for easier debugging and styling.
 // Originally from src/config/company-data.ts
@@ -20,7 +20,7 @@ const timelineEvents = [
 ];
 
 
-export function Timeline() {
+export function HistoryTimeline() {
   const events = timelineEvents;
   
   const iconMap = useMemo(() => ({
