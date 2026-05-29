@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { companyData } from '@/config/company-data';
 import Image from 'next/image';
-import { AnimatedWrapper } from '@/components/shared/AnimatedWrapper';
+import { AnimatedWrapper } from '@/components/animated-wrapper';
 import dynamic from 'next/dynamic';
 
 const ContactInfo = dynamic(() => import('@/components/sections/ContactInfo').then(mod => mod.ContactInfo));
