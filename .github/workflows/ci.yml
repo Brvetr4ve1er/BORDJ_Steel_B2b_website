@@ -1,0 +1,64 @@
+name: CI
+
+# Continuous-integration gate for the Bordj Steel website.
+#
+# Measured status at setup (2026-05-29, Node 20):
+#   - build  : PASS (all 31 routes generate)            -> BLOCKING (required)
+#   - lint   : PASS (2 react-hooks warnings)            -> BLOCKING (required)
+#   - typecheck: 13 pre-existing errors                 -> ADVISORY (not required yet)
+#
+# `build` and `lint` are green and safe to require in branch protection.
+# `typecheck` (`tsc --noEmit`) still reports real, pre-existing type debt
+# (the project shipped with `typescript.ignoreBuildErrors` enabled). It runs
+# here so the errors stay visible; drive them to zero, then flip the `ignore*`
+# flags in next.config.ts to `false` and mark this job as a required check too.
+#
+# Note: `next lint` is deprecated in Next 16. When upgrading, migrate to the
+# ESLint CLI (`npx @next/codemod@canary next-lint-to-eslint-cli .`).
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build (required)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+  lint:
+    name: Lint (required)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+
+  typecheck:
+    name: Typecheck (advisory)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
