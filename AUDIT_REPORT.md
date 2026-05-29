@@ -210,6 +210,44 @@ checks) turned off. That gap between intent and runtime drives the score.
 
 ---
 
+## CI / TOOLING — IMPLEMENTED & MEASURED (2026-05-29)
+
+Added ESLint config (`.eslintrc.json`, `next/core-web-vitals`; disabled
+`react/no-unescaped-entities` — noise on French apostrophes) and a GitHub Actions
+workflow (`.github/workflows/ci.yml`). Dependencies `eslint@^8.57.1` +
+`eslint-config-next@15.5.9` added and the lockfile synced. The full pipeline was
+**run locally (Node 22, `npm ci`)** to verify — empirical results:
+
+| Job | Result | CI role |
+|---|---|---|
+| `build` (`next build`) | ✅ PASS — all 31 routes generate (incl. fixed `/contact`, `/about/history`) | **Required** |
+| `lint` (`next lint`) | ✅ PASS — 2 `react-hooks/exhaustive-deps` warnings | **Required** |
+| `typecheck` (`tsc --noEmit`) | ❌ 13 errors (pre-existing) | Advisory (not required yet) |
+
+**Bonus safe fix applied:** `product-variant-schema.ts` discriminants were drifted
+(`key-value`/`image-grid`) vs the data + renderer (`keyValue`/`imageGrid`). Corrected
+the **schema types only** (no content/runtime change) → cleared ~28 type errors.
+Build re-verified green after the change.
+
+### Remaining 13 typecheck errors (for a dedicated hardening pass)
+*Safe type-only fixes:*
+- `ui/expandable-cards.tsx` (7) — wrong relative import paths (`./ui/button`→`./button`,
+  `./animated-wrapper`→`../animated-wrapper`, etc.) + `icon` prop typing. Component is
+  only referenced via `import type { CardData }` (never rendered) — runtime-harmless.
+- `chaudronnerie-page-content.tsx` (1) — `CardData` not `export`ed from expandable-cards.
+- `ProductVariantDetails.tsx` (1) — two different `ProductImage` types (schema vs
+  `product-image-gallery`); reconcile to one.
+- `ui/blog-post-card.tsx` (1) — imports `Article` type not exported by `blog-data`.
+
+*Needs a decision / migration:*
+- `home-page-contact-form.tsx` (1) — references `contact.content.form.button`, a field
+  missing from `company-data.ts` (the empty submit-label bug). Tied to the contact-form work.
+- `.next/types/.../blog/[slug]/page.ts` (1) — Next 15 makes `params` a `Promise`; the
+  slug page needs `async`/`await params` (App Router migration).
+- framer-motion `HTMLMotionProps` mismatches (2) — `blog-post-card`, `expandable-cards`.
+
+---
+
 ## ROLLBACK INSTRUCTIONS
 - **Undo the safe-cleanup commit:** `git revert <safe-cleanup-sha>` (deletions restored), or
   `git reset --hard HEAD~1` before pushing.

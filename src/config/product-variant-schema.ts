@@ -16,7 +16,7 @@ export type TableSection = {
 };
 
 export type KeyValueSection = {
-  type: 'key-value';
+  type: 'keyValue';
   title: string;
   items: {
     key: string;
@@ -44,7 +44,7 @@ export type ImageSection = {
 };
 
 export type ImageGridSection = {
-  type: 'image-grid';
+  type: 'imageGrid';
   items: {
     name: string;
     length: string;
@@ -79,7 +79,7 @@ export const exampleSkeleton: ProductVariant = {
   },
   sections: [
     {
-      type: 'key-value',
+      type: 'keyValue',
       title: 'Caractéristiques',
       items: [
         { key: 'Utilisation', value: '' },
@@ -113,7 +113,7 @@ export const exampleSkeleton: ProductVariant = {
       image: { src: '', alt: '' }
     },
     {
-        type: 'image-grid',
+        type: 'imageGrid',
         items: [
             {
                 name: '',
