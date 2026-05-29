@@ -175,9 +175,9 @@ checks) turned off. That gap between intent and runtime drives the score.
 
 ---
 
-## IMMEDIATE FIXES (highest value — pending your go-ahead)
-1. **`/contact` page** — repoint import to `@/components/contact-info` (R1). *Restores broken page.*
-2. **`/about/history` page** — repoint/relocate `HistoryTimeline` (R2). *Restores broken page.*
+## IMMEDIATE FIXES
+1. ✅ **`/contact` page (DONE)** — import repointed to `@/components/contact-info` (R1). Broken page restored.
+2. ✅ **`/about/history` page (DONE)** — `timeline.tsx` relocated to `components/sections/HistoryTimeline.tsx`, export renamed `Timeline`→`HistoryTimeline`, relative imports switched to `@/` aliases (R2, structural). Broken page restored. Missing-import scan now empty.
 3. **Contact form** is a no-op `<form>` (no submit handler) + empty button label (`form.button` missing in `company-data.ts`). *Needs product decision on backend.*
 4. **`sitemap.xml`** contains `[YOUR_DOMAIN_HERE]` + nonexistent `/products`. Domain mismatch `bordj-steel.com` vs `bordjsteel.dz`.
 5. **5 client logos** reference nonexistent `public/logos/*.webp` → broken images.
@@ -186,7 +186,7 @@ checks) turned off. That gap between intent and runtime drives the score.
 
 ## REFACTOR ROADMAP (sequenced)
 1. **(done)** Phase 4 safe cleanup.
-2. Fix 2 broken page imports (R1, R2) — *pending approval*.
+2. **(done)** Fix 2 broken page imports (R1, R2 — structural).
 3. Build-integrity branch: ESLint config, fix surfaced type/lint errors, flip `ignore*` flags, add GitHub Actions CI (`ci → typecheck → lint → build`). (R6)
 4. Dependency + dead-UI pruning with a real build to validate. (R3)
 5. Asset hygiene: sitemap, logos self-host, PDF rename, prune remote hosts. (R4)
