@@ -10,6 +10,7 @@ export const AnimatedNumber = ({ value, className }: { value: number; className?
   const [isInView, setIsInView] = useState(() => false);
 
   useEffect(() => {
+    const element = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -19,12 +20,12 @@ export const AnimatedNumber = ({ value, className }: { value: number; className?
       },
       { threshold: 0.1 }
     );
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (element) {
+      observer.observe(element);
     }
     return () => {
-      if(ref.current) {
-        observer.unobserve(ref.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, []);

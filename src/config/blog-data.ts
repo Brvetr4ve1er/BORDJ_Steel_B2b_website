@@ -171,3 +171,6 @@ export const articles = [
         },
     },
 ];
+
+// Type derived from the data above so it can never drift from it.
+export type Article = (typeof articles)[number];

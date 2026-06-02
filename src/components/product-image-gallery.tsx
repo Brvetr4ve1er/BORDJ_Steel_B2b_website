@@ -8,7 +8,7 @@ import { Card } from './ui/card';
 export type ProductImage = {
   src: string;
   alt: string;
-  aiHint: string;
+  aiHint?: string;
   blurDataUrl?: string;
 };
 

@@ -18,7 +18,6 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel"
 import { cn } from '@/lib/utils';
-import type { CardData } from '@/components/ui/expandable-cards';
 
 const DetailedStatCard = dynamic(() => import('@/components/detailed-stat-card').then(mod => mod.DetailedStatCard));
 
