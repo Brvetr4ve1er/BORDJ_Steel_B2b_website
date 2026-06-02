@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: companyData.siteMetadata.title,
     description: companyData.siteMetadata.description,
   },
-  metadataBase: new URL('https://bordj-steel.com'), // Replace with your actual domain
+  metadataBase: new URL(companyData.siteMetadata.siteUrl),
 };
 
 
