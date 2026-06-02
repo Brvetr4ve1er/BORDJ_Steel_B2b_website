@@ -39,28 +39,29 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
+    <footer className="relative border-t-4 border-accent bg-[hsl(0,0%,10%)] text-white transition-colors duration-300">
       <div className="container mx-auto px-4 py-16 md:px-6 lg:px-8">
         <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-4">
           <div className="relative">
-            <div className='w-48 mb-6'>
+            {/* Recolour the logo's dark-grey marks to white for the dark footer; the red stays. */}
+            <div className='w-48 mb-6 [&_.st1]:fill-white'>
                 <Logo />
             </div>
-            <p className="text-base text-muted-foreground">{footer.tagline}</p>
+            <p className="text-base text-white/70">{footer.tagline}</p>
           </div>
           <div>
-            <h3 className="mb-6 text-xl font-semibold uppercase tracking-wider text-primary">{footer.siteLinks}</h3>
+            <h3 className="mb-6 inline-block border-b-2 border-accent pb-2 text-xl font-semibold uppercase tracking-wider text-white">{footer.siteLinks}</h3>
             <nav className="space-y-3 text-base">
               {navigation.mainMenu.map(item => (
-                <Link key={item.name} href={item.href} className="block text-muted-foreground transition-colors hover:text-primary">
+                <Link key={item.name} href={item.href} className="block text-white/70 transition-all hover:text-accent hover:translate-x-1">
                   {item.name}
                 </Link>
               ))}
             </nav>
           </div>
           <div>
-            <h3 className="mb-6 text-xl font-semibold uppercase tracking-wider text-primary">{footer.contactUs}</h3>
-            <address className="space-y-3 text-base not-italic text-muted-foreground">
+            <h3 className="mb-6 inline-block border-b-2 border-accent pb-2 text-xl font-semibold uppercase tracking-wider text-white">{footer.contactUs}</h3>
+            <address className="space-y-3 text-base not-italic text-white/70">
               <p>{pages.contact.content.address}</p>
               <p>Email: {pages.contact.content.emails[0]}</p>
             </address>
@@ -77,7 +78,7 @@ export function Footer() {
             </div>
           </div>
           <div className="relative">
-            <h3 className="mb-6 text-xl font-semibold uppercase tracking-wider text-primary">Suivez-nous</h3>
+            <h3 className="mb-6 inline-block border-b-2 border-accent pb-2 text-xl font-semibold uppercase tracking-wider text-white">Suivez-nous</h3>
             <div className="mb-8 flex space-x-3">
                 {socialButtons.map((social) => (
                     <SocialButton
@@ -92,15 +93,15 @@ export function Footer() {
                     </SocialButton>
                 ))}
             </div>
-            <h3 className="mb-6 text-xl font-semibold uppercase tracking-wider text-primary">Restez Connecté</h3>
-            <p className="mb-4 text-base text-muted-foreground">
+            <h3 className="mb-6 inline-block border-b-2 border-accent pb-2 text-xl font-semibold uppercase tracking-wider text-white">Restez Connecté</h3>
+            <p className="mb-4 text-base text-white/70">
               Rejoignez notre newsletter pour les dernières mises à jour.
             </p>
             <form className="relative">
               <Input
                 type="email"
                 placeholder="Entrez votre email"
-                className="pr-14 h-12 text-base bg-secondary text-foreground placeholder:text-muted-foreground border-border focus:border-accent"
+                className="pr-14 h-12 text-base bg-white/10 text-white placeholder:text-white/50 border-white/20 focus:border-accent"
               />
               <Button
                 type="submit"
@@ -113,15 +114,15 @@ export function Footer() {
             </form>
           </div>
         </div>
-        <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-border pt-10 text-center md:flex-row">
-          <p className="text-base text-muted-foreground">
+        <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-10 text-center md:flex-row">
+          <p className="text-base text-white/60">
             &copy; {new Date().getFullYear()} {footer.copyright}
           </p>
           <nav className="flex gap-6 text-base">
-            <Link href="#" className="text-muted-foreground transition-colors hover:text-primary">
+            <Link href="#" className="text-white/60 transition-colors hover:text-accent">
               {footer.legal.privacy}
             </Link>
-            <Link href="#" className="text-muted-foreground transition-colors hover:text-primary">
+            <Link href="#" className="text-white/60 transition-colors hover:text-accent">
               {footer.legal.terms}
             </Link>
           </nav>
