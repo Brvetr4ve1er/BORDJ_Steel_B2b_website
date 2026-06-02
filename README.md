@@ -73,7 +73,7 @@ This project uses a modern, production-ready stack:
 - **Styling**: Tailwind CSS
 - **Component system**: shadcn/ui
 - **Animations**: Framer Motion
-- **AI tooling**: Genkit (non-critical, experimental)
+- **Forms**: react-hook-form
 - **Hosting**: Firebase App Hosting
 
 The stack was chosen to balance:
@@ -152,10 +152,12 @@ The app usually runs on:
 http://localhost:9002
 ```
 
-For AI-related experimentation:
+Before pushing, run the same checks CI enforces:
 
 ```bash
-npm run genkit:dev
+npm run typecheck   # tsc --noEmit (must be clean)
+npm run lint        # next lint (must be clean)
+npm run build       # next build (type + lint errors fail the build)
 ```
 
 ---
@@ -176,16 +178,22 @@ No manual deployment steps are required.
 
 ## ⚠️ Known Technical Debt (Honest Section)
 
-This project is stable, but not perfect. Known issues include:
+This project is stable and builds strictly (type + lint errors fail the build).
+Remaining, tracked items:
 
-* Some large, monolithic page components
-* Overuse of `"use client"` driven by animation wrappers
-* Historical duplication in product variant components
-* A small amount of unused legacy code pending cleanup
+* A few large product-page components (`galvanisation`, `charpente`, `chaudronnerie`)
+  remain monolithic and use an ineffective `dynamic(Promise.resolve())` pattern.
+* `"use client"` is still used more broadly than necessary (animation wrappers).
+* Some client logos hotlink third-party CDNs; a few referenced `/logos/*.webp`
+  files and the EN/AR catalogue + ISO certificate PDFs are not yet provided.
+* ~18 unused shadcn/ui primitives remain as an unused component library.
 
-These are documented and tracked in `TODO.md`.
+Recently resolved: product-variant duplication (now a single generic renderer),
+dead-code/duplicate removal, broken `/contact` and `/about/history` pages, a
+non-functional contact form, the broken sitemap, and ~50 npm vulnerabilities.
 
-No architectural shortcuts were taken to hide these — they’re visible and intentional.
+These are documented and tracked in `TODO.md`, `AUDIT_REPORT.md` and
+`CLEANUP_AND_IMPROVEMENT_PLAN.md`. No shortcuts hide them — they’re visible.
 
 ---
 
@@ -204,7 +212,11 @@ This is a **real client project**, not a sandbox.
 
 * `README.md` — project overview (this file)
 * `ARCHITECTURE.md` — technical structure and decisions
+* `CLAUDE.md` — contributor / agent guide (commands, conventions, editing rules)
 * `TODO.md` — known debt and cleanup roadmap
+* `AUDIT_REPORT.md` — full engineering audit (health score, risks, dependency report)
+* `PROJECT_CONTEXT.md` — factual baseline of the codebase
+* `CLEANUP_AND_IMPROVEMENT_PLAN.md` — phased improvement plan
 
 ---
 
