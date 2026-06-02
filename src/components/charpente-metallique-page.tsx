@@ -18,7 +18,8 @@ import { cn } from '@/lib/utils';
 import { ProductionTables } from '@/components/production-tables';
 
 const FeatureHoverCard = dynamic(() => import('@/components/feature-hover-card').then(mod => mod.FeatureHoverCard));
-const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
+// Same-module component — reference directly (no code-split benefit from dynamic).
+const HeroSection = UnwrappedHeroSection;
 const HoverImageGallery = dynamic(() => import('@/components/ui/hover-image-gallery').then(mod => mod.HoverImageGallery), { ssr: false });
 
 

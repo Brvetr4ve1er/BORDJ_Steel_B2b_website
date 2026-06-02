@@ -17,12 +17,15 @@ import dynamic from 'next/dynamic';
 
 const DynamicAnimatedBaths = dynamic(() => import('@/components/animated-baths').then(mod => mod.AnimatedBaths));
 
-const HeroSection = dynamic(() => Promise.resolve(UnwrappedHeroSection));
-const ProcessTimeline = dynamic(() => Promise.resolve(UnwrappedProcessTimeline));
-const BenefitsSection = dynamic(() => Promise.resolve(UnwrappedBenefitsSection));
-const HighlightSection = dynamic(() => Promise.resolve(UnwrappedHighlightSection));
-const CTASection = dynamic(() => Promise.resolve(UnwrappedCTASection));
-const TechniquesAndStandardsSection = dynamic(() => Promise.resolve(UnwrappedTechniquesAndStandardsSection));
+// These sections live in this module; reference them directly. Wrapping a
+// same-module component in dynamic(Promise.resolve(...)) adds a lazy boundary
+// with no code-splitting benefit.
+const HeroSection = UnwrappedHeroSection;
+const ProcessTimeline = UnwrappedProcessTimeline;
+const BenefitsSection = UnwrappedBenefitsSection;
+const HighlightSection = UnwrappedHighlightSection;
+const CTASection = UnwrappedCTASection;
+const TechniquesAndStandardsSection = UnwrappedTechniquesAndStandardsSection;
 
 
 // Main Page Component
