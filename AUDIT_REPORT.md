@@ -11,21 +11,28 @@
 
 ---
 
-## PROJECT HEALTH SCORE: **54 / 100**
+## PROJECT HEALTH SCORE: **54 → 78 / 100** (after this session's work)
 
-| Dimension | Score | Notes |
-|---|---:|---|
-| Architecture & structure | 7/10 | Clean data layer + generic product renderer; but 4 monolithic pages, fake `dynamic()` splitting |
-| Correctness / stability | 3/10 | **2 live pages broken**, contact form non-functional, build-error suppression |
-| Code quality | 5/10 | Dead code (partly cleaned), duplication, ~63% client components |
-| Dependencies | 5/10 | Several unused libs; fragile hotlinked images |
-| Tooling / CI / tests | 2/10 | No tests, no CI, no ESLint config, errors suppressed |
-| Security / headers | 8/10 | Good CSP/HSTS/cache headers in `firebase.json` |
-| Documentation | 7/10 | Rich docs, but partly aspirational/inaccurate (now reconciled) |
+| Dimension | Before | After | Notes |
+|---|---:|---:|---|
+| Architecture & structure | 7/10 | 7/10 | Clean data layer + generic renderer; monolithic product pages remain |
+| Correctness / stability | 3/10 | **8/10** | 2 broken pages fixed, contact form works, strict builds enforce errors |
+| Code quality | 5/10 | **7/10** | Dead code/duplication removed, anti-pattern gone; 0 type/lint errors |
+| Dependencies | 5/10 | **8/10** | Dead deps removed; **52 → 2** npm vulns (remaining are transitive build-time) |
+| Tooling / CI / tests | 2/10 | **7/10** | ESLint + CI (3 green gates) + strict build; still no unit tests |
+| Security / headers | 8/10 | 8/10 | Good CSP/HSTS/cache headers retained |
+| Documentation | 7/10 | **9/10** | Docs reconciled to reality + `CLAUDE.md` added |
 
-The fundamentals are sound, but a site described as "production-facing" currently ships
-**two broken pages and a dead lead-capture form**, with the safety nets (type/lint
-checks) turned off. That gap between intent and runtime drives the score.
+The site no longer ships broken pages or a dead lead form, and the type/lint safety
+nets are on and enforced in CI. Remaining debt (monolithic product pages, unused UI
+primitives, client-provided logo/PDF assets) is documented in `TODO.md` and is either
+lower-priority internal refactoring or dependent on client-supplied content.
+
+### What changed this session (11 commits)
+Fixed `/contact` + `/about/history` (unresolved imports) · functional contact form ·
+0 type/lint errors + strict builds · ESLint + CI · dynamic `sitemap`/`robots` +
+single-source domain · catalogue PDF path · removed Firebase/Genkit/recharts/etc.
+(52→2 vulns) · removed `dynamic(Promise.resolve())` anti-pattern · reconciled docs.
 
 ---
 
