@@ -1,16 +1,56 @@
 "use client";
 
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { MapPin, Phone, Mail, Send } from "lucide-react";
 import { companyData } from '@/config/company-data';
+import { useToast } from '@/hooks/use-toast';
 import { AnimatedWrapper } from '../animated-wrapper';
+
+type ContactFormValues = {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+};
 
 export function HomePageContactForm() {
     const { contact } = companyData.pages;
+    const { toast } = useToast();
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors, isSubmitting },
+    } = useForm<ContactFormValues>();
+
+    // No backend is provisioned for this site, so the form composes a pre-filled
+    // e-mail to the commercial address via the visitor's own mail client. This
+    // delivers the message reliably without storing data or requiring secrets.
+    const onSubmit = (data: ContactFormValues) => {
+        const to = contact.content.emails[0];
+        const subject = data.subject?.trim() || `Demande de contact — ${data.name}`;
+        const body = [
+            `Nom: ${data.name}`,
+            `E-mail: ${data.email}`,
+            '',
+            data.message,
+        ].join('\n');
+
+        window.location.href = `mailto:${to}?subject=${encodeURIComponent(
+            subject
+        )}&body=${encodeURIComponent(body)}`;
+
+        toast({
+            title: 'Merci pour votre message !',
+            description: "Votre client e-mail va s'ouvrir pour finaliser l'envoi.",
+        });
+        reset();
+    };
 
     return (
         <section id="contact" className="w-full">
@@ -23,26 +63,56 @@ export function HomePageContactForm() {
                                     <CardTitle className="text-3xl font-bold text-primary">Contactez-nous</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <form className="space-y-6">
+                                    <form className="space-y-6" onSubmit={handleSubmit(onSubmit)} noValidate>
                                         <div className="grid sm:grid-cols-2 gap-6">
                                             <div className="space-y-2">
                                                 <label htmlFor="name" className="text-sm font-medium text-primary">{contact.content.form.name}</label>
-                                                <Input id="name" placeholder={contact.content.form.namePlaceholder} />
+                                                <Input
+                                                    id="name"
+                                                    placeholder={contact.content.form.namePlaceholder}
+                                                    aria-invalid={!!errors.name}
+                                                    {...register('name', { required: 'Veuillez indiquer votre nom.' })}
+                                                />
+                                                {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
                                             </div>
                                             <div className="space-y-2">
                                                 <label htmlFor="email" className="text-sm font-medium text-primary">{contact.content.form.email}</label>
-                                                <Input id="email" type="email" placeholder={contact.content.form.emailPlaceholder} />
+                                                <Input
+                                                    id="email"
+                                                    type="email"
+                                                    placeholder={contact.content.form.emailPlaceholder}
+                                                    aria-invalid={!!errors.email}
+                                                    {...register('email', {
+                                                        required: 'Veuillez indiquer votre e-mail.',
+                                                        pattern: {
+                                                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                                            message: 'Adresse e-mail invalide.',
+                                                        },
+                                                    })}
+                                                />
+                                                {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
                                             </div>
                                         </div>
                                         <div className="space-y-2">
                                             <label htmlFor="subject" className="text-sm font-medium text-primary">{contact.content.form.subject}</label>
-                                            <Input id="subject" placeholder={contact.content.form.subjectPlaceholder} />
+                                            <Input
+                                                id="subject"
+                                                placeholder={contact.content.form.subjectPlaceholder}
+                                                {...register('subject')}
+                                            />
                                         </div>
                                         <div className="space-y-2">
                                             <label htmlFor="message" className="text-sm font-medium text-primary">{contact.content.form.message}</label>
-                                            <Textarea id="message" placeholder={contact.content.form.messagePlaceholder} rows={5} />
+                                            <Textarea
+                                                id="message"
+                                                placeholder={contact.content.form.messagePlaceholder}
+                                                rows={5}
+                                                aria-invalid={!!errors.message}
+                                                {...register('message', { required: 'Veuillez saisir votre message.' })}
+                                            />
+                                            {errors.message && <p className="text-sm text-destructive">{errors.message.message}</p>}
                                         </div>
-                                        <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90">
+                                        <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-accent hover:bg-accent/90">
                                             {contact.content.form.button} <Send className="ml-2 h-5 w-5" />
                                         </Button>
                                     </form>
@@ -90,6 +160,7 @@ export function HomePageContactForm() {
                                         allowFullScreen={false}
                                         loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade"
+                                        title="Localisation de Bordj Steel"
                                         ></iframe>
                                     </div>
                                 </CardContent>

@@ -274,6 +274,7 @@ export const companyData = {
             subjectPlaceholder: "Sujet de votre message",
             message: "Message",
             messagePlaceholder: "Votre Message",
+            button: "Envoyer le message",
         },
         info: {
           title: "Informations de Contact",

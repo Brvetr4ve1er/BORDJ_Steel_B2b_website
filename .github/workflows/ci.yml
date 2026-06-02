@@ -2,16 +2,14 @@ name: CI
 
 # Continuous-integration gate for the Bordj Steel website.
 #
-# Measured status at setup (2026-05-29, Node 20):
-#   - build  : PASS (all 31 routes generate)            -> BLOCKING (required)
-#   - lint   : PASS (2 react-hooks warnings)            -> BLOCKING (required)
-#   - typecheck: 13 pre-existing errors                 -> ADVISORY (not required yet)
+# Status (2026-05-29, Node 20): build, lint and typecheck are all GREEN.
+#   - build     : PASS (all 31 routes; strict — ignore flags removed)  -> required
+#   - lint      : PASS (0 warnings)                                    -> required
+#   - typecheck : PASS (0 errors)                                      -> required
 #
-# `build` and `lint` are green and safe to require in branch protection.
-# `typecheck` (`tsc --noEmit`) still reports real, pre-existing type debt
-# (the project shipped with `typescript.ignoreBuildErrors` enabled). It runs
-# here so the errors stay visible; drive them to zero, then flip the `ignore*`
-# flags in next.config.ts to `false` and mark this job as a required check too.
+# `next.config.ts` no longer suppresses type/lint errors, so `next build`
+# itself now enforces both. All three jobs are safe to mark required in
+# branch protection.
 #
 # Note: `next lint` is deprecated in Next 16. When upgrading, migrate to the
 # ESLint CLI (`npx @next/codemod@canary next-lint-to-eslint-cli .`).
@@ -52,7 +50,7 @@ jobs:
       - run: npm run lint
 
   typecheck:
-    name: Typecheck (advisory)
+    name: Typecheck (required)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

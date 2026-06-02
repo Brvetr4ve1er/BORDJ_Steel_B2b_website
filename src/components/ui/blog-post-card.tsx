@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { motion } from 'framer-motion';
+import { motion, type HTMLMotionProps } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -27,7 +27,7 @@ const cardVariants = cva(
   }
 );
 
-export interface BlogPostCardProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof cardVariants> {
+export interface BlogPostCardProps extends HTMLMotionProps<"div">, VariantProps<typeof cardVariants> {
   article: Article;
   readMoreText?: string;
 }
