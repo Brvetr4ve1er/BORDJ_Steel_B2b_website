@@ -3,6 +3,11 @@ export const companyData = {
   siteMetadata: {
     title: 'Bordj Steel – Construction métallique en Algérie',
     description: 'Complexe métallurgique Bordj Steel, filiale du groupe Condor, 4 unités de production, projets phares en Algérie.',
+    // Single source of truth for the canonical site URL (used by metadata,
+    // robots and the sitemap). NOTE: confirm the canonical domain with the
+    // client — content elsewhere references bordjsteel.dz, while metadata has
+    // historically used bordj-steel.com (kept here to preserve existing SEO).
+    siteUrl: 'https://bordj-steel.com',
     language: 'fr',
     slogan: 'NOUS DONNONS DU STEEL A VOS PROJETS',
     sloganArabic: "نمنح مشاريعكم صلابة الفولاذ",
