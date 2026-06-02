@@ -20,23 +20,29 @@ This document provides a high-level overview of the BORDJ STEEL web application'
 
 -   **/src/hooks/**: Home to custom React hooks used across the application (e.g., `use-breakpoint.ts`).
 
--   **/src/ai/**: Holds all code related to the Genkit framework for generative AI features.
+-   **/public/**: Contains static assets like the brand logo and the product catalogue PDF, served directly. `sitemap.xml` and `robots.txt` are generated dynamically by `src/app/sitemap.ts` and `src/app/robots.ts`.
 
--   **/public/**: Contains static assets like logos and placeholder images that are served directly.
+## Build & CI
+
+-   The build is **strict**: `next.config.ts` no longer suppresses errors, so `next build` fails on TypeScript or ESLint errors.
+-   `.github/workflows/ci.yml` runs `build`, `lint` and `typecheck` on every push/PR; all three are green and safe to require in branch protection.
+-   Canonical site URL is centralized at `companyData.siteMetadata.siteUrl` (used by metadata, sitemap and robots).
 
 ## Firebase Services
 
 -   **Firebase App Hosting**: The primary service used for building and deploying the Next.js application. Configuration is managed in `apphosting.yaml` and `firebase.json`.
--   **Firestore & Firebase Auth**: The project has tooling and setup hooks available for these services, but as of the last audit, they are not actively integrated or used in the application.
+-   **Firestore & Firebase Auth**: Not used. The unused Firebase client SDK and Genkit scaffolding were removed during cleanup; only the App Hosting deploy config remains.
 
 ## Known Technical Debt & Architectural Issues
 
-1.  **Monolithic Component Structure**: Many pages and components are designed as large, monolithic files that handle multiple responsibilities (e.g., `galvanisation-page-content.tsx`, `charpente-metallique-page.tsx`). This violates the single-responsibility principle and makes maintenance difficult.
+1.  **Monolithic Product Pages**: `galvanisation-page-content.tsx`, `charpente-metallique-page.tsx` and `chaudronnerie-page-content.tsx` remain large single files and use an ineffective `dynamic(() => Promise.resolve(...))` pattern (no real code-splitting). They should be decomposed into `components/sections/<product>/` like the history page already is.
 
-2.  **Overuse of Client Components**: The application heavily relies on `"use client"` directives, often at the top level of a page's component tree. This is primarily driven by the use of the `<AnimatedWrapper>` for animations, forcing entire sections to be rendered on the client-side and negating many of the performance benefits of Next.js Server Components.
+2.  **Overuse of Client Components**: `"use client"` is still used more broadly than necessary, largely driven by `<AnimatedWrapper>`. The boundary should be pushed to interactive leaf components.
 
-3.  **Code Duplication**: There is significant code duplication, especially in the `/src/components/product-variants/` directory. Components for different product types share nearly identical layout and logic, which should be abstracted into a single, reusable component.
+3.  **Unused UI primitives**: ~18 shadcn/ui primitives in `/src/components/ui/` have no importers and remain as an unused component library.
 
-4.  **Unused Code**: The repository contains unused files, including a `language-context.tsx` and a `logger.ts`, which add clutter and potential confusion.
-
-5.  **Inconsistent File & Page Structure**: Some pages define their entire UI within the `page.tsx` file, while others delegate to a dedicated component. A consistent pattern should be enforced.
+### Resolved
+-   Product-variant duplication — now a single generic `ProductVariantDetails` renderer.
+-   Dead/duplicate code (`clients.tsx`, duplicate `AnimatedWrapper`, stale `expandable-cards.tsx`, unused Firebase/Genkit) removed.
+-   Two pages broken by unresolved imports (`/contact`, `/about/history`) fixed.
+-   Non-functional contact form, broken sitemap, and ~50 npm vulnerabilities fixed.

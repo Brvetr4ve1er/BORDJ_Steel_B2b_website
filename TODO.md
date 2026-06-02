@@ -1,48 +1,40 @@
-# Project TODO & Refactoring Tasks
+# Project TODO & Roadmap
 
-This document lists the outstanding tasks required to improve the quality, performance, and maintainability of the BORDJ STEEL codebase.
+Status of cleanup/hardening work on the BORDJ STEEL codebase.
 
-## 1. High-Priority Refactoring
+## ✅ Done
 
--   [ ] **Decompose Monolithic Page Components**
-    -   **Goal**: Break down large page files into smaller, single-responsibility components.
-    -   **Files**: `charpente-metallique-page.tsx`, `galvanisation-page-content.tsx`, `media-center/blog/page.tsx`, `recrutement/page.tsx`.
-    -   **Action**: Create a dedicated folder for each page's sections (e.g., `src/components/pages/galvanisation/`) and move UI sections like `HeroSection`, `BenefitsSection` into their own files.
+- [x] Remove dead code & duplicates (`clients.tsx`, `contact.tsx`, `algeria-map.tsx`,
+      duplicate `AnimatedWrapper`, stale `expandable-cards.tsx`, stray `src/` config copies).
+- [x] Fix two pages broken by unresolved imports (`/contact`, `/about/history`).
+- [x] Make the contact form functional (react-hook-form + validation + mailto submission).
+- [x] Abstract product-variant logic into one generic `ProductVariantDetails` (already done upstream; schema types reconciled).
+- [x] Add ESLint config + GitHub Actions CI (`build`, `lint`, `typecheck`).
+- [x] Reach 0 type errors / 0 lint issues; enable **strict builds** (removed `ignore*` flags).
+- [x] Dynamic `sitemap.ts` + `robots.ts`; centralize canonical site URL.
+- [x] Remove unused dependencies & subsystems (Firebase SDK, Genkit, recharts,
+      react-day-picker, date-fns, papaparse, react-algeria-map): 52 → 2 npm vulns.
+- [x] Fix the catalogue PDF path (was in a trailing-space folder).
 
--   [ ] **Abstract Duplicated Product Variant Logic**
-    -   **Goal**: Eliminate code duplication in the product display components.
-    -   **Files**: `/src/components/product-variants/`.
-    -   **Action**: Create a single generic `<ProductVariantDetails>` component that accepts product data as props and dynamically renders the technical specifications and tables. Remove the specialized components (`CouvertureProduct`, `BardageProduct`, etc.).
+## 🔧 Remaining
 
-## 2. Performance Improvements
+### Maintainability
+- [ ] Decompose the monolithic product pages (`galvanisation`, `charpente`, `chaudronnerie`)
+      into `components/sections/<product>/`, mirroring the history page.
+- [ ] Remove the `dynamic(() => Promise.resolve(UnwrappedX))` anti-pattern (no code-split benefit).
+- [ ] Push `"use client"` down to interactive leaf components.
+- [ ] Standardize heavy routes (`/references`, `/recrutement`, `/media-center/blog`) to thin wrappers
+      that render a single `components/pages/**` component.
+- [ ] Move `/recrutement` inline job listings into `src/config/`.
+- [ ] Remove the ~18 unused shadcn/ui primitives (or keep deliberately as a library).
 
--   [ ] **Optimize Use of Client Components**
-    -   **Goal**: Maximize the use of Next.js Server Components to reduce the client-side JavaScript bundle and improve initial page load speed.
-    -   **Action**: Push the `"use client"` directive down to the smallest possible "leaf" components that are actually interactive. The `<AnimatedWrapper>` is a primary target; its usage should be isolated so that the static parent components can be rendered on the server.
+### Content / assets (need client-provided files or decisions)
+- [ ] Confirm the canonical domain (`bordj-steel.com` vs `bordjsteel.dz`) and set `siteMetadata.siteUrl`.
+- [ ] Self-host client logos; replace hotlinked third-party CDN URLs. A few entries
+      reference `/logos/*.webp` that don't exist (`biolab`, `batimetal`, `man`).
+- [ ] Provide the EN/AR catalogue PDFs and the ISO 9001/14001/45001 certificate PDFs
+      referenced by `/media-center/blog?tab=catalogue` (currently 404).
 
--   [ ] **Implement Dynamic Imports for All Page Sections**
-    -   **Goal**: Ensure that code for each major section of a page is only loaded when it is needed.
-    -   **Action**: Verify that all top-level sections rendered by `home-page.tsx` and other primary pages are imported using `next/dynamic`. This will code-split each section into its own JavaScript chunk.
-
-## 3. Code Cleanup & Housekeeping
-
--   [ ] **Remove Unused Files**
-    -   **Goal**: Reduce repository clutter and eliminate dead code.
-    -   **Files to Remove**:
-        -   `src/context/language-context.tsx` (confirmed unused)
-        -   `src/lib/logger.ts` (appears unused)
-        -   `depcheck-report.json` (build artifact, add to `.gitignore`)
-
--   [ ] **Standardize Page Structure**
-    -   **Goal**: Enforce a consistent pattern for creating pages.
-    -   **Action**: For every route in `/src/app`, the corresponding `page.tsx` file should be minimal. It should import and render a single main component from a corresponding file in `/src/components/pages/`.
-
-## 4. Documentation
-
--   [ ] **Component Storybook or Documentation**
-    -   **Goal**: Document reusable components to improve developer experience.
-    -   **Action**: Set up Storybook or a similar tool to create isolated examples and documentation for components in `/src/components/ui/`.
-
--   [ ] **Update `company-data.ts` and other configs**
-    -   **Goal**: Ensure all static data is current and accurate.
-    -   **Action**: Regularly review the contents of files in `/src/config/` to match the company's latest information.
+### Hardening
+- [ ] Address the 2 remaining (transitive, build-time) npm vulnerabilities when a clean fix lands.
+- [ ] Add smoke tests (contact form, `ProductVariantDetails`, route render).
