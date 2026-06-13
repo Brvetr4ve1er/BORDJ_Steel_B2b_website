@@ -3,6 +3,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, Dot } from 'lucide-react';
@@ -12,6 +13,7 @@ import { AnimatedNumber } from '@/components/animated-number';
 import { DownloadButton } from '@/components/ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
+import { charpenteGalleryImages, charpenteApplications, charpenteWhyChooseUs } from '@/config/charpente-metallique-content';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ImageDialog } from '@/components/ui/image-dialog';
 import { cn } from '@/lib/utils';
@@ -23,30 +25,18 @@ const HeroSection = UnwrappedHeroSection;
 const HoverImageGallery = dynamic(() => import('@/components/ui/hover-image-gallery').then(mod => mod.HoverImageGallery), { ssr: false });
 
 
-const applications = [
-  { icon: <Building className="w-8 h-8" />, text: "Bâtiments industriels & commerciaux" },
-  { icon: <Factory className="w-8 h-8" />, text: "Hangars de stockage & agricoles" },
-  { icon: <Tractor className="w-8 h-8" />, text: "Infrastructures logistiques" },
-  { icon: <HardHat className="w-8 h-8" />, text: "Projets sur mesure" },
-];
+const applicationIconMap = {
+  Building,
+  Factory,
+  Tractor,
+  HardHat,
+} as const;
 
-const whyChooseUs = [
-    {
-        icon: <Award className="w-10 h-10" />,
-        title: "Standards & Certifications",
-        description: "Nous respectons les normes internationales les plus strictes (ISO, EN) pour garantir la qualité et la sécurité de chaque structure."
-    },
-    {
-        icon: <Zap className="w-10 h-10" />,
-        title: "Capacités de Production",
-        description: "Avec des machines CNC de pointe et des soudeuses automatiques, nous avons une capacité de production massive pour les projets de toute envergure."
-    },
-    {
-        icon: <ShieldCheck className="w-10 h-10" />,
-        title: "Expertise & Innovation",
-        description: "Notre bureau d'études et nos équipes s'appuient sur une riche expérience et des références solides pour innover et relever les défis complexes."
-    }
-];
+const whyChooseUsIconMap = {
+  Award,
+  Zap,
+  ShieldCheck,
+} as const;
 
 function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.hero }) {
   const iconMap = useMemo(() => ({
@@ -86,8 +76,10 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
                 </p>
               </div>
               <div className="flex flex-row items-center gap-4">
-                <Button size="lg" variant="destructive">{hero.cta_primary} <ArrowRight className="ml-2" /></Button>
-                <DownloadButton text={hero.cta_secondary} />
+                <Button asChild size="lg" variant="destructive">
+                  <Link href="/contact">{hero.cta_primary} <ArrowRight className="ml-2" /></Link>
+                </Button>
+                <DownloadButton text={hero.cta_secondary} href="/documents/Bordj-Steel-Catalogue-FR.pdf" />
               </div>
             </div>
           </AnimatedWrapper>
@@ -97,7 +89,7 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
               {hero.stats.map((stat, index) => {
                 const Icon = iconMap[stat.icon as keyof typeof iconMap];
                 return (
-                  <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                  <AnimatedWrapper key={stat.title} animation="fade-in-stagger" staggerIndex={index}>
                      <Card className="group bg-background/50 backdrop-blur-md border-border text-white relative overflow-hidden transition-all duration-500 hover:border-accent">
                         <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
                         <CardHeader className="relative flex-row items-center gap-4">
@@ -125,17 +117,10 @@ const NewGallery = () => {
     return (
         <section className="w-full flex flex-col items-center justify-start py-12">
             <div className="max-w-3xl text-center px-4">
-                <h1 className="text-3xl font-semibold">Nos Projets</h1>
+                <h2 className="text-3xl font-semibold">Nos Projets</h2>
             </div>
             <div className="flex items-center gap-2 h-[400px] w-full max-w-7xl mt-10 px-4">
-                {[
-                    "https://i.pinimg.com/736x/ec/93/b8/ec93b8a90b0c088c23cdf817613dd183.jpg",
-                    "https://i.pinimg.com/736x/34/9a/c5/349ac528cf2b299e8e9d38dcf88e029d.jpg",
-                    "https://i.pinimg.com/736x/5f/00/6f/5f006fef04a5f7af462ba580abbb2adc.jpg",
-                    "https://i.pinimg.com/736x/7a/da/ff/7adaff64dfee8fb4467082a0a5daa933.jpg",
-                    "https://i.pinimg.com/736x/53/07/e6/5307e6787500b6efff734990a41772e5.jpg",
-                    "https://i.pinimg.com/736x/db/65/cd/db65cdc8fcf0205a18de1498e1a987c7.jpg"
-                ].map((src, idx) => (
+                {charpenteGalleryImages.map((src, idx) => (
                     <ImageDialog key={idx} imageUrl={src} alt={`Gallery image ${idx + 1}`}>
                         <div
                             className="relative group flex-grow transition-all w-56 rounded-lg overflow-hidden h-[400px] duration-500 hover:w-full cursor-pointer"
@@ -206,14 +191,17 @@ export function CharpenteMetalliquePageContent() {
                         </CardHeader>
                         <CardContent>
                             <ul className="space-y-4">
-                              {applications.map((app, index) => (
-                                <li key={index} className="flex items-center gap-3 text-lg text-foreground">
+                              {charpenteApplications.map((app) => {
+                                const Icon = applicationIconMap[app.iconName as keyof typeof applicationIconMap];
+                                return (
+                                <li key={app.text} className="flex items-center gap-3 text-lg text-foreground">
                                     <div className="flex-shrink-0 w-12 h-12 rounded-full bg-secondary text-accent flex items-center justify-center">
-                                      {app.icon}
+                                      {Icon && <Icon className="w-8 h-8" />}
                                     </div>
                                     <span>{app.text}</span>
                                 </li>
-                              ))}
+                                );
+                              })}
                             </ul>
                         </CardContent>
                     </Card>
@@ -271,7 +259,7 @@ export function CharpenteMetalliquePageContent() {
                            {selectedPillar.specifications.details.map((item, index) => (
                               <li key={index} className="flex items-start text-lg">
                                  <Dot className="text-accent h-6 w-6 flex-shrink-0 mr-2 mt-0.5" />
-                                 <span dangerouslySetInnerHTML={{ __html: item.value.replace(/(\d+mm|\d+\s*mm|\d+\s*m)/g, '<strong class="text-accent font-bold">$1</strong>') }}></span>
+                                 <span dangerouslySetInnerHTML={{ __html: item.value }}></span>
                               </li>
                            ))}
                         </ul>
@@ -351,17 +339,20 @@ export function CharpenteMetalliquePageContent() {
               <h2 className="font-headline text-5xl font-bold text-primary mb-16 text-center">Pourquoi Nous Choisir?</h2>
             </AnimatedWrapper>
             <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
-                {whyChooseUs.map((item, index) => (
+                {charpenteWhyChooseUs.map((item, index) => {
+                    const Icon = whyChooseUsIconMap[item.iconName as keyof typeof whyChooseUsIconMap];
+                    return (
                     <AnimatedWrapper key={item.title} animation="fade-in-stagger" staggerIndex={index}>
                         <div className="text-center">
                             <div className="flex items-center justify-center h-20 w-20 rounded-full bg-background text-accent mx-auto mb-6 shadow-lg border">
-                                {item.icon}
+                                {Icon && <Icon className="w-10 h-10" />}
                             </div>
                             <h3 className="font-headline text-2xl font-bold text-primary mb-3">{item.title}</h3>
                             <p className="text-muted-foreground">{item.description}</p>
                         </div>
                     </AnimatedWrapper>
-                ))}
+                    );
+                })}
             </div>
           </div>
       </section>
@@ -373,10 +364,12 @@ export function CharpenteMetalliquePageContent() {
                 <h2 className="font-headline text-4xl font-bold text-primary mb-4">Discutons de votre projet.</h2>
                 <p className="text-muted-foreground text-lg mb-8">Notre équipe est prête à transformer vos idées en réalité. Contactez-nous pour un devis ou une consultation technique.</p>
                 <div className="flex justify-center gap-4 flex-wrap">
-                    <Button size="lg" variant="destructive">
-                        Demander un Devis <ArrowRight className="ml-2" />
+                    <Button asChild size="lg" variant="destructive">
+                        <Link href="/contact">
+                            Demander un Devis <ArrowRight className="ml-2" />
+                        </Link>
                     </Button>
-                     <DownloadButton text="Télécharger la Brochure" />
+                     <DownloadButton text="Télécharger la Brochure" href="/documents/Bordj-Steel-Catalogue-FR.pdf" />
                 </div>
               </div>
             </AnimatedWrapper>

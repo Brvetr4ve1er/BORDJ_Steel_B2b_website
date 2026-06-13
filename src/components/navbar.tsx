@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,13 +9,6 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTr
 import { cn } from '@/lib/utils';
 import { companyData } from '@/config/company-data';
 import { Logo } from './logo';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -41,30 +34,32 @@ const cairo = Cairo({
   weight: ['700'],
 });
 
+// Single shared icon map, hoisted to module scope so it isn't recreated on
+// every render of the navbar's render functions.
+const iconMap = {
+  Info,
+  Factory,
+  Package,
+  Briefcase,
+  Newspaper,
+  Mail,
+  Building2,
+  HardHat,
+  ShieldCheck,
+  Award,
+  Cog,
+  FileText,
+  Anchor,
+  BookOpen,
+  Video,
+  View,
+  User,
+} as const;
+
 
 const NavLinks = ({ className, onItemClick, navTextColor }: { className?: string, onItemClick?: () => void, navTextColor: string }) => {
     const { navigation } = companyData;
 
-    const iconMap = useMemo(() => ({
-      Info,
-      Factory,
-      Package,
-      Briefcase,
-      Newspaper,
-      Mail,
-      Building2,
-      HardHat,
-      ShieldCheck,
-      Award,
-      Cog,
-      FileText,
-      Anchor,
-      BookOpen,
-      Video,
-      View,
-      User
-    }), []);
-    
     return (
         <NavigationMenu>
             <NavigationMenuList className={cn("flex items-center gap-2", className)}>
@@ -126,25 +121,6 @@ const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a"> & { icon?: string }
 >(({ className, title, children, href, icon, ...props }, ref) => {
-  const iconMap = useMemo(() => ({
-    Info,
-    Factory,
-    Package,
-    Briefcase,
-    Newspaper,
-    Mail,
-    Building2,
-    HardHat,
-    ShieldCheck,
-    Award,
-    Cog,
-    FileText,
-    Anchor,
-    BookOpen,
-    Video,
-    View,
-    User
-  }), []);
   const Icon = icon ? iconMap[icon as keyof typeof iconMap] : null;
   return (
     <li>
@@ -176,9 +152,6 @@ ListItem.displayName = "ListItem";
 
 const MobileNavMenu = ({ setIsMobileMenuOpen }: { setIsMobileMenuOpen: (isOpen: boolean) => void }) => {
   const { navigation } = companyData;
-  const iconMap = useMemo(() => ({
-      Info, Factory, Package, Briefcase, Newspaper, Mail, Building2, HardHat, ShieldCheck, Award, Cog, FileText, Anchor, BookOpen, Video, View, User
-  }), []);
 
   return (
     <Accordion type="single" collapsible className="w-full">
@@ -242,7 +215,6 @@ export function Navbar() {
   const logoContainerSize = isMounted && isScrolled ? 'h-20 w-20' : 'h-28 w-28';
   const textColor = isMounted && isScrolled ? 'text-primary' : 'text-white';
   const menuIconColor = isMounted && isScrolled ? 'text-foreground' : 'text-background';
-  const selectTextColor = isMounted && isScrolled ? "text-primary border-primary/50" : "text-white";
 
   return (
     <header
@@ -274,19 +246,8 @@ export function Navbar() {
         {isMounted ? (
             <div className="hidden md:flex flex-col items-end gap-1 text-right">
                 <p className={cn('text-xs font-semibold uppercase tracking-wider', textColor)}>NOUS DONNONS DU STEEL A VOS PROJETS</p>
-              <div className="mt-1">
-                 <Select defaultValue="fr">
-                    <SelectTrigger className={cn("w-[120px] bg-transparent border-white/50", selectTextColor)}>
-                        <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="fr">Français</SelectItem>
-                        <SelectItem value="en">English</SelectItem>
-                    </SelectContent>
-                </Select>
-              </div>
             </div>
-        ): <div className="hidden md:block w-[120px] h-[76px]" />}
+        ): <div className="hidden md:block w-[120px] h-[40px]" />}
 
         <div className="md:hidden">
           {isMounted ? (
@@ -318,15 +279,6 @@ export function Navbar() {
                  <div className="p-6 border-t mt-auto">
                     <div className="flex flex-col items-center gap-4">
                        <p className="text-xs font-semibold uppercase tracking-wider text-primary">{siteMetadata.slogan}</p>
-                       <Select defaultValue="fr">
-                            <SelectTrigger className="w-[120px]">
-                                <SelectValue />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="fr">Français</SelectItem>
-                                <SelectItem value="en">English</SelectItem>
-                            </SelectContent>
-                        </Select>
                     </div>
                 </div>
               </SheetContent>

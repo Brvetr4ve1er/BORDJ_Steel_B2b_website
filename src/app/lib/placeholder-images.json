@@ -62,7 +62,7 @@
       "blurDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
     },
     "gallery": [
-      { "src": "https://images.unsplash.com/photo-1504917595217-d4dc5b472F3d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdGVlbCUyMHN0cnVjdHVyZXxlbnwwfHx8fDE3NTczNzYxODZ8MA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "alt": "Steel structure assembly", "aiHint": "steel structure" },
+      { "src": "https://images.unsplash.com/photo-1504917595217-d4dc5b472f3d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdGVlbCUyMHN0cnVjdHVyZXxlbnwwfHx8fDE3NTczNzYxODZ8MA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 720, "alt": "Steel structure assembly", "aiHint": "steel structure" },
       { "src": "https://images.unsplash.com/photo-1526938459242-10a41535780a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWxkaW5nJTIwc3RlZWx8ZW58MHx8fHwxNzU3Mzc2MTg2fDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1620, "alt": "Welding steel frame", "aiHint": "welding steel" },
       { "src": "https://images.unsplash.com/photo-1581094376335-a13a7936a048?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbmR1c3RyaWFsJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzU3Mzc2MTg2fDA&ixlib=rb-4.1.0&q=80&w=1080", "width": 1080, "height": 1620, "alt": "Industrial building frame", "aiHint": "industrial frame" },
       { "src": "https://picsum.photos/seed/picsum4/800/600", "width": 800, "height": 600, "alt": "Placeholder 4", "aiHint": "steel construction" },

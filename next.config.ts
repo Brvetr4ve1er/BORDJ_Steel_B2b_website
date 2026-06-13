@@ -2,6 +2,12 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
+  // Pin the workspace root so Next doesn't infer it from a stray parent
+  // pnpm-lock.yaml (which triggers the "inferred workspace root" warning).
+  outputFileTracingRoot: __dirname,
+  turbopack: {
+    root: __dirname,
+  },
   // Type and lint errors fail the build (the codebase is clean as of this change).
   // Do not re-enable ignore flags to paper over errors — fix them instead.
   typescript: {
@@ -11,6 +17,12 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: false,
   },
   images: {
+    // Some remote logos are delivered as SVG. Allow them, but harden the
+    // optimizer: force download disposition and a restrictive CSP so the
+    // SVGs can't execute scripts when served through the image endpoint.
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
       {
         protocol: 'https',
@@ -21,12 +33,6 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'storage.googleapis.com',
         port: '',
         pathname: '/**',
       },
@@ -44,19 +50,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'www.imghippo.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
         hostname: 'i.imghippo.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'i.imghippo.org',
         port: '',
         pathname: '/**',
       },
@@ -98,12 +92,6 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'www.cevital.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
         hostname: 'www.soummam-dz.com',
         port: '',
         pathname: '/**',
@@ -111,12 +99,6 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'smartmedia.digital4danone.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'instagram.faae1-2.fna.fbcdn.net',
         port: '',
         pathname: '/**',
       },
@@ -174,12 +156,6 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
-      {
-        protocol: 'https',
-        hostname: 'www.untitledui.com',
-        port: '',
-        pathname: '/**',
-      }
     ],
   },
 };

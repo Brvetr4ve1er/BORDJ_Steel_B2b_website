@@ -2,26 +2,15 @@
 "use client";
 import React, { useMemo } from "react";
 import { Award, Lightbulb, Search, Cog, Users, BarChart, Target } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { AnimatedWrapper } from "@/components/animated-wrapper";
 import { Card, CardContent } from "@/components/ui/card";
 import { AnimatedNumber } from "@/components/animated-number";
-
-// Data for the timeline events, moved here for easier debugging and styling.
-// Originally from src/config/company-data.ts
-const timelineEvents = [
-  { year: '2012', title: 'Création de Bordj Steel', description: 'Fondation de la SPA BORDJ STEEL dans le cadre de la stratégie de développement du groupe CONDOR.', icon: 'Lightbulb' },
-  { year: '2013', title: 'Début de la Construction', description: 'En juin, les travaux de construction de l\'unité de charpente métallique débutent.', icon: 'Cog' },
-  { year: '2014', title: 'Démarrage de la Production', description: 'Juillet voit le démarrage de la production de l\'unité de charpente métallique.', icon: 'Users' },
-  { year: '2015', title: 'Expansion des Capacités', description: 'Septembre est un mois charnière avec le démarrage de la production de panneaux sandwichs.', icon: 'BarChart' },
-  { year: '2016', title: 'Inauguration et Finalisation', description: 'En Décembre, le complexe est officiellement inauguré par le ministre de l’intérieur.', icon: 'Target' },
-  { year: '2019', title: 'Certification Qualité', description: 'Obtention de la prestigieuse certification ISO 9001 Version 2015.', icon: 'Award' },
-  { year: '2025', title: 'Leader Engagé', description: 'Nous continuons d\'innover, guidés par notre système de Management Intégré QSE.', icon: 'Search' }
-];
+import { companyData } from "@/config/company-data";
 
 
 export function HistoryTimeline() {
-  const events = timelineEvents;
+  // Single source of truth: timeline events live in company-data.ts.
+  const events = companyData.pages.about.timelineEvents;
   
   const iconMap = useMemo(() => ({
     Lightbulb,

@@ -1,11 +1,18 @@
 
+import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
 
+export const metadata: Metadata = {
+  title: 'Vidéos | Bordj Steel',
+  description:
+    'Découvrez nos projets de construction métallique en vidéo : chantiers, fabrication et réalisations Bordj Steel.',
+};
+
 export default function VideosPage() {
   const heroImage = {
-    src: "https://images.unsplash.com/photo-1516245834210-c4c1427873AB?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1516245834210-c4c1427873ab?w=800&q=80",
     alt: "Video camera recording a scene",
     aiHint: "video recording"
   }
@@ -35,8 +42,8 @@ export default function VideosPage() {
       </section>
       <section>
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Content Coming Soon</h2>
-            <p className="text-lg text-muted-foreground mt-4">This page is under construction.</p>
+            <h2 className="text-3xl font-bold">Contenu à venir</h2>
+            <p className="text-lg text-muted-foreground mt-4">Cette page est en cours de construction.</p>
           </div>
       </section>
     </ProductPageLayout>

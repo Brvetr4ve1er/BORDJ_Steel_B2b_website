@@ -3,11 +3,18 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Package, Users, Square, Factory, Flame, Bolt, Droplets, Beaker, Construction, Leaf, Filter } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
+import {
+  geometricTableData,
+  chaudronnerieDrawingImages,
+  chaudronnerieActivities,
+} from '@/config/chaudronnerie-tables';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { DownloadButton } from '@/components/ui/download-button';
 import dynamic from 'next/dynamic';
@@ -21,15 +28,15 @@ import { cn } from '@/lib/utils';
 
 const DetailedStatCard = dynamic(() => import('@/components/detailed-stat-card').then(mod => mod.DetailedStatCard));
 
-const activityCards = [
-    { title: 'Hydrocarbures', icon: <Flame className="h-10 w-10" /> },
-    { title: 'Énergie et Mines', icon: <Bolt className="h-10 w-10" /> },
-    { title: 'Hydraulique', icon: <Droplets className="h-10 w-10" /> },
-    { title: 'Pharmaceutique', icon: <Beaker className="h-10 w-10" /> },
-    { title: 'Travaux Publics', icon: <Construction className="h-10 w-10" /> },
-    { title: 'Environnement', icon: <Leaf className="h-10 w-10" /> },
-    { title: 'Traitement des Eaux', icon: <Filter className="h-10 w-10" /> }
-];
+const activityIconMap: { [key: string]: LucideIcon } = {
+  Flame,
+  Bolt,
+  Droplets,
+  Beaker,
+  Construction,
+  Leaf,
+  Filter,
+};
 
 const ActivityCard = ({ title, icon }: { title: string; icon: React.ReactNode }) => (
     <Card className={cn(
@@ -53,11 +60,14 @@ const ActivitiesSection = () => {
                     </p>
                 </AnimatedWrapper>
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
-                    {activityCards.map((card, index) => (
-                        <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                            <ActivityCard title={card.title} icon={card.icon} />
-                        </AnimatedWrapper>
-                    ))}
+                    {chaudronnerieActivities.map((card, index) => {
+                        const Icon = activityIconMap[card.iconName];
+                        return (
+                            <AnimatedWrapper key={card.title} animation="fade-in-stagger" staggerIndex={index}>
+                                <ActivityCard title={card.title} icon={Icon ? <Icon className="h-10 w-10" /> : null} />
+                            </AnimatedWrapper>
+                        );
+                    })}
                 </div>
             </div>
         </section>
@@ -66,18 +76,7 @@ const ActivitiesSection = () => {
 
 
 const GeometricTechnicalTable = ({ api, setCurrent, current }: { api: CarouselApi, setCurrent: (index: number) => void, current: number }) => {
-  const tableData = [
-    { capacite: 3, format: "1 250", epaisseur: 4, longVirole: "2 200.00", longTotale: "2 730.00", poidsUnite: "468,00", nbreTrous: "1", pressionEpreuve: "3 Bars" },
-    { capacite: 5, format: "1 250", epaisseur: 5, longVirole: "3 850.00", longTotale: "4 290.00", poidsUnite: "469,00", nbreTrous: "1", pressionEpreuve: "3 Bars" },
-    { capacite: 10, format: "1 900", epaisseur: 6, longVirole: "3 200.00", longTotale: "4 010.00", poidsUnite: "1 387,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
-    { capacite: 15, format: "1 900", epaisseur: 6, longVirole: "5 000.00", longTotale: "5 810.00", poidsUnite: "1 908,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
-    { capacite: 20, format: "2 500", epaisseur: 6, longVirole: "4 692.00", longTotale: "5 810.00", poidsUnite: "2 102,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
-    { capacite: 30, format: "2 500", epaisseur: 6, longVirole: "5 700.00", longTotale: "6 742.00", poidsUnite: "2 909,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
-    { capacite: 40, format: "3 000", epaisseur: 6, longVirole: "5 130.00", longTotale: "6 193.00", poidsUnite: "3 363,00", nbreTrous: "1 ou 2", pressionEpreuve: "3 Bars" },
-    { capacite: 50, format: "3 000", epaisseur: 6, longVirole: "6 560.00", longTotale: "7 626.00", poidsUnite: "4 133,00", nbreTrous: "1", pressionEpreuve: "3 Bars" },
-    { capacite: 60, format: "3 000", epaisseur: 6, longVirole: "8 000.00", longTotale: "9 066.00", poidsUnite: "4 803,00", nbreTrous: "1", pressionEpreuve: "3 Bars" },
-    { capacite: 100, format: "3 000", epaisseur: 6, longVirole: "13 600.00", longTotale: "14 886.00", poidsUnite: "7 611,00", nbreTrous: "1", pressionEpreuve: "3 Bars" }
-  ];
+  const tableData = geometricTableData;
 
   return (
     <div className="bg-background">
@@ -229,18 +228,7 @@ export function ChaudronneriePageContent() {
   const [current, setCurrent] = React.useState(0)
   const [count, setCount] = React.useState(0)
 
-  const drawingImages = [
-    "https://i.pinimg.com/736x/05/76/f1/0576f18a52e3a3bb870dfe46089eae54.jpg",
-    "https://i.pinimg.com/736x/51/a9/e3/51a9e370aa2ddbb7439c177612e9a1d2.jpg",
-    "https://i.pinimg.com/736x/57/a7/2b/57a72be37dbd74bf3de07deacdf9aa1f.jpg",
-    "https://i.pinimg.com/736x/6e/10/d6/6e10d64b38329f46cd84e03b5256f2f3.jpg",
-    "https://i.pinimg.com/736x/2a/df/0b/2adf0bc95fdf6b023316e8b398fc7cf9.jpg",
-    "https://i.pinimg.com/736x/15/4d/42/154d42e3d73c5e6fdac5e49213e0b2bb.jpg",
-    "https://i.pinimg.com/736x/11/67/cd/1167cd7b335b19a5d1695a0993b20d31.jpg",
-    "https://i.pinimg.com/736x/22/2e/41/222e41debeda041c6485c8d2ee91f2d5.jpg",
-    "https://i.pinimg.com/736x/7d/80/e2/7d80e268117ead2bd32b20f760c46543.jpg",
-    "https://i.pinimg.com/736x/0b/9e/6f/0b9e6f0a129b6b060b180e4a575ab74a.jpg"
-  ];
+  const drawingImages = chaudronnerieDrawingImages;
 
   React.useEffect(() => {
     if (!api) {
@@ -294,8 +282,10 @@ export function ChaudronneriePageContent() {
                     </p>
                   </div>
                    <div className="flex flex-row items-center gap-4">
-                     <Button size="lg" variant="destructive">{hero.cta_primary} <ArrowRight className="ml-2" /></Button>
-                     <DownloadButton text={hero.cta_secondary} />
+                     <Button asChild size="lg" variant="destructive">
+                       <Link href="/contact">{hero.cta_primary} <ArrowRight className="ml-2" /></Link>
+                     </Button>
+                     <DownloadButton text={hero.cta_secondary} href="/documents/Bordj-Steel-Catalogue-FR.pdf" />
                   </div>
                 </div>
               </AnimatedWrapper>
@@ -305,7 +295,7 @@ export function ChaudronneriePageContent() {
                     {heroStats.map((stat, index) => {
                       const Icon = iconMap[stat.icon as keyof typeof iconMap];
                       return (
-                        <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                        <AnimatedWrapper key={stat.title} animation="fade-in-stagger" staggerIndex={index}>
                            <div className="group relative overflow-hidden rounded-lg">
                                 <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
                                 <DetailedStatCard 

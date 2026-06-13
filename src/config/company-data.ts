@@ -238,29 +238,29 @@ export const companyData = {
     clients: {
       title: "Nos Précieux Clients",
       logos: [
-        { name: "Condor", image: { src: "https://www.condor.dz/wp-content/uploads/2024/10/cropped-logo-condor-light-300x103.png", aiHint: "Condor logo" } },
+        { name: "Condor", image: { src: "/logos/condor.webp", aiHint: "Condor logo" } },
         { name: "Cosider", image: { src: "https://www.cosider-groupe.dz/fr/themes/default/images/logo.png", aiHint: "Cosider logo" } },
-        { name: "UTEC", image: { src: "https://utec.com.sa/wp-content/uploads/2025/01/UTECLogo.png", aiHint: "UTEC logo" } },
+        { name: "UTEC", image: { src: "/logos/utec.webp", aiHint: "UTEC logo" } },
         { name: "Biolab", image: { src: "/logos/biolab.webp", aiHint: "Biolab logo" } },
-        { name: "Hyundai", image: { src: "https://i.pinimg.com/736x/60/3b/83/603b83b35cd26e797e200d9aea13978b.jpg", aiHint: "Hyundai logo" } },
-        { name: "Softal", image: { src: "https://softal-construction.dz/wp-content/uploads/2025/04/logo.png", aiHint: "Softal logo" } },
+        { name: "Hyundai", image: { src: "/logos/hyundai.webp", aiHint: "Hyundai logo" } },
+        { name: "Softal", image: { src: "/logos/softal.webp", aiHint: "Softal logo" } },
         { name: "Batimetal", image: { src: "/logos/batimetal.webp", aiHint: "Batimetal logo" } },
         { name: "Man", image: { src: "/logos/man.webp", aiHint: "Man logo" } },
-        { name: "Cevital", image: { src: "https://cdn.brandfetch.io/idJEGI1qzz/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B", aiHint: "Cevital logo" } },
-        { name: "Metidji", image: { src: "https://metidji.com/wp-content/themes/MetidjiTheme/images/logo.svg", aiHint: "Metidji logo" } },
+        { name: "Cevital", image: { src: "/logos/cevital.webp", aiHint: "Cevital logo" } },
+        { name: "Metidji", image: { src: "/logos/metidji.webp", aiHint: "Metidji logo" } },
         { name: "Soummam", image: { src: "https://www.soummam-dz.com/cms/Paragraphes/su164384/footer-logo-ombre-1.png", aiHint: "Soummam logo" } },
-        { name: "Sim", image: { src: "https://groupesim.com/wp-content/uploads/2021/10/logo-groupe-sim-1-scaled.png", aiHint: "Sim logo" } },
+        { name: "Sim", image: { src: "/logos/sim.webp", aiHint: "Sim logo" } },
         { name: "Mobilis", image: { "src": "https://cdn.brandfetch.io/idCPr4aU5R/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B", "aiHint": "Mobilis logo" } },
         { name: "Amimer Energie", image: { "src": "/logos/amimer_energie.webp", "aiHint": "Amimer Energie logo" } },
-        { name: "Danone", image: { "src": "https://smartmedia.digital4danone.com//is/image/danonecs/danone-logo-12?wid=320&fmt=png-alpha&fit=wrap", "aiHint": "Danone logo" } },
-        { name: "Ifri", image: { "src": "https://ifri-dz.com/wp-content/uploads/2020/09/IFRI_logo.jpg", "aiHint": "Ifri logo" } },
-        { name: "Sonatrach", image: { "src": "https://sonatrach.com/wp-content/uploads/2024/05/logo-sonatrach-white-text.svg", "aiHint": "Sonatrach logo" } },
-        { name: "GCB", image: { "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/GCB_Logo.svg/512px-GCB_Logo.svg.png", "aiHint": "GCB logo" } },
+        { name: "Danone", image: { "src": "/logos/danone.webp", "aiHint": "Danone logo" } },
+        { name: "Ifri", image: { "src": "/logos/ifri.webp", "aiHint": "Ifri logo" } },
+        { name: "Sonatrach", image: { "src": "/logos/sonatrach.webp", "aiHint": "Sonatrach logo" } },
+        { name: "GCB", image: { "src": "/logos/gcb.webp", "aiHint": "GCB logo" } },
         { name: "Imetal", image: { "src": "/logos/imetal.webp", "aiHint": "Imetal logo" } },
-        { name: "Sonelgaz", image: { "src": "https://i.pinimg.com/736x/bd/81/8b/bd818bea09014d23bfcf6520791027ae.jpg", "aiHint": "Sonelgaz logo" } },
-        { name: "Maxtor", image: { "src": "https://www.maxtor.dz/images/logo1.png", "aiHint": "Maxtor logo" } },
+        { name: "Sonelgaz", image: { "src": "/logos/sonelgaz.webp", "aiHint": "Sonelgaz logo" } },
+        { name: "Maxtor", image: { "src": "/logos/maxtor.webp", "aiHint": "Maxtor logo" } },
         { name: "Tazedj", image: { src: "https://scontent.faae1-2.fna.fbcdn.net/v/t39.30808-6/392766429_643897171187275_4759564167078248932_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Q5zTPInJAvMQ7kNvwEsnE69&_nc_oc=AdmwENqX8N2X65uDgKl0f1LQJ83UEp9UiPTDEIO74fKpmanADP_wV4-LXRvgfN03xbA&_nc_zt=23&_nc_ht=scontent.faae1-2.fna&_nc_gid=2FVtYgEaBkwMS3hwJPyo1w&oh=00_AfhzvXSWLr8z7apgfuzCC1fvfTDTAUQ-sfNQrHa7ie-__g&oe=691A3A01", aiHint: "Tazedj logo"} },
-        { name: "Colinco", image: { src: "https://www.colinco-dz.com/templates/vt_law/images/vt_logo_style1.png", aiHint: "Colinco logo"} }
+        { name: "Colinco", image: { src: "/logos/colinco.webp", aiHint: "Colinco logo"} }
       ]
     },
     contact: {
@@ -305,6 +305,6 @@ export const companyData = {
     facebook: "https://web.facebook.com/spabordjsteel/?_rdc=1&_rdr",
     instagram: "https://www.instagram.com/bordj_steel/",
     tiktok: "#",
-    whatsapp: "#"
+    whatsapp: "https://wa.me/213770356686"
   },
 };

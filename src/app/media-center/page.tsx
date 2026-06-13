@@ -1,7 +1,14 @@
 
+import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'Media Center | Bordj Steel',
+  description:
+    'Le centre de médias de Bordj Steel : actualités, projets, vidéos et ressources sur la construction métallique en Algérie.',
+};
 
 export default function MediaCenterPage() {
   const heroImage = {
@@ -28,15 +35,15 @@ export default function MediaCenterPage() {
               Media Center
             </h1>
             <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 mx-auto">
-              Explore our news, projects, and resources.
+              Explorez nos actualités, projets et ressources.
             </p>
           </AnimatedWrapper>
         </div>
       </section>
       <section>
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Content Coming Soon</h2>
-            <p className="text-lg text-muted-foreground mt-4">This page is under construction.</p>
+            <h2 className="text-3xl font-bold">Contenu à venir</h2>
+            <p className="text-lg text-muted-foreground mt-4">Cette page est en cours de construction.</p>
           </div>
       </section>
     </ProductPageLayout>

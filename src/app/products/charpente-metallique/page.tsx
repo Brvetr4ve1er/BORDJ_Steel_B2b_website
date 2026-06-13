@@ -1,5 +1,4 @@
 
-import { companyData } from '@/config/company-data';
 import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import dynamic from 'next/dynamic';
@@ -7,7 +6,7 @@ import dynamic from 'next/dynamic';
 const CharpenteMetalliquePageContent = dynamic(() => import('@/components/charpente-metallique-page').then(mod => mod.CharpenteMetalliquePageContent));
 
 export const metadata: Metadata = {
-  title: `Charpente Métallique | ${companyData.siteMetadata.title}`,
+  title: 'Charpente Métallique',
   description: 'Découvrez nos solutions de charpente métallique pour tous types de bâtiments.',
 };
 

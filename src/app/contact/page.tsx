@@ -1,7 +1,6 @@
 
 import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
-import { companyData } from '@/config/company-data';
 import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import dynamic from 'next/dynamic';
@@ -9,7 +8,7 @@ import dynamic from 'next/dynamic';
 const ContactInfo = dynamic(() => import('@/components/contact-info').then(mod => mod.ContactInfo));
 
 export const metadata: Metadata = {
-  title: `Contact | ${companyData.siteMetadata.title}`,
+  title: 'Contact',
   description: 'Contactez Bordj Steel pour toute demande de devis ou d\'information.',
 };
 

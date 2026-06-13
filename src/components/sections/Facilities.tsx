@@ -38,10 +38,10 @@ export function Facilities() {
           <h2 className="font-headline text-4xl font-bold text-center text-primary mb-12">{units.title}</h2>
         </AnimatedWrapper>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {facilitiesData.map((facility, index) => {
+          {facilitiesData.map((facility) => {
              const Icon = iconMap[facility.icon as keyof typeof iconMap];
              return (
-                <AnimatedWrapper key={index} animation="slide-up">
+                <AnimatedWrapper key={facility.title} animation="slide-up">
                   <Link href={facility.href || '#'} className="group block">
                     <Card className="overflow-hidden shadow-xl transition-shadow hover:shadow-2xl relative aspect-square">
                         <Image
@@ -55,13 +55,14 @@ export function Facilities() {
                         )}
                         data-ai-hint={facility.image.aiHint}
                         />
-                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300" />
                         
                         {/* Icon visible by default */}
                         {Icon && (
                             <div className={cn(
                                 "absolute inset-0 flex items-center justify-center transition-all duration-300",
-                                "group-hover:opacity-0 group-hover:scale-75"
+                                "group-hover:opacity-0 group-hover:scale-75",
+                                "group-focus-within:opacity-0 group-focus-within:scale-75"
                             )}>
                                 <div className="bg-white/20 backdrop-blur-sm p-4 rounded-full">
                                     <Icon className="h-12 w-12 text-white" />
@@ -70,16 +71,16 @@ export function Facilities() {
                         )}
 
                         {/* Text content fades in on hover */}
-                        <div className="absolute inset-0 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute inset-0 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300">
                            {Icon && (
-                                <div className="absolute top-6 left-6 transition-all duration-300 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0">
+                                <div className="absolute top-6 left-6 transition-all duration-300 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
                                    <Icon className="h-10 w-10 text-white" />
                                 </div>
                            )}
                            <div className="mt-auto">
                                 <h3 className="font-headline text-2xl font-bold mb-2">{facility.title}</h3>
                                 <p className="text-sm mb-4">{facility.description}</p>
-                                <Button asChild variant="destructive" className="mt-auto self-start bg-accent hover:bg-accent transition-all duration-300 ease-in-out transform group-hover:translate-y-0 translate-y-4">
+                                <Button asChild variant="destructive" className="mt-auto self-start bg-accent hover:bg-accent transition-all duration-300 ease-in-out transform group-hover:translate-y-0 group-focus-within:translate-y-0 translate-y-4">
                                     <span>
                                       Lire la suite
                                       <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />

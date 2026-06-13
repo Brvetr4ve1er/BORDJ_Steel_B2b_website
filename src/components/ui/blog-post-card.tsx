@@ -55,8 +55,8 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
         whileHover="hover"
         {...props}
       >
-        <Link href={href} className="absolute inset-0 z-10" aria-label={`Read more about ${title}`}>
-          <span className="sr-only">Read More</span>
+        <Link href={href} className="absolute inset-0 z-10" aria-label={`Lire l'article : ${title}`}>
+          <span className="sr-only">Lire l'article</span>
         </Link>
         <div className={cn(
           "relative z-0 flex h-full w-full",

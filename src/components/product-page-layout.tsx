@@ -13,7 +13,7 @@ export function ProductPageLayout({ children, mainClassName, className }: Produc
   return (
     <div className={cn("flex min-h-[100dvh] flex-col", className)}>
       <Navbar />
-      <main className={cn("flex-1", mainClassName)}>
+      <main id="main" className={cn("flex-1", mainClassName)}>
         {children}
       </main>
       <Footer />

@@ -2,18 +2,20 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import * as React from 'react';
 import { useMemo, useState } from 'react';
-import { ChevronsRight, Snowflake, Settings, ArrowRight, DollarSign, Smartphone, Star, Users, Layers, Thermometer, ShieldCheck, Ruler } from 'lucide-react';
+import { ChevronsRight, Snowflake, Settings, ArrowRight } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import images from '@/app/lib/placeholder-images.json';
 import { DownloadButton } from '@/components/ui/download-button';
-import { motion } from 'framer-motion';
 import { productVariants } from '@/config/product-variants.config';
 import { ProductVariantDetails } from '@/components/product-variants/ProductVariantDetails';
+import { StatsCards } from '@/components/sections/sandwich-panels/StatsCards';
+import { sandwichHero, sandwichHeroStats, sandwichIntro } from '@/config/sandwich-panels-data';
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -57,127 +59,6 @@ const FinitionsIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <Settings {...props} />
 );
 
-interface StatsCardsProps {
-  stats?: Array<{
-    value: string
-    label: string
-    description?: string
-    icon?: string
-    trend?: {
-      value: string
-      direction: "up" | "down"
-    }
-  }>
-}
-
-const iconMap: { [key: string]: React.ElementType } = {
-  DollarSign: DollarSign,
-  Users: Users,
-  Star: Star,
-  Smartphone: Smartphone,
-  Layers: Layers,
-  Thermometer: Thermometer,
-  ShieldCheck: ShieldCheck,
-  Ruler: Ruler
-}
-
-function StatsCards({
-  stats = [
-    {
-      value: "2.5M",
-      label: "Revenue",
-      description: "Annual recurring revenue",
-      icon: "DollarSign",
-      trend: { value: "+12%", direction: "up" },
-    },
-    {
-      value: "45K",
-      label: "Customers",
-      description: "Happy customers worldwide",
-      icon: "Users",
-      trend: { value: "+8%", direction: "up" },
-    },
-    {
-      value: "98%",
-      label: "Satisfaction",
-      description: "Customer satisfaction rate",
-      icon: "Star",
-      trend: { value: "+2%", direction: "up" },
-    },
-    {
-      value: "1.2M",
-      label: "Downloads",
-      description: "Total app downloads",
-      icon: "Smartphone",
-      trend: { value: "+15%", direction: "up" },
-    },
-  ],
-}: StatsCardsProps) {
-  const ref = React.useRef(null)
-
-  return (
-      <div
-        ref={ref}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 px-4 sm:px-6 lg:px-8 gap-4"
-      >
-        {stats.map((stat, index) => (
-          <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: index * 0.15,
-            }}
-            className="group backdrop-blur-sm bg-white/10 relative overflow-hidden rounded-2xl border border-white/20 p-6 transition-all duration-500"
-          >
-            <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
-            <div className="relative">
-              <motion.div
-                className="mb-4 text-3xl text-white"
-                initial={{ rotate: -10, scale: 0.8, opacity: 0 }}
-                animate={{ rotate: 0, scale: 1, opacity: 1}}
-                transition={{
-                  duration: 0.4,
-                  delay: index * 0.1 + 0.3,
-                }}
-              >
-                {React.createElement(
-                  iconMap[stat.icon as keyof typeof iconMap] || DollarSign,
-                  {
-                    className: "h-8 w-8",
-                  }
-                )}
-              </motion.div>
-
-              <motion.div
-                className="text-white mb-1 text-2xl font-bold lg:text-3xl"
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{
-                  duration: 0.4,
-                  delay: index * 0.1 + 0.4,
-                }}
-              >
-                {stat.value}
-              </motion.div>
-
-              <h3 className="text-white/90 mb-2 text-sm font-semibold tracking-wide uppercase">
-                {stat.label}
-              </h3>
-
-              {stat.description && (
-                <p className="text-white/70 mb-3 text-xs">
-                  {stat.description}
-                </p>
-              )}
-            </div>
-          </motion.div>
-        ))}
-      </div>
-  )
-}
-
 
 const HeroSection = React.memo(function HeroSection() {
   const heroImage = images['sandwich-panels'].hero;
@@ -198,24 +79,21 @@ const HeroSection = React.memo(function HeroSection() {
         <div className="w-full px-8 md:px-12 pb-10">
           <AnimatedWrapper animation="zoom-in">
               <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
-                  Panneaux Sandwichs
+                  {sandwichHero.title}
               </h1>
               <p className="mt-8 text-xl md:text-2xl max-w-3xl text-gray-200">
-                  Solutions d'isolation haute performance pour la construction moderne.
+                  {sandwichHero.subtitle}
               </p>
               <div className="mt-12 flex justify-start items-center gap-4">
-                  <Button size="lg" variant="destructive" className="group">
-                      Explorer les produits <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+                  <Button asChild size="lg" variant="destructive" className="group">
+                      <Link href="/contact">
+                          Explorer les produits <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
+                      </Link>
                   </Button>
-                  <DownloadButton text="Voir la brochure" />
+                  <DownloadButton text="Voir la brochure" href="/documents/Bordj-Steel-Catalogue-FR.pdf" />
               </div>
           </AnimatedWrapper>
-           <StatsCards stats={[
-             { value: '30-200mm', label: 'Épaisseur', description: 'Gamme complète pour tous besoins', icon: 'Layers' },
-             { value: '0.023 W/mK', label: 'Conductivité', description: 'Performance thermique optimale', icon: 'Thermometer' },
-             { value: 'B, S2-d0', label: 'Réaction au feu', description: 'Sécurité et conformité maximales', icon: 'ShieldCheck' },
-             { value: '15.4m', label: 'Longueur Max', description: 'Adapté aux grandes portées', icon: 'Ruler' },
-           ]}/>
+           <StatsCards stats={sandwichHeroStats}/>
         </div>
       </div>
     </section>
@@ -246,9 +124,9 @@ export function SandwichPanelsPage() {
         <div className="container mx-auto px-4 max-w-screen-2xl">
           <AnimatedWrapper animation="fade-in">
               <Card className="text-center mb-20 p-8 bg-background shadow-lg">
-                  <h2 className="font-headline text-5xl font-bold text-primary mb-6">Panneaux Sandwichs & Solutions de Construction</h2>
+                  <h2 className="font-headline text-5xl font-bold text-primary mb-6">{sandwichIntro.title}</h2>
                   <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
-                      Découvrez notre gamme complète de panneaux sandwichs et solutions pour bâtiments préfabriqués (PEB). Conçus pour offrir une isolation thermique et acoustique supérieure, nos panneaux sont la solution idéale pour les toitures, les bardages et les chambres froides. Chaque variation est conçue avec précision pour répondre aux exigences spécifiques de votre projet, garantissant durabilité, efficacité énergétique et une finition esthétique impeccable.
+                      {sandwichIntro.text}
                   </p>
               </Card>
           </AnimatedWrapper>

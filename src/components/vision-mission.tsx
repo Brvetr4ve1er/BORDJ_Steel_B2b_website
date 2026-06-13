@@ -5,6 +5,7 @@ import { AnimatedWrapper } from "./animated-wrapper";
 import { companyData } from '@/config/company-data';
 import { Award, Cog } from "lucide-react";
 import { Button } from "./ui/button";
+import Link from "next/link";
 import Image from "next/image";
 import { AnimatedNumber } from "./animated-number";
 import images from '@/app/lib/placeholder-images.json';
@@ -90,8 +91,10 @@ export function VisionMission() {
                 <div>
                   <h3 className="font-headline text-3xl font-bold text-primary mb-2">{mission.title}</h3>
                   <p className="text-lg">{mission.text}</p>
-                   <Button size="lg" variant="destructive" className="bg-accent hover:bg-accent/90 mt-6 px-8 py-6 text-lg">
-                    En savoir plus sur notre politique QHSE
+                   <Button asChild size="lg" variant="destructive" className="bg-accent hover:bg-accent/90 mt-6 px-8 py-6 text-lg">
+                    <Link href="/contact">
+                      En savoir plus sur notre politique QHSE
+                    </Link>
                   </Button>
                 </div>
               </div>

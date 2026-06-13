@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -12,6 +11,44 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import { cn } from '@/lib/utils';
+
+// Logos whose artwork is white/light and need a dark backing to be visible
+// on the light carousel background (verified by sampling rendered luminance).
+const DARK_BACKED = new Set<string>(['Cosider', 'Imetal', 'Colinco', 'Mobilis']);
+
+type ClientLogoData = { name: string; image: { src: string; aiHint?: string } };
+
+function ClientLogo({ client }: { client: ClientLogoData }) {
+  const [errored, setErrored] = React.useState(false);
+  const darkBacked = DARK_BACKED.has(client.name);
+
+  return (
+    <div
+      className={cn(
+        "group relative flex justify-center items-center p-4 transition-transform duration-300 ease-in-out hover:scale-110 h-64",
+        (darkBacked || errored) && 'bg-gray-800 rounded-lg'
+      )}
+    >
+      {errored ? (
+        // Graceful fallback when a remote/missing logo fails to load:
+        // show the client name instead of an empty cell.
+        <span className="text-center text-sm font-semibold text-white/90 px-2">
+          {client.name}
+        </span>
+      ) : (
+        <Image
+          src={client.image.src}
+          alt={client.name}
+          width={150}
+          height={80}
+          className="object-contain"
+          onError={() => setErrored(true)}
+          unoptimized={client.image.src.endsWith('.svg')}
+        />
+      )}
+    </div>
+  );
+}
 
 export function Clients() {
   const { clients } = companyData.pages;
@@ -38,20 +75,9 @@ export function Clients() {
             onMouseLeave={plugin.current.reset}
           >
             <CarouselContent>
-              {clients.logos.map((client, index) => (
+              {clients.logos.map((client) => (
                 <CarouselItem key={client.name} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6">
-                   <div className={cn(
-                       "group relative flex justify-center items-center p-4 transition-transform duration-300 ease-in-out hover:scale-110 h-64",
-                       client.name === 'Cosider' && 'bg-gray-800 rounded-lg'
-                    )}>
-                    <Image
-                      src={client.image.src}
-                      alt={client.name}
-                      width={150}
-                      height={80}
-                      className="object-contain"
-                    />
-                  </div>
+                  <ClientLogo client={client} />
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -61,5 +87,3 @@ export function Clients() {
     </section>
   );
 }
-
-    

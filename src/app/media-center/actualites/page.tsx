@@ -1,7 +1,14 @@
 
+import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'Actualités | Bordj Steel',
+  description:
+    'Les dernières nouvelles, annonces et événements de Bordj Steel, expert algérien de la construction métallique.',
+};
 
 export default function ActualitesPage() {
   const heroImage = {

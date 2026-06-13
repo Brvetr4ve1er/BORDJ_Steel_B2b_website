@@ -1,4 +1,5 @@
 
+import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
@@ -6,6 +7,11 @@ import { companyData } from '@/config/company-data';
 import { Card, CardContent } from '@/components/ui/card';
 import images from '@/app/lib/placeholder-images.json';
 import { Layers, Weight, MapPin } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Références',
+  description: 'Découvrez les réalisations et projets phares de Bordj Steel : charpente métallique, panneaux sandwichs et montage à travers l\'Algérie.',
+};
 
 export default function ReferencesPage() {
   const heroImage = {

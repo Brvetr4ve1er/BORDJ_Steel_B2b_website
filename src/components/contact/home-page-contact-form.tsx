@@ -71,9 +71,10 @@ export function HomePageContactForm() {
                                                     id="name"
                                                     placeholder={contact.content.form.namePlaceholder}
                                                     aria-invalid={!!errors.name}
+                                                    aria-describedby={errors.name ? 'name-error' : undefined}
                                                     {...register('name', { required: 'Veuillez indiquer votre nom.' })}
                                                 />
-                                                {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
+                                                {errors.name && <p id="name-error" role="alert" className="text-sm text-destructive">{errors.name.message}</p>}
                                             </div>
                                             <div className="space-y-2">
                                                 <label htmlFor="email" className="text-sm font-medium text-primary">{contact.content.form.email}</label>
@@ -82,6 +83,7 @@ export function HomePageContactForm() {
                                                     type="email"
                                                     placeholder={contact.content.form.emailPlaceholder}
                                                     aria-invalid={!!errors.email}
+                                                    aria-describedby={errors.email ? 'email-error' : undefined}
                                                     {...register('email', {
                                                         required: 'Veuillez indiquer votre e-mail.',
                                                         pattern: {
@@ -90,7 +92,7 @@ export function HomePageContactForm() {
                                                         },
                                                     })}
                                                 />
-                                                {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
+                                                {errors.email && <p id="email-error" role="alert" className="text-sm text-destructive">{errors.email.message}</p>}
                                             </div>
                                         </div>
                                         <div className="space-y-2">
@@ -108,9 +110,10 @@ export function HomePageContactForm() {
                                                 placeholder={contact.content.form.messagePlaceholder}
                                                 rows={5}
                                                 aria-invalid={!!errors.message}
+                                                aria-describedby={errors.message ? 'message-error' : undefined}
                                                 {...register('message', { required: 'Veuillez saisir votre message.' })}
                                             />
-                                            {errors.message && <p className="text-sm text-destructive">{errors.message.message}</p>}
+                                            {errors.message && <p id="message-error" role="alert" className="text-sm text-destructive">{errors.message.message}</p>}
                                         </div>
                                         <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-accent hover:bg-accent/90">
                                             {contact.content.form.button} <Send className="ml-2 h-5 w-5" />

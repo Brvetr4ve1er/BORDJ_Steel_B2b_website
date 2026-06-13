@@ -15,7 +15,7 @@ export function HomePage() {
   return (
     <div className="flex min-h-[100dvh] flex-col">
       <Navbar />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <HomePageHero />
         <VisionMission />
         <Facilities />

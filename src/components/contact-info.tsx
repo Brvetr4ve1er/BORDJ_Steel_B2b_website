@@ -64,13 +64,9 @@ function ContactCard({
 
   const handleWhatsAppClick = () => {
     if (!phone) return;
-    const cleanPhone = phone.replace(/\s/g, "");
+    // wa.me requires digits only — strip spaces and the leading "+".
+    const cleanPhone = phone.replace(/[^0-9]/g, "");
     window.open(`https://wa.me/${cleanPhone}`, "_blank");
-  };
-
-  const handleEmailClick = () => {
-    if (!email) return;
-    window.open(`mailto:${email}`, "_blank");
   };
 
   return (
@@ -103,14 +99,16 @@ function ContactCard({
         <div className="flex flex-col gap-3">
           {phone && (
             <div className="flex items-center justify-between gap-3 rounded-lg border border-border bg-muted/50 p-3">
-              <div
-                className="group/copy flex-grow cursor-pointer"
+              <button
+                type="button"
+                className="group/copy flex-grow cursor-pointer text-left"
                 onClick={() => handleCopy(phone, 'phone')}
+                aria-label="Copier le numéro"
               >
                 <span className="text-2xl font-bold text-foreground transition-colors group-hover/copy:text-accent">
                   {phone}
                 </span>
-                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                <span className="flex items-center gap-1 text-xs text-muted-foreground">
                   {isPhoneCopied ? (
                     <>
                       <Check className="h-3 w-3 text-green-500" />
@@ -122,8 +120,8 @@ function ContactCard({
                       <span>Cliquer pour copier</span>
                     </>
                   )}
-                </div>
-              </div>
+                </span>
+              </button>
               <button
                 onClick={handleWhatsAppClick}
                 className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-green-500/10 text-green-600 transition-all duration-300 hover:bg-green-500 hover:text-white hover:scale-110"
@@ -136,14 +134,16 @@ function ContactCard({
 
           {email && (
             <div className="flex items-center justify-between gap-3 rounded-lg border border-border bg-muted/50 p-3">
-              <div
-                className="group/copy flex-grow cursor-pointer"
+              <button
+                type="button"
+                className="group/copy flex-grow cursor-pointer text-left"
                 onClick={() => handleCopy(email, 'email')}
+                aria-label="Copier l'adresse e-mail"
               >
                 <span className="text-lg font-medium text-foreground transition-colors group-hover/copy:text-accent break-all">
                   {email}
                 </span>
-                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                <span className="flex items-center gap-1 text-xs text-muted-foreground">
                   {isEmailCopied ? (
                     <>
                       <Check className="h-3 w-3 text-green-500" />
@@ -155,15 +155,15 @@ function ContactCard({
                       <span>Cliquer pour copier</span>
                     </>
                   )}
-                </div>
-              </div>
-              <button
-                onClick={handleEmailClick}
+                </span>
+              </button>
+              <a
+                href={`mailto:${email}`}
                 className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-500/10 text-blue-600 transition-all duration-300 hover:bg-blue-500 hover:text-white hover:scale-110"
                 aria-label="Envoyer un email"
               >
                 <Mail className="h-6 w-6" />
-              </button>
+              </a>
             </div>
           )}
         </div>
@@ -233,7 +233,7 @@ export function ContactInfo() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {contactSections.map((section, index) => (
-             <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+             <AnimatedWrapper key={section.title} animation="fade-in-stagger" staggerIndex={index}>
                 <ContactCard
                 {...section}
                 />

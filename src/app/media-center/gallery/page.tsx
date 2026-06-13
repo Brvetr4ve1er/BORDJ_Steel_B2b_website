@@ -1,7 +1,14 @@
 
+import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'Galerie | Bordj Steel',
+  description:
+    'Galerie photo des réalisations Bordj Steel : charpentes métalliques, panneaux sandwich et projets industriels en images.',
+};
 
 export default function GalleryPage() {
   const heroImage = {
@@ -35,8 +42,8 @@ export default function GalleryPage() {
       </section>
       <section>
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Content Coming Soon</h2>
-            <p className="text-lg text-muted-foreground mt-4">This page is under construction.</p>
+            <h2 className="text-3xl font-bold">Contenu à venir</h2>
+            <p className="text-lg text-muted-foreground mt-4">Cette page est en cours de construction.</p>
           </div>
       </section>
     </ProductPageLayout>

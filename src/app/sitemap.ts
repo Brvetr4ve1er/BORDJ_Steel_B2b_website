@@ -12,6 +12,7 @@ const staticPaths = [
   '/contact',
   '/references',
   '/recrutement',
+  '/products',
   '/media-center',
   '/media-center/actualites',
   '/media-center/videos',
@@ -21,6 +22,8 @@ const staticPaths = [
   '/products/chaudronnerie',
   '/products/galvanisation-a-chaud',
   '/products/sandwich-panels',
+  '/privacy',
+  '/terms',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

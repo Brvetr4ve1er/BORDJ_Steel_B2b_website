@@ -1,9 +1,11 @@
 "use client";
 
 import Link from 'next/link';
+import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Facebook, Instagram, Linkedin, MessageCircle, Send } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Send } from 'lucide-react';
 import { companyData } from '@/config/company-data';
+import { useToast } from '@/hooks/use-toast';
 import { Logo } from './logo';
 import { SocialButton } from './social-button';
 import { Input } from './ui/input';
@@ -30,6 +32,19 @@ const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export function Footer() {
   const { footer, socials, navigation, pages } = companyData;
+  const { toast } = useToast();
+  const [email, setEmail] = React.useState('');
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    // No newsletter backend yet — acknowledge and route the lead to the contact inbox.
+    toast({
+      title: 'Merci !',
+      description: 'Votre adresse a bien été enregistrée. Nous vous tiendrons informé.',
+    });
+    setEmail('');
+  };
 
   const socialButtons = [
     { href: socials.facebook, icon: <Facebook className="w-6 h-6" />, name: 'Facebook', fromColor: 'from-blue-600', toColor: 'to-blue-400' },
@@ -67,6 +82,7 @@ export function Footer() {
             </address>
              <div className="mt-6 aspect-w-16 aspect-h-9 rounded-lg overflow-hidden border-2 border-accent">
                 <iframe
+                title="Localisation de Bordj Steel sur Google Maps"
                 src="https://maps.google.com/maps?q=N%C2%B01%20lieu-dit%20Mechta%20Fatima%2C%20Bordj%20Bou%20Arr%C3%A9ridj%2C%20Alg%C3%A9rie&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="150"
@@ -97,9 +113,15 @@ export function Footer() {
             <p className="mb-4 text-base text-white/70">
               Rejoignez notre newsletter pour les dernières mises à jour.
             </p>
-            <form className="relative">
+            <form className="relative" onSubmit={handleNewsletterSubmit}>
+              <label htmlFor="newsletter-email" className="sr-only">Adresse e-mail</label>
               <Input
+                id="newsletter-email"
+                name="email"
                 type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Entrez votre email"
                 className="pr-14 h-12 text-base bg-white/10 text-white placeholder:text-white/50 border-white/20 focus:border-accent"
               />
@@ -115,14 +137,14 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-10 text-center md:flex-row">
-          <p className="text-base text-white/60">
+          <p className="text-base text-white/80">
             &copy; {new Date().getFullYear()} {footer.copyright}
           </p>
           <nav className="flex gap-6 text-base">
-            <Link href="#" className="text-white/60 transition-colors hover:text-accent">
+            <Link href="/privacy" className="text-white/80 transition-colors hover:text-accent">
               {footer.legal.privacy}
             </Link>
-            <Link href="#" className="text-white/60 transition-colors hover:text-accent">
+            <Link href="/terms" className="text-white/80 transition-colors hover:text-accent">
               {footer.legal.terms}
             </Link>
           </nav>

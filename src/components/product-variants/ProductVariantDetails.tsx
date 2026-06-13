@@ -52,7 +52,7 @@ const TableSection: React.FC<{ section: Extract<ProductVariantSection, { type: '
                     <TableHead className="text-center font-semibold" colSpan={2}></TableHead>
                     <TableHead className="text-center font-semibold" colSpan={section.icon === 'two-supports' ? (section.headers.length - 2) / 2 : section.headers.length - 2}>
                         {section.icon === 'one-support' && <OneSupportIcon className="h-16 mx-auto" />}
-                        {section.icon === 'two-supports' && <OneSupportIcon className="h-16 mx-auto" />}
+                        {section.icon === 'two-supports' && <TwoSupportsIcon className="h-16 mx-auto" />}
                     </TableHead>
                      {section.icon === 'two-supports' && (
                         <TableHead className="text-center font-semibold" colSpan={(section.headers.length - 2) / 2}>
@@ -156,7 +156,7 @@ export function ProductVariantDetails({ product }: { product: ProductVariant }) 
         )}
         <div className={!hasMainImage ? 'md:col-span-2' : ''}>
           <div className="border-l-8 border-accent pl-4 mb-6">
-            <h1 className="text-2xl font-bold text-accent uppercase">{product.title}</h1>
+            <h2 className="text-2xl font-bold text-accent uppercase">{product.title}</h2>
           </div>
           {product.sections.map((section, index) => {
             const Component = sectionComponentMap[section.type] as React.ElementType;

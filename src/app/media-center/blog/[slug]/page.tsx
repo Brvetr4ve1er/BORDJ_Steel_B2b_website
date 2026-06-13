@@ -1,4 +1,5 @@
 
+import type { Metadata } from 'next';
 import { articles } from '@/config/blog-data';
 import { notFound } from 'next/navigation';
 import { ProductPageLayout } from '@/components/product-page-layout';
@@ -14,6 +15,36 @@ export async function generateStaticParams() {
   return articles.map((article) => ({
     slug: article.id,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles.find((p) => p.id === slug);
+
+  if (!article) {
+    return {
+      title: 'Article | Bordj Steel',
+      description:
+        'Actualités, innovations et savoir-faire de l’industrie de l’acier par Bordj Steel.',
+    };
+  }
+
+  const description =
+    article.description.length > 155
+      ? `${article.description.slice(0, 155).trimEnd()}…`
+      : article.description;
+
+  return {
+    title: article.title,
+    description,
+    openGraph: {
+      images: [article.imageUrl],
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {

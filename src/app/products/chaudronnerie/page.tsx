@@ -1,5 +1,4 @@
 
-import { companyData } from '@/config/company-data';
 import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import dynamic from 'next/dynamic';
@@ -7,7 +6,7 @@ import dynamic from 'next/dynamic';
 const ChaudronneriePageContent = dynamic(() => import('@/components/chaudronnerie-page-content').then(mod => mod.ChaudronneriePageContent));
 
 export const metadata: Metadata = {
-  title: `Chaudronnerie | ${companyData.siteMetadata.title}`,
+  title: 'Chaudronnerie',
   description: 'Découvrez nos capacités de fabrication sur mesure pour des équipements industriels.',
 };
 
