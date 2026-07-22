@@ -10,14 +10,12 @@ import {
   Zap,
   Headphones,
   HardHat,
-  Phone,
   Mail,
   Copy,
   Check
 } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
-import { companyData } from '@/config/company-data';
 import { useState } from 'react';
 import Image from 'next/image';
 import images from '@/app/lib/placeholder-images.json';
@@ -66,7 +64,7 @@ function ContactCard({
     if (!phone) return;
     // wa.me requires digits only — strip spaces and the leading "+".
     const cleanPhone = phone.replace(/[^0-9]/g, "");
-    window.open(`https://wa.me/${cleanPhone}`, "_blank");
+    window.open(`https://wa.me/${cleanPhone}`, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -83,6 +81,7 @@ function ContactCard({
             src={image}
             alt={title}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
         )}
@@ -173,8 +172,6 @@ function ContactCard({
 }
 
 export function ContactInfo() {
-  const { contact } = companyData.pages;
-
   const contactSections: ContactCardProps[] = [
     {
       icon: <Building2 className="h-8 w-8" />,
@@ -226,7 +223,7 @@ export function ContactInfo() {
         <div className="mb-12 text-center">
           <AnimatedWrapper animation="fade-in">
             <h2 className="font-bold text-4xl text-accent">
-              Remplissez le formulaire et notre équipe vous répondra dans les 24 heures.
+              Contactez le service concerné — notre équipe vous répond sous 24 heures.
             </h2>
           </AnimatedWrapper>
         </div>

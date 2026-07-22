@@ -19,10 +19,9 @@ const roboto = Roboto({
   weight: ['400', '500', '700'],
 });
 
-// TODO(SEO): replace '/bordj-steel-logo.svg' below with a dedicated 1200x630 PNG
-// (e.g. /opengraph-image.png). SVG works as a stopgap but many social platforms
-// (Facebook, LinkedIn, X) do not render SVG OG images reliably.
-const ogImage = '/bordj-steel-logo.svg';
+// Dedicated 1200x630 raster card — social platforms (Facebook, LinkedIn, X)
+// do not render SVG OG images reliably.
+const ogImage = '/og-image.png';
 
 export const metadata: Metadata = {
   title: {
@@ -95,6 +94,12 @@ export default function RootLayout({
 
       </head>
       <body>
+          {/* AnimatedWrapper hides content (opacity-0) until an
+              IntersectionObserver fires; without JS nothing would ever appear.
+              This noscript override keeps the site fully readable JS-free. */}
+          <noscript>
+            <style>{`.opacity-0{opacity:1!important;transform:none!important}`}</style>
+          </noscript>
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:left-4 focus:top-4 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-foreground"

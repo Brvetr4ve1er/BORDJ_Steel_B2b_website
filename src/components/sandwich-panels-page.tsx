@@ -134,7 +134,7 @@ export function SandwichPanelsPage() {
           <AnimatedWrapper animation="fade-in">
             <div className="mb-24 flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
                 {productButtons.map(({ key, label, icon: Icon }) => (
-                <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group" onClick={() => setActiveProductKey(key)}>
+                <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group">
                     <div className={cn(
                     "w-32 h-32 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
                     activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
@@ -146,6 +146,9 @@ export function SandwichPanelsPage() {
                     )} />
                     </div>
                     <Button
+                    type="button"
+                    onClick={() => setActiveProductKey(key)}
+                    aria-pressed={activeProductKey === key}
                     variant={activeProductKey === key ? 'destructive' : 'outline'}
                     className={cn(
                         "h-auto py-2 px-6 transition-all duration-300 text-center",

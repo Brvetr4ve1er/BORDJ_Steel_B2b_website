@@ -1,6 +1,4 @@
 
-"use client";
-
 import { AnimatedWrapper } from "./animated-wrapper";
 import { companyData } from '@/config/company-data';
 import { Award, Cog } from "lucide-react";
@@ -9,19 +7,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { AnimatedNumber } from "./animated-number";
 import images from '@/app/lib/placeholder-images.json';
-import { useMemo } from "react";
 import type { ElementType } from "react";
-import { motion } from "framer-motion";
+
+const iconMap: { [key: string]: ElementType } = {
+  Award,
+  Cog,
+};
 
 export function VisionMission() {
   const { about } = companyData.pages;
   const { vision, mission, history, completedProjects } = about.content;
   const aboutImage = images.homepage.about;
-
-  const iconMap: { [key: string]: ElementType } = useMemo(() => ({
-    Award: Award,
-    Cog: Cog,
-  }), []);
 
   const VisionIcon = iconMap[vision.icon];
   const MissionIcon = iconMap[mission.icon];
@@ -49,14 +45,7 @@ export function VisionMission() {
                             <AnimatedNumber value={completedProjects} />+
                         </div>
                         <p className="font-semibold uppercase tracking-wider mt-2">
-                            Projets Réalisés{' '}
-                            <motion.span
-                                className="font-bold font-headline text-2xl"
-                                animate={{ scale: [1, 1.05, 1], opacity: [1, 0.9, 1] }}
-                                transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
-                            >
-                                par an
-                            </motion.span>
+                            Projets Réalisés
                         </p>
                     </div>
                 </div>
@@ -92,7 +81,7 @@ export function VisionMission() {
                   <h3 className="font-headline text-3xl font-bold text-primary mb-2">{mission.title}</h3>
                   <p className="text-lg">{mission.text}</p>
                    <Button asChild size="lg" variant="destructive" className="bg-accent hover:bg-accent/90 mt-6 px-8 py-6 text-lg">
-                    <Link href="/contact">
+                    <Link href="/about/history">
                       En savoir plus sur notre politique QHSE
                     </Link>
                   </Button>

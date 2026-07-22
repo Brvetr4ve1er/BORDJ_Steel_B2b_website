@@ -1,6 +1,4 @@
 
-"use client";
-
 import Image from 'next/image';
 import { AnimatedWrapper } from './animated-wrapper';
 import { Card } from './ui/card';

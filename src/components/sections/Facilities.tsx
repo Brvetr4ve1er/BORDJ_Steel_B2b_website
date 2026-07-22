@@ -1,6 +1,4 @@
 
-"use client";
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
@@ -11,18 +9,19 @@ import { ArrowRight, HardHat, Layers, Cog, Anchor } from 'lucide-react';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import images from '@/app/lib/placeholder-images.json';
-import { useMemo } from 'react';
+
+// Static icon map hoisted to module scope so it isn't recreated on every
+// render (same pattern as navbar.tsx).
+const iconMap = {
+  HardHat,
+  Layers,
+  Cog,
+  Anchor,
+} as const;
 
 export function Facilities() {
   const { units } = companyData.pages;
   const facilityImages = images.facilities;
-
-  const iconMap = useMemo(() => ({
-    HardHat,
-    Layers,
-    Cog,
-    Anchor,
-  }), []);
 
   const facilitiesData = [
     { ...units.items[0], image: facilityImages.charpente },

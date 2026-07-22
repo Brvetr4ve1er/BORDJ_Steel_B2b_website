@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, X, Building2, HardHat, ShieldCheck, ChevronDown, Award, Cog, FileText, Anchor, BookOpen, Video, View, User } from 'lucide-react';
+import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, X, Building2, HardHat, ShieldCheck, Award, Cog, FileText, Anchor, BookOpen, Video, View, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -25,14 +25,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import * as React from 'react';
-import { Cairo } from 'next/font/google';
-
-const cairo = Cairo({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-cairo',
-  weight: ['700'],
-});
 
 // Single shared icon map, hoisted to module scope so it isn't recreated on
 // every render of the navbar's render functions.
@@ -220,12 +212,11 @@ export function Navbar() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 transition-all duration-300',
-        headerStyle,
-        cairo.variable
+        headerStyle
       )}
     >
       <div className="flex items-center h-full">
-        <Link href="/" className="flex items-center h-full gap-2 group" aria-label="Bordj Steel Home">
+        <Link href="/" className="flex items-center h-full gap-2 group" aria-label="Accueil Bordj Steel">
           <div className={cn("relative transition-all duration-300 overflow-hidden", logoContainerSize)}>
             <div className="relative h-full w-full transition-transform duration-300 ease-out group-hover:scale-110">
               <Logo />
@@ -239,15 +230,13 @@ export function Navbar() {
       </div>
 
       <div className="hidden md:flex flex-1 justify-center items-center">
-        {isMounted ? <NavLinks navTextColor={textColor} /> : <div className="h-10" />}
+        <NavLinks navTextColor={textColor} />
       </div>
 
       <div className="flex items-center gap-4">
-        {isMounted ? (
-            <div className="hidden md:flex flex-col items-end gap-1 text-right">
-                <p className={cn('text-xs font-semibold uppercase tracking-wider', textColor)}>NOUS DONNONS DU STEEL A VOS PROJETS</p>
-            </div>
-        ): <div className="hidden md:block w-[120px] h-[40px]" />}
+        <div className="hidden md:flex flex-col items-end gap-1 text-right">
+            <p className={cn('text-xs font-semibold uppercase tracking-wider', textColor)}>{siteMetadata.slogan}</p>
+        </div>
 
         <div className="md:hidden">
           {isMounted ? (
@@ -266,6 +255,7 @@ export function Navbar() {
                   <SheetClose asChild>
                     <Button variant="ghost" size="icon">
                       <X className="h-6 w-6 text-foreground" />
+                      <span className="sr-only">Fermer le menu</span>
                     </Button>
                   </SheetClose>
                   <SheetTitle className="sr-only">Menu Principal</SheetTitle>

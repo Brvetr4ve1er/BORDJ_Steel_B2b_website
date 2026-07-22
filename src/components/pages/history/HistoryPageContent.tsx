@@ -1,7 +1,5 @@
 
 
-"use client";
-
 import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { ActivitiesSection } from '@/components/sections/history/ActivitiesSection';

@@ -4,8 +4,10 @@ import { articles } from '@/config/blog-data';
 
 const BASE_URL = companyData.siteMetadata.siteUrl;
 
-// Every public route. Keep in sync with src/app/**; the blog detail pages are
-// generated from the article data so they never drift.
+// Every indexable public route. Keep in sync with src/app/**; the blog detail
+// pages are generated from the article data so they never drift. The thin
+// "Contenu à venir" media-center placeholder pages are noindexed and therefore
+// intentionally excluded.
 const staticPaths = [
   '/',
   '/about/history',
@@ -13,10 +15,6 @@ const staticPaths = [
   '/references',
   '/recrutement',
   '/products',
-  '/media-center',
-  '/media-center/actualites',
-  '/media-center/videos',
-  '/media-center/gallery',
   '/media-center/blog',
   '/products/charpente-metallique',
   '/products/chaudronnerie',

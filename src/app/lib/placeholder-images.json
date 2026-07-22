@@ -60,29 +60,7 @@
       "alt": "Charpente Métallique en construction",
       "aiHint": "steel frame construction",
       "blurDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
-    },
-    "gallery": [
-      { "src": "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1080&q=80&auto=format&fit=crop", "width": 1080, "height": 720, "alt": "Soudure d'une structure métallique", "aiHint": "welding steel structure" },
-      { "src": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1080&q=80&auto=format&fit=crop", "width": 1080, "height": 720, "alt": "Chantier de construction charpente", "aiHint": "steel frame construction site" },
-      { "src": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1080&q=80&auto=format&fit=crop", "width": 1080, "height": 720, "alt": "Travail de précision en atelier métallique", "aiHint": "metalwork precision" },
-      { "src": "https://picsum.photos/seed/picsum4/800/600", "width": 800, "height": 600, "alt": "Placeholder 4", "aiHint": "steel construction" },
-      { "src": "https://picsum.photos/seed/picsum5/600/800", "width": 600, "height": 800, "alt": "Placeholder 5", "aiHint": "metal work" },
-      { "src": "https://picsum.photos/seed/picsum6/800/800", "width": 800, "height": 800, "alt": "Placeholder 6", "aiHint": "industrial design" },
-      { "src": "https://picsum.photos/seed/picsum7/900/600", "width": 900, "height": 600, "alt": "Placeholder 7", "aiHint": "factory floor" },
-      { "src": "https://picsum.photos/seed/picsum8/600/900", "width": 600, "height": 900, "alt": "Placeholder 8", "aiHint": "steel girders" },
-      { "src": "https://picsum.photos/seed/picsum9/700/600", "width": 700, "height": 600, "alt": "Placeholder 9", "aiHint": "metal fabrication" },
-      { "src": "https://picsum.photos/seed/picsum10/600/700", "width": 600, "height": 700, "alt": "Placeholder 10", "aiHint": "building structure" },
-      { "src": "https://picsum.photos/seed/picsum11/1000/600", "width": 1000, "height": 600, "alt": "Placeholder 11", "aiHint": "construction site" },
-      { "src": "https://picsum.photos/seed/picsum12/600/1000", "width": 600, "height": 1000, "alt": "Placeholder 12", "aiHint": "welding sparks" },
-      { "src": "https://picsum.photos/seed/picsum13/800/700", "width": 800, "height": 700, "alt": "Placeholder 13", "aiHint": "steel beams" },
-      { "src": "https://picsum.photos/seed/picsum14/700/800", "width": 700, "height": 800, "alt": "Placeholder 14", "aiHint": "modern architecture" },
-      { "src": "https://picsum.photos/seed/picsum15/900/700", "width": 900, "height": 700, "alt": "Placeholder 15", "aiHint": "industrial machinery" },
-      { "src": "https://picsum.photos/seed/picsum16/700/900", "width": 700, "height": 900, "alt": "Placeholder 16", "aiHint": "metal workshop" },
-      { "src": "https://picsum.photos/seed/picsum17/850/650", "width": 850, "height": 650, "alt": "Placeholder 17", "aiHint": "structural steel" },
-      { "src": "https://picsum.photos/seed/picsum18/650/850", "width": 650, "height": 850, "alt": "Placeholder 18", "aiHint": "building frame" },
-      { "src": "https://picsum.photos/seed/picsum19/950/650", "width": 950, "height": 650, "alt": "Placeholder 19", "aiHint": "architectural detail" },
-      { "src": "https://picsum.photos/seed/picsum20/650/950", "width": 650, "height": 950, "alt": "Placeholder 20", "aiHint": "steel trusses" }
-    ]
+    }
   },
   "chaudronnerie": {
     "hero": {
@@ -94,25 +72,25 @@
         "blurDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII="
     },
     "silos": {
-        "src": "https://picsum.photos/seed/silo/800/600",
+        "src": "https://images.unsplash.com/photo-1535732820275-9ffd998cac22?w=800&h=600&q=80&auto=format&fit=crop",
         "width": 800, "height": 600,
         "alt": "Silo en acier de grande capacité",
         "aiHint": "steel silo"
     },
     "ducting": {
-        "src": "https://picsum.photos/seed/ducting/800/600",
+        "src": "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&h=600&q=80&auto=format&fit=crop",
         "width": 800, "height": 600,
         "alt": "Gaines de ventilation industrielle",
         "aiHint": "industrial ducting"
     },
     "meccano": {
-        "src": "https://picsum.photos/seed/meccano/800/600",
+        "src": "https://images.unsplash.com/photo-1533709752211-118fcaf03312?w=800&h=600&q=80&auto=format&fit=crop",
         "width": 800, "height": 600,
         "alt": "Structure mécano-soudée complexe",
         "aiHint": "welded structure"
     },
     "equipment": {
-        "src": "https://picsum.photos/seed/equipment/800/600",
+        "src": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&h=600&q=80&auto=format&fit=crop",
         "width": 800, "height": 600,
         "alt": "Équipement industriel en acier",
         "aiHint": "industrial equipment"

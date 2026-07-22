@@ -28,7 +28,8 @@
     --secondary: 0 0% 96.1%; /* #D9D9D9 */
     --secondary-foreground: 0 0% 29.4%;
     --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    /* 42% (not 45.1%) so body text on bg-secondary (#F5F5F5) clears WCAG AA 4.5:1. */
+    --muted-foreground: 0 0% 42%;
     --accent: 358 66% 45.1%; /* #C1272D */
     --accent-hover: 358 66% 35%;
     --accent-foreground: 0 0% 100%;

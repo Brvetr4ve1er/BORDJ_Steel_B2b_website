@@ -14,15 +14,14 @@ import { DownloadButton } from '@/components/ui/download-button';
 import dynamic from 'next/dynamic';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
 import { charpenteGalleryImages, charpenteApplications, charpenteWhyChooseUs } from '@/config/charpente-metallique-content';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ImageDialog } from '@/components/ui/image-dialog';
+import { HoverImageGallery } from '@/components/ui/hover-image-gallery';
 import { cn } from '@/lib/utils';
 import { ProductionTables } from '@/components/production-tables';
 
 const FeatureHoverCard = dynamic(() => import('@/components/feature-hover-card').then(mod => mod.FeatureHoverCard));
 // Same-module component — reference directly (no code-split benefit from dynamic).
 const HeroSection = UnwrappedHeroSection;
-const HoverImageGallery = dynamic(() => import('@/components/ui/hover-image-gallery').then(mod => mod.HoverImageGallery), { ssr: false });
 
 
 const applicationIconMap = {
@@ -36,6 +35,15 @@ const whyChooseUsIconMap = {
   Award,
   Zap,
   ShieldCheck,
+} as const;
+
+const pillarIconMap = {
+  HardHat,
+  Cog,
+  Layers,
+  TowerControl,
+  Car,
+  Tractor,
 } as const;
 
 function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.hero }) {
@@ -90,7 +98,7 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
                 const Icon = iconMap[stat.icon as keyof typeof iconMap];
                 return (
                   <AnimatedWrapper key={stat.title} animation="fade-in-stagger" staggerIndex={index}>
-                     <Card className="group bg-background/50 backdrop-blur-md border-border text-white relative overflow-hidden transition-all duration-500 hover:border-accent">
+                     <Card className="group bg-black/50 backdrop-blur-md border-border text-white relative overflow-hidden transition-all duration-500 hover:border-accent">
                         <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
                         <CardHeader className="relative flex-row items-center gap-4">
                             <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center transition-colors duration-300 group-hover:bg-accent-foreground/10">
@@ -121,17 +129,19 @@ const NewGallery = () => {
             </div>
             <div className="flex items-center gap-2 h-[400px] w-full max-w-7xl mt-10 px-4">
                 {charpenteGalleryImages.map((src, idx) => (
-                    <ImageDialog key={idx} imageUrl={src} alt={`Gallery image ${idx + 1}`}>
-                        <div
-                            className="relative group flex-grow transition-all w-56 rounded-lg overflow-hidden h-[400px] duration-500 hover:w-full cursor-pointer"
+                    <ImageDialog key={idx} imageUrl={src} alt={`Réalisation charpente métallique ${idx + 1}`}>
+                        <button
+                            type="button"
+                            className="relative group flex-grow transition-all w-56 rounded-lg overflow-hidden h-[400px] duration-500 hover:w-full cursor-pointer block p-0 border-0 bg-transparent"
                         >
                             <Image
                                 fill
+                                sizes="(max-width: 1280px) 100vw, 1280px"
                                 className="h-full w-full object-cover object-center"
                                 src={src}
-                                alt={`image-${idx}`}
+                                alt={`Réalisation charpente métallique ${idx + 1}`}
                             />
-                        </div>
+                        </button>
                     </ImageDialog>
                 ))}
             </div>
@@ -148,15 +158,6 @@ export function CharpenteMetalliquePageContent() {
   const handlePillarClick = (id: string) => {
     setSelectedPillarId(id);
   };
-  
-  const iconMap = useMemo(() => ({
-    HardHat,
-    Cog,
-    Layers,
-    TowerControl,
-    Car,
-    Tractor
-  }), []);
 
   return (
     <div className="bg-background">
@@ -220,16 +221,21 @@ export function CharpenteMetalliquePageContent() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {charpenteMetalliqueData.pillars.map((pillar, index) => {
-              const Icon = iconMap[pillar.iconName as keyof typeof iconMap];
+              const Icon = pillarIconMap[pillar.iconName as keyof typeof pillarIconMap];
               return (
                 <AnimatedWrapper key={pillar.id} animation="fade-in-stagger" staggerIndex={index}>
-                  <div onClick={() => handlePillarClick(pillar.id)} className="cursor-pointer">
+                  <button
+                    type="button"
+                    onClick={() => handlePillarClick(pillar.id)}
+                    aria-pressed={selectedPillarId === pillar.id}
+                    className="group cursor-pointer text-left w-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  >
                     <FeatureHoverCard
                         Icon={Icon}
                         title={pillar.title}
                         description={pillar.description}
                     />
-                  </div>
+                  </button>
                 </AnimatedWrapper>
               );
             })}
@@ -316,6 +322,7 @@ export function CharpenteMetalliquePageContent() {
                               src={image.src}
                               alt={image.alt}
                               fill
+                              sizes="(max-width: 1024px) 100vw, 50vw"
                               className="object-contain"
                               data-ai-hint={image.aiHint}
                             />

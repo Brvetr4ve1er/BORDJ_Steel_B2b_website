@@ -1,7 +1,5 @@
 
 
-"use client";
-
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
 import { Users, TrendingUp, Factory, ClipboardCheck, HardHat, UserCheck, DollarSign, Network, Wrench } from 'lucide-react';
@@ -108,6 +106,7 @@ const TeamFeature = ({
           src={image}
           alt={title}
           fill
+          sizes="(max-width: 768px) 35vw, 18vw"
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>

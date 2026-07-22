@@ -1,16 +1,17 @@
 
-import dynamic from 'next/dynamic';
-
-const Navbar = dynamic(() => import('@/components/navbar').then(mod => mod.Navbar));
-const HomePageHero = dynamic(() => import('@/components/home-page-hero').then(mod => mod.HomePageHero));
-const VisionMission = dynamic(() => import('@/components/vision-mission').then(mod => mod.VisionMission));
-const StatsSection = dynamic(() => import('@/components/sections/StatsSection').then(mod => mod.StatsSection));
-const Facilities = dynamic(() => import('@/components/sections/Facilities').then(mod => mod.Facilities));
-const Portfolio = dynamic(() => import('@/components/portfolio').then(mod => mod.Portfolio));
-const Certifications = dynamic(() => import('@/components/sections/Certifications').then(mod => mod.Certifications));
-const Clients = dynamic(() => import('@/components/sections/Clients').then(mod => mod.Clients));
-const HomePageContactForm = dynamic(() => import('@/components/contact/home-page-contact-form').then(mod => mod.HomePageContactForm));
-const Footer = dynamic(() => import('@/components/footer').then(mod => mod.Footer));
+// Static imports: every section below renders unconditionally on the homepage,
+// so dynamic() boundaries only added chunk requests and delayed hydration of
+// the above-the-fold navbar/hero without excluding any code.
+import { Navbar } from '@/components/navbar';
+import { HomePageHero } from '@/components/home-page-hero';
+import { VisionMission } from '@/components/vision-mission';
+import { StatsSection } from '@/components/sections/StatsSection';
+import { Facilities } from '@/components/sections/Facilities';
+import { Portfolio } from '@/components/portfolio';
+import { Certifications } from '@/components/sections/Certifications';
+import { Clients } from '@/components/sections/Clients';
+import { HomePageContactForm } from '@/components/contact/home-page-contact-form';
+import { Footer } from '@/components/footer';
 
 export function HomePage() {
   return (

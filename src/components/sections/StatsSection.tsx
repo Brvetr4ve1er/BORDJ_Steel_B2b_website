@@ -8,11 +8,16 @@ type Stat = {
   label: string;
 };
 
+// Figures sourced from company-data / charpente-metallique-data so the
+// homepage never contradicts the product pages: fondation 2012,
+// completedProjects 300, capacité charpente 25 000 T/an, capacité PRS 3 000 T/an.
+const FOUNDING_YEAR = 2012;
+
 const STATS: Stat[] = [
-  { value: 25, prefix: '+', suffix: ' ans', label: "D'expérience dans l'industrie" },
-  { value: 500, prefix: '+', suffix: '', label: 'Projets réalisés' },
-  { value: 20000, prefix: '+', suffix: ' T', label: 'Capacité annuelle en acier' },
-  { value: 16, prefix: '+', suffix: '', label: 'Wilayas couvertes' },
+  { value: new Date().getFullYear() - FOUNDING_YEAR, prefix: '+', suffix: ' ans', label: "D'expérience depuis 2012" },
+  { value: 300, prefix: '+', suffix: '', label: 'Projets réalisés' },
+  { value: 25000, prefix: '', suffix: ' T/an', label: 'Capacité charpente métallique' },
+  { value: 3000, prefix: '', suffix: ' T/an', label: 'Capacité profilés PRS' },
 ];
 
 export function StatsSection() {

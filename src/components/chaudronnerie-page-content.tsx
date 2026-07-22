@@ -238,9 +238,15 @@ export function ChaudronneriePageContent() {
     setCount(api.scrollSnapList().length)
     setCurrent(api.selectedScrollSnap() + 1)
 
-    api.on("select", () => {
+    const handleSelect = () => {
       setCurrent(api.selectedScrollSnap() + 1)
-    })
+    }
+
+    api.on("select", handleSelect)
+
+    return () => {
+      api.off("select", handleSelect)
+    }
   }, [api])
 
 
@@ -304,7 +310,7 @@ export function ChaudronneriePageContent() {
                                     value={stat.value}
                                     secondaryValue={(stat as any).secondaryValue}
                                     description={stat.description}
-                                    className="bg-background/50 backdrop-blur-md border-border text-white transition-colors duration-300 group-hover:bg-transparent group-hover:border-accent"
+                                    className="bg-black/50 backdrop-blur-md border-border text-white transition-colors duration-300 group-hover:bg-transparent group-hover:border-accent"
                                 />
                            </div>
                         </AnimatedWrapper>
@@ -330,7 +336,7 @@ export function ChaudronneriePageContent() {
                         <div className="p-1">
                           <Card>
                             <CardContent className="flex aspect-square items-center justify-center p-6 relative">
-                              <Image src={src} alt={`Drawing ${index + 1}`} fill className="object-contain rounded-lg" />
+                              <Image src={src} alt={`Schéma technique ${index + 1}`} fill className="object-contain rounded-lg" />
                             </CardContent>
                           </Card>
                         </div>
@@ -356,7 +362,7 @@ export function ChaudronneriePageContent() {
                     </div>
                      <div className="mt-8">
                         <div className="bg-muted rounded-lg aspect-video flex items-center justify-center">
-                            <Image src="https://i.pinimg.com/736x/ac/f1/1d/acf11d05445a30a0c57c86ab75fe9990.jpg" alt="Technical drawing" width={800} height={450} className="rounded-lg object-contain" data-ai-hint="technical drawing" />
+                            <Image src="https://i.pinimg.com/736x/ac/f1/1d/acf11d05445a30a0c57c86ab75fe9990.jpg" alt="Schéma technique" width={800} height={450} className="rounded-lg object-contain" data-ai-hint="technical drawing" />
                         </div>
                      </div>
                   </CardContent>

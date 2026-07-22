@@ -177,6 +177,7 @@ export function RecruitmentPage() {
           </div>
 
           {/* Job Listings */}
+          <h2 className="sr-only">Offres d'emploi</h2>
           {filteredJobs.length === 0 ? (
             <p className="text-center text-lg text-gray-600 py-16">
               Aucune offre ne correspond à ces critères pour le moment.

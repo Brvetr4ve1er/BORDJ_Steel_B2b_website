@@ -14,7 +14,6 @@ import {
   cloneElement,
   createContext,
   useContext,
-  useMemo,
   useRef,
 } from 'react';
 import { cn } from '@/lib/utils';
@@ -35,7 +34,7 @@ type DockItemProps = {
   className?: string;
   children: React.ReactNode;
   onClick?: () => void;
-};
+} & React.AriaAttributes;
 type DockLabelProps = {
   className?: string;
   children: React.ReactNode;
@@ -90,7 +89,7 @@ function Dock({
       )}
       style={{ height: panelHeight }}
       role='toolbar'
-      aria-label='Application dock'
+      aria-label='Navigation par onglets'
     >
       <DockProvider value={{ mouseX, spring, distance, magnification }}>
         {children}
@@ -99,7 +98,7 @@ function Dock({
   );
 }
 
-function DockItem({ children, className, onClick }: DockItemProps) {
+function DockItem({ children, className, onClick, ...rest }: DockItemProps) {
   const ref = useRef<HTMLButtonElement>(null);
 
   const { distance, magnification, mouseX, spring } = useDock();
@@ -134,7 +133,7 @@ function DockItem({ children, className, onClick }: DockItemProps) {
       )}
       tabIndex={0}
       role='button'
-      aria-haspopup='true'
+      {...rest}
     >
       {Children.map(children, (child) =>
         cloneElement(child as React.ReactElement, { width, isHovered })

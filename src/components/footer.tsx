@@ -30,28 +30,31 @@ const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 
+// Hoisted so the array (and its icon elements) isn't rebuilt on every render
+// of the site-wide footer.
+const SOCIAL_BUTTONS = [
+  { href: companyData.socials.facebook, icon: <Facebook className="w-6 h-6" />, name: 'Facebook', fromColor: 'from-blue-600', toColor: 'to-blue-400' },
+  { href: companyData.socials.instagram, icon: <Instagram className="w-6 h-6" />, name: 'Instagram', fromColor: 'from-pink-500', toColor: 'to-orange-400' },
+  { href: companyData.socials.whatsapp, icon: <WhatsappIcon className="w-6 h-6" />, name: 'WhatsApp', fromColor: 'from-green-600', toColor: 'to-green-400' },
+  { href: companyData.socials.linkedin, icon: <Linkedin className="w-6 h-6" />, name: 'LinkedIn', fromColor: 'from-sky-600', toColor: 'to-sky-400' },
+];
+
 export function Footer() {
-  const { footer, socials, navigation, pages } = companyData;
+  const { footer, navigation, pages } = companyData;
   const { toast } = useToast();
   const [email, setEmail] = React.useState('');
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    // No newsletter backend yet — acknowledge and route the lead to the contact inbox.
+    // TODO(backend): no newsletter service is wired up yet — the address is
+    // not persisted anywhere. Keep the copy honest until integration exists.
     toast({
       title: 'Merci !',
-      description: 'Votre adresse a bien été enregistrée. Nous vous tiendrons informé.',
+      description: 'Votre demande a été prise en compte. Pour être sûr de ne rien manquer, contactez-nous à ' + pages.contact.content.emails[0] + '.',
     });
     setEmail('');
   };
-
-  const socialButtons = [
-    { href: socials.facebook, icon: <Facebook className="w-6 h-6" />, name: 'Facebook', fromColor: 'from-blue-600', toColor: 'to-blue-400' },
-    { href: socials.instagram, icon: <Instagram className="w-6 h-6" />, name: 'Instagram', fromColor: 'from-pink-500', toColor: 'to-orange-400' },
-    { href: socials.whatsapp, icon: <WhatsappIcon className="w-6 h-6" />, name: 'WhatsApp', fromColor: 'from-green-600', toColor: 'to-green-400' },
-    { href: socials.linkedin, icon: <Linkedin className="w-6 h-6" />, name: 'LinkedIn', fromColor: 'from-sky-600', toColor: 'to-sky-400' },
-  ];
 
   return (
     <footer className="relative border-t-4 border-accent bg-[hsl(0,0%,10%)] text-white transition-colors duration-300">
@@ -96,11 +99,11 @@ export function Footer() {
           <div className="relative">
             <h3 className="mb-6 inline-block border-b-2 border-accent pb-2 text-xl font-semibold uppercase tracking-wider text-white">Suivez-nous</h3>
             <div className="mb-8 flex space-x-3">
-                {socialButtons.map((social) => (
+                {SOCIAL_BUTTONS.map((social) => (
                     <SocialButton
                         key={social.name}
                         href={social.href}
-                        aria-label={`Bordj Steel on ${social.name}`}
+                        aria-label={`Bordj Steel sur ${social.name}`}
                         fromColor={social.fromColor}
                         toColor={social.toColor}
                         className="h-14 w-14"

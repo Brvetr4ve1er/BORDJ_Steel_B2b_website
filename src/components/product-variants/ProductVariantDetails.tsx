@@ -34,7 +34,28 @@ const ListSection: React.FC<{ section: Extract<ProductVariantSection, { type: 'l
 );
 
 const TableSection: React.FC<{ section: Extract<ProductVariantSection, { type: 'table' }> }> = ({ section }) => {
-    const isChargesTable = section.title.includes('CHARGES ET PORTÉES');
+    const hasIconRow = Boolean(section.icon);
+
+    // Some tables use group headers (e.g. "1 appui", "2 appuis") that cover several
+    // body columns; distribute the extra body columns across those group headers.
+    const bodyCols = Math.max(...section.rows.map(r => r.length), section.headers.length);
+    const extra = bodyCols - section.headers.length;
+    const colSpans = section.headers.map(() => 1);
+    if (extra > 0) {
+        const groupIndices: number[] = [];
+        section.headers.forEach((header, index) => {
+            if (/appui/i.test(header)) groupIndices.push(index);
+        });
+        if (groupIndices.length > 0) {
+            const share = Math.floor(extra / groupIndices.length);
+            const remainder = extra % groupIndices.length;
+            groupIndices.forEach((headerIndex, i) => {
+                colSpans[headerIndex] = 1 + share + (i < remainder ? 1 : 0);
+            });
+        } else {
+            colSpans[section.headers.length - 1] = extra + 1;
+        }
+    }
 
     return (
     <div className="mb-4">
@@ -43,11 +64,11 @@ const TableSection: React.FC<{ section: Extract<ProductVariantSection, { type: '
         <Table>
             <TableHeader>
             <TableRow className="bg-accent text-accent-foreground">
-                {section.headers.map((header: string, index: number) => 
-                    <TableHead key={index} className="text-accent-foreground" dangerouslySetInnerHTML={{ __html: header.replace('(mm)', '<br/>(mm)').replace('kg/m²', 'Kg/m²').replace('Système de', 'Système de<br/>') }}></TableHead>
+                {section.headers.map((header: string, index: number) =>
+                    <TableHead key={index} colSpan={colSpans[index] > 1 ? colSpans[index] : undefined} className="text-accent-foreground" dangerouslySetInnerHTML={{ __html: header.replace('(mm)', '<br/>(mm)').replace('kg/m²', 'Kg/m²').replace('Système de', 'Système de<br/>') }}></TableHead>
                 )}
             </TableRow>
-            {isChargesTable && (
+            {hasIconRow && (
                 <TableRow>
                     <TableHead className="text-center font-semibold" colSpan={2}></TableHead>
                     <TableHead className="text-center font-semibold" colSpan={section.icon === 'two-supports' ? (section.headers.length - 2) / 2 : section.headers.length - 2}>
@@ -113,6 +134,7 @@ const ImageGridSection: React.FC<{ section: Extract<ProductVariantSection, { typ
               src={item.image.src}
               alt={item.name}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               data-ai-hint={item.image.aiHint}
             />

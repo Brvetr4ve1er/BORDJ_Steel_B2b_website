@@ -11,14 +11,12 @@ export const companyData = {
     language: 'fr',
     slogan: 'NOUS DONNONS DU STEEL A VOS PROJETS',
     sloganArabic: "نمنح مشاريعكم صلابة الفولاذ",
-    lastUpdated: '2025-07-30',
-    totalPages: 7
   },
   navigation: {
     mainMenu: [
-      { 
-        "name": "Home", 
-        "href": "/", 
+      {
+        "name": "Accueil",
+        "href": "/",
         "icon": "Factory"
       },
       { 
@@ -39,9 +37,9 @@ export const companyData = {
         ]
       },
       { "name": "Références", "href": "/references", "icon": "Briefcase" },
-      { 
-        "name": "Media Center", 
-        "href": "/media-center", 
+      {
+        "name": "Media Center",
+        "href": "/media-center/blog",
         "icon": "Newspaper",
         "children": [
           { "name": "Blog", "href": "/media-center/blog", "description": "Nos derniers articles de blog.", "icon": "BookOpen" },
@@ -138,31 +136,6 @@ export const companyData = {
           description: `Notre unité de chaudronnerie est spécialisée dans la fabrication d'équipements sur mesure pour divers secteurs industriels.`,
           icon: 'Anchor',
           href: '/products/chaudronnerie'
-        }
-      ]
-    },
-    products: {
-      title: 'Nos Produits',
-      items: [
-        {
-          name: 'Tôles pour PEB',
-          description: 'Des tôles nervurées de haute qualité, idéales pour les structures de bâtiments préfabriqués (PEB), offrant durabilité et résistance.',
-          image: { src: 'https://placehold.co/800x600.png', aiHint: 'metal sheet' }
-        },
-        {
-          name: 'Poutres et Profilés en Acier',
-          description: 'Une gamme complète de poutres et profilés pour des charpentes métalliques robustes et conformes aux normes.',
-          image: { src: 'https://placehold.co/800x600.png', aiHint: 'steel beams' }
-        },
-        {
-          name: 'Panneaux de Bardage',
-          description: 'Solutions de bardage esthétiques et isolantes pour façades de bâtiments industriels et commerciaux.',
-          image: { src: 'https://placehold.co/800x600.png', aiHint: 'cladding panels' }
-        },
-        {
-          name: 'Accessoires de Finition',
-          description: 'Tous les accessoires nécessaires pour une finition perfecte : gouttières, faîtages, et plus encore.',
-          image: { src: 'https://placehold.co/800x600.png', aiHint: 'metal accessories' }
         }
       ]
     },
@@ -301,10 +274,8 @@ export const companyData = {
   },
   socials: {
     linkedin: "https://dz.linkedin.com/in/bordj-steel-spa-2a082616a",
-    github: "#",
     facebook: "https://web.facebook.com/spabordjsteel/?_rdc=1&_rdr",
     instagram: "https://www.instagram.com/bordj_steel/",
-    tiktok: "#",
     whatsapp: "https://wa.me/213770356686"
   },
 };

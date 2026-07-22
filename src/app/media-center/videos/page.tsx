@@ -5,9 +5,10 @@ import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Vidéos | Bordj Steel',
+  title: 'Vidéos',
   description:
     'Découvrez nos projets de construction métallique en vidéo : chantiers, fabrication et réalisations Bordj Steel.',
+  robots: { index: false, follow: true },
 };
 
 export default function VideosPage() {

@@ -1,7 +1,5 @@
 
 
-"use client";
-
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { Card, CardContent } from '@/components/ui/card';
 import { Building2, Shield, Factory, Hammer } from 'lucide-react';

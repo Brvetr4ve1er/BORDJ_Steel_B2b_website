@@ -1,5 +1,3 @@
-"use client";
-
 // Editorial + tabular "Techniques et Normes" block for the Galvanisation page.
 // Content preserved verbatim from the original monolithic page component.
 export function TechniquesAndStandardsSection() {

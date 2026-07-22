@@ -37,7 +37,7 @@ export const galvanisationContent = {
       { "title": "Capacité annuelle", "value": "25.000 tonnes", "icon": "Weight" },
       { "title": "Température du bain", "value": "450 °C", "icon": "Thermometer" },
       { "title": "Durée de vie", "value": "> 50 ans", "icon": "ShieldCheck" },
-      { "title": "Produits", "value": "Profils | Panneaux | Structures", "icon": "layers" }
+      { "title": "Produits", "value": "Profils | Panneaux | Structures", "icon": "Layers" }
     ],
     "image_url": images.galvanisation.hero.src,
     "blurDataUrl": images.galvanisation.hero.blurDataUrl,

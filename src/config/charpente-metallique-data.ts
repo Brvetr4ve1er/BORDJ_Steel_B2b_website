@@ -1,8 +1,6 @@
 
 import images from '@/app/lib/placeholder-images.json';
 
-const allGalleryImages = images['charpente-metallique'].gallery;
-
 export const charpenteMetalliqueData = {
   hero: {
     title: 'Charpente Métallique',

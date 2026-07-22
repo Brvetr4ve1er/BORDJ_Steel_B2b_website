@@ -5,15 +5,16 @@ import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Galerie | Bordj Steel',
+  title: 'Galerie',
   description:
     'Galerie photo des réalisations Bordj Steel : charpentes métalliques, panneaux sandwich et projets industriels en images.',
+  robots: { index: false, follow: true },
 };
 
 export default function GalleryPage() {
   const heroImage = {
     src: "https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?w=800&q=80",
-    alt: "Art gallery with photos on the wall",
+    alt: "Galerie de réalisations Bordj Steel",
     aiHint: "photo gallery"
   }
 

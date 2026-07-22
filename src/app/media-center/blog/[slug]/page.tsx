@@ -27,7 +27,7 @@ export async function generateMetadata({
 
   if (!article) {
     return {
-      title: 'Article | Bordj Steel',
+      title: 'Article',
       description:
         'Actualités, innovations et savoir-faire de l’industrie de l’acier par Bordj Steel.',
     };
@@ -108,7 +108,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </AnimatedWrapper>
 
                     <AnimatedWrapper animation="fade-in" staggerIndex={2}>
-                        <div className="prose prose-lg max-w-none text-foreground text-xl leading-relaxed whitespace-pre-wrap">
+                        <div
+                          lang={article.lang ?? 'fr'}
+                          dir={article.lang === 'ar' ? 'rtl' : 'ltr'}
+                          className="prose prose-lg max-w-none text-foreground text-xl leading-relaxed whitespace-pre-wrap"
+                        >
                            {article.description}
                         </div>
                     </AnimatedWrapper>

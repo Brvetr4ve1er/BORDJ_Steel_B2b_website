@@ -23,8 +23,18 @@ export function FeatureHoverCard({ Icon, title, description }: FeatureHoverCardP
         <span className="text-xl font-bold text-primary">{title}</span>
         <p className="text-muted-foreground px-4">{description}</p>
       </div>
-      <Button variant="destructive" className="px-4 py-1 z-10 hover:scale-125 transition-all duration-500 opacity-0 group-hover:opacity-100">
-        En savoir plus <ArrowRight className="ml-2 h-4 w-4" />
+      {/* Rendered as a <span> via asChild: this card's sole consumer wraps it in the
+          pillar-selector <button> (charpente-metallique-page), so a nested <button>
+          here would be invalid HTML. The CTA reveals on hover and on keyboard focus
+          of the wrapping control (`group-focus-within`, the wrapper carries `group`). */}
+      <Button
+        asChild
+        variant="destructive"
+        className="px-4 py-1 z-10 hover:scale-125 transition-all duration-500 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
+      >
+        <span>
+          En savoir plus <ArrowRight className="ml-2 h-4 w-4" />
+        </span>
       </Button>
     </div>
   );

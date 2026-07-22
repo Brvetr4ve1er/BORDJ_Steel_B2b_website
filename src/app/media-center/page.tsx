@@ -5,15 +5,16 @@ import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Media Center | Bordj Steel',
+  title: 'Media Center',
   description:
     'Le centre de médias de Bordj Steel : actualités, projets, vidéos et ressources sur la construction métallique en Algérie.',
+  robots: { index: false, follow: true },
 };
 
 export default function MediaCenterPage() {
   const heroImage = {
     src: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&q=80",
-    alt: "Media center concept with cameras and screens",
+    alt: "Espace médias Bordj Steel",
     aiHint: "media center"
   }
 

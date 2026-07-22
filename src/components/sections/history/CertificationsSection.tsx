@@ -1,7 +1,5 @@
 
 
-"use client";
-
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Award } from 'lucide-react';
@@ -29,6 +27,7 @@ function CertificationCard({ cert }: { cert: { name: string; description: string
             src={cert.image}
             alt={`Certification ${cert.name}`}
             fill
+            sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </div>

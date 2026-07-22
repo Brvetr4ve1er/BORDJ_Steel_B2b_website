@@ -6,13 +6,16 @@ export default {
   content: [
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    // Config files inject class strings via dangerouslySetInnerHTML
+    // (e.g. charpente-metallique-data.ts uses text-accent/font-bold) —
+    // scan them so those utilities are never purged.
+    './src/config/**/*.{js,ts}',
   ],
   theme: {
     extend: {
       fontFamily: {
         body: ['var(--font-roboto)', 'sans-serif'],
         headline: ['var(--font-montserrat)', 'sans-serif'],
-        cairo: ['var(--font-cairo)', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {

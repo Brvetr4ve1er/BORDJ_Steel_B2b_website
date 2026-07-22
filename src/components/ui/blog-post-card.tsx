@@ -1,14 +1,11 @@
-"use client";
-
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { motion, type HTMLMotionProps } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { Logo } from '../logo';
 import { Article } from '@/config/blog-data';
 
@@ -27,7 +24,9 @@ const cardVariants = cva(
   }
 );
 
-export interface BlogPostCardProps extends HTMLMotionProps<"div">, VariantProps<typeof cardVariants> {
+export interface BlogPostCardProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof cardVariants> {
   article: Article;
   readMoreText?: string;
 }
@@ -35,24 +34,13 @@ export interface BlogPostCardProps extends HTMLMotionProps<"div">, VariantProps<
 const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
   ({ className, variant, article, readMoreText = 'Lire l\'article complet', ...props }, ref) => {
     const { title, date, tag, description, imageUrl, href, author } = article;
-    const cardHover = {
-      hover: {
-        y: -5,
-        transition: {
-          duration: 0.2,
-          ease: 'easeInOut',
-        },
-      },
-    };
 
     const isFeatured = variant === 'featured';
 
     return (
-      <motion.div
+      <div
         ref={ref}
         className={cn(cardVariants({ variant, className }))}
-        variants={cardHover}
-        whileHover="hover"
         {...props}
       >
         <Link href={href} className="absolute inset-0 z-10" aria-label={`Lire l'article : ${title}`}>
@@ -71,6 +59,7 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
                 src={imageUrl}
                 alt={title}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
               />
             </div>
@@ -92,7 +81,10 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
                   {title}
                 </span>
               </h3>
-              <p className={cn(
+              <p
+                lang={article.lang ?? 'fr'}
+                dir={article.lang === 'ar' ? 'rtl' : 'ltr'}
+                className={cn(
                   "text-muted-foreground",
                    isFeatured ? "text-lg line-clamp-4" : "text-base line-clamp-3"
                 )}>{description.split('\n').slice(0, isFeatured ? 4 : 3).join('\n')}</p>
@@ -110,14 +102,23 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
                     <span className="font-semibold text-sm">{author.name}</span>
                   </div>
                 )}
-                 <Button variant="ghost" size="sm" className="group/button text-primary hover:text-primary z-20">
+                 {/* Presentational only: the whole card is already one link
+                     (the absolute overlay above) — a focusable button here
+                     would be a dead tab stop for keyboard users. */}
+                 <span
+                   aria-hidden="true"
+                   className={cn(
+                     buttonVariants({ variant: 'ghost', size: 'sm' }),
+                     'group/button pointer-events-none text-primary'
+                   )}
+                 >
                     {readMoreText}
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
-                </Button>
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     );
   }
 );

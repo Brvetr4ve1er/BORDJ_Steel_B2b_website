@@ -5,11 +5,9 @@ import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { ArrowRight, ArrowUpRight, Award, Newspaper, BookOpen, FileText, Search } from 'lucide-react';
+import { Award, BookCopy, BookOpen, FileText, Search } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { cn } from "@/lib/utils";
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { DownloadButton } from '@/components/ui/download-button';
 import { articles as allArticles } from '@/config/blog-data';
 import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
@@ -48,15 +46,16 @@ function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: s
                     src={cert.logo}
                     alt={cert.name}
                     fill
+                    sizes="224px"
                     className="object-contain p-4 transition-transform duration-300 group-hover:scale-110"
                 />
             </div>
              <div className="mt-4 text-center">
                 <h3 className="text-xl font-bold text-primary">{cert.name}</h3>
                 <p className="text-md text-muted-foreground">{cert.description}</p>
-                <a href={cert.pdf} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block">
-                    <Button variant="outline">Voir le document</Button>
-                </a>
+                <Button asChild variant="outline" className="mt-4">
+                    <a href={cert.pdf} target="_blank" rel="noopener noreferrer">Voir le document</a>
+                </Button>
             </div>
              <div className={cn(
                 "absolute top-1/2 -translate-y-1/2 w-[32rem] h-[40rem] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out pointer-events-none group-hover:pointer-events-auto z-50",
@@ -68,6 +67,7 @@ function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: s
                             src={cert.image}
                             alt={`${cert.name} document preview`}
                             fill
+                            sizes="512px"
                             className="object-contain"
                         />
                     </div>
@@ -77,15 +77,7 @@ function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: s
     );
 }
 
-const EmptyContent = ({tab}: {tab: string}) => (
-    <div className="text-center py-16">
-        <h2 className="text-2xl font-bold">Contenu à venir — {tab}</h2>
-        <p className="text-muted-foreground mt-2">Cette section est en cours de construction.</p>
-    </div>
-)
-
 export function BlogPageContent() {
-    const isDesktop = useBreakpoint("lg");
     const searchParams = useSearchParams();
     const initialTab = searchParams.get('tab');
     const [sortBy, setSortBy] = useState(sortByOptions[0].id);
@@ -168,15 +160,21 @@ export function BlogPageContent() {
                             Téléchargez notre catalogue complet pour découvrir en détail l'ensemble de nos produits et solutions de construction métallique.
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                            <a href="/documents/Bordj-Steel-Catalogue-FR.pdf" download="Bordj-Steel-Catalogue-FR.pdf">
-                                <DownloadButton text="Catalogue Français" />
-                            </a>
-                            <a href="/documents/Bordj-Steel-Catalogue-EN.pdf" download="Bordj-Steel-Catalogue-EN.pdf">
-                                <DownloadButton text="English Catalog" />
-                            </a>
-                            <a href="/documents/Bordj-Steel-Catalogue-AR.pdf" download="Bordj-Steel-Catalogue-AR.pdf">
-                                <DownloadButton text="دليل المنتجات" />
-                            </a>
+                            <div className="flex flex-col items-center gap-2">
+                                <DownloadButton text="Catalogue Français" href="/documents/Bordj-Steel-Catalogue-FR.pdf" download />
+                            </div>
+                            <div className="flex flex-col items-center gap-2">
+                                <div className="flex min-h-11 items-center justify-center gap-2.5 rounded border border-border bg-primary px-8 text-[15px] font-semibold text-primary-foreground opacity-60">
+                                    <BookCopy className="h-5 w-5" /> English Catalog
+                                </div>
+                                <span className="text-xs text-muted-foreground">Bientôt disponible</span>
+                            </div>
+                            <div className="flex flex-col items-center gap-2">
+                                <div className="flex min-h-11 items-center justify-center gap-2.5 rounded border border-border bg-primary px-8 text-[15px] font-semibold text-primary-foreground opacity-60">
+                                    <BookCopy className="h-5 w-5" /> دليل المنتجات
+                                </div>
+                                <span className="text-xs text-muted-foreground">Bientôt disponible</span>
+                            </div>
                         </div>
                     </div>
                 );
@@ -187,7 +185,7 @@ export function BlogPageContent() {
 
     const heroImage = {
         src: "https://i.pinimg.com/736x/7f/65/11/7f6511da571d8510b554b57a37052799.jpg",
-        alt: "Digital world concept",
+        alt: "Univers médias de Bordj Steel",
         aiHint: "digital world"
     }
 
@@ -214,7 +212,7 @@ export function BlogPageContent() {
                 </AnimatedWrapper>
                 </div>
             </section>
-            <main className="mx-auto flex w-full flex-col gap-8 px-4 py-16 md:px-8 md:pb-24">
+            <div className="mx-auto flex w-full flex-col gap-8 px-4 py-16 md:px-8 md:pb-24">
                  <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                     <div className="w-full md:w-auto md:flex-1 relative">
                        <label htmlFor="blog-search" className="sr-only">Rechercher des articles</label>
@@ -231,11 +229,11 @@ export function BlogPageContent() {
                     <div className="w-full md:w-auto md:flex-1 flex justify-center">
                         <Dock magnification={140} panelHeight={120} className="gap-12">
                             {tabs.map((tab) => (
-                              <DockItem key={tab.id} onClick={() => setActiveTab(tab.id)}>
+                              <DockItem key={tab.id} onClick={() => setActiveTab(tab.id)} aria-pressed={activeTab === tab.id}>
                                 <DockIcon>
-                                  <tab.icon className={cn("h-16 w-16", activeTab === tab.id ? 'text-accent' : 'text-primary/50')} />
+                                  <tab.icon className={cn("h-16 w-16", activeTab === tab.id ? 'text-accent' : 'text-primary/70')} />
                                 </DockIcon>
-                                <DockLabel className={cn('text-xl font-bold', activeTab === tab.id ? 'text-accent' : 'text-primary/50')}>{tab.label}</DockLabel>
+                                <DockLabel className={cn('text-xl font-bold', activeTab === tab.id ? 'text-accent' : 'text-primary/70')}>{tab.label}</DockLabel>
                               </DockItem>
                             ))}
                         </Dock>
@@ -243,7 +241,7 @@ export function BlogPageContent() {
                     <div className="w-full md:w-auto md:flex-1 flex justify-end">
                         <Select value={sortBy} onValueChange={setSortBy}>
                             <SelectTrigger className="md:max-w-xs h-12 text-lg">
-                                <SelectValue placeholder="Sort by" />
+                                <SelectValue placeholder="Trier par" />
                             </SelectTrigger>
                             <SelectContent>
                                 {sortByOptions.map(option => (
@@ -257,7 +255,7 @@ export function BlogPageContent() {
                 <div className="mt-4">
                   {renderContent()}
                 </div>
-            </main>
+            </div>
         </ProductPageLayout>
     );
 };

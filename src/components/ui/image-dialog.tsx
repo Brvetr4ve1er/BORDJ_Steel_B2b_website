@@ -23,7 +23,7 @@ export function ImageDialog({ children, imageUrl, alt }: ImageDialogProps) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="max-w-screen-xl max-h-[90vh] h-full w-full p-2 sm:p-4 bg-background/80 backdrop-blur-sm border-none">
         <DialogTitle className="sr-only">{alt}</DialogTitle>
-        <DialogDescription className="sr-only">A larger view of the image: {alt}</DialogDescription>
+        <DialogDescription className="sr-only">Vue agrandie de l'image sélectionnée.</DialogDescription>
         <div className="relative w-full h-full">
           <Image
             src={imageUrl}

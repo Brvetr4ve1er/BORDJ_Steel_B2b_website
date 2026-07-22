@@ -39,6 +39,17 @@ export function HoverImageGallery({ images }: HoverImageGalleryProps) {
     setIsHovering(false);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (!images || images.length === 0) return;
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    }
+  };
+
   if (!images || images.length === 0 || !images[currentImageIndex]) {
     return null;
   }
@@ -51,16 +62,21 @@ export function HoverImageGallery({ images }: HoverImageGalleryProps) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <ImageDialog imageUrl={images[currentImageIndex]} alt={`Gallery image ${currentImageIndex + 1}`}>
-          <div className="w-full h-full">
+        <ImageDialog imageUrl={images[currentImageIndex]} alt={`Aperçu galerie ${currentImageIndex + 1}`}>
+          <button
+            type="button"
+            className="block w-full h-full p-0 border-0 bg-transparent"
+            onKeyDown={handleKeyDown}
+          >
             {/* Main displayed image */}
             <Image
               src={images[currentImageIndex]}
-              alt={`Gallery image ${currentImageIndex + 1}`}
+              alt={`Aperçu galerie ${currentImageIndex + 1}`}
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-contain transition-all duration-150 ease-out"
             />
-          </div>
+          </button>
         </ImageDialog>
         
         {/* Glassmorphic Tooltip with Both Chevrons */}
