@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 const Navbar = dynamic(() => import('@/components/navbar').then(mod => mod.Navbar));
 const HomePageHero = dynamic(() => import('@/components/home-page-hero').then(mod => mod.HomePageHero));
 const VisionMission = dynamic(() => import('@/components/vision-mission').then(mod => mod.VisionMission));
+const StatsSection = dynamic(() => import('@/components/sections/StatsSection').then(mod => mod.StatsSection));
 const Facilities = dynamic(() => import('@/components/sections/Facilities').then(mod => mod.Facilities));
 const Portfolio = dynamic(() => import('@/components/portfolio').then(mod => mod.Portfolio));
 const Certifications = dynamic(() => import('@/components/sections/Certifications').then(mod => mod.Certifications));
@@ -18,6 +19,7 @@ export function HomePage() {
       <main id="main" className="flex-1">
         <HomePageHero />
         <VisionMission />
+        <StatsSection />
         <Facilities />
         <Portfolio />
         <Certifications />

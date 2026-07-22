@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 
 export default function VideosPage() {
   const heroImage = {
-    src: "https://images.unsplash.com/photo-1516245834210-c4c1427873ab?w=800&q=80",
-    alt: "Video camera recording a scene",
-    aiHint: "video recording"
+    src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80&auto=format&fit=crop",
+    alt: "Production industrielle en acier",
+    aiHint: "steel industrial production"
   }
 
   return (

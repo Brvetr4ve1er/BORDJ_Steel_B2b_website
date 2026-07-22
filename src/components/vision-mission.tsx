@@ -27,7 +27,7 @@ export function VisionMission() {
   const MissionIcon = iconMap[mission.icon];
 
   return (
-    <section id="about" className="bg-background">
+    <section id="about" className="bg-background bg-gradient-to-br from-background via-slate-50 to-background dark:from-background dark:via-slate-900/50 dark:to-background">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <AnimatedWrapper animation="zoom-in">
@@ -72,7 +72,7 @@ export function VisionMission() {
                 <p className="text-lg text-muted-foreground">{history}</p>
             </AnimatedWrapper>
             <AnimatedWrapper animation="slide-up">
-              <div className="flex items-start gap-6">
+              <div className="flex items-start gap-6 border-l-4 border-accent pl-6">
                 <div className="flex-shrink-0 w-16 h-16 rounded-full bg-red-100 flex items-center justify-center border-4 border-accent/20">
                     {VisionIcon && <VisionIcon className="w-8 h-8 text-accent" />}
                 </div>
@@ -84,7 +84,7 @@ export function VisionMission() {
             </AnimatedWrapper>
 
             <AnimatedWrapper animation="slide-up" staggerIndex={2}>
-              <div className="flex items-start gap-6">
+              <div className="flex items-start gap-6 border-l-4 border-accent pl-6">
                  <div className="flex-shrink-0 w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center border-4 border-primary/20">
                     {MissionIcon && <MissionIcon className="w-8 h-8 text-primary" />}
                 </div>

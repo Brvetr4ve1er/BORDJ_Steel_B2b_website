@@ -50,11 +50,12 @@ export function Facilities() {
                         width={facility.image.width}
                         height={facility.image.height}
                         className={cn(
-                            "transition-transform duration-500 group-hover:scale-110 object-cover w-full h-full",
+                            "transition-transform duration-500 group-hover:scale-105 object-cover w-full h-full",
                             facility.title === 'Panneaux Sandwichs' && 'object-top'
                         )}
                         data-ai-hint={facility.image.aiHint}
                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300" />
                         
                         {/* Icon visible by default */}

@@ -19,7 +19,7 @@ const DARK_BACKED = new Set<string>(['Cosider', 'Imetal', 'Colinco', 'Mobilis'])
 type ClientLogoData = { name: string; image: { src: string; aiHint?: string } };
 
 function ClientLogo({ client }: { client: ClientLogoData }) {
-  const [errored, setErrored] = React.useState(false);
+  const [errored, setErrored] = React.useState(!client.image.src);
   const darkBacked = DARK_BACKED.has(client.name);
 
   return (

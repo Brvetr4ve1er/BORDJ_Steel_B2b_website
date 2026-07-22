@@ -107,9 +107,9 @@ export const productVariants: { [key: string]: ProductVariant } = {
     id: 'bardage',
     title: 'PANNEAUX SANDWICHS DE BARDAGE',
     mainImage: {
-      src: 'https://i.pinimg.com/736x/8f/f4/7e/8ff47e67584c31185b37265551943445.jpg',
-      alt: 'Panneaux de bardage',
-      aiHint: 'building facade'
+      src: 'https://images.unsplash.com/photo-1545987796-200677ee1011?w=1080&q=80&auto=format&fit=crop',
+      alt: 'Panneaux de bardage façade industrielle',
+      aiHint: 'industrial building facade cladding'
     },
     sections: [
         {
@@ -201,7 +201,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
         {
             type: 'image',
             title: '',
-            image: { src: 'https://i.imghippo.com/files/lo9648YNk.png', alt: 'Schéma technique D', aiHint: 'technical drawing'},
+            image: { src: 'https://i.imghippo.com/files/Xii4624Ovg.png', alt: 'Schéma technique D – bardage lisse/lisse', aiHint: 'technical drawing'},
             caption: 'Panneaux sandwichs de bardage lisse/lisse'
         }
     ]
@@ -210,9 +210,9 @@ export const productVariants: { [key: string]: ProductVariant } = {
     id: 'frigorifique',
     title: 'PANNEAUX SANDWICHS FRIGORIFIQUE',
     mainImage: {
-      src: 'https://i.pinimg.com/736x/07/7a/84/077a84358a9015c9e2b49c7173268b84.jpg',
-      alt: 'Panneaux frigorifiques',
-      aiHint: 'cold storage',
+      src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1080&q=80&auto=format&fit=crop',
+      alt: 'Panneaux sandwichs frigorifiques – chambre froide',
+      aiHint: 'cold storage refrigeration panels',
     },
     sections: [
         {
