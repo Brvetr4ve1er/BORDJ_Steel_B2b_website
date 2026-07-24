@@ -16,6 +16,7 @@ import { productVariants } from '@/config/product-variants.config';
 import { ProductVariantDetails } from '@/components/product-variants/ProductVariantDetails';
 import { StatsCards } from '@/components/sections/sandwich-panels/StatsCards';
 import { sandwichHero, sandwichHeroStats, sandwichIntro } from '@/config/sandwich-panels-data';
+import { SandwichWireframe } from '@/components/wireframes/SandwichWireframe';
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -119,7 +120,13 @@ export function SandwichPanelsPage() {
   return (
     <>
       <HeroSection />
-      
+
+      <section className="bg-background py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <SandwichWireframe />
+        </div>
+      </section>
+
       <section id="product-details" className="bg-secondary/20 py-20">
         <div className="container mx-auto px-4 max-w-screen-2xl">
           <AnimatedWrapper animation="fade-in">

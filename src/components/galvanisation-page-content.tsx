@@ -14,6 +14,7 @@ import { DownloadButton } from '@/components/ui/download-button';
 import { BathsIcon } from '@/components/icons/baths-icon';
 import dynamic from 'next/dynamic';
 import { TechniquesAndStandardsSection } from '@/components/sections/galvanisation/TechniquesAndStandardsSection';
+import { GalvanisationWireframe } from '@/components/wireframes/GalvanisationWireframe';
 
 const DynamicAnimatedBaths = dynamic(() => import('@/components/animated-baths').then(mod => mod.AnimatedBaths));
 
@@ -32,6 +33,11 @@ export function GalvanisationPageContent() {
   return (
     <div className="text-foreground">
       <HeroSection />
+      <section className="bg-background py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <GalvanisationWireframe />
+        </div>
+      </section>
       <ProcessTimeline />
       <BenefitsSection />
       <HighlightSection />

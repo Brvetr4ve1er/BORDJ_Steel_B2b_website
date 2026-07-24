@@ -17,6 +17,7 @@ import {
 } from '@/config/chaudronnerie-tables';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { DownloadButton } from '@/components/ui/download-button';
+import { ChaudronnerieWireframe } from '@/components/wireframes/ChaudronnerieWireframe';
 import dynamic from 'next/dynamic';
 import {
   Carousel,
@@ -321,6 +322,12 @@ export function ChaudronneriePageContent() {
             </div>
           </div>
         </section>
+
+      <section className="bg-background py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <ChaudronnerieWireframe />
+        </div>
+      </section>
 
       {/* 2. Product Details Section */}
       <ActivitiesSection />

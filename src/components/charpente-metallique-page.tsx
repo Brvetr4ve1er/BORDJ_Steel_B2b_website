@@ -18,6 +18,7 @@ import { ImageDialog } from '@/components/ui/image-dialog';
 import { HoverImageGallery } from '@/components/ui/hover-image-gallery';
 import { cn } from '@/lib/utils';
 import { ProductionTables } from '@/components/production-tables';
+import { CharpenteWireframe } from '@/components/wireframes/CharpenteWireframe';
 
 const FeatureHoverCard = dynamic(() => import('@/components/feature-hover-card').then(mod => mod.FeatureHoverCard));
 // Same-module component — reference directly (no code-split benefit from dynamic).
@@ -164,7 +165,13 @@ export function CharpenteMetalliquePageContent() {
       <HeroSection hero={charpenteMetalliqueData.hero} />
 
       <NewGallery />
-      
+
+      <section className="bg-secondary/30 py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <CharpenteWireframe />
+        </div>
+      </section>
+
       <section className="py-20">
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
