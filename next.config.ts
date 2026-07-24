@@ -31,9 +31,6 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'i.pinimg.com', port: '', pathname: '/**' },
       { protocol: 'https', hostname: 'i.imghippo.com', port: '', pathname: '/**' },
       { protocol: 'https', hostname: 'i.ibb.co', port: '', pathname: '/**' },
-      { protocol: 'https', hostname: 'www.soummam-dz.com', port: '', pathname: '/**' },
-      { protocol: 'https', hostname: 'cdn.brandfetch.io', port: '', pathname: '/**' },
-      { protocol: 'https', hostname: 'www.cosider-groupe.dz', port: '', pathname: '/**' },
     ],
   },
 };

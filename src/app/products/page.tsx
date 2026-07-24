@@ -22,7 +22,7 @@ export default function ProductsPage() {
 
   return (
     <ProductPageLayout>
-      <section className="bg-primary text-primary-foreground py-24 text-center">
+      <section className="bg-primary pb-24 pt-36 text-center text-primary-foreground md:pt-40">
         <div className="container mx-auto px-4">
           <h1 className="font-headline text-5xl md:text-6xl font-bold uppercase tracking-tighter">
             Nos Produits

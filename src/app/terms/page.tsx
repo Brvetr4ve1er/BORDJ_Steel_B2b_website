@@ -16,7 +16,7 @@ export default function TermsPage() {
 
   return (
     <ProductPageLayout>
-      <section className="bg-primary py-20 text-primary-foreground">
+      <section className="bg-primary pb-20 pt-32 text-primary-foreground md:pt-36">
         <div className="container mx-auto px-4">
           <h1 className="font-headline text-4xl md:text-5xl font-bold uppercase tracking-tighter">
             Conditions d'Utilisation
