@@ -22,7 +22,7 @@ export function AnimatedBaths({ value, label }: AnimatedBathsProps) {
     const element = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setIsInView(true);
           observer.disconnect();
         }

@@ -1,7 +1,7 @@
 
 import { ProductPageLayout } from '@/components/product-page-layout';
 import type { Metadata } from 'next';
-import { SandwichPanelsPage } from '@/components/sandwich-panels-page';
+import { SandwichPanelsPageContent } from '@/components/pages/sandwich-panels/SandwichPanelsPageContent';
 
 export const metadata: Metadata = {
   title: 'Panneaux Sandwichs',
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function SandwichPanelsProductPage() {
   return (
     <ProductPageLayout>
-      <SandwichPanelsPage />
+      <SandwichPanelsPageContent />
     </ProductPageLayout>
   );
 }

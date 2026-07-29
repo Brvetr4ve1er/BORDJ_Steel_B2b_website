@@ -24,7 +24,7 @@ export function AnimatedWrapper({ children, animation, staggerIndex = 0, classNa
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setIsVisible(true);
           observer.unobserve(element);
         }

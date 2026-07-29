@@ -60,8 +60,9 @@ const TableSection: React.FC<{ section: Extract<ProductVariantSection, { type: '
 
     // Safety net for config drift: never let the header row under-run the body.
     const declaredCols = groups.reduce((total, group) => total + group.span, 0);
-    if (groups.length > 0 && declaredCols < bodyCols) {
-        groups[groups.length - 1].span += bodyCols - declaredCols;
+    const lastGroup = groups[groups.length - 1];
+    if (lastGroup && declaredCols < bodyCols) {
+        lastGroup.span += bodyCols - declaredCols;
     }
 
     const hasIconRow = groups.some((group) => Boolean(group.icon));

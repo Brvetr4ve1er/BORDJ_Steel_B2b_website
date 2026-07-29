@@ -12,8 +12,12 @@ import React, { useState, useMemo } from 'react';
 import { AnimatedNumber } from '@/components/animated-number';
 import { DownloadButton } from '@/components/ui/download-button';
 import dynamic from 'next/dynamic';
-import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
-import { charpenteGalleryImages, charpenteApplications, charpenteWhyChooseUs } from '@/config/charpente-metallique-content';
+import {
+  charpenteMetalliqueData,
+  charpenteGalleryImages,
+  charpenteApplications,
+  charpenteWhyChooseUs,
+} from '@/config/charpente-metallique-data';
 import { ImageDialog } from '@/components/ui/image-dialog';
 import { HoverImageGallery } from '@/components/ui/hover-image-gallery';
 import { cn } from '@/lib/utils';
@@ -152,7 +156,9 @@ const NewGallery = () => {
 
 
 export function CharpenteMetalliquePageContent() {
-  const [selectedPillarId, setSelectedPillarId] = useState<string | null>(charpenteMetalliqueData.pillars[0].id);
+  // Falls back to `null` if the pillar list is ever empty — the detail panel
+  // below is already gated on `selectedPillar`, so nothing renders in that case.
+  const [selectedPillarId, setSelectedPillarId] = useState<string | null>(charpenteMetalliqueData.pillars[0]?.id ?? null);
 
   const selectedPillar = charpenteMetalliqueData.pillars.find(p => p.id === selectedPillarId);
 

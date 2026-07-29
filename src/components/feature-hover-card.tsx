@@ -22,7 +22,7 @@ export function FeatureHoverCard({ Icon, title, description }: FeatureHoverCardP
         <p className="text-muted-foreground px-4">{description}</p>
       </div>
       {/* No CTA here: the whole card is already the pillar-selector control
-          (charpente-metallique-page wraps it in a <button>), so a hover-only
+          (CharpenteMetalliquePageContent wraps it in a <button>), so a hover-only
           "En savoir plus" duplicated that action, mislabelled it as navigation
           and was invisible on touch. */}
     </div>

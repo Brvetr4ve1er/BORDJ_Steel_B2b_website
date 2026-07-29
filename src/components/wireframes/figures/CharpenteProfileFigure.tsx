@@ -67,12 +67,12 @@ export function CharpenteProfileFigure({ spec }: { spec: CharpenteSpec }) {
 
       {/* weld marks (I only) */}
       {isI &&
-        [
+        ([
           [cx - tw / 2, cyTop + tf],
           [cx + tw / 2, cyTop + tf],
           [cx - tw / 2, cyBot - tf],
           [cx + tw / 2, cyBot - tf],
-        ].map(([x, y], i) => <path key={i} className="wf-fade" d={weld(x, y)} fill={WF.accent} />)}
+        ] as const).map(([x, y], i) => <path key={i} className="wf-fade" d={weld(x, y)} fill={WF.accent} />)}
 
       {/* height dimension (accent — the fabrication range) */}
       <DimV x={cx - B / 2 - 34} y1={cyTop} y2={cyBot} label={spec.webRange} color={WF.accent} labelColor={WF.accent} />

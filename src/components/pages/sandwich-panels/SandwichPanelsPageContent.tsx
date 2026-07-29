@@ -110,7 +110,7 @@ const productButtons = [
   { key: 'finitions', label: 'Pièces de Finition', icon: FinitionsIcon },
 ];
 
-export function SandwichPanelsPage() {
+export function SandwichPanelsPageContent() {
   const [activeProductKey, setActiveProductKey] = useState<string>('couverture');
   
   const activeProductData = useMemo(() => {

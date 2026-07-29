@@ -44,8 +44,10 @@ export function SandwichWireframe() {
   const defaultIdx = Math.max(0, specs.findIndex((s) => s.thicknessMm === 40));
   const [active, setActive] = React.useState(defaultIdx === -1 ? 0 : defaultIdx);
 
-  if (specs.length === 0) return null;
+  // `active` is clamped to the last available spec; when `specs` is empty the
+  // lookup yields undefined and the wireframe renders nothing, as before.
   const spec = specs[Math.min(active, specs.length - 1)];
+  if (!spec) return null;
 
   return (
     <ProductWireframe

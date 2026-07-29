@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import dynamic from 'next/dynamic';
 
-const GalvanisationPageContent = dynamic(() => import('@/components/galvanisation-page-content').then(mod => mod.GalvanisationPageContent));
+const GalvanisationPageContent = dynamic(() => import('@/components/pages/galvanisation/GalvanisationPageContent').then(mod => mod.GalvanisationPageContent));
 
 
 export const metadata: Metadata = {

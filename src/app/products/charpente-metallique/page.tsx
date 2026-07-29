@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import dynamic from 'next/dynamic';
 
-const CharpenteMetalliquePageContent = dynamic(() => import('@/components/charpente-metallique-page').then(mod => mod.CharpenteMetalliquePageContent));
+const CharpenteMetalliquePageContent = dynamic(() => import('@/components/pages/charpente-metallique/CharpenteMetalliquePageContent').then(mod => mod.CharpenteMetalliquePageContent));
 
 export const metadata: Metadata = {
   title: 'Charpente Métallique',

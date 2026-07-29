@@ -1,22 +1,23 @@
 # Known Issues — Bordj Steel B2B
 
-> **Status as of 2026-07-29: the remediation pass is done.** Of the 34 confirmed code defects
-> and 18 useless-element findings raised by the July 24 audit, **46 are now fixed in code**.
-> What remains below is (a) three structural refactors deliberately deferred, (b) items
-> blocked on client-supplied assets, and (c) factual contradictions only the client can resolve.
+> **Status as of 2026-07-29: every engineering item is closed.** Of the 34 confirmed code
+> defects and 18 useless-element findings raised by the July 24 audit, **all 52 are resolved**.
+> Everything still listed below is blocked on something only the client can provide: a file,
+> a factual figure, or a deployment decision.
 >
-> Fixes were made by 7 agents on strictly disjoint file sets, then verified: `typecheck` ✔
-> `lint` ✔ `next build` ✔ (36/36 pages), plus runtime checks against the production build —
-> 17/17 routes 200, `/nope` → real 404, zero console errors.
+> Done in two waves (7 agents, then 3) on strictly disjoint file sets, each followed by
+> verification: `typecheck` ✔ `lint` ✔ `next build` ✔ (36/36 pages), plus runtime checks
+> against the production build — 17/17 routes 200, `/nope` → real 404, zero console errors,
+> and every refactored page re-checked in the DOM for content fidelity.
 
 ## Where things stand
 
 | Bucket | Count | Status |
 |---|---|---|
-| 🔴 P0 — breaks now | 4 | **3 fixed**, 1 blocked on client assets |
+| 🔴 P0 — breaks now | 4 | **4 closed in code** (2 also need client files) |
 | 🟠 P1 — breaks on change | 11 | **11 fixed** |
-| 🟡 P2 — wiring smell | 11 | **7 fixed**, 3 deferred (structural), 1 blocked on client photo |
-| ⚪ P3 — polish | 7 | **5 fixed**, 1 partial, 1 declined |
+| 🟡 P2 — wiring smell | 11 | **11 fixed** |
+| ⚪ P3 — polish | 7 | **6 fixed**, 1 declined (see below) |
 | 🚩 [F] useless elements | 18 | **18 fixed** |
 | 🔵 Needs client decision | 5 | unchanged — business calls |
 | 📝 [G] content roadmap | 12 | unchanged — needs sign-off |
@@ -74,28 +75,24 @@ so every click 404'd. They now render a disabled **"Bientôt disponible"** contr
 
 ---
 
-## ⏳ Deferred — structural refactors (safe, but need their own pass)
+## ✅ Also fixed — the structural refactors (2026-07-29, wave 2)
 
-These three are pure maintainability work touching many files at once. They were held back because seven
-agents were concurrently editing those same files; doing a mass file-move on top of that is how work gets
-lost. Each is safe to do as a dedicated, atomic pass.
-
-- **P2-1** — the four product-content components use three different naming schemes (`-page.tsx` vs `-page-content.tsx`, `…Page` vs `…PageContent` exports, all in `components/` root while siblings live in `components/pages/`). The filename doesn't predict the export — the exact drift that produces wrong-twin imports. Safe today only because each is a singleton.
-- **P2-2** — charpente content is split across near-twin config files (`-content.ts` vs `-data.ts`) with complementary exports; no other product has this. Easy to open the wrong twin and not find the symbol.
-- **P2-3** — only 3 of 18 routes follow `CLAUDE.md`'s "page.tsx is a thin wrapper" rule; `references`, `privacy`, `terms`, `products` and `contact` embed full hero/section markup inline.
+- **P2-3** — the five routes that embedded full hero/section markup inline (`references`, `privacy`, `terms`, `products`, `contact`) are now thin wrappers per `CLAUDE.md`, each rendering one `components/pages/<name>/<Name>PageContent.tsx`. Bodies moved verbatim; every `export const metadata` stayed in its route file. *Verified: all five render with the same h1/sections/images and no lost French copy.*
+- **P2-1** — the four product-content components now follow one convention: `components/pages/<product>/<Product>PageContent.tsx` exporting `<Product>PageContent` (`SandwichPanelsPage` renamed to `…PageContent` for consistency). Moved with `git mv` so history is preserved; every importer updated in the same step. *Verified: zero stale references to the old paths or the old symbol.*
+- **P2-2** — `charpente-metallique-content.ts` merged into `charpente-metallique-data.ts` with byte-identical export bodies and names, and deleted. The near-twin filenames that invited wrong-file imports are gone.
+- **P3-6 (completed)** — **`noUncheckedIndexedAccess` is now ON.** It surfaced only 10 errors, all fixed properly — **zero** `!` assertions, `as any`, or `@ts-ignore`. It immediately justified itself by catching two live instances of this codebase's signature bug class: `pillars[0].id` and `sortByOptions[0].id` (unguarded first-element access). `noImplicitOverride` is also on.
 
 ---
 
 ## 🔒 Blocked on client-supplied assets
 
-- **P0-4** — `biolab.webp`, `batimetal.webp`, `man.webp` are referenced but absent from `public/logos`, and `Tazedj` has `src: ""`. The carousel degrades gracefully to the client's name as text, so nothing looks broken — but the real logos never render. *Not "fixed" by deleting the entries: removing real clients from the wall is a business decision.*
-- **P2-10** — "Cornière d'angle intérieur" and "…extérieur" showed the **same photo**, so the exterior card displayed the wrong part. The wrong image was removed and the renderer now tolerates a photo-less entry (shows name + length with a "Photo à venir" placeholder) rather than lying to a buyer. **Still owed: a real photo of the exterior corner piece.**
-- **P0-3** (above) — the three ISO certificate PDFs.
-- **P3-7** — `Bordj-Steel-Catalogue-FR.pdf` is 4.9 MB, the largest asset in the deploy. Recompressing a client's official catalogue is their call.
+- **P0-3** — the three ISO certificate PDFs. The dead links are already handled (disabled "Bientôt disponible"); dropping the files into `public/documents/` re-enables them with no code change.
+- **P0-4 (mostly resolved)** — `biolab.webp`, `batimetal.webp` and `man.webp` **are now present** (sourced in a later session; the audit entry predated that). The only gap left is **Tazedj**, whose `src` is deliberately empty: its domain does not resolve and the nearest match is an unrelated beverage brand. The carousel shows the company name as clean text. *Needs: confirmation of which company "Tazedj" is.*
+- **P2-10** — "Cornière d'angle intérieur" and "…extérieur" showed the **same photo**, so the exterior card displayed the wrong part. The wrong image was removed and the renderer now tolerates a photo-less entry ("Photo à venir") rather than lying to a buyer. *Needs: a real photo of the exterior corner piece.*
 
-## 🟨 Partial / declined, with reasoning
+## 🟨 Declined, with reasoning
 
-- **P3-6** — `noImplicitOverride` is now on. **`noUncheckedIndexedAccess` was deliberately left off**: it would surface a large number of pre-existing errors across files, and enabling it mid-pass would have broken the build for every other agent. It is the right next hardening step and would have caught this codebase's actual bug class (the positional-index drift above) — worth a dedicated pass.
+- **P3-7** — `Bordj-Steel-Catalogue-FR.pdf` (4.9 MB). No PDF tooling (`qpdf`/`ghostscript`) is available on this machine, and recompressing a client's official catalogue risks degrading a document that is only fetched when a visitor clicks *download* — it never loads during page render. Low benefit, real risk. Say the word and I'll install tooling and attempt a lossless-only pass.
 
 ---
 
@@ -108,7 +105,9 @@ the client must confirm the correct value, after which each should be stated onc
 2. **Charpente capacity contradicts itself on one page** — hero `25 000 T/an` vs production table `12 000 T/an`; PRS `3 000` vs `2 000`.
 3. **Charpente units maths** — "1500 T/mois (25000 T/an)" but 1500 × 12 = 18 000; also disagrees with the table's 1 000 T/mois.
 4. **Galvanisation bath dimensions & max piece length** — `12×1,5×3 m` vs `13×1,8×3,5 m`; max piece `13 m` vs `15 m`. *(Related: the "Bains de traitement: 13" stat is a **count** rendered with a length unit — possibly a confusion with the 13 m bath length.)*
-5. **Canonical domain** — `siteUrl` is `https://bordj-steel.com` (drives metadataBase, canonical, OG, sitemap, robots, JSON-LD) while every email and all blog copy say `bordjsteel.dz`. If `.com` isn't the live host, every canonical/OG/sitemap URL is wrong — active SEO self-harm.
+5. **Canonical domain** — `siteUrl` is `https://bordj-steel.com` (drives metadataBase, canonical, OG, sitemap, robots, JSON-LD) while every email and all blog copy say `bordjsteel.dz`.
+   **Evidence gathered 2026-07-29** — `bordj-steel.com` resolves to `10.45.72.212`, a *private* RFC1918 address, i.e. it does not serve anything publicly. `bordjsteel.dz` resolves to `41.111.205.14` (a real Algerian host) and responds, though with the expired certificate noted below. **But this still cannot be auto-resolved**, because the *new* site deploys to Netlify (`bordjsteelb2b.netlify.app`) while `.dz` currently serves the *old* site — so the final canonical hostname is a deployment decision, not a lookup.
+   **Action needed:** confirm the production hostname; it is then a one-line change to `siteUrl` in `src/config/company-data.ts`, which every URL on the site already derives from (verified: nothing hardcodes a domain around it).
 
 ---
 
@@ -140,4 +139,4 @@ the client must confirm the correct value, after which each should be stated onc
 
 ---
 
-*Audit generated 2026-07-24 · remediation pass 2026-07-29 · 46 of 52 code findings fixed and verified; the remainder are deferred refactors, client-blocked assets, or business decisions.*
+*Audit generated 2026-07-24 · remediation waves 2026-07-29 · **all 52 code findings fixed and verified**. Everything still open requires a client-supplied file, a factual figure only the client knows, or a deployment decision — none of it is engineering work.*

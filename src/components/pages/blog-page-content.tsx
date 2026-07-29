@@ -20,8 +20,11 @@ const tabs = [
     { id: "catalogue", label: "Catalogue", icon: FileText },
 ];
 
+// Named so the initial-state fallback below can never drift from the option list.
+const DEFAULT_SORT_ID = "recent";
+
 const sortByOptions = [
-    { id: "recent", label: "Plus récents" },
+    { id: DEFAULT_SORT_ID, label: "Plus récents" },
     { id: "oldest", label: "Plus anciens" },
     { id: "az", label: "A → Z" },
 ];
@@ -87,7 +90,7 @@ function CertificationCard({ cert }: { cert: Certification }) {
 export function BlogPageContent() {
     const searchParams = useSearchParams();
     const initialTab = searchParams.get('tab');
-    const [sortBy, setSortBy] = useState(sortByOptions[0].id);
+    const [sortBy, setSortBy] = useState(sortByOptions[0]?.id ?? DEFAULT_SORT_ID);
     const [searchQuery, setSearchQuery] = useState('');
     const [activeTab, setActiveTab] = useState(initialTab && tabs.some(t => t.id === initialTab) ? initialTab : 'blog');
 

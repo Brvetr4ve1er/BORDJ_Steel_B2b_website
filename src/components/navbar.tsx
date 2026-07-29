@@ -36,7 +36,7 @@ type MenuItem = (typeof companyData.navigation.mainMenu)[number];
 
 // The top-level section a route belongs to, e.g. "/products/chaudronnerie" -> "/products".
 const sectionOf = (href: string) => {
-  const seg = href.split('?')[0].split('/')[1] ?? '';
+  const seg = href.split('?')[0]?.split('/')[1] ?? '';
   return '/' + seg;
 };
 
