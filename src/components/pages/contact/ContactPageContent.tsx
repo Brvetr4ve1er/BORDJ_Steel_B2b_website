@@ -7,7 +7,7 @@ const ContactInfo = dynamic(() => import('@/components/contact-info').then(mod =
 
 export function ContactPageContent() {
   const heroImage = {
-      src: "https://i.pinimg.com/736x/1f/3d/a2/1f3da28625335403956d26a2163a1567.jpg",
+      src: "/media/1f3da28625335403956d26a2163a-7f7e7da3.webp",
       alt: "Contact center with operators",
       aiHint: "contact center"
   }

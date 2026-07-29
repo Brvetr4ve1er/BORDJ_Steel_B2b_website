@@ -7,7 +7,7 @@ export const articles = [
         href: "/media-center/blog/article-1",
         lang: "fr",
         tag: "Innovation",
-        imageUrl: "https://images.unsplash.com/photo-1614003013812-e397300cd764?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1614003013812-4484c269.webp",
         date: "20 Jan 2025",
         author: {
             name: "Bordj Steel",
@@ -22,7 +22,7 @@ export const articles = [
         href: "/media-center/blog/article-2",
         lang: "fr",
         tag: "Projet",
-        imageUrl: "https://images.unsplash.com/photo-1562088997-ed2fbeef1cd6?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1562088997-0a453513.webp",
         date: "30 Jul 2025",
         author: {
             name: "Bordj Steel",
@@ -36,7 +36,7 @@ export const articles = [
         href: "/media-center/blog/article-3",
         lang: "fr",
         tag: "Qualité",
-        imageUrl: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1558618666-82ac63dd.webp",
         date: "28 Jul 2025",
         author: {
             name: "Bordj Steel",
@@ -50,7 +50,7 @@ export const articles = [
         href: "/media-center/blog/article-4",
         lang: "fr",
         tag: "Savoir-Faire",
-        imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1504307651254-121e1ad1.webp",
         date: "27 Jul 2025",
         author: {
             name: "Bordj Steel",
@@ -64,7 +64,7 @@ export const articles = [
         href: "/media-center/blog/article-5",
         lang: "ar",
         tag: "Innovation",
-        imageUrl: "https://images.unsplash.com/photo-1510900767338-8bf61abf2562?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1510900767338-a0bca12f.webp",
         date: "26 Jul 2025",
         author: {
             name: "Bordj Steel",
@@ -78,7 +78,7 @@ export const articles = [
         href: "/media-center/blog/article-6",
         lang: "ar",
         tag: "Événement",
-        imageUrl: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1540575467063-a72aed36.webp",
         date: "25 Jul 2025",
         author: {
             name: "Bordj Steel",
@@ -92,7 +92,7 @@ export const articles = [
         href: "/media-center/blog/article-7",
         lang: "fr",
         tag: "Savoir-Faire",
-        imageUrl: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1509391366360-606b7b46.webp",
         date: "22 Jul 2025",
         author: {
             name: "Bordj Steel",
@@ -106,7 +106,7 @@ export const articles = [
         href: "/media-center/blog/article-8",
         lang: "fr",
         tag: "Savoir-Faire",
-        imageUrl: "https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1531973576160-274388fd.webp",
         date: "20 Jul 2025",
         author: {
             name: "Bordj Steel",
@@ -120,7 +120,7 @@ export const articles = [
         href: "/media-center/blog/article-9",
         lang: "fr",
         tag: "Annonce",
-        imageUrl: "https://images.unsplash.com/photo-1541976590-713941681591?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1541976590-0575ce30.webp",
         date: "15 Aug 2025",
         author: {
             name: "Bordj Steel",
@@ -134,7 +134,7 @@ export const articles = [
         href: "/media-center/blog/article-10",
         lang: "fr",
         tag: "Technologie",
-        imageUrl: "https://images.unsplash.com/photo-1503328427499-d92d1ac3d174?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1503328427499-743bc622.webp",
         date: "01 Sep 2025",
         author: {
             name: "Bordj Steel",
@@ -148,7 +148,7 @@ export const articles = [
         href: "/media-center/blog/article-11",
         lang: "fr",
         tag: "Durabilité",
-        imageUrl: "https://images.unsplash.com/photo-1477039181047-efb4357d01bd?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1477039181047-050cec79.webp",
         date: "10 Sep 2025",
         author: {
             name: "Bordj Steel",
@@ -162,7 +162,7 @@ export const articles = [
         href: "/media-center/blog/article-12",
         lang: "fr",
         tag: "Équipe",
-        imageUrl: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1522071820081-33c9bc80.webp",
         date: "20 Sep 2025",
         author: {
             name: "Bordj Steel",
@@ -176,7 +176,7 @@ export const articles = [
         href: "/media-center/blog/article-13",
         lang: "fr",
         tag: "Conseils",
-        imageUrl: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=640&q=80&auto=format&fit=crop",
+        imageUrl: "/media/1581094794329-dd519444.webp",
         date: "05 Oct 2025",
         author: {
             name: "Bordj Steel",

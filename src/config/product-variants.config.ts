@@ -6,7 +6,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
     id: 'couverture',
     title: 'PANNEAUX SANDWICHS DE COUVERTURE',
     mainImage: {
-      src: 'https://images.unsplash.com/photo-1614003013812-e397300cd764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdGVlbCUyMGNvdmVyfGVufDB8fHx8MTc1NjcxODU1M3ww&ixlib=rb-4.1.0&q=80&w=1080',
+      src: '/media/1614003013812-fce6c9ac.webp',
       alt: 'Panneaux de couverture en acier',
       aiHint: 'metal sheets',
     },
@@ -100,7 +100,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
         title: 'Caractéristiques Géométriques',
         caption: 'Couverture avec 5 ondes',
         image: {
-            src: 'https://i.ibb.co/W4P3mLt2/panneaux-couverture.png',
+            src: '/media/panneaux-couverture-86aa6d33.webp',
             alt: 'Schéma technique couverture',
             aiHint: 'technical drawing'
         }
@@ -111,7 +111,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
     id: 'bardage',
     title: 'PANNEAUX SANDWICHS DE BARDAGE',
     mainImage: {
-      src: 'https://images.unsplash.com/photo-1545987796-200677ee1011?w=1080&q=80&auto=format&fit=crop',
+      src: '/media/1545987796-b3eced79.webp',
       alt: 'Panneaux de bardage façade industrielle',
       aiHint: 'industrial building facade cladding'
     },
@@ -203,7 +203,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
         {
             type: 'image',
             title: 'Caractéristiques Géométriques',
-            image: { src: 'https://i.imghippo.com/files/Xii4624Ovg.png', alt: 'Schéma technique C', aiHint: 'technical drawing'},
+            image: { src: '/media/xii4624ovg-acc62fc7.webp', alt: 'Schéma technique C', aiHint: 'technical drawing'},
             caption: 'Panneaux sandwichs de bardage nervuré/nervuré'
         }
         // Le schéma « lisse/lisse » reste à fournir : il réutilisait l'image du
@@ -214,7 +214,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
     id: 'frigorifique',
     title: 'PANNEAUX SANDWICHS FRIGORIFIQUES',
     mainImage: {
-      src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1080&q=80&auto=format&fit=crop',
+      src: '/media/1558618666-e756293b.webp',
       alt: 'Panneaux sandwichs frigorifiques – chambre froide',
       aiHint: 'cold storage refrigeration panels',
     },
@@ -305,13 +305,13 @@ export const productVariants: { [key: string]: ProductVariant } = {
             type: 'image',
             title: 'Caractéristiques Géométriques',
             caption: 'Panneaux sandwichs frigorifiques lisse/lisse',
-            image: { src: 'https://i.ibb.co/WWSRgtQH/panneaux-frigorifique-1.png', alt: 'panneaux-frigorifique-1', aiHint: 'technical drawing' }
+            image: { src: '/media/panneaux-frigorifique-1-75998de3.webp', alt: 'panneaux-frigorifique-1', aiHint: 'technical drawing' }
         },
         {
             type: 'image',
             title: '',
             caption: "Détail de l'assemblage",
-            image: { src: 'https://i.ibb.co/FLdjzM9Q/panneaux-frigorifique-2.png', alt: 'panneaux-frigorifique-2', aiHint: 'technical drawing' }
+            image: { src: '/media/panneaux-frigorifique-2-6fd82b09.webp', alt: 'panneaux-frigorifique-2', aiHint: 'technical drawing' }
         }
     ]
   },
@@ -319,7 +319,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
     id: 'toleNervuree',
     title: 'TÔLE NERVURÉE',
     mainImage: {
-      src: 'https://images.unsplash.com/photo-1706029831375-c090c70c161d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtZXRhbCUyMHNoZWV0JTIwfGVufDB8fHx8MTc1NTA5MDY2OHww&ixlib=rb-4.1.0&q=80&w=1080',
+      src: '/media/1706029831375-5aec7a03.webp',
       alt: 'Tôle nervurée',
       aiHint: 'ribbed steel sheet',
     },
@@ -379,7 +379,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
         {
             type: 'image',
             title: 'Caractéristiques Géométriques',
-            image: { src: 'https://i.ibb.co/ccqw6JJN/tole-nervure.png', alt: 'tole-nervure', aiHint: 'technical drawing' },
+            image: { src: '/media/tole-nervure-e88ce85f.webp', alt: 'tole-nervure', aiHint: 'technical drawing' },
             caption: ''
         }
     ]
@@ -388,7 +388,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
     id: 'hibond',
     title: 'PLANCHER COLLABORANT "HI-BOND 77"',
     mainImage: {
-      src: 'https://i.pinimg.com/736x/53/07/e6/5307e6787500b6efff734990a41772e5.jpg',
+      src: '/media/5307e6787500b6efff734990a417-37a72221.webp',
       alt: 'Plancher collaborant Hi-Bond',
       aiHint: 'composite floor',
     },
@@ -466,7 +466,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
             title: 'Caractéristiques Géométriques',
             caption: '',
             image: {
-                src: 'https://i.ibb.co/RpPPP4Gc/hi-bond-77.png',
+                src: '/media/hi-bond-77-1b35f148.webp',
                 alt: 'hi-bond-77',
                 aiHint: 'technical drawing'
             }
@@ -481,16 +481,16 @@ export const productVariants: { [key: string]: ProductVariant } = {
         {
             type: 'imageGrid',
             items: [
-                { name: 'Bande de rive sur mur', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/28/14/75/28147544dd82d0c459d85954e48f1b83.jpg', alt: 'Bande de rive sur mur', aiHint: 'wall edge band' } },
-                { name: 'Angle droit', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/52/70/4c/52704c1cb61fbec9f1ab6c2d24ef6b45.jpg', alt: 'Angle droit', aiHint: 'right angle' } },
-                { name: 'Bavette rejet d\'eau', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/474x/7c/46/24/7c46241638e5e1c9cbe15dea25be9613.jpg', alt: 'Bavette rejet d\'eau', aiHint: 'water drip flashing' } },
-                { name: 'Sous faitière', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/df/cb/e8/dfcbe8706e2cd65a17a1d73fbad68458.jpg', alt: 'Sous faitière', aiHint: 'under ridge' } },
-                { name: 'Cornière d\'angle intérieur', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/28/dd/e1/28dde1c98701028935e40ac4d9e2aeb0.jpg', alt: 'Cornière d\'angle intérieur', aiHint: 'internal corner angle' } },
+                { name: 'Bande de rive sur mur', length: 'Long. Std. 3m à 6m', image: { src: '/media/28147544dd82d0c459d85954e48f-5af93d48.webp', alt: 'Bande de rive sur mur', aiHint: 'wall edge band' } },
+                { name: 'Angle droit', length: 'Long. Std. 3m à 6m', image: { src: '/media/52704c1cb61fbec9f1ab6c2d24ef-24e2464b.webp', alt: 'Angle droit', aiHint: 'right angle' } },
+                { name: 'Bavette rejet d\'eau', length: 'Long. Std. 3m à 6m', image: { src: '/media/7c46241638e5e1c9cbe15dea25be-070533eb.webp', alt: 'Bavette rejet d\'eau', aiHint: 'water drip flashing' } },
+                { name: 'Sous faitière', length: 'Long. Std. 3m à 6m', image: { src: '/media/dfcbe8706e2cd65a17a1d73fbad6-80a5736b.webp', alt: 'Sous faitière', aiHint: 'under ridge' } },
+                { name: 'Cornière d\'angle intérieur', length: 'Long. Std. 3m à 6m', image: { src: '/media/28dde1c98701028935e40ac4d9e2-c1d510d1.webp', alt: 'Cornière d\'angle intérieur', aiHint: 'internal corner angle' } },
                 // Photo de la cornière d'angle extérieur à fournir par le client :
                 // l'entrée réutilisait la photo de l'angle intérieur.
                 { name: 'Cornière d\'angle extérieur', length: 'Long. Std. 3m à 6m' },
-                { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/38/9f/22/389f22b55684dcbf9747652526fcc637.jpg', alt: 'Faîtière', aiHint: 'ridge cap' } },
-                { name: 'U de sol acier galvanisé', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/12/c9/fc/12c9fcea3a33af7b379bbee140210007.jpg', alt: 'U de sol acier galvanisé', aiHint: 'galvanized steel U-profile' } },
+                { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: '/media/389f22b55684dcbf9747652526fc-c0943445.webp', alt: 'Faîtière', aiHint: 'ridge cap' } },
+                { name: 'U de sol acier galvanisé', length: 'Long. Std. 3m à 6m', image: { src: '/media/12c9fcea3a33af7b379bbee14021-b32cd893.webp', alt: 'U de sol acier galvanisé', aiHint: 'galvanized steel U-profile' } },
             ]
         }
     ]

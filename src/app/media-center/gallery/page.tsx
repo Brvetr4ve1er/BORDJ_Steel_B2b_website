@@ -15,7 +15,7 @@ export default function GalleryPage() {
       title="Galerie"
       subtitle="Explorez nos réalisations en images."
       image={{
-        src: "https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?w=800&q=80",
+        src: "/media/1534353436294-2afca52f.webp",
         alt: "Galerie de réalisations Bordj Steel",
         aiHint: "photo gallery",
       }}

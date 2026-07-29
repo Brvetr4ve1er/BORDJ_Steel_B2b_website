@@ -15,7 +15,7 @@ export default function ActualitesPage() {
       title="Actualités"
       subtitle="Les dernières nouvelles de Bordj Steel."
       image={{
-        src: "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&q=80",
+        src: "/media/1495020689067-fda78dfb.webp",
         alt: "Pile de journaux",
         aiHint: "newspapers stack",
       }}

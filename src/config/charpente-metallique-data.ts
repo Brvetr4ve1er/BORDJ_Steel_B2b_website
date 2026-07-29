@@ -24,9 +24,9 @@ export const charpenteMetalliqueData = {
       title: "PRS – Profils Reconstitués Soudés",
       description: "Fabrication sur mesure pour bâtiments industriels, ponts et charpentes lourdes.",
       galleryImages: [
-        "https://i.pinimg.com/736x/f8/05/39/f80539082e4b8be52b8e586116b367ca.jpg",
-        "https://i.ibb.co/NP2NZtW/charpente.jpg",
-        "https://i.ibb.co/dJWKv6rp/projet-charpente.jpg"
+        "/media/f80539082e4b8be52b8e586116b3-58a4871b.webp",
+        "/media/charpente-85d5dfe8.webp",
+        "/media/projet-charpente-3ecb0dcb.webp"
       ],
       specifications: {
         mainDescription: "Notre complexe Bordj Steel est apte à fabriquer ce type de profilé (PRS) selon la demande du client, en respectant les normes en vigueur. Nous pouvons vous accompagner durant toutes les phases de réalisation du projet (étude, fabrication et montage). Notre ligne PRS permet la production en série de poutres en PRS en I ou en caissons.",
@@ -48,8 +48,8 @@ export const charpenteMetalliqueData = {
       title: "Supports de Transport d'Énergie",
       description: "Structures pour l’énergie, la communication et l’affichage.",
       galleryImages: [
-        "https://i.ibb.co/tMvKpnJc/support-electrique.jpg",
-        "https://i.ibb.co/SDk15wLd/support-electrique-2.jpg",
+        "/media/support-electrique-767b0e78.webp",
+        "/media/support-electrique-2-1dd1e149.webp",
       ],
       specifications: {
         mainDescription: "Une ligne dédiée à la fabrication de candélabres et supports.",
@@ -79,8 +79,8 @@ export const charpenteMetalliqueData = {
           "L’homologation <span class='font-bold text-accent'>SONELGAZ</span> dont nous nous sommes dotés nous permet de proposer à nos clients des supports tubulaires de type <span class='font-bold text-accent'>9T</span> et en barres soudées de type <span class='font-bold text-accent'>BS</span> pour le transport d’électricité à basse et à moyenne tension."
         ],
         additionalImages: [
-          { src: "https://i.ibb.co/tMvKpnJc/support-electrique.jpg", alt: "Support électrique 1", aiHint: "electrical support" },
-          { src: "https://i.ibb.co/SDk15wLd/support-electrique-2.jpg", alt: "Support électrique 2", aiHint: "power line support" },
+          { src: "/media/support-electrique-767b0e78.webp", alt: "Support électrique 1", aiHint: "electrical support" },
+          { src: "/media/support-electrique-2-1dd1e149.webp", alt: "Support électrique 2", aiHint: "power line support" },
         ]
       }
     },
@@ -90,8 +90,8 @@ export const charpenteMetalliqueData = {
       title: "Pont Roulant – Mono et Bipoutre",
       description: "Solutions de manutention lourde avec options mono-poutre et bi-poutre.",
       galleryImages: [
-        "https://i.ibb.co/S4x6CVKH/pont-rouklant-jaune.jpg",
-        "https://i.ibb.co/8QQNyHZ/pont-roulant-jaune.jpg",
+        "/media/pont-rouklant-jaune-37f1823a.webp",
+        "/media/pont-roulant-jaune-e49c7ced.webp",
       ],
       specifications: {
         mainDescription: "Nous concevons et fabriquons les structures métalliques complètes pour les ponts roulants, un équipement essentiel pour la manutention dans les usines, les entrepôts et les ateliers. Nos solutions sont adaptées pour des configurations monopoutre (plus légères) et bipoutre (pour charges très lourdes et grandes portées).",
@@ -113,8 +113,8 @@ export const charpenteMetalliqueData = {
           ],
         },
         additionalImages: [
-          { src: "https://i.ibb.co/S4x6CVKH/pont-rouklant-jaune.jpg", alt: "Pont roulant jaune vue 1", aiHint: "overhead crane" },
-          { src: "https://i.ibb.co/8QQNyHZ/pont-roulant-jaune.jpg", alt: "Pont roulant jaune vue 2", aiHint: "industrial crane" },
+          { src: "/media/pont-rouklant-jaune-37f1823a.webp", alt: "Pont roulant jaune vue 1", aiHint: "overhead crane" },
+          { src: "/media/pont-roulant-jaune-e49c7ced.webp", alt: "Pont roulant jaune vue 2", aiHint: "industrial crane" },
         ]
       }
     },
@@ -124,7 +124,7 @@ export const charpenteMetalliqueData = {
       title: "Ligne de Fabrication Automobile",
       description: "Ligne complète pour la transformation métallique automobile de haute précision.",
       galleryImages: [
-        "https://i.ibb.co/0j8hzdNq/carroserie.jpg",
+        "/media/carroserie-8aea5d0d.webp",
       ],
       specifications: {
         mainDescription: "Notre complexe est agréé par le ministère de l’Énergie et des Mines pour fabriquer :",
@@ -137,7 +137,7 @@ export const charpenteMetalliqueData = {
           "<span class='font-bold text-accent'>Ligne de fabrication Carrosserie automobile</span>"
         ],
         additionalImages: [
-            { src: "https://i.ibb.co/0j8hzdNq/carroserie.jpg", alt: "Carrosserie automobile", aiHint: "car body" },
+            { src: "/media/carroserie-8aea5d0d.webp", alt: "Carrosserie automobile", aiHint: "car body" },
         ]
       }
     }
@@ -151,12 +151,12 @@ export const charpenteMetalliqueData = {
 
 // "Nos Projets" gallery — expanding image strip.
 export const charpenteGalleryImages: string[] = [
-  "https://i.pinimg.com/736x/ec/93/b8/ec93b8a90b0c088c23cdf817613dd183.jpg",
-  "https://i.pinimg.com/736x/34/9a/c5/349ac528cf2b299e8e9d38dcf88e029d.jpg",
-  "https://i.pinimg.com/736x/5f/00/6f/5f006fef04a5f7af462ba580abbb2adc.jpg",
-  "https://i.pinimg.com/736x/7a/da/ff/7adaff64dfee8fb4467082a0a5daa933.jpg",
-  "https://i.pinimg.com/736x/53/07/e6/5307e6787500b6efff734990a41772e5.jpg",
-  "https://i.pinimg.com/736x/db/65/cd/db65cdc8fcf0205a18de1498e1a987c7.jpg",
+  "/media/ec93b8a90b0c088c23cdf817613d-9a4ab477.webp",
+  "/media/349ac528cf2b299e8e9d38dcf88e-7bd5bf8f.webp",
+  "/media/5f006fef04a5f7af462ba580abbb-51bd8e30.webp",
+  "/media/7adaff64dfee8fb4467082a0a5da-26e3c51d.webp",
+  "/media/5307e6787500b6efff734990a417-37a72221.webp",
+  "/media/db65cdc8fcf0205a18de1498e1a9-32412004.webp",
 ];
 
 // Domaines d'Application — icon resolved by name in the component.

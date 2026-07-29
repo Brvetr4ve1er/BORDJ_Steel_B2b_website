@@ -354,7 +354,7 @@ export function ChaudronneriePageContent() {
                     </div>
                      <div className="mt-8">
                         <div className="bg-muted rounded-lg aspect-video flex items-center justify-center">
-                            <Image src="https://i.pinimg.com/736x/ac/f1/1d/acf11d05445a30a0c57c86ab75fe9990.jpg" alt="Schéma technique" width={800} height={450} className="rounded-lg object-contain" data-ai-hint="technical drawing" />
+                            <Image src="/media/acf11d05445a30a0c57c86ab75fe-6202d984.webp" alt="Schéma technique" width={800} height={450} className="rounded-lg object-contain" data-ai-hint="technical drawing" />
                         </div>
                      </div>
                   </CardContent>

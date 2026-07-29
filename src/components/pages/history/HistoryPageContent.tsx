@@ -10,7 +10,7 @@ import { CertificationsSection } from '@/components/sections/history/Certificati
 
 export function HistoryPageContent() {
   const heroImage = {
-      src: "https://i.pinimg.com/736x/d5/03/28/d503286d2b91eaf2a17fe813878d9568.jpg",
+      src: "/media/d503286d2b91eaf2a17fe813878d-77bc4a92.webp",
       alt: "Steel factory background",
       aiHint: "welding steel"
   }

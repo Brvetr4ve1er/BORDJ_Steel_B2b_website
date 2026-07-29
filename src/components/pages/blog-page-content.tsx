@@ -53,9 +53,9 @@ type Certification = {
 };
 
 const certifications: Certification[] = [
-  { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/f0/4b/62/f04b6287977e56982f6ccb2a9b65cee7.jpg", logo: "https://i.pinimg.com/736x/f0/4b/62/f04b6287977e56982f6ccb2a9b65cee7.jpg" },
-  { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/6f/3f/856f3f85dd8452ba3580e8280f62e093.jpg", logo: "https://i.pinimg.com/736x/79/01/a5/7901a543069366724bf173d772a1502f.jpg" },
-  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/15/a6/0a/15a60ad54ea9e34e77b39205320bd3ae.jpg", logo: "https://i.pinimg.com/736x/5f/6b/69/5f6b696fc21fdd205c98c9fdb27bcf7a.jpg" }
+  { name: "ISO 9001", description: "Management de la qualité", image: "/media/f04b6287977e56982f6ccb2a9b65-3302f3b3.webp", logo: "/media/f04b6287977e56982f6ccb2a9b65-3302f3b3.webp" },
+  { name: "ISO 14001", description: "Management environnemental", image: "/media/856f3f85dd8452ba3580e8280f62-c1c1a5d2.webp", logo: "/media/7901a543069366724bf173d772a1-977ee9e7.webp" },
+  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "/media/15a60ad54ea9e34e77b39205320b-b2c156e1.webp", logo: "/media/5f6b696fc21fdd205c98c9fdb27b-60ae7005.webp" }
 ];
 
 function CertificationCard({ cert }: { cert: Certification }) {
@@ -194,7 +194,7 @@ export function BlogPageContent() {
     };
 
     const heroImage = {
-        src: "https://i.pinimg.com/736x/7f/65/11/7f6511da571d8510b554b57a37052799.jpg",
+        src: "/media/7f6511da571d8510b554b57a3705-e82c4b97.webp",
         alt: "Univers médias de Bordj Steel",
         aiHint: "digital world"
     }

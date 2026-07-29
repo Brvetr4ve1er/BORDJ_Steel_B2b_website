@@ -15,7 +15,7 @@ export default function MediaCenterPage() {
       title="Media Center"
       subtitle="Explorez nos actualités, projets et ressources."
       image={{
-        src: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&q=80",
+        src: "/media/1585829365295-8c75ac1e.webp",
         alt: "Espace médias Bordj Steel",
         aiHint: "media center",
       }}

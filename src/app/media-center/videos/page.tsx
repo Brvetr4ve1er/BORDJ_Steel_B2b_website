@@ -15,7 +15,7 @@ export default function VideosPage() {
       title="Vidéos"
       subtitle="Découvrez nos projets en vidéo."
       image={{
-        src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80&auto=format&fit=crop",
+        src: "/media/1581091226825-0596e30c.webp",
         alt: "Production industrielle en acier",
         aiHint: "steel industrial production",
       }}

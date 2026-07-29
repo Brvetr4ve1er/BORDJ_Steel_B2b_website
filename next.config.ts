@@ -47,20 +47,22 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: false,
   },
   images: {
-    // Some remote logos are delivered as SVG. Allow them, but harden the
-    // optimizer: force download disposition and a restrictive CSP so the
-    // SVGs can't execute scripts when served through the image endpoint.
-    dangerouslyAllowSVG: true,
-    contentDispositionType: 'attachment',
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    // Only hosts actually referenced by image data in src/ — re-verify with a
-    // grep for the hostname before removing entries here.
+    // Serve AVIF where the browser supports it (typically 20–40% smaller than
+    // WebP at equal quality), falling back to WebP. The sources in
+    // `public/media` are high-resolution WebP; Next re-encodes and resizes them
+    // per request, so visitors never download the full-size original.
+    formats: ['image/avif', 'image/webp'],
+    // Optimised derivatives are immutable (the source filenames are content-
+    // hashed), so let the optimizer cache them for a year instead of 60s.
+    minimumCacheTTL: 31536000,
+    // All site photography is now self-hosted under `public/media` (see
+    // `docs/MEDIA.md`). The only remaining remote host is the placehold.co
+    // fallback used when a project image key fails to resolve.
+    // NOTE: `dangerouslyAllowSVG` was removed with the last remote SVG logo —
+    // no image passed to next/image is an SVG any more. Do not re-add it
+    // without re-auditing: it lets the optimizer serve attacker-controlled SVG.
     remotePatterns: [
       { protocol: 'https', hostname: 'placehold.co', port: '', pathname: '/**' },
-      { protocol: 'https', hostname: 'images.unsplash.com', port: '', pathname: '/**' },
-      { protocol: 'https', hostname: 'i.pinimg.com', port: '', pathname: '/**' },
-      { protocol: 'https', hostname: 'i.imghippo.com', port: '', pathname: '/**' },
-      { protocol: 'https', hostname: 'i.ibb.co', port: '', pathname: '/**' },
     ],
   },
   async headers() {

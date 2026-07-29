@@ -7,7 +7,7 @@ import { Layers, Weight, MapPin } from 'lucide-react';
 
 export function ReferencesPageContent() {
   const heroImage = {
-    src: "https://i.pinimg.com/736x/53/07/e6/5307e6787500b6efff734990a41772e5.jpg",
+    src: "/media/5307e6787500b6efff734990a417-37a72221.webp",
     alt: "Structure en acier en construction",
     aiHint: "steel structure"
   }

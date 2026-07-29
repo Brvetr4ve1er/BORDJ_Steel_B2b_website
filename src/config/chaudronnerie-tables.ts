@@ -26,16 +26,16 @@ export const geometricTableData: ChaudronnerieTableRow[] = [
 ];
 
 export const chaudronnerieDrawingImages: string[] = [
-  "https://i.pinimg.com/736x/05/76/f1/0576f18a52e3a3bb870dfe46089eae54.jpg",
-  "https://i.pinimg.com/736x/51/a9/e3/51a9e370aa2ddbb7439c177612e9a1d2.jpg",
-  "https://i.pinimg.com/736x/57/a7/2b/57a72be37dbd74bf3de07deacdf9aa1f.jpg",
-  "https://i.pinimg.com/736x/6e/10/d6/6e10d64b38329f46cd84e03b5256f2f3.jpg",
-  "https://i.pinimg.com/736x/2a/df/0b/2adf0bc95fdf6b023316e8b398fc7cf9.jpg",
-  "https://i.pinimg.com/736x/15/4d/42/154d42e3d73c5e6fdac5e49213e0b2bb.jpg",
-  "https://i.pinimg.com/736x/11/67/cd/1167cd7b335b19a5d1695a0993b20d31.jpg",
-  "https://i.pinimg.com/736x/22/2e/41/222e41debeda041c6485c8d2ee91f2d5.jpg",
-  "https://i.pinimg.com/736x/7d/80/e2/7d80e268117ead2bd32b20f760c46543.jpg",
-  "https://i.pinimg.com/736x/0b/9e/6f/0b9e6f0a129b6b060b180e4a575ab74a.jpg",
+  "/media/0576f18a52e3a3bb870dfe46089e-9d58a14a.webp",
+  "/media/51a9e370aa2ddbb7439c177612e9-c1faf3df.webp",
+  "/media/57a72be37dbd74bf3de07deacdf9-55a5229b.webp",
+  "/media/6e10d64b38329f46cd84e03b5256-a3b7bb00.webp",
+  "/media/2adf0bc95fdf6b023316e8b398fc-751250e7.webp",
+  "/media/154d42e3d73c5e6fdac5e49213e0-a2a07589.webp",
+  "/media/1167cd7b335b19a5d1695a0993b2-e6cd66f4.webp",
+  "/media/222e41debeda041c6485c8d2ee91-930d5806.webp",
+  "/media/7d80e268117ead2bd32b20f760c4-89cfe92b.webp",
+  "/media/0b9e6f0a129b6b060b180e4a575a-5c7c4d8e.webp",
 ];
 
 // Domaines d'activités — icon resolved by name in the component.

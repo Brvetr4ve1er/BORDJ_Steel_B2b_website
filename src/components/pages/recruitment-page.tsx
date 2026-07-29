@@ -87,7 +87,7 @@ const showEmploymentTypeFilter = availableEmploymentTypeOptions.length > 1;
 const showBothFilters = showCategoryFilter && showEmploymentTypeFilter;
 
 const heroImage = {
-  src: "https://i.ibb.co/b5M7sxTW/Chat-GPT-Image-16-nov-2025-10-56-58.png",
+  src: "/media/chat-gpt-image-16-nov-2025-1-1c86908b.webp",
   alt: "Équipe de professionnels dans un bureau moderne",
   aiHint: "professional team office",
 };

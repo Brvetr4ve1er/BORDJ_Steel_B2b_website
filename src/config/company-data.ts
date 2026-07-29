@@ -288,21 +288,21 @@ export const companyData = {
             title: "Bureau Commercial",
             email: "commercial@bordjsteel.dz",
             phone: "+213 561 61 60 05",
-            image: "https://i.pinimg.com/736x/85/ab/f7/85abf719f734e7c11defc2c680c1fbe6.jpg",
+            image: "/media/85abf719f734e7c11defc2c680c1-8a19bd5f.webp",
           },
           {
             icon: 'HardHat',
             title: "Charpente Métallique",
             phone: "+213 770 98 43 14",
             email: "commercial@bordjsteel.dz",
-            image: "https://i.pinimg.com/736x/e4/e9/e2/e4e9e2933ed8fa9f0d49d50c4d61deb1.jpg",
+            image: "/media/e4e9e2933ed8fa9f0d49d50c4d61-ffd2b7e1.webp",
           },
           {
             icon: 'Package',
             title: "Panneaux Sandwich",
             phone: "+213 770 70 59 78",
             email: "commercial@bordjsteel.dz",
-            image: "https://i.pinimg.com/736x/f4/82/92/f482924f5237e9d9f98da4e26adffdbb.jpg",
+            image: "/media/f482924f5237e9d9f98da4e26adf-a5890cd7.webp",
           },
           {
             icon: 'Zap',
@@ -318,14 +318,14 @@ export const companyData = {
             // CLIENT NOTE: this address appears nowhere else on the site (see
             // `emails` above). Kept verbatim; confirm with the client.
             email: "marketing@bordjsteel.dz",
-            image: "https://i.pinimg.com/474x/2c/79/22/2c792262ee0e5c2f3a1290cd06825f9a.jpg",
+            image: "/media/2c792262ee0e5c2f3a1290cd0682-610b04f1.webp",
           },
           {
             icon: 'Wrench',
             title: "Réalisation et Montage",
             phone: "+213 770 98 01 48",
             email: "commercial@bordjsteel.dz",
-            image: "https://i.pinimg.com/736x/a3/0d/65/a30d652c6e58b3aebe5ca3561af436a6.jpg",
+            image: "/media/a30d652c6e58b3aebe5ca3561af4-c5bd987d.webp",
           },
         ],
       }
