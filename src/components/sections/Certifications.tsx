@@ -1,6 +1,5 @@
 
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import { Award } from 'lucide-react';
 import { companyData } from '@/config/company-data';
 
 export function Certifications() {
@@ -12,23 +11,22 @@ export function Certifications() {
         <AnimatedWrapper animation="fade-in">
           <h2 className="font-headline text-4xl font-bold text-center text-primary mb-16">{certifications.title}</h2>
         </AnimatedWrapper>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-20">
+        {/* No badge visuals here: `companyData.pages.certifications` carries no
+            per-certification image, and three identical generic icons told the
+            visitor nothing. The norm and its scope carry the section instead. */}
+        <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-3">
           {certifications.items.map((cert, index) => {
             const parts = cert.split(' - ');
             const iso = parts[0];
             const description = parts[1];
 
             return (
-              <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                <div className="flex flex-col items-center text-center gap-4 group">
-                  <div className="relative w-40 h-40 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 transform group-hover:scale-110 group-hover:shadow-2xl border-4 border-accent/20">
-                     <Award className="h-20 w-20 text-accent transition-colors duration-300 group-hover:text-accent/80" />
-                  </div>
-                  <h3 className="font-headline font-semibold text-primary max-w-xs">
-                    <span className="text-accent font-bold text-2xl">{iso}</span>
-                    <br />
-                    {description}
-                  </h3>
+              <AnimatedWrapper key={cert} animation="fade-in-stagger" staggerIndex={index}>
+                <div className="h-full rounded-lg border-l-4 border-accent bg-background p-8 shadow-md">
+                  <h3 className="font-headline text-2xl font-bold tracking-tight text-accent">{iso}</h3>
+                  {description && (
+                    <p className="mt-3 text-lg leading-relaxed text-primary">{description}</p>
+                  )}
                 </div>
               </AnimatedWrapper>
             )
@@ -38,5 +36,3 @@ export function Certifications() {
     </section>
   );
 }
-
-    

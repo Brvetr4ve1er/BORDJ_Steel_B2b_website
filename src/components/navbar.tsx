@@ -3,9 +3,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, X, Building2, HardHat, ShieldCheck, Award, Cog, FileText, Anchor, BookOpen, Video, View, User } from 'lucide-react';
+import { Briefcase, Factory, Info, Mail, Newspaper, Package, Menu, Building2, HardHat, ShieldCheck, Award, Cog, FileText, Anchor, BookOpen, Video, View, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { companyData } from '@/config/company-data';
 import { Logo } from './logo';
@@ -229,10 +229,6 @@ export function Navbar() {
       <Link href="/" className="group flex h-full items-center" aria-label="Accueil Bordj Steel">
         <div className="relative h-14 w-14 overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105 md:h-16 md:w-16">
           <Logo />
-          <div
-            className="absolute top-0 left-[-100%] h-full w-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500 ease-out group-hover:left-[100%] transform-gpu"
-            style={{ mask: 'url(#shine-mask)' }}
-          />
         </div>
       </Link>
 
@@ -262,12 +258,7 @@ export function Navbar() {
               <SheetContent side="right" className="flex w-full max-w-sm flex-col bg-background p-0">
                 <SheetHeader className="flex flex-row items-center justify-between border-b p-5">
                   <div className="h-12 w-12"><Logo /></div>
-                  <SheetClose asChild>
-                    <Button variant="ghost" size="icon" className="text-foreground">
-                      <X className="h-6 w-6" />
-                      <span className="sr-only">Fermer le menu</span>
-                    </Button>
-                  </SheetClose>
+                  {/* The close (X) button is supplied by SheetContent itself — do not add a second one. */}
                   <SheetTitle className="sr-only">Menu principal</SheetTitle>
                   <SheetDescription className="sr-only">Navigation principale du site Bordj Steel.</SheetDescription>
                 </SheetHeader>

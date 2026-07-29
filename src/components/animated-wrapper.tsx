@@ -57,7 +57,10 @@ export function AnimatedWrapper({ children, animation, staggerIndex = 0, classNa
     'fade-in-stagger': 'opacity-100',
   };
 
-  const delay = animation === 'fade-in-stagger' ? staggerIndex * 100 : 0;
+  // The stagger delay applies to every variant, not just `fade-in-stagger`:
+  // several sections map over a list with `slide-up` / `zoom-in` + staggerIndex
+  // and expect the same cascade.
+  const delay = staggerIndex * 100;
 
   return (
     <div

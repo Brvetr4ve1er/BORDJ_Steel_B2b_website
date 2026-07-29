@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Facebook, Instagram, Linkedin, Send } from 'lucide-react';
+import { ExternalLink, Facebook, Instagram, Linkedin, MapPin, Send } from 'lucide-react';
 import { companyData } from '@/config/company-data';
 import { useToast } from '@/hooks/use-toast';
 import { Logo } from './logo';
@@ -43,6 +43,9 @@ export function Footer() {
   const { footer, navigation, pages } = companyData;
   const { toast } = useToast();
   const [email, setEmail] = React.useState('');
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    pages.contact.content.address
+  )}`;
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,17 +86,23 @@ export function Footer() {
               <p>{pages.contact.content.address}</p>
               <p>Email: {pages.contact.content.emails[0]}</p>
             </address>
-             <div className="mt-6 aspect-w-16 aspect-h-9 rounded-lg overflow-hidden border-2 border-accent">
-                <iframe
-                title="Localisation de Bordj Steel sur Google Maps"
-                src="https://maps.google.com/maps?q=N%C2%B01%20lieu-dit%20Mechta%20Fatima%2C%20Bordj%20Bou%20Arr%C3%A9ridj%2C%20Alg%C3%A9rie&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="150"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+            {/* A full Maps embed used to live here. It loaded on every page of the
+                site (and twice on the home page, which has its own map in the
+                contact section), so it is replaced by a static link. */}
+            <div className="mt-6 rounded-lg border-2 border-accent p-4">
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Voir la localisation de Bordj Steel sur Google Maps (nouvel onglet)"
+                className="flex h-[150px] flex-col items-center justify-center gap-3 rounded-md text-center text-white/80 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                <MapPin className="h-9 w-9 text-accent" aria-hidden="true" />
+                <span className="inline-flex items-center gap-2 text-base font-semibold">
+                  Voir sur Google Maps
+                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </a>
             </div>
           </div>
           <div className="relative">
@@ -140,7 +149,10 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-10 text-center md:flex-row">
-          <p className="text-base text-white/80">
+          {/* The year is legitimately client-time-dependent: the prerendered HTML
+              carries the build year while hydration recomputes the current one, so
+              a year rollover would otherwise trigger a hydration text mismatch. */}
+          <p className="text-base text-white/80" suppressHydrationWarning>
             &copy; {new Date().getFullYear()} {footer.copyright}
           </p>
           <nav className="flex gap-6 text-base">

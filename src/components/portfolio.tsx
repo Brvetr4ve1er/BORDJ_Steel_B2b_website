@@ -1,21 +1,18 @@
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedWrapper } from './animated-wrapper';
-import { companyData } from '@/config/company-data';
-import images from '@/app/lib/placeholder-images.json';
+import { companyData, getProjectImage } from '@/config/company-data';
 
 export function Portfolio() {
   const { references } = companyData.pages;
-  const projectImages = images.portfolio;
 
-  const projectsData = [
-    { ...references.projects[0], image: projectImages.utec },
-    { ...references.projects[1], image: projectImages['star-good'] },
-    { ...references.projects[2], image: projectImages['zenteck-bba'] },
-    { ...references.projects[3], image: projectImages['base-logistique-condor'] },
-    { ...references.projects[4], image: projectImages.softal },
-    { ...references.projects[5], image: projectImages['unité-duct-piping'] },
-  ];
+  // Every project in the config is rendered, and each one resolves its own
+  // image from its stable `imageKey` — same helper as /references, so the two
+  // pages cannot disagree, and reordering the config is a no-op here.
+  const projectsData = references.projects.map((project) => ({
+    ...project,
+    image: getProjectImage(project.imageKey),
+  }));
 
   return (
     <section id="portfolio" className="bg-background">
@@ -25,8 +22,8 @@ export function Portfolio() {
         </AnimatedWrapper>
         <AnimatedWrapper animation="fade-in">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projectsData.map((project, index) => (
-              <div key={project.name} className="group">
+            {projectsData.map((project) => (
+              <div key={project.imageKey} className="group">
                 <Card className="overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
                   <CardContent className="p-0">
                     <div className="relative aspect-square">

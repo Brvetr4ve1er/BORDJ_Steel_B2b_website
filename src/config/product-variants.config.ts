@@ -80,10 +80,14 @@ export const productVariants: { [key: string]: ProductVariant } = {
         type: 'table',
         title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)',
         subtitle: 'Tôle en acier épaisseur 0.5mm',
-        icon: 'two-supports',
-        headers: ["Charge utile uniformément répartie", " ", "1 appui", "2 appuis"],
+        headerGroups: [
+          { label: "Charge utile uniformément répartie", span: 1 },
+          { label: " ", span: 1 },
+          { label: "1 appui", span: 4, icon: 'two-supports' },
+          { label: "2 appuis", span: 4, icon: 'two-supports' },
+        ],
+        subheaders: ['kg/m²', 'daN/m²', '30', '35', '40', '60', '30', '35', '40', '60'],
         rows: [
-          ['kg/m²', 'daN/m²', '30', '35', '40', '60', '30', '35', '40', '60'],
           ['80', '78', '345', '365', '390', '485', '400', '425', '455', '560'],
           ['120', '118', '290', '310', '335', '415', '345', '365', '390', '485'],
           ['150', '147', '265', '285', '305', '375', '315', '335', '355', '440'],
@@ -180,10 +184,14 @@ export const productVariants: { [key: string]: ProductVariant } = {
             type: 'table',
             title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m²)',
             subtitle: 'Tôle en acier épaisseur 0.5mm',
-            icon: 'two-supports',
-            headers: ['Charge utile uniformément répartie', '', '1 appui - Entraxe Max cm', '2 appuis - Entraxe Max cm'],
+            headerGroups: [
+              { label: 'Charge utile uniformément répartie', span: 1 },
+              { label: '', span: 1 },
+              { label: '1 appui - Entraxe Max cm', span: 5, icon: 'two-supports' },
+              { label: '2 appuis - Entraxe Max cm', span: 5, icon: 'two-supports' },
+            ],
+            subheaders: ['kg/m²', 'daN/m²', '30', '35', '40', '50', '60', '30', '35', '40', '50', '60'],
             rows: [
-              ['kg/m²', 'daN/m²', '30', '35', '40', '50', '60', '30', '35', '40', '50', '60'],
               ['60', '58', '285', '315', '345', '405', '425', '455', '505', '550', '560', ''],
               ['80', '78', '255', '285', '315', '345', '375', '405', '445', '490', '495', ''],
               ['100', '98', '235', '265', '300', '335', '375', '385', '410', '460', '470', ''],
@@ -197,13 +205,9 @@ export const productVariants: { [key: string]: ProductVariant } = {
             title: 'Caractéristiques Géométriques',
             image: { src: 'https://i.imghippo.com/files/Xii4624Ovg.png', alt: 'Schéma technique C', aiHint: 'technical drawing'},
             caption: 'Panneaux sandwichs de bardage nervuré/nervuré'
-        },
-        {
-            type: 'image',
-            title: '',
-            image: { src: 'https://i.imghippo.com/files/Xii4624Ovg.png', alt: 'Schéma technique D – bardage lisse/lisse', aiHint: 'technical drawing'},
-            caption: 'Panneaux sandwichs de bardage lisse/lisse'
         }
+        // Le schéma « lisse/lisse » reste à fournir : il réutilisait l'image du
+        // profil nervuré/nervuré, ce qui contredisait sa légende.
     ]
   },
   frigorifique: {
@@ -281,10 +285,14 @@ export const productVariants: { [key: string]: ProductVariant } = {
             type: 'table',
             title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m²)',
             subtitle: 'Tôle en acier épaisseur 0,5mm',
-            icon: 'two-supports',
-            headers: ['Charge utile uniformément répartie', '', '1 appui - Entraxe Max cm', '2 appuis - Entraxe Max cm'],
+            headerGroups: [
+                { label: 'Charge utile uniformément répartie', span: 1 },
+                { label: '', span: 1 },
+                { label: '1 appui - Entraxe Max cm', span: 6, icon: 'two-supports' },
+                { label: '2 appuis - Entraxe Max cm', span: 6, icon: 'two-supports' },
+            ],
+            subheaders: ['kg/m²', 'daN/m²', '80', '100', '120', '150', '180', '200', '80', '100', '120', '150', '180', '200'],
             rows: [
-                ['kg/m²', 'daN/m²', '80', '100', '120', '150', '180', '200', '80', '100', '120', '150', '180', '200'],
                 ['60', '58', '545', '635', '715', '790', '845', '870', '620', '725', '805', '905', '975', '1035'],
                 ['80', '78', '490', '570', '640', '700', '740', '765', '565', '655', '735', '805', '865', '920'],
                 ['100', '98', '450', '525', '590', '640', '670', '690', '520', '605', '680', '740', '800', '855'],
@@ -355,10 +363,13 @@ export const productVariants: { [key: string]: ProductVariant } = {
             type: 'table',
             title: 'Tableau de charges et portées admissibles',
             subtitle: 'Charges uniformément réparties exprimées en KN/m²',
-            icon: 'two-supports',
-            headers: ["EP (mm)", "1 appui", "2 appuis"],
+            headerGroups: [
+              { label: "EP (mm)", span: 1 },
+              { label: "1 appui", span: 10, icon: 'two-supports' },
+              { label: "2 appuis", span: 10, icon: 'two-supports' },
+            ],
+            subheaders: ['', '1.00', '1.25', '1.50', '1.75', '2.00', '2.25', '2.50', '2.75', '3.00', '3.25', '1.00', '1.25', '1.50', '1.75', '2.00', '2.25', '2.50', '2.75', '3.00', '3.25'],
             rows: [
-              ['', '1.00', '1.25', '1.50', '1.75', '2.00', '2.25', '2.50', '2.75', '3.00', '3.25', '1.00', '1.25', '1.50', '1.75', '2.00', '2.25', '2.50', '2.75', '3.00', '3.25'],
               ['0.5', '439', '281', '185', '143', '109', '86', '63', '47', '36', '-', '570', '365', '252', '180', '141', '111', '90', '67', '51', '40'],
               ['0.6', '614', '393', '273', '200', '153', '115', '84', '63', '48', '38', '768', '491', '341', '251', '192', '152', '123', '101', '81', '64'],
               ['0.7', '716', '458', '318', '234', '179', '135', '98', '73', '57', '', '896', '573', '398', '292', '224', '177', '143', '118', '95', '74'],
@@ -420,9 +431,15 @@ export const productVariants: { [key: string]: ProductVariant } = {
         {
             type: 'table',
             title: 'PROPRIÉTÉS DE LA TÔLE HI-BOND 77',
-            headers: ["ÉP (mm)", "Poids (Kg/m)", "Haut de la tôle en compression", "Bas de la tôle en compression", "Cisaillement voilement"],
+            headerGroups: [
+                { label: "ÉP (mm)", span: 1 },
+                { label: "Poids (Kg/m)", span: 1 },
+                { label: "Haut de la tôle en compression", span: 4 },
+                { label: "Bas de la tôle en compression", span: 4 },
+                { label: "Cisaillement voilement", span: 2 },
+            ],
+            subheaders: ['', '', 'Lx (Cm4)', 'Zx-top (Cm3)', 'Zx-bot (Cm3)', 'Ma (Kn.m)', 'Lx (Cm4)', 'Zx-top (Cm3)', 'Zx-bot (Cm3)', 'Ma (Kn.m)', 'Va (KN)', 'Pa (KN)'],
             rows: [
-                ['', '', 'Lx (Cm4)', 'Zx-top (Cm3)', 'Zx-bot (Cm3)', 'Ma (Kn.m)', 'Lx (Cm4)', 'Zx-top (Cm3)', 'Zx-bot (Cm3)', 'Ma (Kn.m)', 'Va (KN)', 'Pa (KN)'],
                 ['0.70', 6.87, 83.27, 14.34, 18.87, 2.32, 83.27, 21.16, 16.56, 2.68, 22.18, 11.28],
                 ['1.00', 9.81, 119.0, 23.34, 27.87, 3.77, 119.0, 31.03, 26.74, 4.32, 51.37, 21.83],
                 ['1.50', 14.72, 178.0, 41.11, 43.20, 6.65, 178.0, 47.27, 43.73, 7.07, 91.16, 45.20],
@@ -469,7 +486,9 @@ export const productVariants: { [key: string]: ProductVariant } = {
                 { name: 'Bavette rejet d\'eau', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/474x/7c/46/24/7c46241638e5e1c9cbe15dea25be9613.jpg', alt: 'Bavette rejet d\'eau', aiHint: 'water drip flashing' } },
                 { name: 'Sous faitière', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/df/cb/e8/dfcbe8706e2cd65a17a1d73fbad68458.jpg', alt: 'Sous faitière', aiHint: 'under ridge' } },
                 { name: 'Cornière d\'angle intérieur', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/28/dd/e1/28dde1c98701028935e40ac4d9e2aeb0.jpg', alt: 'Cornière d\'angle intérieur', aiHint: 'internal corner angle' } },
-                { name: 'Cornière d\'angle extérieur', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/28/dd/e1/28dde1c98701028935e40ac4d9e2aeb0.jpg', alt: 'Cornière d\'angle extérieur', aiHint: 'external corner angle' } },
+                // Photo de la cornière d'angle extérieur à fournir par le client :
+                // l'entrée réutilisait la photo de l'angle intérieur.
+                { name: 'Cornière d\'angle extérieur', length: 'Long. Std. 3m à 6m' },
                 { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/38/9f/22/389f22b55684dcbf9747652526fcc637.jpg', alt: 'Faîtière', aiHint: 'ridge cap' } },
                 { name: 'U de sol acier galvanisé', length: 'Long. Std. 3m à 6m', image: { src: 'https://i.pinimg.com/736x/12/c9/fc/12c9fcea3a33af7b379bbee140210007.jpg', alt: 'U de sol acier galvanisé', aiHint: 'galvanized steel U-profile' } },
             ]

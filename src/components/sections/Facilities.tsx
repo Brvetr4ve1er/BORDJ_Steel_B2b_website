@@ -3,12 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import { companyData } from '@/config/company-data';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, HardHat, Layers, Cog, Anchor } from 'lucide-react';
+import { companyData, getFacilityImage } from '@/config/company-data';
+import { HardHat, Layers, Cog, Anchor } from 'lucide-react';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
-import images from '@/app/lib/placeholder-images.json';
 
 // Static icon map hoisted to module scope so it isn't recreated on every
 // render (same pattern as navbar.tsx).
@@ -19,16 +17,21 @@ const iconMap = {
   Anchor,
 } as const;
 
+// Crop overrides keyed off the SAME stable key as the photo, so the crop can
+// never end up on a different card than the image it was meant for.
+const imageCropByKey: Record<string, string> = {
+  panneaux: 'object-top',
+};
+
 export function Facilities() {
   const { units } = companyData.pages;
-  const facilityImages = images.facilities;
 
-  const facilitiesData = [
-    { ...units.items[0], image: facilityImages.charpente },
-    { ...units.items[1], image: facilityImages.panneaux },
-    { ...units.items[2], image: facilityImages.galvanisation },
-    { ...units.items[3], image: facilityImages.chaudronnerie },
-  ];
+  // Every unit in the config is rendered and resolves its own photo from its
+  // stable `imageKey` — reordering or adding a unit needs no change here.
+  const facilitiesData = units.items.map((unit) => ({
+    ...unit,
+    image: getFacilityImage(unit.imageKey),
+  }));
 
   return (
     <section id="services" className="bg-secondary">
@@ -40,7 +43,7 @@ export function Facilities() {
           {facilitiesData.map((facility) => {
              const Icon = iconMap[facility.icon as keyof typeof iconMap];
              return (
-                <AnimatedWrapper key={facility.title} animation="slide-up">
+                <AnimatedWrapper key={facility.imageKey} animation="slide-up">
                   <Link href={facility.href || '#'} className="group block">
                     <Card className="overflow-hidden shadow-xl transition-shadow hover:shadow-2xl relative aspect-square">
                         <Image
@@ -50,13 +53,15 @@ export function Facilities() {
                         height={facility.image.height}
                         className={cn(
                             "transition-transform duration-500 group-hover:scale-105 object-cover w-full h-full",
-                            facility.title === 'Panneaux Sandwichs' && 'object-top'
+                            imageCropByKey[facility.imageKey]
                         )}
                         data-ai-hint={facility.image.aiHint}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        {/* Permanent scrim: keeps the always-visible title legible over any photo. */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                        {/* Extra dimming on hover/focus, when the description is revealed. */}
                         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300" />
-                        
+
                         {/* Icon visible by default */}
                         {Icon && (
                             <div className={cn(
@@ -70,22 +75,22 @@ export function Facilities() {
                             </div>
                         )}
 
-                        {/* Text content fades in on hover */}
-                        <div className="absolute inset-0 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300">
+                        {/* Title is always readable; only the description is hover/focus-revealed. */}
+                        <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                            {Icon && (
                                 <div className="absolute top-6 left-6 transition-all duration-300 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
                                    <Icon className="h-10 w-10 text-white" />
                                 </div>
                            )}
                            <div className="mt-auto">
-                                <h3 className="font-headline text-2xl font-bold mb-2">{facility.title}</h3>
-                                <p className="text-sm mb-4">{facility.description}</p>
-                                <Button asChild variant="destructive" className="mt-auto self-start bg-accent hover:bg-accent transition-all duration-300 ease-in-out transform group-hover:translate-y-0 group-focus-within:translate-y-0 translate-y-4">
-                                    <span>
-                                      Lire la suite
-                                      <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                                    </span>
-                                </Button>
+                                <h3 className="font-headline text-2xl font-bold drop-shadow-lg">{facility.title}</h3>
+                                <p className={cn(
+                                    "text-sm max-h-0 overflow-hidden opacity-0 transition-all duration-300",
+                                    "group-hover:mt-2 group-hover:max-h-48 group-hover:opacity-100",
+                                    "group-focus-within:mt-2 group-focus-within:max-h-48 group-focus-within:opacity-100"
+                                )}>
+                                  {facility.description}
+                                </p>
                            </div>
                         </div>
                     </Card>

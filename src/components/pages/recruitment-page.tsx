@@ -5,6 +5,7 @@ import { Search, MapPin, Clock, Briefcase, Building2, ChevronDown, RotateCcw } f
 import Image from 'next/image';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { cn } from '@/lib/utils';
 
 type Job = {
   id: number;
@@ -68,6 +69,23 @@ const employmentTypeOptions = [
   { value: "cdi", label: "CDI" },
 ];
 
+// The two lists above are the company-wide taxonomy; only a handful of their
+// values match a published offer. Surfacing the rest meant most selections
+// returned "Aucune offre", so the rendered options are derived from the offers
+// actually listed. A filter left with a single possible value cannot narrow
+// anything down and is hidden entirely.
+const presentCategories = new Set(jobListings.map((job) => job.category));
+const presentEmploymentTypes = new Set(jobListings.map((job) => job.employmentType));
+
+const availableCategoryOptions = categoryOptions.filter((opt) => presentCategories.has(opt.value));
+const availableEmploymentTypeOptions = employmentTypeOptions.filter((opt) =>
+  presentEmploymentTypes.has(opt.value)
+);
+
+const showCategoryFilter = availableCategoryOptions.length > 1;
+const showEmploymentTypeFilter = availableEmploymentTypeOptions.length > 1;
+const showBothFilters = showCategoryFilter && showEmploymentTypeFilter;
+
 const heroImage = {
   src: "https://i.ibb.co/b5M7sxTW/Chat-GPT-Image-16-nov-2025-10-56-58.png",
   alt: "Équipe de professionnels dans un bureau moderne",
@@ -119,8 +137,9 @@ export function RecruitmentPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Search Filters */}
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className={cn("grid grid-cols-1 gap-4", showBothFilters && "md:grid-cols-2")}>
               {/* Category Filter */}
+              {showCategoryFilter && (
               <div className="relative">
                 <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">Catégorie</label>
                 <select
@@ -131,14 +150,16 @@ export function RecruitmentPage() {
                   onChange={(e) => setFilters({ ...filters, category: e.target.value })}
                 >
                   <option value="">Toutes les catégories</option>
-                  {categoryOptions.map((opt) => (
+                  {availableCategoryOptions.map((opt) => (
                     <option key={opt.value} value={opt.value}>{opt.label}</option>
                   ))}
                 </select>
                 <ChevronDown className="absolute right-3 top-11 w-5 h-5 text-gray-400 pointer-events-none" />
               </div>
+              )}
 
               {/* Employment Type Filter */}
+              {showEmploymentTypeFilter && (
               <div className="relative">
                 <label htmlFor="employmentType" className="block text-sm font-medium text-gray-700 mb-2">Type d'emploi</label>
                 <select
@@ -149,15 +170,16 @@ export function RecruitmentPage() {
                   onChange={(e) => setFilters({ ...filters, employmentType: e.target.value })}
                 >
                   <option value="">Tous les types</option>
-                  {employmentTypeOptions.map((opt) => (
+                  {availableEmploymentTypeOptions.map((opt) => (
                     <option key={opt.value} value={opt.value}>{opt.label}</option>
                   ))}
                 </select>
                 <ChevronDown className="absolute right-3 top-11 w-5 h-5 text-gray-400 pointer-events-none" />
               </div>
+              )}
 
               {/* Result count + reset */}
-              <div className="flex items-center justify-between col-span-1 md:col-span-2 pt-2">
+              <div className={cn("flex items-center justify-between pt-2", showBothFilters && "md:col-span-2")}>
                 <p className="text-sm text-gray-600 flex items-center gap-2">
                   <Search className="w-4 h-4" />
                   {filteredJobs.length} offre{filteredJobs.length !== 1 ? 's' : ''} trouvée{filteredJobs.length !== 1 ? 's' : ''}

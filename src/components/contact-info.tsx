@@ -16,9 +16,21 @@ import {
 } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import images from '@/app/lib/placeholder-images.json';
+import { companyData } from '@/config/company-data';
+
+// Static icon map hoisted to module scope so it isn't recreated on every render
+// (same pattern as navbar.tsx / Facilities.tsx). Keys match `icon` in
+// companyData.pages.contact.content.departments.
+const iconMap = {
+  Building2,
+  HardHat,
+  Package,
+  Zap,
+  Headphones,
+  Wrench,
+} as const;
 
 const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" {...props}>
@@ -48,14 +60,28 @@ function ContactCard({
   const [isPhoneCopied, setIsPhoneCopied] = useState(false);
   const [isEmailCopied, setIsEmailCopied] = useState(false);
 
+  // One timer per indicator so copying the phone then the e-mail (or the same
+  // value twice) re-arms only its own reset instead of cancelling the other.
+  const phoneResetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const emailResetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (phoneResetTimer.current) clearTimeout(phoneResetTimer.current);
+      if (emailResetTimer.current) clearTimeout(emailResetTimer.current);
+    };
+  }, []);
+
   const handleCopy = (textToCopy: string, type: 'phone' | 'email') => {
     navigator.clipboard.writeText(textToCopy).then(() => {
       if (type === 'phone') {
+        if (phoneResetTimer.current) clearTimeout(phoneResetTimer.current);
         setIsPhoneCopied(true);
-        setTimeout(() => setIsPhoneCopied(false), 2000);
+        phoneResetTimer.current = setTimeout(() => setIsPhoneCopied(false), 2000);
       } else {
+        if (emailResetTimer.current) clearTimeout(emailResetTimer.current);
         setIsEmailCopied(true);
-        setTimeout(() => setIsEmailCopied(false), 2000);
+        emailResetTimer.current = setTimeout(() => setIsEmailCopied(false), 2000);
       }
     });
   };
@@ -172,50 +198,9 @@ function ContactCard({
 }
 
 export function ContactInfo() {
-  const contactSections: ContactCardProps[] = [
-    {
-      icon: <Building2 className="h-8 w-8" />,
-      title: "Bureau Commercial",
-      email: "commercial@bordjsteel.dz",
-      phone: "+213 561 61 60 05",
-      image: "https://i.pinimg.com/736x/85/ab/f7/85abf719f734e7c11defc2c680c1fbe6.jpg",
-    },
-    {
-      icon: <HardHat className="h-8 w-8" />,
-      title: "Charpente Métallique",
-      phone: "+213 770 98 43 14",
-      email: "commercial@bordjsteel.dz",
-      image: "https://i.pinimg.com/736x/e4/e9/e2/e4e9e2933ed8fa9f0d49d50c4d61deb1.jpg",
-    },
-    {
-      icon: <Package className="h-8 w-8" />,
-      title: "Panneaux Sandwich",
-      phone: "+213 770 70 59 78",
-      email: "commercial@bordjsteel.dz",
-      image: "https://i.pinimg.com/736x/f4/82/92/f482924f5237e9d9f98da4e26adffdbb.jpg",
-    },
-    {
-      icon: <Zap className="h-8 w-8" />,
-      title: "Galvanisation",
-      phone: "+213 770 35 73 47",
-      email: "commercial@bordjsteel.dz",
-      image: images.galvanisation.contactCard.src,
-    },
-    {
-      icon: <Headphones className="h-8 w-8" />,
-      title: "Écoute Client",
-      phone: "+213 770 83 25 96",
-      email: "marketing@bordjsteel.dz",
-      image: "https://i.pinimg.com/474x/2c/79/22/2c792262ee0e5c2f3a1290cd06825f9a.jpg",
-    },
-    {
-      icon: <Wrench className="h-8 w-8" />,
-      title: "Réalisation et Montage",
-      phone: "+213 770 98 01 48",
-      email: "commercial@bordjsteel.dz",
-      image: "https://i.pinimg.com/736x/a3/0d/65/a30d652c6e58b3aebe5ca3561af436a6.jpg",
-    }
-  ];
+  // Single source of truth: the department directory lives in company-data.ts,
+  // so editing config updates /contact and the homepage together.
+  const departments = companyData.pages.contact.content.departments;
 
   return (
     <section id="contact" className="w-full">
@@ -229,13 +214,20 @@ export function ContactInfo() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {contactSections.map((section, index) => (
-             <AnimatedWrapper key={section.title} animation="fade-in-stagger" staggerIndex={index}>
+          {departments.map((department, index) => {
+            const Icon = iconMap[department.icon as keyof typeof iconMap];
+            return (
+              <AnimatedWrapper key={department.title} animation="fade-in-stagger" staggerIndex={index}>
                 <ContactCard
-                {...section}
+                  icon={Icon ? <Icon className="h-8 w-8" /> : null}
+                  title={department.title}
+                  phone={department.phone}
+                  email={department.email}
+                  image={department.image}
                 />
-            </AnimatedWrapper>
-          ))}
+              </AnimatedWrapper>
+            );
+          })}
         </div>
       </div>
     </section>

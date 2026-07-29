@@ -141,8 +141,16 @@ export function SandwichPanelsPage() {
           <AnimatedWrapper animation="fade-in">
             <div className="mb-24 flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
                 {productButtons.map(({ key, label, icon: Icon }) => (
-                <div key={key} className="flex flex-col items-center gap-2 cursor-pointer group">
-                    <div className={cn(
+                /* Icon circle + label are one single control: the circle is the
+                   obvious click target, so the whole thing carries the onClick. */
+                <button
+                    key={key}
+                    type="button"
+                    onClick={() => setActiveProductKey(key)}
+                    aria-pressed={activeProductKey === key}
+                    className="group flex flex-col items-center gap-2 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                >
+                    <span className={cn(
                     "w-32 h-32 rounded-full flex items-center justify-center border-4 border-background transition-all duration-300 transform group-hover:scale-110",
                     activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary'
                     )}>
@@ -151,20 +159,16 @@ export function SandwichPanelsPage() {
                         activeProductKey === key ? 'text-accent-foreground' : 'text-primary',
                         key === 'toleNervuree' && "rotate-[-90deg]"
                     )} />
-                    </div>
-                    <Button
-                    type="button"
-                    onClick={() => setActiveProductKey(key)}
-                    aria-pressed={activeProductKey === key}
-                    variant={activeProductKey === key ? 'destructive' : 'outline'}
-                    className={cn(
-                        "h-auto py-2 px-6 transition-all duration-300 text-center",
-                        activeProductKey === key ? 'bg-accent shadow-lg' : 'bg-secondary text-primary hover:bg-accent/10'
-                    )}
-                    >
-                    <span className="text-center text-lg font-semibold">{label}</span>
-                    </Button>
-                </div>
+                    </span>
+                    <span className={cn(
+                        "inline-flex items-center justify-center rounded-md py-2 px-6 text-center text-lg font-semibold transition-all duration-300",
+                        activeProductKey === key
+                            ? 'bg-accent text-accent-foreground shadow-lg'
+                            : 'border border-input bg-secondary text-primary group-hover:bg-accent/10'
+                    )}>
+                    {label}
+                    </span>
+                </button>
                 ))}
             </div>
             </AnimatedWrapper>

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BookCopy, Download } from 'lucide-react';
+import { BookCopy } from 'lucide-react';
 import '@/app/download-button.css';
 
 interface DownloadButtonProps {
@@ -13,14 +13,9 @@ interface DownloadButtonProps {
 
 export function DownloadButton({ text, href, download = false }: DownloadButtonProps) {
   const content = (
-    <>
-      <div className="docs">
-        <BookCopy className="h-5 w-5" /> {text}
-      </div>
-      <div className="download">
-        <Download className="h-6 w-6" />
-      </div>
-    </>
+    <div className="docs">
+      <BookCopy className="h-5 w-5" /> {text}
+    </div>
   );
 
   if (href) {

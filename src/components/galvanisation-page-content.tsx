@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { galvanisationContent } from '@/config/galvanisation-data';
@@ -11,7 +10,6 @@ import { iconMap as galvanisationIconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { DownloadButton } from '@/components/ui/download-button';
-import { BathsIcon } from '@/components/icons/baths-icon';
 import dynamic from 'next/dynamic';
 import { TechniquesAndStandardsSection } from '@/components/sections/galvanisation/TechniquesAndStandardsSection';
 import { GalvanisationWireframe } from '@/components/wireframes/GalvanisationWireframe';
@@ -98,7 +96,9 @@ function UnwrappedHeroSection() {
                   <Card className="group bg-black/50 backdrop-blur-md border-border text-white h-full relative overflow-hidden transition-all duration-500 hover:border-accent">
                     <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
                     <CardContent className="relative p-4 flex flex-col items-center justify-center text-center h-full">
-                      <DynamicAnimatedBaths />
+                      {/* Figure and caption come from the config stat itself, so
+                          editing `hero.stats` actually changes what renders. */}
+                      <DynamicAnimatedBaths value={Number(largeStat.value)} label={largeStat.title} />
                     </CardContent>
                   </Card>
                 </AnimatedWrapper>
@@ -194,7 +194,10 @@ function UnwrappedProcessTimeline() {
                               <p className="text-xl text-accent font-semibold mb-3">{step.shortDesc}</p>
                           </div>
                         </div>
-                        <div className="relative z-10 h-0 overflow-hidden group-hover:h-auto transition-all duration-500 ease-in-out">
+                        {/* Shown by default: this is the page's substantive content.
+                            It previously sat in `h-0 group-hover:h-auto`, which made it
+                            unreachable on touch and by keyboard (and could not animate). */}
+                        <div className="relative z-10">
                             <div className="px-6 pb-6">
                                 <blockquote className="text-lg text-muted-foreground italic border-l-2 border-border pl-4">
                                 {step.longDesc}
@@ -220,7 +223,11 @@ function UnwrappedProcessTimeline() {
 function UnwrappedBenefitsSection() {
     const { benefits } = galvanisationContent;
     const iconMap = galvanisationIconMap;
-  
+    // Guarded like every other lookup in this file: an unguarded
+    // createElement(undefined) would throw and, with no error boundary, take the
+    // whole /products/galvanisation-a-chaud route down if the key is ever renamed.
+    const SpecificityIcon = iconMap['ShieldCheck'];
+
     return (
       <section className="py-32 bg-background">
         <div className="container mx-auto px-4">
@@ -241,7 +248,7 @@ function UnwrappedBenefitsSection() {
                     <Card className="bg-secondary border-border p-6 transition-all duration-300 hover:border-accent hover:-translate-y-2">
                         <CardContent className="p-0 flex flex-col md:flex-row items-center gap-10">
                             <div className="flex-shrink-0">
-                                {React.createElement(iconMap['ShieldCheck'], { className: "h-20 w-20 text-accent" })}
+                                {SpecificityIcon && <SpecificityIcon className="h-20 w-20 text-accent" />}
                             </div>
                             <div className="flex-grow text-left">
                                 <CardTitle className="text-accent text-3xl mb-3">SPÉCIFICITÉ DE LA GALVANISATION À CHAUD</CardTitle>

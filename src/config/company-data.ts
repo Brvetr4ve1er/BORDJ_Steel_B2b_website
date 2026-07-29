@@ -1,4 +1,6 @@
 
+import images from '@/app/lib/placeholder-images.json';
+
 export const companyData = {
   siteMetadata: {
     title: 'Bordj Steel – Construction métallique en Algérie',
@@ -112,41 +114,53 @@ export const companyData = {
     units: {
       slug: '/a-propos/unites',
       title: 'Nos Unités de Production',
+      // `imageKey` maps to a key of `facilities` in placeholder-images.json.
+      // It is the stable identity of a unit: the photo (and any crop rule that
+      // goes with it) follows this key, never the array position or the title.
       items: [
         {
           title: 'Charpente Métallique',
           description: `Capacité de 1500 T/mois (25000 T/an) et PRS 3000 T/an. Nous produisons des hangars, pylônes, et supports publicitaires.`,
           icon: 'HardHat',
-          href: '/products/charpente-metallique'
+          href: '/products/charpente-metallique',
+          imageKey: 'charpente'
         },
         {
           title: 'Panneaux Sandwichs',
           description: `Capacité de 5000 m²/jour. Gamme d'épaisseur de 30-200 mm pour couverture, bardage, et chambres froides.`,
           icon: 'Layers',
-          href: '/products/sandwich-panels'
+          href: '/products/sandwich-panels',
+          imageKey: 'panneaux'
         },
         {
           title: 'Galvanisation à Chaud',
           description: `Capacité de 60000 T/an avec un bain de 13m de long pour des pièces jusqu'à 15m.`,
           icon: 'Cog',
-          href: '/products/galvanisation-a-chaud'
+          href: '/products/galvanisation-a-chaud',
+          imageKey: 'galvanisation'
         },
         {
           title: 'Chaudronnerie',
           description: `Notre unité de chaudronnerie est spécialisée dans la fabrication d'équipements sur mesure pour divers secteurs industriels.`,
           icon: 'Anchor',
-          href: '/products/chaudronnerie'
+          href: '/products/chaudronnerie',
+          imageKey: 'chaudronnerie'
         }
       ]
     },
     references: {
       slug: '/projets',
       title: 'Nos Références',
+      // `imageKey` maps to a key of `portfolio` in placeholder-images.json and is
+      // the stable identity of a project. Both /references and the homepage
+      // portfolio resolve their photo through it (see getProjectImage below), so
+      // renaming or reordering a project can never desync name from image.
       projects: [
-          { 
-            name: 'UTEC', 
-            location: 'Ain Oulmen - Sétif', 
+          {
+            name: 'UTEC',
+            location: 'Ain Oulmen - Sétif',
             description: 'Fourniture et montage de la Charpente Métallique et panneaux sandwichs.',
+            imageKey: 'utec',
             details: {
               tonnage: '2000 tonnes',
               couverture: '22000 m²',
@@ -157,15 +171,17 @@ export const companyData = {
             name: 'Star Good',
             location: 'Z.IND oued Smar - Alger',
             description: 'Fourniture et montage de la Charpente Métallique et panneaux sandwich.',
+            imageKey: 'star-good',
             details: {
               tonnage: '360 tonnes',
               couverture: '4750 m²'
             }
           },
-          { 
-            name: 'Zenteck-BBA', 
-            location: 'route de msila BBA', 
+          {
+            name: 'Zenteck-BBA',
+            location: 'route de msila BBA',
             description: 'Fourniture et montage de la Charpente Métallique et panneaux sandwich.',
+            imageKey: 'zenteck-bba',
             details: {
                 tonnage: '1200 tonnes'
             }
@@ -174,24 +190,27 @@ export const companyData = {
             name: 'Base Logistique Condor',
             location: 'Route de Msila, BBA',
             description: 'Fourniture et montage de la Charpente Métallique et panneaux sandwich classe M1(PIR).',
+            imageKey: 'base-logistique-condor',
             details: {
               tonnage: '4700 tonnes',
               couverture: '6500 m² (Classe M1 PIR)',
               bardage: '14000 m² (Classe M1)'
             }
           },
-          { 
-            name: 'Softal', 
-            location: 'Boufarik - Blida', 
+          {
+            name: 'Softal',
+            location: 'Boufarik - Blida',
             description: 'Fourniture et montage de la Charpente Métallique R+1.',
+            imageKey: 'softal',
             details: {
               tonnage: '800 tonnes',
             }
           },
-          { 
-            name: 'Unité Duct Piping', 
-            location: 'Bordj Bou Arréridj', 
+          {
+            name: 'Unité Duct Piping',
+            location: 'Bordj Bou Arréridj',
             description: 'Fourniture et montage de la Charpente Métallique (PRS) et panneaux sandwich.',
+            imageKey: 'unité-duct-piping',
             details: {
               tonnage: '120 tonnes (Type PRS)',
               couverture: '1400 m²',
@@ -258,6 +277,57 @@ export const companyData = {
           title: "Informations de Contact",
           description: "Remplissez le formulaire et notre équipe vous répondra dans les 24 heures.",
         },
+        // Department directory rendered on /contact (ContactInfo component).
+        // `icon` is a lucide-react icon name, resolved by the component.
+        // CLIENT NOTE: the primary number `phones[0]` (+213 770 35 66 86) is
+        // deliberately on no department card — which number is canonical is
+        // still an open client decision. Do not "correct" these without it.
+        departments: [
+          {
+            icon: 'Building2',
+            title: "Bureau Commercial",
+            email: "commercial@bordjsteel.dz",
+            phone: "+213 561 61 60 05",
+            image: "https://i.pinimg.com/736x/85/ab/f7/85abf719f734e7c11defc2c680c1fbe6.jpg",
+          },
+          {
+            icon: 'HardHat',
+            title: "Charpente Métallique",
+            phone: "+213 770 98 43 14",
+            email: "commercial@bordjsteel.dz",
+            image: "https://i.pinimg.com/736x/e4/e9/e2/e4e9e2933ed8fa9f0d49d50c4d61deb1.jpg",
+          },
+          {
+            icon: 'Package',
+            title: "Panneaux Sandwich",
+            phone: "+213 770 70 59 78",
+            email: "commercial@bordjsteel.dz",
+            image: "https://i.pinimg.com/736x/f4/82/92/f482924f5237e9d9f98da4e26adffdbb.jpg",
+          },
+          {
+            icon: 'Zap',
+            title: "Galvanisation",
+            phone: "+213 770 35 73 47",
+            email: "commercial@bordjsteel.dz",
+            image: images.galvanisation.contactCard.src,
+          },
+          {
+            icon: 'Headphones',
+            title: "Écoute Client",
+            phone: "+213 770 83 25 96",
+            // CLIENT NOTE: this address appears nowhere else on the site (see
+            // `emails` above). Kept verbatim; confirm with the client.
+            email: "marketing@bordjsteel.dz",
+            image: "https://i.pinimg.com/474x/2c/79/22/2c792262ee0e5c2f3a1290cd06825f9a.jpg",
+          },
+          {
+            icon: 'Wrench',
+            title: "Réalisation et Montage",
+            phone: "+213 770 98 01 48",
+            email: "commercial@bordjsteel.dz",
+            image: "https://i.pinimg.com/736x/a3/0d/65/a30d652c6e58b3aebe5ca3561af436a6.jpg",
+          },
+        ],
       }
     },
   },
@@ -279,3 +349,56 @@ export const companyData = {
     whatsapp: "https://wa.me/213770356686"
   },
 };
+
+/* -------------------------------------------------------------------------- */
+/* Image resolution                                                            */
+/* -------------------------------------------------------------------------- */
+
+export type PlaceholderImage = {
+  src: string;
+  width: number;
+  height: number;
+  alt?: string;
+  aiHint?: string;
+  blurDataUrl?: string;
+};
+
+const portfolioImages = images.portfolio as unknown as Record<string, PlaceholderImage>;
+const facilityImages = images.facilities as unknown as Record<string, PlaceholderImage>;
+
+const MISSING_IMAGE: PlaceholderImage = {
+  src: 'https://placehold.co/600x400',
+  width: 600,
+  height: 400,
+  aiHint: 'placeholder',
+};
+
+// Single lookup used by every consumer, so two pages can never resolve the same
+// entity to different images. A miss returns the placeholder (the page still
+// renders) but shouts about it in development instead of failing silently.
+function resolveImage(
+  group: Record<string, PlaceholderImage>,
+  groupName: string,
+  imageKey: string
+): PlaceholderImage {
+  const image = group[imageKey];
+  if (!image) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        `[company-data] No image "${imageKey}" under "${groupName}" in placeholder-images.json — falling back to a grey placeholder. Add the key or fix the imageKey in company-data.ts.`
+      );
+    }
+    return MISSING_IMAGE;
+  }
+  return image;
+}
+
+/** Resolves a reference project's photo from its stable `imageKey`. */
+export function getProjectImage(imageKey: string): PlaceholderImage {
+  return resolveImage(portfolioImages, 'portfolio', imageKey);
+}
+
+/** Resolves a production unit's photo from its stable `imageKey`. */
+export function getFacilityImage(imageKey: string): PlaceholderImage {
+  return resolveImage(facilityImages, 'facilities', imageKey);
+}

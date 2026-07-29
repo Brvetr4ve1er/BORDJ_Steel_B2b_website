@@ -176,19 +176,9 @@ export function CharpenteMetalliquePageContent() {
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <AnimatedWrapper animation="fade-in">
+                    {/* The two capacity tiles that stood here repeated the hero stat
+                        cards verbatim; the hero already states those figures. */}
                     <div className="space-y-8">
-                        <div className="grid grid-cols-2 gap-8">
-                            <div className="text-center p-6 bg-background rounded-lg shadow-md border">
-                                <p className="font-headline text-4xl font-bold text-accent"><AnimatedNumber value={25000} /></p>
-                                <p className="text-sm uppercase tracking-wider text-muted-foreground mt-1">Tonnes / an</p>
-                                <p className="font-semibold text-primary mt-2">Capacité de production<br/>Charpente</p>
-                            </div>
-                            <div className="text-center p-6 bg-background rounded-lg shadow-md border">
-                                <p className="font-headline text-4xl font-bold text-accent"><AnimatedNumber value={3000} /></p>
-                                <p className="text-sm uppercase tracking-wider text-muted-foreground mt-1">Tonnes / an</p>
-                                <p className="font-semibold text-primary mt-2">Capacité de production<br/>PRS</p>
-                            </div>
-                        </div>
                          <ProductionTables />
                     </div>
                 </AnimatedWrapper>

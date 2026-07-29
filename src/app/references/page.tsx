@@ -3,9 +3,8 @@ import type { Metadata } from 'next';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
-import { companyData } from '@/config/company-data';
+import { companyData, getProjectImage } from '@/config/company-data';
 import { Card, CardContent } from '@/components/ui/card';
-import images from '@/app/lib/placeholder-images.json';
 import { Layers, Weight, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -20,14 +19,13 @@ export default function ReferencesPage() {
     aiHint: "steel structure"
   }
 
-  const projectsData = companyData.pages.references.projects.map(project => {
-    const imageName = project.name.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '');
-    const imageInfo = (images.portfolio as any)[imageName] || { src: 'https://placehold.co/600x400', width: 600, height: 400, aiHint: 'placeholder' };
-    return {
-      ...project,
-      image: imageInfo
-    };
-  });
+  // Images are resolved from each project's stable `imageKey`, never from a
+  // slug derived off the display name — renaming a project no longer swaps in a
+  // grey placeholder, and the homepage portfolio uses this exact same helper.
+  const projectsData = companyData.pages.references.projects.map(project => ({
+    ...project,
+    image: getProjectImage(project.imageKey),
+  }));
 
   return (
     <ProductPageLayout>
@@ -56,7 +54,7 @@ export default function ReferencesPage() {
       <section className="bg-secondary">
         <div className="container mx-auto px-4 space-y-16">
           {projectsData.map((project, index) => (
-            <AnimatedWrapper key={project.name} animation="fade-in-stagger" staggerIndex={index}>
+            <AnimatedWrapper key={project.imageKey} animation="fade-in-stagger" staggerIndex={index}>
               <Card className="overflow-hidden shadow-lg border-none">
                 <div className="grid lg:grid-cols-2">
                   <div className="relative aspect-video lg:aspect-[4/3] group">

@@ -5,14 +5,42 @@ export type ProductImage = {
   aiHint?: string;
 };
 
+/**
+ * One cell of the header row of a grouped table.
+ *
+ * `span` is the number of *body* columns the label covers, so the spans of a
+ * table's groups must add up to the width of one of its `rows`. The renderer
+ * never guesses a span from the label text.
+ */
+export type TableHeaderGroup = {
+  label: string;
+  span: number;
+  /** Support-condition diagram drawn above this group's columns. */
+  icon?: 'two-supports';
+};
+
 export type TableSection = {
   type: 'table';
   title: string;
   subtitle?: string;
-  headers: string[];
-  subheaders?: { [key: string]: string[] };
+  /**
+   * Header row of an ungrouped table: exactly one label per body column.
+   * Provide either `headers` or `headerGroups`, never both.
+   */
+  headers?: string[];
+  /**
+   * Header row of a grouped table, where a single label covers several body
+   * columns (e.g. "1 appui" over five entraxe columns).
+   */
+  headerGroups?: TableHeaderGroup[];
+  /**
+   * Optional second header row: one label per body column, used when the
+   * grouped headers need their own column labels underneath (entraxes,
+   * section properties…). These are headers, not data — keep them out of
+   * `rows`.
+   */
+  subheaders?: string[];
   rows: (string | number)[][];
-  icon?: 'one-support' | 'two-supports';
 };
 
 export type KeyValueSection = {
@@ -48,7 +76,8 @@ export type ImageGridSection = {
   items: {
     name: string;
     length: string;
-    image: ProductImage;
+    /** Omit while the real photo is missing — better no picture than the wrong one. */
+    image?: ProductImage;
   }[];
 };
 
@@ -65,62 +94,4 @@ export type ProductVariant = {
   title: string;
   mainImage: ProductImage;
   sections: ProductVariantSection[];
-};
-
-
-// --- Example Skeleton ---
-export const exampleSkeleton: ProductVariant = {
-  id: "example-product",
-  title: "Example Product Title",
-  mainImage: {
-    src: "",
-    alt: "",
-    aiHint: "",
-  },
-  sections: [
-    {
-      type: 'keyValue',
-      title: 'Caractéristiques',
-      items: [
-        { key: 'Utilisation', value: '' },
-        { key: 'Définition', value: '' }
-      ]
-    },
-    {
-      type: 'list',
-      title: 'Avantages',
-      items: ["", ""]
-    },
-    {
-      type: 'table',
-      title: 'Spécifications Techniques',
-      headers: ["", ""],
-      subheaders: {},
-      rows: [
-        ["", 0],
-        ["", 0]
-      ]
-    },
-    {
-      type: 'text',
-      title: 'Mise en Œuvre',
-      content: ""
-    },
-    {
-      type: 'image',
-      title: 'Schéma Géométrique',
-      caption: '',
-      image: { src: '', alt: '' }
-    },
-    {
-        type: 'imageGrid',
-        items: [
-            {
-                name: '',
-                length: '',
-                image: { src: '', alt: '' }
-            }
-        ]
-    }
-  ]
 };

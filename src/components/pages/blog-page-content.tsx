@@ -10,7 +10,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cn } from "@/lib/utils";
 import { DownloadButton } from '@/components/ui/download-button';
 import { articles as allArticles } from '@/config/blog-data';
-import { Dock, DockItem, DockIcon, DockLabel } from '@/components/ui/dock';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { BlogPostCard } from '@/components/ui/blog-post-card';
@@ -32,13 +31,31 @@ const parseArticleDate = (d: string) => {
     return isNaN(t) ? 0 : t;
 };
 
-const certifications = [
-  { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/f0/4b/62/f04b6287977e56982f6ccb2a9b65cee7.jpg", logo: "https://i.pinimg.com/736x/f0/4b/62/f04b6287977e56982f6ccb2a9b65cee7.jpg", pdf: "/documents/Bordj-Steel-ISO-9001.pdf" },
-  { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/6f/3f/856f3f85dd8452ba3580e8280f62e093.jpg", logo: "https://i.pinimg.com/736x/79/01/a5/7901a543069366724bf173d772a1502f.jpg", pdf: "/documents/Bordj-Steel-ISO-14001.pdf" },
-  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/15/a6/0a/15a60ad54ea9e34e77b39205320bd3ae.jpg", logo: "https://i.pinimg.com/736x/5f/6b/69/5f6b696fc21fdd205c98c9fdb27bcf7a.jpg", pdf: "/documents/Bordj-Steel-ISO-45001.pdf" }
+type Certification = {
+    name: string;
+    description: string;
+    /** Scanned certificate preview supplied by the client. */
+    image: string;
+    /** Badge shown on the card. */
+    logo: string;
+    /**
+     * Public path to the signed certificate.
+     * Left unset while the client has not supplied the files: the card then shows a
+     * disabled "Bientôt disponible" control instead of a link that 404s.
+     * To re-enable a link, drop the PDF into `public/documents/` and set `pdf` here.
+     * Expected filenames: Bordj-Steel-ISO-9001.pdf, Bordj-Steel-ISO-14001.pdf,
+     * Bordj-Steel-ISO-45001.pdf.
+     */
+    pdf?: string;
+};
+
+const certifications: Certification[] = [
+  { name: "ISO 9001", description: "Management de la qualité", image: "https://i.pinimg.com/736x/f0/4b/62/f04b6287977e56982f6ccb2a9b65cee7.jpg", logo: "https://i.pinimg.com/736x/f0/4b/62/f04b6287977e56982f6ccb2a9b65cee7.jpg" },
+  { name: "ISO 14001", description: "Management environnemental", image: "https://i.pinimg.com/736x/85/6f/3f/856f3f85dd8452ba3580e8280f62e093.jpg", logo: "https://i.pinimg.com/736x/79/01/a5/7901a543069366724bf173d772a1502f.jpg" },
+  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "https://i.pinimg.com/736x/15/a6/0a/15a60ad54ea9e34e77b39205320bd3ae.jpg", logo: "https://i.pinimg.com/736x/5f/6b/69/5f6b696fc21fdd205c98c9fdb27bcf7a.jpg" }
 ];
 
-function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: string; description: string; image: string; logo: string; pdf: string; }, hoverDirection?: 'left' | 'right' }) {
+function CertificationCard({ cert }: { cert: Certification }) {
     return (
         <div className="relative group w-full max-w-sm mx-auto">
             <div className="relative bg-card p-6 rounded-lg shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex flex-col items-center justify-center text-center h-56 w-56 mx-auto overflow-hidden">
@@ -53,25 +70,15 @@ function CertificationCard({ cert, hoverDirection = 'right' }: { cert: { name: s
              <div className="mt-4 text-center">
                 <h3 className="text-xl font-bold text-primary">{cert.name}</h3>
                 <p className="text-md text-muted-foreground">{cert.description}</p>
-                <Button asChild variant="outline" className="mt-4">
-                    <a href={cert.pdf} target="_blank" rel="noopener noreferrer">Voir le document</a>
-                </Button>
-            </div>
-             <div className={cn(
-                "absolute top-1/2 -translate-y-1/2 w-[32rem] h-[40rem] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out pointer-events-none group-hover:pointer-events-auto z-50",
-                hoverDirection === 'right' ? "left-full ml-4" : "right-full mr-4"
-            )}>
-                <a href={cert.pdf} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
-                    <div className="relative w-full h-full bg-white rounded-lg shadow-2xl border-2 border-accent overflow-hidden">
-                         <Image
-                            src={cert.image}
-                            alt={`${cert.name} document preview`}
-                            fill
-                            sizes="512px"
-                            className="object-contain"
-                        />
-                    </div>
-                </a>
+                {cert.pdf ? (
+                    <Button asChild variant="outline" className="mt-4">
+                        <a href={cert.pdf} target="_blank" rel="noopener noreferrer">Voir le document</a>
+                    </Button>
+                ) : (
+                    <Button variant="outline" className="mt-4" disabled>
+                        Bientôt disponible
+                    </Button>
+                )}
             </div>
         </div>
     );
@@ -104,7 +111,7 @@ export function BlogPageContent() {
                         <div className="grid md:grid-cols-3 gap-8">
                             {certifications.map((cert, index) => (
                                 <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
-                                  <CertificationCard cert={cert} hoverDirection={index === 2 ? 'left' : 'right'} />
+                                  <CertificationCard cert={cert} />
                                 </AnimatedWrapper>
                             ))}
                         </div>
@@ -214,42 +221,63 @@ export function BlogPageContent() {
             </section>
             <div className="mx-auto flex w-full flex-col gap-8 px-4 py-16 md:px-8 md:pb-24">
                  <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div className="w-full md:w-auto md:flex-1 relative">
-                       <label htmlFor="blog-search" className="sr-only">Rechercher des articles</label>
-                       <Input
-                          id="blog-search"
-                          type="search"
-                          value={searchQuery}
-                          onChange={(e) => setSearchQuery(e.target.value)}
-                          placeholder="Rechercher des articles..."
-                          className="h-12 text-lg pl-12"
-                       />
-                       <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
-                    </div>
+                    {/* Search and sort only drive the "blog" tab — hide them elsewhere. */}
+                    {activeTab === 'blog' && (
+                      <div className="w-full md:w-auto md:flex-1 relative">
+                         <label htmlFor="blog-search" className="sr-only">Rechercher des articles</label>
+                         <Input
+                            id="blog-search"
+                            type="search"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            placeholder="Rechercher des articles..."
+                            className="h-12 text-lg pl-12"
+                         />
+                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
+                      </div>
+                    )}
                     <div className="w-full md:w-auto md:flex-1 flex justify-center">
-                        <Dock magnification={140} panelHeight={120} className="gap-12">
-                            {tabs.map((tab) => (
-                              <DockItem key={tab.id} onClick={() => setActiveTab(tab.id)} aria-pressed={activeTab === tab.id}>
-                                <DockIcon>
-                                  <tab.icon className={cn("h-16 w-16", activeTab === tab.id ? 'text-accent' : 'text-primary/70')} />
-                                </DockIcon>
-                                <DockLabel className={cn('text-xl font-bold', activeTab === tab.id ? 'text-accent' : 'text-primary/70')}>{tab.label}</DockLabel>
-                              </DockItem>
-                            ))}
-                        </Dock>
+                        <div
+                            role="group"
+                            aria-label="Sections de la page"
+                            className="inline-flex items-center gap-1 rounded-lg border border-border bg-secondary p-1"
+                        >
+                            {tabs.map((tab) => {
+                              const isActive = activeTab === tab.id;
+                              return (
+                                <button
+                                  key={tab.id}
+                                  type="button"
+                                  onClick={() => setActiveTab(tab.id)}
+                                  aria-pressed={isActive}
+                                  className={cn(
+                                    "inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-4 sm:px-6 text-[15px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                                    isActive
+                                      ? "bg-accent text-accent-foreground shadow-sm"
+                                      : "text-primary hover:bg-background"
+                                  )}
+                                >
+                                  <tab.icon className="h-5 w-5" aria-hidden="true" />
+                                  {tab.label}
+                                </button>
+                              );
+                            })}
+                        </div>
                     </div>
-                    <div className="w-full md:w-auto md:flex-1 flex justify-end">
-                        <Select value={sortBy} onValueChange={setSortBy}>
-                            <SelectTrigger className="md:max-w-xs h-12 text-lg">
-                                <SelectValue placeholder="Trier par" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {sortByOptions.map(option => (
-                                <SelectItem key={option.id} value={option.id}>{option.label}</SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </div>
+                    {activeTab === 'blog' && (
+                      <div className="w-full md:w-auto md:flex-1 flex justify-end">
+                          <Select value={sortBy} onValueChange={setSortBy}>
+                              <SelectTrigger className="md:max-w-xs h-12 text-lg">
+                                  <SelectValue placeholder="Trier par" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                  {sortByOptions.map(option => (
+                                  <SelectItem key={option.id} value={option.id}>{option.label}</SelectItem>
+                                  ))}
+                              </SelectContent>
+                          </Select>
+                      </div>
+                    )}
                 </div>
 
                 <div className="mt-4">

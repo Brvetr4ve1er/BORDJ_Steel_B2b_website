@@ -34,7 +34,9 @@ export const AnimatedNumber = ({ value, className }: { value: number; className?
       // Write straight to the DOM node instead of setState: the count-up
       // ticks every animation frame and re-rendering ~120 times per counter
       // is pure overhead for a text-only change.
-      const formatter = new Intl.NumberFormat();
+      // Locale is pinned to French: the whole site is French, so a visitor
+      // browsing in en-US must still read "25 000", never "25,000".
+      const formatter = new Intl.NumberFormat('fr-FR');
       const controls = animate(0, value, {
         duration: 2,
         onUpdate(latest) {
