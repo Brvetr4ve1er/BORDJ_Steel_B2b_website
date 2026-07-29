@@ -24,7 +24,7 @@ export function HomePageHero() {
        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 z-10" />
       <div className="relative z-20 flex h-full flex-col items-center justify-center text-center text-white">
         <AnimatedWrapper animation="zoom-in">
-            <h1 className="font-headline text-5xl font-bold tracking-tight md:text-7xl lg:text-8xl [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tight [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
               {hero.headline}
             </h1>
             <div className="h-1 w-24 bg-accent mx-auto mt-6" />

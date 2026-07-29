@@ -30,7 +30,7 @@ export const iconMap: { [key: string]: LucideIcon } = {
 
 export const galvanisationContent = {
   "hero": {
-    "title": "GALVANISATION A CHAUD",
+    "title": "GALVANISATION À CHAUD",
     "subtitle": "Notre unité de galvanisation traite jusqu’à 25.000 tonnes/an, avec des bains de zinc de 12m x 1,5m x 3m, offrant une protection anticorrosion homogène, certifiée et durable.",
     "stats": [
       { "title": "Bains de traitement", "value": "13", "icon": "baths", "large": true },
@@ -123,7 +123,7 @@ export const galvanisationContent = {
     },
     {
       "title": "Rentabilité",
-      "text": "Réduction des coûts de maintenance, repeinte ou remplacement.",
+      "text": "Réduction des coûts de maintenance, de remise en peinture ou de remplacement.",
       "icon": "coin"
     }
   ],
@@ -133,7 +133,7 @@ export const galvanisationContent = {
     "icons": ["Poutre", "Panneau", "Pylône", "Charpente", "Navire"]
   },
   "cta": {
-    "title": "Confiez votre projet de galvanisation à BordjSteel",
+    "title": "Confiez votre projet de galvanisation à Bordj Steel",
     "button_primary": "Demander un devis",
     "button_secondary": "Télécharger la fiche technique",
     "form_url": "/contact"

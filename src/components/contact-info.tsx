@@ -175,7 +175,7 @@ export function ContactInfo() {
   const contactSections: ContactCardProps[] = [
     {
       icon: <Building2 className="h-8 w-8" />,
-      title: "Bureaux Commercial",
+      title: "Bureau Commercial",
       email: "commercial@bordjsteel.dz",
       phone: "+213 561 61 60 05",
       image: "https://i.pinimg.com/736x/85/ab/f7/85abf719f734e7c11defc2c680c1fbe6.jpg",
@@ -203,7 +203,7 @@ export function ContactInfo() {
     },
     {
       icon: <Headphones className="h-8 w-8" />,
-      title: "Ecoute Client",
+      title: "Écoute Client",
       phone: "+213 770 83 25 96",
       email: "marketing@bordjsteel.dz",
       image: "https://i.pinimg.com/474x/2c/79/22/2c792262ee0e5c2f3a1290cd06825f9a.jpg",

@@ -55,9 +55,9 @@ const categoryOptions = [
   { value: "juridique", label: "Juridique" },
   { value: "maintenance", label: "Maintenance" },
   { value: "marketing", label: "Marketing" },
-  { value: "procces-developpement", label: "Procces et Développement (P&D)" },
+  { value: "procces-developpement", label: "Process et Développement (P&D)" },
   { value: "production", label: "Production" },
-  { value: "qhse", label: "Qhse" },
+  { value: "qhse", label: "QHSE" },
   { value: "ressources-humaines", label: "Ressources Humaines (RH)" },
 ];
 
@@ -105,7 +105,7 @@ export function RecruitmentPage() {
           />
           <div className="relative z-20 container mx-auto px-4 text-left">
             <AnimatedWrapper animation="zoom-in">
-              <h1 className="font-headline text-5xl md:text-6xl font-bold tracking-tighter uppercase text-accent">
+              <h1 className="font-headline text-5xl md:text-6xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-accent">
                 Nous recrutons...
               </h1>
             </AnimatedWrapper>
@@ -252,7 +252,7 @@ export function RecruitmentPage() {
                 href={`mailto:${RECRUITMENT_EMAIL}?subject=${encodeURIComponent('Candidature Spontanée')}`}
                 className="bg-accent hover:bg-accent/90 text-white font-bold py-4 px-10 rounded-lg transition-colors duration-200 text-lg shadow-lg"
               >
-                Envoyez nous votre CV
+                Envoyez-nous votre CV
               </a>
             </div>
           </div>

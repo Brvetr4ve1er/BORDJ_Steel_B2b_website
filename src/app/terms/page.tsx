@@ -80,10 +80,6 @@ export default function TermsPage() {
           </p>
         </div>
 
-        <p className="border-t border-border pt-6 text-sm text-muted-foreground">
-          Ce document est fourni à titre informatif et devrait être validé par un conseil juridique
-          avant publication définitive.
-        </p>
       </article>
     </ProductPageLayout>
   );

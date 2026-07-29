@@ -34,9 +34,6 @@ export const DetailedStatCard = ({
       className={cn("w-full bg-destructive text-destructive-foreground relative", className)}
       aria-labelledby={`stat-card-title-${title.replace(/\s+/g, '-')}`}
     >
-      <div className="absolute top-4 right-4 flex-shrink-0 w-12 h-12 rounded-full bg-destructive-foreground/10 flex items-center justify-center">
-        {Icon && <Icon className="h-6 w-6 text-destructive-foreground" />}
-      </div>
       <CardContent className="pt-6">
         <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -44,8 +41,13 @@ export const DetailedStatCard = ({
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="text-left"
         >
-          <CardTitle id={`stat-card-title-${title.replace(/\s+/g, '-')}`} className="text-xl mb-2">{title}</CardTitle>
-          
+          <div className="mb-2 flex items-start justify-between gap-4">
+            <CardTitle id={`stat-card-title-${title.replace(/\s+/g, '-')}`} className="text-xl">{title}</CardTitle>
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-destructive-foreground/10">
+              {Icon && <Icon className="h-6 w-6 text-destructive-foreground" />}
+            </div>
+          </div>
+
           {secondaryValue ? (
             <div className="flex items-baseline justify-between">
               <div className="text-left">

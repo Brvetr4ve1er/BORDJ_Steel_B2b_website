@@ -63,18 +63,18 @@ export const productVariants: { [key: string]: ProductVariant } = {
       },
       {
         type: 'text',
-        title: 'Etanchéité des rives',
-        content: "Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une nervure femelle (sans mousse) permettant un assemblage par emboîtement. La nervure mâle est fermée par une bande adhésive. et la nervure femelle d'un joint d'étanchéité à l'air",
+        title: 'Étanchéité des rives',
+        content: "Les panneaux sandwichs de couverture présentent une rive mâle (avec mousse) et une nervure femelle (sans mousse) permettant un assemblage par emboîtement. La nervure mâle est fermée par une bande adhésive et la nervure femelle est munie d'un joint d'étanchéité à l'air.",
       },
        {
         type: 'text',
         title: 'Sens des panneaux',
-        content: "les panneaux sandwichs de couverture sont désignés en fonction de leur situation sur l'ouvrage et par rapport à la direction des vents dominants. Un panneau est de type droit si la nervure de la rive longitudinale femelle venant en recouvrement en regardant le faîtage. Il est de type gauche dans le sens inverse.",
+        content: "Les panneaux sandwichs de couverture sont désignés en fonction de leur position sur l'ouvrage et de la direction des vents dominants. Un panneau est dit « droit » si la nervure de rive longitudinale femelle vient en recouvrement lorsqu'on regarde vers le faîtage ; il est dit « gauche » dans le cas inverse.",
       },
        {
         type: 'text',
         title: 'La pose de panneaux sandwichs',
-        content: "Découpage des panneaux : Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier.\nFixation des panneaux : Les panneaux doivent être rivés au sommet de chaque nervure sur les pannes d'extrémité. Sur les pannes intermédiaires. lors de la pose. les panneaux doivent être serrés sur la partie Longitudinale afin que le joint d'étanchéité à l'air remplisse son effet. Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité. les chéneaux. les gouttières, les recouvrements.",
+        content: "Découpage des panneaux : Pour avoir un bon résultat il est conseillé d'utiliser une scie sauteuse électrique à lame d'acier.\nFixation des panneaux : Les panneaux doivent être rivés au sommet de chaque nervure sur les pannes d'extrémité. Sur les pannes intermédiaires, lors de la pose, les panneaux doivent être serrés sur la partie longitudinale afin que le joint d'étanchéité à l'air remplisse son rôle. Il est recommandé d'utiliser un joint d'étanchéité à l'air avec une face adhésive sur les faces d'appuis du panneau situées sur les pannes d'extrémité, les chéneaux, les gouttières et les recouvrements.",
       },
        {
         type: 'table',
@@ -118,7 +118,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
             items: [
                 "Atelier de production.",
                 "Entrepôts.",
-                "Bâtiments industrielle & modulaires.",
+                "Bâtiments industriels et modulaires.",
                 "Centres commerciaux.",
                 "Complexes sportifs.",
                 "Ensembles scolaires et universitaires."
@@ -129,8 +129,8 @@ export const productVariants: { [key: string]: ProductVariant } = {
             title: 'CARACTÉRISTIQUE PRODUIT',
             items: [
               {
-                key: 'Definition',
-                value: "Identification d'acier : Nuance S250, S280, S320:\nProfil à nervurassions en faible profondeur, pour le type lisse pas de nervurassions.\nÉpaisseur : 0,5mm - 0.6 mm - 0.7 mm (selon la demande du client)"
+                key: 'Définition',
+                value: "Identification d'acier : Nuance S250, S280, S320:\nProfil à nervures de faible profondeur ; le type lisse est sans nervures.\nÉpaisseur : 0,5mm - 0.6 mm - 0.7 mm (selon la demande du client)"
               },
               {
                 key: 'Revêtement',
@@ -174,7 +174,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
         {
             type: 'text',
             title: 'Étanchéité des rives',
-            content: "Les panneaux sandwichs de bardages présentent une rive mâle et une rive femelle permettant un assemblage par emboîtement.\nLes nervures mâle et femelle sont fermées par une bande adhésive.\nTous les panneaux bardage sont munis sur la nervure femelle d'un joint d'étanchéité à l'air ; leurs parements pré-laqués sont protégés par un filmadhésif à retirer à la pose ."
+            content: "Les panneaux sandwichs de bardage présentent une rive mâle et une rive femelle permettant un assemblage par emboîtement.\nLes nervures mâle et femelle sont fermées par une bande adhésive.\nTous les panneaux bardage sont munis sur la nervure femelle d'un joint d'étanchéité à l'air ; leurs parements pré-laqués sont protégés par un film adhésif à retirer à la pose."
         },
         {
             type: 'table',
@@ -208,7 +208,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
   },
   frigorifique: {
     id: 'frigorifique',
-    title: 'PANNEAUX SANDWICHS FRIGORIFIQUE',
+    title: 'PANNEAUX SANDWICHS FRIGORIFIQUES',
     mainImage: {
       src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1080&q=80&auto=format&fit=crop',
       alt: 'Panneaux sandwichs frigorifiques – chambre froide',
@@ -235,7 +235,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
             items: [
                 {
                     key: 'Définition',
-                    value: "Identification d’acier: Nuance S250, S280, S320\nParement Externe: Profil à nervurassions en faible profondeur, pour le type lisse pas de nervurassions.\nÉpaisseur: 0,5mm - 0,6 mm - 0,7 mm (Selon la demande du Client)"
+                    value: "Identification d’acier: Nuance S250, S280, S320\nParement Externe: Profil à nervures de faible profondeur ; le type lisse est sans nervures.\nÉpaisseur: 0,5mm - 0,6 mm - 0,7 mm (Selon la demande du Client)"
                 },
                 {
                     key: 'Revêtement',
@@ -267,7 +267,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
         {
             type: 'table',
             title: 'Dimensionnement du panneau',
-            headers: ["Type", "Longueur (mm)", "Largueur standard (mm)", "Épaisseur (mm)", "Poids Kg/m²"],
+            headers: ["Type", "Longueur (mm)", "Largeur standard (mm)", "Épaisseur (mm)", "Poids Kg/m²"],
             rows: [
                 ["LL80", 15400, 1000, 80, 11.6],
                 ["LL100", 15400, 1000, 100, 12.40],
@@ -296,7 +296,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
         {
             type: 'image',
             title: 'Caractéristiques Géométriques',
-            caption: 'Panneaux sandwichs frigorifique lisse/lisse',
+            caption: 'Panneaux sandwichs frigorifiques lisse/lisse',
             image: { src: 'https://i.ibb.co/WWSRgtQH/panneaux-frigorifique-1.png', alt: 'panneaux-frigorifique-1', aiHint: 'technical drawing' }
         },
         {
@@ -334,7 +334,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
         {
             type: 'table',
             title: '',
-            headers: ["Type", "Longueur (ml)", "Largueur standard (mm)", "Epaisseurs (mm)", "Poids (kg/m2)", "I (cm4/m)", "W (cm3/m)", "Système de revêtement"],
+            headers: ["Type", "Longueur (ml)", "Largeur standard (mm)", "Epaisseurs (mm)", "Poids (kg/m2)", "I (cm4/m)", "W (cm3/m)", "Système de revêtement"],
             rows: [
                 ['TN 40', '15000', '1000', '0.50', '4.91', '12.3', '3.92', 'Galvanisée'],
                 ['', '', '', '0.60', '5.90', '16.05', '5.30', ''],

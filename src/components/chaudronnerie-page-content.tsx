@@ -19,12 +19,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { DownloadButton } from '@/components/ui/download-button';
 import { ChaudronnerieWireframe } from '@/components/wireframes/ChaudronnerieWireframe';
 import dynamic from 'next/dynamic';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  type CarouselApi,
-} from "@/components/ui/carousel"
 import { cn } from '@/lib/utils';
 
 const DetailedStatCard = dynamic(() => import('@/components/detailed-stat-card').then(mod => mod.DetailedStatCard));
@@ -76,7 +70,7 @@ const ActivitiesSection = () => {
 };
 
 
-const GeometricTechnicalTable = ({ api, setCurrent, current }: { api: CarouselApi, setCurrent: (index: number) => void, current: number }) => {
+const GeometricTechnicalTable = ({ setCurrent, current }: { setCurrent: (index: number) => void, current: number }) => {
   const tableData = geometricTableData;
 
   return (
@@ -119,12 +113,7 @@ const GeometricTechnicalTable = ({ api, setCurrent, current }: { api: CarouselAp
                 <tr 
                   key={index} 
                   className={cn("transition-colors", index % 2 === 0 ? 'bg-white' : 'bg-muted/50', current === index + 1 ? 'bg-accent/20' : '')}
-                  onMouseEnter={() => {
-                    if (api) {
-                        setCurrent(index + 1);
-                        api.scrollTo(index);
-                    }
-                  }}
+                  onMouseEnter={() => setCurrent(index + 1)}
                 >
                   <td className="border border-border px-3 py-3 text-center text-sm font-semibold text-foreground">
                     {row.capacite}
@@ -225,31 +214,10 @@ const TechnicalSpecsSection = () => {
 export function ChaudronneriePageContent() {
   const { hero } = chaudronnerieData;
   const heroStats = hero.stats;
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [current, setCurrent] = React.useState(0)
-  const [count, setCount] = React.useState(0)
+  const [current, setCurrent] = React.useState(1)
 
   const drawingImages = chaudronnerieDrawingImages;
-
-  React.useEffect(() => {
-    if (!api) {
-      return
-    }
-
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap() + 1)
-
-    const handleSelect = () => {
-      setCurrent(api.selectedScrollSnap() + 1)
-    }
-
-    api.on("select", handleSelect)
-
-    return () => {
-      api.off("select", handleSelect)
-    }
-  }, [api])
-
+  const count = drawingImages.length;
 
   const iconMap = useMemo(() => ({
     Package,
@@ -281,7 +249,7 @@ export function ChaudronneriePageContent() {
               <AnimatedWrapper animation="slide-up">
                 <div className="text-left space-y-8">
                   <div>
-                    <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                    <h1 className="font-headline text-5xl sm:text-6xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                       {hero.title}
                     </h1>
                     <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]">
@@ -333,37 +301,54 @@ export function ChaudronneriePageContent() {
       <ActivitiesSection />
       <section id="product-details" className="bg-secondary/20 py-20">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-10 gap-12">
-            <div className="lg:col-span-4">
+          <div className="grid grid-cols-1 lg:grid-cols-10 gap-12">
+            <div className="lg:col-span-4 min-w-0">
               <div className="space-y-4">
-                <Carousel setApi={setApi} className="w-full">
-                  <CarouselContent>
+                <Card>
+                  <CardContent className="relative aspect-square p-6">
                     {drawingImages.map((src, index) => (
-                      <CarouselItem key={index} onMouseEnter={() => setCurrent(index + 1)}>
-                        <div className="p-1">
-                          <Card>
-                            <CardContent className="flex aspect-square items-center justify-center p-6 relative">
-                              <Image src={src} alt={`Schéma technique ${index + 1}`} fill className="object-contain rounded-lg" />
-                            </CardContent>
-                          </Card>
+                      <div
+                        key={index}
+                        aria-hidden={current !== index + 1}
+                        className={cn(
+                          "absolute inset-0 p-6 transition-opacity duration-300",
+                          current === index + 1 ? "opacity-100" : "pointer-events-none opacity-0"
+                        )}
+                      >
+                        <div className="relative h-full w-full">
+                          <Image src={src} alt={`Schéma technique ${index + 1}`} fill className="object-contain rounded-lg" />
                         </div>
-                      </CarouselItem>
+                      </div>
                     ))}
-                  </CarouselContent>
-                </Carousel>
+                  </CardContent>
+                </Card>
+                <div className="flex items-center justify-center gap-2">
+                  {drawingImages.map((_, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      aria-label={`Afficher le schéma technique ${index + 1}`}
+                      onClick={() => setCurrent(index + 1)}
+                      className={cn(
+                        "h-2.5 w-2.5 rounded-full transition-colors",
+                        current === index + 1 ? "bg-accent" : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                      )}
+                    />
+                  ))}
+                </div>
                 <div className="py-2 text-center text-sm text-muted-foreground">
                   Schéma {current} sur {count}
                 </div>
               </div>
             </div>
-            <div className="lg:col-span-6">
+            <div className="lg:col-span-6 min-w-0">
               <AnimatedWrapper animation="fade-in" staggerIndex={1}>
                 <Card>
                    <CardHeader>
                     <CardTitle className="text-2xl font-bold text-accent">CARACTÉRISTIQUES GÉOMÉTRIQUES ET TECHNIQUES</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    <GeometricTechnicalTable api={api as CarouselApi} setCurrent={setCurrent} current={current} />
+                    <GeometricTechnicalTable setCurrent={setCurrent} current={current} />
                     <div className="mt-8 prose prose-lg max-w-none">
                         <TechnicalSpecsSection />
                     </div>

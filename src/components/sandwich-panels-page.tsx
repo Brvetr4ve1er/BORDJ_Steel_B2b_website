@@ -79,7 +79,7 @@ const HeroSection = React.memo(function HeroSection() {
       <div className="relative z-20 w-full">
         <div className="w-full px-8 md:px-12 pb-10">
           <AnimatedWrapper animation="zoom-in">
-              <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white">
+              <h1 className="font-headline text-6xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white">
                   {sandwichHero.title}
               </h1>
               <p className="mt-8 text-xl md:text-2xl max-w-3xl text-gray-200">

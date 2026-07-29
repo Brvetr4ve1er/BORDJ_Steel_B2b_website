@@ -1,5 +1,10 @@
 # Known Issues — Bordj Steel B2B
 
+> **Update 2026-07-24:** two new flag registers appended at the bottom:
+> **[F] Useless elements** (18 findings, flag-only) and **[G] Content roadmap**
+> (12 researched proposals). Visual-geometry bugs found the same day were fixed
+> directly in code (see git history) and are not listed here.
+
 > **Status: flagged for review, NOT fixed.** Every item below is a defect found by a
 > multi-agent architectural audit and then **independently re-verified by a second agent
 > that re-read the actual file** before it was allowed onto this list. Nothing in the
@@ -269,3 +274,53 @@ confirm the right value, after which each should be stated **once in config** an
 ---
 
 *Generated 2026-07-24 · 34 confirmed defects, 5 client decisions, 3 false positives rejected · nothing in this list has been modified in the codebase.*
+
+---
+
+# [F] Useless elements — flagged 2026-07-24 (flag-only, awaiting decision)
+
+> From a dedicated UX audit: elements that render but serve no visitor purpose. Each was
+> verified at its callsites; 5 borderline candidates were examined and deliberately NOT
+> flagged (hero scroll chevron, blog-card ghost button, galvanisation highlight labels,
+> AnimatedBaths ruler, product wireframes — each plausibly helps).
+
+| # | Element | Where | Why useless | Suggestion |
+|---|---|---|---|---|
+| F1 | Logo "shine" mask — ~100 lines of duplicate SVG geometry masking a hover sweep that **can never render** (mask coords 1080×1080 vs 56px target ⇒ resolves fully transparent); ships ~15× on the blog page via card avatars | `logo.tsx:22-126`, `navbar.tsx:232-235` | invisible-in-practice + dead weight | Remove mask defs + shine div |
+| F2 | DownloadButton's second panel: permanently hidden behind the opaque layer, translates *out* of the clipped button on hover, yet runs an **infinite 1s animation**; on 8 CTAs | `ui/download-button.tsx:20-22`, `app/download-button.css:37-59` | invisible + perpetual animation cost | Remove `.download` element + CSS |
+| F3 | `shiny-button.css` — 275 lines imported by nothing | `src/app/shiny-button.css` | dead stylesheet | Delete |
+| F4 | Galvanisation step details (real content: longDesc + temp/durée) hidden in `h-0 group-hover:h-auto` — no tap/focus reveal, invisible to touch users; `h-0→h-auto` can't animate either | `galvanisation-page-content.tsx:197-207` | content behind undiscoverable hover | Show by default or real disclosure |
+| F5 | Blog ISO tab: 512×640px hover flyout duplicating the "Voir le document" button below it; unusable on touch; overlaps neighbour card | `blog-page-content.tsx:60-75` | duplicate + hover-only | Remove flyout |
+| F6 | Facilities cards: title/description/CTA all `opacity-0` until hover — phone users see 4 unlabeled photo tiles; inner "Lire la suite" duplicates the card's own link | `sections/Facilities.tsx:57-90` | invisible on touch + duplicate | Show title always; drop inner CTA |
+| F7 | Sandwich selector: six 128px icon circles with `cursor-pointer` + hover-scale that are **inert** (onClick only on the small button below) | `sandwich-panels-page.tsx:144-154` | looks clickable, does nothing | Make circle+label one button |
+| F8 | FeatureHoverCard's hover-only "En savoir plus" fake CTA inside an already-clickable card | `feature-hover-card.tsx:30-38` | duplicate + invisible on touch | Remove the span |
+| F9 | Homepage repeats 2 stats across 3 consecutive sections (25 000 T/an: hero + StatsSection; 300 projets: vision-mission + StatsSection) | `home-page-hero.tsx`, `StatsSection.tsx`, `vision-mission.tsx` | redundant | Keep each figure once |
+| F10 | Charpente capacity tiles repeat the hero's two stats verbatim mid-page (above tables quoting *different* figures) | `charpente-metallique-page.tsx:180-191` | redundant + amplifies known data conflict | Drop mid-page tiles |
+| F11 | Mobile menu: two overlapping close buttons (custom X + shadcn's built-in X, same corner) | `navbar.tsx:265-270`, `ui/sheet.tsx:69-72` | duplicate control | Remove custom one |
+| F12 | Google Maps iframe in the site-wide footer; homepage loads a second full Maps embed in its contact section | `footer.tsx:86-97`, `home-page-contact-form.tsx:157-168` | heavy duplicate | Footer → static link/thumbnail |
+| F13 | Recruitment: 18 filter options over 2 near-identical jobs — 15 selections yield "Aucune offre" | `recruitment-page.tsx:47-69` | filter without a corpus | Derive options from real jobs |
+| F14 | macOS-dock magnification physics (182-line component, framer springs) on a 3-tab switcher — makes targets move under the cursor | `blog-page-content.tsx:230-239`, `ui/dock.tsx` | decoration harming usability | Plain segmented tabs |
+| F15 | Blog search + sort render on ISO/Catalogue tabs where they do nothing | `blog-page-content.tsx:216-253` | inert controls | Render only on blog tab |
+| F16 | Certifications section: 3 identical generic Award icons in 160px hover-scaling circles (real cert images exist and are used elsewhere) | `sections/Certifications.tsx:22-31` | generic duplicate decoration | Use real badges or drop circles |
+| F17 | `staggerIndex` passed with animations that ignore it (4 callsites) — implied stagger never happens | `animated-wrapper.tsx:60` + callsites | vestigial prop | Honor delay for all animations or strip |
+| F18 | TeamsSection: `detail` + `color` fields on all 9 entries never rendered | `sections/history/TeamsSection.tsx:7-89` | dead data fields | Delete fields |
+
+# [G] Content roadmap — researched proposals (2026-07-24, needs client sign-off)
+
+> From a copy audit + web research. French drafts exist for each (see the content report in
+> session records / ask for the full text). **Critical pre-condition found during research:
+> the live `bordjsteel.dz` serves an EXPIRED TLS certificate — browsers show a security
+> warning. Fix that first; it outranks all content work.**
+
+1. **FAQ Galvanisation** (EN ISO 1461: épaisseurs de zinc, durée de vie, dimensions max, préparation des pièces) — page galvanisation.
+2. **Page "Normes & réglementation"** — CCM97, RPA99 v2003, RNV 2013/DTR C2-4.7, Eurocode 3 (ce que les ingénieurs algériens recherchent; aucun concurrent ne l'explique).
+3. **Certifications enrichies** — ISO 9001/14001/45001 expliquées en bénéfice client + homologation SONELGAZ mise en avant + certificats PDF (bloqué: PDFs client).
+4. **Section "Le groupe Condor"** sur Qui sommes-nous (création 2012, site 100 000 m² — chiffres publics, à confirmer).
+5. **FAQ Panneaux sandwich** (Euroclasse B-s2,d0 expliquée, PUR vs PIR, épaisseurs chambre froide) — règle au passage la contradiction "B3 : standard" (danger commercial, voir audit copy).
+6. **Glossaire construction métallique** (20-30 entrées: PRS, panne, plancher collaborant, TN40…) — SEO longue traîne.
+7. **Références → mini études de cas** (tonnage/couverture/bardage déjà en config; manque récit + photo + délai).
+8. **Page "Bâtiments préfabriqués (PEB)"** — le terme est cité sans être expliqué; forte intention d'achat.
+9. **Remplacer les articles filler 9-13** par 5 vrais articles techniques (sujets proposés, gardant les titres).
+10. **Salons & événements** — BATI-EST EXPO (8ᵉ édition 14-17 oct. 2026, Zénith Constantine — vérifié; participation à confirmer).
+11. **Vraie fiche technique galvanisation PDF** (le CTA existe mais sert le catalogue général; bloqué: chiffres client).
+12. **Couverture nationale / livraison par wilaya** — la question n°1 des acheteurs, jamais traitée.

@@ -77,7 +77,7 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
           <AnimatedWrapper animation="slide-up">
             <div className="text-left space-y-8">
               <div>
-                <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+                <h1 className="font-headline text-6xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                   {hero.title}
                 </h1>
                 <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]">

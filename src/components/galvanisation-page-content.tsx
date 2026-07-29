@@ -73,13 +73,13 @@ function UnwrappedHeroSection() {
           <AnimatedWrapper animation="slide-up">
             <div className="text-left space-y-8">
               <div>
-                <h1 className="font-headline text-5xl md:text-8xl font-bold text-white leading-tight">
+                <h1 className="font-headline text-5xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold text-white">
                   {hero.title}
                 </h1>
                 <div className="mt-4 text-lg text-gray-300 max-w-xl">
-                    <p className="font-bold">UNITE DE PRODUCTION</p>
+                    <p className="font-bold">UNITÉ DE PRODUCTION</p>
                     <p>Surface de 40.000 m² dont 6.000 m² couverts. Démarrage de la production : octobre 2016.</p>
-                    <p>Constitué de Bains d’immersion de 13x1,8x3,5 m, permettant de traiter des articles métalliques de diverses longueurs allant jusqu’à 13m. Capacité de production: (08 heures) 1600 t / mois. 20.000 t/an.</p>
+                    <p>L’unité est constituée de bains d’immersion de 13 × 1,8 × 3,5 m, permettant de traiter des pièces métalliques jusqu’à 13 m de longueur. Capacité de production (8 h/jour) : 1 600 t/mois, soit 20 000 t/an.</p>
                 </div>
               </div>
               <div className="flex flex-row items-center gap-4">
@@ -223,7 +223,7 @@ function UnwrappedBenefitsSection() {
   
     return (
       <section className="py-32 bg-background">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4">
           <AnimatedWrapper animation="fade-in">
               <Card className="text-center mb-20 p-8 bg-secondary shadow-lg">
                   <h2 className="font-headline text-5xl font-bold text-accent mb-6">Notre Expertise en Galvanisation</h2>
@@ -234,7 +234,9 @@ function UnwrappedBenefitsSection() {
           </AnimatedWrapper>
           
           <div className="grid lg:grid-cols-5 gap-8 items-start">
-            <div className="lg:col-span-2 space-y-8">
+            {/* min-w-0: without it the tables in TechniquesAndStandardsSection
+                inflate the single mobile grid track past the viewport. */}
+            <div className="min-w-0 lg:col-span-2 space-y-8">
                 <AnimatedWrapper animation="fade-in">
                     <Card className="bg-secondary border-border p-6 transition-all duration-300 hover:border-accent hover:-translate-y-2">
                         <CardContent className="p-0 flex flex-col md:flex-row items-center gap-10">
@@ -274,7 +276,7 @@ function UnwrappedBenefitsSection() {
                     })}
                   </div>
             </div>
-            <div className="lg:col-span-3">
+            <div className="min-w-0 lg:col-span-3">
                 <AnimatedWrapper animation="fade-in" staggerIndex={1}>
                     <TechniquesAndStandardsSection />
                 </AnimatedWrapper>

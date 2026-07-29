@@ -55,7 +55,7 @@ export function VisionMission() {
 
           <div className="space-y-10">
              <AnimatedWrapper animation="fade-in-stagger" className="mb-12">
-                <h2 className="font-headline text-7xl font-bold text-primary mb-4">
+                <h2 className="font-headline text-7xl leading-tight font-bold text-primary mb-4">
                     BORDJ <span className="text-accent">STEEL</span>
                 </h2>
                 <p className="text-lg text-muted-foreground">{history}</p>

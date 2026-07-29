@@ -29,7 +29,7 @@ export const charpenteMetalliqueData = {
         "https://i.ibb.co/dJWKv6rp/projet-charpente.jpg"
       ],
       specifications: {
-        mainDescription: "Notre complexe Bordj Steel est apte a fabriqué ce type de profilé ( P.R.S ) selon la demande du client et en respectent les normes en vigueurs. Nous pouvons vous accompagné durant toutes les phases de réalisation du projet (Etude, fabrication et Montage) Notre ligne PRS permet la production massive de poutres en PRS de forme L ou en caissons.",
+        mainDescription: "Notre complexe Bordj Steel est apte à fabriquer ce type de profilé (PRS) selon la demande du client, en respectant les normes en vigueur. Nous pouvons vous accompagner durant toutes les phases de réalisation du projet (étude, fabrication et montage). Notre ligne PRS permet la production en série de poutres en PRS en I ou en caissons.",
         details: [
           { label: "Notre plage de fabrication est de", value: "<strong class='text-accent font-bold'>350mm</strong> à <strong class='text-accent font-bold'>2000mm</strong> de largeur et de maximum <strong class='text-accent font-bold'>16 000mm</strong> de longueur" },
           { label: "La portée", value: "selon la demande du client" }
@@ -57,10 +57,10 @@ export const charpenteMetalliqueData = {
           {
             title: "Candélabres et supports",
             items: [
-              "Candélabres et support d’éclairage public de différentes dimensions",
-              "Support tubulaires de transport d’électricité",
-              "Mats de grandes hauteurs selon la demande du client",
-              "Mats et support télésurveillance"
+              "Candélabres et supports d’éclairage public de différentes dimensions",
+              "Supports tubulaires de transport d’électricité",
+              "Mâts de grande hauteur selon la demande du client",
+              "Mâts et supports de télésurveillance"
             ],
             capacity: "100T /mois"
           },
@@ -74,8 +74,8 @@ export const charpenteMetalliqueData = {
           }
         ],
         notes: [
-          "Produits homologuées par <span class='font-bold text-accent'>SONALGAZ</span>",
-          "Galvanisé au sein de notre complexe selon la norme <span class='font-bold text-accent'>en 1461</span>",
+          "Produits homologués par <span class='font-bold text-accent'>SONELGAZ</span>",
+          "Galvanisé au sein de notre complexe selon la norme <span class='font-bold text-accent'>NF EN ISO 1461</span>",
           "L’homologation <span class='font-bold text-accent'>SONELGAZ</span> dont nous nous sommes dotés nous permet de proposer à nos clients des supports tubulaires de type <span class='font-bold text-accent'>9T</span> et en barres soudées de type <span class='font-bold text-accent'>BS</span> pour le transport d’électricité à basse et à moyenne tension."
         ],
         additionalImages: [
@@ -127,7 +127,7 @@ export const charpenteMetalliqueData = {
         "https://i.ibb.co/0j8hzdNq/carroserie.jpg",
       ],
       specifications: {
-        mainDescription: "Notre complexe est agrée par le ministère d’énergie et des mines pour fabriqué :",
+        mainDescription: "Notre complexe est agréé par le ministère de l’Énergie et des Mines pour fabriquer :",
         applications: [
           'Carrossage des véhicules complets',
           'Véhicules à châssis nu et véhicules à châssis cabines',
