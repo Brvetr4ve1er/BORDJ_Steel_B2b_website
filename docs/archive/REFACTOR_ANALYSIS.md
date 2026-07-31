@@ -1,3 +1,11 @@
+> **ARCHIVED — historical snapshot, do NOT treat as current.**
+> Written 2 June 2026, before six waves of audit and remediation. Many of the
+> file paths and component names below no longer exist. Kept for provenance only.
+> For the current state see `README.md`, `ARCHITECTURE.md`, `KNOWN-ISSUES.md`
+> and `docs/MEDIA.md`.
+
+---
+
 # Refactor Analysis: Before vs. After
 
 This document provides a brutally honest assessment of the repository's state before and after the recent refactoring initiative.

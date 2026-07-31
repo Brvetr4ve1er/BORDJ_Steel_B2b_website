@@ -475,8 +475,10 @@ export const productVariants: { [key: string]: ProductVariant } = {
   },
   finitions: {
     id: 'finitions',
+    // No single hero image: this variant is a grid of finition parts, so the
+    // renderer lays it out full-width. `mainImage` is omitted rather than set
+    // to an empty string.
     title: 'Pièces de Finition',
-    mainImage: { src: '', alt: '' },
     sections: [
         {
             type: 'imageGrid',

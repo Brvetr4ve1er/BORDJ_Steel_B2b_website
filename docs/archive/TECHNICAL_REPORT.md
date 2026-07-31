@@ -1,3 +1,11 @@
+> **ARCHIVED — historical snapshot, do NOT treat as current.**
+> Written 2 June 2026, before six waves of audit and remediation. Many of the
+> file paths and component names below no longer exist. Kept for provenance only.
+> For the current state see `README.md`, `ARCHITECTURE.md`, `KNOWN-ISSUES.md`
+> and `docs/MEDIA.md`.
+
+---
+
 # Technical Report: BORDJ STEEL Repository
 
 ### 1. Source Folder Tree (`src/`)

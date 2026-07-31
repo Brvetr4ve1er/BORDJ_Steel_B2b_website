@@ -277,7 +277,7 @@ export function ChaudronneriePageContent() {
                                     icon={Icon}
                                     title={stat.title}
                                     value={stat.value}
-                                    secondaryValue={(stat as any).secondaryValue}
+                                    secondaryValue={stat.secondaryValue}
                                     description={stat.description}
                                     className="bg-black/50 backdrop-blur-md border-border text-white transition-colors duration-300 group-hover:bg-transparent group-hover:border-accent"
                                 />

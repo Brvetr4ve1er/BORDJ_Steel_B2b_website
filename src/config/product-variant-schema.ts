@@ -92,6 +92,12 @@ export type ProductVariantSection =
 export type ProductVariant = {
   id: string;
   title: string;
-  mainImage: ProductImage;
+  /**
+   * Hero image for the variant. Genuinely optional: some variants (e.g. the
+   * finition parts) are a grid of items with no single representative photo,
+   * and the renderer gives those a full-width layout instead. Absence is
+   * expressed by omitting the field — never by an empty `src`.
+   */
+  mainImage?: ProductImage;
   sections: ProductVariantSection[];
 };

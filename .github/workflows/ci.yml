@@ -2,10 +2,11 @@ name: CI
 
 # Continuous-integration gate for the Bordj Steel website.
 #
-# Status (2026-05-29, Node 20): build, lint and typecheck are all GREEN.
-#   - build     : PASS (all 31 routes; strict — ignore flags removed)  -> required
+# Status (2026-07-29, Node 20): build, lint, typecheck and test are all GREEN.
+#   - build     : PASS (all 36 routes; strict — ignore flags removed)  -> required
 #   - lint      : PASS (0 warnings)                                    -> required
-#   - typecheck : PASS (0 errors)                                      -> required
+#   - typecheck : PASS (0 errors; strict + noUncheckedIndexedAccess)   -> required
+#   - test      : PASS (vitest; config/asset integrity suite)          -> required
 #
 # `next.config.ts` no longer suppresses type/lint errors, so `next build`
 # itself now enforces both. All three jobs are safe to mark required in
@@ -60,3 +61,15 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run typecheck
+
+  test:
+    name: Test (required)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm test

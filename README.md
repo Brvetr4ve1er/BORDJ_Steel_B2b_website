@@ -71,10 +71,16 @@ This project uses a modern, production-ready stack:
 - **Language**: TypeScript
 - **UI**: React
 - **Styling**: Tailwind CSS
-- **Component system**: shadcn/ui
-- **Animations**: Framer Motion
+- **Component system**: shadcn/ui (Radix primitives)
+- **Animations**: Framer Motion for UI motion; **anime.js** scoped to the SVG
+  technical wireframes in `src/components/wireframes/` (deliberate, contained —
+  see that folder's components for why)
 - **Forms**: react-hook-form
-- **Hosting**: Firebase App Hosting
+- **Testing**: Vitest
+- **Hosting**: currently served from **Netlify**. Firebase App Hosting config
+  (`apphosting.yaml`) and classic Firebase Hosting config (`firebase.json`) both
+  still exist in the repo — security headers are therefore declared in
+  `next.config.ts` so they apply regardless of which host actually serves.
 
 The stack was chosen to balance:
 - Performance
@@ -104,18 +110,28 @@ A detailed breakdown lives in `ARCHITECTURE.md`.
 
 ```text
 src/
-├─ app/                # Next.js App Router (public routes)
-├─ components/         # Reusable UI and page components
-│  ├─ ui/              # shadcn/ui primitives
-│  └─ product-variants/# Product rendering logic
-├─ config/             # Static content & configuration
-├─ hooks/              # Custom React hooks
-├─ lib/                # Utilities & static assets
-├─ ai/                 # Genkit / AI-related code
-public/                # Static assets (logos, images)
-````
+├─ app/                  # Next.js App Router. Each page.tsx is a thin wrapper.
+├─ components/
+│  ├─ pages/             # One content component per route
+│  ├─ sections/          # Composable page sections
+│  ├─ product-variants/  # Generic, data-driven product renderer
+│  ├─ wireframes/        # anime.js technical drawings (SVG)
+│  └─ ui/                # shadcn/ui primitives
+├─ config/               # ALL site copy and product data (the source of truth)
+├─ hooks/                # Custom React hooks
+└─ lib/                  # Utilities
+public/
+├─ media/                # All site photography (self-hosted, optimised)
+├─ logos/                # Client logos
+└─ documents/            # Downloadable PDFs
+tests/                   # Vitest integrity suite
+```
 
 The structure is intentionally boring — boring scales.
+
+**The rule that matters most:** user-facing text and product data live in
+`src/config/**`, never inline in JSX. If you are about to type French copy into
+a component, it belongs in config instead.
 
 ---
 
@@ -152,48 +168,79 @@ The app usually runs on:
 http://localhost:9002
 ```
 
-Before pushing, run the same checks CI enforces:
+Before pushing, run the same four checks CI enforces — all must be clean:
 
 ```bash
-npm run typecheck   # tsc --noEmit (must be clean)
-npm run lint        # next lint (must be clean)
+npm run typecheck   # tsc --noEmit (strict + noUncheckedIndexedAccess)
+npm run lint        # next lint
+npm test            # vitest — config/asset integrity suite
 npm run build       # next build (type + lint errors fail the build)
 ```
+
+### The test suite
+
+`tests/` holds a fast (<1s) integrity suite that guards the failure modes this
+project has actually suffered, rather than chasing coverage:
+
+| File | Guards against |
+|---|---|
+| `media-integrity.test.ts` | image paths pointing at nothing; new third-party image hotlinks creeping back in |
+| `product-tables.test.ts` | spec-table header spans not matching the data (this once shipped an invalid `colSpan={0.5}`); two parts sharing one photo |
+| `navigation-and-config.test.ts` | menu links to non-existent routes; unresolvable image keys; malformed contact details |
+
+They are pure Node — no DOM, no browser — which is why they cost one dev
+dependency and run in well under a second. Component and end-to-end tests are a
+reasonable next step but are not present today.
 
 ---
 
 ## ☁️ Deployment
 
-The project is deployed via **Firebase App Hosting**.
+The site is currently served from **Netlify**; the repo also still carries
+Firebase App Hosting (`apphosting.yaml`) and classic Firebase Hosting
+(`firebase.json`) configuration from an earlier setup.
 
-* Pushes to `main` trigger automatic builds and deployments
-* Configuration lives in:
+Because those two Firebase products read different config and Netlify reads
+neither, **security and cache headers are declared in `next.config.ts`** so they
+ship with the application whatever the host. The `firebase.json` block is kept
+in sync deliberately: duplicated headers are harmless, missing ones are not.
 
-  * `firebase.json`
-  * `apphosting.yaml`
-
-No manual deployment steps are required.
+> **Open decision:** consolidating on one host, and choosing the canonical
+> domain, are both outstanding (see *Honest Status* above).
 
 ---
 
-## ⚠️ Known Technical Debt (Honest Section)
+## ⚠️ Honest Status
 
-This project is stable and builds strictly (type + lint errors fail the build).
-Remaining, tracked items:
+The codebase itself is in good shape. Four gates are green (typecheck, lint,
+test, build — 36 static pages), TypeScript runs `strict` plus
+`noUncheckedIndexedAccess`, there are **zero** `any` casts and zero
+`@ts-ignore`, and `npm audit` reports zero vulnerabilities. All 52 findings from
+the engineering audit are closed; see `KNOWN-ISSUES.md`.
 
-* A few large product-page components (`galvanisation`, `charpente`, `chaudronnerie`)
-  remain monolithic and use an ineffective `dynamic(Promise.resolve())` pattern.
-* `"use client"` is still used more broadly than necessary (animation wrappers).
-* Some client logos hotlink third-party CDNs; a few referenced `/logos/*.webp`
-  files and the EN/AR catalogue + ISO certificate PDFs are not yet provided.
-* ~18 unused shadcn/ui primitives remain as an unused component library.
+**What is genuinely still open is not code — it is content and decisions:**
 
-Recently resolved: product-variant duplication (now a single generic renderer),
-dead-code/duplicate removal, broken `/contact` and `/about/history` pages, a
-non-functional contact form, the broken sitemap, and ~50 npm vulnerabilities.
+* **The live domain `bordjsteel.dz` serves an expired TLS certificate.** Visitors
+  get a browser security warning before they see anything. This outranks
+  everything else here.
+* **The canonical domain is undecided.** `siteUrl` points at `bordj-steel.com`,
+  which does not resolve to a public host, while the new site deploys to Netlify
+  and `.dz` serves the old site. Every canonical/OG/sitemap URL derives from that
+  one value, so it is a one-line fix once the hostname is chosen.
+* **Published capacity figures contradict each other** — galvanisation appears as
+  60 000, 25 000 and 20 000 T/an on different pages. Only the client can say which
+  is right.
+* **Missing client assets**: the three ISO certificate PDFs, a photo of the
+  exterior corner piece, and the identity of the "Tazedj" client logo.
+* **Image provenance**: the photography originated as Pinterest/stock URLs and is
+  almost certainly not Bordj Steel's own. It is now self-hosted and fast, but
+  self-hosting confers no licence — see `docs/MEDIA.md`.
+* **No CMS.** All copy lives in typed config, so every text change needs a
+  developer and a redeploy. Defensible at this size; the first thing to revisit
+  if the client wants to edit their own content.
 
-These are documented and tracked in `TODO.md`, `AUDIT_REPORT.md` and
-`CLEANUP_AND_IMPROVEMENT_PLAN.md`. No shortcuts hide them — they’re visible.
+Nothing here is hidden behind a build flag — `next.config.ts` deliberately does
+not suppress type or lint errors.
 
 ---
 
@@ -213,10 +260,10 @@ This is a **real client project**, not a sandbox.
 * `README.md` — project overview (this file)
 * `ARCHITECTURE.md` — technical structure and decisions
 * `CLAUDE.md` — contributor / agent guide (commands, conventions, editing rules)
-* `TODO.md` — known debt and cleanup roadmap
-* `AUDIT_REPORT.md` — full engineering audit (health score, risks, dependency report)
-* `PROJECT_CONTEXT.md` — factual baseline of the codebase
-* `CLEANUP_AND_IMPROVEMENT_PLAN.md` — phased improvement plan
+* `KNOWN-ISSUES.md` — the defect register: what was found, what was fixed, what is still blocked on the client
+* `docs/MEDIA.md` — the image pipeline (self-hosting, AVIF, how to add a photo)
+* `TODO.md` — remaining cleanup roadmap
+* `docs/archive/` — historical point-in-time reports from June 2026. **Superseded and largely inaccurate** — they reference file paths that no longer exist. Kept for provenance only; do not treat them as current.
 
 ---
 

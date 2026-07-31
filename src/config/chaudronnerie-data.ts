@@ -9,6 +9,27 @@ export type ProductImage = {
   height: number;
 };
 
+/**
+ * A hero statistic. `secondaryValue` is optional — without this explicit type
+ * TypeScript infers the `stats` array as a union of "has secondaryValue" and
+ * "does not", which forces consumers to cast to read the field.
+ */
+export type HeroStat = {
+  title: string;
+  value: string;
+  secondaryValue?: string;
+  icon: string;
+  description: string;
+};
+
+// Annotated (not `satisfies`) so every element widens to `HeroStat`: consumers
+// can then read the optional `secondaryValue` without narrowing or casting.
+const chaudronnerieHeroStats: HeroStat[] = [
+  { title: 'Surface de production', value: '1500 m²', icon: 'Square', description: 'Dédiée à la chaudronnerie lourde et fine.' },
+  { title: 'Capacité de production', value: '8h/j', secondaryValue: '5000T/an', icon: 'Factory', description: 'Pour les projets de petite à grande envergure.' },
+  { title: 'Effectifs', value: '30 Employés', icon: 'Users', description: 'Une équipe qualifiée et expérimentée.' },
+];
+
 export const chaudronnerieData = {
   hero: {
     title: 'Chaudronnerie',
@@ -19,11 +40,7 @@ export const chaudronnerieData = {
     blurDataUrl: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=",
     cta_primary: 'Explorer les produits',
     cta_secondary: 'Notre expertise',
-    stats: [
-      { title: 'Surface de production', value: '1500 m²', icon: 'Square', description: 'Dédiée à la chaudronnerie lourde et fine.' },
-      { title: 'Capacité de production', value: '8h/j', secondaryValue: '5000T/an', icon: 'Factory', description: 'Pour les projets de petite à grande envergure.' },
-      { title: 'Effectifs', value: '30 Employés', icon: 'Users', description: 'Une équipe qualifiée et expérimentée.' },
-    ],
+    stats: chaudronnerieHeroStats,
   },
   products: {
     silos: {
