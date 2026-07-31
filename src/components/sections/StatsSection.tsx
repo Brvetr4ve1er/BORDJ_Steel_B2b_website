@@ -58,25 +58,39 @@ export function StatsSection() {
       : []),
   ];
 
+  // Nothing to show if config yields no figures — render nothing rather than an
+  // empty band.
+  if (stats.length === 0) return null;
+
   return (
-    <section className="w-full bg-slate-900 py-24">
+    // `bg-primary` is the brand's dark grey token. (This band previously used a
+    // hardcoded `bg-slate-900`, the only navy in the codebase — it read as a
+    // foreign block between two light sections.)
+    <section className="w-full bg-primary py-16">
       <div className="container mx-auto px-4">
-        <h2 className="sr-only">Chiffres Clés</h2>
-        <div className="grid grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <h2 className="mb-10 text-center text-sm font-semibold uppercase tracking-[0.2em] text-white/60">
+          Chiffres clés
+        </h2>
+        {/* Flex + dividers rather than a fixed column count, so the band stays
+            balanced whether config yields one figure or four. */}
+        <ul className="mx-auto flex max-w-4xl flex-col items-stretch justify-center divide-y divide-white/15 sm:flex-row sm:divide-x sm:divide-y-0">
           {stats.map((stat, index) => (
-            <AnimatedWrapper key={stat.label} animation="fade-in-stagger" staggerIndex={index + 1}>
-              <div className="text-center">
-                <div className="h-1 w-12 bg-accent mx-auto mb-4" />
-                <p className="text-accent text-5xl md:text-6xl font-bold font-headline">
-                  {stat.prefix}
-                  <AnimatedNumber value={stat.value} />
-                  {stat.suffix}
-                </p>
-                <p className="mt-3 text-white/70 text-sm uppercase tracking-widest">{stat.label}</p>
-              </div>
-            </AnimatedWrapper>
+            <li key={stat.label} className="flex-1 px-6 py-6 sm:py-0">
+              <AnimatedWrapper animation="fade-in-stagger" staggerIndex={index + 1}>
+                <div className="text-center">
+                  <p className="font-headline text-5xl font-bold text-accent md:text-6xl">
+                    {stat.prefix}
+                    <AnimatedNumber value={stat.value} />
+                    {stat.suffix}
+                  </p>
+                  <p className="mt-2 text-sm uppercase tracking-widest text-white/70">
+                    {stat.label}
+                  </p>
+                </div>
+              </AnimatedWrapper>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

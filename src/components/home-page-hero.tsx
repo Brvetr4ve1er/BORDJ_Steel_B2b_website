@@ -39,14 +39,17 @@ export function HomePageHero() {
         >
           <ChevronDown className="h-10 w-10" />
         </button>
-        <div className="absolute bottom-10 left-0 right-0">
-          <div className="container mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center backdrop-blur-sm bg-black/30 rounded-xl px-8 py-6">
+        <div className="absolute bottom-10 left-0 right-0 px-4">
+          {/* One scrim only. Each label previously carried its own translucent
+              chip *inside* this already-translucent panel — the stacked layers
+              rendered as dark bars behind the captions. */}
+          <div className="container mx-auto grid grid-cols-1 gap-6 rounded-xl bg-black/35 px-8 py-6 text-center backdrop-blur-sm sm:grid-cols-3 sm:divide-x sm:divide-white/15">
             {hero.stats.map((stat, index) => (
-              <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index + 1}>
-                <div className="font-headline text-4xl font-bold text-accent [text-shadow:0_2px_4px_rgba(0,0,0,0.3)]">
+              <AnimatedWrapper key={stat.label} animation="fade-in-stagger" staggerIndex={index + 1}>
+                <div className="font-headline text-4xl font-bold text-accent">
                     <AnimatedNumber value={stat.value} />
                 </div>
-                <p className="text-sm uppercase tracking-widest text-gray-300 backdrop-blur-sm bg-black/20 rounded-sm px-2">
+                <p className="mt-1 text-sm uppercase tracking-widest text-white/80">
                   {stat.label}
                 </p>
               </AnimatedWrapper>
