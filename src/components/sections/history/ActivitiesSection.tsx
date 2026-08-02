@@ -8,10 +8,15 @@ import {
   ChaudronnerieIcon,
 } from '@/components/icons/product-icons';
 import { WF } from '@/components/wireframes/wf-theme';
+import { aboutActivities, type ActivityIconKey } from '@/config/company-data';
 
 /**
  * "Notre domaine d'activité" — the four production families, rendered as
  * shop-drawing plates rather than generic cards.
+ *
+ * Copy and ordering live in `aboutActivities` (src/config/company-data.ts), per
+ * the repo rule that user-facing text never sits inline in JSX. This file owns
+ * only the presentation and the icon binding.
  *
  * Each entry uses the bespoke product icon that actually depicts the product
  * (welded I-section, galvanising bath, sandwich panel cross-section, rolled
@@ -19,9 +24,8 @@ import { WF } from '@/components/wireframes/wf-theme';
  * embed themselves, keyed off the parent's Tailwind `group` class — which is why
  * every Card below carries `group`.
  *
- * Copy is client copy and is reproduced verbatim. Nothing here is derived from
- * anything but the list itself: the only numbers on screen are the positional
- * plate index (01 … 04) and the list length.
+ * Nothing on screen is derived from anything but the list itself: the only
+ * numbers are the positional plate index (01 … 04) and the list length.
  *
  * Server component — no hooks, no event handlers. Motion is CSS-only, and every
  * animation collapses under `prefers-reduced-motion: reduce`.
@@ -29,37 +33,21 @@ import { WF } from '@/components/wireframes/wf-theme';
 
 type ActivityIcon = React.ComponentType<{ className?: string; size?: number }>;
 
-interface Activity {
-  readonly Icon: ActivityIcon;
-  readonly title: string;
-  readonly description: string;
-}
-
-const activities: readonly Activity[] = [
-  {
-    Icon: CharpenteIcon,
-    title: "Charpente métallique",
-    description: "Conception, fabrication et montage de structures adaptées à tous types de projets industriels, agricoles et logistiques."
-  },
-  {
-    Icon: GalvanisationIcon,
-    title: "Galvanisation à chaud",
-    description: "Traitement de protection anticorrosion garantissant la longévité et la résistance des structures."
-  },
-  {
-    Icon: SandwichPanelIcon,
-    title: "Panneaux sandwich",
-    description: "Production et fourniture de panneaux isolants destinés aux bâtiments industriels, frigorifiques et tertiaires."
-  },
-  {
-    Icon: ChaudronnerieIcon,
-    title: "Chaudronnerie",
-    description: "Conception et réalisation d'équipements métalliques spécifiques selon les besoins des clients."
-  }
-];
+/**
+ * Total over `ActivityIconKey`, so this map is the thing that keeps config and
+ * artwork in step: add a key in config without adding its icon here and the
+ * build fails, rather than shipping a card with an empty icon plate.
+ */
+const ACTIVITY_ICONS: Record<ActivityIconKey, ActivityIcon> = {
+  charpente: CharpenteIcon,
+  galvanisation: GalvanisationIcon,
+  sandwich: SandwichPanelIcon,
+  chaudronnerie: ChaudronnerieIcon,
+};
 
 export function ActivitiesSection() {
-  const total = activities.length;
+  const { title, intro, items } = aboutActivities;
+  const total = items.length;
 
   return (
     <section className="bg-background" aria-labelledby="activites-section-title">
@@ -71,17 +59,17 @@ export function ActivitiesSection() {
             id="activites-section-title"
             className="font-headline text-4xl font-bold text-center text-primary mb-4"
           >
-            Notre domaine d'activité
+            {title}
           </h2>
           <p className="text-lg text-muted-foreground mb-8 text-center max-w-3xl mx-auto">
-            Depuis sa création, BordjSteel s'est imposée comme un acteur majeur dans le domaine de la construction métallique en Algérie.
+            {intro}
           </p>
           <DraftingRule />
         </AnimatedWrapper>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
-          {activities.map((activity, index) => {
-            const { Icon } = activity;
+          {items.map((activity, index) => {
+            const Icon = ACTIVITY_ICONS[activity.icon];
 
             return (
               <AnimatedWrapper

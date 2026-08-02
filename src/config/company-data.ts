@@ -351,6 +351,71 @@ export const companyData = {
 };
 
 /* -------------------------------------------------------------------------- */
+/* "Notre domaine d'activité" (/a-propos/histoire)                             */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Which bespoke product icon a given activity renders with. Deliberately a
+ * union rather than `string`: the component resolves it through a total
+ * `Record<ActivityIconKey, …>`, so adding a key here without adding the matching
+ * icon is a *compile* error rather than a card that silently loses its figure.
+ *
+ * These are semantic names, not lucide names. The older
+ * `PRODUCT_ICON_BY_CONFIG_KEY` map is keyed on legacy lucide strings
+ * (`Cog` → galvanisation, `Anchor` → chaudronnerie) purely because
+ * `pages.units.items` already used them; that indirection is not repeated here.
+ */
+export type ActivityIconKey = 'charpente' | 'galvanisation' | 'sandwich' | 'chaudronnerie';
+
+export type Activity = {
+  readonly icon: ActivityIconKey;
+  readonly title: string;
+  readonly description: string;
+};
+
+/**
+ * The four production families stated as *capabilities* — what each unit does.
+ * Distinct from `companyData.pages.units.items`, which names the same four
+ * families in terms of *capacity* figures; both are live and neither is
+ * derivable from the other.
+ */
+export const aboutActivities: {
+  readonly title: string;
+  readonly intro: string;
+  readonly items: readonly Activity[];
+} = {
+  title: "Notre domaine d'activité",
+  intro:
+    "Depuis sa création, BordjSteel s'est imposée comme un acteur majeur dans le domaine de la construction métallique en Algérie.",
+  items: [
+    {
+      icon: 'charpente',
+      title: "Charpente métallique",
+      description:
+        "Conception, fabrication et montage de structures adaptées à tous types de projets industriels, agricoles et logistiques.",
+    },
+    {
+      icon: 'galvanisation',
+      title: "Galvanisation à chaud",
+      description:
+        "Traitement de protection anticorrosion garantissant la longévité et la résistance des structures.",
+    },
+    {
+      icon: 'sandwich',
+      title: "Panneaux sandwich",
+      description:
+        "Production et fourniture de panneaux isolants destinés aux bâtiments industriels, frigorifiques et tertiaires.",
+    },
+    {
+      icon: 'chaudronnerie',
+      title: "Chaudronnerie",
+      description:
+        "Conception et réalisation d'équipements métalliques spécifiques selon les besoins des clients.",
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
 /* Image resolution                                                            */
 /* -------------------------------------------------------------------------- */
 
