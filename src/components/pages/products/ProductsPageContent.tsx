@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { companyData } from '@/config/company-data';
 import { HardHat, Package, Cog, Anchor, ArrowRight, type LucideIcon } from 'lucide-react';
 import { PRODUCT_ICON_BY_CONFIG_KEY } from '@/components/icons/product-icons';
+import { ProductsHeroBackdrop } from './ProductsHeroBackdrop';
 
 type ProductChild = { name: string; href: string; description: string; icon: string };
 
@@ -15,8 +16,9 @@ export function ProductsPageContent() {
 
   return (
     <>
-      <section className="bg-primary pb-24 pt-36 text-center text-primary-foreground md:pt-40">
-        <div className="container mx-auto px-4">
+      <section className="relative overflow-hidden bg-primary pb-24 pt-36 text-center text-primary-foreground md:pt-40">
+        <ProductsHeroBackdrop />
+        <div className="container mx-auto px-4 relative z-10">
           <h1 className="font-headline text-5xl md:text-6xl font-bold uppercase tracking-tighter">
             Nos Produits
           </h1>
