@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, Dot } from 'lucide-react';
+import { ArrowRight, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, Dot } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import React, { useState, useMemo } from 'react';
 import { AnimatedNumber } from '@/components/animated-number';
@@ -15,7 +15,6 @@ import dynamic from 'next/dynamic';
 import {
   charpenteMetalliqueData,
   charpenteGalleryImages,
-  charpenteApplications,
   charpenteWhyChooseUs,
 } from '@/config/charpente-metallique-data';
 import { ImageDialog } from '@/components/ui/image-dialog';
@@ -23,18 +22,12 @@ import { HoverImageGallery } from '@/components/ui/hover-image-gallery';
 import { cn } from '@/lib/utils';
 import { ProductionTables } from '@/components/production-tables';
 import { CharpenteWireframe } from '@/components/wireframes/CharpenteWireframe';
+import { ApplicationsShowcase } from '@/components/sections/charpente/ApplicationsShowcase';
 
 const FeatureHoverCard = dynamic(() => import('@/components/feature-hover-card').then(mod => mod.FeatureHoverCard));
 // Same-module component — reference directly (no code-split benefit from dynamic).
 const HeroSection = UnwrappedHeroSection;
 
-
-const applicationIconMap = {
-  Building,
-  Factory,
-  Tractor,
-  HardHat,
-} as const;
 
 const whyChooseUsIconMap = {
   Award,
@@ -178,39 +171,13 @@ export function CharpenteMetalliquePageContent() {
         </div>
       </section>
 
+      <ApplicationsShowcase />
+
       <section className="py-20">
         <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <AnimatedWrapper animation="fade-in">
-                    {/* The two capacity tiles that stood here repeated the hero stat
-                        cards verbatim; the hero already states those figures. */}
-                    <div className="space-y-8">
-                         <ProductionTables />
-                    </div>
-                </AnimatedWrapper>
-                <AnimatedWrapper animation="fade-in" staggerIndex={1}>
-                    <Card className="shadow-lg bg-background">
-                        <CardHeader>
-                            <CardTitle className="font-headline text-2xl text-primary">Domaines d'Application</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <ul className="space-y-4">
-                              {charpenteApplications.map((app) => {
-                                const Icon = applicationIconMap[app.iconName as keyof typeof applicationIconMap];
-                                return (
-                                <li key={app.text} className="flex items-center gap-3 text-lg text-foreground">
-                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-secondary text-accent flex items-center justify-center">
-                                      {Icon && <Icon className="w-8 h-8" />}
-                                    </div>
-                                    <span>{app.text}</span>
-                                </li>
-                                );
-                              })}
-                            </ul>
-                        </CardContent>
-                    </Card>
-                </AnimatedWrapper>
-            </div>
+            <AnimatedWrapper animation="fade-in">
+                <ProductionTables />
+            </AnimatedWrapper>
         </div>
       </section>
 

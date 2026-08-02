@@ -12,6 +12,7 @@ import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { DownloadButton } from '@/components/ui/download-button';
 import dynamic from 'next/dynamic';
 import { TechniquesAndStandardsSection } from '@/components/sections/galvanisation/TechniquesAndStandardsSection';
+import { ProtectionLifespanBand } from '@/components/sections/galvanisation/ProtectionLifespanBand';
 import { GalvanisationWireframe } from '@/components/wireframes/GalvanisationWireframe';
 
 const DynamicAnimatedBaths = dynamic(() => import('@/components/animated-baths').then(mod => mod.AnimatedBaths));
@@ -36,6 +37,7 @@ export function GalvanisationPageContent() {
           <GalvanisationWireframe />
         </div>
       </section>
+      <ProtectionLifespanBand />
       <ProcessTimeline />
       <BenefitsSection />
       <HighlightSection />

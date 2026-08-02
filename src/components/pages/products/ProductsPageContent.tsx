@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { companyData } from '@/config/company-data';
 import { HardHat, Package, Cog, Anchor, ArrowRight, type LucideIcon } from 'lucide-react';
+import { PRODUCT_ICON_BY_CONFIG_KEY } from '@/components/icons/product-icons';
 
 type ProductChild = { name: string; href: string; description: string; icon: string };
 
@@ -29,7 +30,9 @@ export function ProductsPageContent() {
         <div className="container mx-auto px-4">
           <div className="grid gap-8 sm:grid-cols-2">
             {products.map((product) => {
-              const Icon = iconMap[product.icon] ?? Package;
+              const BespokeIcon =
+                PRODUCT_ICON_BY_CONFIG_KEY[product.icon as keyof typeof PRODUCT_ICON_BY_CONFIG_KEY];
+              const Icon = BespokeIcon ?? iconMap[product.icon] ?? Package;
               return (
                 <Link
                   key={product.href}
@@ -37,7 +40,11 @@ export function ProductsPageContent() {
                   className="group relative flex flex-col rounded-xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-xl"
                 >
                   <span className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
-                    <Icon className="h-7 w-7" />
+                    {BespokeIcon ? (
+                      <BespokeIcon size={28} />
+                    ) : (
+                      <Icon className="h-7 w-7" />
+                    )}
                   </span>
                   <h2 className="font-headline text-2xl font-bold text-primary">{product.name}</h2>
                   <p className="mt-3 flex-1 text-muted-foreground">{product.description}</p>

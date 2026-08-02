@@ -15,6 +15,7 @@ import { DownloadButton } from '@/components/ui/download-button';
 import { productVariants } from '@/config/product-variants.config';
 import { ProductVariantDetails } from '@/components/product-variants/ProductVariantDetails';
 import { StatsCards } from '@/components/sections/sandwich-panels/StatsCards';
+import { ThermalPerformanceBand } from '@/components/sections/sandwich-panels/ThermalPerformanceBand';
 import { sandwichHero, sandwichHeroStats, sandwichIntro } from '@/config/sandwich-panels-data';
 import { SandwichWireframe } from '@/components/wireframes/SandwichWireframe';
 
@@ -126,6 +127,8 @@ export function SandwichPanelsPageContent() {
           <SandwichWireframe />
         </div>
       </section>
+
+      <ThermalPerformanceBand />
 
       <section id="product-details" className="bg-secondary/20 py-20">
         <div className="container mx-auto px-4 max-w-screen-2xl">
