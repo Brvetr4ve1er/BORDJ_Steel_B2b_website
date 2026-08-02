@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { companyData, getProjectImage } from '@/config/company-data';
 import { Card } from '@/components/ui/card';
 import { Layers, Weight, MapPin } from 'lucide-react';
+import { AggregateStatsStrip } from '@/components/sections/references/AggregateStatsStrip';
 
 export function ReferencesPageContent() {
   const heroImage = {
@@ -43,6 +44,8 @@ export function ReferencesPageContent() {
           </AnimatedWrapper>
         </div>
       </section>
+
+      <AggregateStatsStrip />
 
       <section className="bg-secondary">
         <div className="container mx-auto px-4 space-y-16">
