@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { companyData } from '@/config/company-data';
 import images from '@/app/lib/placeholder-images.json';
 import { HeroScrollCue } from '@/components/sections/hero/HeroScrollCue';
+import { HeroCountUp } from '@/components/sections/hero/HeroCountUp';
 
 /**
  * "Plan-Séquence" — the homepage hero.
@@ -56,13 +57,16 @@ import { HeroScrollCue } from '@/components/sections/hero/HeroScrollCue';
 export const HERO_NEXT_SECTION_ID = 'about';
 
 /**
- * Evaluated once, on the server, at module scope. Identical output to
- * `AnimatedNumber`'s formatter (the whole site is French: a visitor browsing in
- * en-US must still read "25 000", never "25,000"). Because nothing re-renders
- * these on the client there is no ICU-version hydration mismatch to have — the
- * U+202F group separator is baked into the HTML.
+ * Evaluated once, at module scope. The whole site is French: a visitor browsing
+ * in en-US must still read "25 000", never "25,000".
+ *
+ * The server bakes the final figure into the HTML with this, so the capacity is
+ * correct on first paint and without JS. `HeroCountUp` then animates from 0 to
+ * that value using the SAME formatter, so the U+202F group separator cannot
+ * change shape between an intermediate frame and the resting value.
  */
-const nf = new Intl.NumberFormat('fr-FR');
+const HERO_LOCALE = 'fr-FR';
+const nf = new Intl.NumberFormat(HERO_LOCALE);
 
 /**
  * The scrim. ONE element, ONE paint, four comma-separated gradients — not four
@@ -299,8 +303,18 @@ export function HomePageHero() {
                   16px floor needs 77.3px. Fits with ~9px to spare, and the
                   margin only grows from there.
                 */}
+                {/*
+                  The figure is server-rendered at its final value, then counted
+                  up as progressive enhancement — see `HeroCountUp`. This keeps
+                  the property the previous revision gained (the capacity is
+                  correct without JS, never "0") while restoring the animation.
+                  `tabular-nums` above is load-bearing during the count: it stops
+                  the column reflowing as digits change width.
+                */}
                 <dd className="hk-fig font-headline font-bold leading-none tracking-[-0.02em] text-white [font-variant-numeric:tabular-nums]">
-                  {nf.format(stat.value)}
+                  <HeroCountUp value={stat.value} locale={HERO_LOCALE}>
+                    {nf.format(stat.value)}
+                  </HeroCountUp>
                 </dd>
               </div>
             ))}
