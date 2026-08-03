@@ -23,6 +23,8 @@ import { cn } from '@/lib/utils';
 import { ProductionTables } from '@/components/production-tables';
 import { CharpenteWireframe } from '@/components/wireframes/CharpenteWireframe';
 import { ApplicationsShowcase } from '@/components/sections/charpente/ApplicationsShowcase';
+import { PILLAR_ICON_BY_ID, type PillarIconKey } from '@/components/icons/pillar-icons';
+import { CharpenteIcon } from '@/components/icons/product-icons';
 
 const FeatureHoverCard = dynamic(() => import('@/components/feature-hover-card').then(mod => mod.FeatureHoverCard));
 // Same-module component — reference directly (no code-split benefit from dynamic).
@@ -35,14 +37,20 @@ const whyChooseUsIconMap = {
   ShieldCheck,
 } as const;
 
-const pillarIconMap = {
-  HardHat,
-  Cog,
-  Layers,
-  TowerControl,
-  Car,
-  Tractor,
-} as const;
+/**
+ * The pillar cards draw their own bespoke shop-drawing figures, resolved by
+ * pillar *id* through the total `PILLAR_ICON_BY_ID` record — not by the legacy
+ * `iconName` lucide glyph, which the hero stat cards still use below.
+ *
+ * `charpenteMetalliqueData.pillars[].id` widens to `string` in the config, so the
+ * union has to be re-established before indexing. Because the record is total
+ * over `PillarIconKey`, a narrowed id can never resolve to `undefined`; the only
+ * thing this guard can catch is a pillar id renamed in config without its
+ * drawing being renamed alongside it.
+ */
+function isPillarIconKey(id: string): id is PillarIconKey {
+  return Object.prototype.hasOwnProperty.call(PILLAR_ICON_BY_ID, id);
+}
 
 function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.hero }) {
   const iconMap = useMemo(() => ({
@@ -191,7 +199,12 @@ export function CharpenteMetalliquePageContent() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {charpenteMetalliqueData.pillars.map((pillar, index) => {
-              const Icon = pillarIconMap[pillar.iconName as keyof typeof pillarIconMap];
+              // Falls back to the charpente family drawing rather than a lucide
+              // glyph or an empty plate, so a config rename degrades to the
+              // right vernacular instead of breaking the row.
+              const Icon = isPillarIconKey(pillar.id)
+                ? PILLAR_ICON_BY_ID[pillar.id]
+                : CharpenteIcon;
               return (
                 <AnimatedWrapper key={pillar.id} animation="fade-in-stagger" staggerIndex={index}>
                   <button
@@ -204,6 +217,7 @@ export function CharpenteMetalliquePageContent() {
                         Icon={Icon}
                         title={pillar.title}
                         description={pillar.description}
+                        isSelected={selectedPillarId === pillar.id}
                     />
                   </button>
                 </AnimatedWrapper>

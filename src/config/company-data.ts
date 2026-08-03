@@ -42,20 +42,19 @@ export type Certification = {
  * them: the homepage seal band, "Nos certifications et engagements" on
  * /about/history, and the ISO tab of the Media Center.
  *
- * CLIENT NOTE — scope wording. Two wordings were live at the same time and
- * contradicted each other: the formal one kept below (homepage) and a shorter
- * variant on the other two pages ("Management de la qualité" /
- * "Management environnemental" / "Santé et sécurité au travail"). The formal
- * wording won everywhere — it ran on the highest-traffic page and matches the
- * register of `qsePolicy` above — and the short variant was dropped. Confirm
- * the choice with the client before treating it as final.
+ * Scope wording — SETTLED, do not "restore" the longer form. Two wordings were
+ * once live at the same time and contradicted each other: a formal one on the
+ * homepage ("Système de Management de la Qualité" / "Management
+ * Environnemental" / "Santé et Sécurité au Travail") and the shorter one kept
+ * below, which ran on /about/history and the Media Center ISO tab. The client
+ * chose the short form for every surface; the formal variant is retired.
  */
 export const certifications: readonly Certification[] = [
   {
     id: 'iso-9001',
     code: 'ISO 9001',
     year: '2015',
-    scope: 'Système de Management de la Qualité',
+    scope: 'Management de la qualité',
     image: '/media/f04b6287977e56982f6ccb2a9b65-3302f3b3.webp',
     logo: '/media/f04b6287977e56982f6ccb2a9b65-3302f3b3.webp',
   },
@@ -63,7 +62,7 @@ export const certifications: readonly Certification[] = [
     id: 'iso-14001',
     code: 'ISO 14001',
     year: '2015',
-    scope: 'Management Environnemental',
+    scope: 'Management environnemental',
     image: '/media/856f3f85dd8452ba3580e8280f62-c1c1a5d2.webp',
     logo: '/media/7901a543069366724bf173d772a1-977ee9e7.webp',
   },
@@ -71,7 +70,7 @@ export const certifications: readonly Certification[] = [
     id: 'iso-45001',
     code: 'ISO 45001',
     year: '2018',
-    scope: 'Santé et Sécurité au Travail',
+    scope: 'Santé et sécurité au travail',
     image: '/media/15a60ad54ea9e34e77b39205320b-b2c156e1.webp',
     logo: '/media/5f6b696fc21fdd205c98c9fdb27b-60ae7005.webp',
   },
