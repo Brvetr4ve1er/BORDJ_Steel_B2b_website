@@ -1,6 +1,82 @@
 
 import images from '@/app/lib/placeholder-images.json';
 
+/* -------------------------------------------------------------------------- */
+/* ISO certifications — single source for every surface that shows them        */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Stable identity of a certification. Deliberately a union rather than
+ * `string`: consumers resolve it through a total `Record<CertificationCode, …>`
+ * (see `ISO_PICTOGRAMS` in `components/sections/Certifications.tsx`), so adding
+ * a certification here without giving it artwork is a *compile* error rather
+ * than a seal that silently loses its figure.
+ */
+export type CertificationCode = 'iso-9001' | 'iso-14001' | 'iso-45001';
+
+export type Certification = {
+  readonly id: CertificationCode;
+  /** Short code as displayed, e.g. "ISO 9001". */
+  readonly code: string;
+  /** Standard revision year, e.g. "2015". */
+  readonly year: string;
+  /** Scope of the certificate, e.g. "Système de Management de la Qualité". */
+  readonly scope: string;
+  /** Scanned certificate preview supplied by the client. */
+  readonly image: string;
+  /** Badge shown on the card. */
+  readonly logo: string;
+  /**
+   * Public path to the signed certificate.
+   * Left unset while the client has not supplied the files: the card then shows a
+   * disabled "Bientôt disponible" control instead of a link that 404s.
+   * To re-enable a link, drop the PDF into `public/documents/` and set `pdf` here.
+   * Expected filenames: Bordj-Steel-ISO-9001.pdf, Bordj-Steel-ISO-14001.pdf,
+   * Bordj-Steel-ISO-45001.pdf.
+   */
+  readonly pdf?: string;
+};
+
+/**
+ * The three ISO certificates, stated once for the three surfaces that show
+ * them: the homepage seal band, "Nos certifications et engagements" on
+ * /about/history, and the ISO tab of the Media Center.
+ *
+ * CLIENT NOTE — scope wording. Two wordings were live at the same time and
+ * contradicted each other: the formal one kept below (homepage) and a shorter
+ * variant on the other two pages ("Management de la qualité" /
+ * "Management environnemental" / "Santé et sécurité au travail"). The formal
+ * wording won everywhere — it ran on the highest-traffic page and matches the
+ * register of `qsePolicy` above — and the short variant was dropped. Confirm
+ * the choice with the client before treating it as final.
+ */
+export const certifications: readonly Certification[] = [
+  {
+    id: 'iso-9001',
+    code: 'ISO 9001',
+    year: '2015',
+    scope: 'Système de Management de la Qualité',
+    image: '/media/f04b6287977e56982f6ccb2a9b65-3302f3b3.webp',
+    logo: '/media/f04b6287977e56982f6ccb2a9b65-3302f3b3.webp',
+  },
+  {
+    id: 'iso-14001',
+    code: 'ISO 14001',
+    year: '2015',
+    scope: 'Management Environnemental',
+    image: '/media/856f3f85dd8452ba3580e8280f62-c1c1a5d2.webp',
+    logo: '/media/7901a543069366724bf173d772a1-977ee9e7.webp',
+  },
+  {
+    id: 'iso-45001',
+    code: 'ISO 45001',
+    year: '2018',
+    scope: 'Santé et Sécurité au Travail',
+    image: '/media/15a60ad54ea9e34e77b39205320b-b2c156e1.webp',
+    logo: '/media/5f6b696fc21fdd205c98c9fdb27b-60ae7005.webp',
+  },
+];
+
 export const companyData = {
   siteMetadata: {
     title: 'Bordj Steel – Construction métallique en Algérie',
@@ -221,11 +297,8 @@ export const companyData = {
     },
     certifications: {
       title: 'Agréments et Certifications',
-      items: [
-        'ISO 9001:2015 - Système de Management de la Qualité',
-        'ISO 14001:2015 - Management Environnemental',
-        'ISO 45001:2018 - Santé et Sécurité au Travail',
-      ]
+      // Structured, not strings: see `certifications` at the top of this file.
+      items: certifications,
     },
     clients: {
       title: "Nos Précieux Clients",

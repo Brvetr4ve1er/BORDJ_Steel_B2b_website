@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cn } from "@/lib/utils";
 import { DownloadButton } from '@/components/ui/download-button';
 import { articles as allArticles } from '@/config/blog-data';
+import { certifications, type Certification } from '@/config/company-data';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { BlogPostCard } from '@/components/ui/blog-post-card';
@@ -34,45 +35,27 @@ const parseArticleDate = (d: string) => {
     return isNaN(t) ? 0 : t;
 };
 
-type Certification = {
-    name: string;
-    description: string;
-    /** Scanned certificate preview supplied by the client. */
-    image: string;
-    /** Badge shown on the card. */
-    logo: string;
-    /**
-     * Public path to the signed certificate.
-     * Left unset while the client has not supplied the files: the card then shows a
-     * disabled "Bientôt disponible" control instead of a link that 404s.
-     * To re-enable a link, drop the PDF into `public/documents/` and set `pdf` here.
-     * Expected filenames: Bordj-Steel-ISO-9001.pdf, Bordj-Steel-ISO-14001.pdf,
-     * Bordj-Steel-ISO-45001.pdf.
-     */
-    pdf?: string;
-};
-
-const certifications: Certification[] = [
-  { name: "ISO 9001", description: "Management de la qualité", image: "/media/f04b6287977e56982f6ccb2a9b65-3302f3b3.webp", logo: "/media/f04b6287977e56982f6ccb2a9b65-3302f3b3.webp" },
-  { name: "ISO 14001", description: "Management environnemental", image: "/media/856f3f85dd8452ba3580e8280f62-c1c1a5d2.webp", logo: "/media/7901a543069366724bf173d772a1-977ee9e7.webp" },
-  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "/media/15a60ad54ea9e34e77b39205320b-b2c156e1.webp", logo: "/media/5f6b696fc21fdd205c98c9fdb27b-60ae7005.webp" }
-];
-
+/**
+ * The certificates live in `certifications` (src/config/company-data.ts),
+ * shared with the homepage seal band and /about/history. The `pdf` field is
+ * still absent there while the client has not supplied the signed files, which
+ * is what keeps the disabled "Bientôt disponible" branch below live.
+ */
 function CertificationCard({ cert }: { cert: Certification }) {
     return (
         <div className="relative group w-full max-w-sm mx-auto">
             <div className="relative bg-card p-6 rounded-lg shadow-md border border-border transition-all duration-300 ease-in-out group-hover:shadow-2xl flex flex-col items-center justify-center text-center h-56 w-56 mx-auto overflow-hidden">
                 <Image
                     src={cert.logo}
-                    alt={cert.name}
+                    alt={cert.code}
                     fill
                     sizes="224px"
                     className="object-contain p-4 transition-transform duration-300 group-hover:scale-110"
                 />
             </div>
              <div className="mt-4 text-center">
-                <h3 className="text-xl font-bold text-primary">{cert.name}</h3>
-                <p className="text-md text-muted-foreground">{cert.description}</p>
+                <h3 className="text-xl font-bold text-primary">{cert.code}</h3>
+                <p className="text-md text-muted-foreground">{cert.scope}</p>
                 {cert.pdf ? (
                     <Button asChild variant="outline" className="mt-4">
                         <a href={cert.pdf} target="_blank" rel="noopener noreferrer">Voir le document</a>
@@ -113,7 +96,7 @@ export function BlogPageContent() {
                     <AnimatedWrapper animation="fade-in">
                         <div className="grid md:grid-cols-3 gap-8">
                             {certifications.map((cert, index) => (
-                                <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+                                <AnimatedWrapper key={cert.id} animation="fade-in-stagger" staggerIndex={index}>
                                   <CertificationCard cert={cert} />
                                 </AnimatedWrapper>
                             ))}

@@ -1,128 +1,204 @@
-
+import Image from 'next/image';
+import {
+  Users,
+  TrendingUp,
+  Factory,
+  ClipboardCheck,
+  HardHat,
+  UserCheck,
+  DollarSign,
+  Network,
+  Wrench,
+  type LucideIcon,
+} from 'lucide-react';
 
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import Image from 'next/image';
-import { Users, TrendingUp, Factory, ClipboardCheck, HardHat, UserCheck, DollarSign, Network, Wrench } from 'lucide-react';
+import { WF } from '@/components/wireframes/wf-theme';
+import { teamsSection, type TeamIconKey } from '@/config/teams-data';
 
-const teams = [
-  {
-    id: 'engineering',
-    icon: <TrendingUp className="w-8 h-8 text-accent" />,
-    title: "Bureau d'études",
-    description: "Véritable moteur de l’innovation, notre bureau d’études conçoit et optimise les structures métalliques selon les besoins spécifiques de chaque client. Il veille à la faisabilité technique, à la solidité et à la performance de nos réalisations.",
-    image: "/media/ddd2b884a8cdf6c38c4fe8c6ea24-e643252a.webp"
-  },
-  {
-    id: 'production',
-    icon: <Factory className="w-8 h-8 text-accent" />,
-    title: "Équipe Production",
-    description: "Au cœur de notre activité, l’équipe de production assure la fabrication, l’assemblage et le contrôle des différents composants. Grâce à une maîtrise technique avancée et à des équipements modernes, elle garantit la fiabilité et la durabilité de nos produits.",
-    image: "/media/c122d0a87b9a67655d2af2921bc6-916d01f3.webp"
-  },
-  {
-    id: 'quality',
-    icon: <ClipboardCheck className="w-8 h-8 text-accent" />,
-    title: "Équipe Contrôle Qualité",
-    description: "Cette équipe veille à la conformité de nos produits aux normes nationales et internationales. Des contrôles rigoureux sont effectués à chaque étape – de la conception à la livraison – afin d’assurer une qualité irréprochable.",
-    image: "/media/361fd5991471a9382f7e7cada21f-41d4fb74.webp"
-  },
-  {
-    id: 'hse',
-    icon: <HardHat className="w-8 h-8 text-accent" />,
-    title: "Équipe QHSE",
-    description: "(Qualité, Hygiène, Sécurité et Environnement) Notre équipe QHSE veille à la qualité de nos processus, à la sécurité de nos collaborateurs, à la prévention des risques professionnels et à la protection de l’environnement. La sécurité, la qualité et la durabilité font partie intégrante de la culture BordjSteel.",
-    image: "/media/9914b30d1923fb9585db5fa69276-3ce776ad.webp"
-  },
-  {
-    id: 'commercial',
-    icon: <UserCheck className="w-8 h-8 text-accent" />,
-    title: "Équipe Commerciale et Marketing",
-    description: "Toujours à l’écoute du marché, notre équipe commerciale et marketing accompagne nos clients à chaque étape de leurs projets. Elle met un point d’honneur à offrir des solutions personnalisées, un suivi attentif et un service de qualité.",
-    image: "/media/2c792262ee0e5c2f3a1290cd0682-610b04f1.webp"
-  },
-  {
-    id: 'finance',
-    icon: <DollarSign className="w-8 h-8 text-accent" />,
-    title: "Équipe Comptabilité et Finances",
-    description: "(Chargée de la gestion rigoureuse des ressources financières, cette équipe assure le suivi comptable, le contrôle budgétaire et la transparence de toutes les opérations économiques de l’entreprise. Son objectif : garantir une santé financière solide et durable.)",
-    image: "/media/4796a1c0ca2eeec68b8721a16d75-988e5c89.webp"
-  },
-  {
-    id: 'hr',
-    icon: <Users className="w-8 h-8 text-accent" />,
-    title: "Équipe Ressources Humaines",
-    description: "(Au centre de la vie de l’entreprise, l’équipe RH veille au bien-être, à la formation et à l’évolution de nos collaborateurs. Elle favorise un environnement de travail motivant et valorisant, essentiel à la performance collective.)",
-    image: "/media/f151108391838728e14d8cfa85af-01289a1d.webp"
-  },
-  {
-    id: 'it',
-    icon: <Network className="w-8 h-8 text-accent" />,
-    title: "Équipe Système d’Information",
-    description: "Responsable de la gestion et du développement des outils numériques, cette équipe garantit la sécurité, la performance et la continuité des systèmes informatiques. Elle joue un rôle clé dans la transformation digitale de BordjSteel.",
-    image: "/media/6ac86a94f2a9c05bf62c26abddb1-46e5dc70.webp"
-  },
-  {
-    id: 'assembly',
-    icon: <Wrench className="w-8 h-8 text-accent" />,
-    title: "Équipe Réalisation et Montage",
-    description: "Spécialisée dans l’installation sur site, cette équipe assure le montage précis et sécurisé de nos structures métalliques. Son savoir-faire garantit la conformité, la stabilité et la qualité de chaque projet livré.",
-    image: "/media/a30d652c6e58b3aebe5ca3561af4-c5bd987d.webp"
-  }
-];
+/**
+ * "Nos équipes spécialisées" — the nine teams, rendered as shop-drawing plates
+ * rather than generic cards.
+ *
+ * Rendered on /about/history. Copy, ordering, team ids and photography live in `teamsSection`
+ * (src/config/teams-data.ts), per the repo rule that user-facing text never sits
+ * inline in JSX. This file owns only the presentation and the icon binding.
+ *
+ * Nothing on screen is derived from anything but the list itself: the only
+ * numbers are the positional plate index (01 … 09) and the list length.
+ *
+ * Server component — no hooks, no event handlers. Motion is expressed purely
+ * with Tailwind's `group-hover:` transitions, each paired with a
+ * `motion-reduce:` variant that pins the final state.
+ */
 
-const TeamFeature = ({
-  title,
-  description,
-  icon,
-  image
-}: {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  image: string;
-}) => {
-  return (
-    <div className="group bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 flex overflow-hidden border border-border">
-      <div className="w-[35%] flex-shrink-0 relative aspect-square">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          sizes="(max-width: 768px) 35vw, 18vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-      </div>
-      <div className="w-[65%] p-6 flex flex-col justify-center">
-        <div className="flex items-center gap-4 mb-3">
-          <div className="bg-secondary p-3 rounded-full">
-            {icon}
-          </div>
-          <h3 className="text-xl font-bold text-primary">{title}</h3>
-        </div>
-        <p className="text-muted-foreground">{description}</p>
-      </div>
-    </div>
-  );
+/**
+ * Total over `TeamIconKey`, so this map is the thing that keeps config and
+ * artwork in step: add a team in config without adding its icon here and the
+ * build fails, rather than shipping a card with an empty icon plate. Same
+ * bindings as before the copy moved out of JSX.
+ */
+const TEAM_ICONS: Record<TeamIconKey, LucideIcon> = {
+  engineering: TrendingUp,
+  production: Factory,
+  quality: ClipboardCheck,
+  hse: HardHat,
+  commercial: UserCheck,
+  finance: DollarSign,
+  hr: Users,
+  it: Network,
+  assembly: Wrench,
 };
 
-
 export function TeamsSection() {
+  const { title, items } = teamsSection;
+  const total = items.length;
+
   return (
-    <section>
-      <AnimatedWrapper animation="fade-in">
-        <div className="container mx-auto px-4">
-          <h2 className="text-6xl md:text-7xl font-bold text-primary mb-12 text-center">Nos équipes spécialisées</h2>
+    <section className="bg-background" aria-labelledby="teams-section-title">
+      <div className="container mx-auto px-4">
+        <AnimatedWrapper animation="fade-in">
+          <h2
+            id="teams-section-title"
+            className="font-headline text-4xl font-bold text-center text-primary mb-4"
+          >
+            {title}
+          </h2>
+          <DraftingRule />
+        </AnimatedWrapper>
+
+        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+          {items.map((team, index) => {
+            const Icon = TEAM_ICONS[team.id];
+
+            return (
+              <AnimatedWrapper
+                key={team.id}
+                animation="fade-in-stagger"
+                staggerIndex={index}
+              >
+                <article className="group relative flex h-full overflow-hidden rounded-lg border border-border bg-card shadow-md transition duration-300 ease-out hover:-translate-y-1.5 hover:border-accent/50 hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                  {/* Binding edge — the plate's accent rail, deepened on hover. */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-y-0 left-0 z-20 w-1 bg-accent/70 transition-colors duration-300 group-hover:bg-accent motion-reduce:transition-none"
+                  />
+
+                  {/* Registration marks — the plate's corner ticks. */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute right-2 top-2 z-20 h-3 w-3 border-r border-t border-border transition-colors duration-300 group-hover:border-accent motion-reduce:transition-none"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute bottom-2 right-2 z-20 h-3 w-3 border-b border-r border-border transition-colors duration-300 group-hover:border-accent motion-reduce:transition-none"
+                  />
+
+                  <div className="relative aspect-square w-[35%] flex-shrink-0 border-r border-border">
+                    <Image
+                      src={team.image}
+                      alt={team.title}
+                      fill
+                      sizes="(max-width: 768px) 35vw, 18vw"
+                      className="object-cover transition-transform duration-300 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                    />
+                  </div>
+
+                  <div className="flex w-[65%] flex-col justify-center p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-md border border-border bg-secondary transition-colors duration-300 group-hover:border-accent/50 motion-reduce:transition-none">
+                        <PlateGrid />
+                        <Icon className="relative z-10 w-8 h-8 text-accent" />
+                      </div>
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-baseline justify-between gap-3">
+                          <h3 className="text-xl font-bold text-primary">{team.title}</h3>
+                          <span
+                            aria-hidden="true"
+                            className="shrink-0 text-[0.65rem] font-semibold tracking-[0.2em] text-muted-foreground"
+                          >
+                            {String(index + 1).padStart(2, '0')}
+                            <span className="text-muted-foreground/60">
+                              {' / '}
+                              {String(total).padStart(2, '0')}
+                            </span>
+                          </span>
+                        </div>
+
+                        {/* Leader rule — draws out in the accent on hover. */}
+                        <span
+                          aria-hidden="true"
+                          className="mt-2 block h-px w-16 overflow-hidden bg-border"
+                        >
+                          <span className="block h-full w-full origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:scale-x-100 motion-reduce:transition-none" />
+                        </span>
+                      </div>
+                    </div>
+
+                    <p className="mt-4 text-muted-foreground">{team.description}</p>
+                  </div>
+                </article>
+              </AnimatedWrapper>
+            );
+          })}
         </div>
-      </AnimatedWrapper>
-       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
-        {teams.map((team, index) => (
-            <AnimatedWrapper key={team.id} animation="fade-in-stagger" staggerIndex={index}>
-              <TeamFeature {...team} />
-            </AnimatedWrapper>
-        ))}
       </div>
     </section>
   );
 }
 
-    
+/**
+ * Faint graph-paper backing for the icon plate, so each glyph reads as a detail
+ * lifted off a drawing sheet. Lines are inset from the edges so they never
+ * collide with the plate's rounded corners.
+ */
+function PlateGrid() {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+      className="pointer-events-none absolute inset-0 h-full w-full opacity-40 transition-opacity duration-300 group-hover:opacity-70 motion-reduce:transition-none"
+    >
+      <g stroke={WF.dim} strokeWidth={0.6} strokeDasharray="2 4" fill="none">
+        <path d="M 5 16 L 59 16 M 5 32 L 59 32 M 5 48 L 59 48" />
+        <path d="M 16 5 L 16 59 M 32 5 L 32 59 M 48 5 L 48 59" />
+      </g>
+    </svg>
+  );
+}
+
+/**
+ * Centred drafting rule under the section heading: a dashed dimension line with
+ * end ticks and an accent centre mark. Static by design — it is a rule, not an
+ * animation, so there is nothing for reduced motion to switch off.
+ */
+function DraftingRule() {
+  return (
+    <svg
+      viewBox="0 0 240 16"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+      className="mx-auto block h-4 w-60 max-w-full"
+    >
+      <path
+        d="M 10 8 L 230 8"
+        stroke={WF.dim}
+        strokeWidth={1}
+        strokeDasharray="6 5"
+        fill="none"
+      />
+      <path
+        d="M 10 3 L 10 13 M 230 3 L 230 13"
+        stroke={WF.dim}
+        strokeWidth={1.25}
+        strokeLinecap="round"
+        fill="none"
+      />
+      <rect x={116} y={5} width={8} height={6} fill={WF.accent} opacity={0.85} />
+    </svg>
+  );
+}
