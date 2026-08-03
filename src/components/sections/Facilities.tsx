@@ -8,6 +8,7 @@ import { HardHat, Layers, Cog, Anchor } from 'lucide-react';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { KenBurns, type KenBurnsVariant } from '@/components/ui/ken-burns';
+import { VideoLoop } from '@/components/ui/video-loop';
 
 // Static icon map hoisted to module scope so it isn't recreated on every
 // render (same pattern as navbar.tsx).
@@ -31,6 +32,24 @@ const imageCropByKey: Record<string, string> = {
 // alternating without a change here. The four moves also run at four different
 // periods (26/29/31/35s), so they never visibly resynchronise.
 const driftOrder: readonly KenBurnsVariant[] = ['left', 'right', 'in', 'out'];
+
+/**
+ * Ambient video loops, keyed by the same stable `imageKey` as the photo so a
+ * loop can never land on the wrong unit. Generated from each unit's own
+ * photograph, then made seamless and compressed by
+ * `scripts/build-video-loops.mjs`.
+ *
+ * Partial on purpose: a unit without an entry simply keeps its drifting still,
+ * so the set can be filled in one unit at a time without a code change here.
+ * `VideoLoop` declines to load anything under reduced motion, on a phone, or on
+ * a save-data connection — the photo below is always the real content.
+ */
+const loopByKey: Record<string, string> = {
+  charpente: '/media/loops/charpente.mp4',
+  panneaux: '/media/loops/panneaux.mp4',
+  galvanisation: '/media/loops/galvanisation.mp4',
+  chaudronnerie: '/media/loops/chaudronnerie.mp4',
+};
 
 export function Facilities() {
   const { units } = companyData.pages;
@@ -77,6 +96,22 @@ export function Facilities() {
                           data-ai-hint={facility.image.aiHint}
                           />
                         </KenBurns>
+                        {/*
+                          * The loop sits between the photo (z-0) and the scrim, so every
+                          * scrim, the icon and the copy still read exactly as they do over
+                          * the still. It renders nothing at all unless it is going to
+                          * play — see VideoLoop — so the photo above is what a phone, a
+                          * reduced-motion visitor and every crawler actually get.
+                          * Deliberately NOT inside KenBurns: the clip already contains its
+                          * own camera move, and compounding it with the drift would double
+                          * the motion.
+                          */}
+                        {loopByKey[facility.imageKey] && (
+                          <VideoLoop
+                            src={loopByKey[facility.imageKey] as string}
+                            className="absolute inset-0 z-0 h-full w-full object-cover"
+                          />
+                        )}
                         {/* Permanent scrim: keeps the always-visible title legible over any photo. */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
                         {/* Extra dimming on hover/focus, when the description is revealed. */}
