@@ -18,6 +18,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { DownloadButton } from '@/components/ui/download-button';
 import { ChaudronnerieWireframe } from '@/components/wireframes/ChaudronnerieWireframe';
+import { KenBurns } from '@/components/ui/ken-burns';
 import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
 
@@ -231,17 +232,23 @@ export function ChaudronneriePageContent() {
     <div className="bg-background text-foreground">
       {/* 1. Hero Banner */}
         <section className="relative min-h-screen flex items-end bg-background pb-24 sm:pb-32">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src={hero.image_url}
-              alt={hero.alt}
-              fill
-              className="object-cover"
-              priority
-              data-ai-hint={hero.aiHint}
-              placeholder="blur"
-              blurDataURL={hero.blurDataUrl}
-            />
+          {/* `overflow-hidden`: KenBurns over-scales the photo past this box (it
+              has to, or the pan would expose the container edge), and neither
+              this wrapper nor the section clipped before. Without it the hero
+              photo paints ~3% outside the section and widens the document. */}
+          <div className="absolute inset-0 z-0 overflow-hidden">
+            <KenBurns variant="right" className="absolute inset-0 z-0">
+              <Image
+                src={hero.image_url}
+                alt={hero.alt}
+                fill
+                className="object-cover"
+                priority
+                data-ai-hint={hero.aiHint}
+                placeholder="blur"
+                blurDataURL={hero.blurDataUrl}
+              />
+            </KenBurns>
             <div className="absolute inset-0 bg-black/50 z-10" />
           </div>
           <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">

@@ -7,6 +7,7 @@ import { Mail, Package } from 'lucide-react';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { Button } from '@/components/ui/button';
+import { KenBurns } from '@/components/ui/ken-burns';
 import { WF, WF_FONT } from '@/components/wireframes/wf-theme';
 
 type PlaceholderPageProps = {
@@ -39,14 +40,19 @@ export function PlaceholderPage({ title, subtitle, image }: PlaceholderPageProps
   return (
     <ProductPageLayout>
       <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          className="z-0 object-cover"
-          priority
-          data-ai-hint={image.aiHint}
-        />
+        {/* The drift lives on the wrapper, which now owns the image's own
+            `absolute inset-0 z-0`; the scrim below still sits above it. Both
+            routes that render this component inherit the same move. */}
+        <KenBurns variant="right" className="absolute inset-0 z-0">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            className="object-cover"
+            priority
+            data-ai-hint={image.aiHint}
+          />
+        </KenBurns>
         <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="relative z-20 container mx-auto px-4 text-center">
           <AnimatedWrapper animation="zoom-in">

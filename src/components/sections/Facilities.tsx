@@ -7,6 +7,7 @@ import { companyData, getFacilityImage } from '@/config/company-data';
 import { HardHat, Layers, Cog, Anchor } from 'lucide-react';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
+import { KenBurns, type KenBurnsVariant } from '@/components/ui/ken-burns';
 
 // Static icon map hoisted to module scope so it isn't recreated on every
 // render (same pattern as navbar.tsx).
@@ -22,6 +23,14 @@ const iconMap = {
 const imageCropByKey: Record<string, string> = {
   panneaux: 'object-top',
 };
+
+// Ambient drift, rotated by position rather than keyed by unit. Unlike the crop
+// above, *which* photo gets *which* move doesn't matter — what matters is that
+// no two cards standing side by side share one, or the band would pulse in
+// unison. Rotating by index also means a fifth unit added to the config keeps
+// alternating without a change here. The four moves also run at four different
+// periods (26/29/31/35s), so they never visibly resynchronise.
+const driftOrder: readonly KenBurnsVariant[] = ['left', 'right', 'in', 'out'];
 
 export function Facilities() {
   const { units } = companyData.pages;
@@ -40,23 +49,34 @@ export function Facilities() {
           <h2 className="font-headline text-4xl font-bold text-center text-primary mb-12">{units.title}</h2>
         </AnimatedWrapper>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {facilitiesData.map((facility) => {
+          {facilitiesData.map((facility, index) => {
              const Icon = iconMap[facility.icon as keyof typeof iconMap];
+             const drift = driftOrder[index % driftOrder.length] ?? 'in';
              return (
                 <AnimatedWrapper key={facility.imageKey} animation="slide-up">
                   <Link href={facility.href || '#'} className="group block">
                     <Card className="overflow-hidden shadow-xl transition-shadow hover:shadow-2xl relative aspect-square">
-                        <Image
-                        src={facility.image.src}
-                        alt={facility.title}
-                        width={facility.image.width}
-                        height={facility.image.height}
-                        className={cn(
-                            "transition-transform duration-500 group-hover:scale-105 object-cover w-full h-full",
-                            imageCropByKey[facility.imageKey]
-                        )}
-                        data-ai-hint={facility.image.aiHint}
-                        />
+                        {/*
+                          * The photo drifts on its own (KenBurns), so it is now the
+                          * wrapper that owns the fill positioning. The image keeps its
+                          * own transform for the hover push-in — but that transform now
+                          * sits INSIDE an animated one and the two multiply, so the
+                          * hover was pulled back from scale-105 to 1.03: against a drift
+                          * that already reaches 1.13, the old 5% read as a lurch.
+                          */}
+                        <KenBurns variant={drift} className="absolute inset-0 z-0">
+                          <Image
+                          src={facility.image.src}
+                          alt={facility.title}
+                          width={facility.image.width}
+                          height={facility.image.height}
+                          className={cn(
+                              "transition-transform duration-500 group-hover:scale-[1.03] object-cover w-full h-full",
+                              imageCropByKey[facility.imageKey]
+                          )}
+                          data-ai-hint={facility.image.aiHint}
+                          />
+                        </KenBurns>
                         {/* Permanent scrim: keeps the always-visible title legible over any photo. */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
                         {/* Extra dimming on hover/focus, when the description is revealed. */}

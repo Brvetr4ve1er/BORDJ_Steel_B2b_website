@@ -19,6 +19,7 @@ import {
 } from '@/config/charpente-metallique-data';
 import { ImageDialog } from '@/components/ui/image-dialog';
 import { HoverImageGallery } from '@/components/ui/hover-image-gallery';
+import { KenBurns } from '@/components/ui/ken-burns';
 import { cn } from '@/lib/utils';
 import { ProductionTables } from '@/components/production-tables';
 import { CharpenteWireframe } from '@/components/wireframes/CharpenteWireframe';
@@ -64,17 +65,23 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
 
   return (
     <section className="relative min-h-screen flex items-end bg-background pb-24 sm:pb-32">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={hero.image_url}
-          alt={hero.alt}
-          fill
-          className="object-cover"
-          priority
-          data-ai-hint={hero.aiHint}
-          placeholder="blur"
-          blurDataURL={hero.blurDataUrl}
-        />
+      {/* `overflow-hidden`: KenBurns over-scales the photo past this box (it has
+          to, or the pan would expose the container edge), and neither this
+          wrapper nor the section clipped before. Without it the hero photo
+          paints ~3% outside the section and widens the document. */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <KenBurns variant="in" className="absolute inset-0 z-0">
+          <Image
+            src={hero.image_url}
+            alt={hero.alt}
+            fill
+            className="object-cover"
+            priority
+            data-ai-hint={hero.aiHint}
+            placeholder="blur"
+            blurDataURL={hero.blurDataUrl}
+          />
+        </KenBurns>
         <div className="absolute inset-0 bg-black/50 z-10" />
       </div>
       <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">

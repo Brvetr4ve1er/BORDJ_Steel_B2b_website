@@ -33,6 +33,7 @@ import { Maximize2 } from 'lucide-react';
 
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { ImageDialog } from '@/components/ui/image-dialog';
+import { KenBurns } from '@/components/ui/ken-burns';
 import { WF, WF_FONT } from '@/components/wireframes/wf-theme';
 import { cn } from '@/lib/utils';
 import { companyData, getFacilityImage, getProjectImage } from '@/config/company-data';
@@ -230,14 +231,18 @@ export function GalleryPageContent() {
       {/* plate laid over the photograph.                                   */}
       {/* ---------------------------------------------------------------- */}
       <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
-        <Image
-          src={HERO_IMAGE.src}
-          alt={HERO_IMAGE.alt}
-          fill
-          className="z-0 object-cover"
-          priority
-          data-ai-hint={HERO_IMAGE.aiHint}
-        />
+        {/* The drift lives on the wrapper, which now owns the image's own
+            `absolute inset-0 z-0`; the scrim below still sits above it. */}
+        <KenBurns variant="left" className="absolute inset-0 z-0">
+          <Image
+            src={HERO_IMAGE.src}
+            alt={HERO_IMAGE.alt}
+            fill
+            className="object-cover"
+            priority
+            data-ai-hint={HERO_IMAGE.aiHint}
+          />
+        </KenBurns>
         <div className="absolute inset-0 bg-black/60 z-10" />
         <GalleryHeroPlate />
         <div className="relative z-20 container mx-auto px-4 text-center">

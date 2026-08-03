@@ -135,4 +135,67 @@
       linear-gradient(90deg, hsl(var(--border) / 0.6) 1px, transparent 1px);
     background-size: 44px 44px;
   }
+
+  /* --------------------------------------------------------------------
+   * Ken Burns — ambient drift for large feature photography.
+   * Consumed by `src/components/ui/ken-burns.tsx`; see that file for why the
+   * move is a compositor transform rather than an animated image.
+   *
+   * These live here rather than in a component <style> on purpose. The
+   * component is rendered up to four times on the homepage alone, and React 18
+   * has no <style> deduplication (the href/precedence hoisting that would fix
+   * it is React 19), so an inline block shipped eight identical copies per page
+   * — four in the HTML and four again in the RSC payload. In the stylesheet it
+   * is emitted once and cached.
+   *
+   * The base scale is 1.06, never 1: the element must stay over-scaled or the
+   * pan exposes the container edge. Consumers must therefore clip — every call
+   * site sits inside an `overflow-hidden` ancestor.
+   * -------------------------------------------------------------------- */
+  .kb {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+
+  /* Four periods that never resynchronise, so a page of these does not pulse
+     in unison. Gated to >=768px: the move is barely legible on a phone and is
+     not worth the sustained compositing on a battery. */
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .kb-in    { animation: kb-in    26s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate; }
+    .kb-out   { animation: kb-out   31s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate; }
+    .kb-left  { animation: kb-left  35s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate; }
+    .kb-right { animation: kb-right 29s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate; }
+  }
+
+  /* `alternate` rather than looping to the start: a hard cut from the end crop
+     back to the start crop is visible on a photograph. */
+  @keyframes kb-in {
+    from { transform: scale(1.06) translate3d(0, 0, 0); }
+    to   { transform: scale(1.13) translate3d(-0.8%, -0.6%, 0); }
+  }
+  @keyframes kb-out {
+    from { transform: scale(1.13) translate3d(0.7%, 0.5%, 0); }
+    to   { transform: scale(1.06) translate3d(0, 0, 0); }
+  }
+  @keyframes kb-left {
+    from { transform: scale(1.09) translate3d(1.4%, 0, 0); }
+    to   { transform: scale(1.09) translate3d(-1.4%, -0.4%, 0); }
+  }
+  @keyframes kb-right {
+    from { transform: scale(1.09) translate3d(-1.4%, -0.3%, 0); }
+    to   { transform: scale(1.09) translate3d(1.4%, 0.4%, 0); }
+  }
+
+  /* The global reduce block above only clamps animation-duration, which would
+     leave these settled on their `to` crop. Pin them to the resting transform
+     instead. */
+  @media (prefers-reduced-motion: reduce) {
+    .kb,
+    .kb-in,
+    .kb-out,
+    .kb-left,
+    .kb-right {
+      animation: none !important;
+      transform: scale(1.06) translate3d(0, 0, 0) !important;
+    }
+  }
 }

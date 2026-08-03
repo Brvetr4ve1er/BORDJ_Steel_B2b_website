@@ -18,6 +18,7 @@ import { StatsCards } from '@/components/sections/sandwich-panels/StatsCards';
 import { ThermalPerformanceBand } from '@/components/sections/sandwich-panels/ThermalPerformanceBand';
 import { sandwichHero, sandwichHeroStats, sandwichIntro } from '@/config/sandwich-panels-data';
 import { SandwichWireframe } from '@/components/wireframes/SandwichWireframe';
+import { KenBurns } from '@/components/ui/ken-burns';
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -66,16 +67,20 @@ const HeroSection = React.memo(function HeroSection() {
   const heroImage = images['sandwich-panels'].hero;
   return (
     <section className="relative h-screen w-full flex flex-col justify-end text-white overflow-hidden">
-      <Image
-        src={heroImage.src}
-        alt={heroImage.alt}
-        fill
-        className="z-0 object-cover"
-        data-ai-hint={heroImage.aiHint}
-        priority
-        placeholder="blur"
-        blurDataURL={heroImage.blurDataUrl}
-      />
+      {/* The wrapper now owns the image's `z-0` and its positioning; the section
+          already carries `overflow-hidden`, which clips the KenBurns over-scale. */}
+      <KenBurns variant="left" className="absolute inset-0 z-0">
+        <Image
+          src={heroImage.src}
+          alt={heroImage.alt}
+          fill
+          className="object-cover"
+          data-ai-hint={heroImage.aiHint}
+          priority
+          placeholder="blur"
+          blurDataURL={heroImage.blurDataUrl}
+        />
+      </KenBurns>
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
       <div className="relative z-20 w-full">
         <div className="w-full px-8 md:px-12 pb-10">

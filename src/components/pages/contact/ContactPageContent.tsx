@@ -1,6 +1,7 @@
 
 import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { KenBurns } from '@/components/ui/ken-burns';
 import dynamic from 'next/dynamic';
 import { FactoryLocationCard } from '@/components/sections/contact/FactoryLocationCard';
 
@@ -16,14 +17,16 @@ export function ContactPageContent() {
   return (
     <>
       <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
-        <Image
-          src={heroImage.src}
-          alt={heroImage.alt}
-          fill
-          className="z-0 object-cover"
-          priority
-          data-ai-hint={heroImage.aiHint}
-        />
+        <KenBurns variant="out" className="absolute inset-0 z-0">
+          <Image
+            src={heroImage.src}
+            alt={heroImage.alt}
+            fill
+            className="object-cover"
+            priority
+            data-ai-hint={heroImage.aiHint}
+          />
+        </KenBurns>
         <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="relative z-20 container mx-auto px-4 text-center">
           <AnimatedWrapper animation="zoom-in">

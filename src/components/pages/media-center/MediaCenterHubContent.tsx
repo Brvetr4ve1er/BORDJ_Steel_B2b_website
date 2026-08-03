@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { KenBurns } from '@/components/ui/ken-burns';
 import { companyData } from '@/config/company-data';
 import { articles } from '@/config/blog-data';
 import { WF, WF_FONT } from '@/components/wireframes/wf-theme';
@@ -110,14 +111,18 @@ export function MediaCenterHubContent() {
       <style>{MCH_CSS}</style>
 
       <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
-        <Image
-          src="/media/1585829365295-8c75ac1e.webp"
-          alt="Espace médias Bordj Steel"
-          fill
-          className="z-0 object-cover"
-          priority
-          data-ai-hint="media center"
-        />
+        {/* The drift lives on the wrapper, which now owns the image's own
+            `absolute inset-0 z-0`; the scrim and plate below still sit above it. */}
+        <KenBurns variant="in" className="absolute inset-0 z-0">
+          <Image
+            src="/media/1585829365295-8c75ac1e.webp"
+            alt="Espace médias Bordj Steel"
+            fill
+            className="object-cover"
+            priority
+            data-ai-hint="media center"
+          />
+        </KenBurns>
         <div className="absolute inset-0 bg-black/60 z-10" />
         <HeroPlate />
         <div className="relative z-20 container mx-auto px-4 text-center">
