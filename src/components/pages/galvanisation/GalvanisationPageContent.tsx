@@ -15,6 +15,7 @@ import { TechniquesAndStandardsSection } from '@/components/sections/galvanisati
 import { ProtectionLifespanBand } from '@/components/sections/galvanisation/ProtectionLifespanBand';
 import { GalvanisationWireframe } from '@/components/wireframes/GalvanisationWireframe';
 import { KenBurns } from '@/components/ui/ken-burns';
+import { VideoLoop } from '@/components/ui/video-loop';
 
 const DynamicAnimatedBaths = dynamic(() => import('@/components/animated-baths').then(mod => mod.AnimatedBaths));
 
@@ -73,6 +74,21 @@ function UnwrappedHeroSection() {
             blurDataURL={hero.blurDataUrl}
           />
         </KenBurns>
+        {/*
+          * Ambient loop sitting between the still (z-0) and the scrim, so the
+          * scrim and every piece of copy still read exactly as they do over the
+          * photo. This hero is shot from the same photograph as the galvanisation
+          * unit card, so it reuses that unit's loop rather than a separate file.
+          * It renders nothing at all unless it is going to play — see VideoLoop —
+          * so the Image above remains the LCP element and is what a phone, a
+          * reduced-motion visitor and every crawler actually get. Deliberately NOT
+          * inside KenBurns: the clip already contains its own camera move, and
+          * compounding it with the drift would double the motion.
+          */}
+        <VideoLoop
+          src="/media/loops/galvanisation.mp4"
+          className="absolute inset-0 z-0 h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-black/50 z-10" />
       </div>
       <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">

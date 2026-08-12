@@ -8,6 +8,7 @@ import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { Button } from '@/components/ui/button';
 import { KenBurns } from '@/components/ui/ken-burns';
+import { VideoLoop } from '@/components/ui/video-loop';
 import { WF, WF_FONT } from '@/components/wireframes/wf-theme';
 
 type PlaceholderPageProps = {
@@ -20,6 +21,27 @@ type PlaceholderPageProps = {
     alt: string;
     aiHint?: string;
   };
+};
+
+/**
+ * Ambient hero loops, keyed by the photograph they were generated FROM — not by
+ * route — so a loop can never land on a hero it does not match.
+ *
+ * This component is shared by two routes that pass DIFFERENT photographs:
+ *   /media-center/actualites -> /media/1495020689067-fda78dfb.webp (journaux)
+ *   /media-center/videos     -> /media/1581091226825-0596e30c.webp (production)
+ *
+ * `placeholder-hero.mp4` was generated from the actualites photograph, so only
+ * that route gets it. Mounting it unconditionally would fade a clip of one
+ * photograph over a still of a completely different one on /videos — a content
+ * swap, not the ambient motion this is meant to be.
+ *
+ * Partial on purpose, exactly like `loopByKey` in `sections/Facilities.tsx`: a
+ * hero without an entry simply keeps its drifting still. To cover /videos,
+ * generate a loop from ITS photograph and add the entry — no other change here.
+ */
+const loopBySrc: Record<string, string> = {
+  '/media/1495020689067-fda78dfb.webp': '/media/loops/placeholder-hero.mp4',
 };
 
 /**
@@ -37,6 +59,8 @@ type PlaceholderPageProps = {
  * Server component: no hooks, no event handlers. All motion is scoped CSS.
  */
 export function PlaceholderPage({ title, subtitle, image }: PlaceholderPageProps) {
+  const heroLoop = loopBySrc[image.src];
+
   return (
     <ProductPageLayout>
       <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
@@ -53,6 +77,17 @@ export function PlaceholderPage({ title, subtitle, image }: PlaceholderPageProps
             data-ai-hint={image.aiHint}
           />
         </KenBurns>
+        {/* Between the photo (z-0) and the scrim, so the scrim and all copy still
+            read exactly as they do over the still. VideoLoop renders nothing on the
+            server and declines under reduced motion, under 768px, or on save-data,
+            so the <Image> above stays the LCP element. Deliberately NOT inside
+            KenBurns: the clip carries its own camera move already. */}
+        {heroLoop && (
+          <VideoLoop
+            src={heroLoop}
+            className="absolute inset-0 z-0 h-full w-full object-cover"
+          />
+        )}
         <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="relative z-20 container mx-auto px-4 text-center">
           <AnimatedWrapper animation="zoom-in">

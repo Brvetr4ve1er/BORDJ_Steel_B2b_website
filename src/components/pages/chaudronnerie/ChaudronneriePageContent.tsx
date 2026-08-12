@@ -19,6 +19,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { DownloadButton } from '@/components/ui/download-button';
 import { ChaudronnerieWireframe } from '@/components/wireframes/ChaudronnerieWireframe';
 import { KenBurns } from '@/components/ui/ken-burns';
+import { VideoLoop } from '@/components/ui/video-loop';
 import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
 
@@ -249,6 +250,20 @@ export function ChaudronneriePageContent() {
                 blurDataURL={hero.blurDataUrl}
               />
             </KenBurns>
+            {/*
+              * Ambient loop generated from this hero's own photograph, sitting
+              * between the still (z-0) and the scrim, so the scrim and every piece
+              * of copy still read exactly as they do over the photo. It renders
+              * nothing at all unless it is going to play — see VideoLoop — so the
+              * Image above remains the LCP element and is what a phone, a
+              * reduced-motion visitor and every crawler actually get. Deliberately
+              * NOT inside KenBurns: the clip already contains its own camera move,
+              * and compounding it with the drift would double the motion.
+              */}
+            <VideoLoop
+              src="/media/loops/chaudronnerie-hero.mp4"
+              className="absolute inset-0 z-0 h-full w-full object-cover"
+            />
             <div className="absolute inset-0 bg-black/50 z-10" />
           </div>
           <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">

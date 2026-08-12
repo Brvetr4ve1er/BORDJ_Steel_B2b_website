@@ -9,6 +9,7 @@ import { certifications, type Certification } from '@/config/company-data';
 import { Button } from '@/components/ui/button';
 import { BlogPostCard } from '@/components/ui/blog-post-card';
 import { KenBurns } from '@/components/ui/ken-burns';
+import { VideoLoop } from '@/components/ui/video-loop';
 import { buildArticleIndex } from '@/components/pages/media-center/blog/blog-article-index';
 import { BlogViewProvider } from '@/components/pages/media-center/blog/blog-view-context';
 import {
@@ -100,6 +101,17 @@ export function BlogPageContent() {
                     data-ai-hint={heroImage.aiHint}
                     />
                 </KenBurns>
+                {/* The loop sits between the photo (z-0) and the scrim, so the scrim
+                    and every piece of copy still read exactly as they do over the
+                    still. It renders nothing at all unless it is going to play — see
+                    VideoLoop — so the photo above is what a phone, a reduced-motion
+                    visitor and every crawler actually get. Deliberately NOT inside
+                    KenBurns: the clip already carries its own camera move, and
+                    compounding it with the drift would double the motion. */}
+                <VideoLoop
+                  src="/media/loops/blog-hero.mp4"
+                  className="absolute inset-0 z-0 h-full w-full object-cover"
+                />
                 <div className="absolute inset-0 bg-black/60 z-10" />
                 <div className="relative z-20 container mx-auto px-4 text-center">
                 <AnimatedWrapper animation="zoom-in">

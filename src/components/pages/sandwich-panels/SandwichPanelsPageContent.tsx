@@ -19,6 +19,7 @@ import { ThermalPerformanceBand } from '@/components/sections/sandwich-panels/Th
 import { sandwichHero, sandwichHeroStats, sandwichIntro } from '@/config/sandwich-panels-data';
 import { SandwichWireframe } from '@/components/wireframes/SandwichWireframe';
 import { KenBurns } from '@/components/ui/ken-burns';
+import { VideoLoop } from '@/components/ui/video-loop';
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -81,6 +82,20 @@ const HeroSection = React.memo(function HeroSection() {
           blurDataURL={heroImage.blurDataUrl}
         />
       </KenBurns>
+      {/*
+        * Ambient loop generated from this hero's own photograph, sitting between
+        * the still (z-0) and the gradient scrim, so the scrim and every piece of
+        * copy still read exactly as they do over the photo. It renders nothing at
+        * all unless it is going to play — see VideoLoop — so the Image above
+        * remains the LCP element and is what a phone, a reduced-motion visitor and
+        * every crawler actually get. Deliberately NOT inside KenBurns: the clip
+        * already contains its own camera move, and compounding it with the drift
+        * would double the motion.
+        */}
+      <VideoLoop
+        src="/media/loops/sandwich-hero.mp4"
+        className="absolute inset-0 z-0 h-full w-full object-cover"
+      />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
       <div className="relative z-20 w-full">
         <div className="w-full px-8 md:px-12 pb-10">

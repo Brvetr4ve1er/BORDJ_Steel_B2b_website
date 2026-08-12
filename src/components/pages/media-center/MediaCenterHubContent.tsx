@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { KenBurns } from '@/components/ui/ken-burns';
+import { VideoLoop } from '@/components/ui/video-loop';
 import { companyData } from '@/config/company-data';
 import { articles } from '@/config/blog-data';
 import { WF, WF_FONT } from '@/components/wireframes/wf-theme';
@@ -123,6 +124,19 @@ export function MediaCenterHubContent() {
             data-ai-hint="media center"
           />
         </KenBurns>
+        {/* Ambient loop generated from the hero photograph itself, sitting between
+            the photo (z-0) and the scrim — so the scrim, the drafting plate and all
+            copy still read exactly as they do over the still. VideoLoop renders
+            nothing on the server and declines entirely under reduced motion, under
+            768px, or on a save-data connection, so the <Image> above stays the LCP
+            element and the real content. Deliberately NOT inside KenBurns: the clip
+            already carries its own camera move and nesting it inside the drift would
+            double the motion. This is a server component; VideoLoop is the client
+            leaf and can be rendered from here directly. */}
+        <VideoLoop
+          src="/media/loops/mediahub-hero.mp4"
+          className="absolute inset-0 z-0 h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-black/60 z-10" />
         <HeroPlate />
         <div className="relative z-20 container mx-auto px-4 text-center">
