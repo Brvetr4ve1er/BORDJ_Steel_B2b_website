@@ -47,14 +47,26 @@ export function VisionMission() {
               */}
               <SiteMeasurementOverlay />
 
-              <div className="absolute inset-0 z-20 flex items-center justify-center">
-                <div className="relative w-48 h-48">
+              {/*
+                Anchored bottom-right, NOT centred. Centred, this callout landed
+                squarely on the "BORDJ STEEL" signage in the photograph behind it
+                and clipped the B, so the client's own sign read "ORDJ STEEL".
+                The sign runs from the middle of the frame up toward the right,
+                the compass sits bottom-left and the cartouche bottom-centre, so
+                the bottom-right corner is the one quadrant with nothing in it —
+                and the scrim is darkest there, which the white figures want.
+              */}
+              <div className="absolute inset-0 z-20 flex items-end justify-end p-4 sm:p-6">
+                <div className="relative w-36 h-36 sm:w-40 sm:h-40">
                     <div className="absolute inset-0 bg-accent/80 backdrop-blur-sm rounded-xl transform -rotate-6 transition-transform duration-300 group-hover:rotate-0" />
-                    <div className="relative text-white text-center flex flex-col justify-center h-full p-4">
-                        <div className="font-headline font-bold text-6xl flex items-center justify-center">
+                    {/* Type scaled with the plate. At the old 192px the figure was
+                        text-6xl; in a 144px corner badge that overflowed its own
+                        padding, and "Projets Réalisés" wrapped mid-word. */}
+                    <div className="relative text-white text-center flex flex-col justify-center h-full px-3 py-2">
+                        <div className="font-headline font-bold text-4xl sm:text-5xl leading-none flex items-center justify-center">
                             <AnimatedNumber value={completedProjects} />+
                         </div>
-                        <p className="font-semibold uppercase tracking-wider mt-2">
+                        <p className="mt-1.5 text-[10px] sm:text-xs font-semibold uppercase leading-tight tracking-wide">
                             Projets Réalisés
                         </p>
                     </div>
