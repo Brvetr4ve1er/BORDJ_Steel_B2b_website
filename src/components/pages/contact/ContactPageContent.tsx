@@ -17,7 +17,7 @@ export function ContactPageContent() {
 
   return (
     <>
-      <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
+      <section className="relative h-[60dvh] w-full flex items-center justify-center text-white overflow-hidden p-0">
         <KenBurns variant="out" className="absolute inset-0 z-0">
           <Image
             src={heroImage.src}

@@ -111,8 +111,8 @@ export function RecruitmentPage() {
 
   return (
     <ProductPageLayout>
-      <div className="min-h-screen bg-gray-50">
-        <section className="relative h-[80vh] w-full flex items-center justify-start text-white overflow-hidden p-0">
+      <div className="min-h-[100dvh] bg-gray-50">
+        <section className="relative h-[80dvh] w-full flex items-center justify-start text-white overflow-hidden p-0">
           <Image
             src={heroImage.src}
             alt={heroImage.alt}

@@ -67,7 +67,7 @@ const FinitionsIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const HeroSection = React.memo(function HeroSection() {
   const heroImage = images['sandwich-panels'].hero;
   return (
-    <section className="relative h-screen w-full flex flex-col justify-end text-white overflow-hidden">
+    <section className="relative h-[100dvh] w-full flex flex-col justify-end text-white overflow-hidden">
       {/* The wrapper now owns the image's `z-0` and its positioning; the section
           already carries `overflow-hidden`, which clips the KenBurns over-scale. */}
       <KenBurns variant="left" className="absolute inset-0 z-0">

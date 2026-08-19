@@ -65,7 +65,7 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
   }), []);
 
   return (
-    <section className="relative min-h-screen flex items-end bg-background pb-24 sm:pb-32">
+    <section className="relative min-h-[100dvh] flex items-end bg-background pb-24 sm:pb-32">
       {/* `overflow-hidden`: KenBurns over-scales the photo past this box (it has
           to, or the pan would expose the container edge), and neither this
           wrapper nor the section clipped before. Without it the hero photo
@@ -155,12 +155,20 @@ const NewGallery = () => {
             <div className="max-w-3xl text-center px-4">
                 <h2 className="text-3xl font-semibold">Nos Projets</h2>
             </div>
-            <div className="flex items-center gap-2 h-[400px] w-full max-w-7xl mt-10 px-4">
+            {/*
+                Below md this is a plain 2-up grid, not the expanding strip. The
+                strip works by giving six flex children a w-56 basis and letting
+                the hovered one take w-full — but flex shrinks them to fit, so on
+                a 375px screen the six become ~55px slivers, and `hover:` never
+                fires on touch, so there is no way to open one. A grid of legible
+                4:3 tiles is the honest mobile form of the same content.
+              */}
+            <div className="mt-10 grid w-full max-w-7xl grid-cols-2 gap-2 px-4 sm:grid-cols-3 md:flex md:h-[400px] md:items-center">
                 {charpenteGalleryImages.map((src, idx) => (
                     <ImageDialog key={idx} imageUrl={src} alt={`Réalisation charpente métallique ${idx + 1}`}>
                         <button
                             type="button"
-                            className="relative group flex-grow transition-all w-56 rounded-lg overflow-hidden h-[400px] duration-500 hover:w-full cursor-pointer block p-0 border-0 bg-transparent"
+                            className="relative group block w-full aspect-[4/3] overflow-hidden rounded-lg cursor-pointer p-0 border-0 bg-transparent md:aspect-auto md:h-[400px] md:w-56 md:flex-grow md:transition-all md:duration-500 md:hover:w-full"
                         >
                             <Image
                                 fill

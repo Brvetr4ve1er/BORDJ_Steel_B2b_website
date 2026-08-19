@@ -111,7 +111,7 @@ export function MediaCenterHubContent() {
     <>
       <style>{MCH_CSS}</style>
 
-      <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
+      <section className="relative h-[60dvh] w-full flex items-center justify-center text-white overflow-hidden p-0">
         {/* The drift lives on the wrapper, which now owns the image's own
             `absolute inset-0 z-0`; the scrim and plate below still sit above it. */}
         <KenBurns variant="in" className="absolute inset-0 z-0">

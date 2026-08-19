@@ -15,7 +15,7 @@ export default function Loading() {
   return (
     <main
       id="main"
-      className="flex min-h-[70vh] w-full flex-col items-center justify-center bg-background px-4 py-20"
+      className="flex min-h-[70dvh] w-full flex-col items-center justify-center bg-background px-4 py-20"
     >
       <SteelLoader />
     </main>

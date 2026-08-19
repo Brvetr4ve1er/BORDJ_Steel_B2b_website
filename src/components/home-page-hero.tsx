@@ -135,7 +135,7 @@ export function HomePageHero() {
       className="hk-plate relative isolate grid min-h-[100dvh] w-full grid-rows-[minmax(0,1fr)_auto] overflow-hidden bg-primary p-0 text-white"
     >
       {/*
-        DEFECT 1 — `h-screen` (100vh) replaced by `min-h-[100dvh]`, matching
+        DEFECT 1 — `h-[100dvh]` (100vh) replaced by `min-h-[100dvh]`, matching
         `home-page.tsx`. To be precise about what dvh does, because two of the
         three design concepts described it backwards: `dvh` is the *dynamic*
         viewport unit, so it DOES track the collapsing mobile URL bar (`svh`/

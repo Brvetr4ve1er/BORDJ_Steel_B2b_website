@@ -232,7 +232,7 @@ export function ChaudronneriePageContent() {
   return (
     <div className="bg-background text-foreground">
       {/* 1. Hero Banner */}
-        <section className="relative min-h-screen flex items-end bg-background pb-24 sm:pb-32">
+        <section className="relative min-h-[100dvh] flex items-end bg-background pb-24 sm:pb-32">
           {/* `overflow-hidden`: KenBurns over-scales the photo past this box (it
               has to, or the pan would expose the container edge), and neither
               this wrapper nor the section clipped before. Without it the hero
