@@ -58,7 +58,7 @@ export function PrivacyPageContent() {
       heading: 'Services tiers',
       body: (
         <p>
-          Certaines pages intègrent une carte Google Maps afin d'afficher notre localisation. Le
+          La page Vidéos intègre un lecteur YouTube : aucune donnée n'est transmise à YouTube tant que vous n'avez pas lancé la lecture, la vignette étant hébergée sur ce site et le lecteur chargé seulement après un clic de votre part, via le domaine sans cookie youtube-nocookie.com. Certaines pages intègrent également une carte Google Maps afin d'afficher notre localisation. Le
           chargement de cette carte peut entraîner le dépôt de cookies par Google, conformément à
           la politique de confidentialité de ce service.
         </p>

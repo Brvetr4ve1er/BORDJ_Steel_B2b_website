@@ -7,9 +7,14 @@ const BASE_URL = companyData.siteMetadata.siteUrl;
 // Every indexable public route. Keep in sync with src/app/**; the blog detail
 // pages are generated from the article data so they never drift.
 //
-// Two media-center routes remain excluded — /media-center/actualites and
-// /media-center/videos. They have no content yet, still render the
-// "Contenu à venir" placeholder, and are noindexed at the route level.
+// One media-center route remains excluded: /media-center/actualites. It still
+// has no content, still renders the "Contenu à venir" placeholder, and is
+// noindexed at the route level.
+//
+// /media-center, /media-center/gallery and /media-center/videos were all
+// placeholders too, until each was given real content and had its noindex flag
+// dropped. /videos was the last, once the company's own YouTube video was
+// wired in; they belong here now.
 // /media-center and /media-center/gallery were placeholders too until they
 // were given real content, at which point their noindex flags were dropped;
 // they belong here now.
@@ -22,6 +27,7 @@ const staticPaths = [
   '/products',
   '/media-center',
   '/media-center/gallery',
+  '/media-center/videos',
   '/media-center/blog',
   '/products/charpente-metallique',
   '/products/chaudronnerie',
