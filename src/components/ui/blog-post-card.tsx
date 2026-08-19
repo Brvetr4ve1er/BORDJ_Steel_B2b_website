@@ -92,13 +92,25 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
             <div className="mt-6 flex items-center justify-between">
                 {author && (
                   <div className="flex items-center gap-3">
-                    {author.avatarUrl.endsWith('.svg') ? (
-                       <div className="h-10 w-10">
-                          <Logo />
-                       </div>
-                    ) : (
-                      <Image src={author.avatarUrl} alt={author.name} width={40} height={40} className="rounded-full" />
-                    )}
+                    {/*
+                      Renders the avatarUrl the config already points at. This used to
+                      special-case ".svg" and substitute the 21 KB inline <Logo>
+                      component instead — for a 40x40 avatar, once per card. On the blog
+                      index that meant 14 copies, ~294 KB of duplicated markup in the
+                      HTML of every load, uncacheable and unshared. The file it was
+                      standing in for had been sitting in public/ the whole time; one
+                      cached request replaces all of it.
+                      unoptimized: the image optimizer cannot process SVG without
+                      dangerouslyAllowSVG, which this project deliberately does not set.
+                    */}
+                    <Image
+                      src={author.avatarUrl}
+                      alt={author.name}
+                      width={40}
+                      height={40}
+                      className="h-10 w-10 rounded-full object-contain"
+                      unoptimized={author.avatarUrl.endsWith('.svg')}
+                    />
                     <span className="font-semibold text-sm">{author.name}</span>
                   </div>
                 )}

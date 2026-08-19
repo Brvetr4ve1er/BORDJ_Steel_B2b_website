@@ -47,14 +47,41 @@ export function Footer() {
     pages.contact.content.address
   )}`;
 
+  /**
+   * There is no newsletter backend, and there was no honest way to pretend
+   * otherwise: this used to swallow the address entirely and show a "Merci !"
+   * toast, so a visitor who signed up was never subscribed to anything and had
+   * no way to know.
+   *
+   * It now composes the subscription as a real e-mail to the address the rest
+   * of the site publishes, so the request actually reaches the company. The
+   * visitor still has to press send in their own mail client — which is why the
+   * toast says so rather than claiming success we cannot verify.
+   */
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    // TODO(backend): no newsletter service is wired up yet — the address is
-    // not persisted anywhere. Keep the copy honest until integration exists.
+    const address = email.trim();
+    if (!address) return;
+
+    const to = pages.contact.content.emails[0];
+    if (!to) return;
+
+    const subject = encodeURIComponent('Inscription à la newsletter');
+    const body = encodeURIComponent(
+      [
+        'Bonjour,',
+        '',
+        'Je souhaite m’inscrire à la newsletter de Bordj Steel.',
+        '',
+        `Adresse e-mail : ${address}`,
+      ].join('\n'),
+    );
+
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+
     toast({
-      title: 'Merci !',
-      description: 'Votre demande a été prise en compte. Pour être sûr de ne rien manquer, contactez-nous à ' + pages.contact.content.emails[0] + '.',
+      title: 'Votre messagerie va s’ouvrir',
+      description: `Envoyez le message pré-rempli pour finaliser votre inscription. Vous pouvez aussi écrire directement à ${to}.`,
     });
     setEmail('');
   };
@@ -123,7 +150,7 @@ export function Footer() {
             </div>
             <h3 className="mb-6 inline-block border-b-2 border-accent pb-2 text-xl font-semibold uppercase tracking-wider text-white">Restez Connecté</h3>
             <p className="mb-4 text-base text-white/70">
-              Rejoignez notre newsletter pour les dernières mises à jour.
+              Recevez nos actualités. L’inscription se fait par e-mail, en un clic.
             </p>
             <form className="relative" onSubmit={handleNewsletterSubmit}>
               <label htmlFor="newsletter-email" className="sr-only">Adresse e-mail</label>

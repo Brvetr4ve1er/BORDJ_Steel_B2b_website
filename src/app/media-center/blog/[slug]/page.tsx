@@ -5,7 +5,6 @@ import { notFound } from 'next/navigation';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Logo } from '@/components/logo';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -77,16 +76,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             <div className="flex items-center gap-4 text-muted-foreground">
                                 {article.author && (
                                 <div className="flex items-center gap-3">
-                                    {article.author.avatarUrl.endsWith('.svg') ? (
-                                    <div className="h-10 w-10">
-                                        <Logo />
-                                    </div>
-                                    ) : (
-                                    <Avatar>
-                                        <AvatarImage src={article.author.avatarUrl} alt={article.author.name} />
+                                    {/*
+                                      Always the avatarUrl the config points at. This
+                                      previously special-cased ".svg" and swapped in the
+                                      21 KB inline <Logo> component for a 40x40 avatar —
+                                      the very file it stood in for was already in
+                                      public/. Avatar/AvatarImage renders a plain <img>,
+                                      so the SVG is fetched once and cached rather than
+                                      re-inlined into every article's HTML.
+                                    */}
+                                    <Avatar className="h-10 w-10">
+                                        <AvatarImage src={article.author.avatarUrl} alt={article.author.name} className="object-contain" />
                                         <AvatarFallback>{article.author.name.charAt(0)}</AvatarFallback>
                                     </Avatar>
-                                    )}
                                     <span className="font-semibold text-sm">{article.author.name}</span>
                                 </div>
                                 )}
