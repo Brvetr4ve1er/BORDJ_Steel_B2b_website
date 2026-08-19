@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { galvanisationContent } from '@/config/galvanisation-data';
+import { galvanisationCapacity } from '@/config/company-data';
 import { ArrowRight, Info } from 'lucide-react';
 import { iconMap as galvanisationIconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
@@ -102,7 +103,7 @@ function UnwrappedHeroSection() {
                 <div className="mt-4 text-lg text-gray-300 max-w-xl">
                     <p className="font-bold">UNITÉ DE PRODUCTION</p>
                     <p>Surface de 40.000 m² dont 6.000 m² couverts. Démarrage de la production : octobre 2016.</p>
-                    <p>L’unité est constituée de bains d’immersion de 13 × 1,8 × 3,5 m, permettant de traiter des pièces métalliques jusqu’à 13 m de longueur. Capacité de production (8 h/jour) : 1 600 t/mois, soit 20 000 t/an.</p>
+                    <p>L’unité est constituée de bains d’immersion de 13 × 1,8 × 3,5 m, permettant de traiter des pièces métalliques jusqu’à 13 m de longueur. {`Capacité de production (8 h/jour) : ${galvanisationCapacity.singleShiftPerMonth.toLocaleString('fr-FR')} t/mois, soit ${galvanisationCapacity.singleShiftPerYear.toLocaleString('fr-FR')} t/an.`}</p>
                 </div>
               </div>
               <div className="flex flex-row items-center gap-4">

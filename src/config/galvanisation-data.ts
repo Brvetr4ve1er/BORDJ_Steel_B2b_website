@@ -2,6 +2,7 @@
 import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship, HardHat, CircleDollarSign, Check, Beaker, SprayCan, Fan, Pipette, Ruler, ShieldCheck, Weight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import images from '@/app/lib/placeholder-images.json';
+import { galvanisationCapacity } from '@/config/company-data';
 
 // Using an object to map string names to actual Lucide components
 export const iconMap: { [key: string]: LucideIcon } = {
@@ -31,10 +32,10 @@ export const iconMap: { [key: string]: LucideIcon } = {
 export const galvanisationContent = {
   "hero": {
     "title": "GALVANISATION À CHAUD",
-    "subtitle": "Notre unité de galvanisation traite jusqu’à 25.000 tonnes/an, avec des bains de zinc de 12m x 1,5m x 3m, offrant une protection anticorrosion homogène, certifiée et durable.",
+    "subtitle": `Notre unité de galvanisation traite jusqu’à ${galvanisationCapacity.annualCardTonnes.replace(" tonnes", "")} tonnes/an, avec des bains de zinc de 12m x 1,5m x 3m, offrant une protection anticorrosion homogène, certifiée et durable.`,
     "stats": [
       { "title": "Bains de traitement", "value": "13", "icon": "baths", "large": true },
-      { "title": "Capacité annuelle", "value": "25.000 tonnes", "icon": "Weight" },
+      { "title": "Capacité annuelle", "value": galvanisationCapacity.annualCardTonnes, "icon": "Weight" },
       { "title": "Température du bain", "value": "450 °C", "icon": "Thermometer" },
       { "title": "Durée de vie", "value": "> 50 ans", "icon": "ShieldCheck" },
       { "title": "Produits", "value": "Profils | Panneaux | Structures", "icon": "Layers" }

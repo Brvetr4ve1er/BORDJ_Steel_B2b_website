@@ -76,6 +76,66 @@ export const certifications: readonly Certification[] = [
   },
 ];
 
+/* -------------------------------------------------------------------------- */
+/* Galvanisation annual capacity — UNRESOLVED                                 */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * CLIENT NOTE — three different annual capacities for the galvanisation unit are
+ * published on this site, two of them on the same page. Nobody on the build side
+ * can say which is correct, so every value below is reproduced EXACTLY as it was
+ * already being displayed. This block changes nothing a visitor sees; it only
+ * gathers the figures into one place so the question can be closed with a single
+ * edit instead of hunting three files.
+ *
+ *   headlinePerYear     60 000 T/an   homepage hero stat AND the units list.
+ *                                     No basis stated.
+ *   annualCardTonnes    "25.000 tonnes"  the "Capacité annuelle" stat card on
+ *                                     /products/galvanisation-a-chaud.
+ *                                     No basis stated.
+ *   singleShiftPerYear  20 000 t/an   prose on that SAME page, and the only
+ *                                     figure anywhere with a stated basis:
+ *                                     "(8 h/jour) : 1 600 t/mois". 1 600 x 12 =
+ *                                     19 200, so ~20 000 is at least consistent
+ *                                     with its own arithmetic.
+ *
+ * The 25 000 card and the 20 000 prose render on the same page. That is the part
+ * a visitor can actually catch.
+ *
+ * Worth putting to the client in this exact form, because it may not be a
+ * contradiction at all: 20 000 x 3 = 60 000 precisely, and this site already
+ * states capacities on an 8-hour basis elsewhere (chaudronnerie "8h/j"; the
+ * charpente table is headed "CAPACITÉ DE PRODUCTION (EN 08 HEURES)"). If 60 000
+ * is simply the three-shift figure then 60 000 and 20 000 are both correct and
+ * only need their basis printed next to them. That reading still leaves 25 000
+ * unaccounted for.
+ *
+ * A SECOND conflict, found while consolidating the above and left as data
+ * because it is equally the client to settle: bath dimensions. The prose on the
+ * product page gives "13 x 1,8 x 3,5 m"; the units list in this file says "un
+ * bain de 13m de long"; and `galvanisationContent.hero.subtitle` says "12m x
+ * 1,5m x 3m". The bath length also drives the maximum treatable piece, quoted
+ * as 13 m in the prose and 15 m in the units description.
+ *
+ * NOTE that `hero.subtitle` is currently DEAD CONFIG — the galvanisation hero
+ * renders title, image, stats and the two CTAs, never the subtitle, so its
+ * figures reach nobody today. It is wired to this source anyway: it is exactly
+ * the kind of string someone displays later, reintroducing the contradiction.
+ *
+ * Guarded by tests/galvanisation-capacity.test.ts, which fails if a fourth
+ * distinct figure appears or if these stop being the single source.
+ */
+export const galvanisationCapacity = {
+  /** Headline figure. Homepage hero + units list. Basis unknown. */
+  headlinePerYear: 60000,
+  /** Product-page stat card, verbatim including the dot separator. */
+  annualCardTonnes: '25.000 tonnes',
+  /** Product-page prose. The only figure with a stated basis (8 h/jour). */
+  singleShiftPerYear: 20000,
+  /** The monthly figure the 8 h/jour number is derived from. */
+  singleShiftPerMonth: 1600,
+} as const;
+
 export const companyData = {
   siteMetadata: {
     title: 'Bordj Steel – Construction métallique en Algérie',
@@ -149,7 +209,7 @@ export const companyData = {
           stats: [
             { "value": 25000, "label": "Tonnes/an Charpente" },
             { "value": 1500000, "label": "m²/an Panneaux Sandwich" },
-            { "value": 60000, "label": "Tonnes/an Galvanisation" }
+            { "value": galvanisationCapacity.headlinePerYear, "label": "Tonnes/an Galvanisation" }
           ]
         },
         introduction: 'La SPA BORDJ STEEL comprend 4 unités de production : Charpente Métallique, Panneaux Sandwichs et TN 40, Galvanisation à chaud, Chaudronnerie.'
@@ -209,7 +269,7 @@ export const companyData = {
         },
         {
           title: 'Galvanisation à Chaud',
-          description: `Capacité de 60000 T/an avec un bain de 13m de long pour des pièces jusqu'à 15m.`,
+          description: `Capacité de ${galvanisationCapacity.headlinePerYear} T/an avec un bain de 13m de long pour des pièces jusqu'à 15m.`,
           icon: 'Cog',
           href: '/products/galvanisation-a-chaud',
           imageKey: 'galvanisation'
