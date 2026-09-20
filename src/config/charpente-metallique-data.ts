@@ -1,13 +1,14 @@
 
 import images from '@/app/lib/placeholder-images.json';
+import { charpenteCapacity } from '@/config/company-data';
 
 export const charpenteMetalliqueData = {
   hero: {
     title: 'Charpente Métallique',
     subtitle: "Solutions d'ingénierie robustes pour les projets les plus ambitieux. Nous concevons, fabriquons et montons des structures en acier pour tous types de bâtiments.",
     stats: [
-      { title: 'Capacité de production', value: 25000, unit: ' T/an', icon: 'HardHat' },
-      { title: 'Capacité de PRS', value: 3000, unit: ' T/an', icon: 'Cog' },
+      { title: 'Capacité de production', value: charpenteCapacity.headlinePerYear, unit: ' T/an', icon: 'HardHat' },
+      { title: 'Capacité de PRS', value: charpenteCapacity.prsPerYear, unit: ' T/an', icon: 'Cog' },
       { title: "Surface de l'unité", value: 10000, unit: ' m²', icon: 'Layers' },
     ],
     image_url: images['charpente-metallique'].main.src,

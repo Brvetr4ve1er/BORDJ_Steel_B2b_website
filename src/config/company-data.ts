@@ -136,6 +136,71 @@ export const galvanisationCapacity = {
   singleShiftPerMonth: 1600,
 } as const;
 
+/**
+ * CLIENT NOTE — charpente capacity, the second set of contradictory figures.
+ *
+ * Same situation as `galvanisationCapacity` above and the same treatment: every
+ * value below is reproduced EXACTLY as it was already being displayed, gathered
+ * here so the question can be closed with one edit. Nothing a visitor reads
+ * changes because of this block, with one exception noted at the bottom.
+ *
+ *   headlinePerYear   25 000 T/an  the /products/charpente-metallique hero stat
+ *                                  card, the HOMEPAGE hero stat, and the units
+ *                                  list. No basis stated anywhere.
+ *   headlinePerMonth   1 500 T/mois  units list only, inside the same sentence
+ *                                  as headlinePerYear.
+ *   prsPerYear         3 000 T/an  hero stat card + units list. No basis.
+ *   eightHourTable                 the "CAPACITE DE PRODUCTION (EN 08 HEURES)"
+ *                                  table further down that SAME product page.
+ *
+ * What is actually known, stated precisely because the arithmetic matters:
+ *
+ *   - The table is the only figure on the page that DECLARES its basis, and it
+ *     is internally consistent: 1 000 T/mois x 12 = 12 000 T/an exactly.
+ *   - The units sentence contradicts ITSELF: it reads "1500 T/mois (25000
+ *     T/an)", but 1 500 x 12 = 18 000, not 25 000. Neither half of that
+ *     sentence agrees with the table either.
+ *   - 25 000 has no stated basis and is not a clean multiple of the 8-hour
+ *     figure: 12 000 x 2 = 24 000, not 25 000.
+ *   - PRS is 3 000 in the headline and 2 000 in the 8-hour table.
+ *
+ * NOTE for whoever asks the client: the galvanisation reading does NOT carry
+ * over here. There, 20 000 x 3 = 60 000 exactly, so "single shift vs three
+ * shifts" explained the gap cleanly. Here no shift multiplier reproduces
+ * 25 000 from 12 000. Do not offer the client that explanation for charpente;
+ * the numbers have to be confirmed directly.
+ *
+ * The concrete question: the hero says 25 000 T/an and the table on the same
+ * page says 12 000 T/an in 8 hours. Is 25 000 a two-shift figure (in which case
+ * it should read 24 000), or is one of the two simply wrong?
+ *
+ * THE ONE VISIBLE CHANGE. Routing the table through this block reformats its
+ * numbers. It previously rendered three different ways in one table: "12000"
+ * (no separator), "1 000" and "2 000" (ASCII space). They now all go through
+ * Intl.NumberFormat("fr-FR") like every other number on the site, which emits
+ * U+202F. Digits and units are untouched; only the thousands separators are.
+ *
+ * Guarded by tests/charpente-capacity.test.ts.
+ */
+export const charpenteCapacity = {
+  /** Hero stat card, homepage hero stat, and units list. No basis stated. */
+  headlinePerYear: 25000,
+  /** Units list only, in the same sentence as headlinePerYear. 1 500 x 12 = 18 000. */
+  headlinePerMonth: 1500,
+  /** Hero stat card + units list. No basis stated. */
+  prsPerYear: 3000,
+  /**
+   * The product page's "CAPACITE DE PRODUCTION (EN 08 HEURES)" table. These are
+   * the only capacity figures on the site that declare what shift they assume.
+   * `perMonth` is null where the published table gives no monthly figure.
+   */
+  eightHourTable: [
+    { product: 'Charpente métallique', perYear: 12000, perMonth: 1000 },
+    { product: 'Ligne de profilés soudés (PRS)', perYear: 2000, perMonth: null },
+    { product: 'Mâts et autres produits', perYear: 5000, perMonth: null },
+  ],
+} as const;
+
 export const companyData = {
   siteMetadata: {
     title: 'Bordj Steel – Construction métallique en Algérie',
@@ -207,7 +272,7 @@ export const companyData = {
           headline: "BÂTIR L'AVENIR, ENSEMBLE",
           subheadline: 'Leader de la construction métallique en Algérie',
           stats: [
-            { "value": 25000, "label": "Tonnes/an Charpente" },
+            { "value": charpenteCapacity.headlinePerYear, "label": "Tonnes/an Charpente" },
             { "value": 1500000, "label": "m²/an Panneaux Sandwich" },
             { "value": galvanisationCapacity.headlinePerYear, "label": "Tonnes/an Galvanisation" }
           ]
@@ -255,7 +320,7 @@ export const companyData = {
       items: [
         {
           title: 'Charpente Métallique',
-          description: `Capacité de 1500 T/mois (25000 T/an) et PRS 3000 T/an. Nous produisons des hangars, pylônes, et supports publicitaires.`,
+          description: `Capacité de ${charpenteCapacity.headlinePerMonth} T/mois (${charpenteCapacity.headlinePerYear} T/an) et PRS ${charpenteCapacity.prsPerYear} T/an. Nous produisons des hangars, pylônes, et supports publicitaires.`,
           icon: 'HardHat',
           href: '/products/charpente-metallique',
           imageKey: 'charpente'

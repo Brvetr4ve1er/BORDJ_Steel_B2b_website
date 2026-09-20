@@ -1,6 +1,23 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import { charpenteCapacity } from '@/config/company-data';
+
+/**
+ * The capacity rows are no longer written out here. They used to be three
+ * hardcoded <TableRow>s whose numbers contradicted the hero stat on this same
+ * page, with nothing connecting the two — see the CLIENT NOTE above
+ * `charpenteCapacity` in src/config/company-data.ts.
+ *
+ * The norms table below is left as markup on purpose: it is prose, not figures,
+ * and nothing else on the site restates it.
+ */
+function tonnage(row: (typeof charpenteCapacity.eightHourTable)[number]): string {
+  const fr = (n: number) => n.toLocaleString('fr-FR');
+  return row.perMonth === null
+    ? `${fr(row.perYear)} T/an`
+    : `${fr(row.perYear)} T/an (${fr(row.perMonth)} T/mois)`;
+}
 
 export function ProductionTables() {
   return (
@@ -18,18 +35,12 @@ export function ProductionTables() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRow className="hover:bg-secondary/20">
-                <TableCell className="px-4 py-3">Charpente métallique</TableCell>
-                <TableCell className="px-4 py-3">12000 T/an (1 000 T/mois)</TableCell>
-              </TableRow>
-              <TableRow className="hover:bg-secondary/20">
-                <TableCell className="px-4 py-3">Ligne de profilés soudés (PRS)</TableCell>
-                <TableCell className="px-4 py-3">2 000 T/an</TableCell>
-              </TableRow>
-              <TableRow className="hover:bg-secondary/20">
-                <TableCell className="px-4 py-3">Mâts et autres produits</TableCell>
-                <TableCell className="px-4 py-3">5 000 T/an</TableCell>
-              </TableRow>
+              {charpenteCapacity.eightHourTable.map((row) => (
+                <TableRow key={row.product} className="hover:bg-secondary/20">
+                  <TableCell className="px-4 py-3">{row.product}</TableCell>
+                  <TableCell className="px-4 py-3">{tonnage(row)}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </CardContent>

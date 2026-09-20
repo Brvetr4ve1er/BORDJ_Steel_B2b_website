@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from 'react';
-import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
+import { charpenteCapacity } from '@/config/company-data';
 import { ProductWireframe, WireframeToggle } from './ProductWireframe';
 import { CharpenteProfileFigure, type PrsVariant } from './figures/CharpenteProfileFigure';
 
@@ -10,11 +10,6 @@ import { CharpenteProfileFigure, type PrsVariant } from './figures/CharpenteProf
 const WEB_RANGE = '350 – 2000 mm';
 const MAX_LENGTH_M = '16 m';
 
-function capacity(title: string, fallback: number) {
-  const s = charpenteMetalliqueData.hero.stats.find((x) => x.title.toLowerCase().includes(title));
-  return typeof s?.value === 'number' ? s.value : fallback;
-}
-
 export function CharpenteWireframe() {
   const [variant, setVariant] = React.useState<PrsVariant>('i');
 
@@ -22,8 +17,16 @@ export function CharpenteWireframe() {
     variant,
     webRange: WEB_RANGE,
     maxLengthM: MAX_LENGTH_M,
-    prsCapacity: capacity('prs', 3000),
-    charpenteCapacity: capacity('charpente', 25000),
+    // Both figures come from the single source. They used to be read out of
+    // `charpenteMetalliqueData.hero.stats` by substring with a literal
+    // fallback — `capacity('charpente', 25000)` — and that lookup could never
+    // match: the stat titles are "Capacité de production", "Capacité de PRS"
+    // and "Surface de l'unité", none of which contains the word "charpente".
+    // The figure drawn here was therefore ALWAYS the fallback. It went
+    // unnoticed only because the fallback happened to equal the config value;
+    // editing the config would have silently left this figure behind.
+    prsCapacity: charpenteCapacity.prsPerYear,
+    charpenteCapacity: charpenteCapacity.headlinePerYear,
   };
 
   return (

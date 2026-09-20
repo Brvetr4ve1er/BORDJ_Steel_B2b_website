@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { galvanisationContent } from '@/config/galvanisation-data';
+import { galvanisationCapacity } from '@/config/company-data';
 import { ProductWireframe } from './ProductWireframe';
 import { GalvanisationBathFigure } from './figures/GalvanisationBathFigure';
 
@@ -18,7 +19,7 @@ export function GalvanisationWireframe() {
     widthM: '1,5 m',
     tempC: String(statValue('température', '450 °C')),
     baths: String(statValue('bains', '13')),
-    capacity: String(statValue('capacité', '25 000 t/an')),
+    capacity: String(statValue('capacité', galvanisationCapacity.annualCardTonnes)),
     lifespan: String(statValue('durée', '> 50 ans')),
   };
 
