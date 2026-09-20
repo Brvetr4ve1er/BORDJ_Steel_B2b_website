@@ -7,6 +7,7 @@ import { KenBurns } from '@/components/ui/ken-burns';
 import { VideoLoop } from '@/components/ui/video-loop';
 import { companyData } from '@/config/company-data';
 import { articles } from '@/config/blog-data';
+import { companyVideos } from '@/config/videos-data';
 import { WF, WF_FONT } from '@/components/wireframes/wf-theme';
 import { cn } from '@/lib/utils';
 
@@ -20,10 +21,13 @@ import { cn } from '@/lib/utils';
  *   - the blog card's count is `articles.length` from `@/config/blog-data`;
  *   - the "en ligne / en préparation" caption is counted off the list below.
  *
- * Honesty rule: `/media-center/actualites` and `/media-center/videos` have no
- * data at all today. They are rendered de-emphasised (dashed frame, reduced
- * opacity, "En préparation" badge) and are deliberately NOT links — a visitor is
- * never sent to a page we already know is empty.
+ * Honesty rule: a section with no data is rendered de-emphasised (dashed frame,
+ * reduced opacity, "En préparation" badge) and is deliberately NOT a link — a
+ * visitor is never sent to a page we already know is empty. Today that applies
+ * to `/media-center/actualites` alone. `/media-center/videos` was in the same
+ * state until the company's own video was wired in; its card became a real link
+ * at that point, and any future section must be promoted here the same way or
+ * the hub will keep hiding a page that has content.
  *
  * Server component: no hooks, no event handlers. All motion is CSS scoped to the
  * `.mch-*` classes, every animation pinned to its final state under
@@ -46,9 +50,11 @@ type SectionCard = SectionPlan & { name: string; description: string };
 const MEDIA_MENU_HREF = '/media-center/blog';
 
 const ARTICLE_COUNT = articles.length;
+const VIDEO_COUNT = companyVideos.length;
 
 /** "1 article" vs "N articles" — French pluralises from 2. */
 const ARTICLE_META = `${ARTICLE_COUNT} article${ARTICLE_COUNT > 1 ? 's' : ''}`;
+const VIDEO_META = `${VIDEO_COUNT} vidéo${VIDEO_COUNT > 1 ? 's' : ''}`;
 
 /**
  * Section order + real status. The labels are NOT here on purpose: they are read
@@ -73,7 +79,7 @@ const SECTION_PLAN: readonly SectionPlan[] = [
   {
     href: '/media-center/videos',
     Glyph: VideosGlyph,
-    status: { kind: 'preparing', note: 'Aucune vidéo pour le moment.' },
+    status: { kind: 'live', cta: 'Voir les vidéos', meta: VIDEO_META },
   },
 ];
 
@@ -103,9 +109,11 @@ export function MediaCenterHubContent() {
   const sections = buildSections();
   const liveCount = sections.filter((section) => section.status.kind === 'live').length;
   const preparingCount = sections.length - liveCount;
+  const sectionWord = `section${liveCount > 1 ? 's' : ''} en ligne`;
   const caption =
-    `${liveCount} section${liveCount > 1 ? 's' : ''} en ligne — ` +
-    `${preparingCount} en préparation`;
+    preparingCount > 0
+      ? `${liveCount} ${sectionWord} — ${preparingCount} en préparation`
+      : `${liveCount} ${sectionWord}`;
 
   return (
     <>
