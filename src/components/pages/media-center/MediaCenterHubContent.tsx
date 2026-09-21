@@ -8,6 +8,7 @@ import { VideoLoop } from '@/components/ui/video-loop';
 import { companyData } from '@/config/company-data';
 import { articles } from '@/config/blog-data';
 import { companyVideos } from '@/config/videos-data';
+import { pressItems } from '@/config/press-data';
 import { WF, WF_FONT } from '@/components/wireframes/wf-theme';
 import { cn } from '@/lib/utils';
 
@@ -23,11 +24,14 @@ import { cn } from '@/lib/utils';
  *
  * Honesty rule: a section with no data is rendered de-emphasised (dashed frame,
  * reduced opacity, "En préparation" badge) and is deliberately NOT a link — a
- * visitor is never sent to a page we already know is empty. Today that applies
- * to `/media-center/actualites` alone. `/media-center/videos` was in the same
- * state until the company's own video was wired in; its card became a real link
- * at that point, and any future section must be promoted here the same way or
- * the hub will keep hiding a page that has content.
+ * visitor is never sent to a page we already know is empty.
+ *
+ * As of the revue de presse landing, NO section is in that state: all four are
+ * live. The `preparing` branch is kept because it is the mechanism, not dead
+ * weight — a fifth section starts there. What matters is the other direction:
+ * giving a section content means promoting its card HERE too. That step was
+ * missed once already, when /media-center/videos shipped with real content
+ * while this file still advertised it as empty and refused to link it.
  *
  * Server component: no hooks, no event handlers. All motion is CSS scoped to the
  * `.mch-*` classes, every animation pinned to its final state under
@@ -51,10 +55,12 @@ const MEDIA_MENU_HREF = '/media-center/blog';
 
 const ARTICLE_COUNT = articles.length;
 const VIDEO_COUNT = companyVideos.length;
+const PRESS_COUNT = pressItems.length;
 
 /** "1 article" vs "N articles" — French pluralises from 2. */
 const ARTICLE_META = `${ARTICLE_COUNT} article${ARTICLE_COUNT > 1 ? 's' : ''}`;
 const VIDEO_META = `${VIDEO_COUNT} vidéo${VIDEO_COUNT > 1 ? 's' : ''}`;
+const PRESS_META = `${PRESS_COUNT} article${PRESS_COUNT > 1 ? 's' : ''} de presse`;
 
 /**
  * Section order + real status. The labels are NOT here on purpose: they are read
@@ -74,7 +80,7 @@ const SECTION_PLAN: readonly SectionPlan[] = [
   {
     href: '/media-center/actualites',
     Glyph: ActualitesGlyph,
-    status: { kind: 'preparing', note: 'Aucune publication pour le moment.' },
+    status: { kind: 'live', cta: 'Lire la revue de presse', meta: PRESS_META },
   },
   {
     href: '/media-center/videos',

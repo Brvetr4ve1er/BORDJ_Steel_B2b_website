@@ -1,24 +1,23 @@
-
 import type { Metadata } from 'next';
-import { PlaceholderPage } from '@/components/pages/media-center/PlaceholderPage';
+import { ProductPageLayout } from '@/components/product-page-layout';
+import { ActualitesPageContent } from '@/components/pages/media-center/actualites/ActualitesPageContent';
 
 export const metadata: Metadata = {
   title: 'Actualités',
+  // The previous description promised "nouvelles, annonces et événements de
+  // Bordj Steel" — company announcements. This page is a revue de presse:
+  // third-party coverage. The description says so rather than over-promising.
   description:
-    'Les dernières nouvelles, annonces et événements de Bordj Steel, expert algérien de la construction métallique.',
-  robots: { index: false, follow: true },
+    'Revue de presse Bordj Steel : les articles de la presse algérienne qui citent notre entreprise, de 2016 à aujourd’hui.',
+  // The `robots: { index: false }` that used to sit here was correct while this
+  // route rendered "Contenu à venir". It now carries real, sourced content, so
+  // it is indexable and listed in the sitemap.
 };
 
 export default function ActualitesPage() {
   return (
-    <PlaceholderPage
-      title="Actualités"
-      subtitle="Les dernières nouvelles de Bordj Steel."
-      image={{
-        src: "/media/1495020689067-fda78dfb.webp",
-        alt: "Pile de journaux",
-        aiHint: "newspapers stack",
-      }}
-    />
+    <ProductPageLayout>
+      <ActualitesPageContent />
+    </ProductPageLayout>
   );
 }
