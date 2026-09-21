@@ -18,7 +18,7 @@
  *   presse      — the outlet wrote it. Journalism about the company.
  *   communique  — the company or the group wrote it and the outlet carried it:
  *                 press releases and, in one case (tsa-salons-2019), material
- *                 the outlet itself labels sponsored content.
+ *                 the outlet prints under the label "Sponsorisé Par: Condor".
  * Both belong on a revue de presse. Silently presenting the second kind as the
  * first would not, so the page labels every card.
  *
@@ -64,10 +64,10 @@ export type PressItem = {
 export const pressItems: readonly PressItem[] = [
   {
     id: 'tsa-hyundai-2021',
-    publisher: "TSA (Tout sur l'Algérie)",
+    publisher: 'TSA (Tout sur l’Algérie)',
     headline: 'Acier : une filiale de Condor décroche un contrat avec Hyundai',
     date: '2021-09-30',
-    url: 'https://web.archive.org/web/20210930144453id_/https://www.tsa-algerie.com/acier-une-filiale-de-condor-decroche-un-contrat-avec-hyundai/',
+    url: 'https://web.archive.org/web/20210930144453/https://www.tsa-algerie.com/acier-une-filiale-de-condor-decroche-un-contrat-avec-hyundai/',
     archived: true,
     quote:
       "Dans le cadre de la réalisation d’une centrale électrique à Biskra (Oumache III), l’entreprise Bordj Steel, filiale du groupe Condor, a décroché un contrat d’un montant de 1,17 milliard de DA avec le sud-coréen Hyundai engineering & construction, pour la fourniture de 3300 tonnes d’acier.",
@@ -106,10 +106,10 @@ export const pressItems: readonly PressItem[] = [
   },
   {
     id: 'tsa-nouvelles-usines-2022',
-    publisher: "TSA (Tout sur l'Algérie)",
+    publisher: 'TSA (Tout sur l’Algérie)',
     headline: 'Condor autorisé à lancer de nouvelles usines',
     date: '2022-03-14',
-    url: 'https://web.archive.org/web/20220316073630id_/https://www.tsa-algerie.com/condor-autorise-a-lancer-de-nouvelles-usines/',
+    url: 'https://web.archive.org/web/20220316073630/https://www.tsa-algerie.com/condor-autorise-a-lancer-de-nouvelles-usines/',
     archived: true,
     quote:
       'Dans le détail, Condor précise que cinq autorisations ont été délivrées au nom de l’entreprise Bordj Steel, filiale du groupe privé spécialisée dans la production de charpente métallique, panneaux sandwiches et galvanisation.',
@@ -162,16 +162,16 @@ export const pressItems: readonly PressItem[] = [
   },
   {
     id: 'tsa-salons-2019',
-    publisher: "TSA (Tout sur l'Algérie)",
+    publisher: 'TSA (Tout sur l’Algérie)',
     headline:
       'A travers ses filiales Bordj Steel, Security System et AIMA : Condor Group participe à plusieurs salons à travers le territoire national',
     date: '2019-03-01',
-    url: 'https://web.archive.org/web/20190302144529id_/https://www.tsa-algerie.com/a-travers-ses-filiales-bordj-steel-security-system-et-aima-condor-group-participe-a-plusieurs-salons-a-travers-le-territoire-national/',
+    url: 'https://web.archive.org/web/20190302144529/https://www.tsa-algerie.com/a-travers-ses-filiales-bordj-steel-security-system-et-aima-condor-group-participe-a-plusieurs-salons-a-travers-le-territoire-national/',
     archived: true,
     quote:
       'Doté d’un investissement de 35 millions d’euros, Bordj Steel est spécialisée dans la charpente métallique, la fabrication de panneaux sandwichs ainsi que la galvanisation à chaud.',
     summary:
-      'Contenu sponsorisé signé Condor. Cite un investissement de 35 millions d’euros pour Bordj Steel.',
+      'Publié par TSA sous la mention « Sponsorisé Par: Condor ». Cite un investissement de 35 millions d’euros pour Bordj Steel.',
     kind: 'communique',
     prominence: 'mention',
   },

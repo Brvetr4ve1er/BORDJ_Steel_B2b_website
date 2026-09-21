@@ -73,7 +73,7 @@ describe('charpente capacity is stated in exactly one place', () => {
 
   it.each([
     ['25 000 T/an headline', /\b25[\s.,\u202f]?000\s*T\/an/i],
-    ['1 500 T/mois', /\b1[\s.,\u202f]?000\s*T\/mois/i],
+    ['1 500 T/mois', /\b1[\s.,\u202f]?500\s*T\/mois/i],
     ['3 000 T/an PRS', /\b3[\s.,\u202f]?000\s*T\/an/i],
     ['12 000 T/an table', /\b12[\s.,\u202f]?000\s*T\/an/i],
     ['1 000 T/mois table', /\b1[\s.,\u202f]?000\s*T\/mois/i],

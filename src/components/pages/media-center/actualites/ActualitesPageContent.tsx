@@ -68,9 +68,11 @@ function PressCard({ item }: { item: PressItem }) {
         </span>
       </div>
 
-      <h2 className="mt-4 font-headline text-xl font-bold leading-snug text-primary md:text-2xl">
+      {/* h3, not h2: the section above already owns the page's only h2, and a
+          card headline is subordinate to it. */}
+      <h3 className="mt-4 font-headline text-xl font-bold leading-snug text-primary md:text-2xl">
         {item.headline}
-      </h2>
+      </h3>
 
       <p className="mt-3 text-muted-foreground">{item.summary}</p>
 
@@ -166,9 +168,9 @@ export function ActualitesPageContent() {
                 </span>
               </div>
               <p className="mt-6 text-muted-foreground">
-                Cette page rassemble des articles publiés par des tiers qui citent nommément Bordj
-                Steel. Ce ne sont pas nos communications : chaque lien renvoie au média qui l’a
-                publié, et chaque fiche reproduit la phrase exacte où notre nom apparaît.
+                Cette page rassemble des articles qui citent nommément Bordj Steel. Nous n’en
+                sommes pas l’éditeur : chaque lien renvoie au média qui les a publiés, et chaque
+                fiche reproduit la phrase exacte où notre nom apparaît.
               </p>
               <p className="mt-3 text-muted-foreground">
                 Les articles signalés « Communiqué » sont des annonces émises par l’entreprise ou
