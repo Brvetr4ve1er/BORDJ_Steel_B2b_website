@@ -18,6 +18,8 @@ import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
 import { useState, useRef, useEffect } from 'react';
 import { DepartmentFigure, type DepartmentFigureKey } from '@/components/contact/department-figures';
+import { ContactScene3D } from '@/components/contact/contact-scene-3d';
+import { CONTACT_SCENE_STYLE, SCENE_CAPTIONS } from '@/config/contact-scene';
 import { companyData } from '@/config/company-data';
 
 // Static icon map hoisted to module scope so it isn't recreated on every render
@@ -44,6 +46,7 @@ interface ContactCardProps {
   phone?: string;
   email?: string;
   figure?: DepartmentFigureKey;
+  scene?: string;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -54,6 +57,7 @@ function ContactCard({
   phone,
   email,
   figure,
+  scene,
   className,
   style,
 }: ContactCardProps) {
@@ -101,21 +105,42 @@ function ContactCard({
       )}
       style={style}
     >
-      {/* Illustration panel. This was an h-96 full-bleed photograph; a technical
-          drawing wants breathing room and a flat ground rather than a crop, so
-          the panel is shorter, padded, and carries a faint drafting grid. The
-          hover scale is gentler than the photo's 1.10 — line art magnifies its
-          own stroke weights and 1.10 read as a wobble. */}
-      <div className="relative h-56 w-full overflow-hidden border-b border-border bg-secondary/30">
-        {/* Shared with the /about/history timeline — see .wf-ground in
-            globals.css. One definition, so the two grounds cannot drift into
-            looking almost-but-not-quite the same. */}
-        <div aria-hidden="true" className="wf-ground absolute inset-0" />
+      {/* Illustration panel.
+          Base layer: the flat SVG figure, server-rendered, always correct.
+          Enhancement: a real-time 3D scene from the imported design, which
+          fades in over the SVG only once it has actually drawn — and never at
+          all under reduced motion, save-data, or a failed import.
+          The ground changes with the style, as the design specifies: style 'a'
+          floats the clay render over the drafting grid, style 'b' sets the
+          isometric tile on a cool gradient. */}
+      <div
+        className={cn(
+          'relative h-56 w-full overflow-hidden border-b border-border',
+          CONTACT_SCENE_STYLE === 'b'
+            ? 'bg-gradient-to-b from-[#fafbfc] to-[#eef1f4]'
+            : 'bg-secondary/30'
+        )}
+      >
+        {CONTACT_SCENE_STYLE === 'a' ? (
+          // Shared with the /about/history timeline — see .wf-ground in
+          // globals.css. One definition, so the two grounds cannot drift.
+          <div aria-hidden="true" className="wf-ground absolute inset-0" />
+        ) : null}
+
         {figure && (
           <div className="relative flex h-full w-full items-center justify-center p-5 transition-transform duration-700 group-hover:scale-[1.04]">
             <DepartmentFigure figure={figure} title={title} />
           </div>
         )}
+
+        {scene ? <ContactScene3D scene={scene} style={CONTACT_SCENE_STYLE} /> : null}
+
+        {CONTACT_SCENE_STYLE === 'b' && scene && SCENE_CAPTIONS[scene] ? (
+          <span className="pointer-events-none absolute bottom-2.5 left-3 flex items-center gap-1.5 whitespace-nowrap font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500">
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-[1px] bg-accent" />
+            {SCENE_CAPTIONS[scene]}
+          </span>
+        ) : null}
       </div>
 
       <div className="relative flex flex-col gap-4 p-6">
@@ -229,6 +254,7 @@ export function ContactInfo() {
                   phone={department.phone}
                   email={department.email}
                   figure={department.figure as DepartmentFigureKey | undefined}
+                  scene={department.scene}
                 />
               </AnimatedWrapper>
             );

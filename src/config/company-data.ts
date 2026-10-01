@@ -489,35 +489,35 @@ export const companyData = {
           {
             icon: 'Building2',
             title: "Bureau Commercial",
-            figure: "devis",
+            figure: "devis", scene: "bureau",
             email: "commercial@bordjsteel.dz",
             phone: "+213 561 61 60 05",
           },
           {
             icon: 'HardHat',
             title: "Charpente Métallique",
-            figure: "portique",
+            figure: "portique", scene: "charpente",
             phone: "+213 770 98 43 14",
             email: "commercial@bordjsteel.dz",
           },
           {
             icon: 'Package',
             title: "Panneaux Sandwich",
-            figure: "panneau",
+            figure: "panneau", scene: "sandwich",
             phone: "+213 770 70 59 78",
             email: "commercial@bordjsteel.dz",
           },
           {
             icon: 'Zap',
             title: "Galvanisation",
-            figure: "bain",
+            figure: "bain", scene: "galva",
             phone: "+213 770 35 73 47",
             email: "commercial@bordjsteel.dz",
           },
           {
             icon: 'Headphones',
             title: "Écoute Client",
-            figure: "support",
+            figure: "support", scene: "ecoute",
             phone: "+213 770 83 25 96",
             // CLIENT NOTE: this address appears nowhere else on the site (see
             // `emails` above). Kept verbatim; confirm with the client.
@@ -526,7 +526,7 @@ export const companyData = {
           {
             icon: 'Wrench',
             title: "Réalisation et Montage",
-            figure: "montage",
+            figure: "montage", scene: "montage",
             phone: "+213 770 98 01 48",
             email: "commercial@bordjsteel.dz",
           },
