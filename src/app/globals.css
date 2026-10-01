@@ -199,3 +199,18 @@
     }
   }
 }
+
+/* Drafting grid used as the ground for technical illustration.
+   Introduced for the /contact department figures and reused by the
+   /about/history timeline, so the two read as one system. Defined once here
+   rather than as an inline style in each component: two near-identical grids
+   look like a mistake, which is worse than two different ones. */
+@layer components {
+  .wf-ground {
+    background-image:
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity: 0.55;
+  }
+}

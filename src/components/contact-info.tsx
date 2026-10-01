@@ -107,15 +107,10 @@ function ContactCard({
           hover scale is gentler than the photo's 1.10 — line art magnifies its
           own stroke weights and 1.10 read as a wobble. */}
       <div className="relative h-56 w-full overflow-hidden border-b border-border bg-secondary/30">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 opacity-[0.55]"
-          style={{
-            backgroundImage:
-              'linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px)',
-            backgroundSize: '22px 22px',
-          }}
-        />
+        {/* Shared with the /about/history timeline — see .wf-ground in
+            globals.css. One definition, so the two grounds cannot drift into
+            looking almost-but-not-quite the same. */}
+        <div aria-hidden="true" className="wf-ground absolute inset-0" />
         {figure && (
           <div className="relative flex h-full w-full items-center justify-center p-5 transition-transform duration-700 group-hover:scale-[1.04]">
             <DepartmentFigure figure={figure} title={title} />
