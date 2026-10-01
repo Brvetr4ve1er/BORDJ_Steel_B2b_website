@@ -17,7 +17,7 @@ import {
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
 import { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
+import { DepartmentFigure, type DepartmentFigureKey } from '@/components/contact/department-figures';
 import { companyData } from '@/config/company-data';
 
 // Static icon map hoisted to module scope so it isn't recreated on every render
@@ -43,7 +43,7 @@ interface ContactCardProps {
   title: string;
   phone?: string;
   email?: string;
-  image?: string;
+  figure?: DepartmentFigureKey;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -53,7 +53,7 @@ function ContactCard({
   title,
   phone,
   email,
-  image,
+  figure,
   className,
   style,
 }: ContactCardProps) {
@@ -101,15 +101,25 @@ function ContactCard({
       )}
       style={style}
     >
-      <div className="relative h-96 w-full overflow-hidden">
-        {image && (
-          <Image
-            src={image}
-            alt={title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
-          />
+      {/* Illustration panel. This was an h-96 full-bleed photograph; a technical
+          drawing wants breathing room and a flat ground rather than a crop, so
+          the panel is shorter, padded, and carries a faint drafting grid. The
+          hover scale is gentler than the photo's 1.10 — line art magnifies its
+          own stroke weights and 1.10 read as a wobble. */}
+      <div className="relative h-56 w-full overflow-hidden border-b border-border bg-secondary/30">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-[0.55]"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px)',
+            backgroundSize: '22px 22px',
+          }}
+        />
+        {figure && (
+          <div className="relative flex h-full w-full items-center justify-center p-5 transition-transform duration-700 group-hover:scale-[1.04]">
+            <DepartmentFigure figure={figure} title={title} />
+          </div>
         )}
       </div>
 
@@ -223,7 +233,7 @@ export function ContactInfo() {
                   title={department.title}
                   phone={department.phone}
                   email={department.email}
-                  image={department.image}
+                  figure={department.figure as DepartmentFigureKey | undefined}
                 />
               </AnimatedWrapper>
             );

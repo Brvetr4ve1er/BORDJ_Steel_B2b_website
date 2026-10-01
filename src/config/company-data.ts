@@ -476,6 +476,12 @@ export const companyData = {
         },
         // Department directory rendered on /contact (ContactInfo component).
         // `icon` is a lucide-react icon name, resolved by the component.
+        // `figure` selects a technical illustration from
+        // components/contact/department-figures.tsx. It REPLACED an `image`
+        // per card: six AI-generated photographs of generic office meetings
+        // that showed nothing about the department they labelled (one had the
+        // letters "RH" floating in the room as an object). Real photography of
+        // these teams is still welcome and would belong here instead.
         // CLIENT NOTE: the primary number `phones[0]` (+213 770 35 66 86) is
         // deliberately on no department card — which number is canonical is
         // still an open client decision. Do not "correct" these without it.
@@ -483,46 +489,46 @@ export const companyData = {
           {
             icon: 'Building2',
             title: "Bureau Commercial",
+            figure: "devis",
             email: "commercial@bordjsteel.dz",
             phone: "+213 561 61 60 05",
-            image: "/media/85abf719f734e7c11defc2c680c1-8a19bd5f.webp",
           },
           {
             icon: 'HardHat',
             title: "Charpente Métallique",
+            figure: "portique",
             phone: "+213 770 98 43 14",
             email: "commercial@bordjsteel.dz",
-            image: "/media/e4e9e2933ed8fa9f0d49d50c4d61-ffd2b7e1.webp",
           },
           {
             icon: 'Package',
             title: "Panneaux Sandwich",
+            figure: "panneau",
             phone: "+213 770 70 59 78",
             email: "commercial@bordjsteel.dz",
-            image: "/media/f482924f5237e9d9f98da4e26adf-a5890cd7.webp",
           },
           {
             icon: 'Zap',
             title: "Galvanisation",
+            figure: "bain",
             phone: "+213 770 35 73 47",
             email: "commercial@bordjsteel.dz",
-            image: images.galvanisation.contactCard.src,
           },
           {
             icon: 'Headphones',
             title: "Écoute Client",
+            figure: "support",
             phone: "+213 770 83 25 96",
             // CLIENT NOTE: this address appears nowhere else on the site (see
             // `emails` above). Kept verbatim; confirm with the client.
             email: "marketing@bordjsteel.dz",
-            image: "/media/2c792262ee0e5c2f3a1290cd0682-610b04f1.webp",
           },
           {
             icon: 'Wrench',
             title: "Réalisation et Montage",
+            figure: "montage",
             phone: "+213 770 98 01 48",
             email: "commercial@bordjsteel.dz",
-            image: "/media/a30d652c6e58b3aebe5ca3561af4-c5bd987d.webp",
           },
         ],
       }
