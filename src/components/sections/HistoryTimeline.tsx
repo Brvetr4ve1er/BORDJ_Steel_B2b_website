@@ -1,6 +1,7 @@
 import React from 'react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { companyData } from '@/config/company-data';
+import { HistoryFigure } from './history-figures';
 
 /**
  * "Notre Parcours" — the company history, drawn as a measured axis.
@@ -41,6 +42,8 @@ type TimelineEvent = {
   title: string;
   description: string;
   milestone?: boolean;
+  /** Key into history-figures.tsx. Absent means the row renders text only. */
+  figure?: string;
 };
 
 /**
@@ -146,23 +149,37 @@ export function HistoryTimeline() {
                     {String(i + 1).padStart(2, '0')}
                   </span>
 
-                  <div className="flex items-baseline gap-4">
-                    <span className="font-headline text-4xl font-bold tabular-nums text-accent md:text-5xl">
-                      {event.year}
-                    </span>
-                    {event.milestone ? (
-                      <span className="rounded-full border border-accent/40 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-accent">
-                        Étape clé
-                      </span>
+                  {/* Text left, drawing right. The figure is the reason this
+                      card is not a paragraph in a box: each one draws what that
+                      year actually produced. It sits in a fixed-ratio box so a
+                      row's height is set by its copy, never by its artwork. */}
+                  <div className="grid items-center gap-6 sm:grid-cols-[1fr_auto]">
+                    <div>
+                      <div className="flex items-baseline gap-4">
+                        <span className="font-headline text-4xl font-bold tabular-nums text-accent md:text-5xl">
+                          {event.year}
+                        </span>
+                        {event.milestone ? (
+                          <span className="rounded-full border border-accent/40 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-accent">
+                            Étape clé
+                          </span>
+                        ) : null}
+                      </div>
+
+                      <h3 className="mt-3 font-headline text-xl font-semibold text-primary md:text-2xl">
+                        {event.title}
+                      </h3>
+                      <p className="mt-2 max-w-xl leading-relaxed text-muted-foreground">
+                        {event.description}
+                      </p>
+                    </div>
+
+                    {event.figure ? (
+                      <div className="h-32 w-44 shrink-0 justify-self-center sm:h-36 sm:w-52 sm:justify-self-end">
+                        <HistoryFigure figure={event.figure} />
+                      </div>
                     ) : null}
                   </div>
-
-                  <h3 className="mt-3 font-headline text-xl font-semibold text-primary md:text-2xl">
-                    {event.title}
-                  </h3>
-                  <p className="mt-2 max-w-2xl leading-relaxed text-muted-foreground">
-                    {event.description}
-                  </p>
                 </article>
               </li>
             </AnimatedWrapper>

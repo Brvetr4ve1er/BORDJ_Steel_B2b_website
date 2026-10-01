@@ -1,5 +1,15 @@
 import * as React from 'react';
-import { WF, WF_FONT } from '@/components/wireframes/wf-theme';
+import { WF } from '@/components/wireframes/wf-theme';
+import {
+  INK,
+  DIM,
+  ACCENT,
+  W_MAIN,
+  W_THIN,
+  W_ACCENT,
+  Cap,
+  Dim,
+} from '@/components/wireframes/figure-kit';
 
 /**
  * Explanatory figures for the six department cards on /contact.
@@ -34,62 +44,7 @@ export type DepartmentFigureKey =
   | 'support'
   | 'montage';
 
-const INK = WF.ink;
-const DIM = WF.dim;
-const ACCENT = WF.accent;
 
-/** Shared stroke weights, so the six read as one hand. */
-const W_MAIN = 3.0;
-const W_THIN = 1.75;
-const W_ACCENT = 3.4;
-
-function Cap({ x, y, children, anchor = 'middle', color = WF.labelMuted }: {
-  x: number;
-  y: number;
-  children: React.ReactNode;
-  anchor?: 'start' | 'middle' | 'end';
-  color?: string;
-}) {
-  return (
-    <text
-      x={x}
-      y={y}
-      textAnchor={anchor}
-      fontFamily={WF_FONT}
-      fontSize={15}
-      fontWeight={600}
-      letterSpacing={0.2}
-      fill={color}
-    >
-      {children}
-    </text>
-  );
-}
-
-/** Horizontal dimension line with end ticks. */
-function Dim({ x1, x2, y, label, color = DIM, labelColor = WF.label }: {
-  x1: number;
-  x2: number;
-  y: number;
-  label: string;
-  color?: string;
-  labelColor?: string;
-}) {
-  return (
-    <g>
-      <path
-        d={`M ${x1} ${y} L ${x2} ${y} M ${x1} ${y - 5} L ${x1} ${y + 5} M ${x2} ${y - 5} L ${x2} ${y + 5}`}
-        fill="none"
-        stroke={color}
-        strokeWidth={W_THIN}
-        strokeLinecap="round"
-      />
-      <Cap x={(x1 + x2) / 2} y={y - 9} color={labelColor}>
-        {label}
-      </Cap>
-    </g>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 /* 1. Bureau Commercial — a quotation sheet                            */
