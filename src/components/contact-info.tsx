@@ -113,9 +113,15 @@ function ContactCard({
           The ground changes with the style, as the design specifies: style 'a'
           floats the clay render over the drafting grid, style 'b' sets the
           isometric tile on a cool gradient. */}
+      {/* 3:2, not a fixed height. The scenes are framed by the design for a
+          ~1.5 aspect, and the module only widens its camera when the panel is
+          NARROWER than that (Math.max(1, 1.5 / aspect)) — above 1.5 it does
+          nothing, so a short wide panel just leaves the subject small with dead
+          space either side. A fixed h-56 gave 2.04 at desktop column widths.
+          An aspect box holds the design's framing at every column width. */}
       <div
         className={cn(
-          'relative h-56 w-full overflow-hidden border-b border-border',
+          'relative aspect-[3/2] w-full overflow-hidden border-b border-border',
           CONTACT_SCENE_STYLE === 'b'
             ? 'bg-gradient-to-b from-[#fafbfc] to-[#eef1f4]'
             : 'bg-secondary/30'
@@ -127,13 +133,19 @@ function ContactCard({
           <div aria-hidden="true" className="wf-ground absolute inset-0" />
         ) : null}
 
-        {figure && (
-          <div className="relative flex h-full w-full items-center justify-center p-5 transition-transform duration-700 group-hover:scale-[1.04]">
-            <DepartmentFigure figure={figure} title={title} />
-          </div>
+        {scene ? (
+          <ContactScene3D
+            scene={scene}
+            style={CONTACT_SCENE_STYLE}
+            fallback={figure ? <DepartmentFigure figure={figure} title={title} /> : null}
+          />
+        ) : (
+          figure && (
+            <div className="absolute inset-0 flex items-center justify-center p-5 transition-transform duration-700 group-hover:scale-[1.04]">
+              <DepartmentFigure figure={figure} title={title} />
+            </div>
+          )
         )}
-
-        {scene ? <ContactScene3D scene={scene} style={CONTACT_SCENE_STYLE} /> : null}
 
         {CONTACT_SCENE_STYLE === 'b' && scene && SCENE_CAPTIONS[scene] ? (
           <span className="pointer-events-none absolute bottom-2.5 left-3 flex items-center gap-1.5 whitespace-nowrap font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500">

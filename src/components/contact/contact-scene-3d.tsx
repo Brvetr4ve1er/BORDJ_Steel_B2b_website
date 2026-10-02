@@ -76,9 +76,19 @@ function saveData(): boolean {
 export function ContactScene3D({
   scene,
   style,
+  fallback,
 }: {
   scene: string;
   style: ContactSceneStyle;
+  /**
+   * The flat SVG figure. This component owns BOTH layers because it is the only
+   * thing that knows when the canvas has actually painted — and the two must
+   * never be visible at once. The renderer is created with `alpha: true` and a
+   * fully transparent clear colour, so a canvas drawn over a visible SVG shows
+   * both drawings stacked. Leaving the fallback mounted-but-visible was exactly
+   * that bug.
+   */
+  fallback?: React.ReactNode;
 }) {
   // Null until the client has decided it is allowed to run. Deliberately not a
   // `useState(prefersReducedMotion())` initialiser: that would differ between
@@ -121,17 +131,34 @@ export function ContactScene3D({
     };
   }, [enabled]);
 
-  if (!enabled) return null;
-
   return (
-    <canvas
-      ref={canvasRef}
-      data-scene={scene}
-      data-style={style}
-      aria-hidden="true"
-      className={`absolute inset-0 block h-full w-full transition-opacity duration-700 ${
-        painted ? 'opacity-100' : 'opacity-0'
-      }`}
-    />
+    <>
+      {/* The fallback yields as the canvas arrives. It keeps its own hover
+          scale so a card without 3D still responds, and it is removed from the
+          a11y tree once hidden so a screen reader is not offered a drawing
+          nobody can see. */}
+      {fallback ? (
+        <div
+          aria-hidden={painted ? 'true' : undefined}
+          className={`absolute inset-0 flex items-center justify-center p-5 transition-opacity duration-500 group-hover:scale-[1.04] motion-safe:transition-transform ${
+            painted ? 'pointer-events-none opacity-0' : 'opacity-100'
+          }`}
+        >
+          {fallback}
+        </div>
+      ) : null}
+
+      {enabled ? (
+        <canvas
+          ref={canvasRef}
+          data-scene={scene}
+          data-style={style}
+          aria-hidden="true"
+          className={`absolute inset-0 block h-full w-full transition-opacity duration-700 ${
+            painted ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      ) : null}
+    </>
   );
 }
