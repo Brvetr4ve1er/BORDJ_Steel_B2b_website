@@ -1,58 +1,21 @@
 
-import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import { KenBurns } from '@/components/ui/ken-burns';
-import { VideoLoop } from '@/components/ui/video-loop';
+import { TechnicalHero } from '@/components/sections/technical-hero';
 import dynamic from 'next/dynamic';
 import { FactoryLocationCard } from '@/components/sections/contact/FactoryLocationCard';
 
 const ContactInfo = dynamic(() => import('@/components/contact-info').then(mod => mod.ContactInfo));
 
 export function ContactPageContent() {
-  const heroImage = {
-      src: "/media/1f3da28625335403956d26a2163a-7f7e7da3.webp",
-      alt: "Contact center with operators",
-      aiHint: "contact center"
-  }
 
   return (
     <>
-      <section className="relative h-[60dvh] w-full flex items-center justify-center text-white overflow-hidden p-0">
-        <KenBurns variant="out" className="absolute inset-0 z-0">
-          <Image
-            src={heroImage.src}
-            alt={heroImage.alt}
-            fill
-            className="object-cover"
-            priority
-            data-ai-hint={heroImage.aiHint}
-          />
-        </KenBurns>
-        {/*
-          * The ambient loop was generated from the still above and sits between it
-          * and the scrim, so the scrim and every piece of copy still read exactly
-          * as they do over the photo. It renders nothing at all unless it is going
-          * to play — see VideoLoop — so the <Image> above remains the LCP element
-          * and is what a phone, a reduced-motion visitor and every crawler get.
-          * Deliberately NOT inside KenBurns: the clip carries its own camera move,
-          * and compounding it with the drift would double the motion.
-          */}
-        <VideoLoop
-          src="/media/loops/contact-hero.mp4"
-          className="absolute inset-0 z-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/60 z-10" />
-        <div className="relative z-20 container mx-auto px-4 text-center">
-          <AnimatedWrapper animation="zoom-in">
-            <h1 className="font-headline text-6xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white">
-              Contactez-Nous
-            </h1>
-            <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 mx-auto">
-              Notre équipe est prête à vous aider. Prenons contact.
-            </p>
-          </AnimatedWrapper>
-        </div>
-      </section>
+      <TechnicalHero
+        eyebrow="Bordj Bou Arréridj — Algérie"
+        title="Contactez-Nous"
+        subtitle={"Notre équipe est prête à vous aider. Prenons contact."}
+        motif="datum"
+      />
       <section className="py-16 md:py-24 lg:py-32 bg-secondary">
         <ContactInfo />
       </section>
