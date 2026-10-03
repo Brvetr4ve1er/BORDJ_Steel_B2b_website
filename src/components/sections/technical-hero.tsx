@@ -26,18 +26,36 @@ import { WF } from '@/components/wireframes/wf-theme';
  * `prefers-reduced-motion: reduce`.
  */
 
-export type HeroMotif = 'portal' | 'datum';
+export type HeroMotif =
+  | 'portal'
+  | 'datum'
+  | 'sheets'
+  | 'frames'
+  | 'reel'
+  | 'press'
+  | 'column';
 
 export function TechnicalHero({
   eyebrow,
   title,
   subtitle,
   motif,
+  readout,
 }: {
   eyebrow: string;
   title: string;
   subtitle: string;
   motif: HeroMotif;
+  /**
+   * Optional corner readout, in the manner of a drawing's cartouche.
+   *
+   * It exists because the gallery's previous hero carried
+   * `${TILES.length} VUES · ${AVAILABLE_CATEGORIES.length} CATÉGORIES` — counts
+   * derived from the data rather than typed in. That is worth keeping, and
+   * worth offering to the other sections, so each hero can state how much it
+   * actually holds without anyone maintaining a number by hand.
+   */
+  readout?: string;
 }) {
   return (
     <section className="relative flex h-[60dvh] w-full items-center justify-center overflow-hidden bg-[#1b2430] p-0 text-white">
@@ -82,6 +100,12 @@ export function TechnicalHero({
         className="pointer-events-none absolute bottom-5 right-5 h-8 w-8 border-b-2 border-r-2 border-accent md:bottom-8 md:right-8"
       />
 
+      {readout ? (
+        <span className="pointer-events-none absolute bottom-7 left-7 z-20 hidden font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-white/45 md:bottom-10 md:left-10 md:block">
+          {readout}
+        </span>
+      ) : null}
+
       <div className="container relative z-20 mx-auto px-4 text-center">
         <AnimatedWrapper animation="zoom-in">
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-accent">
@@ -115,7 +139,10 @@ function HeroMotifArt({ motif }: { motif: HeroMotif }) {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        {motif === 'portal' ? <g transform="translate(0,46)"><PortalMotif /></g> : <g transform="translate(0,40)"><DatumMotif /></g>}
+        {/* Each motif carries its own vertical offset: the composition is tuned
+            per drawing so nothing lands behind the eyebrow, which is the one
+            place red copy and red linework can collide. */}
+        <g transform={`translate(0,${MOTIFS[motif].dy})`}>{MOTIFS[motif].render()}</g>
       </svg>
     </div>
   );
@@ -253,3 +280,243 @@ function DatumMotif() {
     </g>
   );
 }
+
+/* ------------------------------------------------------------------------ */
+/* Media Center motifs                                                       */
+/*                                                                           */
+/* These five replaced AI stock photographs on the Media Center pages — a    */
+/* stock newsroom, a stock gallery wall, and so on. Same reasoning as the    */
+/* contact and history heroes: the client has supplied no photography, and   */
+/* generating more synthetic "photos" is what created the problem. Each      */
+/* motif draws the FORM of what the page holds — a sheet, a frame, a reel, a */
+/* press sheet, a column — instead of a picture of somebody else's.          */
+/* ------------------------------------------------------------------------ */
+
+/** Hub: drawing sheets stacked, because the hub holds every other section. */
+function SheetsMotif() {
+  const sheets = [
+    { x: 300, y: 120, w: 420, h: 300, o: 0.3 },
+    { x: 360, y: 90, w: 420, h: 300, o: 0.55 },
+    { x: 420, y: 60, w: 420, h: 300, o: 1 },
+  ];
+  return (
+    <g>
+      {sheets.map((s, i) => {
+        const top = i === sheets.length - 1;
+        return (
+          <g key={i} opacity={s.o}>
+            <path
+              d={`M ${s.x} ${s.y} L ${s.x + s.w - 42} ${s.y} L ${s.x + s.w} ${s.y + 42} L ${s.x + s.w} ${s.y + s.h} L ${s.x} ${s.y + s.h} Z`}
+              fill="rgba(255,255,255,0.03)"
+              stroke={top ? LINE : FAINT}
+              strokeWidth={top ? 2.5 : 2}
+            />
+            <path
+              d={`M ${s.x + s.w - 42} ${s.y} L ${s.x + s.w - 42} ${s.y + 42} L ${s.x + s.w} ${s.y + 42}`}
+              fill="none"
+              stroke={top ? LINE : FAINT}
+              strokeWidth={1.5}
+            />
+            <path
+              d={`M ${s.x} ${s.y + s.h - 56} L ${s.x + s.w} ${s.y + s.h - 56} M ${s.x + 150} ${s.y + s.h - 56} L ${s.x + 150} ${s.y + s.h} M ${s.x + 280} ${s.y + s.h - 56} L ${s.x + 280} ${s.y + s.h}`}
+              fill="none"
+              stroke={top ? LINE : FAINT}
+              strokeWidth={1.5}
+            />
+            {top ? (
+              <path
+                d={`M ${s.x} ${s.y} L ${s.x} ${s.y + 34} M ${s.x} ${s.y} L ${s.x + 34} ${s.y}`}
+                stroke={WF.accent}
+                strokeWidth={4}
+                fill="none"
+              />
+            ) : null}
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+/** Gallery: a contact sheet of image frames, one registered in red. */
+function FramesMotif() {
+  const cells: Array<[number, number]> = [];
+  for (let r = 0; r < 2; r++) for (let c = 0; c < 4; c++) cells.push([c, r]);
+  const w = 200;
+  const h = 150;
+  const gap = 28;
+  const x0 = 600 - (4 * w + 3 * gap) / 2;
+  const y0 = 240 - (2 * h + gap) / 2;
+  return (
+    <g>
+      {cells.map(([c, r], i) => {
+        const x = x0 + c * (w + gap);
+        const y = y0 + r * (h + gap);
+        const hot = i === 5;
+        return (
+          <g key={i}>
+            <rect
+              x={x}
+              y={y}
+              width={w}
+              height={h}
+              fill="rgba(255,255,255,0.03)"
+              stroke={hot ? WF.accent : LINE}
+              strokeWidth={hot ? 3 : 2}
+            />
+            {[
+              [x, y, 1, 1],
+              [x + w, y, -1, 1],
+              [x, y + h, 1, -1],
+              [x + w, y + h, -1, -1],
+            ].map(([cx, cy, sx, sy], j) => (
+              <path
+                key={j}
+                d={`M ${cx} ${Number(cy) + Number(sy) * 14} L ${cx} ${cy} L ${Number(cx) + Number(sx) * 14} ${cy}`}
+                stroke={hot ? WF.accent : FAINT}
+                strokeWidth={1.5}
+                fill="none"
+              />
+            ))}
+            <path
+              d={`M ${x + 18} ${y + h * 0.66} L ${x + w - 18} ${y + h * 0.66}`}
+              stroke={FAINT}
+              strokeWidth={1.5}
+              fill="none"
+            />
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+/** Videos: a film frame with sprockets and a timecode rule. */
+function ReelMotif() {
+  const x = 330;
+  const y = 120;
+  const w = 540;
+  const h = 290;
+  return (
+    <g>
+      <rect x={x} y={y} width={w} height={h} fill="rgba(255,255,255,0.03)" stroke={LINE} strokeWidth={2.5} />
+      {Array.from({ length: 11 }, (_, i) => x + 24 + i * 50).map((sx) => (
+        <g key={sx}>
+          <rect x={sx} y={y - 34} width={26} height={20} rx={3} fill="none" stroke={FAINT} strokeWidth={2} />
+          <rect x={sx} y={y + h + 14} width={26} height={20} rx={3} fill="none" stroke={FAINT} strokeWidth={2} />
+        </g>
+      ))}
+      <path
+        d={`M ${x + w / 2 - 30} ${y + h / 2 - 42} L ${x + w / 2 + 48} ${y + h / 2} L ${x + w / 2 - 30} ${y + h / 2 + 42} Z`}
+        fill="none"
+        stroke={WF.accent}
+        strokeWidth={4}
+      />
+      <path d={`M ${x} ${y + h + 62} L ${x + w} ${y + h + 62}`} stroke={LINE} strokeWidth={1.5} fill="none" />
+      {Array.from({ length: 19 }, (_, i) => x + i * 30).map((tx, i) => (
+        <path
+          key={tx}
+          d={`M ${tx} ${y + h + 62} L ${tx} ${y + h + (i % 3 === 0 ? 76 : 70)}`}
+          stroke={FAINT}
+          strokeWidth={1.5}
+          fill="none"
+        />
+      ))}
+    </g>
+  );
+}
+
+/** Actualites: a press sheet — masthead rule, columns, a fold. */
+function PressMotif() {
+  const x = 340;
+  const y = 70;
+  const w = 520;
+  const h = 360;
+  const colW = (w - 2 * 26) / 3;
+  return (
+    <g>
+      <rect x={x} y={y} width={w} height={h} fill="rgba(255,255,255,0.03)" stroke={LINE} strokeWidth={2.5} />
+      <path d={`M ${x + 26} ${y + 46} L ${x + w - 26} ${y + 46}`} stroke={WF.accent} strokeWidth={4} fill="none" />
+      <path d={`M ${x + 26} ${y + 62} L ${x + w - 26} ${y + 62}`} stroke={FAINT} strokeWidth={1.5} fill="none" />
+      {[0, 1, 2].map((c) => {
+        const cx = x + 26 + c * (colW + 26);
+        return (
+          <g key={c}>
+            {Array.from({ length: 11 }, (_, i) => y + 96 + i * 24).map((ry, i) => (
+              <path
+                key={ry}
+                d={`M ${cx} ${ry} L ${cx + (i === 10 ? colW * 0.55 : colW)} ${ry}`}
+                stroke={FAINT}
+                strokeWidth={2}
+                fill="none"
+              />
+            ))}
+          </g>
+        );
+      })}
+      {[1, 2].map((c) => (
+        <path
+          key={c}
+          d={`M ${x + 13 + c * (colW + 26)} ${y + 80} L ${x + 13 + c * (colW + 26)} ${y + h - 24}`}
+          stroke={FAINT}
+          strokeWidth={1}
+          fill="none"
+        />
+      ))}
+      <path
+        d={`M ${x + w / 2} ${y - 18} L ${x + w / 2} ${y + h + 18}`}
+        stroke={FAINT}
+        strokeWidth={1.5}
+        strokeDasharray="8 10"
+        fill="none"
+      />
+    </g>
+  );
+}
+
+/** Blog: a single article column, set with a drop cap and a measure. */
+function ColumnMotif() {
+  const x = 420;
+  const y = 90;
+  const w = 360;
+  return (
+    <g>
+      <rect x={x} y={y} width={76} height={76} fill="none" stroke={WF.accent} strokeWidth={3.5} />
+      {[0, 1, 2].map((i) => (
+        <path
+          key={i}
+          d={`M ${x + 94} ${y + 16 + i * 26} L ${x + w} ${y + 16 + i * 26}`}
+          stroke={LINE}
+          strokeWidth={2.5}
+          fill="none"
+        />
+      ))}
+      {Array.from({ length: 9 }, (_, i) => y + 108 + i * 26).map((ry, i) => (
+        <path
+          key={ry}
+          d={`M ${x} ${ry} L ${x + (i === 8 ? w * 0.48 : w)} ${ry}`}
+          stroke={FAINT}
+          strokeWidth={2.5}
+          fill="none"
+        />
+      ))}
+      <path
+        d={`M ${x} ${y + 360} L ${x + w} ${y + 360} M ${x} ${y + 352} L ${x} ${y + 368} M ${x + w} ${y + 352} L ${x + w} ${y + 368}`}
+        stroke={FAINT}
+        strokeWidth={1.5}
+        fill="none"
+      />
+    </g>
+  );
+}
+
+/** Motif registry. `dy` tunes each drawing against the copy block above it. */
+const MOTIFS: Record<HeroMotif, { render: () => React.ReactElement; dy: number }> = {
+  portal: { render: PortalMotif, dy: 46 },
+  datum: { render: DatumMotif, dy: 40 },
+  sheets: { render: SheetsMotif, dy: 28 },
+  frames: { render: FramesMotif, dy: 24 },
+  reel: { render: ReelMotif, dy: 18 },
+  press: { render: PressMotif, dy: 6 },
+  column: { render: ColumnMotif, dy: -40 },
+};

@@ -1,5 +1,6 @@
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { TechnicalHero } from '@/components/sections/technical-hero';
 import Image from 'next/image';
 import { Suspense } from 'react';
 import { BookCopy } from 'lucide-react';
@@ -8,8 +9,6 @@ import { articles as allArticles } from '@/config/blog-data';
 import { certifications, type Certification } from '@/config/company-data';
 import { Button } from '@/components/ui/button';
 import { BlogPostCard } from '@/components/ui/blog-post-card';
-import { KenBurns } from '@/components/ui/ken-burns';
-import { VideoLoop } from '@/components/ui/video-loop';
 import { buildArticleIndex } from '@/components/pages/media-center/blog/blog-article-index';
 import { BlogViewProvider } from '@/components/pages/media-center/blog/blog-view-context';
 import {
@@ -80,50 +79,16 @@ export function BlogPageContent() {
     const articleIndex = buildArticleIndex();
     const featuredArticle = allArticles.find(a => a.isFeatured);
 
-    const heroImage = {
-        src: "/media/7f6511da571d8510b554b57a3705-e82c4b97.webp",
-        alt: "Univers médias de Bordj Steel",
-        aiHint: "digital world"
-    }
 
     return (
         <ProductPageLayout>
-            <section className="relative h-[60dvh] w-full flex items-center justify-center text-white overflow-hidden p-0">
-                {/* The drift lives on the wrapper, which now owns the image's
-                    own `absolute inset-0 z-0`; the scrim below still sits above it. */}
-                <KenBurns variant="out" className="absolute inset-0 z-0">
-                    <Image
-                    src={heroImage.src}
-                    alt={heroImage.alt}
-                    fill
-                    className="object-cover"
-                    priority
-                    data-ai-hint={heroImage.aiHint}
-                    />
-                </KenBurns>
-                {/* The loop sits between the photo (z-0) and the scrim, so the scrim
-                    and every piece of copy still read exactly as they do over the
-                    still. It renders nothing at all unless it is going to play — see
-                    VideoLoop — so the photo above is what a phone, a reduced-motion
-                    visitor and every crawler actually get. Deliberately NOT inside
-                    KenBurns: the clip already carries its own camera move, and
-                    compounding it with the drift would double the motion. */}
-                <VideoLoop
-                  src="/media/loops/blog-hero.mp4"
-                  className="absolute inset-0 z-0 h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/60 z-10" />
-                <div className="relative z-20 container mx-auto px-4 text-center">
-                <AnimatedWrapper animation="zoom-in">
-                    <h1 className="font-headline text-6xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white">
-                    BLOG
-                    </h1>
-                    <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 mx-auto">
-                    Actualités, innovations et savoir-faire de l'industrie de l'acier.
-                    </p>
-                </AnimatedWrapper>
-                </div>
-            </section>
+            <TechnicalHero
+              eyebrow="Articles"
+              title="BLOG"
+              subtitle={"Actualités, innovations et savoir-faire de l'industrie de l'acier."}
+              motif="column"
+              readout={`${allArticles.length} articles`}
+            />
             <BlogViewProvider articles={articleIndex}>
                 {/* The one deferred read on the page, and it renders nothing. */}
                 <Suspense fallback={null}>

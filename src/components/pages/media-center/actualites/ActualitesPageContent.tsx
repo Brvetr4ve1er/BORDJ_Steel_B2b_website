@@ -1,33 +1,8 @@
-import Image from 'next/image';
 import { ExternalLink, Archive } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import { KenBurns } from '@/components/ui/ken-burns';
-import { VideoLoop } from '@/components/ui/video-loop';
+import { TechnicalHero } from '@/components/sections/technical-hero';
 import { pressItemsByDate, type PressItem } from '@/config/press-data';
 
-/**
- * /media-center/actualites.
- *
- * Replaces the "Contenu à venir" placeholder with a REVUE DE PRESSE: articles
- * other people published that name the company. It is deliberately not dressed
- * up as a company news feed, because there is no company news to publish — see
- * the note at the top of `src/config/press-data.ts` for what was accepted,
- * what was rejected and why.
- *
- * Every card states its own evidence: the exact sentence naming Bordj Steel,
- * quoted from the article. A reader can check the claim without following the
- * link, and following the link is always possible.
- *
- * No publisher logos and no article images. The project deliberately removed
- * third-party image hotlinks (tests/media-integrity.test.ts fails if new ones
- * appear), and self-hosting a newspaper's masthead raises a rights question
- * this page does not need to answer. Text cards carry the same information.
- */
-const HERO = {
-  src: '/media/1495020689067-fda78dfb.webp',
-  alt: 'Pile de journaux',
-  aiHint: 'newspapers stack',
-};
 
 const KIND_LABEL: Record<PressItem['kind'], string> = {
   presse: 'Presse',
@@ -113,41 +88,13 @@ export function ActualitesPageContent() {
 
   return (
     <>
-      <section className="relative flex h-[60dvh] w-full items-center justify-center overflow-hidden p-0 text-white">
-        <KenBurns variant="in" className="absolute inset-0 z-0">
-          <Image
-            src={HERO.src}
-            alt={HERO.alt}
-            fill
-            className="object-cover"
-            priority
-            data-ai-hint={HERO.aiHint}
-          />
-        </KenBurns>
-        {/* This loop was generated from the very photograph above, back when
-            this route was the "Contenu à venir" placeholder. The placeholder is
-            gone; the clip still matches its own still, so it keeps its job here
-            rather than being orphaned. Same arrangement as the Media Center hub:
-            between the photo (z-0) and the scrim, outside KenBurns so the drift
-            and the clip's own camera move are not stacked. VideoLoop renders
-            nothing server-side and declines under reduced motion, under 768px or
-            on save-data, so the <Image> stays the LCP element. */}
-        <VideoLoop
-          src="/media/loops/placeholder-hero.mp4"
-          className="absolute inset-0 z-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 z-10 bg-black/60" />
-        <div className="container relative z-20 mx-auto px-4 text-center">
-          <AnimatedWrapper animation="zoom-in">
-            <h1 className="font-headline text-6xl font-bold uppercase leading-tight tracking-tighter text-white md:text-8xl md:leading-tight">
-              Actualités
-            </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-xl text-gray-200 md:text-2xl">
-              Bordj Steel dans la presse.
-            </p>
-          </AnimatedWrapper>
-        </div>
-      </section>
+      <TechnicalHero
+        eyebrow="Revue de presse"
+        title="Actualités"
+        subtitle={"Bordj Steel dans la presse."}
+        motif="press"
+        readout={`${pressItemsByDate.length} articles de presse`}
+      />
 
       <section className="bg-background py-16 md:py-24">
         <div className="container mx-auto px-4">

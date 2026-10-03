@@ -32,9 +32,8 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Maximize2 } from 'lucide-react';
 
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { TechnicalHero } from '@/components/sections/technical-hero';
 import { ImageDialog } from '@/components/ui/image-dialog';
-import { KenBurns } from '@/components/ui/ken-burns';
-import { VideoLoop } from '@/components/ui/video-loop';
 import { WF, WF_FONT } from '@/components/wireframes/wf-theme';
 import { cn } from '@/lib/utils';
 import { companyData, getFacilityImage, getProjectImage } from '@/config/company-data';
@@ -231,44 +230,13 @@ export function GalleryPageContent() {
       {/* Hero — same shape as the other interior pages, with a drafting    */}
       {/* plate laid over the photograph.                                   */}
       {/* ---------------------------------------------------------------- */}
-      <section className="relative h-[60dvh] w-full flex items-center justify-center text-white overflow-hidden p-0">
-        {/* The drift lives on the wrapper, which now owns the image's own
-            `absolute inset-0 z-0`; the scrim below still sits above it. */}
-        <KenBurns variant="left" className="absolute inset-0 z-0">
-          <Image
-            src={HERO_IMAGE.src}
-            alt={HERO_IMAGE.alt}
-            fill
-            className="object-cover"
-            priority
-            data-ai-hint={HERO_IMAGE.aiHint}
-          />
-        </KenBurns>
-        {/* Ambient loop generated from the hero photograph itself, sitting between
-            the photo (z-0) and the scrim — so the scrim, the drafting plate and all
-            copy still read exactly as they do over the still. VideoLoop renders
-            nothing on the server and declines entirely under reduced motion, under
-            768px, or on a save-data connection, so the <Image> above stays the LCP
-            element and the real content. Deliberately NOT inside KenBurns: the clip
-            already carries its own camera move and nesting it inside the drift would
-            double the motion. Hero only — the masonry tiles below keep their stills. */}
-        <VideoLoop
-          src="/media/loops/gallery-hero.mp4"
-          className="absolute inset-0 z-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/60 z-10" />
-        <GalleryHeroPlate />
-        <div className="relative z-20 container mx-auto px-4 text-center">
-          <AnimatedWrapper animation="zoom-in">
-            <h1 className="font-headline text-6xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white">
-              Galerie
-            </h1>
-            <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 mx-auto">
-              Explorez nos réalisations en images.
-            </p>
-          </AnimatedWrapper>
-        </div>
-      </section>
+      <TechnicalHero
+        eyebrow="Réalisations"
+        title="Galerie"
+        subtitle={"Explorez nos réalisations en images."}
+        motif="frames"
+        readout={`${TILES.length} vues · ${AVAILABLE_CATEGORIES.length} catégories`}
+      />
 
       {/* ---------------------------------------------------------------- */}
       {/* Filter rail — sticks under the fixed navbar (h-20 / md:h-24).     */}
@@ -358,126 +326,6 @@ export function GalleryPageContent() {
 /* Hero image                                                                  */
 /* -------------------------------------------------------------------------- */
 
-/**
- * The photograph the live /media-center/gallery route already ships. Kept here
- * verbatim so swapping the placeholder for this component does not change the
- * hero visitors have been seeing; the file is present in public/media and is
- * covered by tests/media-integrity.test.ts.
- */
-const HERO_IMAGE = {
-  src: '/media/1534353436294-2afca52f.webp',
-  alt: 'Galerie de réalisations Bordj Steel',
-  aiHint: 'photo gallery',
-} as const;
-
-/* -------------------------------------------------------------------------- */
-/* Hero drafting plate                                                         */
-/* -------------------------------------------------------------------------- */
-
-/**
- * Low-opacity shop-drawing plate over the hero photograph: dashed frame, corner
- * registration crosses, a ticked rule, and a cartouche whose numbers are read
- * off the assembled tile list. Decorative only — `aria-hidden`, never clickable.
- */
-function GalleryHeroPlate() {
-  const ticks = Array.from({ length: 15 }, (_, i) => 120 + i * 96);
-
-  return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 overflow-hidden">
-      <svg
-        viewBox="0 0 1600 500"
-        preserveAspectRatio="xMidYMid slice"
-        xmlns="http://www.w3.org/2000/svg"
-        focusable="false"
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full"
-      >
-        {/* Drafting frame */}
-        <rect
-          className="gal-plate-draw"
-          x={40}
-          y={40}
-          width={1520}
-          height={420}
-          fill="none"
-          stroke={WF.steel}
-          strokeWidth={1.25}
-          strokeDasharray="10 8"
-          opacity={0.4}
-        />
-
-        {/* Corner registration crosses */}
-        {(
-          [
-            [40, 40],
-            [1560, 40],
-            [40, 460],
-            [1560, 460],
-          ] as ReadonlyArray<readonly [number, number]>
-        ).map(([cx, cy]) => (
-          <g className="gal-plate-fade" key={`${cx}-${cy}`} opacity={0.55}>
-            <path
-              d={`M ${cx - 14} ${cy} L ${cx + 14} ${cy} M ${cx} ${cy - 14} L ${cx} ${cy + 14}`}
-              stroke={WF.accent}
-              strokeWidth={1.5}
-              strokeLinecap="round"
-            />
-            <circle cx={cx} cy={cy} r={7} fill="none" stroke={WF.steel} strokeWidth={1} opacity={0.7} />
-          </g>
-        ))}
-
-        {/* Ticked rule across the top of the plate */}
-        <g className="gal-plate-draw" opacity={0.35}>
-          <path d="M 120 92 L 1480 92" stroke={WF.steel} strokeWidth={1} fill="none" />
-          {ticks.map((x, i) => (
-            <path
-              key={x}
-              d={`M ${x} 92 L ${x} ${i % 5 === 0 ? 108 : 101}`}
-              stroke={WF.steel}
-              strokeWidth={1}
-              fill="none"
-            />
-          ))}
-        </g>
-
-        {/* Cartouche — left label, right readout. Both derived, not typed. */}
-        <text
-          className="gal-plate-fade"
-          x={56}
-          y={430}
-          textAnchor="start"
-          fontFamily={WF_FONT}
-          fontSize={13}
-          fontWeight={700}
-          letterSpacing="0.24em"
-          fill={WF.steel}
-          opacity={0.6}
-        >
-          GALERIE PHOTOGRAPHIQUE
-        </text>
-        <text
-          className="gal-plate-fade"
-          x={1544}
-          y={430}
-          textAnchor="end"
-          fontFamily={WF_FONT}
-          fontSize={13}
-          fontWeight={700}
-          letterSpacing="0.24em"
-          fill={WF.steel}
-          opacity={0.6}
-        >
-          {`${TILES.length} VUES · ${AVAILABLE_CATEGORIES.length} CATÉGORIES`}
-        </text>
-
-        {/* Ambient accent scan-line */}
-        <g className="gal-scan">
-          <rect x={-8} y={40} width={16} height={420} fill={WF.accent} opacity={0.12} />
-        </g>
-      </svg>
-    </div>
-  );
-}
 
 /* -------------------------------------------------------------------------- */
 /* Tile                                                                        */

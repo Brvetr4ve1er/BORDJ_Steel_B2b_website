@@ -1,10 +1,8 @@
 import * as React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import { KenBurns } from '@/components/ui/ken-burns';
-import { VideoLoop } from '@/components/ui/video-loop';
+import { TechnicalHero } from '@/components/sections/technical-hero';
 import { companyData } from '@/config/company-data';
 import { articles } from '@/config/blog-data';
 import { companyVideos } from '@/config/videos-data';
@@ -125,45 +123,12 @@ export function MediaCenterHubContent() {
     <>
       <style>{MCH_CSS}</style>
 
-      <section className="relative h-[60dvh] w-full flex items-center justify-center text-white overflow-hidden p-0">
-        {/* The drift lives on the wrapper, which now owns the image's own
-            `absolute inset-0 z-0`; the scrim and plate below still sit above it. */}
-        <KenBurns variant="in" className="absolute inset-0 z-0">
-          <Image
-            src="/media/1585829365295-8c75ac1e.webp"
-            alt="Espace médias Bordj Steel"
-            fill
-            className="object-cover"
-            priority
-            data-ai-hint="media center"
-          />
-        </KenBurns>
-        {/* Ambient loop generated from the hero photograph itself, sitting between
-            the photo (z-0) and the scrim — so the scrim, the drafting plate and all
-            copy still read exactly as they do over the still. VideoLoop renders
-            nothing on the server and declines entirely under reduced motion, under
-            768px, or on a save-data connection, so the <Image> above stays the LCP
-            element and the real content. Deliberately NOT inside KenBurns: the clip
-            already carries its own camera move and nesting it inside the drift would
-            double the motion. This is a server component; VideoLoop is the client
-            leaf and can be rendered from here directly. */}
-        <VideoLoop
-          src="/media/loops/mediahub-hero.mp4"
-          className="absolute inset-0 z-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/60 z-10" />
-        <HeroPlate />
-        <div className="relative z-20 container mx-auto px-4 text-center">
-          <AnimatedWrapper animation="zoom-in">
-            <h1 className="font-headline text-6xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white">
-              Media Center
-            </h1>
-            <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 mx-auto">
-              Explorez nos actualités, projets et ressources.
-            </p>
-          </AnimatedWrapper>
-        </div>
-      </section>
+      <TechnicalHero
+        eyebrow="Ressources"
+        title="Media Center"
+        subtitle={"Explorez nos actualités, projets et ressources."}
+        motif="sheets"
+      />
 
       <section className="bg-background py-16 md:py-24" aria-labelledby="media-center-sections">
         <div className="container mx-auto px-4">
