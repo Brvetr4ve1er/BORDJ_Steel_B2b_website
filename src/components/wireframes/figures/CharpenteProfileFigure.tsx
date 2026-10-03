@@ -8,14 +8,26 @@ export interface CharpenteSpec {
   variant: PrsVariant;
   webRange: string; // "350 – 2000 mm"
   maxLengthM: string; // "16 m"
-  prsCapacity: number; // T/an
-  charpenteCapacity: number; // T/an
 }
+
+// WHY NO TONNAGE HERE. This figure used to print "PRS 3 000 T/an" and
+// "Charpente 25 000 T/an" in its top-right corner. Both are throughput, not
+// geometry: setting them in a dimensioned drawing reads as though they were
+// measured off it. They are already stated, from the same source, in the hero
+// stat strip directly above — and they are the two figures the client has not
+// yet confirmed (see the CLIENT NOTE on `charpenteCapacity` in
+// src/config/company-data.ts), so the fewer places they are printed, the
+// smaller a correction has to be. The drawing now carries only what it can
+// actually show: section type, web range, length.
 
 // End cross-section of a welded plate girder (PRS) — toggles between an I-section
 // and a closed box (caisson) — plus a compact side elevation carrying the length.
 export function CharpenteProfileFigure({ spec }: { spec: CharpenteSpec }) {
-  const cx = 210;
+  // 250, not 210: the web-range dimension hangs off the left of the section
+  // (x - B/2 - 34 - 12, right-aligned), and at cx = 210 the "350 – 2000 mm"
+  // label started at x = -11.6 — outside the 0..800 viewBox, so the shell's
+  // overflow-hidden clipped the "35" and the drawing read "0 – 2000 mm".
+  const cx = 250;
   const cyMid = 220;
   const H = 210;
   const B = 150;
@@ -112,14 +124,6 @@ export function CharpenteProfileFigure({ spec }: { spec: CharpenteSpec }) {
       <DimH x1={ex0} x2={ex1} y={eyB + 30} label={`Longueur ≤ ${spec.maxLengthM}`} color={WF.accent} labelColor={WF.accent} below />
       <Label x={(ex0 + ex1) / 2} y={eyT - 14} size={12} weight={600} color={WF.labelMuted}>
         Élévation
-      </Label>
-
-      {/* --- capacity readout --- */}
-      <Label x={ex0} y={cyTop - 14} anchor="start" size={13} weight={700} color={WF.accent}>
-        {`PRS ${spec.prsCapacity.toLocaleString('fr-FR')} T/an`}
-      </Label>
-      <Label x={ex0 + 150} y={cyTop - 14} anchor="start" size={13} weight={700} color={WF.label}>
-        {`Charpente ${spec.charpenteCapacity.toLocaleString('fr-FR')} T/an`}
       </Label>
     </g>
   );

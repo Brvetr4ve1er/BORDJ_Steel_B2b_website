@@ -17,6 +17,14 @@ interface FeatureHoverCardProps {
      * passes it; an unpassed card is simply never the active one.
      */
     isSelected?: boolean;
+    /**
+     * The one fact that qualifies a lead for this pillar — the fabrication
+     * envelope, the homologation, the lifting range. Shown at rest so a buyer
+     * never has to click a card to find out whether their piece fits.
+     *
+     * Optional: a card without one simply renders as it always did.
+     */
+    spec?: string;
 }
 
 /**
@@ -39,7 +47,7 @@ interface FeatureHoverCardProps {
  * (the resting lift of the selected plate is a *state*, not motion, so it is
  * kept — only the movement on hover is removed).
  */
-export function FeatureHoverCard({ Icon, title, description, isSelected = false }: FeatureHoverCardProps) {
+export function FeatureHoverCard({ Icon, title, description, isSelected = false, spec }: FeatureHoverCardProps) {
   return (
     <div className={cn(
         // `group` is load-bearing: the bespoke product figures animate from CSS
@@ -104,6 +112,11 @@ export function FeatureHoverCard({ Icon, title, description, isSelected = false 
         </span>
 
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{description}</p>
+        {spec ? (
+          <p className="mt-4 border-t border-border pt-4 font-mono text-[11px] font-semibold leading-snug tracking-wide text-accent">
+            {spec}
+          </p>
+        ) : null}
       </div>
       {/* No CTA here: the whole card is already the pillar-selector control
           (CharpenteMetalliquePageContent wraps it in a <button>), so a hover-only

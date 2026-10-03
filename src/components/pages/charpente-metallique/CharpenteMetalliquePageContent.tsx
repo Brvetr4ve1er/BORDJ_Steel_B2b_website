@@ -24,6 +24,7 @@ import { cn } from '@/lib/utils';
 import { ProductionTables } from '@/components/production-tables';
 import { CharpenteWireframe } from '@/components/wireframes/CharpenteWireframe';
 import { ApplicationsShowcase } from '@/components/sections/charpente/ApplicationsShowcase';
+import { CredentialsBand } from '@/components/sections/charpente/CredentialsBand';
 import { PILLAR_ICON_BY_ID, type PillarIconKey } from '@/components/icons/pillar-icons';
 import { CharpenteIcon } from '@/components/icons/product-icons';
 
@@ -139,13 +140,32 @@ export function CharpenteMetalliquePageContent() {
     <div className="bg-background">
       <HeroSection hero={charpenteMetalliqueData.hero} />
 
-      <NewGallery />
-
-      <section className="bg-secondary/30 py-16 md:py-24">
+      {/* The fabrication envelope leads, because it is the first question a
+          steel buyer asks: does my piece fit through your shop? The drawing was
+          already here and already accurate — 350–2000 mm web, 16 m maximum,
+          I and caisson — it was just sitting third, behind a photo gallery. */}
+      <section className="bg-secondary/30 py-16 md:py-24" aria-labelledby="charpente-envelope">
         <div className="container mx-auto px-4">
+          <div className="mb-10 max-w-3xl">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">
+              Enveloppe de fabrication
+            </p>
+            <h2
+              id="charpente-envelope"
+              className="mt-3 font-headline text-3xl font-bold uppercase tracking-tight text-primary md:text-4xl"
+            >
+              Ce qui passe dans notre atelier
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Notre ligne PRS produit en série des poutres en I et en caissons. Basculez entre les
+              deux sections pour lire la plage de fabrication réelle.
+            </p>
+          </div>
           <CharpenteWireframe />
         </div>
       </section>
+
+      <CredentialsBand />
 
       <ApplicationsShowcase />
 
@@ -160,9 +180,16 @@ export function CharpenteMetalliquePageContent() {
       <section className="bg-secondary py-24">
         <div className="container mx-auto px-4">
           <div className="mb-16">
+            {/* The previous standfirst read "Chacun de nos piliers de production
+                représente un pôle d'excellence, équipé des technologies les plus
+                avancées pour transformer l'acier en solutions innovantes." It
+                asserted nothing a buyer could act on. This one names the four
+                lines and nothing else — every word of it is checkable against
+                the cards directly below. */}
             <h2 className="text-5xl font-bold text-center text-primary">Nos Piliers de Production</h2>
             <p className="text-center text-muted-foreground mt-4 max-w-2xl mx-auto">
-                Chacun de nos piliers de production représente un pôle d'excellence, équipé des technologies les plus avancées pour transformer l'acier en solutions innovantes.
+                Quatre lignes sous le même toit : profilés reconstitués soudés, supports de
+                transport d&apos;énergie homologués, ponts roulants et carrosserie automobile.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -185,6 +212,7 @@ export function CharpenteMetalliquePageContent() {
                         Icon={Icon}
                         title={pillar.title}
                         description={pillar.description}
+                        spec={pillar.headlineSpec}
                         isSelected={selectedPillarId === pillar.id}
                     />
                   </button>
@@ -315,6 +343,10 @@ export function CharpenteMetalliquePageContent() {
             </div>
           </div>
       </section>
+
+      {/* Projects sit after the specs and the approvals now. They were the
+          second thing on the page, ahead of any technical qualification. */}
+      <NewGallery />
 
       <section id="cta-bottom" className="py-20 bg-background">
         <div className="container mx-auto px-4">

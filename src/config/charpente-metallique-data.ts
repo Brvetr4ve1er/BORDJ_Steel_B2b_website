@@ -21,6 +21,11 @@ export const charpenteMetalliqueData = {
   pillars: [
     {
       id: 'prs',
+      // `headlineSpec` is the one fact that qualifies a lead, surfaced on the
+      // card so a buyer does not have to click to learn whether their piece
+      // fits. Every one is a restatement of something already inside this same
+      // pillar's `specifications` — no new claim is introduced here.
+      headlineSpec: "350 – 2000 mm de largeur · 16 000 mm de longueur",
       iconName: 'HardHat',
       title: "PRS – Profils Reconstitués Soudés",
       description: "Fabrication sur mesure pour bâtiments industriels, ponts et charpentes lourdes.",
@@ -45,6 +50,7 @@ export const charpenteMetalliqueData = {
     },
     {
       id: 'supports',
+      headlineSpec: "Homologué SONELGAZ · types 9T et BS",
       iconName: 'TowerControl',
       title: "Supports de Transport d'Énergie",
       description: "Structures pour l’énergie, la communication et l’affichage.",
@@ -87,6 +93,7 @@ export const charpenteMetalliqueData = {
     },
     {
       id: 'ponts-roulants',
+      headlineSpec: "De 1 t à plus de 100 t · portée jusqu’à 40 m",
       iconName: 'Tractor',
       title: "Pont Roulant – Mono et Bipoutre",
       description: "Solutions de manutention lourde avec options mono-poutre et bi-poutre.",
@@ -121,6 +128,7 @@ export const charpenteMetalliqueData = {
     },
     {
       id: 'automobile',
+      headlineSpec: "Agréé par le ministère de l’Énergie et des Mines",
       iconName: 'Car',
       title: "Ligne de Fabrication Automobile",
       description: "Ligne complète pour la transformation métallique automobile de haute précision.",
