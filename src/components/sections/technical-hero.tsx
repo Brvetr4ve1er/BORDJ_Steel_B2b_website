@@ -33,7 +33,10 @@ export type HeroMotif =
   | 'frames'
   | 'reel'
   | 'press'
-  | 'column';
+  | 'column'
+  | 'bath'
+  | 'panel'
+  | 'vessel';
 
 export function TechnicalHero({
   eyebrow,
@@ -41,10 +44,18 @@ export function TechnicalHero({
   subtitle,
   motif,
   readout,
+  stats,
+  actions,
 }: {
   eyebrow: string;
   title: string;
-  subtitle: string;
+  /**
+   * A node, not a string: the galvanisation hero carries three sentences of
+   * client copy (bath dimensions, max piece length, the 8 h/jour capacity)
+   * that must survive this refactor character for character. Narrowing this to
+   * a string would have meant either dropping that copy or retyping it.
+   */
+  subtitle: React.ReactNode;
   motif: HeroMotif;
   /**
    * Optional corner readout, in the manner of a drawing's cartouche.
@@ -56,9 +67,32 @@ export function TechnicalHero({
    * actually holds without anyone maintaining a number by hand.
    */
   readout?: string;
+  /**
+   * Product-page stat strip, rendered along the foot of the hero like the
+   * cells of a title block.
+   *
+   * The four product pages each had their OWN hero markup and their own stat
+   * shape — charpente `{value, unit, icon}`, chaudronnerie
+   * `{value, secondaryValue, description}`, galvanisation `{value, large}` —
+   * at three, three and five cells, in heroes that were 60dvh, 60dvh and
+   * 100dvh. Normalising to one shape here is most of what makes them read as
+   * a set.
+   *
+   * VALUES ARE PASSED THROUGH AS STRINGS, deliberately. Several are the
+   * capacity figures the client has still not reconciled (see the CLIENT NOTEs
+   * on `charpenteCapacity` and `galvanisationCapacity`). This component
+   * formats them; it must never compute or round them.
+   */
+  stats?: ReadonlyArray<{ label: string; value: string; note?: string }>;
+  /** Primary and secondary calls to action. */
+  actions?: React.ReactNode;
 }) {
   return (
-    <section className="relative flex h-[60dvh] w-full items-center justify-center overflow-hidden bg-[#1b2430] p-0 text-white">
+    <section
+      className={`relative flex w-full items-center justify-center overflow-hidden bg-[#1b2430] p-0 text-white ${
+        stats && stats.length > 0 ? 'h-[86dvh] pb-28 md:pb-32' : 'h-[60dvh]'
+      }`}
+    >
       {/* ground: drafting grid, drawn light-on-dark rather than reusing
           .wf-ground, which is tuned for the light sections */}
       <div
@@ -114,9 +148,41 @@ export function TechnicalHero({
           <h1 className="mt-5 font-headline text-6xl font-bold uppercase leading-tight tracking-tighter text-white md:text-8xl md:leading-tight lg:leading-tight">
             {title}
           </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-xl text-gray-200 md:text-2xl">{subtitle}</p>
+          {/* div, not p: subtitle is a ReactNode and the galvanisation hero passes
+              block-level copy. Nesting <p> inside <p> is invalid, and the browser
+              auto-closes it — which shows up as a hydration mismatch. */}
+          <div className="mx-auto mt-6 max-w-3xl text-xl text-gray-200 md:text-2xl">{subtitle}</div>
+          {actions ? <div className="mt-9 flex flex-wrap items-center justify-center gap-4">{actions}</div> : null}
         </AnimatedWrapper>
       </div>
+
+      {/* Stat strip, read as the cells of a title block rather than as floating
+          cards. Scrolls horizontally on a phone instead of wrapping into a
+          stack, so the row stays a row and the hero keeps its height. */}
+      {stats && stats.length > 0 ? (
+        <div className="absolute inset-x-0 bottom-0 z-20">
+          <div className="mx-5 border-t border-white/15 md:mx-8">
+            <dl className="flex snap-x snap-mandatory overflow-x-auto md:justify-center">
+              {stats.map((s, i) => (
+                <div
+                  key={s.label}
+                  className={`min-w-[46%] shrink-0 snap-start px-5 py-5 sm:min-w-0 sm:flex-1 md:max-w-[220px] md:px-7 md:py-6 ${
+                    i > 0 ? 'border-l border-white/12' : ''
+                  }`}
+                >
+                  <dt className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45">
+                    {s.label}
+                  </dt>
+                  <dd className="mt-2 font-headline text-2xl font-bold tabular-nums leading-none text-white md:text-3xl">
+                    {s.value}
+                  </dd>
+                  {s.note ? <p className="mt-1.5 text-xs leading-snug text-white/50">{s.note}</p> : null}
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -519,4 +585,175 @@ const MOTIFS: Record<HeroMotif, { render: () => React.ReactElement; dy: number }
   reel: { render: ReelMotif, dy: 18 },
   press: { render: PressMotif, dy: 6 },
   column: { render: ColumnMotif, dy: -40 },
+  bath: { render: BathMotif, dy: 10 },
+  panel: { render: PanelMotif, dy: 0 },
+  vessel: { render: VesselMotif, dy: 6 },
 };
+
+/* ------------------------------------------------------------------------ */
+/* Product motifs                                                            */
+/*                                                                           */
+/* One per production unit, at hero scale. `portal` already served charpente, */
+/* so only three were needed. Each draws the process the unit actually runs.  */
+/* ------------------------------------------------------------------------ */
+
+/** Galvanisation: a piece on slings entering the zinc bath. */
+function BathMotif() {
+  const tx0 = 300;
+  const tx1 = 900;
+  const tTop = 210;
+  const tBot = 420;
+  const zinc = 250;
+  return (
+    <g>
+      {/* ground */}
+      <path d={`M 150 ${tBot} L 1050 ${tBot}`} stroke={LINE} strokeWidth={2} fill="none" />
+      {Array.from({ length: 26 }, (_, i) => 160 + i * 34).map((x) => (
+        <path key={x} d={`M ${x} ${tBot} L ${x - 14} ${tBot + 16}`} stroke={FAINT} strokeWidth={1.5} fill="none" />
+      ))}
+
+      {/* molten zinc */}
+      <rect x={tx0 + 6} y={zinc} width={tx1 - tx0 - 12} height={tBot - zinc - 6} fill="rgba(255,255,255,0.05)" />
+      {/* tank, open top */}
+      <path
+        d={`M ${tx0} ${tTop} L ${tx0} ${tBot} L ${tx1} ${tBot} L ${tx1} ${tTop}`}
+        fill="none"
+        stroke={LINE}
+        strokeWidth={4}
+      />
+      {/* bath surface */}
+      <path
+        d={`M ${tx0 + 6} ${zinc} q 50 -10 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 88 0`}
+        fill="none"
+        stroke={LINE}
+        strokeWidth={2}
+      />
+
+      {/* lifting beam + slings */}
+      <path d="M 480 70 L 720 70" stroke={LINE} strokeWidth={3} fill="none" />
+      <path d="M 540 70 L 568 150 M 660 70 L 632 150" stroke={FAINT} strokeWidth={2} fill="none" />
+
+      {/* the piece, half immersed — accent, because the coating is the product */}
+      <path d="M 568 150 L 632 150 L 632 350 L 568 350 Z" fill="none" stroke={WF.accent} strokeWidth={4} />
+      <path d="M 568 250 L 632 250" stroke={WF.accent} strokeWidth={2} strokeDasharray="7 7" fill="none" />
+
+      {/* immersion depth dimension */}
+      <path
+        d={`M 940 ${zinc} L 940 350 M 932 ${zinc} L 948 ${zinc} M 932 350 L 948 350`}
+        stroke={FAINT}
+        strokeWidth={1.5}
+        fill="none"
+      />
+    </g>
+  );
+}
+
+/** Panneaux sandwich: the panel section, skins and insulating core. */
+function PanelMotif() {
+  const x0 = 250;
+  const x1 = 950;
+  const yTop = 215;
+  const yBot = 305;
+  const skin = 16;
+  const ribH = 44;
+  const ribs = 5;
+  const p = (x1 - x0) / ribs;
+
+  const pts: Array<[number, number]> = [[x0, yTop]];
+  for (let i = 0; i < ribs; i++) {
+    const xs = x0 + i * p;
+    pts.push([xs + p * 0.3, yTop]);
+    pts.push([xs + p * 0.46, yTop - ribH]);
+    pts.push([xs + p * 0.78, yTop - ribH]);
+    pts.push([xs + p, yTop]);
+  }
+  const outer = 'M ' + pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join(' L ');
+
+  return (
+    <g>
+      {/* core */}
+      <rect x={x0} y={yTop} width={x1 - x0} height={yBot - yTop} fill="rgba(255,255,255,0.05)" />
+      {/* core hatching, the way an insulant is drawn */}
+      {Array.from({ length: 30 }, (_, i) => x0 + i * 24).map((hx) => (
+        <path key={hx} d={`M ${hx} ${yBot} L ${hx + 24} ${yTop}`} stroke={FAINT} strokeWidth={1} fill="none" />
+      ))}
+      {/* skins */}
+      <path d={outer} fill="none" stroke={LINE} strokeWidth={4} />
+      <path
+        d={`M ${x0} ${yBot} L ${x1} ${yBot} M ${x0} ${yBot + skin} L ${x1} ${yBot + skin}`}
+        fill="none"
+        stroke={LINE}
+        strokeWidth={4}
+      />
+      <path
+        d={`M ${x0} ${yTop} L ${x0} ${yBot + skin} M ${x1} ${yTop} L ${x1} ${yBot + skin}`}
+        fill="none"
+        stroke={FAINT}
+        strokeWidth={2}
+      />
+      {/* thickness, in accent — the number a buyer asks for first */}
+      <path
+        d={`M 1000 ${yTop - ribH} L 1000 ${yBot + skin} M 988 ${yTop - ribH} L 1012 ${yTop - ribH} M 988 ${yBot + skin} L 1012 ${yBot + skin}`}
+        stroke={WF.accent}
+        strokeWidth={3}
+        fill="none"
+      />
+    </g>
+  );
+}
+
+/** Chaudronnerie: a rolled and welded vessel on its saddles. */
+function VesselMotif() {
+  const cx = 600;
+  const cy = 250;
+  const bodyW = 420;
+  const r = 118;
+  const left = cx - bodyW / 2;
+  const right = cx + bodyW / 2;
+  return (
+    <g>
+      {/* ground */}
+      <path d={`M 160 ${cy + r + 76} L 1040 ${cy + r + 76}`} stroke={LINE} strokeWidth={2} fill="none" />
+      {Array.from({ length: 26 }, (_, i) => 170 + i * 34).map((x) => (
+        <path key={x} d={`M ${x} ${cy + r + 76} L ${x - 14} ${cy + r + 92}`} stroke={FAINT} strokeWidth={1.5} fill="none" />
+      ))}
+
+      {/* shell */}
+      <path
+        d={`M ${left} ${cy - r} L ${right} ${cy - r} M ${left} ${cy + r} L ${right} ${cy + r}`}
+        stroke={LINE}
+        strokeWidth={4}
+        fill="none"
+      />
+      {/* dished ends */}
+      <path d={`M ${left} ${cy - r} A 70 ${r} 0 0 0 ${left} ${cy + r}`} fill="none" stroke={LINE} strokeWidth={4} />
+      <path d={`M ${right} ${cy - r} A 70 ${r} 0 0 1 ${right} ${cy + r}`} fill="none" stroke={LINE} strokeWidth={4} />
+      {/* the near end, seen as an ellipse */}
+      <ellipse cx={right} cy={cy} rx={70} ry={r} fill="none" stroke={FAINT} strokeWidth={2} />
+
+      {/* circumferential weld seams — accent, because welding is the trade */}
+      {[left + 140, left + 280].map((sx) => (
+        <ellipse key={sx} cx={sx} cy={cy} rx={22} ry={r} fill="none" stroke={WF.accent} strokeWidth={2.5} />
+      ))}
+
+      {/* saddles */}
+      {[left + 100, right - 100].map((sx) => (
+        <path
+          key={sx}
+          d={`M ${sx - 60} ${cy + r + 76} L ${sx - 40} ${cy + r - 6} L ${sx + 40} ${cy + r - 6} L ${sx + 60} ${cy + r + 76}`}
+          fill="none"
+          stroke={LINE}
+          strokeWidth={3}
+        />
+      ))}
+
+      {/* diameter dimension */}
+      <path
+        d={`M 190 ${cy - r} L 190 ${cy + r} M 180 ${cy - r} L 200 ${cy - r} M 180 ${cy + r} L 200 ${cy + r}`}
+        stroke={FAINT}
+        strokeWidth={1.5}
+        fill="none"
+      />
+    </g>
+  );
+}

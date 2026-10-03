@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, Dot } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { TechnicalHero } from '@/components/sections/technical-hero';
 import React, { useState, useMemo } from 'react';
 import { AnimatedNumber } from '@/components/animated-number';
 import { DownloadButton } from '@/components/ui/download-button';
@@ -19,8 +20,6 @@ import {
 } from '@/config/charpente-metallique-data';
 import { ImageDialog } from '@/components/ui/image-dialog';
 import { HoverImageGallery } from '@/components/ui/hover-image-gallery';
-import { KenBurns } from '@/components/ui/ken-burns';
-import { VideoLoop } from '@/components/ui/video-loop';
 import { cn } from '@/lib/utils';
 import { ProductionTables } from '@/components/production-tables';
 import { CharpenteWireframe } from '@/components/wireframes/CharpenteWireframe';
@@ -65,87 +64,26 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
   }), []);
 
   return (
-    <section className="relative min-h-[100dvh] flex items-end bg-background pb-24 sm:pb-32">
-      {/* `overflow-hidden`: KenBurns over-scales the photo past this box (it has
-          to, or the pan would expose the container edge), and neither this
-          wrapper nor the section clipped before. Without it the hero photo
-          paints ~3% outside the section and widens the document. */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <KenBurns variant="in" className="absolute inset-0 z-0">
-          <Image
-            src={hero.image_url}
-            alt={hero.alt}
-            fill
-            className="object-cover"
-            priority
-            data-ai-hint={hero.aiHint}
-            placeholder="blur"
-            blurDataURL={hero.blurDataUrl}
+    <TechnicalHero
+      eyebrow="Unité de production"
+      title={hero.title}
+      subtitle={hero.subtitle}
+      motif="portal"
+      stats={hero.stats.map((s) => ({ label: s.title, value: `${s.value.toLocaleString('fr-FR')}${s.unit}` }))}
+      actions={
+        <>
+          <Button asChild size="lg" variant="destructive" className="group">
+            <Link href="/contact">
+              {hero.cta_primary} <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+          <DownloadButton
+            text={hero.cta_secondary}
+            href="/documents/Bordj-Steel-Catalogue-FR.pdf"
           />
-        </KenBurns>
-        {/*
-          * Ambient loop generated from this hero's own photograph, sitting between
-          * the still (z-0) and the scrim, so the scrim and every piece of copy
-          * still read exactly as they do over the photo. It renders nothing at all
-          * unless it is going to play — see VideoLoop — so the Image above remains
-          * the LCP element and is what a phone, a reduced-motion visitor and every
-          * crawler actually get. Deliberately NOT inside KenBurns: the clip already
-          * contains its own camera move, and compounding it with the drift would
-          * double the motion.
-          */}
-        <VideoLoop
-          src="/media/loops/charpente-hero.mp4"
-          className="absolute inset-0 z-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50 z-10" />
-      </div>
-      <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">
-        <div className="space-y-12">
-          <AnimatedWrapper animation="slide-up">
-            <div className="text-left space-y-8">
-              <div>
-                <h1 className="font-headline text-6xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                  {hero.title}
-                </h1>
-                <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]">
-                  {hero.subtitle}
-                </p>
-              </div>
-              <div className="flex flex-row items-center gap-4">
-                <Button asChild size="lg" variant="destructive">
-                  <Link href="/contact">{hero.cta_primary} <ArrowRight className="ml-2" /></Link>
-                </Button>
-                <DownloadButton text={hero.cta_secondary} href="/documents/Bordj-Steel-Catalogue-FR.pdf" />
-              </div>
-            </div>
-          </AnimatedWrapper>
-
-          <AnimatedWrapper animation="slide-up" staggerIndex={1}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-              {hero.stats.map((stat, index) => {
-                const Icon = iconMap[stat.icon as keyof typeof iconMap];
-                return (
-                  <AnimatedWrapper key={stat.title} animation="fade-in-stagger" staggerIndex={index}>
-                     <Card className="group bg-black/50 backdrop-blur-md border-border text-white relative overflow-hidden transition-all duration-500 hover:border-accent">
-                        <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
-                        <CardHeader className="relative flex-row items-center gap-4">
-                            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center transition-colors duration-300 group-hover:bg-accent-foreground/10">
-                            {Icon && <Icon className="h-6 w-6 text-accent transition-colors duration-300 group-hover:text-white" />}
-                            </div>
-                            <div>
-                            <CardTitle className="text-2xl font-bold text-white"><AnimatedNumber value={stat.value} />{stat.unit}</CardTitle>
-                            <p className="text-sm text-gray-200 group-hover:text-gray-100">{stat.title}</p>
-                            </div>
-                        </CardHeader>
-                    </Card>
-                  </AnimatedWrapper>
-                );
-              })}
-            </div>
-          </AnimatedWrapper>
-        </div>
-      </div>
-    </section>
+        </>
+      }
+    />
   );
 }
 

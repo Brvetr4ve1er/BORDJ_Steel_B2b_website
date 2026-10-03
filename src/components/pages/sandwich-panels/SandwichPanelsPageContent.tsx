@@ -7,6 +7,7 @@ import * as React from 'react';
 import { useMemo, useState } from 'react';
 import { ChevronsRight, Snowflake, Settings, ArrowRight } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { TechnicalHero } from '@/components/sections/technical-hero';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
@@ -18,8 +19,6 @@ import { StatsCards } from '@/components/sections/sandwich-panels/StatsCards';
 import { ThermalPerformanceBand } from '@/components/sections/sandwich-panels/ThermalPerformanceBand';
 import { sandwichHero, sandwichHeroStats, sandwichIntro } from '@/config/sandwich-panels-data';
 import { SandwichWireframe } from '@/components/wireframes/SandwichWireframe';
-import { KenBurns } from '@/components/ui/ken-burns';
-import { VideoLoop } from '@/components/ui/video-loop';
 
 const CouvertureIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -67,58 +66,26 @@ const FinitionsIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const HeroSection = React.memo(function HeroSection() {
   const heroImage = images['sandwich-panels'].hero;
   return (
-    <section className="relative h-[100dvh] w-full flex flex-col justify-end text-white overflow-hidden">
-      {/* The wrapper now owns the image's `z-0` and its positioning; the section
-          already carries `overflow-hidden`, which clips the KenBurns over-scale. */}
-      <KenBurns variant="left" className="absolute inset-0 z-0">
-        <Image
-          src={heroImage.src}
-          alt={heroImage.alt}
-          fill
-          className="object-cover"
-          data-ai-hint={heroImage.aiHint}
-          priority
-          placeholder="blur"
-          blurDataURL={heroImage.blurDataUrl}
-        />
-      </KenBurns>
-      {/*
-        * Ambient loop generated from this hero's own photograph, sitting between
-        * the still (z-0) and the gradient scrim, so the scrim and every piece of
-        * copy still read exactly as they do over the photo. It renders nothing at
-        * all unless it is going to play — see VideoLoop — so the Image above
-        * remains the LCP element and is what a phone, a reduced-motion visitor and
-        * every crawler actually get. Deliberately NOT inside KenBurns: the clip
-        * already contains its own camera move, and compounding it with the drift
-        * would double the motion.
-        */}
-      <VideoLoop
-        src="/media/loops/sandwich-hero.mp4"
-        className="absolute inset-0 z-0 h-full w-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
-      <div className="relative z-20 w-full">
-        <div className="w-full px-8 md:px-12 pb-10">
-          <AnimatedWrapper animation="zoom-in">
-              <h1 className="font-headline text-6xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white">
-                  {sandwichHero.title}
-              </h1>
-              <p className="mt-8 text-xl md:text-2xl max-w-3xl text-gray-200">
-                  {sandwichHero.subtitle}
-              </p>
-              <div className="mt-12 flex justify-start items-center gap-4">
-                  <Button asChild size="lg" variant="destructive" className="group">
-                      <Link href="/contact">
-                          Explorer les produits <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
-                      </Link>
-                  </Button>
-                  <DownloadButton text="Voir la brochure" href="/documents/Bordj-Steel-Catalogue-FR.pdf" />
-              </div>
-          </AnimatedWrapper>
-           <StatsCards stats={sandwichHeroStats}/>
-        </div>
-      </div>
-    </section>
+    <TechnicalHero
+      eyebrow="Unité de production"
+      title={sandwichHero.title}
+      subtitle={sandwichHero.subtitle}
+      motif="panel"
+      stats={sandwichHeroStats.map((s) => ({ label: s.label, value: String(s.value) }))}
+      actions={
+        <>
+          <Button asChild size="lg" variant="destructive" className="group">
+            <Link href="/contact">
+              Explorer les produits <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+          <DownloadButton
+            text="Voir la brochure"
+            href="/documents/Bordj-Steel-Catalogue-FR.pdf"
+          />
+        </>
+      }
+    />
   );
 });
 

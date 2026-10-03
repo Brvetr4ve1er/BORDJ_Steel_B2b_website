@@ -10,13 +10,12 @@ import { ArrowRight, Info } from 'lucide-react';
 import { iconMap as galvanisationIconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { TechnicalHero } from '@/components/sections/technical-hero';
 import { DownloadButton } from '@/components/ui/download-button';
 import dynamic from 'next/dynamic';
 import { TechniquesAndStandardsSection } from '@/components/sections/galvanisation/TechniquesAndStandardsSection';
 import { ProtectionLifespanBand } from '@/components/sections/galvanisation/ProtectionLifespanBand';
 import { GalvanisationWireframe } from '@/components/wireframes/GalvanisationWireframe';
-import { KenBurns } from '@/components/ui/ken-burns';
-import { VideoLoop } from '@/components/ui/video-loop';
 
 const DynamicAnimatedBaths = dynamic(() => import('@/components/animated-baths').then(mod => mod.AnimatedBaths));
 
@@ -57,106 +56,35 @@ function UnwrappedHeroSection() {
   const iconMap = galvanisationIconMap;
 
   return (
-    <section className="relative min-h-[100dvh] flex items-end bg-background pb-24 sm:pb-32">
-      {/* `overflow-hidden`: KenBurns over-scales the photo past this box (it has
-          to, or the pan would expose the container edge), and neither this
-          wrapper nor the section clipped before. Without it the hero photo
-          paints ~3% outside the section and widens the document. */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <KenBurns variant="out" className="absolute inset-0 z-0">
-          <Image
-            src={hero.image_url}
-            alt="Bain de galvanisation à chaud"
-            fill
-            className="object-cover"
-            priority
-            data-ai-hint="molten zinc"
-            placeholder="blur"
-            blurDataURL={hero.blurDataUrl}
-          />
-        </KenBurns>
-        {/*
-          * Ambient loop sitting between the still (z-0) and the scrim, so the
-          * scrim and every piece of copy still read exactly as they do over the
-          * photo. This hero is shot from the same photograph as the galvanisation
-          * unit card, so it reuses that unit's loop rather than a separate file.
-          * It renders nothing at all unless it is going to play — see VideoLoop —
-          * so the Image above remains the LCP element and is what a phone, a
-          * reduced-motion visitor and every crawler actually get. Deliberately NOT
-          * inside KenBurns: the clip already contains its own camera move, and
-          * compounding it with the drift would double the motion.
-          */}
-        <VideoLoop
-          src="/media/loops/galvanisation.mp4"
-          className="absolute inset-0 z-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50 z-10" />
-      </div>
-      <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">
-        <div className="space-y-12">
-          <AnimatedWrapper animation="slide-up">
-            <div className="text-left space-y-8">
-              <div>
-                <h1 className="font-headline text-5xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold text-white">
-                  {hero.title}
-                </h1>
-                <div className="mt-4 text-lg text-gray-300 max-w-xl">
-                    <p className="font-bold">UNITÉ DE PRODUCTION</p>
-                    <p>Surface de 40.000 m² dont 6.000 m² couverts. Démarrage de la production : octobre 2016.</p>
-                    <p>L’unité est constituée de bains d’immersion de 13 × 1,8 × 3,5 m, permettant de traiter des pièces métalliques jusqu’à 13 m de longueur. {`Capacité de production (8 h/jour) : ${galvanisationCapacity.singleShiftPerMonth.toLocaleString('fr-FR')} t/mois, soit ${galvanisationCapacity.singleShiftPerYear.toLocaleString('fr-FR')} t/an.`}</p>
-                </div>
-              </div>
-              <div className="flex flex-row items-center gap-4">
-                 <Button asChild size="lg" variant="destructive">
-                   <Link href="/contact">{hero.cta_primary} <ArrowRight className="ml-2" /></Link>
-                 </Button>
-                 <DownloadButton text={hero.cta_secondary} href="/documents/Bordj-Steel-Catalogue-FR.pdf" />
-              </div>
-            </div>
-          </AnimatedWrapper>
-
-          <AnimatedWrapper animation="slide-up" staggerIndex={1}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-              {largeStat && (
-                <AnimatedWrapper animation="fade-in-stagger" staggerIndex={1}>
-                  <Card className="group bg-black/50 backdrop-blur-md border-border text-white h-full relative overflow-hidden transition-all duration-500 hover:border-accent">
-                    <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
-                    <CardContent className="relative p-4 flex flex-col items-center justify-center text-center h-full">
-                      {/* Figure and caption come from the config stat itself, so
-                          editing `hero.stats` actually changes what renders. */}
-                      <DynamicAnimatedBaths value={Number(largeStat.value)} label={largeStat.title} />
-                    </CardContent>
-                  </Card>
-                </AnimatedWrapper>
-              )}
-              <div className="grid grid-cols-2 gap-4">
-                {smallStats.map((stat, index) => {
-                  const Icon = iconMap[stat.icon];
-                  return (
-                    <AnimatedWrapper key={stat.title} animation="fade-in-stagger" staggerIndex={index + 2}>
-                      <div className="group relative overflow-hidden rounded-lg">
-                        <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
-                          <Card className="bg-black/50 backdrop-blur-md border-border text-white relative transition-colors duration-300 group-hover:bg-transparent group-hover:border-accent">
-                            <CardContent className="relative p-4 flex items-center gap-3">
-                              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center transition-colors duration-300 group-hover:bg-accent-foreground/10">
-                                {Icon && <Icon className="h-6 w-6 text-accent transition-colors duration-300 group-hover:text-white" />}
-                              </div>
-                              <div>
-                                <p className="text-xl font-bold">{stat.value}</p>
-                                <p className="text-xs text-gray-300 group-hover:text-gray-100">{stat.title}</p>
-                              </div>
-                            </CardContent>
-                          </Card>
-                      </div>
-                    </AnimatedWrapper>
-                  );
-                })}
-              </div>
-            </div>
-          </AnimatedWrapper>
+    <TechnicalHero
+      eyebrow="Unité de production"
+      title={hero.title}
+      motif="bath"
+      subtitle={
+        // Client copy, lifted verbatim from the old hero. It carries the bath
+        // dimensions and the maximum piece length, both of which the client has
+        // still not reconciled with the figures elsewhere on this page — see the
+        // CLIENT NOTE on galvanisationCapacity. Deliberately NOT replaced by
+        // hero.subtitle from config: that string is dead today and holds the
+        // 25 000 figure, so rendering it would newly publish a contested number.
+        <div className="mx-auto max-w-2xl space-y-3 text-left text-base text-gray-300 md:text-lg">
+          <p className="font-bold">UNITÉ DE PRODUCTION</p>
+          <p>Surface de 40.000 m² dont 6.000 m² couverts. Démarrage de la production : octobre 2016.</p>
+          <p>L’unité est constituée de bains d’immersion de 13 × 1,8 × 3,5 m, permettant de traiter des pièces métalliques jusqu’à 13 m de longueur. {`Capacité de production (8 h/jour) : ${galvanisationCapacity.singleShiftPerMonth.toLocaleString('fr-FR')} t/mois, soit ${galvanisationCapacity.singleShiftPerYear.toLocaleString('fr-FR')} t/an.`}</p>
         </div>
-      </div>
-    </section>
+      }
+      stats={hero.stats.slice(0, 4).map((st) => ({ label: st.title, value: String(st.value) }))}
+      actions={
+        <>
+          <Button asChild size="lg" variant="destructive">
+            <Link href="/contact">
+              {hero.cta_primary} <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+          <DownloadButton text={hero.cta_secondary} href="/documents/Bordj-Steel-Catalogue-FR.pdf" />
+        </>
+      }
+    />
   );
 }
 
