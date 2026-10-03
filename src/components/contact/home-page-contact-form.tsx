@@ -16,6 +16,8 @@ type ContactFormValues = {
     email: string;
     subject: string;
     message: string;
+    /** Honeypot — always empty for a real visitor. */
+    company?: string;
 };
 
 export function HomePageContactForm() {
@@ -28,28 +30,69 @@ export function HomePageContactForm() {
         formState: { errors, isSubmitting },
     } = useForm<ContactFormValues>();
 
-    // No backend is provisioned for this site, so the form composes a pre-filled
-    // e-mail to the commercial address via the visitor's own mail client. This
-    // delivers the message reliably without storing data or requiring secrets.
-    const onSubmit = (data: ContactFormValues) => {
-        const to = contact.content.emails[0];
-        const subject = data.subject?.trim() || `Demande de contact — ${data.name}`;
-        const body = [
-            `Nom: ${data.name}`,
-            `E-mail: ${data.email}`,
-            '',
-            data.message,
-        ].join('\n');
+    // Shown when the server could not take the message, so the visitor is never
+    // left with a dead button. The direct address is the fallback — stated, not
+    // silently attempted.
+    const [failed, setFailed] = React.useState<string | null>(null);
+    // Mount time, used server-side to reject submissions filled impossibly fast.
+    const startedAt = React.useRef<number>(0);
+    /**
+     * False until this component has hydrated, and the submit button stays
+     * disabled until it flips.
+     *
+     * Not defensive padding — this was observed. Click submit before React has
+     * hydrated this subtree and the browser performs a NATIVE GET: the page
+     * reloads with the message sitting in the query string and the enquiry is
+     * gone. React 18 replays the click once it hydrates, but the native
+     * submission has already escaped. The homepage is heavy, so a visitor who
+     * fills quickly can genuinely hit that window.
+     *
+     * The direct address below the form is what makes this safe rather than
+     * merely blocked: with JavaScript off the button never enables, and the
+     * address is the path that still works.
+     */
+    const [ready, setReady] = React.useState(false);
+    React.useEffect(() => {
+        startedAt.current = Date.now();
+        setReady(true);
+    }, []);
 
-        window.location.href = `mailto:${to}?subject=${encodeURIComponent(
-            subject
-        )}&body=${encodeURIComponent(body)}`;
+    const directEmail = contact.content.emails[0];
 
-        toast({
-            title: 'Merci pour votre message !',
-            description: "Votre client e-mail va s'ouvrir pour finaliser l'envoi.",
-        });
-        reset();
+    /**
+     * Posts to /api/contact, which delivers the message and sets reply-to so a
+     * reply from the inbox reaches the sender.
+     *
+     * This used to set `window.location.href` to a `mailto:` and declare
+     * success. For anyone on webmail that did nothing whatsoever, and the
+     * "Merci pour votre message !" toast fired regardless — the site claimed to
+     * have received something nobody would ever see. Success is now only
+     * reported when the server says so.
+     */
+    const onSubmit = async (data: ContactFormValues) => {
+        setFailed(null);
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...data, startedAt: startedAt.current }),
+            });
+
+            if (!res.ok) {
+                const payload = (await res.json().catch(() => null)) as { error?: string } | null;
+                setFailed(payload?.error ?? "L'envoi a échoué. Merci de réessayer.");
+                return;
+            }
+
+            toast({
+                title: 'Merci pour votre message !',
+                description: 'Notre équipe vous répond sous 24 heures.',
+            });
+            reset();
+            startedAt.current = Date.now();
+        } catch {
+            setFailed("L'envoi a échoué. Vérifiez votre connexion et réessayez.");
+        }
     };
 
     return (
@@ -115,9 +158,52 @@ export function HomePageContactForm() {
                                             />
                                             {errors.message && <p id="message-error" role="alert" className="text-sm text-destructive">{errors.message.message}</p>}
                                         </div>
-                                        <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-accent hover:bg-accent/90">
-                                            {contact.content.form.button} <Send className="ml-2 h-5 w-5" />
+                                        {/* Honeypot. Hidden from people and from
+                                            assistive tech, left for bots to fill. */}
+                                        <div className="hidden" aria-hidden="true">
+                                            <label htmlFor="company">Société (ne pas remplir)</label>
+                                            <input
+                                                id="company"
+                                                type="text"
+                                                tabIndex={-1}
+                                                autoComplete="off"
+                                                {...register('company')}
+                                            />
+                                        </div>
+
+                                        {failed && (
+                                            <div role="alert" className="rounded-md border border-destructive/40 bg-destructive/5 p-4 text-sm">
+                                                <p className="font-medium text-destructive">{failed}</p>
+                                                <p className="mt-1 text-muted-foreground">
+                                                    Vous pouvez aussi nous écrire directement à{' '}
+                                                    <a
+                                                        href={`mailto:${directEmail}`}
+                                                        className="font-semibold text-accent underline-offset-4 hover:underline"
+                                                    >
+                                                        {directEmail}
+                                                    </a>
+                                                    .
+                                                </p>
+                                            </div>
+                                        )}
+
+                                        <Button type="submit" size="lg" disabled={!ready || isSubmitting} className="w-full bg-accent hover:bg-accent/90">
+                                            {isSubmitting ? 'Envoi en cours…' : contact.content.form.button}
+                                            <Send className="ml-2 h-5 w-5" />
                                         </Button>
+
+                                        {/* Always present, not only on failure: it is the path that
+                                            works with JavaScript disabled, when the button above
+                                            never enables. */}
+                                        <p className="text-center text-sm text-muted-foreground">
+                                            Ou écrivez-nous directement à{' '}
+                                            <a
+                                                href={`mailto:${directEmail}`}
+                                                className="font-medium text-accent underline-offset-4 hover:underline"
+                                            >
+                                                {directEmail}
+                                            </a>
+                                        </p>
                                     </form>
                                 </CardContent>
                             </Card>
