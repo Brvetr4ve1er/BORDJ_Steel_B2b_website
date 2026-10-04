@@ -8,6 +8,7 @@ import { useMemo, useState } from 'react';
 import { ChevronsRight, Snowflake, Settings, ArrowRight } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { TechnicalHero } from '@/components/sections/technical-hero';
+import { PRODUCT_HERO_MEDIA } from '@/config/product-heroes';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
@@ -71,6 +72,7 @@ const HeroSection = React.memo(function HeroSection() {
       title={sandwichHero.title}
       subtitle={sandwichHero.subtitle}
       motif="panel"
+      media={PRODUCT_HERO_MEDIA.sandwich}
       stats={sandwichHeroStats.map((s) => ({ label: s.label, value: String(s.value) }))}
       actions={
         <>

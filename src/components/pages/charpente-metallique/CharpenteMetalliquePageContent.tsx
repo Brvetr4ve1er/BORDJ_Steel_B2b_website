@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, Dot } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { TechnicalHero } from '@/components/sections/technical-hero';
+import { PRODUCT_HERO_MEDIA } from '@/config/product-heroes';
 import React, { useState, useMemo } from 'react';
 import { AnimatedNumber } from '@/components/animated-number';
 import { DownloadButton } from '@/components/ui/download-button';
@@ -70,6 +71,7 @@ function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.h
       title={hero.title}
       subtitle={hero.subtitle}
       motif="portal"
+      media={PRODUCT_HERO_MEDIA.charpente}
       stats={hero.stats.map((s) => ({ label: s.title, value: `${s.value.toLocaleString('fr-FR')}${s.unit}` }))}
       actions={
         <>

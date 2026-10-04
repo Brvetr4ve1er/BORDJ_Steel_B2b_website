@@ -68,6 +68,17 @@ export type HeroMedia = {
   loop?: string;
   /** Base64 LQIP. Omitted where the config has none; next/image then just fades in. */
   blurDataUrl?: string;
+  /**
+   * How hard to darken the photograph under the copy.
+   *
+   * `normal` suits a mid-dark frame — a fabrication hall, a galvanising bay.
+   * `strong` is for a bright one: the sandwich panel line is a white-walled,
+   * brightly lit factory, and at `normal` the white headline sat on roughly the
+   * same luminance as the wall behind it and effectively disappeared. This is a
+   * property of the picture, so it belongs with the picture rather than in the
+   * component.
+   */
+  scrim?: 'normal' | 'strong';
 };
 
 export function TechnicalHero({
@@ -156,7 +167,10 @@ export function TechnicalHero({
           </div>
           {/* Flat scrim, not the vignette: a photograph already has its own
               tonal centre, and a radial darkening fights it. */}
-          <div aria-hidden="true" className="absolute inset-0 z-[1] bg-black/55" />
+          <div
+            aria-hidden="true"
+            className={`absolute inset-0 z-[1] ${media.scrim === 'strong' ? 'bg-black/70' : 'bg-black/55'}`}
+          />
         </>
       ) : (
         <>
@@ -211,16 +225,16 @@ export function TechnicalHero({
 
       <div className="container relative z-20 mx-auto px-4 text-center">
         <AnimatedWrapper animation="zoom-in">
-          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-accent">
+          <p className={`font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-accent${media ? " [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]" : ""}`}>
             {eyebrow}
           </p>
-          <h1 className="mt-5 font-headline text-6xl font-bold uppercase leading-tight tracking-tighter text-white md:text-8xl md:leading-tight lg:leading-tight">
+          <h1 className={`mt-5 font-headline text-6xl font-bold uppercase leading-tight tracking-tighter text-white md:text-8xl md:leading-tight lg:leading-tight${media ? " [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]" : ""}`}>
             {title}
           </h1>
           {/* div, not p: subtitle is a ReactNode and the galvanisation hero passes
               block-level copy. Nesting <p> inside <p> is invalid, and the browser
               auto-closes it — which shows up as a hydration mismatch. */}
-          <div className="mx-auto mt-6 max-w-3xl text-xl text-gray-200 md:text-2xl">{subtitle}</div>
+          <div className={`mx-auto mt-6 max-w-3xl text-xl text-gray-200 md:text-2xl${media ? " [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]" : ""}`}>{subtitle}</div>
           {actions ? <div className="mt-9 flex flex-wrap items-center justify-center gap-4">{actions}</div> : null}
         </AnimatedWrapper>
       </div>

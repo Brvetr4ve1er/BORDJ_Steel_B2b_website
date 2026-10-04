@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { TechnicalHero } from '@/components/sections/technical-hero';
+import { PRODUCT_HERO_MEDIA } from '@/config/product-heroes';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Package, Users, Square, Factory, Flame, Bolt, Droplets, Beaker, Construction, Leaf, Filter } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -236,6 +237,7 @@ export function ChaudronneriePageContent() {
           title={hero.title}
           subtitle={hero.subtitle}
           motif="vessel"
+          media={PRODUCT_HERO_MEDIA.chaudronnerie}
           stats={hero.stats.map((s) => ({ label: s.title, value: String(s.value), note: s.secondaryValue ? String(s.secondaryValue) : undefined }))}
           actions={
             <>

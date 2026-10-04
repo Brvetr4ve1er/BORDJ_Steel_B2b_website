@@ -11,6 +11,7 @@ import { iconMap as galvanisationIconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { TechnicalHero } from '@/components/sections/technical-hero';
+import { PRODUCT_HERO_MEDIA } from '@/config/product-heroes';
 import { DownloadButton } from '@/components/ui/download-button';
 import dynamic from 'next/dynamic';
 import { TechniquesAndStandardsSection } from '@/components/sections/galvanisation/TechniquesAndStandardsSection';
@@ -60,6 +61,7 @@ function UnwrappedHeroSection() {
       eyebrow="Unité de production"
       title={hero.title}
       motif="bath"
+      media={PRODUCT_HERO_MEDIA.galvanisation}
       subtitle={
         // Client copy, lifted verbatim from the old hero. It carries the bath
         // dimensions and the maximum piece length, both of which the client has
@@ -67,8 +69,11 @@ function UnwrappedHeroSection() {
         // CLIENT NOTE on galvanisationCapacity. Deliberately NOT replaced by
         // hero.subtitle from config: that string is dead today and holds the
         // 25 000 figure, so rendering it would newly publish a contested number.
+        // The block's own "UNITÉ DE PRODUCTION" heading is gone: TechnicalHero
+        // prints exactly that string as the eyebrow directly above, so the hero
+        // was saying it twice. No client *fact* is lost — the words are still on
+        // the page, once, in the eyebrow.
         <div className="mx-auto max-w-2xl space-y-3 text-left text-base text-gray-300 md:text-lg">
-          <p className="font-bold">UNITÉ DE PRODUCTION</p>
           <p>Surface de 40.000 m² dont 6.000 m² couverts. Démarrage de la production : octobre 2016.</p>
           <p>L’unité est constituée de bains d’immersion de 13 × 1,8 × 3,5 m, permettant de traiter des pièces métalliques jusqu’à 13 m de longueur. {`Capacité de production (8 h/jour) : ${galvanisationCapacity.singleShiftPerMonth.toLocaleString('fr-FR')} t/mois, soit ${galvanisationCapacity.singleShiftPerYear.toLocaleString('fr-FR')} t/an.`}</p>
         </div>
