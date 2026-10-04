@@ -1,5 +1,8 @@
 import * as React from 'react';
+import Image from 'next/image';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { KenBurns } from '@/components/ui/ken-burns';
+import { VideoLoop } from '@/components/ui/video-loop';
 import { WF } from '@/components/wireframes/wf-theme';
 
 /**
@@ -38,11 +41,41 @@ export type HeroMotif =
   | 'panel'
   | 'vessel';
 
+/**
+ * A photographic backdrop for the band, in place of the drawn motif.
+ *
+ * This is the "WHEN REAL PHOTOGRAPHY ARRIVES" escape hatch named above. It is
+ * additive on purpose: passing `media` swaps the ground, nothing else. The stat
+ * strip, the eyebrow/title/subtitle block (including galvanisation's verbatim
+ * client copy), the sheet rules and the corner ticks all render exactly as they
+ * do over a drawing, so a page can gain or lose a photograph without any of its
+ * content moving.
+ *
+ * `motif` stays required even with `media` set, because it is what the band
+ * falls back to if the photograph is ever pulled.
+ */
+export type HeroMedia = {
+  /** Still that fills the band. Rendered `fill` + `object-cover`, so a landscape frame crops least. */
+  src: string;
+  alt: string;
+  /**
+   * Ambient loop laid over the still, between the photo and the scrim. Optional
+   * and genuinely so: `VideoLoop` renders nothing at all unless it is going to
+   * play — not on a phone, not under reduced motion, not on a metered
+   * connection — so the still below stays the LCP element and is what crawlers
+   * and most visitors actually get.
+   */
+  loop?: string;
+  /** Base64 LQIP. Omitted where the config has none; next/image then just fades in. */
+  blurDataUrl?: string;
+};
+
 export function TechnicalHero({
   eyebrow,
   title,
   subtitle,
   motif,
+  media,
   readout,
   stats,
   actions,
@@ -84,6 +117,8 @@ export function TechnicalHero({
    * formats them; it must never compute or round them.
    */
   stats?: ReadonlyArray<{ label: string; value: string; note?: string }>;
+  /** Photographic ground. Omit to keep the drawn motif. */
+  media?: HeroMedia;
   /** Primary and secondary calls to action. */
   actions?: React.ReactNode;
 }) {
@@ -93,35 +128,69 @@ export function TechnicalHero({
         stats && stats.length > 0 ? 'h-[86dvh] pb-28 md:pb-32' : 'h-[60dvh]'
       }`}
     >
-      {/* ground: drafting grid, drawn light-on-dark rather than reusing
-          .wf-ground, which is tuned for the light sections */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-[0.16]"
-        style={{
-          backgroundImage:
-            'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
-          backgroundSize: '44px 44px',
-        }}
-      />
-      {/* a second, finer grid — the way a drawing sheet carries minor divisions */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
-          backgroundSize: '11px 11px',
-        }}
-      />
+      {media ? (
+        <>
+          {/* `overflow-hidden`: KenBurns over-scales the still past this box — it
+              has to, or the pan would expose the container edge — so the wrapper
+              must clip or the photo paints outside the section and widens the
+              document. */}
+          <div aria-hidden="true" className="absolute inset-0 z-0 overflow-hidden">
+            <KenBurns variant="in" className="absolute inset-0 z-0">
+              <Image
+                src={media.src}
+                alt={media.alt}
+                fill
+                sizes="100vw"
+                className="object-cover"
+                priority
+                {...(media.blurDataUrl ? { placeholder: 'blur' as const, blurDataURL: media.blurDataUrl } : {})}
+              />
+            </KenBurns>
+            {media.loop ? (
+              /* Between the still and the scrim, so every piece of copy reads
+                 over it exactly as it reads over the photograph. Deliberately
+                 NOT inside KenBurns: the clip carries its own camera move, and
+                 compounding the two doubles the motion. */
+              <VideoLoop src={media.loop} className="absolute inset-0 z-0 h-full w-full object-cover" />
+            ) : null}
+          </div>
+          {/* Flat scrim, not the vignette: a photograph already has its own
+              tonal centre, and a radial darkening fights it. */}
+          <div aria-hidden="true" className="absolute inset-0 z-[1] bg-black/55" />
+        </>
+      ) : (
+        <>
+          {/* ground: drafting grid, drawn light-on-dark rather than reusing
+              .wf-ground, which is tuned for the light sections */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.16]"
+            style={{
+              backgroundImage:
+                'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
+              backgroundSize: '44px 44px',
+            }}
+          />
+          {/* a second, finer grid — the way a drawing sheet carries minor divisions */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.07]"
+            style={{
+              backgroundImage:
+                'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
+              backgroundSize: '11px 11px',
+            }}
+          />
 
-      <HeroMotifArt motif={motif} />
+          <HeroMotifArt motif={motif} />
 
-      {/* vignette, so the copy holds its contrast over the drawing */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(27,36,48,0.78)_0%,rgba(27,36,48,0.62)_55%,rgba(27,36,48,0.9)_100%)]"
-      />
+          {/* vignette, so the copy holds its contrast over the drawing */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(27,36,48,0.78)_0%,rgba(27,36,48,0.62)_55%,rgba(27,36,48,0.9)_100%)]"
+          />
+        </>
+      )}
 
       {/* sheet rules + corner ticks, the same framing device as the survey plate */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-5 border border-white/15 md:inset-8" />

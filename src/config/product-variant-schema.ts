@@ -3,6 +3,22 @@ export type ProductImage = {
   src: string;
   alt: string;
   aiHint?: string;
+  /**
+   * Intrinsic pixel size of the file, when it is known.
+   *
+   * `ImageSection` used to hand `next/image` a hardcoded 800x250 for every
+   * section strip. None of the six strips is that shape — they run 800x134 to
+   * 800x233 — so the renderer reserved a 3.2:1 box and `object-contain`
+   * letterboxed each drawing by a different amount inside it. Supplying the
+   * real numbers makes the reserved box the picture's own shape, which both
+   * removes the dead white space and keeps the layout from shifting once the
+   * file loads.
+   *
+   * Optional because most images here are rendered by `fill` into a box whose
+   * shape the layout already fixes, where intrinsic size is irrelevant.
+   */
+  width?: number;
+  height?: number;
 };
 
 /**
