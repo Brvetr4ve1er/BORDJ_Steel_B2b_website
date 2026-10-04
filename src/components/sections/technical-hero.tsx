@@ -241,7 +241,15 @@ export function TechnicalHero({
 
       {/* Stat strip, read as the cells of a title block rather than as floating
           cards. Scrolls horizontally on a phone instead of wrapping into a
-          stack, so the row stays a row and the hero keeps its height. */}
+          stack, so the row stays a row and the hero keeps its height.
+
+          THE CELLS ARE 40% WIDE, NOT 46%. At 46% two cells filled a 347px strip
+          to within 7px, so the third — "Surface de l'unité 10 000 m²" on
+          charpente — sat entirely off-screen with nothing to suggest it was
+          there. A phone visitor read a three-stat strip as a two-stat strip.
+          At 40% the third cell is cut mid-way instead of hidden, which is the
+          whole affordance: a cell sliced by the edge says "scroll me" and a
+          clean edge says "that is all of them". */}
       {stats && stats.length > 0 ? (
         <div className="absolute inset-x-0 bottom-0 z-20">
           <div className="mx-5 border-t border-white/15 md:mx-8">
@@ -249,7 +257,7 @@ export function TechnicalHero({
               {stats.map((s, i) => (
                 <div
                   key={s.label}
-                  className={`min-w-[46%] shrink-0 snap-start px-5 py-5 sm:min-w-0 sm:flex-1 md:max-w-[220px] md:px-7 md:py-6 ${
+                  className={`min-w-[40%] max-w-[62%] shrink-0 snap-start px-3.5 py-5 sm:min-w-0 sm:max-w-none sm:flex-1 md:max-w-[220px] md:px-7 md:py-6 ${
                     i > 0 ? 'border-l border-white/12' : ''
                   }`}
                 >
