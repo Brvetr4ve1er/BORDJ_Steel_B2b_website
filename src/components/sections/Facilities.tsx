@@ -87,6 +87,7 @@ export function Facilities() {
                           <Image
                           src={facility.image.src}
                           alt={facility.title}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                           width={facility.image.width}
                           height={facility.image.height}
                           className={cn(

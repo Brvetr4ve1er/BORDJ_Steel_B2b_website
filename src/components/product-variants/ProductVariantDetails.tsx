@@ -131,6 +131,7 @@ const ImageSection: React.FC<{ section: Extract<ProductVariantSection, { type: '
         <Image
           src={section.image.src}
           alt={section.image.alt}
+          sizes="(max-width: 768px) 100vw, 45vw"
           width={section.image.width ?? 800}
           height={section.image.height ?? 250}
           className="object-contain w-full h-auto"

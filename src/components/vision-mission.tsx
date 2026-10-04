@@ -32,6 +32,7 @@ export function VisionMission() {
               <Image
                 src={aboutImage.src}
                 alt={aboutImage.alt}
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 width={aboutImage.width}
                 height={aboutImage.height}
                 className="transition-transform duration-500 group-hover:scale-110 object-cover w-full h-full"

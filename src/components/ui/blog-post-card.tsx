@@ -106,6 +106,7 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
                     <Image
                       src={author.avatarUrl}
                       alt={author.name}
+                      sizes="40px"
                       width={40}
                       height={40}
                       className="h-10 w-10 rounded-full object-contain"

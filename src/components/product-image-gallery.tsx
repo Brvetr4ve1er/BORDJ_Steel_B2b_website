@@ -35,6 +35,7 @@ export function ProductImageGallery({ mainImage }: ProductImageGalleryProps) {
             <Image
                 src={mainImage.src}
                 alt={mainImage.alt}
+                sizes="(max-width: 768px) 100vw, 50vw"
                 width={mainImage.width ?? 800}
                 height={mainImage.height ?? 600}
                 className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"

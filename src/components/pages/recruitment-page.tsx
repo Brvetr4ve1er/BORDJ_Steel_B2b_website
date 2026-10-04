@@ -116,6 +116,7 @@ export function RecruitmentPage() {
           <Image
             src={heroImage.src}
             alt={heroImage.alt}
+            sizes="100vw"
             fill
             className="z-0 object-cover"
             priority

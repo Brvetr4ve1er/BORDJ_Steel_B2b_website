@@ -30,6 +30,7 @@ export function ReferencesPageContent() {
           <Image
             src={heroImage.src}
             alt={heroImage.alt}
+            sizes="100vw"
             fill
             className="object-cover"
             priority
