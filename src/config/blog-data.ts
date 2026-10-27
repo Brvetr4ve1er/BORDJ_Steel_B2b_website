@@ -22,7 +22,7 @@ export const articles = [
         href: "/media-center/blog/article-2",
         lang: "fr",
         tag: "Projet",
-        imageUrl: "/media/1562088997-40b7a701.webp",
+        imageUrl: "/media/charpente-erection-7df1e2ae.webp",
         date: "30 Jul 2025",
         author: {
             name: "Bordj Steel",

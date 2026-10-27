@@ -30,7 +30,7 @@ export const charpenteMetalliqueData = {
       title: "PRS – Profils Reconstitués Soudés",
       description: "Fabrication sur mesure pour bâtiments industriels, ponts et charpentes lourdes.",
       galleryImages: [
-        "/media/f80539082e4b8be52b8e586116b3-58a4871b.webp",
+        "/media/unite-charpente-prs-1a9b8796.webp",
         "/media/charpente-85d5dfe8.webp",
         "/media/projet-charpente-3ecb0dcb.webp"
       ],

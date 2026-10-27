@@ -19,11 +19,11 @@
   },
   "facilities": {
     "charpente": {
-      "src": "/media/f80539082e4b8be52b8e586116b3-58a4871b.webp",
-      "width": 1600,
-      "height": 1072,
+      "src": "/media/unite-charpente-prs-1a9b8796.webp",
+      "width": 1872,
+      "height": 1248,
       "aiHint": "steel fabrication",
-      "blurDataUrl": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQAgCdASoQAAsAAwBSJaQAD5GuL+CtC56AAP76G2G4ikH++9sualDyEaENKMjGhYb2TecWyWhPybUlE3gt5zP6XjK/JS7XnBuG2FFzuvIY5JDa6ziVASWAAAA="
+      "blurDataUrl": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABQAgCdASoQAAsAA4BaJZwAD4/NaOD+qyunaAAA/VNyll6AOBSrfqig1xV4o4lUu6zxrI78XaXQ/XodyMjbRgutAys98AkJhowbDEWvEMTboi0Pl4y8/wAA"
     },
     "panneaux": {
       "src": "/media/ce227152b9fed3c117cbaad50450-8e0cc0ac.webp",
@@ -94,12 +94,12 @@
   },
   "charpente-metallique": {
     "main": {
-      "src": "/media/1562088997-40b7a701.webp",
-      "width": 1440,
-      "height": 1920,
+      "src": "/media/charpente-erection-7df1e2ae.webp",
+      "width": 1328,
+      "height": 1760,
       "alt": "Charpente Métallique en construction",
       "aiHint": "steel frame construction",
-      "blurDataUrl": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABQBACdASoQABUAPt1apkyopSOiMAgBEBuJZgCdAYxYqninA/K4AXLDnXYAAPnjMdh7pN4UaBfpDj7YkSQm3YmSNRU/+v7LEKvyrNq1W5rK25x6Avhfcrvq1z+uxENlVENnn1aiRbvvCc2DFXo78wL+/IGbTFPWp2hxQo1O/xm73ZvIQHw6WhHohvuYAAAA"
+      "blurDataUrl": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JYgCdOUAArfbN6NdTDPuiAP5TAmsB47Xfc+xrq9U5YujwOhvi5MLfeVYh6iIQE2xw2z/9LDRY0flPuynnhfam+1nDRv7dxCx3TiRfY/zmrTwGDY/ZTGTgIr045DkHrezlAAAA"
     }
   },
   "chaudronnerie": {
@@ -112,36 +112,36 @@
       "blurDataUrl": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQAgCdASoQAAkAAwBSJZQC7AEX/QtrELYAAP7tLWdfxZftjaB7VzM48AF4XXROTGKvpWo9B7T8ZtidsdYRt3vAZiqmkB0+aLNaWkBEiE4wP2SkVCmvZKxQAAA="
     },
     "silos": {
-      "src": "/media/1535732820275-2a387880.webp",
-      "width": 1920,
-      "height": 1440,
-      "alt": "Silo en acier de grande capacité",
+      "src": "/media/cuves-reservoirs-818fcebc.webp",
+      "width": 1760,
+      "height": 1328,
+      "alt": "Cuves et réservoirs en acier de grande capacité",
       "aiHint": "steel silo",
-      "blurDataUrl": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoQAAwAAwBSJZAC7AC8hBtMPr7AAP73gmeAaTere3YF56W2qG2HHCDxiZoyqN6c7GiVWNEwr915DJOaMmxQQUG3eWAYvd+gAAA="
+      "blurDataUrl": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAABQAgCdASoQAAwAA4BaJYwC7AEPhlpNrUKi0gAA/vHQcnW//1acXrOb4hZGxZymd3pWZDGwUwWz/l4wBkDVwQMJ6LEyHEW9gAA="
     },
     "ducting": {
-      "src": "/media/1565793298595-97fe2522.webp",
-      "width": 1920,
-      "height": 1440,
+      "src": "/media/gaines-conduites-61593140.webp",
+      "width": 1760,
+      "height": 1328,
       "alt": "Gaines de ventilation industrielle",
       "aiHint": "industrial ducting",
-      "blurDataUrl": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAQCdASoQAAwAAwBSJZQC7AEMVJAAAP4nIx0ln2LCtPqFueuJ8FQYFr1cQ9Sykx21e4nITTZXvpc1ZeRY9kpjsvJ+2hIV9A1qMA5OI8G29QAA"
+      "blurDataUrl": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwAgCdASoQAAwAA4BaJZQAD4xujEOcKoc4AAD+W/zPRLSzXk/SkiuqhDK4XOB/0fBa+YOueWEJoo6XntrBnc8UooTT4kNnUk1LvlPp1UEjqVKCXcFuietXN2e6wAAA"
     },
     "meccano": {
-      "src": "/media/1533709752211-7175820b.webp",
-      "width": 1920,
-      "height": 1440,
+      "src": "/media/structure-mecano-soudee-563464d6.webp",
+      "width": 1760,
+      "height": 1328,
       "alt": "Structure mécano-soudée complexe",
       "aiHint": "welded structure",
-      "blurDataUrl": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADwAQCdASoQAAwAAwBSJYgAAlvAREHz9wAA/veCZ8BEigRbaID1BC5cBHZDD6BSll1W7UYCh4WD5BAEkBlyYcSocAA="
+      "blurDataUrl": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoQAAwAA4BaJZwAD5PvuaMMvCgA/kuvz94l4xsFwFiEXY+zZad2YsWXi4oPpeCAxFcChWAnetyG39xn4CXzGigbTvLT8dtnqsFBVwJ7/ptJQI5yoaLV3lDnJl4AAA=="
     },
     "equipment": {
-      "src": "/media/1504328345606-6b0987db.webp",
-      "width": 1920,
-      "height": 1440,
+      "src": "/media/equipement-industriel-75d75359.webp",
+      "width": 1760,
+      "height": 1328,
       "alt": "Équipement industriel en acier",
       "aiHint": "industrial equipment",
-      "blurDataUrl": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQAgCdASoQAAwAAwBSJaACdAEflZikESYAAP70oM1Y9yNs+8KYl2NbtuvxE8GlVzKhoScTl8P93FtdlELchCwDNPRy+7MCt2HRq6KinjPIPS6bbv6IqD6fRTOs5k0Sn4uHDG7ojmIxwcAA"
+      "blurDataUrl": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAwAA4BaJZQAAjxB5GKv0eAA/sIzfgBfo6qhlO67suesefWp6h0v2cFuU66lJ9Bx9Jg9kqi6p1zYEYImCH99gMTWZvFwAAA="
     }
   },
   "galvanisation": {
