@@ -42,7 +42,7 @@ the whole of Tier 3. Tier 2 is now not merely the critical path but the only pat
 | `tsc --noEmit` | **0 errors** (strict + `noUncheckedIndexedAccess` + `noImplicitOverride`) |
 | `next lint` | **0 warnings** |
 | `next build` | **exit 0** — 18 routes + 13 SSG blog pages |
-| `vitest run` | **255 passed / 255**, 10 files (was 134 / 5 files here; the three suites added in `018941f` on 2026-10-27 are the difference) |
+| `vitest run` | **259 passed / 259**, 10 files (was 134 / 5 files here; the suites added on 2026-10-27, plus the rate-limiter test added at close-out, are the difference) |
 | `TODO`/`FIXME`/`HACK` in `src/` | **0** |
 | `any` / `@ts-ignore` / `@ts-expect-error` / `eslint-disable` | **0** |
 | Raw `<img>` tags | **0** — all 32 images go through `next/image`, all have `alt` |

@@ -120,7 +120,7 @@ reaches a visitor:
 
 - **Contrast.** The homepage "Chiffres clés" figures were brand red on dark grey at **1.49:1**
   — under half the floor for large text. The `/recrutement` h1 was brand red over an unscrimmed
-  photograph. Both fixed, along with ~28 figure labels at 2.56:1 and several sub-4.5:1 captions.
+  photograph. Both fixed, along with 32 technical-figure labels at 2.56:1 (the `WF.labelMuted` token, darkened to #5b6b82 — verified 5.43:1 on white and 4.95:1 on the figures’ own fill) and several sub-4.5:1 captions.
 - **A clock bug that silently dropped messages.** The contact route compared the server's clock
   to the browser's, so a visitor whose clock ran ahead got a success toast and no e-mail was
   sent. The client now sends a *duration*, so one clock is read instead of two.
