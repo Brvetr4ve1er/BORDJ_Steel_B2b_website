@@ -12,7 +12,6 @@ import { PRODUCT_HERO_MEDIA } from '@/config/product-heroes';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import images from '@/config/placeholder-images.json';
 import { DownloadButton } from '@/components/ui/download-button';
 import { productVariants } from '@/config/product-variants.config';
 import { ProductVariantDetails } from '@/components/product-variants/ProductVariantDetails';
@@ -65,7 +64,6 @@ const FinitionsIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 
 const HeroSection = React.memo(function HeroSection() {
-  const heroImage = images['sandwich-panels'].hero;
   return (
     <TechnicalHero
       eyebrow="Unité de production"

@@ -317,7 +317,10 @@ export function ChaudronneriePageContent() {
                     </div>
                      <div className="mt-8">
                         <div className="bg-muted rounded-lg aspect-video flex items-center justify-center">
-                            <Image src="/media/acf11d05445a30a0c57c86ab75fe-6202d984.webp" alt="Schéma technique" width={800} height={450} sizes="(max-width: 1024px) 100vw, 50vw" className="rounded-lg object-contain" data-ai-hint="technical drawing" />
+                            {/* Not a schematic, whatever the old alt said: this is a
+                                photograph of the plant — an operator at the roller's
+                                control pedestal with a virole in the rolls. */}
+                            <Image src="/media/acf11d05445a30a0c57c86ab75fe-6202d984.webp" alt="Opérateur à la console de commande d'une rouleuse, virole d'acier en cours de roulage dans l'atelier de chaudronnerie" width={800} height={450} sizes="(max-width: 1024px) 100vw, 50vw" className="rounded-lg object-contain" data-ai-hint="plate rolling machine" />
                         </div>
                      </div>
                   </CardContent>

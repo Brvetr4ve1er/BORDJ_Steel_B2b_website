@@ -104,12 +104,12 @@
   },
   "chaudronnerie": {
     "hero": {
-      "src": "/media/ef2e9977bd5bfca70c8ebd557e61-41338297.webp",
-      "width": 1920,
-      "height": 1080,
-      "alt": "Fabrication sur mesure en chaudronnerie",
-      "aiHint": "metal fabrication",
-      "blurDataUrl": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQAgCdASoQAAkAAwBSJZQC7AEX/QtrELYAAP7tLWdfxZftjaB7VzM48AF4XXROTGKvpWo9B7T8ZtidsdYRt3vAZiqmkB0+aLNaWkBEiE4wP2SkVCmvZKxQAAA="
+      "src": "/media/acf11d05445a30a0c57c86ab75fe-6202d984.webp",
+      "width": 1483,
+      "height": 1065,
+      "alt": "Opérateur à la console de commande d'une rouleuse, virole d'acier en cours de roulage dans l'atelier de chaudronnerie",
+      "aiHint": "plate rolling machine",
+      "blurDataUrl": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAABwAgCdASoQAAsAA4BaJZQC7AYwTzd/JX9wiygAAP7CkX07wty4uSb125P/A1JbNsMC1yV2SCn+at9lIGxgm7j4oM7IR7SME/W36i9j84BpuLGkunLNvHNMdalgozG141IVAAAA"
     },
     "silos": {
       "src": "/media/cuves-reservoirs-818fcebc.webp",
