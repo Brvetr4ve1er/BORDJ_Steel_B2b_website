@@ -6,9 +6,9 @@ export const productVariants: { [key: string]: ProductVariant } = {
     id: 'couverture',
     title: 'PANNEAUX SANDWICHS DE COUVERTURE',
     mainImage: {
-      src: '/media/1614003013812-4484c269.webp', width: 800, height: 1200,
+      src: '/media/panneau-sandwich-couverture-482e1502.webp', width: 1200, height: 1800,
       alt: 'Panneaux de couverture en acier',
-      aiHint: 'metal sheets',
+      aiHint: 'roof sandwich panel cut end',
     },
     sections: [
        {
@@ -111,7 +111,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
     id: 'bardage',
     title: 'PANNEAUX SANDWICHS DE BARDAGE',
     mainImage: {
-      src: '/media/1545987796-b3eced79.webp', width: 1235, height: 823,
+      src: '/media/panneau-sandwich-bardage-bfc29447.webp', width: 1800, height: 1200,
       alt: 'Panneaux de bardage façade industrielle',
       aiHint: 'industrial building facade cladding'
     },
@@ -214,7 +214,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
     id: 'frigorifique',
     title: 'PANNEAUX SANDWICHS FRIGORIFIQUES',
     mainImage: {
-      src: '/media/1558618666-82ac63dd.webp', width: 1200, height: 800,
+      src: '/media/panneau-sandwich-frigorifique-85d22638.webp', width: 1800, height: 1200,
       alt: 'Panneaux sandwichs frigorifiques – chambre froide',
       aiHint: 'cold storage refrigeration panels',
     },
@@ -319,7 +319,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
     id: 'toleNervuree',
     title: 'TÔLE NERVURÉE',
     mainImage: {
-      src: '/media/1706029831375-5aec7a03.webp', width: 1200, height: 1800,
+      src: '/media/tole-nervuree-profil-306241bf.webp', width: 1200, height: 1800,
       alt: 'Tôle nervurée',
       aiHint: 'ribbed steel sheet',
     },
@@ -491,8 +491,8 @@ export const productVariants: { [key: string]: ProductVariant } = {
                 // Photo de la cornière d'angle extérieur à fournir par le client :
                 // l'entrée réutilisait la photo de l'angle intérieur.
                 { name: 'Cornière d\'angle extérieur', length: 'Long. Std. 3m à 6m' },
-                { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: '/media/389f22b55684dcbf9747652526fc-c0943445.webp', width: 1235, height: 1235, alt: 'Faîtière', aiHint: 'ridge cap' } },
-                { name: 'U de sol acier galvanisé', length: 'Long. Std. 3m à 6m', image: { src: '/media/12c9fcea3a33af7b379bbee14021-b32cd893.webp', width: 1235, height: 1235, alt: 'U de sol acier galvanisé', aiHint: 'galvanized steel U-profile' } },
+                { name: 'Faîtière', length: 'Long. Std. 3m à 6m', image: { src: '/media/finition-faitiere-d3f8a342.webp', width: 1235, height: 1235, alt: 'Faîtière', aiHint: 'ridge cap' } },
+                { name: 'U de sol acier galvanisé', length: 'Long. Std. 3m à 6m', image: { src: '/media/finition-u-de-sol-12d064f7.webp', width: 1235, height: 1235, alt: 'U de sol acier galvanisé', aiHint: 'galvanized steel U-profile' } },
             ]
         }
     ]
