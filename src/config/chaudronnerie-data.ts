@@ -46,7 +46,10 @@ export const chaudronnerieData = {
     silos: {
       title: 'Silos & Réservoirs de Stockage',
       galleryImages: [
-        { ...images.chaudronnerie.silos, alt: 'Silo en acier de grande capacité' },
+        // No local `alt` override here, unlike its siblings: this photo was
+        // replaced with one of cuves et réservoirs, and an override would have
+        // gone on describing a silo to the media-centre gallery.
+        { ...images.chaudronnerie.silos },
       ],
       features: {
         description: 'Nous concevons et fabriquons des silos et réservoirs de toutes tailles pour le stockage de produits pulvérulents (ciment, céréales), de liquides (eau, produits chimiques) et de gaz. Nos solutions sont optimisées pour garantir la sécurité, la durabilité et une conservation optimale du contenu.',

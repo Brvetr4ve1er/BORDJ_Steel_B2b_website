@@ -1,34 +1,31 @@
 "use client";
 
 import * as React from 'react';
-import { chaudronnerieData } from '@/config/chaudronnerie-data';
+import { cuveGeometry, formatRangeMm } from '@/config/chaudronnerie-tables';
 import { ProductWireframe } from './ProductWireframe';
-import { ChaudronnerieSiloFigure } from './figures/ChaudronnerieSiloFigure';
-
-function statValue(needle: string, key: 'value' | 'secondaryValue', fallback: string) {
-  const s = chaudronnerieData.hero.stats.find((x) => x.title.toLowerCase().includes(needle));
-  const v = s ? (s as Record<string, unknown>)[key] : undefined;
-  return typeof v === 'string' ? v : fallback;
-}
-
-// Normalise thousands with a thin space, matching the site's French formatting.
-const fr = (s: string) => s.replace(/(\d)(?=(\d{3})+(\D|$))/g, '$1 ');
+import { ChaudronnerieCuveFigure } from './figures/ChaudronnerieCuveFigure';
 
 export function ChaudronnerieWireframe() {
+  // Every cote below is read off `geometricTableData` — the same table the page
+  // renders a few sections down — so the drawing cannot state a dimension the
+  // table does not. The hero stat strip above already carries the unit's
+  // surface, capacity and headcount; the drawing no longer repeats them.
   const spec = {
-    surface: fr(statValue('surface', 'value', '1500 m²')),
-    capacity: fr(statValue('capacité', 'secondaryValue', '5000T/an')).replace('T/an', ' T/an').replace(/\s+/g, ' ').trim(),
-    staff: fr(statValue('effectif', 'value', '30 Employés')),
+    diametre: formatRangeMm(cuveGeometry.diametre),
+    virole: formatRangeMm(cuveGeometry.virole),
+    longueurTotale: formatRangeMm(cuveGeometry.longueurTotale),
+    epaisseur: formatRangeMm(cuveGeometry.epaisseur),
+    pressionEpreuve: cuveGeometry.pressionEpreuve ?? undefined,
   };
 
   return (
     <ProductWireframe
       viewBox="0 0 800 470"
-      caption="Élévation type d'un silo mécano-soudé. Proportions schématiques (dimensions sur mesure) ; équipements d'après la fiche produit."
-      eyebrow="Mécano-soudé"
-      title="Anatomie d'un silo sur mesure"
+      caption="Élévation et vue en bout d'une cuve enterrée standard. Proportions schématiques ; cotes d'après le tableau des caractéristiques géométriques ci-dessous."
+      eyebrow="Cuves enterrées"
+      title="Anatomie d'une cuve enterrée"
     >
-      <ChaudronnerieSiloFigure spec={spec} />
+      <ChaudronnerieCuveFigure spec={spec} />
     </ProductWireframe>
   );
 }
