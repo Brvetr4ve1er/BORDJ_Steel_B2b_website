@@ -148,7 +148,7 @@ function ContactCard({
         )}
 
         {CONTACT_SCENE_STYLE === 'b' && scene && SCENE_CAPTIONS[scene] ? (
-          <span className="pointer-events-none absolute bottom-2.5 left-3 flex items-center gap-1.5 whitespace-nowrap font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500">
+          <span className="pointer-events-none absolute bottom-2.5 left-3 flex items-center gap-1.5 whitespace-nowrap font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600">
             <span aria-hidden="true" className="h-1.5 w-1.5 rounded-[1px] bg-accent" />
             {SCENE_CAPTIONS[scene]}
           </span>
@@ -170,7 +170,6 @@ function ContactCard({
                 type="button"
                 className="group/copy flex-grow cursor-pointer text-left"
                 onClick={() => handleCopy(phone, 'phone')}
-                aria-label="Copier le numéro"
               >
                 <span className="text-2xl font-bold text-foreground transition-colors group-hover/copy:text-accent">
                   {phone}
@@ -205,7 +204,6 @@ function ContactCard({
                 type="button"
                 className="group/copy flex-grow cursor-pointer text-left"
                 onClick={() => handleCopy(email, 'email')}
-                aria-label="Copier l'adresse e-mail"
               >
                 <span className="text-lg font-medium text-foreground transition-colors group-hover/copy:text-accent break-all">
                   {email}

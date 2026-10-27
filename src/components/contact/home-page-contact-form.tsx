@@ -34,7 +34,7 @@ export function HomePageContactForm() {
     // left with a dead button. The direct address is the fallback — stated, not
     // silently attempted.
     const [failed, setFailed] = React.useState<string | null>(null);
-    // Mount time, used server-side to reject submissions filled impossibly fast.
+    // Mount time. Submitted as an elapsed duration, not as a timestamp, so the server can reject a fill no human could have typed by reading one clock rather than subtracting two.
     const startedAt = React.useRef<number>(0);
     /**
      * False until this component has hydrated, and the submit button stays
@@ -75,7 +75,7 @@ export function HomePageContactForm() {
             const res = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...data, startedAt: startedAt.current }),
+                body: JSON.stringify({ ...data, elapsedMs: Date.now() - startedAt.current }),
             });
 
             if (!res.ok) {

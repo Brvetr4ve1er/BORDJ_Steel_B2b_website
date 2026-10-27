@@ -1,5 +1,5 @@
 
-import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship, HardHat, CircleDollarSign, Check, Beaker, SprayCan, Fan, Pipette, Ruler, ShieldCheck, Weight } from 'lucide-react';
+import { Factory, Thermometer, Shield, Layers, Droplets, Construction, TowerControl, Ship, HardHat, CircleDollarSign, Check, Beaker, SprayCan, Fan, Pipette, Ruler, ShieldCheck, Weight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import images from '@/config/placeholder-images.json';
 import { galvanisationCapacity } from '@/config/company-data';
@@ -43,7 +43,7 @@ export const galvanisationContent = {
     "image_url": images.galvanisation.hero.src,
     "blurDataUrl": images.galvanisation.hero.blurDataUrl,
     "cta_primary": "Demander un devis",
-    "cta_secondary": "Télécharger la fiche technique"
+    "cta_secondary": "Télécharger la brochure"
   },
   "galvanisation_steps": [
     {
@@ -136,7 +136,7 @@ export const galvanisationContent = {
   "cta": {
     "title": "Confiez votre projet de galvanisation à Bordj Steel",
     "button_primary": "Demander un devis",
-    "button_secondary": "Télécharger la fiche technique",
+    "button_secondary": "Télécharger la brochure",
     "form_url": "/contact"
   }
 };

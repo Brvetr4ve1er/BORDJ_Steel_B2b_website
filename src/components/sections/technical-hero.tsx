@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Image from 'next/image';
-import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { HeroMotifArt, type HeroMotif } from '@/components/sections/hero/HeroMotifArt';
 import { KenBurns } from '@/components/ui/ken-burns';
 import { VideoLoop } from '@/components/ui/video-loop';
@@ -24,10 +23,50 @@ import { VideoLoop } from '@/components/ui/video-loop';
  * of the actual plant beats a drawing of one; a drawing of one beats a stock
  * photograph of somebody else's.
  *
- * Server component. The only client leaf is `AnimatedWrapper` around the copy,
- * and the motif's drift is CSS that pins itself under
- * `prefers-reduced-motion: reduce`.
+ * Server component, with no client leaf of its own: the copy block's entrance
+ * is the scoped CSS below rather than `AnimatedWrapper`, and the motif's drift
+ * is CSS as well. Both pin themselves under `prefers-reduced-motion: reduce`.
+ * The only `"use client"` code this band can mount is `VideoLoop`, and only
+ * when a `media.loop` is configured.
  */
+
+/**
+ * The copy block's entrance, as CSS rather than as `AnimatedWrapper`.
+ *
+ * WHY NOT `AnimatedWrapper`. It is `"use client"`, mounts at `opacity-0` and
+ * reveals only after hydration plus an IntersectionObserver — a JS gate on the
+ * one element all eleven of these routes open with. The `<h1>` painted late, or
+ * never if the route chunk failed, and an `opacity-0` element is not even an
+ * LCP candidate. This runs at first style resolution instead, so the headline
+ * is there with or without JS.
+ *
+ * Namespaced `.th-*`, and deliberately NOT a copy of `home-page-hero`'s
+ * `HERO_CSS` / `.hk-*`: that stylesheet is tuned to the homepage's staggered
+ * cartouche, and duplicating it here would leave the repo maintaining two of
+ * the same thing. This is the same principle at the size this band needs — one
+ * reveal, matching the `zoom-in` it replaces.
+ *
+ * Inline `<style>` rather than `globals.css` keyframes, and safe here for the
+ * reason `ui/ken-burns.tsx` gives for the opposite choice: that component
+ * renders up to four times on one page, this band renders once per route.
+ */
+const HERO_REVEAL_CSS = `
+.th-reveal {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: th-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes th-reveal {
+  to { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .th-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+`;
 
 /**
  * Re-exported, not merely imported. `HeroMotif` was part of this module's
@@ -221,9 +260,16 @@ export function TechnicalHero({
         </span>
       ) : null}
 
+      <style>{HERO_REVEAL_CSS}</style>
+
       <div className="container relative z-20 mx-auto px-4 text-center">
-        <AnimatedWrapper animation="zoom-in">
-          <p className={`font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-accent${media ? " [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]" : ""}`}>
+        <div className="th-reveal">
+          {/* white/80, not `text-accent`: brand red on this band's #1b2430
+              ground is 2.68:1, and `text-[11px]` is a literal px value the 70%
+              root does not scale, so the floor is the 4.5:1 of normal text, not
+              3:1. white/80 composites to ~10.4:1. The brand colour stays where
+              it already clears the floor — the corner ticks above. */}
+          <p className={`font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-white/80${media ? " [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]" : ""}`}>
             {eyebrow}
           </p>
           <h1 className={`mt-5 font-headline text-6xl font-bold uppercase leading-tight tracking-tighter text-white md:text-8xl md:leading-tight lg:leading-tight${media ? " [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]" : ""}`}>
@@ -234,7 +280,7 @@ export function TechnicalHero({
               auto-closes it — which shows up as a hydration mismatch. */}
           <div className={`mx-auto mt-6 max-w-3xl text-xl text-gray-200 md:text-2xl${media ? " [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]" : ""}`}>{subtitle}</div>
           {actions ? <div className="mt-9 flex flex-wrap items-center justify-center gap-4">{actions}</div> : null}
-        </AnimatedWrapper>
+        </div>
       </div>
 
       {/* Stat strip, read as the cells of a title block rather than as floating

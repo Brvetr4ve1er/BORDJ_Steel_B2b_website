@@ -15,10 +15,12 @@
  * The one test that exercises a successful send inspects the request the route
  * *would* have made.
  *
- * TIME IS FROZEN. The route reads `Date.now()` in three places — the rate
- * limiter's window, the minimum-fill-time check, and nothing else. Pinning it
- * makes the too-fast branch and the `Retry-After` header exact values rather
- * than ranges, and keeps the suite from depending on how fast the machine is.
+ * TIME IS FROZEN. The route reads `Date.now()` in exactly one place — the rate
+ * limiter's window. The minimum-fill-time check does not: the client measures
+ * the elapsed milliseconds on its own clock and posts the duration, so the route
+ * never subtracts one machine's clock from another's. Pinning the clock makes
+ * the `Retry-After` header an exact value rather than a range, and keeps the
+ * suite from depending on how fast the machine is.
  *
  * THE RATE LIMITER IS MODULE STATE. Its `Map` lives in the imported module and
  * therefore spans this whole file: a test that reused another's address would
@@ -85,6 +87,21 @@ function post(body: unknown, address: string = nextAddress()): Promise<Response>
   );
 }
 
+/**
+ * A request whose identifying headers are given in full. `post` above sets
+ * x-forwarded-for and nothing else, which is the ordinary case; this exists for
+ * the one test that is about which of the three headers the route keys on.
+ */
+function postFrom(body: unknown, headers: Record<string, string>): Promise<Response> {
+  return POST(
+    new Request('https://bordj-steel.com/api/contact', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', ...headers },
+      body: JSON.stringify(body),
+    }),
+  );
+}
+
 /** A submission that passes every check up to the configuration gate. */
 const validBody = {
   name: 'Amine Belkacem',
@@ -128,7 +145,7 @@ describe('contact route — spam traps answer 200 and send nothing', () => {
   });
 
   it('a submission faster than a human could type is accepted and discarded', async () => {
-    const res = await post({ ...validBody, startedAt: NOW - (MIN_FILL_MS - 1) });
+    const res = await post({ ...validBody, elapsedMs: MIN_FILL_MS - 1 });
 
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ ok: true });
@@ -139,14 +156,14 @@ describe('contact route — spam traps answer 200 and send nothing', () => {
     // The boundary, because `<` and `<=` are one character apart and the wrong
     // one silently drops a real enquiry that happened to be typed quickly.
     configure();
-    const res = await post({ ...validBody, startedAt: NOW - MIN_FILL_MS });
+    const res = await post({ ...validBody, elapsedMs: MIN_FILL_MS });
 
     expect(res.status).toBe(200);
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
-  it('a missing startedAt is not treated as too fast', async () => {
-    // `startedAt` comes from the client, so it can be absent. Defaulting to 0
+  it('a missing elapsedMs is not treated as too fast', async () => {
+    // `elapsedMs` comes from the client, so it can be absent. Defaulting to -1
     // must mean "unknown", not "instant".
     configure();
     const res = await post(validBody);
@@ -248,6 +265,29 @@ describe('contact route — the rate limiter', () => {
 
     const other = await post(validBody, '198.51.100.9');
     expect(other.status).toBe(200);
+  });
+
+  it('keys on the header the host sets, not the one the caller can rotate', async () => {
+    configure();
+    // Netlify writes x-nf-client-connection-ip itself. x-forwarded-for arrives
+    // from the caller and the edge only appends to it, so a bot can present a
+    // fresh value on every request — if the route still keyed on that, these six
+    // submissions would be six buckets and the limiter would never fire.
+    const netlify = '198.51.100.11';
+    const send = () =>
+      postFrom(validBody, {
+        'x-nf-client-connection-ip': netlify,
+        'x-forwarded-for': nextAddress(),
+      });
+
+    for (let i = 0; i < RATE_LIMIT_MAX; i += 1) {
+      const res = await send();
+      expect(res.status, `submission ${i + 1} of ${RATE_LIMIT_MAX} should pass`).toBe(200);
+    }
+
+    const blocked = await send();
+    expect(blocked.status).toBe(429);
+    expect(fetchMock).toHaveBeenCalledTimes(RATE_LIMIT_MAX);
   });
 
   it('counts a trapped submission too, but still tells it nothing', async () => {

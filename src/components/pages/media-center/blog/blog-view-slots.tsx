@@ -81,8 +81,16 @@ export function BlogEmptyState() {
   const { matchCount } = useBlogView();
 
   return (
-    <p className="text-center text-lg text-muted-foreground py-12" hidden={matchCount !== 0}>
-      Aucun article ne correspond à votre recherche.
-    </p>
+    <>
+      {/* The count has to live in its own always-rendered node: the paragraph
+          below is `hidden` whenever there are results, and a hidden live region
+          is never announced. Same treatment as the gallery readout. */}
+      <p aria-live="polite" className="sr-only">
+        {matchCount} article(s)
+      </p>
+      <p className="text-center text-lg text-muted-foreground py-12" hidden={matchCount !== 0}>
+        Aucun article ne correspond à votre recherche.
+      </p>
+    </>
   );
 }

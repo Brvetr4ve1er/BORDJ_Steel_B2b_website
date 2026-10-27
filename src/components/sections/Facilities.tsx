@@ -1,7 +1,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { companyData, getFacilityImage } from '@/config/company-data';
 import { HardHat, Layers, Cog, Anchor } from 'lucide-react';

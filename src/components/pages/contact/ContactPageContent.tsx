@@ -1,5 +1,4 @@
 
-import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { TechnicalHero } from '@/components/sections/technical-hero';
 import dynamic from 'next/dynamic';
 import { FactoryLocationCard } from '@/components/sections/contact/FactoryLocationCard';

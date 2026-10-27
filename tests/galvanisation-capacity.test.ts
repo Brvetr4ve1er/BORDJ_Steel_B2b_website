@@ -61,7 +61,7 @@ describe('galvanisation capacity is stated in exactly one place', () => {
     // the "25 000 t/an" form that sat in GalvanisationWireframe as a dead
     // fallback and slipped this guard because it lacks the word "tonnes".
     ['25.000 tonnes', /\b25[\s.,\u202f]?000\s*(tonnes|t\/an)\b/i],
-    ['20000 t/an', /\b20[\s.,]?000\s*t\/an\b/],
+    ['20000 t/an', /\b20[\s.,]?000\s*t\/an\b/i],
   ])('no call site re-hardcodes %s', (_label, pattern) => {
     const offenders = files.filter((f) => pattern.test(code(f)));
     expect(

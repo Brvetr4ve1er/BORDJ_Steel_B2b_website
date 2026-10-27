@@ -1,7 +1,6 @@
 
 "use client";
 
-import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
 import { useMemo, useState } from 'react';
@@ -15,7 +14,6 @@ import { cn } from '@/lib/utils';
 import { DownloadButton } from '@/components/ui/download-button';
 import { productVariants } from '@/config/product-variants.config';
 import { ProductVariantDetails } from '@/components/product-variants/ProductVariantDetails';
-import { StatsCards } from '@/components/sections/sandwich-panels/StatsCards';
 import { ThermalPerformanceBand } from '@/components/sections/sandwich-panels/ThermalPerformanceBand';
 import { sandwichHero, sandwichHeroStats, sandwichIntro } from '@/config/sandwich-panels-data';
 import { SandwichWireframe } from '@/components/wireframes/SandwichWireframe';
@@ -75,7 +73,7 @@ const HeroSection = React.memo(function HeroSection() {
       actions={
         <>
           <Button asChild size="lg" variant="destructive" className="group">
-            <Link href="/contact">
+            <Link href="#product-details">
               Explorer les produits <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>

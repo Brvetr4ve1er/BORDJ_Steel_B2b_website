@@ -31,10 +31,9 @@ import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Maximize2 } from 'lucide-react';
 
-import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { TechnicalHero } from '@/components/sections/technical-hero';
 import { ImageDialog } from '@/components/ui/image-dialog';
-import { WF, WF_FONT } from '@/components/wireframes/wf-theme';
+import { WF } from '@/components/wireframes/wf-theme';
 import { cn } from '@/lib/utils';
 import { companyData, getFacilityImage, getProjectImage } from '@/config/company-data';
 import { charpenteGalleryImages, charpenteMetalliqueData } from '@/config/charpente-metallique-data';
@@ -227,8 +226,8 @@ export function GalleryPageContent() {
       <style>{GALLERY_CSS}</style>
 
       {/* ---------------------------------------------------------------- */}
-      {/* Hero — same shape as the other interior pages, with a drafting    */}
-      {/* plate laid over the photograph.                                   */}
+      {/* Hero — same shape as the other interior pages: the drawn         */}
+      {/* `frames` motif, with no photograph behind it.                    */}
       {/* ---------------------------------------------------------------- */}
       <TechnicalHero
         eyebrow="Réalisations"
@@ -324,11 +323,6 @@ export function GalleryPageContent() {
     </>
   );
 }
-
-/* -------------------------------------------------------------------------- */
-/* Hero image                                                                  */
-/* -------------------------------------------------------------------------- */
-
 
 /* -------------------------------------------------------------------------- */
 /* Tile                                                                        */
@@ -497,27 +491,6 @@ const GALLERY_CSS = `
   transform: scaleX(1);
 }
 
-.gal-plate-draw {
-  stroke-dasharray: 3000;
-  stroke-dashoffset: 3000;
-  animation: gal-plate-draw 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
-}
-.gal-plate-fade {
-  opacity: 0;
-  animation: gal-plate-fade 0.9s ease-out 0.7s forwards;
-}
-.gal-scan {
-  transform: translateX(-12%);
-  animation: gal-scan 18s linear infinite;
-  will-change: transform;
-}
-@keyframes gal-plate-draw { to { stroke-dashoffset: 0; } }
-@keyframes gal-plate-fade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes gal-scan {
-  0%   { transform: translateX(-12%); }
-  100% { transform: translateX(112%); }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .gal-photo,
   .gal-scrim,
@@ -545,19 +518,6 @@ const GALLERY_CSS = `
   .gal-tile:hover .gal-rule,
   .gal-tile:focus-visible .gal-rule {
     transform: scaleX(1);
-  }
-  .gal-plate-draw {
-    stroke-dasharray: 0;
-    stroke-dashoffset: 0;
-    animation: none;
-  }
-  .gal-plate-fade {
-    opacity: 1;
-    animation: none;
-  }
-  .gal-scan {
-    animation: none;
-    display: none;
   }
 }
 `;

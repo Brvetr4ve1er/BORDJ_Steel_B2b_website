@@ -99,7 +99,7 @@ export function Footer() {
           </div>
           <div>
             <h3 className="mb-6 inline-block border-b-2 border-accent pb-2 text-xl font-semibold uppercase tracking-wider text-white">{footer.siteLinks}</h3>
-            <nav className="space-y-3 text-base">
+            <nav aria-label="Liens du site" className="space-y-3 text-base">
               {navigation.mainMenu.map(item => (
                 <Link key={item.name} href={item.href} className="block text-white/70 transition-all hover:text-accent hover:translate-x-1">
                   {item.name}
@@ -185,7 +185,7 @@ export function Footer() {
           <p className="text-base text-white/80" suppressHydrationWarning>
             &copy; {new Date().getFullYear()} {footer.copyright}
           </p>
-          <nav className="flex gap-6 text-base">
+          <nav aria-label="Mentions légales" className="flex gap-6 text-base">
             <Link href="/privacy" className="text-white/80 transition-colors hover:text-accent">
               {footer.legal.privacy}
             </Link>

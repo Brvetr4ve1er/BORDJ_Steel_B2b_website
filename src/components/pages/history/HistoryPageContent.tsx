@@ -1,6 +1,5 @@
 
 
-import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { TechnicalHero } from '@/components/sections/technical-hero';
 import { ActivitiesSection } from '@/components/sections/history/ActivitiesSection';
 import { HistoryTimeline } from '@/components/sections/HistoryTimeline';

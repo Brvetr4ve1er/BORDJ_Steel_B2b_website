@@ -78,7 +78,7 @@ export const productVariants: { [key: string]: ProductVariant } = {
       },
        {
         type: 'table',
-        title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m)',
+        title: 'LES CHARGES ET PORTÉES ADMISSIBLES AU COULAGE (kg/m²)',
         subtitle: 'Tôle en acier épaisseur 0.5mm',
         headerGroups: [
           { label: "Charge utile uniformément répartie", span: 1 },

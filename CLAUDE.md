@@ -11,9 +11,10 @@ npm run dev         # dev server on http://localhost:9002 (Turbopack)
 npm run build       # production build — fails on type or lint errors
 npm run lint        # next lint
 npm run typecheck   # tsc --noEmit
+npm test            # vitest — config/asset integrity + render suite
 ```
 
-Run `typecheck`, `lint` and `build` before pushing — CI enforces all three.
+Run `typecheck`, `lint`, `test` and `build` before pushing — CI enforces all four.
 
 ## Conventions
 

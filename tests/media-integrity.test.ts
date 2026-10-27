@@ -103,19 +103,65 @@ describe('local asset references', () => {
   });
 });
 
-describe('remote image hosts', () => {
-  it('site photography is self-hosted — no new third-party image hotlinks creep in', () => {
-    // All photography was migrated into public/media precisely so a third-party
-    // host cannot blank the site. placehold.co is the one allowed fallback.
-    const ALLOWED = new Set(['placehold.co']);
-    const re = /https:\/\/([a-z0-9.-]+)\/[^\s'"`)]*\.(?:webp|png|jpe?g|avif|gif)/gi;
-    const offenders = new Set<string>();
-    for (const file of walk(SRC)) {
-      for (const m of readFileSync(file, 'utf8').matchAll(re)) {
+/**
+ * Remote hosts named in an image position, mapped to the files naming them.
+ *
+ * Anchored on the POSITION, not on a trailing file extension. The previous
+ * version required one, and the hotlinks this guard exists for carry none: the
+ * dead photo IDs now living locally as `public/media/1504307651254-*.webp` were
+ * referenced as extension-less URLs, and so is the allowlisted
+ * `https://placehold.co/600x400` fallback. So the sweep matched zero strings in
+ * the entire tree — it had never fired, and could not have.
+ *
+ * `src=` has to sit on an `<Image>`/`<img>` tag and `src:` has to be an object
+ * key, which is what keeps the two legitimate third-party `<iframe src>` out of
+ * the results: the Google Maps embed and the youtube-nocookie player are not
+ * image hosts, and next.config.ts is right not to list them in remotePatterns.
+ */
+function collectRemoteImageHosts(): Map<string, string[]> {
+  const hosts = new Map<string, string[]>();
+  const patterns = [
+    /<(?:Image|img)\b[^<]*?\bsrc=\{?\s*["'`]https:\/\/([a-z0-9.-]+)/gi,
+    /\b(?:imageUrl|poster|src)["']?\s*:\s*["'`]https:\/\/([a-z0-9.-]+)/gi,
+    /\b(?:imageUrl|poster)=\{?\s*["'`]https:\/\/([a-z0-9.-]+)/gi,
+  ];
+  for (const file of walk(SRC)) {
+    const text = readFileSync(file, 'utf8');
+    for (const re of patterns) {
+      for (const m of text.matchAll(re)) {
         const host = m[1];
-        if (host && !ALLOWED.has(host)) offenders.add(`${host} (${relative(ROOT, file)})`);
+        if (!host) continue;
+        const list = hosts.get(host) ?? [];
+        list.push(relative(ROOT, file).replace(/\\/g, '/'));
+        hosts.set(host, list);
       }
     }
-    expect([...offenders]).toEqual([]);
+  }
+  return hosts;
+}
+
+describe('remote image hosts', () => {
+  // All photography was migrated into public/media precisely so a third-party
+  // host cannot blank the site. placehold.co is the one allowed fallback.
+  const ALLOWED = new Set(['placehold.co']);
+  const hosts = collectRemoteImageHosts();
+
+  it('finds remote image URLs to check (guards against the regex silently breaking)', () => {
+    // The sentinel the extension-anchored version lacked, and the reason it
+    // could report a clean sweep while matching nothing. One hit is the honest
+    // floor: the placehold.co fallback at src/config/company-data.ts is the
+    // only remote image URL on the site.
+    expect(hosts.size).toBeGreaterThan(0);
+  });
+
+  it('site photography is self-hosted — no new third-party image hotlinks creep in', () => {
+    const offenders: string[] = [];
+    for (const [host, usedIn] of hosts) {
+      if (!ALLOWED.has(host)) offenders.push(`${host}  <- ${usedIn.join(', ')}`);
+    }
+    expect(
+      offenders,
+      `Third-party image hosts — move the file into public/media:\n  ${offenders.join('\n  ')}`,
+    ).toEqual([]);
   });
 });

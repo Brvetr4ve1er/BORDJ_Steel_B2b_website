@@ -45,14 +45,24 @@ import { companyData } from '@/config/company-data';
  * and nothing about which field gave it away. A blocked request is not logged,
  * deliberately: a request flood would otherwise become a log flood.
  *
- * WHOSE ADDRESS. There is no socket to ask here, so the address comes from
- * x-forwarded-for (first entry — the client; the rest are proxy hops) or
- * x-real-ip. A proxy sets those, and a client that is not behind one can forge
- * them, so this is only meaningful on a host that sets them itself — one more
- * reason the edge rule is the real answer. When neither header is present every
- * caller shares a single bucket. That is the intended trade: a shared bucket
- * degrades to "five messages per ten minutes from this site" rather than to no
- * limit at all, and a host that strips these headers announces itself at once.
+ * WHOSE ADDRESS. There is no socket to ask here, so the address comes from a
+ * header: x-nf-client-connection-ip first, then x-forwarded-for, then x-real-ip.
+ * The Netlify header leads because it is the one client address the deploy
+ * target guarantees to a function and the platform sets it itself; on any other
+ * host it is simply absent and the code falls through unchanged. The
+ * x-forwarded-for branch takes the FIRST comma-separated entry, and that is
+ * worth being exact about: an edge APPENDS to whatever chain arrived, so a
+ * caller sending its own x-forwarded-for puts a value of its choosing at that
+ * position and the real address lands after it. Index [0] is the client-chosen
+ * end of the chain, not reliably the client. It stays index [0] regardless,
+ * because choosing another entry safely needs the exact hop count in front of
+ * this function and nobody has measured it — behind two hops the rightmost entry
+ * is the host's own internal proxy, the same string for every visitor, which is
+ * the shared bucket below by accident. One more reason the edge rule is the real
+ * answer. When none of the three headers is present every caller shares a single
+ * bucket. That is the intended trade: a shared bucket degrades to "five messages
+ * per ten minutes from this site" rather than to no limit at all, and a host that
+ * strips these headers announces itself at once.
  */
 
 const RESEND_ENDPOINT = 'https://api.resend.com/emails';
@@ -126,12 +136,18 @@ function recordHit(address: string, now: number): number {
 }
 
 /**
- * The caller's address, as the nearest proxy reported it. Every branch returns a
- * string and nothing here can throw: a missing header, an empty one, a bare
- * comma and a kilobyte of junk all end up in the shared bucket rather than in an
- * exception or in an oversized Map key.
+ * The caller's address, as the platform or the nearest proxy reported it. Every
+ * branch returns a string and nothing here can throw: a missing header, an empty
+ * one, a bare comma and a kilobyte of junk all end up in the shared bucket
+ * rather than in an exception or in an oversized Map key.
  */
 function addressOf(request: Request): string {
+  // Ahead of the forwarded chain on purpose: the platform writes this one and
+  // the caller cannot, so rotating x-forwarded-for buys no fresh bucket here.
+  // Absent on every other host, which is why the branch is free. See WHOSE
+  // ADDRESS above.
+  const netlify = request.headers.get('x-nf-client-connection-ip')?.trim() ?? '';
+  if (netlify && netlify.length <= MAX_ADDRESS_CHARS) return netlify.toLowerCase();
   const forwarded = request.headers.get('x-forwarded-for');
   if (forwarded) {
     const first = forwarded.split(',')[0]?.trim() ?? '';
@@ -149,8 +165,8 @@ type Payload = {
   message?: unknown;
   /** Honeypot. Hidden from people; bots fill it in. */
   company?: unknown;
-  /** Client timestamp from when the form mounted. */
-  startedAt?: unknown;
+  /** Milliseconds the form was open, measured on the client. */
+  elapsedMs?: unknown;
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -201,8 +217,8 @@ export async function POST(request: Request) {
   // Honeypot and timing. Answer 200 so a bot learns nothing from the response,
   // but send nothing.
   const trap = typeof body.company === 'string' ? body.company.trim() : '';
-  const startedAt = typeof body.startedAt === 'number' ? body.startedAt : 0;
-  const tooFast = startedAt > 0 && Date.now() - startedAt < MIN_FILL_MS;
+  const elapsedMs = typeof body.elapsedMs === 'number' ? body.elapsedMs : -1;
+  const tooFast = elapsedMs >= 0 && elapsedMs < MIN_FILL_MS;
   if (trap || tooFast) {
     return NextResponse.json({ ok: true });
   }

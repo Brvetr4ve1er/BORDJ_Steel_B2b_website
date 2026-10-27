@@ -86,7 +86,9 @@ const DesktopNav = ({ transparent, pathname }: { transparent: boolean; pathname:
   return (
     // Keyed on pathname so the menu always resets to closed after navigation —
     // no more dropdowns that stay stuck open after a click.
-    <NavigationMenu key={pathname}>
+    // `aria-label` also overrides Radix's own hardcoded English "Main" on the
+    // underlying <nav>, which is one of three nav landmarks on every page.
+    <NavigationMenu key={pathname} aria-label="Navigation principale">
       <NavigationMenuList className="gap-1">
         {navigation.mainMenu.map((item) => {
           const active = isItemActive(item, pathname);

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import * as React from 'react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { companyData } from '@/config/company-data';
+import { cn } from '@/lib/utils';
 
 type ClientLogoData = { name: string; image: { src: string; aiHint?: string } };
 
@@ -84,6 +85,10 @@ function MarqueeRow({
 export function Clients() {
   const { clients } = companyData.pages;
 
+  // Explicit pause for the marquee (SC 2.2.2). Hover already pauses it, which
+  // covers neither keyboard nor touch.
+  const [paused, setPaused] = React.useState(false);
+
   // Interleave into two rows so the visual weight of the marquee is balanced
   // rather than front-loaded. With 23 logos this yields rows of 12 and 11.
   const rowA = clients.logos.filter((_, i) => i % 2 === 0);
@@ -111,6 +116,12 @@ export function Clients() {
         .marquee-row:focus-within .marquee-track {
           animation-play-state: paused;
         }
+        /* Hover cannot be reached by keyboard or touch, and the rows contain
+           nothing focusable, so :focus-within never fires either. The explicit
+           control below drives this class instead. */
+        .clients-paused .marquee-track {
+          animation-play-state: paused;
+        }
         .marquee-row {
           -webkit-mask-image: linear-gradient(
             to right,
@@ -130,6 +141,10 @@ export function Clients() {
         /* Swap the marquee for a plain static grid when the user prefers reduced motion. */
         .clients-marquee { display: block; }
         .clients-static  { display: none;  }
+        /* The pause control only means anything while the marquee is the thing on
+           screen. Under reduced motion the static grid replaces it, so the button
+           goes with it rather than sitting there inert. */
+        .clients-motion-only { display: flex; }
         @media (prefers-reduced-motion: reduce) {
           .marquee-track { animation: none !important; transform: none !important; }
           .marquee-row {
@@ -138,6 +153,7 @@ export function Clients() {
           }
           .clients-marquee { display: none; }
           .clients-static  { display: grid; }
+          .clients-motion-only { display: none; }
         }
       `}</style>
       <div className="container mx-auto px-4">
@@ -145,14 +161,25 @@ export function Clients() {
           <p className="mb-3 text-center text-sm font-semibold uppercase tracking-widest text-accent">
             Ils nous font confiance
           </p>
-          <h2 className="mb-12 text-center font-headline text-4xl font-bold text-primary">
+          <h2 className="mb-6 text-center font-headline text-4xl font-bold text-primary">
             {clients.title}
           </h2>
+          <div className="clients-motion-only mb-12 justify-center">
+            <button
+              type="button"
+              aria-pressed={paused}
+              onClick={() => setPaused((isPaused) => !isPaused)}
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-md border border-border/70 bg-white px-4 text-sm font-semibold text-primary shadow-sm transition-colors hover:border-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              {paused ? 'Reprendre le défilement' : 'Mettre en pause le défilement'}
+            </button>
+          </div>
         </AnimatedWrapper>
 
         <AnimatedWrapper animation="fade-in">
-          {/* Motion: dual-row marquee, opposite directions, hover to pause. */}
-          <div className="clients-marquee space-y-4 md:space-y-6">
+          {/* Motion: dual-row marquee, opposite directions, hover or the button
+              above to pause. */}
+          <div className={cn('clients-marquee space-y-4 md:space-y-6', paused && 'clients-paused')}>
             <MarqueeRow logos={rowA} direction="left" durationSeconds={55} />
             <MarqueeRow logos={rowB} direction="right" durationSeconds={60} />
           </div>

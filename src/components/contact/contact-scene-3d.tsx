@@ -18,10 +18,13 @@ import * as React from 'react';
  *   - before three.js finishes loading, you get the SVG
  *   - if the import fails or WebGL is unavailable, you keep the SVG
  *   - under `prefers-reduced-motion: reduce`, the canvas never mounts at all
+ *   - under 768px, same: three.js and a render loop are not worth a phone's data
+ *     and battery for a decorative panel — the gate `VideoLoop` applies too
  *   - on a save-data connection, same
  *
- * This mirrors how `VideoLoop` already behaves on this site: the static thing is
- * the real content, the moving thing is a bonus that declines politely.
+ * This mirrors how `VideoLoop` already behaves on this site, viewport gate
+ * included: the static thing is the real content, the moving thing is a bonus
+ * that declines politely.
  *
  * COST, STATED PLAINLY. three.js is ~600 KB before gzip. It is dynamically
  * imported here, so it is code-split out of the shared bundle and is fetched
@@ -64,6 +67,16 @@ function prefersReducedMotion(): boolean {
   }
 }
 
+/** Same breakpoint as `VideoLoop`, so the two enhancements decline together. */
+function narrowViewport(): boolean {
+  if (typeof matchMedia !== 'function') return false;
+  try {
+    return matchMedia('(max-width: 767px)').matches;
+  } catch {
+    return false;
+  }
+}
+
 function saveData(): boolean {
   try {
     const nav = navigator as Navigator & { connection?: { saveData?: boolean } };
@@ -98,7 +111,7 @@ export function ContactScene3D({
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
 
   React.useEffect(() => {
-    if (prefersReducedMotion() || saveData()) return;
+    if (prefersReducedMotion() || narrowViewport() || saveData()) return;
     setEnabled(true);
   }, []);
 

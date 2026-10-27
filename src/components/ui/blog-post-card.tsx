@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
-import { Logo } from '../logo';
 import { Article } from '@/config/blog-data';
 
 const cardVariants = cva(

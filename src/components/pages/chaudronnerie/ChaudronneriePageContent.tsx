@@ -8,9 +8,9 @@ import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { TechnicalHero } from '@/components/sections/technical-hero';
 import { PRODUCT_HERO_MEDIA } from '@/config/product-heroes';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Package, Users, Square, Factory, Flame, Bolt, Droplets, Beaker, Construction, Leaf, Filter } from 'lucide-react';
+import { ArrowRight, Flame, Bolt, Droplets, Beaker, Construction, Leaf, Filter } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
 import {
   geometricTableData,
@@ -20,10 +20,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { DownloadButton } from '@/components/ui/download-button';
 import { ChaudronnerieWireframe } from '@/components/wireframes/ChaudronnerieWireframe';
-import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
-
-const DetailedStatCard = dynamic(() => import('@/components/detailed-stat-card').then(mod => mod.DetailedStatCard));
 
 const activityIconMap: { [key: string]: LucideIcon } = {
   Flame,
@@ -215,19 +212,10 @@ const TechnicalSpecsSection = () => {
 
 export function ChaudronneriePageContent() {
   const { hero } = chaudronnerieData;
-  const heroStats = hero.stats;
   const [current, setCurrent] = React.useState(1)
 
   const drawingImages = chaudronnerieDrawingImages;
   const count = drawingImages.length;
-
-  const iconMap = useMemo(() => ({
-    Package,
-    Users,
-    Square,
-    Factory,
-  }), []);
-
 
   return (
     <div className="bg-background text-foreground">
@@ -242,7 +230,7 @@ export function ChaudronneriePageContent() {
           actions={
             <>
               <Button asChild size="lg" variant="destructive" className="group">
-                <Link href="/contact">
+                <Link href="#product-details">
                   {hero.cta_primary} <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -286,17 +274,28 @@ export function ChaudronneriePageContent() {
                   </CardContent>
                 </Card>
                 <div className="flex items-center justify-center gap-2">
+                  {/* The target is the 24x24 box, not the dot: a 2.5 (7px) dot
+                      is well under the 24px minimum of SC 2.5.8. The dot itself
+                      stays 2.5 and is decorative — the button carries the name.
+                      24px rather than 44px keeps the existing visual rhythm. */}
                   {drawingImages.map((_, index) => (
                     <button
                       key={index}
                       type="button"
                       aria-label={`Afficher le schéma technique ${index + 1}`}
                       onClick={() => setCurrent(index + 1)}
-                      className={cn(
-                        "h-2.5 w-2.5 rounded-full transition-colors",
-                        current === index + 1 ? "bg-accent" : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
-                      )}
-                    />
+                      className="flex h-[24px] w-[24px] items-center justify-center"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          "h-2.5 w-2.5 rounded-full transition-colors",
+                          // /30 composited to 1.5:1 on the white card, so the
+                          // other drawings were invisible as a state (SC 1.4.11).
+                          current === index + 1 ? "bg-accent" : "bg-muted-foreground/60 hover:bg-muted-foreground/60"
+                        )}
+                      />
+                    </button>
                   ))}
                 </div>
                 <div className="py-2 text-center text-sm text-muted-foreground">

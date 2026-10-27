@@ -153,15 +153,5 @@
       "aiHint": "hot-dip galvanization",
       "blurDataUrl": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoQAAkAAwBSJZwAAv+P/Gr6CmgA/vW0yA2eQzC+qLTpdfFzaV3UO2l992Jnpj10UGajySLukUKXZnlmYbqVDY1o23T3hAAA"
     }
-  },
-  "sandwich-panels": {
-    "hero": {
-      "src": "/media/e65d7681b328d8bfa21ab5e4a7e7-7e0f982b.webp",
-      "width": 1920,
-      "height": 1280,
-      "alt": "Panneaux sandwichs isolants sur un bâtiment",
-      "aiHint": "sandwich panels",
-      "blurDataUrl": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoQAAsAAwBSJQBOgMX65RyaGEzAAP7ws6ADePLIpalyvk1iOWcrWis8uoTsOxvNkDj4DuaDXwd3cH7Tz3TznRZKm09UvtvSy3zEPK+QWlbtVOdC+JpTcCDoAAA="
-    }
   }
 }

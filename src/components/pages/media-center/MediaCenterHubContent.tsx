@@ -7,7 +7,7 @@ import { companyData } from '@/config/company-data';
 import { articles } from '@/config/blog-data';
 import { companyVideos } from '@/config/videos-data';
 import { pressItems } from '@/config/press-data';
-import { WF, WF_FONT } from '@/components/wireframes/wf-theme';
+import { WF } from '@/components/wireframes/wf-theme';
 import { cn } from '@/lib/utils';
 
 /**
@@ -268,68 +268,6 @@ function pad(n: number): string {
   return String(n).padStart(2, '0');
 }
 
-/* ---------- hero backdrop: a drafting plate over the photograph ---------- */
-
-function HeroPlate() {
-  const marks: ReadonlyArray<readonly [number, number]> = [
-    [96, 96],
-    [1504, 96],
-    [96, 504],
-    [1504, 504],
-  ];
-
-  return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 overflow-hidden">
-      <svg
-        viewBox="0 0 1600 600"
-        preserveAspectRatio="xMidYMid slice"
-        xmlns="http://www.w3.org/2000/svg"
-        focusable="false"
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full"
-      >
-        <rect
-          x={48}
-          y={48}
-          width={1504}
-          height={504}
-          fill="none"
-          stroke={WF.steel}
-          strokeWidth={1}
-          strokeDasharray="10 8"
-          opacity={0.3}
-        />
-        {marks.map(([cx, cy]) => (
-          <path
-            key={`${cx}-${cy}`}
-            d={`M ${cx - 14} ${cy} L ${cx + 14} ${cy} M ${cx} ${cy - 14} L ${cx} ${cy + 14}`}
-            stroke={WF.steel}
-            strokeWidth={1.25}
-            fill="none"
-            opacity={0.35}
-          />
-        ))}
-        <text
-          x={48}
-          y={578}
-          textAnchor="start"
-          fontFamily={WF_FONT}
-          fontSize={13}
-          fontWeight={600}
-          letterSpacing="0.24em"
-          fill={WF.steel}
-          opacity={0.4}
-        >
-          BORDJ STEEL — MEDIA CENTER
-        </text>
-        <g className="mch-scan">
-          <rect x={-8} y={48} width={16} height={504} fill={WF.accent} opacity={0.12} />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
 /* ---------- bespoke section glyphs (WF drafting vernacular) ---------- */
 
 function BlogGlyph() {
@@ -546,15 +484,6 @@ const MCH_CSS = `
 .mch-live:focus-visible .mch-sheet-2 { transform: translate(-6px, -4px); }
 .mch-live:hover .mch-aperture,
 .mch-live:focus-visible .mch-aperture { transform: scale(1.06); }
-.mch-scan {
-  transform: translateX(-10%);
-  animation: mch-scan 18s linear infinite;
-  will-change: transform;
-}
-@keyframes mch-scan {
-  0%   { transform: translateX(-10%); }
-  100% { transform: translateX(110%); }
-}
 @media (prefers-reduced-motion: reduce) {
   .mch-card,
   .mch-bracket,
@@ -591,10 +520,6 @@ const MCH_CSS = `
   .mch-live:focus-visible .mch-aperture {
     transform: none;
     animation: none;
-  }
-  .mch-scan {
-    animation: none;
-    display: none;
   }
 }
 `;

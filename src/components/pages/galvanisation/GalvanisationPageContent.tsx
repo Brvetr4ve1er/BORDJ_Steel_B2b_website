@@ -1,24 +1,20 @@
 
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { galvanisationContent } from '@/config/galvanisation-data';
 import { galvanisationCapacity } from '@/config/company-data';
-import { ArrowRight, Info } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { iconMap as galvanisationIconMap } from '@/config/galvanisation-data';
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { TechnicalHero } from '@/components/sections/technical-hero';
 import { PRODUCT_HERO_MEDIA } from '@/config/product-heroes';
 import { DownloadButton } from '@/components/ui/download-button';
-import dynamic from 'next/dynamic';
 import { TechniquesAndStandardsSection } from '@/components/sections/galvanisation/TechniquesAndStandardsSection';
 import { ProtectionLifespanBand } from '@/components/sections/galvanisation/ProtectionLifespanBand';
 import { GalvanisationWireframe } from '@/components/wireframes/GalvanisationWireframe';
-
-const DynamicAnimatedBaths = dynamic(() => import('@/components/animated-baths').then(mod => mod.AnimatedBaths));
 
 // These sections live in this module; reference them directly. Wrapping a
 // same-module component in dynamic(Promise.resolve(...)) adds a lazy boundary
@@ -52,9 +48,6 @@ export function GalvanisationPageContent() {
 // 1. Hero Section
 function UnwrappedHeroSection() {
   const { hero } = galvanisationContent;
-  const largeStat = hero.stats.find(s => s.large);
-  const smallStats = hero.stats.filter(s => !s.large);
-  const iconMap = galvanisationIconMap;
 
   return (
     <TechnicalHero
@@ -78,7 +71,11 @@ function UnwrappedHeroSection() {
           <p>L’unité est constituée de bains d’immersion de 13 × 1,8 × 3,5 m, permettant de traiter des pièces métalliques jusqu’à 13 m de longueur. {`Capacité de production (8 h/jour) : ${galvanisationCapacity.singleShiftPerMonth.toLocaleString('fr-FR')} t/mois, soit ${galvanisationCapacity.singleShiftPerYear.toLocaleString('fr-FR')} t/an.`}</p>
         </div>
       }
-      stats={hero.stats.slice(0, 4).map((st) => ({ label: st.title, value: String(st.value) }))}
+      stats={
+        // Deliberately the first four. The fifth config entry is kept on
+        // purpose — do not delete it to "match" what the strip shows.
+        hero.stats.slice(0, 4).map((st) => ({ label: st.title, value: String(st.value) }))
+      }
       actions={
         <>
           <Button asChild size="lg" variant="destructive">
@@ -211,7 +208,7 @@ function UnwrappedBenefitsSection() {
                             </div>
                             <div className="flex-grow text-left">
                                 <CardTitle className="text-accent text-3xl mb-3">SPÉCIFICITÉ DE LA GALVANISATION À CHAUD</CardTitle>
-                                <p className="text-xl text-accent/80 mb-4">
+                                <p className="text-xl text-accent mb-4">
                                 « Une protection anticorrosion qui va au-delà d’un simple dépôt de zinc »
                                 </p>
                             </div>

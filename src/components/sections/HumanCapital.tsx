@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import { AnimatedNumber } from '@/components/animated-number';
+import { HeroCountUp } from '@/components/sections/hero/HeroCountUp';
 
 /**
  * "Notre capital humain" — the headcount block that closes /about/history.
@@ -14,8 +14,8 @@ import { AnimatedNumber } from '@/components/animated-number';
  * is the whole point of this file — it is now a sibling section, after the
  * history, with no connector implying otherwise.
  *
- * Client component for `AnimatedNumber` alone; the timeline it was extracted
- * from is a server component again as a result.
+ * Client component for the count-up alone; the timeline it was extracted from
+ * is a server component again as a result.
  */
 export function HumanCapital() {
   return (
@@ -31,7 +31,12 @@ export function HumanCapital() {
           <div className="mt-6 flex items-center justify-center gap-4">
             <span aria-hidden="true" className="h-px w-12 bg-accent" />
             <span className="font-headline text-5xl font-bold tabular-nums text-accent md:text-6xl">
-              <AnimatedNumber value={700} />
+              {/* The headcount is server-rendered at its final value; the count-up is
+                  progressive enhancement, so the page never states the workforce as
+                  "0". See `HeroCountUp`. */}
+              <HeroCountUp value={700}>
+                {new Intl.NumberFormat('fr-FR').format(700)}
+              </HeroCountUp>
             </span>
             <span aria-hidden="true" className="h-px w-12 bg-accent" />
           </div>

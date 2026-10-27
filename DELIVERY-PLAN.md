@@ -2,6 +2,13 @@
 
 Audit run **2026-10-26** against `claude/project-cleanup-plan-DhvG5` @ `69ff794`.
 
+> **Status at close-out, 2026-10-27 — read this before working the list below.**
+> Everything in **Tier 1** and **Tier 3** has since been executed, and **T4-3** is
+> substantially done; each item is marked inline where it is closed. **What is
+> actually left is Tier 2 — the client's answers — and the Tier 4 items
+> deliberately deferred.** Do not work this document top to bottom: start at
+> Tier 2.
+
 **Supersedes `TODO.md`**, which is dated June–July and whose "Remaining" list is now
 measurably stale — three of its six open items were verified already done during this
 audit (see T3-1). `KNOWN-ISSUES.md` (2026-07-29) is still **accurate** and remains the
@@ -17,19 +24,25 @@ restating them.
 Engineering quality is genuinely high — every gate is green, there is no deferred
 technical debt hiding behind suppressions, and the accessibility and SEO scaffolding are
 real rather than decorative. What stands between this repo and a delivered site is
-**one critical dependency vulnerability**, **a domain decision nobody has made**, and
-**a contact form with no credentials**.
+**a domain decision nobody has made** and **a contact form with no credentials** — and
+the second is gated by the first.
 
-Nothing in Tier 1 or Tier 3 needs the client. Tier 2 is the critical path.
+**Amended 2026-10-27:** this paragraph originally also named *one critical dependency
+vulnerability*. That is closed — see Tier 1, all of which has been executed, along with
+the whole of Tier 3. Tier 2 is now not merely the critical path but the only path.
 
-### Baseline — measured, not assumed
+### Baseline — measured, not assumed, as of `69ff794`
+
+> Kept as measured at that commit rather than restated, so the numbers stay comparable
+> to the audit that produced them. Only the test row is updated, because a later commit
+> changed what the suite is.
 
 | Check | Result |
 |---|---|
 | `tsc --noEmit` | **0 errors** (strict + `noUncheckedIndexedAccess` + `noImplicitOverride`) |
 | `next lint` | **0 warnings** |
 | `next build` | **exit 0** — 18 routes + 13 SSG blog pages |
-| `vitest run` | **134 passed / 134**, 5 files |
+| `vitest run` | **255 passed / 255**, 10 files (was 134 / 5 files here; the three suites added in `018941f` on 2026-10-27 are the difference) |
 | `TODO`/`FIXME`/`HACK` in `src/` | **0** |
 | `any` / `@ts-ignore` / `@ts-expect-error` / `eslint-disable` | **0** |
 | Raw `<img>` tags | **0** — all 32 images go through `next/image`, all have `alt` |
@@ -42,12 +55,18 @@ Nothing in Tier 1 or Tier 3 needs the client. Tier 2 is the critical path.
 
 ---
 
-## Tier 1 — Security. Do now, needs nobody.
+## Tier 1 — Security. ✅ CLOSED 2026-10-27.
 
-> This tier is the reason the plan exists. Everything here is a version bump plus
-> verification, and it is the only part of this document that is genuinely urgent.
+> This tier was the reason the plan existed: a version bump plus verification, and the
+> only part of the document that was genuinely urgent. **It has been executed.**
+> `package.json` now carries `next ^15.5.28`, `sharp ^0.35.5` and
+> `eslint-config-next ^15.5.28`, and both `npm audit` and `npm audit --omit=dev`
+> report **0 vulnerabilities**. The items are kept below for the record, each marked
+> with what closed it. Nothing in this tier is still to do.
 
-### T1-1 🔴 **CRITICAL — Next.js 15.5.21 → 15.5.28**
+### T1-1 ✅ CLOSED — **CRITICAL — Next.js 15.5.21 → 15.5.28**
+
+**Closed:** `package.json` declares `"next": "^15.5.28"`.
 
 `npm audit` reports Next as **critical**, vulnerable range `… – 15.5.27`. Among the six
 advisories, two matter here specifically:
@@ -66,7 +85,10 @@ Optimization RCE via SVG, and a Server Actions DoS.
 **Action:** `npm i next@15.5.28` — a patch bump on the same minor, no breaking changes.
 **Do not** jump to 16.x as part of this fix (see T4-4).
 
-### T1-2 🟠 **HIGH — sharp 0.35.3 → 0.35.5**
+### T1-2 ✅ CLOSED — **HIGH — sharp 0.35.3 → 0.35.5**
+
+**Closed:** `package.json` declares `"sharp": "^0.35.5"`, with the `overrides` entry
+described below still in place.
 
 Vulnerable `≤ 0.35.5-rc.1`; 0.35.5 final is published. Two CVE groups in bundled native
 libraries: libheif (`GHSA-g89c-p67h-r497`, `GHSA-2jg2-4ch7-h545`) and librsvg
@@ -76,19 +98,33 @@ Worth knowing before you execute: `package.json` declares `"overrides": { "sharp
 so bumping the direct dependency **also** replaces the copy Next resolves internally. One
 change closes both audit entries.
 
-### T1-3 🟡 Bump `eslint-config-next` in lockstep
+### T1-3 ✅ CLOSED — Bump `eslint-config-next` in lockstep
+
+**Closed:** both now carry `^15.5.28`.
 
 It is pinned **exact** at `15.5.9` (no caret) while `next` carries `^15.5.19`. Bump both
 together or the lint rules drift from the framework they are linting.
 
-### T1-4 🟡 Transitive + dev-only advisories
+### T1-4 ✅ CLOSED — Transitive + dev-only advisories
+
+**Closed:** `npm audit` and `npm audit --omit=dev` both report 0 vulnerabilities.
 
 `brace-expansion`, `js-yaml`, `nanoid`, `source-map-js`, `postcss-selector-parser` (DoS /
 CPU-exhaustion class), plus `vitest` 4.1.10 → path traversal and code injection via
 `@vitest/mocker`, and `vite` → `launch-editor` command execution. All dev or build-time.
 `npm audit fix` resolves them; run it **after** T1-1/T1-2 so the tree settles once.
 
-### T1-5 🟠 No rate limiting on `POST /api/contact`
+### T1-5 ✅ CLOSED — No rate limiting on `POST /api/contact`
+
+**Closed as the interim this item itself proposed:** an in-route limiter now stands in
+`src/app/api/contact/route.ts` — `RATE_LIMIT_MAX` 5 per `RATE_LIMIT_WINDOW_MS` of 10
+minutes per address, answering 429 beyond that, with a `RATE_LIMIT_MAX_KEYS` ceiling so
+a client cycling forged addresses cannot grow the Map without bound. Covered by
+`tests/contact-route.test.ts` ("lets five through from one address and holds the
+sixth"). The host-edge rule described below is still the more durable answer and remains
+available once the host is settled; it is no longer load-bearing.
+
+The original item, for the record:
 
 `src/app/api/contact/route.ts` defends with a honeypot field and a 2.5 s minimum fill
 time — both cheap, both effective against naive bots, neither a rate limit. The route's
@@ -117,7 +153,7 @@ behaviour worth looking at with your eyes rather than trusting the build.
 
 ### T2-1 🔴 The canonical domain — the keystone
 
-`siteMetadata.siteUrl` (`src/config/company-data.ts:212`) is `https://bordj-steel.com`.
+`siteMetadata.siteUrl` (`src/config/company-data.ts` → `siteMetadata.siteUrl`) is `https://bordj-steel.com`.
 Every URL on the site derives from it: `metadataBase`, canonical tags, OG/Twitter cards,
 `sitemap.xml`, `robots.txt`, and the Organization JSON-LD. Nothing hardcodes a domain
 around it — verified.
@@ -176,7 +212,14 @@ Needs client confirmation before launch, not after.
 "Bains de traitement : 13" stat is a **count** rendered with a length unit — likely
 confused with the 13 m bath length.
 
-### T2-6 🟠 Five phone numbers unverified
+### T2-6 🟠 Seven phone numbers unverified
+
+Seven distinct numbers are published, not five: the six department cards on `/contact`
+plus `phones[0]` (`+213 770 35 66 86`), which is the number the Organization JSON-LD
+declares to search engines through its `telephone` field (`src/app/layout.tsx`) and the one
+the WhatsApp button dials (`companyData.socials.whatsapp`) — and which appears on no
+department card, so a client reading the numbers off the Contact page will never see it. `docs/CLIENT-DECISIONS.md` §9 has been
+corrected to ask about all seven and names that one explicitly.
 
 ### T2-7 🟡 Client files — each re-enables existing code with no change
 
@@ -196,22 +239,34 @@ confused with the 13 m bath length.
 
 ---
 
-## Tier 3 — Cleaning. Safe, no client input, do alongside Tier 1.
+## Tier 3 — Cleaning. ✅ CLOSED 2026-10-27 — T3-1 through T3-13 all executed.
 
-### T3-1 Retire `TODO.md`
+> Verified on disk at close-out: `TODO.md`, `src/hooks/use-breakpoint.ts`,
+> `firebase.json`, `apphosting.yaml` and `.idx/` are gone; `.env.local.example` carries
+> only `RESEND_API_KEY` and `CONTACT_FROM`; `placeholder-images.json` now lives in
+> `src/config/`; `sitemap.ts` uses a fixed content date instead of `new Date()`; the job
+> listings moved to `src/config/recruitment-data.ts` with computed dates;
+> `technical-hero.tsx` is 278 lines; Node 22 is pinned in `ci.yml`, `.nvmrc` and
+> `engines.node`; `docs/archive/` carries a dated index; and `CLAUDE.md` now states the
+> `ui/` convention the tree actually follows. Items are kept below for the record, each
+> marked with what closed it.
+
+### T3-1 ✅ CLOSED — Retire `TODO.md`
+
+**Closed:** the file is gone from the tree.
 
 Verified during this audit — three of its six open items are **already done**:
 
 | TODO.md claim | Reality |
 |---|---|
-| "Remove the ~18 unused shadcn/ui primitives" | **False.** All 21 files in `ui/` are imported ≥1× |
+| "Remove the ~18 unused shadcn/ui primitives" | **False.** All 20 files in `ui/` are imported ≥1× |
 | "`/logos/*.webp` that don't exist (`biolab`, `batimetal`, `man`)" | **False.** All present; **zero** missing logo refs |
 | "Remove the `dynamic(() => Promise.resolve(X))` anti-pattern" | **Gone.** Only an explanatory comment remains |
 
 Leaving it in the repo hands the next maintainer three phantom tasks. Delete it; this file
 replaces it.
 
-### T3-2 Delete 4 orphaned media files — 4 of 120 files, 0.55 MB of 18.79 MB
+### T3-2 ✅ CLOSED — Delete 4 orphaned media files — 4 of 120 files, 0.55 MB of 18.79 MB
 
 **CORRECTED 2026-10-27. This item originally read "17 orphaned files, 2.90 MB".
 That figure was wrong: 13 of those 17 are live assets.** The scan behind it read
@@ -227,15 +282,18 @@ dead-asset scan that cannot read JSON cannot answer this question. Any future
 sweep must resolve references through `placeholder-images.json` as well as
 through the source tree.
 
-`tests/media-integrity.test.ts` asserts only *referenced → exists*, so **no test breaks**.
-Worth adding the reverse assertion in the same change so orphans cannot re-accumulate
-silently.
+**Also closed, 2026-10-27:** this item used to read that
+`tests/media-integrity.test.ts` asserts only *referenced → exists*, and recommended
+adding the reverse assertion so orphans cannot re-accumulate silently. That assertion
+now exists and passes — `tests/media-integrity.test.ts:81-98`, "every file in
+public/media is referenced from src/" — so the recommendation is done and the premise
+of the sentence is no longer true.
 
-### T3-3 Delete `src/hooks/use-breakpoint.ts`
+### T3-3 ✅ CLOSED — Delete `src/hooks/use-breakpoint.ts`
 
 32 lines, zero importers — the only unreferenced source file in the tree.
 
-### T3-4 Pick one host and delete the other three configs
+### T3-4 ✅ CLOSED — Pick one host and delete the other three configs
 
 Four deployment targets are configured for one site:
 
@@ -252,13 +310,13 @@ dead weight that will mislead whoever inherits this.
 **Keep `next.config.ts`'s headers** — they are host-independent and deliberately so. Once
 `firebase.json` goes, drop the "keep the two in sync" comment with it.
 
-### T3-5 Rewrite `.env.local.example`
+### T3-5 ✅ CLOSED — Rewrite `.env.local.example`
 
 Still advertises `FIREBASE_PROJECT_ID`, `REDIS_HOST`, `REDIS_PORT` and a `SOME_API_KEY`
 placeholder — none of which exist in the codebase any more. Keep only `RESEND_API_KEY` and
 `CONTACT_FROM` (whose existing comments are good and should survive).
 
-### T3-6 Recruitment page: listings to config, and fix the stale dates
+### T3-6 ✅ CLOSED — Recruitment page: listings to config, and fix the stale dates
 
 `src/components/pages/recruitment-page.tsx` holds two job listings inline, against
 `CLAUDE.md`'s "content lives in `src/config/`".
@@ -267,40 +325,40 @@ Worse, their timestamps are **hardcoded relative strings** — `"Publié il y a 
 `"Publié il y a 2 mois"` — written months ago and wrong today. They will keep being wrong.
 Store real dates and format them at render.
 
-### T3-7 `sitemap.ts` — stop claiming everything changed
+### T3-7 ✅ CLOSED — `sitemap.ts` — stop claiming everything changed
 
 Every entry gets `lastModified: new Date()`, so each build tells crawlers all 30 URLs
 changed just now. That trains crawlers to ignore the signal. Use each article's own date,
 and a real content date for static routes.
 
-### T3-8 Small corrections in `layout.tsx`
+### T3-8 ✅ CLOSED — Small corrections in `layout.tsx`
 
 - Empty `<head></head>` — dead markup, remove.
 - `icons: { icon: '/favicon.ico', apple: '/favicon.ico' }` is redundant with the
   `src/app/favicon.ico` file convention, and a `.ico` is a poor apple-touch-icon. Add a
   180 × 180 PNG or drop the `apple` entry.
 
-### T3-9 Move `placeholder-images.json` out of `src/app/`
+### T3-9 ✅ CLOSED — Move `placeholder-images.json` out of `src/app/`
 
 It sits at `src/app/lib/placeholder-images.json` — a data file inside the App Router
 directory, while both `src/config/` and `src/lib/` exist. Harmless to Next, confusing to
 humans. **10 import sites**; move and update all of them in one commit per `CLAUDE.md`,
 then build before committing.
 
-### T3-10 `ui/` has drifted from "shadcn primitives only"
+### T3-10 ✅ CLOSED — `ui/` has drifted from "shadcn primitives only"
 
 Seven domain components now live there: `blog-post-card`, `steel-loader`, `ken-burns`,
 `video-loop`, `download-button`, `hover-image-gallery`, `image-dialog`. Either move them
 to `components/` or amend the `CLAUDE.md` convention to match reality. Not blocking —
 but the rule currently describes something untrue.
 
-### T3-11 Prune superseded docs
+### T3-11 ✅ CLOSED — Prune superseded docs
 
 `docs/archive/` holds five superseded reports (`AUDIT_REPORT`, `CLEANUP_AND_IMPROVEMENT_PLAN`,
 `PROJECT_CONTEXT`, `REFACTOR_ANALYSIS`, `TECHNICAL_REPORT`) plus a `docs/superpowers/specs/`
 design doc. Keep a dated index or delete; right now they read as current guidance.
 
-### T3-12 Node 20 → 22 LTS
+### T3-12 ✅ CLOSED — Node 20 → 22 LTS
 
 Pinned consistently in `.github/workflows/ci.yml` (×4 jobs), `.nvmrc`, and
 `engines.node` — good. But Node 20 ("Iron") left maintenance at its **end-of-life in
@@ -308,10 +366,14 @@ April 2026** and no longer receives security patches from the Node.js project. S
 client site on an unpatched runtime is the problem, independent of which host it lands on.
 Bump all four places plus `@types/node` together.
 
-### T3-13 `technical-hero.tsx` is 850 lines
+### T3-13 ✅ CLOSED — `technical-hero.tsx` is 850 lines
 
-The largest file in the tree, and it carries the hero for most routes. Decompose while it
-is still understood.
+It carries the hero for most routes, and the ask was to decompose it while it was still
+understood. **Closed:** `src/components/sections/technical-hero.tsx` is now 278 lines.
+
+Two corrections to the item as written: it was never "the largest file in the tree" —
+that is `src/config/company-data.ts` at 672 lines — and the component is now also
+covered by `tests/technical-hero.test.tsx`, so the next refactor has a contract to keep.
 
 ---
 
@@ -327,13 +389,23 @@ Roughly 180–270 Magnific credits each. **Paid — needs explicit approval per 
 2× output is 3840 px, which lands in the L/XL tier — up to ~3,240 credits for the trio.
 **Paid.**
 
-### T4-3 Smoke tests — the honest reading of "134 passing"
+### T4-3 Smoke tests — ✅ substantially done; HTTP smoke is what remains
 
-All five test files cover **config and data integrity**: capacity figures, product tables,
-navigation config, media references. There are **zero** render or route tests. The suite is
-genuinely valuable — it is what catches the capacity contradictions — but it would not
-notice a page that throws. Add route smoke tests (every route returns 200), one
-`ProductVariantDetails` render test, and a contact-form submit test.
+**Amended 2026-10-27.** As written this item read that all five test files covered config
+and data integrity only, with **zero** render or route tests, and asked for three things.
+Two of the three now exist:
+
+- `ProductVariantDetails` render test → `tests/product-variant-render.test.tsx` ✅
+- contact-form submit test → `tests/contact-route.test.ts`, every branch, `fetch` stubbed
+  and `Date.now` frozen ✅
+- route smoke tests (every route returns 200) → **still open.**
+  `tests/route-manifest.test.ts` keeps the sitemap and `src/app/**` honest about each
+  other and checks that every page exports `metadata`, but it is static analysis, not a
+  request: nothing yet proves a page does not throw when it is actually rendered.
+
+The shared hero band is now covered too (`tests/technical-hero.test.tsx`). So what is
+left of T4-3 before the first production deploy is the HTTP smoke pass alone, not the
+whole item.
 
 ### T4-4 Next 16 migration — a separate project, not part of T1-1
 
@@ -366,14 +438,18 @@ case studies, PEB page, wilaya coverage…). Needs sign-off, not engineering.
 
 ## Suggested order
 
-1. **Tier 1 entire** — one branch, bumps + verification. Hours, not days. Unblocks nothing
-   else but is the only urgent item.
-2. **Tier 3 in parallel** — independent of the client; T3-1 through T3-8 are small and safe.
-3. **Escalate Tier 2 now**, in one document to the client. T2-1 gates T2-2, and T2-3/T2-4
-   are factual errors a buyer could act on. Everything else waits on these answers.
-4. **Tier 4 after launch**, except T4-3 (smoke tests), which is worth having *before*
-   the first production deploy.
+**Rewritten 2026-10-27.** Tier 1 and Tier 3 are closed, so the order that opened this
+document — bumps first, cleaning second, client third — would send the next developer to
+re-do finished work, including re-implementing a rate limiter that already exists and is
+tested (T1-5).
 
-**Shortest honest path to delivery:** T1 (security) + T2-1 (domain) + T2-2 (contact form)
-+ T2-3/T2-4 (contradictory and dangerous figures). Everything else is improvement, not
-blocker.
+1. **Escalate Tier 2 now**, in one document to the client — that document is
+   `docs/CLIENT-DECISIONS.md`. T2-1 (the domain) gates T2-2 (contact-form credentials),
+   and T2-3/T2-4 are factual errors a buyer could act on. Everything else waits on these
+   answers.
+2. **The remainder of T4-3** — HTTP route smoke tests — which is worth having *before*
+   the first production deploy.
+3. **The rest of Tier 4 after launch.**
+
+**Shortest honest path to delivery:** T2-1 (domain) + T2-2 (contact form) + T2-3/T2-4
+(contradictory and dangerous figures). Everything else is improvement, not blocker.

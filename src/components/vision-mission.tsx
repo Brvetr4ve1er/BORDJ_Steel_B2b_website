@@ -5,7 +5,7 @@ import { Award, Cog } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { AnimatedNumber } from "./animated-number";
+import { HeroCountUp } from "@/components/sections/hero/HeroCountUp";
 import images from '@/config/placeholder-images.json';
 import { WF, WF_FONT } from './wireframes/wf-theme';
 import type { ElementType } from "react";
@@ -65,7 +65,12 @@ export function VisionMission() {
                         padding, and "Projets Réalisés" wrapped mid-word. */}
                     <div className="relative text-white text-center flex flex-col justify-center h-full px-3 py-2">
                         <div className="font-headline font-bold text-4xl sm:text-5xl leading-none flex items-center justify-center">
-                            <AnimatedNumber value={completedProjects} />+
+                            {/* The figure is server-rendered at its final value and the
+                                count-up is progressive enhancement, so the callout never
+                                reads "0+" before hydration. See `HeroCountUp`. */}
+                            <HeroCountUp value={completedProjects}>
+                                {new Intl.NumberFormat('fr-FR').format(completedProjects)}
+                            </HeroCountUp>+
                         </div>
                         <p className="mt-1.5 text-[10px] sm:text-xs font-semibold uppercase leading-tight tracking-wide">
                             Projets Réalisés

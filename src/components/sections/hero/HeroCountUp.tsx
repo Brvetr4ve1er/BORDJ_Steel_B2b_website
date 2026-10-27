@@ -15,9 +15,9 @@ import { animate } from 'framer-motion';
  * this component's children, so the number is right at first paint. The
  * count-up is then pure progressive enhancement — it is free to never happen.
  *
- * It also honours `prefers-reduced-motion`, which `AnimatedNumber` never
- * checked, and which is why `VisionMission` and `sections/StatsSection` still
- * animate for users who asked the OS not to.
+ * It also honours `prefers-reduced-motion`. The component it replaced across
+ * the homepage and /about/history has since been deleted, so this is now the
+ * only count-up on the site and there is no second path to keep in step.
  *
  * `locale` is a string rather than a formatter function on purpose: functions
  * cannot cross the server/client boundary. The resting text is captured from

@@ -123,7 +123,9 @@ export function BlogSortSelect() {
               if (isSortId(value)) setSortBy(value);
             }}
         >
-            <SelectTrigger className="md:max-w-xs h-12 text-lg">
+            {/* `sortBy` always holds a value, so the placeholder never renders and
+                the trigger would otherwise be named by its current option alone. */}
+            <SelectTrigger aria-label="Trier les articles" className="md:max-w-xs h-12 text-lg">
                 <SelectValue placeholder="Trier par" />
             </SelectTrigger>
             <SelectContent>

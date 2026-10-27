@@ -36,7 +36,7 @@ export const articles = [
         href: "/media-center/blog/article-3",
         lang: "fr",
         tag: "Qualité",
-        imageUrl: "/media/1558618666-82ac63dd.webp",
+        imageUrl: "/media/finition-u-de-sol-12d064f7.webp",
         date: "28 Jul 2025",
         author: {
             name: "Bordj Steel",

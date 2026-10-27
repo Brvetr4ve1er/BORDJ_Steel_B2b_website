@@ -110,13 +110,23 @@ describe('TechnicalHero — copy block', () => {
       />,
     );
     expect(screen.getByText('12 VUES · 3 CATÉGORIES')).toBeInTheDocument();
+    // Pinned to the cartouche node itself, so the negative case below and this
+    // one can never drift onto different elements.
+    expect(screen.getByText('12 VUES · 3 CATÉGORIES')).toHaveClass('absolute', 'bottom-7');
   });
 
   it('renders no readout when none is supplied', () => {
     const { container } = render(
       <TechnicalHero eyebrow="GALERIE" title="GALERIE" subtitle="Sous." motif="frames" />,
     );
-    expect(container.textContent).not.toContain('VUES');
+    // Asserting the absence of the NODE, not of a string. The previous version
+    // checked `textContent` for 'VUES' — a word this component cannot emit for
+    // any props, so the assertion held for every possible output, an empty
+    // readout span included, and could not fail. Coupling to a class is the
+    // same trade the `.mt-9` and `.bg-black/70` assertions in this file already
+    // make: `bottom-7` is the cartouche's own offset and appears nowhere else
+    // in the component (the corner tick on the same edge uses `bottom-5`).
+    expect(container.querySelector('span.absolute.bottom-7')).toBeNull();
   });
 });
 

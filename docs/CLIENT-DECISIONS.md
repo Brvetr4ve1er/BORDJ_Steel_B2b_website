@@ -26,13 +26,16 @@ de la mise en œuvre.
 | 6 | Cohérence tonnes/mois et tonnes/an (charpente) | Un calcul qui ne tombe pas juste | Une valeur mensuelle |
 | 7 | Dimensions des bains et longueur maximale de pièce | Deux séries de dimensions publiées | Une série |
 | 8 | « Bains de traitement : 13 » — nombre ou longueur ? | Un chiffre dont l'unité est ambiguë | Une précision |
-| 9 | Les cinq numéros de téléphone | Des coordonnées jamais confirmées | Validation ligne par ligne |
+| 9 | Les sept numéros de téléphone | Des coordonnées jamais confirmées | Validation ligne par ligne |
 | 10 | Les trois certificats ISO en PDF | Trois boutons de téléchargement désactivés | Trois fichiers |
 | 11 | Catalogues en anglais et en arabe | Deux liens de téléchargement désactivés | Deux fichiers |
 | 12 | Photo de la cornière d'angle extérieur | Une fiche produit sans visuel | Une photo |
 | 13 | Identité de « Tazedj » | Un logo absent dans le carrousel | Une confirmation + un logo |
 | 14 | Dernière entrée de la frise historique (2025) | Une date qui vieillit | Une précision |
-| 15 | Dates de publication des deux offres d'emploi | Deux dates approximatives affichées | Deux dates |
+| 15 | Dates et texte des deux offres d'emploi | Deux dates approximatives, et une annonce vide | Deux dates + un texte |
+| 16 | Droits sur les photographies du site | Une revendication de propriété peut-être inexacte | Des photos, ou une confirmation |
+| 17 | Cuve enterrée 5 m³ : tableau contre plan | Deux séries de cotes pour un même produit | Une série + les poids |
+| 18 | Cellules vides dans deux tableaux de charge | Des cases blanches ambiguës | Des valeurs, ou « non admis » |
 
 Les points **1 et 2** sont ceux qui ne peuvent pas attendre. Le premier conditionne la
 mise en ligne elle-même ; le second concerne une information de sécurité actuellement
@@ -89,6 +92,16 @@ message ne part donc pas par le formulaire.
 **Merci de préciser également :** qui, chez vous ou chez votre prestataire, administre la
 zone DNS et le certificat du domaine retenu ? Nous avons besoin de ce contact pour
 procéder.
+
+**Et une dernière précision, technique mais importante :** le domaine retenu possède-t-il des
+sous-domaines servis en HTTP seul, ou sans certificat valide — webmail, intranet, portail
+interne ? Si oui, lesquels ? ______________________
+
+> *Pourquoi la question :* le site impose aujourd'hui une connexion sécurisée à l'ensemble du
+> domaine **et de ses sous-domaines**. C'est le bon réglage dans la quasi-totalité des cas,
+> mais si un sous-domaine existant n'est accessible qu'en HTTP, il deviendrait injoignable
+> depuis un navigateur ayant visité le site une fois. Nous ajustons le réglage avant la
+> bascule — après, l'effet persiste plusieurs mois dans les navigateurs.
 
 ---
 
@@ -251,12 +264,18 @@ confusion avec la longueur de 13 m évoquée à la question 7.
 
 ---
 
-## 9. Validation des cinq numéros de téléphone
+## 9. Validation des sept numéros de téléphone
 
-Cinq numéros de téléphone sont publiés sur le site. Ils n'ont jamais été confirmés par vos
-équipes. Nous préférons ne pas les recopier ici, pour éviter de propager une erreur
-éventuelle : ils figurent sur la page **Contact** du site, et nous vous invitons à les lire
-sur cette page.
+Sept numéros de téléphone distincts sont publiés sur le site. Ils n'ont jamais été
+confirmés par vos équipes. Nous préférons ne pas les recopier ici, pour éviter de propager
+une erreur éventuelle : six d'entre eux figurent sur la page **Contact** du site, à raison
+d'une ligne par service, et nous vous invitons à les lire sur cette page.
+
+**Le septième fait exception et nous devons le citer**, car il ne figure sur aucune fiche
+de service : vous ne le trouverez donc pas sur la page Contact. Il s'agit du
+**+213 770 35 66 86**. C'est pourtant ce numéro qui est déclaré aux moteurs de recherche
+comme ligne principale de l'entreprise, et c'est lui qu'appelle le bouton WhatsApp du
+site. Merci de confirmer en particulier s'il doit conserver ce rôle.
 
 **Pour chaque ligne publiée, merci d'indiquer :**
 
@@ -267,9 +286,11 @@ sur cette page.
 | 3 | | | oui / non |
 | 4 | | | oui / non |
 | 5 | | | oui / non |
+| 6 | | | oui / non |
+| 7 — **+213 770 35 66 86** (hors page Contact, voir ci-dessus) | | | oui / non |
 
-Si la page Contact affiche plus de lignes que les cinq ci-dessus, merci d'ajouter les
-lignes manquantes au tableau.
+Si la page Contact affiche plus de six lignes, merci d'ajouter les lignes manquantes au
+tableau.
 
 **Merci de préciser aussi :** quelle ligne doit être mise en avant comme contact
 commercial principal ?
@@ -334,12 +355,77 @@ nous auriez communiquée. Nous ne souhaitons pas la présenter comme exacte.
 
 **Merci d'indiquer, pour chacune des deux offres :**
 
-| Offre | Date réelle de publication | Toujours ouverte ? |
-|---|---|---|
-| 1 | | oui / non |
-| 2 | | oui / non |
+| Offre | Date réelle de publication | Toujours ouverte ? | Texte complet de l'annonce |
+|---|---|---|---|
+| 1 | | oui / non | |
+| 2 | | oui / non | |
 
 - [ ] Les deux offres sont closes et peuvent être retirées de la page.
+
+> **Point complémentaire.** L'une des deux annonces est aujourd'hui publiée **sans contenu** :
+> la page affiche « Missions principales : » et « Profil recherché : », puis plus rien. Le
+> champ existe déjà dans le site et n'attend que votre texte — aucune modification technique
+> n'est nécessaire. Si l'offre est close, la case ci-dessus suffit et nous retirons l'annonce.
+
+---
+
+## 16. À qui appartiennent les photographies publiées sur le site ?
+
+Les Conditions d'utilisation affirment aujourd'hui que l'ensemble des images du site est la
+propriété de Bordj Steel. Or une partie de la photographie actuellement en ligne provient de
+banques d'images tierces ou a été produite par synthèse, et non de vos ateliers — nous en
+tenons le relevé dans notre documentation interne.
+
+Nous ne voulons pas publier en votre nom une revendication de propriété qui ne serait pas
+exacte.
+
+**Deux manières de régler ce point, au choix :**
+
+- [ ] **Vous nous transmettez vos propres photographies** (ateliers, chantiers, équipes). C'est
+      la meilleure option : elles remplacent les images génériques une par une, sans aucune
+      modification du site.
+- [ ] **Vous confirmez disposer des licences** pour les images actuellement en ligne, et la
+      clause reste telle quelle.
+- [ ] **Vous souhaitez que nous restreignions la clause** de propriété intellectuelle aux seuls
+      contenus que vous nous avez fournis.
+
+---
+
+## 17. Cuve enterrée 5 m³ : le tableau et le plan ne donnent pas les mêmes cotes
+
+Sur la page Chaudronnerie, le tableau des caractéristiques géométriques et le plan technique
+affiché juste à côté décrivent la **même cuve de 5 m³** avec des cotes différentes :
+
+| Source | Diamètre extérieur | Longueur virole | Longueur totale |
+|---|---|---|---|
+| Le tableau du site | 1 250 | 3 850 | 4 290 |
+| Votre plan « CUVES ENTERREES STANDARD-MRC-MODEL 5M3 » | 1 500 | 2 580 | 3 092 |
+
+Les deux descriptions sont cohérentes prises séparément — l'une décrit une cuve longue et
+étroite, l'autre une cuve courte et large — mais elles ne peuvent pas désigner le même produit.
+
+**Merci de confirmer laquelle fait foi :** ______________________
+
+**Question liée :** le tableau indique un poids unitaire de **469 kg** pour la cuve de 5 m³ et
+de **468 kg** pour celle de 3 m³, soit 1 kg d'écart pour presque deux fois le volume. Pouvez-
+vous nous communiquer les poids réels ? ______________________
+
+---
+
+## 18. Deux tableaux de charge comportent des cellules vides
+
+Deux tableaux publiés laissent des cases blanches, et nous ne savons pas si la valeur est
+manquante ou si le cas n'est pas admis — les deux se présentent aujourd'hui de la même façon
+au lecteur.
+
+| Tableau | Ce qui manque |
+|---|---|
+| Panneaux de bardage | Toute la colonne « 2 appuis — entraxe 60 », sur les six lignes |
+| Tôle nervurée | Toute la partie « 1 appui » pour l'épaisseur 1,0 mm, et une case isolée en 0,7 mm / 3,25 m |
+
+**Merci soit de nous transmettre les valeurs manquantes, soit de confirmer qu'il s'agit de
+configurations non admises** — auquel cas nous afficherons un tiret explicite plutôt qu'une
+case vide.
 
 ---
 

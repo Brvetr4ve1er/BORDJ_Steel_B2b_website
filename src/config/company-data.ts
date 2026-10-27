@@ -122,8 +122,10 @@ export const certifications: readonly Certification[] = [
  * figures reach nobody today. It is wired to this source anyway: it is exactly
  * the kind of string someone displays later, reintroducing the contradiction.
  *
- * Guarded by tests/galvanisation-capacity.test.ts, which fails if a fourth
- * distinct figure appears or if these stop being the single source.
+ * Guarded by tests/galvanisation-capacity.test.ts, which pins these three
+ * published figures by value and fails if a call site re-hardcodes one, so
+ * they stay the single source. Its sweep is per-figure, so it does NOT catch
+ * a newly introduced fourth figure — that still needs a human.
  */
 export const galvanisationCapacity = {
   /** Headline figure. Homepage hero + units list. Basis unknown. */
@@ -203,6 +205,11 @@ export const charpenteCapacity = {
 
 export const companyData = {
   siteMetadata: {
+    // The organisation's name on its own. `title` below is the name plus a
+    // positioning line, which is right for a <title> and wrong for anything
+    // that asks who the company is — structured data in particular, where it
+    // was previously published as the legal name.
+    name: 'Bordj Steel',
     title: 'Bordj Steel – Construction métallique en Algérie',
     description: 'Complexe métallurgique Bordj Steel, filiale du groupe Condor, 4 unités de production, projets phares en Algérie.',
     // Single source of truth for the canonical site URL (used by metadata,
@@ -320,21 +327,24 @@ export const companyData = {
       items: [
         {
           title: 'Charpente Métallique',
-          description: `Capacité de ${charpenteCapacity.headlinePerMonth} T/mois (${charpenteCapacity.headlinePerYear} T/an) et PRS ${charpenteCapacity.prsPerYear} T/an. Nous produisons des hangars, pylônes, et supports publicitaires.`,
+          description: `Capacité de ${charpenteCapacity.headlinePerMonth.toLocaleString('fr-FR')} T/mois (${charpenteCapacity.headlinePerYear.toLocaleString('fr-FR')} T/an) et PRS ${charpenteCapacity.prsPerYear.toLocaleString('fr-FR')} T/an. Nous produisons des hangars, pylônes, et supports publicitaires.`,
           icon: 'HardHat',
           href: '/products/charpente-metallique',
           imageKey: 'charpente'
         },
         {
           title: 'Panneaux Sandwichs',
-          description: `Capacité de 5000 m²/jour. Gamme d'épaisseur de 30-200 mm pour couverture, bardage, et chambres froides.`,
+          // The separator is U+202F, which is what Intl.NumberFormat("fr-FR")
+          // emits for the sibling cards above and below. Do not "normalize" it
+          // to a plain space: the card would then line-break mid-figure.
+          description: `Capacité de 5 000 m²/jour. Gamme d'épaisseur de 30-200 mm pour couverture, bardage, et chambres froides.`,
           icon: 'Layers',
           href: '/products/sandwich-panels',
           imageKey: 'panneaux'
         },
         {
           title: 'Galvanisation à Chaud',
-          description: `Capacité de ${galvanisationCapacity.headlinePerYear} T/an avec un bain de 13m de long pour des pièces jusqu'à 15m.`,
+          description: `Capacité de ${galvanisationCapacity.headlinePerYear.toLocaleString('fr-FR')} T/an avec un bain de 13m de long pour des pièces jusqu'à 15m.`,
           icon: 'Cog',
           href: '/products/galvanisation-a-chaud',
           imageKey: 'galvanisation'
@@ -519,8 +529,11 @@ export const companyData = {
             title: "Écoute Client",
             figure: "support", scene: "ecoute",
             phone: "+213 770 83 25 96",
-            // CLIENT NOTE: this address appears nowhere else on the site (see
-            // `emails` above). Kept verbatim; confirm with the client.
+            // CLIENT NOTE: this address is not in `emails` above, which lists
+            // only commercial@, but it is published verbatim in five blog
+            // bodies (blog-data.ts:6, :21, :35, :49, :63 — client social-media
+            // copy, not ours to edit). So correcting it here alone would leave
+            // five stale copies. Kept verbatim; confirm with the client.
             email: "marketing@bordjsteel.dz",
           },
           {
@@ -635,7 +648,11 @@ const portfolioImages = images.portfolio as unknown as Record<string, Placeholde
 const facilityImages = images.facilities as unknown as Record<string, PlaceholderImage>;
 
 const MISSING_IMAGE: PlaceholderImage = {
-  src: 'https://placehold.co/600x400',
+  // The .png suffix is load-bearing: the extensionless URL serves
+  // image/svg+xml, which next/image refuses without dangerouslyAllowSVG.
+  // Only bites under `next start` or off Netlify — Netlify's Image CDN
+  // passes SVG through regardless of that flag.
+  src: 'https://placehold.co/600x400.png',
   width: 600,
   height: 400,
   aiHint: 'placeholder',

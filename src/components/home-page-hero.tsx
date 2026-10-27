@@ -37,9 +37,8 @@ import { HeroCountUp } from '@/components/sections/hero/HeroCountUp';
  *     removing it here is zero. The real wins are three fewer hydration roots,
  *     three fewer IntersectionObservers, three fewer 2-second rAF loops
  *     competing with image decode at exactly the moment LCP resolves, and
- *     figures that are correct without JS. `AnimatedNumber` also never checks
- *     `prefers-reduced-motion`; `VisionMission` and `StatsSection` still carry
- *     both exposures and want a separate fix.
+ *     figures that are correct without JS. `VisionMission` and `StatsSection`
+ *     still carry those exposures and want a separate fix.
  *   - `backdrop-blur-sm` on the stats panel — a full-width backdrop filter
  *     above the fold, re-rasterised on every scroll frame. The panel is gone
  *     entirely; the figures sit directly on the photograph.
@@ -290,9 +289,7 @@ export function HomePageHero() {
                   a colour preference: #C1272D over this band computes to ~3.1:1,
                   which scrapes the large-text threshold with no margin, and
                   `wf-theme.ts` defines accent as "the highlighted / interactive
-                  dimension" — the rule, not the value. (The shipped hero puts
-                  `text-accent` on 44.8px figures over `bg-black/35`; that is a
-                  live AA failure, not just an aesthetic one.)
+                  dimension" — the rule, not the value.
 
                   Width check, the narrowest real case. Montserrat Bold tabular
                   figures run ~0.63em; `1 500 000` from `fr-FR` is 7 digits plus

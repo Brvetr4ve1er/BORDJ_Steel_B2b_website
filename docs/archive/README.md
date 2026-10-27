@@ -14,6 +14,7 @@ nowhere else - *not* because it describes the project as it stands.
 | What has to happen before delivery? | `DELIVERY-PLAN.md` |
 | Conventions and editing rules | `CLAUDE.md` |
 | Photography and media pipeline | `docs/MEDIA.md` |
+| What must the client decide or supply? | `docs/CLIENT-DECISIONS.md` |
 
 ## What survives here, and why
 
@@ -29,6 +30,17 @@ without this file the next maintainer sees a disabled lint rule with no rational
 and may "fix" it. It also documents the ESLint/CI bring-up and the
 import-graph check that caught two live components mistaken for dead ones (the
 lesson is now a rule in `CLAUDE.md`).
+
+### `blueprint.md` - written 2025-07-30
+
+The genesis scaffold prompt, from commit 8df3b16 "Initial prototype". It
+describes a site that was never built: English navigation labels (Home, About,
+Services, Portfolio, Approvals, Clients, Contact) and a language toggle, where
+the real navigation is French and config-driven from `company-data.ts`.
+
+Kept because it is the only record of *why* the palette (#4B4B4B, #D9D9D9,
+#C1272D, #1A1A1A) and the Montserrat/Roboto pairing were chosen - `globals.css`
+and `tailwind.config.ts` carry the values with no rationale attached.
 
 ### `2026-07-24-product-wireframes-design.md` - written 2026-07-24
 

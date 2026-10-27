@@ -18,6 +18,9 @@ build/
 .env.test.local
 .env.production.local
 *.env
+.env.production
+.env.development
+.env.test
 
 # IDE / Editor specific
 .idea/
@@ -49,6 +52,7 @@ coverage
 dist
 .nyc_output
 .temp
+.vid-work/
 *.tsbuildinfo
 depcheck-report.json
 

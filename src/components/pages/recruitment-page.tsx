@@ -51,8 +51,10 @@ const showBothFilters = showCategoryFilter && showEmploymentTypeFilter;
 
 const heroImage = {
   src: "/media/chat-gpt-image-16-nov-2025-1-1c86908b.webp",
-  alt: "Équipe de professionnels dans un bureau moderne",
-  aiHint: "professional team office",
+  // Describes the frame that is actually there. The previous alt text announced
+  // a team in an office; the photograph contains no people at all.
+  alt: "Casque de chantier rouge et veste de travail bleu marine posés sur une chaise rouge, au bout d’un tapis rouge",
+  aiHint: "hard hat workwear chair",
 };
 
 const RECRUITMENT_EMAIL = "recrutement@bordjsteel.dz";
@@ -159,9 +161,16 @@ export function RecruitmentPage() {
             priority
             data-ai-hint={heroImage.aiHint}
           />
+          {/* The same flat scrim every other hero uses (`technical-hero.tsx`).
+              Without it the headline sat straight on the photograph: at phone
+              widths `object-cover` crops to the red hard hat and the red carpet,
+              and brand red on red measured 1.00:1. White over this scrim reaches
+              4.77:1. Both halves are load-bearing — darkening a red ground alone
+              moves it toward the accent, not away from it. */}
+          <div aria-hidden="true" className="absolute inset-0 z-10 bg-black/55" />
           <div className="relative z-20 container mx-auto px-4 text-left">
             <AnimatedWrapper animation="zoom-in">
-              <h1 className="font-headline text-5xl md:text-6xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-accent">
+              <h1 className="font-headline text-5xl md:text-6xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white">
                 Nous recrutons...
               </h1>
             </AnimatedWrapper>
@@ -218,7 +227,7 @@ export function RecruitmentPage() {
 
               {/* Result count + reset */}
               <div className={cn("flex items-center justify-between pt-2", showBothFilters && "md:col-span-2")}>
-                <p className="text-sm text-gray-600 flex items-center gap-2">
+                <p aria-live="polite" className="text-sm text-gray-600 flex items-center gap-2">
                   <Search className="w-4 h-4" />
                   {filteredJobs.length} offre{filteredJobs.length !== 1 ? 's' : ''} trouvée{filteredJobs.length !== 1 ? 's' : ''}
                 </p>

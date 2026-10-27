@@ -6,12 +6,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, Dot } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, Award, Dot } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { TechnicalHero } from '@/components/sections/technical-hero';
 import { PRODUCT_HERO_MEDIA } from '@/config/product-heroes';
-import React, { useState, useMemo } from 'react';
-import { AnimatedNumber } from '@/components/animated-number';
+import React, { useState } from 'react';
 import { DownloadButton } from '@/components/ui/download-button';
 import dynamic from 'next/dynamic';
 import {
@@ -56,15 +55,6 @@ function isPillarIconKey(id: string): id is PillarIconKey {
 }
 
 function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.hero }) {
-  const iconMap = useMemo(() => ({
-    HardHat,
-    Cog,
-    Layers,
-    TowerControl,
-    Car,
-    Tractor
-  }), []);
-
   return (
     <TechnicalHero
       eyebrow="Unité de production"
@@ -111,9 +101,17 @@ const NewGallery = () => {
                             type="button"
                             className="relative group block w-full aspect-[4/3] overflow-hidden rounded-lg cursor-pointer p-0 border-0 bg-transparent md:aspect-auto md:h-[400px] md:w-56 md:flex-grow md:transition-all md:duration-500 md:hover:w-full"
                         >
+                            {/* These are 157px tiles (w-56) that expand to at
+                                most ~874px on hover, never the full viewport:
+                                the old `100vw, 1280px` made a 1440px desktop
+                                fetch the 1920w candidate for all six — 1.5 MB
+                                where 403 kB renders the same — and, because the
+                                grid is 2-up below 640px and 3-up to 767px, made
+                                a DPR3 phone fetch 1200w as well. 768px lands on
+                                the 828w candidate, ~0.95 density expanded. */}
                             <Image
                                 fill
-                                sizes="(max-width: 1280px) 100vw, 1280px"
+                                sizes="(max-width: 767px) 50vw, 768px"
                                 className="h-full w-full object-cover object-center"
                                 src={src}
                                 alt={`Réalisation charpente métallique ${idx + 1}`}
@@ -229,7 +227,12 @@ export function CharpenteMetalliquePageContent() {
         <div className="container mx-auto px-4">
           {selectedPillar && (
             <div className="grid lg:grid-cols-2 gap-12 items-start">
-              <AnimatedWrapper animation="fade-in">
+              {/* Keyed per pillar so HoverImageGallery remounts on a switch and its
+                  internal index resets. Without it, hovering deep into one pillar's
+                  gallery and then switching to a pillar with fewer images left the
+                  index out of range and this column blank. The key is prefixed
+                  because the sibling below already keys on the bare pillar id. */}
+              <AnimatedWrapper key={`gallery-${selectedPillar.id}`} animation="fade-in">
                 <HoverImageGallery images={(selectedPillar.galleryImages || []).filter(img => img)} />
               </AnimatedWrapper>
               <AnimatedWrapper key={selectedPillar.id} animation="fade-in" staggerIndex={1}>

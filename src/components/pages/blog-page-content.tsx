@@ -59,7 +59,10 @@ function CertificationCard({ cert }: { cert: Certification }) {
                 />
             </div>
              <div className="mt-4 text-center">
-                <h3 className="text-xl font-bold text-primary">{cert.code}</h3>
+                {/* h2, not h3: the ISO panel has no other heading, so the page
+                    would otherwise jump straight from the hero h1 to level 3.
+                    The size classes are explicit, so nothing moves visually. */}
+                <h2 className="text-xl font-bold text-primary">{cert.code}</h2>
                 <p className="text-md text-muted-foreground">{cert.scope}</p>
                 {cert.pdf ? (
                     <Button asChild variant="outline" className="mt-4">
@@ -161,13 +164,16 @@ export function BlogPageContent() {
                                     <DownloadButton text="Catalogue Français" href="/documents/Bordj-Steel-Catalogue-FR.pdf" download />
                                 </div>
                                 <div className="flex flex-col items-center gap-2">
-                                    <div className="flex min-h-11 items-center justify-center gap-2.5 rounded border border-border bg-primary px-8 text-[15px] font-semibold text-primary-foreground opacity-60">
+                                    {/* `lang` on the two non-French chips only: the
+                                        document is `lang="fr"`, so a synthesiser
+                                        would otherwise read these labels as French. */}
+                                    <div lang="en" className="flex min-h-11 items-center justify-center gap-2.5 rounded border border-border bg-primary px-8 text-[15px] font-semibold text-primary-foreground opacity-60">
                                         <BookCopy className="h-5 w-5" /> English Catalog
                                     </div>
                                     <span className="text-xs text-muted-foreground">Bientôt disponible</span>
                                 </div>
                                 <div className="flex flex-col items-center gap-2">
-                                    <div className="flex min-h-11 items-center justify-center gap-2.5 rounded border border-border bg-primary px-8 text-[15px] font-semibold text-primary-foreground opacity-60">
+                                    <div lang="ar" className="flex min-h-11 items-center justify-center gap-2.5 rounded border border-border bg-primary px-8 text-[15px] font-semibold text-primary-foreground opacity-60">
                                         <BookCopy className="h-5 w-5" /> دليل المنتجات
                                     </div>
                                     <span className="text-xs text-muted-foreground">Bientôt disponible</span>
