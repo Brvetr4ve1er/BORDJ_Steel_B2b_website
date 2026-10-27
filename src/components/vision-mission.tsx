@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatedNumber } from "./animated-number";
-import images from '@/app/lib/placeholder-images.json';
+import images from '@/config/placeholder-images.json';
 import { WF, WF_FONT } from './wireframes/wf-theme';
 import type { ElementType } from "react";
 

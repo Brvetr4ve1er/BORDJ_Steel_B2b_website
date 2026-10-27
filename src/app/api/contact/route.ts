@@ -21,15 +21,126 @@ import { companyData } from '@/config/company-data';
  * a message it did not send; that is the exact failure the mailto version had.
  *
  * SPAM. A honeypot field plus a minimum fill time. Both are cheap and catch
- * naive bots. Neither is rate limiting — real rate limiting needs state shared
- * across instances (Redis or similar) and is noted as a follow-up rather than
- * faked with an in-memory counter that resets on every cold start.
+ * naive bots. Neither is a rate limit, which is the next paragraph.
+ *
+ * RATE LIMIT, AND WHAT IT IS NOT. Five submissions per ten minutes per address,
+ * counted in a Map in this module. Be exact about what that buys: the Map lives
+ * in one server instance's memory, so the count is per-instance and empty again
+ * after a cold start. It is a speed bump, not a guarantee. It stops a trivial
+ * loop from burning the Resend quota and filling the client's inbox; it does not
+ * stop a patient flood spread across instances or addresses. The durable fix is
+ * a rate-limit rule at the host's edge — that needs no shared state and belongs
+ * to whichever host this site lands on, a decision still open. This exists so
+ * the window until then is not wide open, and it is deliberately the kind of
+ * code that can be deleted the day the edge rule exists.
+ *
+ * ORDER OF THE CHECKS. The limit is applied before the body is even read,
+ * because every branch below it costs something. The 5 000-character cap applies
+ * to the message after parsing, so `request.json()` parses a body of whatever
+ * size the host accepts before anything rejects it; and a send costs quota and
+ * the client's attention. The honeypot keeps its semantics exactly — inside the
+ * limit a trapped submission still answers 200 and still sends nothing, so a bot
+ * learns nothing about the trap. Over the limit it gets the same 429 a human
+ * clicking too often would get, which says "too many requests from this address"
+ * and nothing about which field gave it away. A blocked request is not logged,
+ * deliberately: a request flood would otherwise become a log flood.
+ *
+ * WHOSE ADDRESS. There is no socket to ask here, so the address comes from
+ * x-forwarded-for (first entry — the client; the rest are proxy hops) or
+ * x-real-ip. A proxy sets those, and a client that is not behind one can forge
+ * them, so this is only meaningful on a host that sets them itself — one more
+ * reason the edge rule is the real answer. When neither header is present every
+ * caller shares a single bucket. That is the intended trade: a shared bucket
+ * degrades to "five messages per ten minutes from this site" rather than to no
+ * limit at all, and a host that strips these headers announces itself at once.
  */
 
 const RESEND_ENDPOINT = 'https://api.resend.com/emails';
 
 /** Minimum plausible time for a human to fill the form. */
 const MIN_FILL_MS = 2500;
+
+/**
+ * Five per ten minutes, per address. Chosen so it cannot plausibly catch a
+ * person: an enquiry is one submission, a failed send is a second, a follow-up
+ * about something else is a third. Even a whole office behind one NAT address
+ * does not send a sixth contact form within ten minutes — and if one somehow
+ * does, the direct e-mail address sits under the form and still works.
+ */
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+
+/**
+ * Ceiling on tracked addresses. Without it, a client cycling forged addresses
+ * would turn this Map into a memory leak with a request loop for a pump. At
+ * this size the Map costs well under a megabyte, and the eviction below means
+ * reaching the ceiling degrades the limiter rather than the instance.
+ */
+const RATE_LIMIT_MAX_KEYS = 5000;
+
+/** Longest plausible address text (IPv6 with a scope is 45). Longer is not one. */
+const MAX_ADDRESS_CHARS = 64;
+
+/** Bucket for callers no proxy identified. See WHOSE ADDRESS above. */
+const SHARED_ADDRESS = 'unidentified';
+
+type RateWindow = { count: number; resetAt: number };
+
+/** Per-instance and non-durable on purpose. See RATE LIMIT above. */
+const windows = new Map<string, RateWindow>();
+
+/**
+ * Makes room for one more address: expired windows first, since they are dead
+ * weight, then the oldest live window if the ceiling still holds. A Map
+ * iterates in insertion order and `recordHit` always deletes before inserting,
+ * so the first key is the oldest. No timer anywhere — a `setInterval` here
+ * would hold a serverless instance open and outlive the test process.
+ */
+function makeRoom(now: number): void {
+  for (const [key, win] of windows) {
+    if (win.resetAt <= now) windows.delete(key);
+  }
+  while (windows.size >= RATE_LIMIT_MAX_KEYS) {
+    const oldest = windows.keys().next();
+    if (oldest.done) break;
+    windows.delete(oldest.value);
+  }
+}
+
+/**
+ * Counts one request against `address`. Returns 0 when it may proceed, or the
+ * milliseconds left in the window when it may not. A blocked request does not
+ * increment the count, so hammering cannot push its own window further away.
+ */
+function recordHit(address: string, now: number): number {
+  const open = windows.get(address);
+  if (open && open.resetAt > now) {
+    if (open.count >= RATE_LIMIT_MAX) return open.resetAt - now;
+    open.count += 1;
+    return 0;
+  }
+  windows.delete(address);
+  if (windows.size >= RATE_LIMIT_MAX_KEYS) makeRoom(now);
+  windows.set(address, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+  return 0;
+}
+
+/**
+ * The caller's address, as the nearest proxy reported it. Every branch returns a
+ * string and nothing here can throw: a missing header, an empty one, a bare
+ * comma and a kilobyte of junk all end up in the shared bucket rather than in an
+ * exception or in an oversized Map key.
+ */
+function addressOf(request: Request): string {
+  const forwarded = request.headers.get('x-forwarded-for');
+  if (forwarded) {
+    const first = forwarded.split(',')[0]?.trim() ?? '';
+    if (first && first.length <= MAX_ADDRESS_CHARS) return first.toLowerCase();
+  }
+  const real = request.headers.get('x-real-ip')?.trim() ?? '';
+  if (real && real.length <= MAX_ADDRESS_CHARS) return real.toLowerCase();
+  return SHARED_ADDRESS;
+}
 
 type Payload = {
   name?: unknown;
@@ -65,6 +176,21 @@ function escapeHtml(s: string): string {
 }
 
 export async function POST(request: Request) {
+  // First, above reading the body: see ORDER OF THE CHECKS above.
+  const waitMs = recordHit(addressOf(request), Date.now());
+  if (waitMs > 0) {
+    return NextResponse.json(
+      {
+        error:
+          'Trop de demandes depuis votre connexion. Merci de patienter quelques minutes avant de réessayer.',
+      },
+      {
+        status: 429,
+        headers: { 'Retry-After': String(Math.max(1, Math.ceil(waitMs / 1000))) },
+      }
+    );
+  }
+
   let body: Payload;
   try {
     body = (await request.json()) as Payload;

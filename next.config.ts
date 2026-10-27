@@ -2,16 +2,20 @@
 import type {NextConfig} from 'next';
 
 // ---------------------------------------------------------------------------
-// Security + cache headers — host-independent source of truth.
+// Security + cache headers — the single source of truth for this site.
 //
-// The same rules are also declared in `firebase.json`, but that block only
-// applies to *classic* Firebase Hosting. This repo is simultaneously wired for
-// Firebase App Hosting (`apphosting.yaml`), and the site is currently also
-// served from Netlify — neither reads firebase.json's `hosting.headers`, and
-// nor does a plain `next start`. Declaring the headers here ships them with
-// the app itself, whatever the host. The firebase.json block is intentionally
-// kept as well: duplicated headers are harmless, missing ones are not.
-// Keep the two in sync when either changes.
+// These rules used to be duplicated in `firebase.json`. That file and
+// `apphosting.yaml` were removed when deployment was consolidated onto
+// Netlify, and nothing was lost: neither was ever read by the host that
+// actually serves the site, and a plain `next start` reads neither.
+// Declaring the headers here instead ships them inside the application, so
+// they apply on Netlify today and would survive a move to any other Node host
+// tomorrow — there is no deploy config left to keep in step, and none to
+// forget to port. Keep them here for that reason: do not push them back out
+// into a host-specific config file.
+//
+// The mentions of `firebase.json` below are historical — they record where
+// the exact values were ported from, not a file that still exists.
 // ---------------------------------------------------------------------------
 const securityHeaders = [
   {key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload'},

@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import { companyData } from '@/config/company-data';
-import images from '@/app/lib/placeholder-images.json';
+import images from '@/config/placeholder-images.json';
 import { HeroScrollCue } from '@/components/sections/hero/HeroScrollCue';
 import { HeroCountUp } from '@/components/sections/hero/HeroCountUp';
 

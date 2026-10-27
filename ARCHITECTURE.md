@@ -18,7 +18,7 @@ This document provides a high-level overview of the BORDJ STEEL web application'
 
 -   **/src/lib/**: Contains utility functions (`utils.ts`) and static JSON assets (`algeria-wilayas.json`).
 
--   **/src/hooks/**: Home to custom React hooks used across the application (e.g., `use-breakpoint.ts`).
+-   **/src/hooks/**: Home to custom React hooks used across the application (`use-toast.ts`).
 
 -   **/public/**: Contains static assets like the brand logo and the product catalogue PDF, served directly. `sitemap.xml` and `robots.txt` are generated dynamically by `src/app/sitemap.ts` and `src/app/robots.ts`.
 

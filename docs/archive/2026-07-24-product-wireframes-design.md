@@ -1,3 +1,11 @@
+> **ARCHIVED — historical design spec, do NOT treat as current.**
+> It has since been implemented: the code is in `src/components/wireframes/`, and
+> the file layout sketched below drifted during implementation. The "pending
+> implementation" status line is the state on 2026-07-24, not today's. Kept for
+> the design decisions and the fidelity note. See `docs/archive/README.md`.
+
+---
+
 # Product Wireframes — Design Spec
 
 **Date:** 2026-07-24

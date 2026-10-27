@@ -17,6 +17,7 @@ import { join, extname, relative } from 'node:path';
 const ROOT = process.cwd();
 const SRC = join(ROOT, 'src');
 const PUBLIC = join(ROOT, 'public');
+const MEDIA = join(PUBLIC, 'media');
 const CODE_EXT = new Set(['.ts', '.tsx', '.json']);
 
 function walk(dir: string): string[] {
@@ -29,11 +30,23 @@ function walk(dir: string): string[] {
   return out;
 }
 
+/** Every file under a directory, whatever its extension. */
+function walkAssets(dir: string): string[] {
+  const out: string[] = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const p = join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...walkAssets(p));
+    else out.push(p);
+  }
+  return out;
+}
+
 /** Local asset paths ("/media/x.webp", "/logos/y.webp") referenced from source. */
 function collectLocalAssetRefs(): Map<string, string[]> {
   const refs = new Map<string, string[]>();
   // Quoted, root-relative path ending in an image/document extension.
-  const re = /['"](\/[\w\-./]+\.(?:webp|png|jpe?g|svg|gif|avif|pdf))['"]/g;
+  // Video too: public/media/loops holds the ambient loops behind the heroes.
+  const re = /['"](\/[\w\-./]+\.(?:webp|png|jpe?g|svg|gif|avif|pdf|mp4|webm))['"]/g;
   for (const file of walk(SRC)) {
     const text = readFileSync(file, 'utf8');
     for (const m of text.matchAll(re)) {
@@ -62,6 +75,22 @@ describe('local asset references', () => {
       }
     }
     expect(missing, `Missing from public/:\n  ${missing.join('\n  ')}`).toEqual([]);
+  });
+
+  it('every file in public/media is referenced from src/', () => {
+    // The mirror of the assertion above, and the one that catches the opposite
+    // defect: photography processed into public/media and then never wired up.
+    // 4 such files rode along in every deploy from 7f2ef17 until this test,
+    // because nothing had ever looked in this direction.
+    const orphans: string[] = [];
+    for (const abs of walkAssets(MEDIA)) {
+      const assetPath = `/${relative(PUBLIC, abs).replace(/\\/g, '/')}`;
+      if (!refs.has(assetPath)) orphans.push(assetPath);
+    }
+    expect(
+      orphans,
+      `Unreferenced files in public/media — delete them, or reference them:\n  ${orphans.join('\n  ')}`,
+    ).toEqual([]);
   });
 
   it('no referenced asset is an empty file', () => {

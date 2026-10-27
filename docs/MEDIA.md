@@ -34,7 +34,7 @@ Delivery is configured in `next.config.ts`:
    product part photos), with a mild unsharp mask to recover micro-contrast lost to
    resampling.
 4. **Encode** WebP q82 + generate a 16px `blurDataURL` placeholder, stored alongside
-   `width`/`height` in `src/app/lib/placeholder-images.json`.
+   `width`/`height` in `src/config/placeholder-images.json`.
 
 **Upscaling is capped at 2× native.** Past that you manufacture blur, not detail — so
 where no larger original existed, the image is served at its true resolution rather

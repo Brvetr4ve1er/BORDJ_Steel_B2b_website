@@ -12,7 +12,7 @@ import { describe, it, expect } from 'vitest';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { companyData } from '@/config/company-data';
-import images from '@/app/lib/placeholder-images.json';
+import images from '@/config/placeholder-images.json';
 
 const APP = join(process.cwd(), 'src', 'app');
 

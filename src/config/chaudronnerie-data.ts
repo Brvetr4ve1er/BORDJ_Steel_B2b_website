@@ -1,5 +1,5 @@
 
-import images from '@/app/lib/placeholder-images.json';
+import images from '@/config/placeholder-images.json';
 
 export type ProductImage = {
   src: string;

@@ -19,8 +19,10 @@ Run `typecheck`, `lint` and `build` before pushing — CI enforces all three.
 
 - **Next.js App Router.** Routes live in `src/app/**`; each `page.tsx` should be a
   thin wrapper that renders one component from `src/components/pages/**`.
-- **Component layers:** `ui/` = shadcn primitives; `sections/` = atomic page sections;
-  `pages/` = composition wrappers; `product-variants/` = the generic product renderer.
+- **Component layers:** `ui/` = shadcn primitives **and shared presentational
+  components reused across pages** (e.g. `steel-loader`, `ken-burns`);
+  `sections/` = atomic page sections; `pages/` = composition wrappers;
+  `product-variants/` = the generic product renderer.
 - **Content lives in `src/config/`** (`company-data.ts`, `*-data.ts`,
   `product-variants.config.ts`). Prefer editing config over hardcoding copy in JSX.
 - **Path alias:** import via `@/*` (→ `src/*`), not long relative paths.

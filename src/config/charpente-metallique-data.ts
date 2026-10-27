@@ -1,5 +1,5 @@
 
-import images from '@/app/lib/placeholder-images.json';
+import images from '@/config/placeholder-images.json';
 import { charpenteCapacity } from '@/config/company-data';
 
 export const charpenteMetalliqueData = {

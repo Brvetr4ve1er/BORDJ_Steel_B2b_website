@@ -49,17 +49,15 @@ Those were intentionally excluded to keep the system focused and robust.
 
 ## 🧠 Source of Truth
 
-> **Firebase Studio is the canonical source of truth for this project.**
+> **This repository is the canonical source of truth for this project.**
 
-All major refactors, layout decisions, and product system changes were done inside Firebase Studio first, then mirrored into this GitHub repository.
+The site was originally built in Firebase Studio, and through mid-2026 that workspace led while this repository mirrored it. That is no longer the case: the Firebase Studio workspace definition (`.idx/`) and the Firebase hosting configs (`firebase.json`, `apphosting.yaml`) were removed before delivery, because the site is not served from Firebase. Nothing outside this repository now defines the build.
 
-This repo exists to:
-- Track changes
-- Ensure build stability
-- Enable collaboration and review
-- Support long-term maintenance
-
-If something in this repo conflicts with Firebase Studio, **Firebase Studio wins**.
+Work here, and treat this tree as authoritative:
+- Changes are tracked in git
+- CI gates every push (build, lint, typecheck, test)
+- Review happens on pull requests
+- This is what gets deployed and maintained
 
 ---
 
@@ -262,8 +260,8 @@ This is a **real client project**, not a sandbox.
 * `CLAUDE.md` — contributor / agent guide (commands, conventions, editing rules)
 * `KNOWN-ISSUES.md` — the defect register: what was found, what was fixed, what is still blocked on the client
 * `docs/MEDIA.md` — the image pipeline (self-hosting, AVIF, how to add a photo)
-* `TODO.md` — remaining cleanup roadmap
-* `docs/archive/` — historical point-in-time reports from June 2026. **Superseded and largely inaccurate** — they reference file paths that no longer exist. Kept for provenance only; do not treat them as current.
+* `DELIVERY-PLAN.md` — the pre-delivery plan: what is done, what is blocked on the client
+* `docs/archive/` — point-in-time records, each kept only because it preserves a fact recorded nowhere else. **None of it is current guidance** — see `docs/archive/README.md`, which says per file what survives and why.
 
 ---
 

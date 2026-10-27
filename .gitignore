@@ -11,14 +11,6 @@ pnpm-debug.log
 out/
 build/
 
-# Firebase
-.firebase/
-firebase-debug.log
-*-debug.log
-firestore-debug.log
-*.emulators.export/
-database-debug.log
-
 # Environment variables
 .env
 .env.local

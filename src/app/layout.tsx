@@ -29,10 +29,10 @@ export const metadata: Metadata = {
     template: `%s | ${companyData.siteMetadata.title}`,
   },
   description: companyData.siteMetadata.description,
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/favicon.ico',
-  },
+  // No `icons` entry on purpose. src/app/favicon.ico is served by the App
+  // Router file convention on its own, so declaring it here only duplicates it.
+  // An apple-touch-icon is deliberately absent rather than aimed at the .ico:
+  // Apple wants a 180x180 PNG, and the repo has none to point at yet.
   alternates: {
     canonical: './',
   },
@@ -90,9 +90,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={`${montserrat.variable} ${roboto.variable}`}>
-      <head>
-
-      </head>
       <body>
           {/* AnimatedWrapper hides content (opacity-0) until an
               IntersectionObserver fires; without JS nothing would ever appear.

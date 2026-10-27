@@ -1,7 +1,7 @@
 
 import { Factory, Thermometer, Shield, Layers, Wind, Droplets, PackageCheck, Atom, Construction, TowerControl, Car, Ship, HardHat, CircleDollarSign, Check, Beaker, SprayCan, Fan, Pipette, Ruler, ShieldCheck, Weight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import images from '@/app/lib/placeholder-images.json';
+import images from '@/config/placeholder-images.json';
 import { galvanisationCapacity } from '@/config/company-data';
 
 // Using an object to map string names to actual Lucide components
