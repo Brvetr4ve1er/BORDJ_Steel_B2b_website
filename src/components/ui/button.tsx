@@ -26,7 +26,11 @@ const buttonVariants = cva(
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        // 44x44 in PX, not `h-10 w-10`. The site root is `font-size: 70%`
+        // (globals.css), so every rem-based size renders at 70% of nominal and
+        // `h-10` is 28px — under the 44px minimum tap target. Same arithmetic
+        // and same remedy as `hero/HeroScrollCue.tsx`.
+        icon: "h-[44px] w-[44px]",
       },
     },
     defaultVariants: {

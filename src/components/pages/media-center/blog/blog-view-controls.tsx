@@ -73,7 +73,9 @@ export function BlogTabs() {
               aria-pressed={isActive}
               aria-controls={blogPanelId(tab.id)}
               className={cn(
-                "inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-4 sm:px-6 text-[15px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                // `min-h-[44px]`, not `min-h-11`: at the 70% root font-size
+                // 2.75rem is 30.8px, so the intended 44px floor was never met.
+                "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md px-4 sm:px-6 text-[15px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                 isActive
                   ? "bg-accent text-accent-foreground shadow-sm"
                   : "text-primary hover:bg-background"

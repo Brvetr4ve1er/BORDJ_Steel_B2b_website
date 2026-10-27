@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Star, Users, Layers, Thermometer, ShieldCheck, Ruler } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 export interface StatsCardsProps {
   stats: Array<{
@@ -28,6 +28,11 @@ const iconMap: { [key: string]: React.ElementType } = {
 
 export function StatsCards({ stats }: StatsCardsProps) {
   const ref = React.useRef(null)
+  // There is no `MotionConfig` in this app, so framer-motion runs at its
+  // `reducedMotion: 'never'` default and these reveals would otherwise play
+  // regardless of the OS setting. `initial={false}` mounts straight at the
+  // target values, so `animate` can stay as it is.
+  const prefersReducedMotion = useReducedMotion()
 
   return (
       <div
@@ -37,7 +42,7 @@ export function StatsCards({ stats }: StatsCardsProps) {
         {stats.map((stat, index) => (
           <motion.div
             key={stat.label}
-            initial={{ opacity: 0, y: 30 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: 0.5,
@@ -49,7 +54,7 @@ export function StatsCards({ stats }: StatsCardsProps) {
             <div className="relative">
               <motion.div
                 className="mb-4 text-3xl text-white"
-                initial={{ rotate: -10, scale: 0.8, opacity: 0 }}
+                initial={prefersReducedMotion ? false : { rotate: -10, scale: 0.8, opacity: 0 }}
                 animate={{ rotate: 0, scale: 1, opacity: 1}}
                 transition={{
                   duration: 0.4,
@@ -66,7 +71,7 @@ export function StatsCards({ stats }: StatsCardsProps) {
 
               <motion.div
                 className="text-white mb-1 text-2xl font-bold lg:text-3xl"
-                initial={{ y: 10, opacity: 0 }}
+                initial={prefersReducedMotion ? false : { y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
                   duration: 0.4,

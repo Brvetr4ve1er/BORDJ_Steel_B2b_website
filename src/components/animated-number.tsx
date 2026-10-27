@@ -37,6 +37,19 @@ export const AnimatedNumber = ({ value, className }: { value: number; className?
       // Locale is pinned to French: the whole site is French, so a visitor
       // browsing in en-US must still read "25 000", never "25,000".
       const formatter = new Intl.NumberFormat('fr-FR');
+
+      // Respect the OS setting. This has to be an explicit `matchMedia` check:
+      // the imperative `animate()` reads no React context, so neither
+      // `MotionConfig`/`reducedMotion` nor the blanket reduce block in
+      // globals.css (which only clamps CSS animation/transition durations)
+      // reaches a JS/WAAPI tween. Write the final figure once and stop.
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (ref.current) {
+          ref.current.textContent = formatter.format(value);
+        }
+        return;
+      }
+
       const controls = animate(0, value, {
         duration: 2,
         onUpdate(latest) {

@@ -16,7 +16,23 @@ interface AnimatedWrapperProps {
 
 export function AnimatedWrapper({ children, animation, staggerIndex = 0, className }: AnimatedWrapperProps) {
   const [isVisible, setIsVisible] = useState(false);
+  // The global reduce block in globals.css clamps `transition-duration` but
+  // says nothing about `transition-delay`, so without this a reduced-motion
+  // visitor still waits out the full stagger before each item snaps in — on a
+  // list of six, a 500ms staircase of blank space.
+  //
+  // Deliberately state + effect rather than framer-motion's `useReducedMotion`:
+  // that returns `null` on the server and the real value on the first client
+  // render, so the server would emit `500ms` while hydration expected `0ms`.
+  // React does not patch attribute mismatches in production, which would leave
+  // the stale delay in the DOM and silently undo the fix. Starting at `false`
+  // matches the server, then the effect re-renders with the real preference.
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setPrefersReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }, []);
 
   useEffect(() => {
     const element = ref.current;
@@ -71,7 +87,7 @@ export function AnimatedWrapper({ children, animation, staggerIndex = 0, classNa
         isVisible && visibleClasses[animation],
         className
       )}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ transitionDelay: prefersReducedMotion ? '0ms' : `${delay}ms` }}
     >
       {children}
     </div>

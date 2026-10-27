@@ -1,7 +1,7 @@
 
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { BathsIcon } from './icons/baths-icon';
 import { AnimatedNumber } from './animated-number';
 import { useEffect, useState, useRef } from 'react';
@@ -17,6 +17,11 @@ type AnimatedBathsProps = {
 export function AnimatedBaths({ value, label }: AnimatedBathsProps) {
   const [isInView, setIsInView] = useState(() => false);
   const ref = useRef<HTMLDivElement>(null);
+  // The tally animates one segment per counted bath at a cumulative 100ms, so
+  // with a double-digit count this is a multi-second cascade. The `delay` has
+  // to be neutralised as well as the initial state, or a reduced-motion
+  // visitor still waits out the stagger on an already-settled bar.
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const element = ref.current;
@@ -64,9 +69,13 @@ export function AnimatedBaths({ value, label }: AnimatedBathsProps) {
             {segments.map((_, i) => (
               <motion.div
                 key={i}
-                initial={{ scaleX: 0, originX: 0 }}
+                initial={prefersReducedMotion ? false : { scaleX: 0, originX: 0 }}
                 animate={{ scaleX: 1 }}
-                transition={{ duration: 0.1, delay: i * 0.1, ease: 'easeIn' }}
+                transition={
+                  prefersReducedMotion
+                    ? { duration: 0 }
+                    : { duration: 0.1, delay: i * 0.1, ease: 'easeIn' }
+                }
                 className={cn("h-full flex-1 bg-accent transition-colors duration-300", "group-hover:bg-white")}
                 style={{ marginRight: i < segments.length - 1 ? '2px' : '0' }}
               />

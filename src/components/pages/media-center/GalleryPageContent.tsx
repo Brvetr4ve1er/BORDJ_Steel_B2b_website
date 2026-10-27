@@ -259,7 +259,10 @@ export function GalleryPageContent() {
                   aria-controls="gallery-grid"
                   onClick={() => setActiveFilter(filter)}
                   className={cn(
-                    'inline-flex items-center gap-2 rounded-sm border px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-colors duration-200 md:px-4 md:text-sm',
+                    // `min-h-[44px]`: `py-2` + `text-xs` at the 70% root is a
+                    // ~24px tall box, and these are the gallery's primary
+                    // touch filter. The padding already gives enough width.
+                    'inline-flex min-h-[44px] items-center gap-2 rounded-sm border px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-colors duration-200 md:px-4 md:text-sm',
                     isActive
                       ? 'border-accent bg-accent text-accent-foreground'
                       : 'border-border bg-background text-muted-foreground hover:border-accent hover:text-primary',

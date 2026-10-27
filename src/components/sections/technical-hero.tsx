@@ -164,7 +164,7 @@ export function TechnicalHero({
               tonal centre, and a radial darkening fights it. */}
           <div
             aria-hidden="true"
-            className={`absolute inset-0 z-[1] ${media.scrim === 'strong' ? 'bg-black/70' : 'bg-black/55'}`}
+            className={`absolute inset-0 z-10 ${media.scrim === 'strong' ? 'bg-black/70' : 'bg-black/55'}`}
           />
         </>
       ) : (
@@ -216,7 +216,7 @@ export function TechnicalHero({
         /* white/55, not /45: over this band /45 composites to rgb(130,135,141)
            = 4.32:1, under the 4.5:1 floor that 10px text needs. /55 lands at
            ~5.56:1. Same measurement as the homepage cartouche caption. */
-        <span className="pointer-events-none absolute bottom-7 left-7 z-20 hidden font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-white/45 md:bottom-10 md:left-10 md:block">
+        <span className="pointer-events-none absolute bottom-7 left-7 z-20 hidden font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-white/55 md:bottom-10 md:left-10 md:block">
           {readout}
         </span>
       ) : null}
@@ -260,7 +260,7 @@ export function TechnicalHero({
                   }`}
                 >
                   {/* white/55 for the same measured reason as the readout above. */}
-                  <dt className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45">
+                  <dt className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white/55">
                     {s.label}
                   </dt>
                   <dd className="mt-2 font-headline text-2xl font-bold tabular-nums leading-none text-white md:text-3xl">

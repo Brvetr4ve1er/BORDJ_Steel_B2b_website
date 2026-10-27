@@ -142,7 +142,6 @@ export function Footer() {
                         aria-label={`Bordj Steel sur ${social.name}`}
                         fromColor={social.fromColor}
                         toColor={social.toColor}
-                        className="h-14 w-14"
                     >
                        {social.icon}
                     </SocialButton>
@@ -162,12 +161,16 @@ export function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Entrez votre email"
-                className="pr-14 h-12 text-base bg-white/10 text-white placeholder:text-white/50 border-white/20 focus:border-accent"
+                /* h-[52px] in px: `h-12` is 33.6px at the 70% root, which cannot
+                   contain the 44px submit target overlaid inside it. */
+                className="pr-[56px] h-[52px] text-base bg-white/10 text-white placeholder:text-white/50 border-white/20 focus:border-accent"
               />
               <Button
                 type="submit"
                 size="icon"
-                className="absolute right-1.5 top-1.5 h-9 w-9 rounded-full bg-accent text-accent-foreground transition-transform hover:scale-105"
+                /* 44x44 in px, centred in the 52px field: (52-44)/2 = 4px, and
+                   `top-1`/`right-1` would be 2.8px at the 70% root. */
+                className="absolute right-[4px] top-[4px] h-[44px] w-[44px] rounded-full bg-accent text-accent-foreground transition-transform hover:scale-105"
               >
                 <Send className="h-5 w-5" />
                 <span className="sr-only">S'inscrire</span>
