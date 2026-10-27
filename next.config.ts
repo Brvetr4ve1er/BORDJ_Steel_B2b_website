@@ -51,13 +51,27 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: false,
   },
   images: {
-    // Serve AVIF where the browser supports it (typically 20–40% smaller than
-    // WebP at equal quality), falling back to WebP. The sources in
-    // `public/media` are high-resolution WebP; Next re-encodes and resizes them
-    // per request, so visitors never download the full-size original.
+    // AVIF first, then WebP. Kept because it is correct and portable, but on
+    // the current host it does NOT decide what ships: the site deploys to
+    // Netlify, whose Image CDN answers `/_next/image` and picks the format
+    // itself. Measured against the deploy preview on 2026-10-27 —
+    // `/_next/image?…&w=640&q=75` and the equivalent `/.netlify/images?…&fm=webp`
+    // return byte-identical bodies, and a browser `Accept` listing AVIF first
+    // still gets WebP back. The per-request resize does still happen, so
+    // visitors never download the full-size original.
+    //
+    // Do not "fix" the missing AVIF — WebP is the better outcome here. The
+    // sources in `public/media` are already WebP, so re-encoding them to AVIF
+    // at q=75 measured LARGER at every width sampled (31,618 vs 23,564 bytes
+    // at w=640, about 34%). AVIF is served on an explicit `Accept: image/avif`.
+    // This ordering takes effect again on any host that does not intercept the
+    // optimizer, which is why it stays.
     formats: ['image/avif', 'image/webp'],
     // Optimised derivatives are immutable (the source filenames are content-
     // hashed), so let the optimizer cache them for a year instead of 60s.
+    // Same caveat as `formats`: on Netlify this does not reach the browser —
+    // optimizer responses come back `public,max-age=0,must-revalidate`. It
+    // applies wherever Next's own optimizer runs.
     minimumCacheTTL: 31536000,
     // All site photography is now self-hosted under `public/media` (see
     // `docs/MEDIA.md`). The only remaining remote host is the placehold.co
