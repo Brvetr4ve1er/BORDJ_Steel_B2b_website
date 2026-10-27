@@ -12,7 +12,7 @@ import { describe, it, expect } from 'vitest';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { companyData } from '@/config/company-data';
-import images from '@/app/lib/placeholder-images.json';
+import images from '@/config/placeholder-images.json';
 
 const APP = join(process.cwd(), 'src', 'app');
 
@@ -90,6 +90,10 @@ describe('production units', () => {
 
 describe('contact details', () => {
   const contact = companyData.pages.contact.content;
+  // Hoisted so the `emails`/`phones` lists and the department cards are held to
+  // one pattern each and cannot be tightened on one surface but not the other.
+  const EMAIL = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
+  const PHONE = /^\+\d[\d\s]+$/;
 
   it('exposes at least one phone and one email', () => {
     expect(contact.phones.length).toBeGreaterThan(0);
@@ -97,12 +101,25 @@ describe('contact details', () => {
   });
 
   it('emails are well-formed', () => {
-    for (const e of contact.emails) expect(e).toMatch(/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i);
+    for (const e of contact.emails) expect(e).toMatch(EMAIL);
   });
 
   it('phone numbers use a consistent international format', () => {
     // Mixed local/international formats have shipped before ("0770…" vs "+213 770…").
-    for (const p of contact.phones) expect(p.trim()).toMatch(/^\+\d[\d\s]+$/);
+    for (const p of contact.phones) expect(p.trim()).toMatch(PHONE);
+  });
+
+  it('every department card carries a well-formed email', () => {
+    // The two lists above are not the whole published surface: /contact also
+    // prints a per-department address and number on each card, and those were
+    // the fields nothing in the repo had ever looked at.
+    expect(contact.departments.length).toBeGreaterThan(0);
+    for (const d of contact.departments) expect(d.email, d.title).toMatch(EMAIL);
+  });
+
+  it('every department phone uses the same international format', () => {
+    expect(contact.departments.length).toBeGreaterThan(0);
+    for (const d of contact.departments) expect(d.phone.trim(), d.title).toMatch(PHONE);
   });
 });
 

@@ -5,10 +5,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { TechnicalHero } from '@/components/sections/technical-hero';
+import { PRODUCT_HERO_MEDIA } from '@/config/product-heroes';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Package, Users, Square, Factory, Flame, Bolt, Droplets, Beaker, Construction, Leaf, Filter } from 'lucide-react';
+import { ArrowRight, Flame, Bolt, Droplets, Beaker, Construction, Leaf, Filter } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import { chaudronnerieData } from '@/config/chaudronnerie-data';
 import {
   geometricTableData,
@@ -18,10 +20,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { DownloadButton } from '@/components/ui/download-button';
 import { ChaudronnerieWireframe } from '@/components/wireframes/ChaudronnerieWireframe';
-import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
-
-const DetailedStatCard = dynamic(() => import('@/components/detailed-stat-card').then(mod => mod.DetailedStatCard));
 
 const activityIconMap: { [key: string]: LucideIcon } = {
   Flame,
@@ -213,83 +212,35 @@ const TechnicalSpecsSection = () => {
 
 export function ChaudronneriePageContent() {
   const { hero } = chaudronnerieData;
-  const heroStats = hero.stats;
   const [current, setCurrent] = React.useState(1)
 
   const drawingImages = chaudronnerieDrawingImages;
   const count = drawingImages.length;
 
-  const iconMap = useMemo(() => ({
-    Package,
-    Users,
-    Square,
-    Factory,
-  }), []);
-
-
   return (
     <div className="bg-background text-foreground">
       {/* 1. Hero Banner */}
-        <section className="relative min-h-screen flex items-end bg-background pb-24 sm:pb-32">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src={hero.image_url}
-              alt={hero.alt}
-              fill
-              className="object-cover"
-              priority
-              data-ai-hint={hero.aiHint}
-              placeholder="blur"
-              blurDataURL={hero.blurDataUrl}
-            />
-            <div className="absolute inset-0 bg-black/50 z-10" />
-          </div>
-          <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">
-            <div className="space-y-12">
-              <AnimatedWrapper animation="slide-up">
-                <div className="text-left space-y-8">
-                  <div>
-                    <h1 className="font-headline text-5xl sm:text-6xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                      {hero.title}
-                    </h1>
-                    <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]">
-                      {hero.subtitle}
-                    </p>
-                  </div>
-                   <div className="flex flex-row items-center gap-4">
-                     <Button asChild size="lg" variant="destructive">
-                       <Link href="/contact">{hero.cta_primary} <ArrowRight className="ml-2" /></Link>
-                     </Button>
-                     <DownloadButton text={hero.cta_secondary} href="/documents/Bordj-Steel-Catalogue-FR.pdf" />
-                  </div>
-                </div>
-              </AnimatedWrapper>
-
-              <AnimatedWrapper animation="slide-up" staggerIndex={1}>
-                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-                    {heroStats.map((stat, index) => {
-                      const Icon = iconMap[stat.icon as keyof typeof iconMap];
-                      return (
-                        <AnimatedWrapper key={stat.title} animation="fade-in-stagger" staggerIndex={index}>
-                           <div className="group relative overflow-hidden rounded-lg">
-                                <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
-                                <DetailedStatCard 
-                                    icon={Icon}
-                                    title={stat.title}
-                                    value={stat.value}
-                                    secondaryValue={stat.secondaryValue}
-                                    description={stat.description}
-                                    className="bg-black/50 backdrop-blur-md border-border text-white transition-colors duration-300 group-hover:bg-transparent group-hover:border-accent"
-                                />
-                           </div>
-                        </AnimatedWrapper>
-                      );
-                    })}
-                </div>
-              </AnimatedWrapper>
-            </div>
-          </div>
-        </section>
+        <TechnicalHero
+          eyebrow="Unité de production"
+          title={hero.title}
+          subtitle={hero.subtitle}
+          motif="vessel"
+          media={PRODUCT_HERO_MEDIA.chaudronnerie}
+          stats={hero.stats.map((s) => ({ label: s.title, value: String(s.value), note: s.secondaryValue ? String(s.secondaryValue) : undefined }))}
+          actions={
+            <>
+              <Button asChild size="lg" variant="destructive" className="group">
+                <Link href="#product-details">
+                  {hero.cta_primary} <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <DownloadButton
+                text={hero.cta_secondary}
+                href="/documents/Bordj-Steel-Catalogue-FR.pdf"
+              />
+            </>
+          }
+        />
 
       <section className="bg-background py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -316,24 +267,35 @@ export function ChaudronneriePageContent() {
                         )}
                       >
                         <div className="relative h-full w-full">
-                          <Image src={src} alt={`Schéma technique ${index + 1}`} fill className="object-contain rounded-lg" />
+                          <Image src={src} alt={`Schéma technique ${index + 1}`} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-contain rounded-lg" />
                         </div>
                       </div>
                     ))}
                   </CardContent>
                 </Card>
                 <div className="flex items-center justify-center gap-2">
+                  {/* The target is the 24x24 box, not the dot: a 2.5 (7px) dot
+                      is well under the 24px minimum of SC 2.5.8. The dot itself
+                      stays 2.5 and is decorative — the button carries the name.
+                      24px rather than 44px keeps the existing visual rhythm. */}
                   {drawingImages.map((_, index) => (
                     <button
                       key={index}
                       type="button"
                       aria-label={`Afficher le schéma technique ${index + 1}`}
                       onClick={() => setCurrent(index + 1)}
-                      className={cn(
-                        "h-2.5 w-2.5 rounded-full transition-colors",
-                        current === index + 1 ? "bg-accent" : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
-                      )}
-                    />
+                      className="flex h-[24px] w-[24px] items-center justify-center"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          "h-2.5 w-2.5 rounded-full transition-colors",
+                          // /30 composited to 1.5:1 on the white card, so the
+                          // other drawings were invisible as a state (SC 1.4.11).
+                          current === index + 1 ? "bg-accent" : "bg-muted-foreground/60 hover:bg-muted-foreground/60"
+                        )}
+                      />
+                    </button>
                   ))}
                 </div>
                 <div className="py-2 text-center text-sm text-muted-foreground">
@@ -354,7 +316,10 @@ export function ChaudronneriePageContent() {
                     </div>
                      <div className="mt-8">
                         <div className="bg-muted rounded-lg aspect-video flex items-center justify-center">
-                            <Image src="/media/acf11d05445a30a0c57c86ab75fe-6202d984.webp" alt="Schéma technique" width={800} height={450} className="rounded-lg object-contain" data-ai-hint="technical drawing" />
+                            {/* Not a schematic, whatever the old alt said: this is a
+                                photograph of the plant — an operator at the roller's
+                                control pedestal with a virole in the rolls. */}
+                            <Image src="/media/acf11d05445a30a0c57c86ab75fe-6202d984.webp" alt="Opérateur à la console de commande d'une rouleuse, virole d'acier en cours de roulage dans l'atelier de chaudronnerie" width={800} height={450} sizes="(max-width: 1024px) 100vw, 50vw" className="rounded-lg object-contain" data-ai-hint="plate rolling machine" />
                         </div>
                      </div>
                   </CardContent>

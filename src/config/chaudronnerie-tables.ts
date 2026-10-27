@@ -48,3 +48,70 @@ export const chaudronnerieActivities: { title: string; iconName: string }[] = [
   { title: 'Environnement', iconName: 'Leaf' },
   { title: 'Traitement des Eaux', iconName: 'Filter' },
 ];
+
+/**
+ * Dimensional envelope of the standard buried-tank range, read off
+ * `geometricTableData` rather than restated, so the page's wireframe and the
+ * table under it cannot drift apart.
+ *
+ * UNITS. The table's own headers carry none; millimetres come from the client
+ * plates the table mirrors — plate "CUVES ENTERREES STANDARD-MRC-MODEL 5M3"
+ * dimensions its end view "Ø EXT: 1500" where this table writes a `format` of
+ * "1 500". Capacity is deliberately absent: the page never prints a unit for
+ * the `capacite` column (only the plate *titles* say 3M3 / 5M3), and the table
+ * sits directly below the drawing anyway.
+ */
+export interface CuveRangeMm {
+  min: number;
+  max: number;
+}
+
+export interface CuveGeometry {
+  /** Outside diameter — the FORMAT column. */
+  diametre: CuveRangeMm;
+  /** Shell-course length — LONGUEUR VIROLE. */
+  virole: CuveRangeMm;
+  /** Overall length, dished ends included — LONGUEUR TOTALE. */
+  longueurTotale: CuveRangeMm;
+  /** Plate thickness — ÉPAISSEUR. */
+  epaisseur: CuveRangeMm;
+  /** Test pressure, verbatim — null when the rows do not all agree on one. */
+  pressionEpreuve: string | null;
+}
+
+/** Reads a dimension cell such as "13 600.00" (space-grouped thousands). */
+function toMm(cell: string): number {
+  const digits = cell.replace(/[^0-9.]/g, '');
+  const value = Number(digits);
+  if (digits === '' || !Number.isFinite(value)) {
+    throw new Error(`chaudronnerie-tables: cannot read a dimension from "${cell}"`);
+  }
+  return value;
+}
+
+function range(values: number[]): CuveRangeMm {
+  return { min: Math.min(...values), max: Math.max(...values) };
+}
+
+export function deriveCuveGeometry(rows: readonly ChaudronnerieTableRow[]): CuveGeometry {
+  const pressions = new Set(rows.map((r) => r.pressionEpreuve));
+  return {
+    diametre: range(rows.map((r) => toMm(r.format))),
+    virole: range(rows.map((r) => toMm(r.longVirole))),
+    longueurTotale: range(rows.map((r) => toMm(r.longTotale))),
+    epaisseur: range(rows.map((r) => r.epaisseur)),
+    pressionEpreuve: pressions.size === 1 ? ([...pressions][0] ?? null) : null,
+  };
+}
+
+export const cuveGeometry: CuveGeometry = deriveCuveGeometry(geometricTableData);
+
+/** A millimetre value grouped the way the table above groups its own. */
+export function formatMm(value: number): string {
+  return String(Math.round(value)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+
+/** A range as the drawing prints it: "1 250 à 3 000 mm". */
+export function formatRangeMm(r: CuveRangeMm): string {
+  return `${formatMm(r.min)} à ${formatMm(r.max)} mm`;
+}

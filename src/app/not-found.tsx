@@ -14,7 +14,7 @@ export default function NotFound() {
   return (
     <main
       id="main"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background px-4 py-24 text-center"
+      className="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden bg-background px-4 py-24 text-center"
     >
       <div
         className="pointer-events-none absolute inset-0 bg-grid-faint opacity-60"

@@ -2,15 +2,28 @@ name: CI
 
 # Continuous-integration gate for the Bordj Steel website.
 #
-# Status (2026-07-29, Node 20): build, lint, typecheck and test are all GREEN.
-#   - build     : PASS (all 36 routes; strict — ignore flags removed)  -> required
-#   - lint      : PASS (0 warnings)                                    -> required
-#   - typecheck : PASS (0 errors; strict + noUncheckedIndexedAccess)   -> required
-#   - test      : PASS (vitest; config/asset integrity suite)          -> required
+# Runtime: Node 22 LTS. The version is pinned in three places that must stay
+# in step — `node-version` in every job below, `.nvmrc`, and `engines.node`
+# in `package.json`. Node 20 ("Iron") reached its Node.js end-of-life in
+# April 2026 and no longer receives security patches, so it is no longer a
+# supported target for this project.
 #
-# `next.config.ts` no longer suppresses type/lint errors, so `next build`
-# itself now enforces both. All three jobs are safe to mark required in
-# branch protection.
+# Jobs — four gates plus one advisory:
+#   - build     : `next build`            -> required
+#   - lint      : `next lint`             -> required
+#   - typecheck : `tsc --noEmit`          -> required
+#   - test      : `vitest run`            -> required
+#   - audit     : `npm audit --omit=dev`  -> advisory (continue-on-error)
+#
+# `next.config.ts` does not suppress type or lint errors, so `next build`
+# itself enforces both. All four gate jobs are safe to mark required in
+# branch protection; `audit` must not be, by design.
+#
+# The `audit` job is deliberately non-blocking. It reports new advisories
+# against production dependencies without letting a third-party publication
+# fail an unrelated pull request. It exists because nothing in this repo
+# surfaced an advisory before, which is how a critical Next.js issue sat
+# unnoticed.
 #
 # Note: `next lint` is deprecated in Next 16. When upgrading, migrate to the
 # ESLint CLI (`npx @next/codemod@canary next-lint-to-eslint-cli .`).
@@ -20,6 +33,9 @@ on:
     branches: ["**"]
   pull_request:
     branches: ["**"]
+
+permissions:
+  contents: read
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -33,7 +49,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci
       - run: npm run build
@@ -45,7 +61,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci
       - run: npm run lint
@@ -57,7 +73,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci
       - run: npm run typecheck
@@ -69,7 +85,22 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci
       - run: npm test
+
+  audit:
+    name: Audit (advisory)
+    runs-on: ubuntu-latest
+    # Advisory only: a newly published advisory should be visible, not a
+    # merge blocker. Do not add this job to branch protection.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run audit

@@ -2,16 +2,20 @@
 import type {NextConfig} from 'next';
 
 // ---------------------------------------------------------------------------
-// Security + cache headers — host-independent source of truth.
+// Security + cache headers — the single source of truth for this site.
 //
-// The same rules are also declared in `firebase.json`, but that block only
-// applies to *classic* Firebase Hosting. This repo is simultaneously wired for
-// Firebase App Hosting (`apphosting.yaml`), and the site is currently also
-// served from Netlify — neither reads firebase.json's `hosting.headers`, and
-// nor does a plain `next start`. Declaring the headers here ships them with
-// the app itself, whatever the host. The firebase.json block is intentionally
-// kept as well: duplicated headers are harmless, missing ones are not.
-// Keep the two in sync when either changes.
+// These rules used to be duplicated in `firebase.json`. That file and
+// `apphosting.yaml` were removed when deployment was consolidated onto
+// Netlify, and nothing was lost: neither was ever read by the host that
+// actually serves the site, and a plain `next start` reads neither.
+// Declaring the headers here instead ships them inside the application, so
+// they apply on Netlify today and would survive a move to any other Node host
+// tomorrow — there is no deploy config left to keep in step, and none to
+// forget to port. Keep them here for that reason: do not push them back out
+// into a host-specific config file.
+//
+// The mentions of `firebase.json` below are historical — they record where
+// the exact values were ported from, not a file that still exists.
 // ---------------------------------------------------------------------------
 const securityHeaders = [
   {key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload'},
@@ -47,13 +51,27 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: false,
   },
   images: {
-    // Serve AVIF where the browser supports it (typically 20–40% smaller than
-    // WebP at equal quality), falling back to WebP. The sources in
-    // `public/media` are high-resolution WebP; Next re-encodes and resizes them
-    // per request, so visitors never download the full-size original.
+    // AVIF first, then WebP. Kept because it is correct and portable, but on
+    // the current host it does NOT decide what ships: the site deploys to
+    // Netlify, whose Image CDN answers `/_next/image` and picks the format
+    // itself. Measured against the deploy preview on 2026-10-27 —
+    // `/_next/image?…&w=640&q=75` and the equivalent `/.netlify/images?…&fm=webp`
+    // return byte-identical bodies, and a browser `Accept` listing AVIF first
+    // still gets WebP back. The per-request resize does still happen, so
+    // visitors never download the full-size original.
+    //
+    // Do not "fix" the missing AVIF — WebP is the better outcome here. The
+    // sources in `public/media` are already WebP, so re-encoding them to AVIF
+    // at q=75 measured LARGER at every width sampled (31,618 vs 23,564 bytes
+    // at w=640, about 34%). AVIF is served on an explicit `Accept: image/avif`.
+    // This ordering takes effect again on any host that does not intercept the
+    // optimizer, which is why it stays.
     formats: ['image/avif', 'image/webp'],
     // Optimised derivatives are immutable (the source filenames are content-
     // hashed), so let the optimizer cache them for a year instead of 60s.
+    // Same caveat as `formats`: on Netlify this does not reach the browser —
+    // optimizer responses come back `public,max-age=0,must-revalidate`. It
+    // applies wherever Next's own optimizer runs.
     minimumCacheTTL: 31536000,
     // All site photography is now self-hosted under `public/media` (see
     // `docs/MEDIA.md`). The only remaining remote host is the placehold.co

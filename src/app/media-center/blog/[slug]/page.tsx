@@ -1,11 +1,11 @@
 
 import type { Metadata } from 'next';
 import { articles } from '@/config/blog-data';
+import { companyData } from '@/config/company-data';
 import { notFound } from 'next/navigation';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Logo } from '@/components/logo';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -16,6 +16,14 @@ export async function generateStaticParams() {
     slug: article.id,
   }));
 }
+
+// Unknown slugs 404 at the router instead of rendering. Without this the
+// default `dynamicParams = true` rendered any slug on demand, and because the
+// page itself answered, the response was a 200 carrying the global not-found
+// body — a soft-404 that Netlify then cached for a year under the route's
+// `s-maxage`. Every article is enumerated above, so refusing unknown params
+// costs nothing: a new article needs a rebuild either way.
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
@@ -41,7 +49,19 @@ export async function generateMetadata({
   return {
     title: article.title,
     description,
+    // `openGraph` and `twitter` are each replaced wholesale by a page-level
+    // block rather than merged into the root one, so `type`, `locale` and
+    // `siteName` have to be restated here or the article pages emit none of
+    // them. `twitter.images` likewise: without it every article inherited the
+    // root card's generic /og-image.png. Next fills the card's title and
+    // description from `openGraph` below.
     openGraph: {
+      type: 'article',
+      locale: 'fr_FR',
+      siteName: companyData.siteMetadata.title,
+      images: [article.imageUrl],
+    },
+    twitter: {
       images: [article.imageUrl],
     },
   };
@@ -68,44 +88,44 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </Button>
                 </AnimatedWrapper>
                 <article className="max-w-4xl mx-auto">
-                    <AnimatedWrapper animation="fade-in">
-                        <header className="mb-8">
-                            <div className="mb-4">
-                                <span className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">{article.tag}</span>
-                            </div>
-                            <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">{article.title}</h1>
-                            <div className="flex items-center gap-4 text-muted-foreground">
-                                {article.author && (
-                                <div className="flex items-center gap-3">
-                                    {article.author.avatarUrl.endsWith('.svg') ? (
-                                    <div className="h-10 w-10">
-                                        <Logo />
-                                    </div>
-                                    ) : (
-                                    <Avatar>
-                                        <AvatarImage src={article.author.avatarUrl} alt={article.author.name} />
-                                        <AvatarFallback>{article.author.name.charAt(0)}</AvatarFallback>
-                                    </Avatar>
-                                    )}
-                                    <span className="font-semibold text-sm">{article.author.name}</span>
-                                </div>
-                                )}
-                                <span className="text-sm">{article.date}</span>
-                            </div>
-                        </header>
-                    </AnimatedWrapper>
-
-                    <AnimatedWrapper animation="fade-in" staggerIndex={1}>
-                        <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden mb-8 shadow-lg">
-                            <Image
-                                src={article.imageUrl}
-                                alt={article.title}
-                                fill
-                                className="object-cover"
-                                priority
-                            />
+                    <header className="mb-8">
+                        <div className="mb-4">
+                            <span className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">{article.tag}</span>
                         </div>
-                    </AnimatedWrapper>
+                        <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">{article.title}</h1>
+                        <div className="flex items-center gap-4 text-muted-foreground">
+                            {article.author && (
+                            <div className="flex items-center gap-3">
+                                {/*
+                                  Always the avatarUrl the config points at. This
+                                  previously special-cased ".svg" and swapped in the
+                                  21 KB inline <Logo> component for a 40x40 avatar —
+                                  the very file it stood in for was already in
+                                  public/. Avatar/AvatarImage renders a plain <img>,
+                                  so the SVG is fetched once and cached rather than
+                                  re-inlined into every article's HTML.
+                                */}
+                                <Avatar className="h-10 w-10">
+                                    <AvatarImage src={article.author.avatarUrl} alt={article.author.name} className="object-contain" />
+                                    <AvatarFallback>{article.author.name.charAt(0)}</AvatarFallback>
+                                </Avatar>
+                                <span className="font-semibold text-sm">{article.author.name}</span>
+                            </div>
+                            )}
+                            <span className="text-sm">{article.date}</span>
+                        </div>
+                    </header>
+
+                    <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden mb-8 shadow-lg">
+                        <Image
+                            src={article.imageUrl}
+                            alt={article.title}
+                            sizes="(max-width: 1024px) 100vw, 640px"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
 
                     <AnimatedWrapper animation="fade-in" staggerIndex={2}>
                         <div

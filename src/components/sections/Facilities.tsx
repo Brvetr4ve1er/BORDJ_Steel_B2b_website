@@ -1,12 +1,14 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { companyData, getFacilityImage } from '@/config/company-data';
 import { HardHat, Layers, Cog, Anchor } from 'lucide-react';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
+import { KenBurns, type KenBurnsVariant } from '@/components/ui/ken-burns';
+import { VideoLoop } from '@/components/ui/video-loop';
 
 // Static icon map hoisted to module scope so it isn't recreated on every
 // render (same pattern as navbar.tsx).
@@ -21,6 +23,32 @@ const iconMap = {
 // never end up on a different card than the image it was meant for.
 const imageCropByKey: Record<string, string> = {
   panneaux: 'object-top',
+};
+
+// Ambient drift, rotated by position rather than keyed by unit. Unlike the crop
+// above, *which* photo gets *which* move doesn't matter — what matters is that
+// no two cards standing side by side share one, or the band would pulse in
+// unison. Rotating by index also means a fifth unit added to the config keeps
+// alternating without a change here. The four moves also run at four different
+// periods (26/29/31/35s), so they never visibly resynchronise.
+const driftOrder: readonly KenBurnsVariant[] = ['left', 'right', 'in', 'out'];
+
+/**
+ * Ambient video loops, keyed by the same stable `imageKey` as the photo so a
+ * loop can never land on the wrong unit. Generated from each unit's own
+ * photograph, then made seamless and compressed by
+ * `scripts/build-video-loops.mjs`.
+ *
+ * Partial on purpose: a unit without an entry simply keeps its drifting still,
+ * so the set can be filled in one unit at a time without a code change here.
+ * `VideoLoop` declines to load anything under reduced motion, on a phone, or on
+ * a save-data connection — the photo below is always the real content.
+ */
+const loopByKey: Record<string, string> = {
+  charpente: '/media/loops/charpente.mp4',
+  panneaux: '/media/loops/panneaux.mp4',
+  galvanisation: '/media/loops/galvanisation.mp4',
+  chaudronnerie: '/media/loops/chaudronnerie.mp4',
 };
 
 export function Facilities() {
@@ -40,23 +68,51 @@ export function Facilities() {
           <h2 className="font-headline text-4xl font-bold text-center text-primary mb-12">{units.title}</h2>
         </AnimatedWrapper>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {facilitiesData.map((facility) => {
+          {facilitiesData.map((facility, index) => {
              const Icon = iconMap[facility.icon as keyof typeof iconMap];
+             const drift = driftOrder[index % driftOrder.length] ?? 'in';
              return (
                 <AnimatedWrapper key={facility.imageKey} animation="slide-up">
                   <Link href={facility.href || '#'} className="group block">
                     <Card className="overflow-hidden shadow-xl transition-shadow hover:shadow-2xl relative aspect-square">
-                        <Image
-                        src={facility.image.src}
-                        alt={facility.title}
-                        width={facility.image.width}
-                        height={facility.image.height}
-                        className={cn(
-                            "transition-transform duration-500 group-hover:scale-105 object-cover w-full h-full",
-                            imageCropByKey[facility.imageKey]
+                        {/*
+                          * The photo drifts on its own (KenBurns), so it is now the
+                          * wrapper that owns the fill positioning. The image keeps its
+                          * own transform for the hover push-in — but that transform now
+                          * sits INSIDE an animated one and the two multiply, so the
+                          * hover was pulled back from scale-105 to 1.03: against a drift
+                          * that already reaches 1.13, the old 5% read as a lurch.
+                          */}
+                        <KenBurns variant={drift} className="absolute inset-0 z-0">
+                          <Image
+                          src={facility.image.src}
+                          alt={facility.title}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          width={facility.image.width}
+                          height={facility.image.height}
+                          className={cn(
+                              "transition-transform duration-500 group-hover:scale-[1.03] object-cover w-full h-full",
+                              imageCropByKey[facility.imageKey]
+                          )}
+                          data-ai-hint={facility.image.aiHint}
+                          />
+                        </KenBurns>
+                        {/*
+                          * The loop sits between the photo (z-0) and the scrim, so every
+                          * scrim, the icon and the copy still read exactly as they do over
+                          * the still. It renders nothing at all unless it is going to
+                          * play — see VideoLoop — so the photo above is what a phone, a
+                          * reduced-motion visitor and every crawler actually get.
+                          * Deliberately NOT inside KenBurns: the clip already contains its
+                          * own camera move, and compounding it with the drift would double
+                          * the motion.
+                          */}
+                        {loopByKey[facility.imageKey] && (
+                          <VideoLoop
+                            src={loopByKey[facility.imageKey] as string}
+                            className="absolute inset-0 z-0 h-full w-full object-cover"
+                          />
                         )}
-                        data-ai-hint={facility.image.aiHint}
-                        />
                         {/* Permanent scrim: keeps the always-visible title legible over any photo. */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
                         {/* Extra dimming on hover/focus, when the description is revealed. */}

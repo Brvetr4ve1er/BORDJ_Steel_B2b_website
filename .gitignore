@@ -11,14 +11,6 @@ pnpm-debug.log
 out/
 build/
 
-# Firebase
-.firebase/
-firebase-debug.log
-*-debug.log
-firestore-debug.log
-*.emulators.export/
-database-debug.log
-
 # Environment variables
 .env
 .env.local
@@ -26,6 +18,9 @@ database-debug.log
 .env.test.local
 .env.production.local
 *.env
+.env.production
+.env.development
+.env.test
 
 # IDE / Editor specific
 .idea/
@@ -57,6 +52,7 @@ coverage
 dist
 .nyc_output
 .temp
+.vid-work/
 *.tsbuildinfo
 depcheck-report.json
 

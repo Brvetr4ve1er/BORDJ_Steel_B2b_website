@@ -3,12 +3,15 @@ import { WF } from '../wf-theme';
 import { DimV, DimH, Label, Leader } from '../wf-primitives';
 
 export interface GalvanisationSpec {
-  lengthM: string; // "12 m"
-  depthM: string; // "3 m"
-  widthM: string; // "1,5 m"
+  // Optional on purpose: these four are the contested figures. Supply them only
+  // once the client has settled a single bath size and a single annual capacity;
+  // until then the figure draws the bath without dimensioning it.
+  lengthM?: string; // "12 m"
+  depthM?: string; // "3 m"
+  widthM?: string; // "1,5 m"
+  capacity?: string; // "25 000 t/an"
   tempC: string; // "450 °C"
   baths: string; // "13"
-  capacity: string; // "25 000 t/an"
   lifespan: string; // "> 50 ans"
 }
 
@@ -72,11 +75,20 @@ export function GalvanisationBathFigure({ spec }: { spec: GalvanisationSpec }) {
         Immersion
       </Label>
 
-      {/* dimensions */}
-      <DimH x1={bx0} x2={bx1} y={byBot + 34} label={`Longueur ${spec.lengthM}`} color={WF.accent} labelColor={WF.accent} below />
-      <path className="wf-line" d={`M ${bx0} ${byBot} L ${bx0} ${byBot + 40} M ${bx1} ${byBot} L ${bx1} ${byBot + 40}`} fill="none" stroke={WF.dim} strokeWidth={1} strokeDasharray="3 3" />
-      <DimV x={bx0 - 40} y1={byTop} y2={byBot} label={`Prof. ${spec.depthM}`} />
-      <Leader from={[bx1 - 60, byTop + 20]} to={[bx1 + 30, byTop - 10]} label={`Largeur ${spec.widthM}`} anchor="start" />
+      {/* Dimensions, only when the caller supplies them. The bath size is a figure
+          the repository records three different answers for, so the drawing omits
+          it rather than lending one of them the authority of a dimensioned
+          section — the same reason tonnage was taken off the charpente figure. */}
+      {spec.lengthM && (
+        <>
+          <DimH x1={bx0} x2={bx1} y={byBot + 34} label={`Longueur ${spec.lengthM}`} color={WF.accent} labelColor={WF.accent} below />
+          <path className="wf-line" d={`M ${bx0} ${byBot} L ${bx0} ${byBot + 40} M ${bx1} ${byBot} L ${bx1} ${byBot + 40}`} fill="none" stroke={WF.dim} strokeWidth={1} strokeDasharray="3 3" />
+        </>
+      )}
+      {spec.depthM && <DimV x={bx0 - 40} y1={byTop} y2={byBot} label={`Prof. ${spec.depthM}`} />}
+      {spec.widthM && (
+        <Leader from={[bx1 - 60, byTop + 20]} to={[bx1 + 30, byTop - 10]} label={`Largeur ${spec.widthM}`} anchor="start" />
+      )}
 
       {/* zinc temperature tag */}
       <Label x={bx0 + 30} y={byTop + 34} anchor="start" size={14} weight={700} color={WF.accent}>
@@ -87,9 +99,11 @@ export function GalvanisationBathFigure({ spec }: { spec: GalvanisationSpec }) {
       <Label x={bx0} y={80} anchor="start" size={13} weight={700} color={WF.label}>
         {`${spec.baths} bains`}
       </Label>
-      <Label x={bx0 + 90} y={80} anchor="start" size={13} weight={700} color={WF.label}>
-        {spec.capacity}
-      </Label>
+      {spec.capacity && (
+        <Label x={bx0 + 90} y={80} anchor="start" size={13} weight={700} color={WF.label}>
+          {spec.capacity}
+        </Label>
+      )}
       <Label x={bx0 + 230} y={80} anchor="start" size={13} weight={700} color={WF.label}>
         {`Protection ${spec.lifespan}`}
       </Label>

@@ -3,7 +3,10 @@ import { AnimatedWrapper } from '@/components/animated-wrapper';
 import Image from 'next/image';
 import { companyData, getProjectImage } from '@/config/company-data';
 import { Card } from '@/components/ui/card';
+import { KenBurns } from '@/components/ui/ken-burns';
+import { VideoLoop } from '@/components/ui/video-loop';
 import { Layers, Weight, MapPin } from 'lucide-react';
+import { AggregateStatsStrip } from '@/components/sections/references/AggregateStatsStrip';
 
 export function ReferencesPageContent() {
   const heroImage = {
@@ -22,14 +25,30 @@ export function ReferencesPageContent() {
 
   return (
     <>
-      <section className="relative h-[60vh] w-full flex items-center justify-center text-white overflow-hidden p-0">
-        <Image
-          src={heroImage.src}
-          alt={heroImage.alt}
-          fill
-          className="z-0 object-cover"
-          priority
-          data-ai-hint={heroImage.aiHint}
+      <section className="relative h-[60dvh] w-full flex items-center justify-center text-white overflow-hidden p-0">
+        <KenBurns variant="left" className="absolute inset-0 z-0">
+          <Image
+            src={heroImage.src}
+            alt={heroImage.alt}
+            sizes="100vw"
+            fill
+            className="object-cover"
+            priority
+            data-ai-hint={heroImage.aiHint}
+          />
+        </KenBurns>
+        {/*
+          * The ambient loop was generated from the still above and sits between it
+          * and the scrim, so the scrim and every piece of copy still read exactly
+          * as they do over the photo. It renders nothing at all unless it is going
+          * to play — see VideoLoop — so the <Image> above remains the LCP element
+          * and is what a phone, a reduced-motion visitor and every crawler get.
+          * Deliberately NOT inside KenBurns: the clip carries its own camera move,
+          * and compounding it with the drift would double the motion.
+          */}
+        <VideoLoop
+          src="/media/loops/references-hero.mp4"
+          className="absolute inset-0 z-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="relative z-20 container mx-auto px-4 text-center">
@@ -43,6 +62,8 @@ export function ReferencesPageContent() {
           </AnimatedWrapper>
         </div>
       </section>
+
+      <AggregateStatsStrip />
 
       <section className="bg-secondary">
         <div className="container mx-auto px-4 space-y-16">

@@ -1,0 +1,523 @@
+"use client";
+
+/**
+ * /media-center/gallery — the real photo gallery.
+ *
+ * WHY THIS WHOLE MODULE IS A CLIENT MODULE
+ * The category filter needs `useState` and framer-motion's `useReducedMotion`,
+ * and a module carrying `"use client"` makes every export in it a client
+ * component. Everything outside the filter (hero, plate, tiles) is static markup
+ * with no handlers of its own, so it still server-renders on first paint; the
+ * only interactive leaves are the filter chips and the lightbox triggers.
+ *
+ * WHERE THE PHOTOS COME FROM
+ * Not one `/media/...` path is typed in this file. Every tile is derived by
+ * mapping over config:
+ *   - companyData.pages.references.projects  -> getProjectImage(imageKey)
+ *   - companyData.pages.units.items          -> getFacilityImage(imageKey)
+ *   - charpenteMetalliqueData.hero / .pillars[].galleryImages
+ *   - charpenteGalleryImages
+ *   - chaudronnerieData.hero / .products[].galleryImages
+ * The same photograph is reused by several config entries, so tiles are
+ * de-duplicated by `src` on a first-wins basis, in the priority order above:
+ * a named reference project is the most specific description a photo can carry,
+ * so it wins over the generic "charpente" strip that reuses the same file.
+ *
+ * Counts shown in the UI are computed from that assembled list — never typed.
+ */
+
+import * as React from 'react';
+import Image from 'next/image';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { Maximize2 } from 'lucide-react';
+
+import { TechnicalHero } from '@/components/sections/technical-hero';
+import { ImageDialog } from '@/components/ui/image-dialog';
+import { WF } from '@/components/wireframes/wf-theme';
+import { cn } from '@/lib/utils';
+import { companyData, getFacilityImage, getProjectImage } from '@/config/company-data';
+import { charpenteGalleryImages, charpenteMetalliqueData } from '@/config/charpente-metallique-data';
+import { chaudronnerieData } from '@/config/chaudronnerie-data';
+
+/* -------------------------------------------------------------------------- */
+/* Data assembly (module scope — runs once, identical on server and client)    */
+/* -------------------------------------------------------------------------- */
+
+const CATEGORIES = [
+  'Projets',
+  'Unités de production',
+  'Charpente métallique',
+  'Chaudronnerie',
+] as const;
+
+type Category = (typeof CATEGORIES)[number];
+
+const ALL = 'Toutes';
+type Filter = typeof ALL | Category;
+
+type Tile = {
+  /** Resolved from config. Never hand-written. */
+  src: string;
+  /** Meaningful French alt: the config's own alt when it has one, else derived. */
+  alt: string;
+  /** Short label shown in the hover caption bar under the category. */
+  caption: string;
+  category: Category;
+  blurDataUrl?: string;
+};
+
+function buildTiles(): Tile[] {
+  const seen = new Set<string>();
+  const tiles: Tile[] = [];
+
+  /** Returns false when the photo was already contributed by an earlier source. */
+  const push = (tile: Tile): boolean => {
+    if (seen.has(tile.src)) return false;
+    seen.add(tile.src);
+    tiles.push(tile);
+    return true;
+  };
+
+  // 1. Named reference projects — the most specific caption a photo can have.
+  for (const project of companyData.pages.references.projects) {
+    const image = getProjectImage(project.imageKey);
+    push({
+      src: image.src,
+      alt: image.alt ?? `Projet ${project.name}`,
+      caption: project.name,
+      category: 'Projets',
+      blurDataUrl: image.blurDataUrl,
+    });
+  }
+
+  // 2. Production units.
+  for (const unit of companyData.pages.units.items) {
+    const image = getFacilityImage(unit.imageKey);
+    push({
+      src: image.src,
+      alt: image.alt ?? `Unité de production — ${unit.title}`,
+      caption: unit.title,
+      category: 'Unités de production',
+      blurDataUrl: image.blurDataUrl,
+    });
+  }
+
+  // 3. Charpente métallique — hero, then each pillar's own gallery, then the
+  //    "Nos Projets" strip.
+  push({
+    src: charpenteMetalliqueData.hero.image_url,
+    alt: charpenteMetalliqueData.hero.alt,
+    caption: charpenteMetalliqueData.hero.title,
+    category: 'Charpente métallique',
+    blurDataUrl: charpenteMetalliqueData.hero.blurDataUrl,
+  });
+  for (const pillar of charpenteMetalliqueData.pillars) {
+    for (const src of pillar.galleryImages) {
+      // The pillar title is the most accurate description available for a bare
+      // path that carries no alt of its own.
+      push({
+        src,
+        alt: `Réalisation : ${pillar.title}`,
+        caption: pillar.title,
+        category: 'Charpente métallique',
+      });
+    }
+  }
+  // Numbered against what actually survives de-duplication, so the alt text has
+  // no gaps where a photo was already claimed by a named project above.
+  let charpenteStripIndex = 0;
+  for (const src of charpenteGalleryImages) {
+    const added = push({
+      src,
+      alt: `Réalisation en charpente métallique ${charpenteStripIndex + 1}`,
+      caption: 'Charpente métallique',
+      category: 'Charpente métallique',
+    });
+    if (added) charpenteStripIndex += 1;
+  }
+
+  // 4. Chaudronnerie — hero, then each product family's gallery (these entries
+  //    are objects and already carry their own French alt).
+  push({
+    src: chaudronnerieData.hero.image_url,
+    alt: chaudronnerieData.hero.alt,
+    caption: chaudronnerieData.hero.title,
+    category: 'Chaudronnerie',
+    blurDataUrl: chaudronnerieData.hero.blurDataUrl,
+  });
+  for (const product of Object.values(chaudronnerieData.products)) {
+    for (const image of product.galleryImages) {
+      push({
+        src: image.src,
+        alt: image.alt,
+        caption: product.title,
+        category: 'Chaudronnerie',
+        blurDataUrl: image.blurDataUrl,
+      });
+    }
+  }
+
+  return tiles;
+}
+
+/**
+ * Round-robins the categories so the unfiltered "Toutes" view reads as a mixed
+ * gallery instead of four solid blocks. Deterministic — no randomness, so the
+ * server and client markup match.
+ */
+function interleaveByCategory(tiles: readonly Tile[]): Tile[] {
+  const buckets = CATEGORIES.map((category) => tiles.filter((t) => t.category === category));
+  const longest = buckets.reduce((max, bucket) => Math.max(max, bucket.length), 0);
+  const out: Tile[] = [];
+  for (let i = 0; i < longest; i += 1) {
+    for (const bucket of buckets) {
+      const tile = bucket[i];
+      if (tile) out.push(tile);
+    }
+  }
+  return out;
+}
+
+const TILES: readonly Tile[] = interleaveByCategory(buildTiles());
+
+/** Only categories that actually produced tiles get a chip. */
+const AVAILABLE_CATEGORIES: readonly Category[] = CATEGORIES.filter((category) =>
+  TILES.some((tile) => tile.category === category),
+);
+
+const FILTERS: readonly Filter[] = [ALL, ...AVAILABLE_CATEGORIES];
+
+const COUNT_BY_FILTER: ReadonlyMap<Filter, number> = new Map<Filter, number>([
+  [ALL, TILES.length],
+  ...AVAILABLE_CATEGORIES.map(
+    (category): [Filter, number] => [category, TILES.filter((t) => t.category === category).length],
+  ),
+]);
+
+/**
+ * Masonry rhythm. Derived from a stable hash of the file path rather than the
+ * render index, so a tile keeps exactly the same height whichever filter is
+ * active and the layout animation only ever has to move it, never resize it.
+ */
+function isTallTile(src: string): boolean {
+  let hash = 0;
+  for (let i = 0; i < src.length; i += 1) {
+    hash = (hash * 31 + src.charCodeAt(i)) >>> 0;
+  }
+  return hash % 5 < 2;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Page                                                                        */
+/* -------------------------------------------------------------------------- */
+
+export function GalleryPageContent() {
+  const [activeFilter, setActiveFilter] = React.useState<Filter>(ALL);
+  const prefersReducedMotion = useReducedMotion();
+  const animate = !prefersReducedMotion;
+
+  const visibleTiles = React.useMemo(
+    () => (activeFilter === ALL ? [...TILES] : TILES.filter((tile) => tile.category === activeFilter)),
+    [activeFilter],
+  );
+
+  return (
+    <>
+      <style>{GALLERY_CSS}</style>
+
+      {/* ---------------------------------------------------------------- */}
+      {/* Hero — same shape as the other interior pages: the drawn         */}
+      {/* `frames` motif, with no photograph behind it.                    */}
+      {/* ---------------------------------------------------------------- */}
+      <TechnicalHero
+        eyebrow="Réalisations"
+        title="Galerie"
+        subtitle={"Explorez nos réalisations en images."}
+        motif="frames"
+        readout={`${TILES.length} vues · ${AVAILABLE_CATEGORIES.length} catégories`}
+      />
+
+      {/* ---------------------------------------------------------------- */}
+      {/* Filter rail — sticks under the fixed navbar (h-20 / md:h-24).     */}
+      {/* ---------------------------------------------------------------- */}
+      <section className="sticky top-20 z-30 border-y border-border bg-background/90 py-0 backdrop-blur md:top-24">
+        <div className="container mx-auto px-4 py-4 md:py-5">
+          <div
+            role="group"
+            aria-label="Filtrer la galerie par catégorie"
+            className="flex flex-wrap items-center gap-2"
+          >
+            {FILTERS.map((filter) => {
+              const isActive = filter === activeFilter;
+              const count = COUNT_BY_FILTER.get(filter) ?? 0;
+              return (
+                <button
+                  key={filter}
+                  type="button"
+                  aria-pressed={isActive}
+                  aria-controls="gallery-grid"
+                  onClick={() => setActiveFilter(filter)}
+                  className={cn(
+                    // `min-h-[44px]`: `py-2` + `text-xs` at the 70% root is a
+                    // ~24px tall box, and these are the gallery's primary
+                    // touch filter. The padding already gives enough width.
+                    'inline-flex min-h-[44px] items-center gap-2 rounded-sm border px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-colors duration-200 md:px-4 md:text-sm',
+                    isActive
+                      ? 'border-accent bg-accent text-accent-foreground'
+                      : 'border-border bg-background text-muted-foreground hover:border-accent hover:text-primary',
+                  )}
+                >
+                  <span>{filter}</span>
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      'rounded-sm px-1.5 py-0.5 font-code text-[11px] leading-none tabular-nums',
+                      isActive ? 'bg-black/20 text-accent-foreground' : 'bg-secondary text-muted-foreground',
+                    )}
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Technical readout: a drafting-style status line, all values computed. */}
+          <div className="mt-4 flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              className="h-px flex-1 bg-border"
+              style={{ backgroundImage: `repeating-linear-gradient(90deg, ${WF.dim} 0 6px, transparent 6px 12px)` }}
+            />
+            <p
+              aria-live="polite"
+              className="font-code text-[11px] uppercase tracking-[0.2em] text-muted-foreground"
+            >
+              {`Sélection : ${activeFilter} — ${visibleTiles.length} vue${visibleTiles.length > 1 ? 's' : ''}`}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------------------------------------------------------- */}
+      {/* Grid                                                              */}
+      {/* ---------------------------------------------------------------- */}
+      <section className="bg-background">
+        <div className="container mx-auto px-4">
+          {visibleTiles.length === 0 ? (
+            <EmptyState />
+          ) : (
+            <div
+              id="gallery-grid"
+              className="grid grid-flow-row-dense auto-rows-[4.5rem] grid-cols-2 gap-3 sm:auto-rows-[5.5rem] md:grid-cols-3 md:gap-4 lg:auto-rows-[6.5rem] xl:grid-cols-4"
+            >
+              <AnimatePresence mode="popLayout" initial={false}>
+                {visibleTiles.map((tile) => (
+                  <GalleryTile key={tile.src} tile={tile} animate={animate} />
+                ))}
+              </AnimatePresence>
+            </div>
+          )}
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tile                                                                        */
+/* -------------------------------------------------------------------------- */
+
+const BRACKETS = [
+  { key: 'tl', className: 'gal-bracket-tl left-2 top-2 border-l-2 border-t-2' },
+  { key: 'tr', className: 'gal-bracket-tr right-2 top-2 border-r-2 border-t-2' },
+  { key: 'br', className: 'gal-bracket-br bottom-2 right-2 border-b-2 border-r-2' },
+  { key: 'bl', className: 'gal-bracket-bl bottom-2 left-2 border-b-2 border-l-2' },
+] as const;
+
+function GalleryTile({ tile, animate }: { tile: Tile; animate: boolean }) {
+  const tall = isTallTile(tile.src);
+
+  return (
+    <motion.div
+      layout={animate}
+      initial={animate ? { opacity: 0, scale: 0.96 } : false}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={animate ? { opacity: 0, scale: 0.97 } : { opacity: 0 }}
+      transition={
+        animate
+          ? { duration: 0.26, ease: [0.22, 1, 0.36, 1] }
+          : { duration: 0 }
+      }
+      className={cn('relative', tall ? 'row-span-4' : 'row-span-3')}
+    >
+      <ImageDialog imageUrl={tile.src} alt={tile.alt}>
+        <button
+          type="button"
+          className="gal-tile group relative block h-full w-full cursor-pointer overflow-hidden rounded-sm border border-border bg-secondary p-0 text-left"
+        >
+          <Image
+            src={tile.src}
+            alt={tile.alt}
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            className="gal-photo object-cover"
+            {...(tile.blurDataUrl
+              ? ({ placeholder: 'blur', blurDataURL: tile.blurDataUrl } as const)
+              : {})}
+          />
+
+          {/* Hover scrim — same pattern as Facilities.tsx. */}
+          <span className="gal-scrim pointer-events-none absolute inset-0 block bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+
+          {/* Shop-drawing registration brackets tracing in from each corner. */}
+          {BRACKETS.map((bracket) => (
+            <span
+              key={bracket.key}
+              aria-hidden="true"
+              className={cn('gal-bracket pointer-events-none absolute block h-6 w-6', bracket.className)}
+              style={{ borderColor: WF.accent }}
+            />
+          ))}
+
+          {/* Lightbox affordance. */}
+          <span className="gal-zoom pointer-events-none absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-sm bg-black/45 text-white backdrop-blur-sm">
+            <Maximize2 className="h-4 w-4" aria-hidden="true" />
+          </span>
+
+          {/* Caption bar: category label above the specific source. */}
+          <span className="gal-caption pointer-events-none absolute inset-x-0 bottom-0 block px-3 pb-3 pt-6">
+            <span
+              className="gal-rule mb-2 block h-[2px] w-full origin-left"
+              style={{ backgroundColor: WF.accent }}
+            />
+            <span className="block font-code text-[10px] uppercase tracking-[0.2em] text-white/70">
+              {tile.category}
+            </span>
+            <span className="mt-1 block truncate text-sm font-semibold leading-snug text-white">
+              {tile.caption}
+            </span>
+          </span>
+        </button>
+      </ImageDialog>
+    </motion.div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Empty state                                                                 */
+/* -------------------------------------------------------------------------- */
+
+function EmptyState() {
+  return (
+    <div className="flex flex-col items-center justify-center rounded-sm border border-dashed border-border bg-secondary/40 px-6 py-20 text-center">
+      <span
+        aria-hidden="true"
+        className="mb-6 block h-10 w-10 rounded-sm border-2"
+        style={{ borderColor: WF.dim }}
+      />
+      <h2 className="font-headline text-xl font-bold uppercase tracking-wide text-primary">
+        Aucune vue dans cette catégorie
+      </h2>
+      <p className="mt-3 max-w-md text-muted-foreground">
+        Sélectionnez une autre catégorie pour afficher les photographies disponibles.
+      </p>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Scoped stylesheet                                                           */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Everything is namespaced under `.gal-*` so it cannot leak. Under
+ * `prefers-reduced-motion: reduce` the hover reveals still happen — instantly,
+ * with every transition and transform removed, so no element moves.
+ */
+const GALLERY_CSS = `
+.gal-photo {
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gal-tile:hover .gal-photo,
+.gal-tile:focus-visible .gal-photo {
+  transform: scale(1.05);
+}
+
+.gal-scrim,
+.gal-zoom {
+  opacity: 0;
+  transition: opacity 260ms ease-out;
+}
+.gal-tile:hover .gal-scrim,
+.gal-tile:focus-visible .gal-scrim,
+.gal-tile:hover .gal-zoom,
+.gal-tile:focus-visible .gal-zoom {
+  opacity: 1;
+}
+
+.gal-bracket {
+  opacity: 0;
+  transform: scale(0.3);
+  transition: opacity 200ms ease-out, transform 340ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gal-tile:hover .gal-bracket,
+.gal-tile:focus-visible .gal-bracket {
+  opacity: 1;
+  transform: scale(1);
+}
+.gal-bracket-tl { transform-origin: top left; }
+.gal-bracket-tr { transform-origin: top right; transition-delay: 45ms; }
+.gal-bracket-br { transform-origin: bottom right; transition-delay: 90ms; }
+.gal-bracket-bl { transform-origin: bottom left; transition-delay: 135ms; }
+
+.gal-caption {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 240ms ease-out, transform 340ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gal-tile:hover .gal-caption,
+.gal-tile:focus-visible .gal-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gal-rule {
+  transform: scaleX(0);
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1) 80ms;
+}
+.gal-tile:hover .gal-rule,
+.gal-tile:focus-visible .gal-rule {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gal-photo,
+  .gal-scrim,
+  .gal-zoom,
+  .gal-bracket,
+  .gal-caption,
+  .gal-rule {
+    transition: none;
+  }
+  .gal-tile:hover .gal-photo,
+  .gal-tile:focus-visible .gal-photo {
+    transform: none;
+  }
+  .gal-bracket,
+  .gal-tile:hover .gal-bracket,
+  .gal-tile:focus-visible .gal-bracket {
+    transform: none;
+  }
+  .gal-caption,
+  .gal-tile:hover .gal-caption,
+  .gal-tile:focus-visible .gal-caption {
+    transform: none;
+  }
+  .gal-rule,
+  .gal-tile:hover .gal-rule,
+  .gal-tile:focus-visible .gal-rule {
+    transform: scaleX(1);
+  }
+}
+`;

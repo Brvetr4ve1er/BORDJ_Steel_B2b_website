@@ -1,49 +1,12 @@
 "use client";
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Search, MapPin, Clock, Briefcase, Building2, ChevronDown, RotateCcw } from 'lucide-react';
 import Image from 'next/image';
 import { ProductPageLayout } from '@/components/product-page-layout';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { jobListings } from '@/config/recruitment-data';
 import { cn } from '@/lib/utils';
-
-type Job = {
-  id: number;
-  title: string;
-  company: string;
-  postedTime: string;
-  description: string;
-  type: string;
-  location: string;
-  category: string;
-  employmentType: string;
-};
-
-const jobListings: Job[] = [
-  {
-    id: 1,
-    title: "Ingénieur Maintenance",
-    company: "SPA BORDJSTEEL",
-    postedTime: "Publié il y a 1 mois",
-    description:
-      "Missions principales : Profil recherché : Capacité à travailler en équipe et à gérer les urgences. Diplôme de [...]",
-    type: "Temps plein",
-    location: "Bordj Bou Arréridj - Algérie",
-    category: "maintenance",
-    employmentType: "temps-plein",
-  },
-  {
-    id: 2,
-    title: "Technicien En Informatique",
-    company: "SPA BordjSteel",
-    postedTime: "Publié il y a 2 mois",
-    description: "Missions principales : Profil recherché :",
-    type: "Temps plein",
-    location: "Bordj Bou Arréridj - Algérie",
-    category: "informatique",
-    employmentType: "temps-plein",
-  },
-];
 
 const categoryOptions = [
   { value: "achats", label: "Achats" },
@@ -88,11 +51,87 @@ const showBothFilters = showCategoryFilter && showEmploymentTypeFilter;
 
 const heroImage = {
   src: "/media/chat-gpt-image-16-nov-2025-1-1c86908b.webp",
-  alt: "Équipe de professionnels dans un bureau moderne",
-  aiHint: "professional team office",
+  // Describes the frame that is actually there. The previous alt text announced
+  // a team in an office; the photograph contains no people at all.
+  alt: "Casque de chantier rouge et veste de travail bleu marine posés sur une chaise rouge, au bout d’un tapis rouge",
+  aiHint: "hard hat workwear chair",
 };
 
 const RECRUITMENT_EMAIL = "recrutement@bordjsteel.dz";
+
+// Pluralisation and wording both come from Intl, never from string surgery:
+// "il y a 1 mois", "il y a 2 mois", "il y a 1 an", "il y a 2 ans" are all its
+// own output on the default `numeric: 'always'`.
+const relativeMonthsAndYears = new Intl.RelativeTimeFormat('fr-FR');
+// Days alone get `numeric: 'auto'`, so a fresh offer reads "aujourd’hui" or
+// "hier" instead of "il y a 0 jour". Months and years deliberately stay on the
+// default: 'auto' would rewrite them as "le mois dernier" / "l’année dernière",
+// which is not the phrasing this page uses.
+const relativeDays = new Intl.RelativeTimeFormat('fr-FR', { numeric: 'auto' });
+
+const DAY_MS = 86_400_000;
+
+/**
+ * The French relative phrase for an ISO `YYYY-MM-DD` posting date — the "il y a
+ * 1 mois" half of the card, without the "Publié " prefix.
+ *
+ * Pure on purpose: `now` is an argument, never read in here. The single place
+ * that touches the clock is the effect in `PostedDate` below, for the reason
+ * documented there.
+ */
+function relativePosted(posted: string, now: Date): string {
+  // Parsed as LOCAL midnight. A bare `new Date('2026-09-26')` is UTC midnight,
+  // which is still the 25th anywhere west of Greenwich and can drag the answer
+  // across a month boundary.
+  const from = new Date(`${posted}T00:00:00`);
+  // A malformed date in config renders nothing rather than "il y a NaN mois".
+  if (Number.isNaN(from.getTime())) return '';
+
+  // Whole calendar months, not a division by some average month: 26 September
+  // is one month before 26 October and two before 26 November.
+  const months =
+    (now.getFullYear() - from.getFullYear()) * 12 +
+    (now.getMonth() - from.getMonth()) -
+    (now.getDate() < from.getDate() ? 1 : 0);
+
+  if (months >= 12) return relativeMonthsAndYears.format(-Math.floor(months / 12), 'year');
+  if (months >= 1) return relativeMonthsAndYears.format(-months, 'month');
+
+  // Both ends sit at local midnight, so this division already lands on a whole
+  // number and the rounding only absorbs a daylight-saving hour. A date in the
+  // future clamps to today instead of advertising an offer that is not open.
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const elapsedDays = Math.max(0, Math.round((today.getTime() - from.getTime()) / DAY_MS));
+  return relativeDays.format(-elapsedDays, 'day');
+}
+
+/**
+ * "Publié il y a 1 mois", computed instead of hardcoded.
+ *
+ * WHY THE CLOCK IS ONLY READ INSIDE AN EFFECT. /recrutement exports no `dynamic`
+ * flag and fetches nothing, so Next prerenders it statically: this HTML is
+ * produced once, at build time. Reading the clock during render would therefore
+ * bake the phrase into the build output — the server would keep serving "il y a
+ * 1 mois" while the browser computed something else. That is a hydration
+ * mismatch and, worse, it is the very drift this change removes: the same hazard
+ * as the footer's copyright year (P1-6 in KNOWN-ISSUES.md).
+ *
+ * So render reads no clock at all. The prerendered HTML and the first client
+ * render both produce the same empty label, hydration matches, and the effect —
+ * browser-only by definition — then fills in the phrase against the visitor's
+ * real date. The absolute date ships in `dateTime` either way, so the
+ * machine-readable value never depends on JavaScript. Note that this avoids the
+ * mismatch rather than silencing it: no `suppressHydrationWarning` here.
+ */
+function PostedDate({ posted }: { posted: string }) {
+  const [label, setLabel] = useState('');
+
+  useEffect(() => {
+    setLabel(relativePosted(posted, new Date()));
+  }, [posted]);
+
+  return <time dateTime={posted}>{label ? `Publié ${label}` : null}</time>;
+}
 
 export function RecruitmentPage() {
   const [filters, setFilters] = useState({ category: '', employmentType: '' });
@@ -111,19 +150,27 @@ export function RecruitmentPage() {
 
   return (
     <ProductPageLayout>
-      <div className="min-h-screen bg-gray-50">
-        <section className="relative h-[80vh] w-full flex items-center justify-start text-white overflow-hidden p-0">
+      <div className="min-h-[100dvh] bg-gray-50">
+        <section className="relative h-[80dvh] w-full flex items-center justify-start text-white overflow-hidden p-0">
           <Image
             src={heroImage.src}
             alt={heroImage.alt}
+            sizes="100vw"
             fill
             className="z-0 object-cover"
             priority
             data-ai-hint={heroImage.aiHint}
           />
+          {/* The same flat scrim every other hero uses (`technical-hero.tsx`).
+              Without it the headline sat straight on the photograph: at phone
+              widths `object-cover` crops to the red hard hat and the red carpet,
+              and brand red on red measured 1.00:1. White over this scrim reaches
+              4.77:1. Both halves are load-bearing — darkening a red ground alone
+              moves it toward the accent, not away from it. */}
+          <div aria-hidden="true" className="absolute inset-0 z-10 bg-black/55" />
           <div className="relative z-20 container mx-auto px-4 text-left">
             <AnimatedWrapper animation="zoom-in">
-              <h1 className="font-headline text-5xl md:text-6xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-accent">
+              <h1 className="font-headline text-5xl md:text-6xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white">
                 Nous recrutons...
               </h1>
             </AnimatedWrapper>
@@ -180,7 +227,7 @@ export function RecruitmentPage() {
 
               {/* Result count + reset */}
               <div className={cn("flex items-center justify-between pt-2", showBothFilters && "md:col-span-2")}>
-                <p className="text-sm text-gray-600 flex items-center gap-2">
+                <p aria-live="polite" className="text-sm text-gray-600 flex items-center gap-2">
                   <Search className="w-4 h-4" />
                   {filteredJobs.length} offre{filteredJobs.length !== 1 ? 's' : ''} trouvée{filteredJobs.length !== 1 ? 's' : ''}
                 </p>
@@ -236,7 +283,7 @@ export function RecruitmentPage() {
                             )}
                             <div className="flex items-center">
                               <Clock className="w-4 h-4 mr-1" />
-                              <span>{job.postedTime}</span>
+                              <PostedDate posted={job.posted} />
                             </div>
                           </div>
 

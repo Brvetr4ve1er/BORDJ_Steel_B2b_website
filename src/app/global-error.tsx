@@ -33,7 +33,7 @@ export default function GlobalError({
           color: '#4B4B4B',
         }}
       >
-        <main className="flex min-h-screen w-full flex-col items-center justify-center px-4 py-24 text-center">
+        <main className="flex min-h-[100dvh] w-full flex-col items-center justify-center px-4 py-24 text-center">
           <span
             className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 text-accent"
             aria-hidden="true"

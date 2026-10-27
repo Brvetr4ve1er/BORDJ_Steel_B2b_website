@@ -47,14 +47,41 @@ export function Footer() {
     pages.contact.content.address
   )}`;
 
+  /**
+   * There is no newsletter backend, and there was no honest way to pretend
+   * otherwise: this used to swallow the address entirely and show a "Merci !"
+   * toast, so a visitor who signed up was never subscribed to anything and had
+   * no way to know.
+   *
+   * It now composes the subscription as a real e-mail to the address the rest
+   * of the site publishes, so the request actually reaches the company. The
+   * visitor still has to press send in their own mail client — which is why the
+   * toast says so rather than claiming success we cannot verify.
+   */
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    // TODO(backend): no newsletter service is wired up yet — the address is
-    // not persisted anywhere. Keep the copy honest until integration exists.
+    const address = email.trim();
+    if (!address) return;
+
+    const to = pages.contact.content.emails[0];
+    if (!to) return;
+
+    const subject = encodeURIComponent('Inscription à la newsletter');
+    const body = encodeURIComponent(
+      [
+        'Bonjour,',
+        '',
+        'Je souhaite m’inscrire à la newsletter de Bordj Steel.',
+        '',
+        `Adresse e-mail : ${address}`,
+      ].join('\n'),
+    );
+
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+
     toast({
-      title: 'Merci !',
-      description: 'Votre demande a été prise en compte. Pour être sûr de ne rien manquer, contactez-nous à ' + pages.contact.content.emails[0] + '.',
+      title: 'Votre messagerie va s’ouvrir',
+      description: `Envoyez le message pré-rempli pour finaliser votre inscription. Vous pouvez aussi écrire directement à ${to}.`,
     });
     setEmail('');
   };
@@ -72,7 +99,7 @@ export function Footer() {
           </div>
           <div>
             <h3 className="mb-6 inline-block border-b-2 border-accent pb-2 text-xl font-semibold uppercase tracking-wider text-white">{footer.siteLinks}</h3>
-            <nav className="space-y-3 text-base">
+            <nav aria-label="Liens du site" className="space-y-3 text-base">
               {navigation.mainMenu.map(item => (
                 <Link key={item.name} href={item.href} className="block text-white/70 transition-all hover:text-accent hover:translate-x-1">
                   {item.name}
@@ -115,7 +142,6 @@ export function Footer() {
                         aria-label={`Bordj Steel sur ${social.name}`}
                         fromColor={social.fromColor}
                         toColor={social.toColor}
-                        className="h-14 w-14"
                     >
                        {social.icon}
                     </SocialButton>
@@ -123,7 +149,7 @@ export function Footer() {
             </div>
             <h3 className="mb-6 inline-block border-b-2 border-accent pb-2 text-xl font-semibold uppercase tracking-wider text-white">Restez Connecté</h3>
             <p className="mb-4 text-base text-white/70">
-              Rejoignez notre newsletter pour les dernières mises à jour.
+              Recevez nos actualités. L’inscription se fait par e-mail, en un clic.
             </p>
             <form className="relative" onSubmit={handleNewsletterSubmit}>
               <label htmlFor="newsletter-email" className="sr-only">Adresse e-mail</label>
@@ -135,12 +161,16 @@ export function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Entrez votre email"
-                className="pr-14 h-12 text-base bg-white/10 text-white placeholder:text-white/50 border-white/20 focus:border-accent"
+                /* h-[52px] in px: `h-12` is 33.6px at the 70% root, which cannot
+                   contain the 44px submit target overlaid inside it. */
+                className="pr-[56px] h-[52px] text-base bg-white/10 text-white placeholder:text-white/50 border-white/20 focus:border-accent"
               />
               <Button
                 type="submit"
                 size="icon"
-                className="absolute right-1.5 top-1.5 h-9 w-9 rounded-full bg-accent text-accent-foreground transition-transform hover:scale-105"
+                /* 44x44 in px, centred in the 52px field: (52-44)/2 = 4px, and
+                   `top-1`/`right-1` would be 2.8px at the 70% root. */
+                className="absolute right-[4px] top-[4px] h-[44px] w-[44px] rounded-full bg-accent text-accent-foreground transition-transform hover:scale-105"
               >
                 <Send className="h-5 w-5" />
                 <span className="sr-only">S'inscrire</span>
@@ -155,7 +185,7 @@ export function Footer() {
           <p className="text-base text-white/80" suppressHydrationWarning>
             &copy; {new Date().getFullYear()} {footer.copyright}
           </p>
-          <nav className="flex gap-6 text-base">
+          <nav aria-label="Mentions légales" className="flex gap-6 text-base">
             <Link href="/privacy" className="text-white/80 transition-colors hover:text-accent">
               {footer.legal.privacy}
             </Link>

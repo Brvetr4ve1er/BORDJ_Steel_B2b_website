@@ -17,7 +17,9 @@ import {
 import { cn } from '@/lib/utils';
 import { AnimatedWrapper } from './animated-wrapper';
 import { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
+import { DepartmentFigure, type DepartmentFigureKey } from '@/components/contact/department-figures';
+import { ContactScene3D } from '@/components/contact/contact-scene-3d';
+import { CONTACT_SCENE_STYLE, SCENE_CAPTIONS } from '@/config/contact-scene';
 import { companyData } from '@/config/company-data';
 
 // Static icon map hoisted to module scope so it isn't recreated on every render
@@ -43,7 +45,8 @@ interface ContactCardProps {
   title: string;
   phone?: string;
   email?: string;
-  image?: string;
+  figure?: DepartmentFigureKey;
+  scene?: string;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -53,7 +56,8 @@ function ContactCard({
   title,
   phone,
   email,
-  image,
+  figure,
+  scene,
   className,
   style,
 }: ContactCardProps) {
@@ -101,16 +105,54 @@ function ContactCard({
       )}
       style={style}
     >
-      <div className="relative h-96 w-full overflow-hidden">
-        {image && (
-          <Image
-            src={image}
-            alt={title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
-          />
+      {/* Illustration panel.
+          Base layer: the flat SVG figure, server-rendered, always correct.
+          Enhancement: a real-time 3D scene from the imported design, which
+          fades in over the SVG only once it has actually drawn — and never at
+          all under reduced motion, save-data, or a failed import.
+          The ground changes with the style, as the design specifies: style 'a'
+          floats the clay render over the drafting grid, style 'b' sets the
+          isometric tile on a cool gradient. */}
+      {/* 3:2, not a fixed height. The scenes are framed by the design for a
+          ~1.5 aspect, and the module only widens its camera when the panel is
+          NARROWER than that (Math.max(1, 1.5 / aspect)) — above 1.5 it does
+          nothing, so a short wide panel just leaves the subject small with dead
+          space either side. A fixed h-56 gave 2.04 at desktop column widths.
+          An aspect box holds the design's framing at every column width. */}
+      <div
+        className={cn(
+          'relative aspect-[3/2] w-full overflow-hidden border-b border-border',
+          CONTACT_SCENE_STYLE === 'b'
+            ? 'bg-gradient-to-b from-[#fafbfc] to-[#eef1f4]'
+            : 'bg-secondary/30'
         )}
+      >
+        {CONTACT_SCENE_STYLE === 'a' ? (
+          // Shared with the /about/history timeline — see .wf-ground in
+          // globals.css. One definition, so the two grounds cannot drift.
+          <div aria-hidden="true" className="wf-ground absolute inset-0" />
+        ) : null}
+
+        {scene ? (
+          <ContactScene3D
+            scene={scene}
+            style={CONTACT_SCENE_STYLE}
+            fallback={figure ? <DepartmentFigure figure={figure} title={title} /> : null}
+          />
+        ) : (
+          figure && (
+            <div className="absolute inset-0 flex items-center justify-center p-5 transition-transform duration-700 group-hover:scale-[1.04]">
+              <DepartmentFigure figure={figure} title={title} />
+            </div>
+          )
+        )}
+
+        {CONTACT_SCENE_STYLE === 'b' && scene && SCENE_CAPTIONS[scene] ? (
+          <span className="pointer-events-none absolute bottom-2.5 left-3 flex items-center gap-1.5 whitespace-nowrap font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600">
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-[1px] bg-accent" />
+            {SCENE_CAPTIONS[scene]}
+          </span>
+        ) : null}
       </div>
 
       <div className="relative flex flex-col gap-4 p-6">
@@ -128,7 +170,6 @@ function ContactCard({
                 type="button"
                 className="group/copy flex-grow cursor-pointer text-left"
                 onClick={() => handleCopy(phone, 'phone')}
-                aria-label="Copier le numéro"
               >
                 <span className="text-2xl font-bold text-foreground transition-colors group-hover/copy:text-accent">
                   {phone}
@@ -163,7 +204,6 @@ function ContactCard({
                 type="button"
                 className="group/copy flex-grow cursor-pointer text-left"
                 onClick={() => handleCopy(email, 'email')}
-                aria-label="Copier l'adresse e-mail"
               >
                 <span className="text-lg font-medium text-foreground transition-colors group-hover/copy:text-accent break-all">
                   {email}
@@ -223,7 +263,8 @@ export function ContactInfo() {
                   title={department.title}
                   phone={department.phone}
                   email={department.email}
-                  image={department.image}
+                  figure={department.figure as DepartmentFigureKey | undefined}
+                  scene={department.scene}
                 />
               </AnimatedWrapper>
             );

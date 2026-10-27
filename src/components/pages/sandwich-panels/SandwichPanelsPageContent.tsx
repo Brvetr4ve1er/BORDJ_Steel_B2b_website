@@ -1,20 +1,20 @@
 
 "use client";
 
-import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
 import { useMemo, useState } from 'react';
 import { ChevronsRight, Snowflake, Settings, ArrowRight } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
+import { TechnicalHero } from '@/components/sections/technical-hero';
+import { PRODUCT_HERO_MEDIA } from '@/config/product-heroes';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import images from '@/app/lib/placeholder-images.json';
 import { DownloadButton } from '@/components/ui/download-button';
 import { productVariants } from '@/config/product-variants.config';
 import { ProductVariantDetails } from '@/components/product-variants/ProductVariantDetails';
-import { StatsCards } from '@/components/sections/sandwich-panels/StatsCards';
+import { ThermalPerformanceBand } from '@/components/sections/sandwich-panels/ThermalPerformanceBand';
 import { sandwichHero, sandwichHeroStats, sandwichIntro } from '@/config/sandwich-panels-data';
 import { SandwichWireframe } from '@/components/wireframes/SandwichWireframe';
 
@@ -62,42 +62,28 @@ const FinitionsIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 
 const HeroSection = React.memo(function HeroSection() {
-  const heroImage = images['sandwich-panels'].hero;
   return (
-    <section className="relative h-screen w-full flex flex-col justify-end text-white overflow-hidden">
-      <Image
-        src={heroImage.src}
-        alt={heroImage.alt}
-        fill
-        className="z-0 object-cover"
-        data-ai-hint={heroImage.aiHint}
-        priority
-        placeholder="blur"
-        blurDataURL={heroImage.blurDataUrl}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
-      <div className="relative z-20 w-full">
-        <div className="w-full px-8 md:px-12 pb-10">
-          <AnimatedWrapper animation="zoom-in">
-              <h1 className="font-headline text-6xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white">
-                  {sandwichHero.title}
-              </h1>
-              <p className="mt-8 text-xl md:text-2xl max-w-3xl text-gray-200">
-                  {sandwichHero.subtitle}
-              </p>
-              <div className="mt-12 flex justify-start items-center gap-4">
-                  <Button asChild size="lg" variant="destructive" className="group">
-                      <Link href="/contact">
-                          Explorer les produits <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
-                      </Link>
-                  </Button>
-                  <DownloadButton text="Voir la brochure" href="/documents/Bordj-Steel-Catalogue-FR.pdf" />
-              </div>
-          </AnimatedWrapper>
-           <StatsCards stats={sandwichHeroStats}/>
-        </div>
-      </div>
-    </section>
+    <TechnicalHero
+      eyebrow="Unité de production"
+      title={sandwichHero.title}
+      subtitle={sandwichHero.subtitle}
+      motif="panel"
+      media={PRODUCT_HERO_MEDIA.sandwich}
+      stats={sandwichHeroStats.map((s) => ({ label: s.label, value: String(s.value) }))}
+      actions={
+        <>
+          <Button asChild size="lg" variant="destructive" className="group">
+            <Link href="#product-details">
+              Explorer les produits <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+          <DownloadButton
+            text="Voir la brochure"
+            href="/documents/Bordj-Steel-Catalogue-FR.pdf"
+          />
+        </>
+      }
+    />
   );
 });
 
@@ -126,6 +112,8 @@ export function SandwichPanelsPageContent() {
           <SandwichWireframe />
         </div>
       </section>
+
+      <ThermalPerformanceBand />
 
       <section id="product-details" className="bg-secondary/20 py-20">
         <div className="container mx-auto px-4 max-w-screen-2xl">

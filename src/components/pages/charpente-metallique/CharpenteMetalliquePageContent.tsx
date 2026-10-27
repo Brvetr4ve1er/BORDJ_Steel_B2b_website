@@ -6,16 +6,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Building, Factory, HardHat, ShieldCheck, Zap, Award, TowerControl, Car, Tractor, Layers, Cog, Dot } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, Award, Dot } from 'lucide-react';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
-import React, { useState, useMemo } from 'react';
-import { AnimatedNumber } from '@/components/animated-number';
+import { TechnicalHero } from '@/components/sections/technical-hero';
+import { PRODUCT_HERO_MEDIA } from '@/config/product-heroes';
+import React, { useState } from 'react';
 import { DownloadButton } from '@/components/ui/download-button';
 import dynamic from 'next/dynamic';
 import {
   charpenteMetalliqueData,
   charpenteGalleryImages,
-  charpenteApplications,
   charpenteWhyChooseUs,
 } from '@/config/charpente-metallique-data';
 import { ImageDialog } from '@/components/ui/image-dialog';
@@ -23,18 +23,15 @@ import { HoverImageGallery } from '@/components/ui/hover-image-gallery';
 import { cn } from '@/lib/utils';
 import { ProductionTables } from '@/components/production-tables';
 import { CharpenteWireframe } from '@/components/wireframes/CharpenteWireframe';
+import { ApplicationsShowcase } from '@/components/sections/charpente/ApplicationsShowcase';
+import { CredentialsBand } from '@/components/sections/charpente/CredentialsBand';
+import { PILLAR_ICON_BY_ID, type PillarIconKey } from '@/components/icons/pillar-icons';
+import { CharpenteIcon } from '@/components/icons/product-icons';
 
 const FeatureHoverCard = dynamic(() => import('@/components/feature-hover-card').then(mod => mod.FeatureHoverCard));
 // Same-module component — reference directly (no code-split benefit from dynamic).
 const HeroSection = UnwrappedHeroSection;
 
-
-const applicationIconMap = {
-  Building,
-  Factory,
-  Tractor,
-  HardHat,
-} as const;
 
 const whyChooseUsIconMap = {
   Award,
@@ -42,87 +39,44 @@ const whyChooseUsIconMap = {
   ShieldCheck,
 } as const;
 
-const pillarIconMap = {
-  HardHat,
-  Cog,
-  Layers,
-  TowerControl,
-  Car,
-  Tractor,
-} as const;
+/**
+ * The pillar cards draw their own bespoke shop-drawing figures, resolved by
+ * pillar *id* through the total `PILLAR_ICON_BY_ID` record — not by the legacy
+ * `iconName` lucide glyph, which the hero stat cards still use below.
+ *
+ * `charpenteMetalliqueData.pillars[].id` widens to `string` in the config, so the
+ * union has to be re-established before indexing. Because the record is total
+ * over `PillarIconKey`, a narrowed id can never resolve to `undefined`; the only
+ * thing this guard can catch is a pillar id renamed in config without its
+ * drawing being renamed alongside it.
+ */
+function isPillarIconKey(id: string): id is PillarIconKey {
+  return Object.prototype.hasOwnProperty.call(PILLAR_ICON_BY_ID, id);
+}
 
 function UnwrappedHeroSection({ hero }: { hero: typeof charpenteMetalliqueData.hero }) {
-  const iconMap = useMemo(() => ({
-    HardHat,
-    Cog,
-    Layers,
-    TowerControl,
-    Car,
-    Tractor
-  }), []);
-
   return (
-    <section className="relative min-h-screen flex items-end bg-background pb-24 sm:pb-32">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={hero.image_url}
-          alt={hero.alt}
-          fill
-          className="object-cover"
-          priority
-          data-ai-hint={hero.aiHint}
-          placeholder="blur"
-          blurDataURL={hero.blurDataUrl}
-        />
-        <div className="absolute inset-0 bg-black/50 z-10" />
-      </div>
-      <div className="max-w-screen-xl mx-auto px-4 w-full relative z-10">
-        <div className="space-y-12">
-          <AnimatedWrapper animation="slide-up">
-            <div className="text-left space-y-8">
-              <div>
-                <h1 className="font-headline text-6xl md:text-8xl leading-tight md:leading-tight lg:leading-tight font-bold tracking-tighter uppercase text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                  {hero.title}
-                </h1>
-                <p className="mt-6 text-xl md:text-2xl max-w-3xl text-gray-200 [text-shadow:0_1px_3px_rgba(0,0,0,0.5)]">
-                  {hero.subtitle}
-                </p>
-              </div>
-              <div className="flex flex-row items-center gap-4">
-                <Button asChild size="lg" variant="destructive">
-                  <Link href="/contact">{hero.cta_primary} <ArrowRight className="ml-2" /></Link>
-                </Button>
-                <DownloadButton text={hero.cta_secondary} href="/documents/Bordj-Steel-Catalogue-FR.pdf" />
-              </div>
-            </div>
-          </AnimatedWrapper>
-
-          <AnimatedWrapper animation="slide-up" staggerIndex={1}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-              {hero.stats.map((stat, index) => {
-                const Icon = iconMap[stat.icon as keyof typeof iconMap];
-                return (
-                  <AnimatedWrapper key={stat.title} animation="fade-in-stagger" staggerIndex={index}>
-                     <Card className="group bg-black/50 backdrop-blur-md border-border text-white relative overflow-hidden transition-all duration-500 hover:border-accent">
-                        <div className="absolute inset-0 bg-accent transition-all duration-500 origin-bottom scale-y-0 group-hover:scale-y-100" />
-                        <CardHeader className="relative flex-row items-center gap-4">
-                            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center transition-colors duration-300 group-hover:bg-accent-foreground/10">
-                            {Icon && <Icon className="h-6 w-6 text-accent transition-colors duration-300 group-hover:text-white" />}
-                            </div>
-                            <div>
-                            <CardTitle className="text-2xl font-bold text-white"><AnimatedNumber value={stat.value} />{stat.unit}</CardTitle>
-                            <p className="text-sm text-gray-200 group-hover:text-gray-100">{stat.title}</p>
-                            </div>
-                        </CardHeader>
-                    </Card>
-                  </AnimatedWrapper>
-                );
-              })}
-            </div>
-          </AnimatedWrapper>
-        </div>
-      </div>
-    </section>
+    <TechnicalHero
+      eyebrow="Unité de production"
+      title={hero.title}
+      subtitle={hero.subtitle}
+      motif="portal"
+      media={PRODUCT_HERO_MEDIA.charpente}
+      stats={hero.stats.map((s) => ({ label: s.title, value: `${s.value.toLocaleString('fr-FR')}${s.unit}` }))}
+      actions={
+        <>
+          <Button asChild size="lg" variant="destructive" className="group">
+            <Link href="/contact">
+              {hero.cta_primary} <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+          <DownloadButton
+            text={hero.cta_secondary}
+            href="/documents/Bordj-Steel-Catalogue-FR.pdf"
+          />
+        </>
+      }
+    />
   );
 }
 
@@ -132,16 +86,32 @@ const NewGallery = () => {
             <div className="max-w-3xl text-center px-4">
                 <h2 className="text-3xl font-semibold">Nos Projets</h2>
             </div>
-            <div className="flex items-center gap-2 h-[400px] w-full max-w-7xl mt-10 px-4">
+            {/*
+                Below md this is a plain 2-up grid, not the expanding strip. The
+                strip works by giving six flex children a w-56 basis and letting
+                the hovered one take w-full — but flex shrinks them to fit, so on
+                a 375px screen the six become ~55px slivers, and `hover:` never
+                fires on touch, so there is no way to open one. A grid of legible
+                4:3 tiles is the honest mobile form of the same content.
+              */}
+            <div className="mt-10 grid w-full max-w-7xl grid-cols-2 gap-2 px-4 sm:grid-cols-3 md:flex md:h-[400px] md:items-center">
                 {charpenteGalleryImages.map((src, idx) => (
                     <ImageDialog key={idx} imageUrl={src} alt={`Réalisation charpente métallique ${idx + 1}`}>
                         <button
                             type="button"
-                            className="relative group flex-grow transition-all w-56 rounded-lg overflow-hidden h-[400px] duration-500 hover:w-full cursor-pointer block p-0 border-0 bg-transparent"
+                            className="relative group block w-full aspect-[4/3] overflow-hidden rounded-lg cursor-pointer p-0 border-0 bg-transparent md:aspect-auto md:h-[400px] md:w-56 md:flex-grow md:transition-all md:duration-500 md:hover:w-full"
                         >
+                            {/* These are 157px tiles (w-56) that expand to at
+                                most ~874px on hover, never the full viewport:
+                                the old `100vw, 1280px` made a 1440px desktop
+                                fetch the 1920w candidate for all six — 1.5 MB
+                                where 403 kB renders the same — and, because the
+                                grid is 2-up below 640px and 3-up to 767px, made
+                                a DPR3 phone fetch 1200w as well. 768px lands on
+                                the 828w candidate, ~0.95 density expanded. */}
                             <Image
                                 fill
-                                sizes="(max-width: 1280px) 100vw, 1280px"
+                                sizes="(max-width: 767px) 50vw, 768px"
                                 className="h-full w-full object-cover object-center"
                                 src={src}
                                 alt={`Réalisation charpente métallique ${idx + 1}`}
@@ -170,61 +140,66 @@ export function CharpenteMetalliquePageContent() {
     <div className="bg-background">
       <HeroSection hero={charpenteMetalliqueData.hero} />
 
-      <NewGallery />
-
-      <section className="bg-secondary/30 py-16 md:py-24">
+      {/* The fabrication envelope leads, because it is the first question a
+          steel buyer asks: does my piece fit through your shop? The drawing was
+          already here and already accurate — 350–2000 mm web, 16 m maximum,
+          I and caisson — it was just sitting third, behind a photo gallery. */}
+      <section className="bg-secondary/30 py-16 md:py-24" aria-labelledby="charpente-envelope">
         <div className="container mx-auto px-4">
+          <div className="mb-10 max-w-3xl">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">
+              Enveloppe de fabrication
+            </p>
+            <h2
+              id="charpente-envelope"
+              className="mt-3 font-headline text-3xl font-bold uppercase tracking-tight text-primary md:text-4xl"
+            >
+              Ce qui passe dans notre atelier
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Notre ligne PRS produit en série des poutres en I et en caissons. Basculez entre les
+              deux sections pour lire la plage de fabrication réelle.
+            </p>
+          </div>
           <CharpenteWireframe />
         </div>
       </section>
 
+      <CredentialsBand />
+
+      <ApplicationsShowcase />
+
       <section className="py-20">
         <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <AnimatedWrapper animation="fade-in">
-                    {/* The two capacity tiles that stood here repeated the hero stat
-                        cards verbatim; the hero already states those figures. */}
-                    <div className="space-y-8">
-                         <ProductionTables />
-                    </div>
-                </AnimatedWrapper>
-                <AnimatedWrapper animation="fade-in" staggerIndex={1}>
-                    <Card className="shadow-lg bg-background">
-                        <CardHeader>
-                            <CardTitle className="font-headline text-2xl text-primary">Domaines d'Application</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <ul className="space-y-4">
-                              {charpenteApplications.map((app) => {
-                                const Icon = applicationIconMap[app.iconName as keyof typeof applicationIconMap];
-                                return (
-                                <li key={app.text} className="flex items-center gap-3 text-lg text-foreground">
-                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-secondary text-accent flex items-center justify-center">
-                                      {Icon && <Icon className="w-8 h-8" />}
-                                    </div>
-                                    <span>{app.text}</span>
-                                </li>
-                                );
-                              })}
-                            </ul>
-                        </CardContent>
-                    </Card>
-                </AnimatedWrapper>
-            </div>
+            <AnimatedWrapper animation="fade-in">
+                <ProductionTables />
+            </AnimatedWrapper>
         </div>
       </section>
 
       <section className="bg-secondary py-24">
         <div className="container mx-auto px-4">
           <div className="mb-16">
+            {/* The previous standfirst read "Chacun de nos piliers de production
+                représente un pôle d'excellence, équipé des technologies les plus
+                avancées pour transformer l'acier en solutions innovantes." It
+                asserted nothing a buyer could act on. This one names the four
+                lines and nothing else — every word of it is checkable against
+                the cards directly below. */}
             <h2 className="text-5xl font-bold text-center text-primary">Nos Piliers de Production</h2>
             <p className="text-center text-muted-foreground mt-4 max-w-2xl mx-auto">
-                Chacun de nos piliers de production représente un pôle d'excellence, équipé des technologies les plus avancées pour transformer l'acier en solutions innovantes.
+                Quatre lignes sous le même toit : profilés reconstitués soudés, supports de
+                transport d&apos;énergie homologués, ponts roulants et carrosserie automobile.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {charpenteMetalliqueData.pillars.map((pillar, index) => {
-              const Icon = pillarIconMap[pillar.iconName as keyof typeof pillarIconMap];
+              // Falls back to the charpente family drawing rather than a lucide
+              // glyph or an empty plate, so a config rename degrades to the
+              // right vernacular instead of breaking the row.
+              const Icon = isPillarIconKey(pillar.id)
+                ? PILLAR_ICON_BY_ID[pillar.id]
+                : CharpenteIcon;
               return (
                 <AnimatedWrapper key={pillar.id} animation="fade-in-stagger" staggerIndex={index}>
                   <button
@@ -237,6 +212,8 @@ export function CharpenteMetalliquePageContent() {
                         Icon={Icon}
                         title={pillar.title}
                         description={pillar.description}
+                        spec={pillar.headlineSpec}
+                        isSelected={selectedPillarId === pillar.id}
                     />
                   </button>
                 </AnimatedWrapper>
@@ -250,7 +227,12 @@ export function CharpenteMetalliquePageContent() {
         <div className="container mx-auto px-4">
           {selectedPillar && (
             <div className="grid lg:grid-cols-2 gap-12 items-start">
-              <AnimatedWrapper animation="fade-in">
+              {/* Keyed per pillar so HoverImageGallery remounts on a switch and its
+                  internal index resets. Without it, hovering deep into one pillar's
+                  gallery and then switching to a pillar with fewer images left the
+                  index out of range and this column blank. The key is prefixed
+                  because the sibling below already keys on the bare pillar id. */}
+              <AnimatedWrapper key={`gallery-${selectedPillar.id}`} animation="fade-in">
                 <HoverImageGallery images={(selectedPillar.galleryImages || []).filter(img => img)} />
               </AnimatedWrapper>
               <AnimatedWrapper key={selectedPillar.id} animation="fade-in" staggerIndex={1}>
@@ -366,6 +348,10 @@ export function CharpenteMetalliquePageContent() {
             </div>
           </div>
       </section>
+
+      {/* Projects sit after the specs and the approvals now. They were the
+          second thing on the page, ahead of any technical qualification. */}
+      <NewGallery />
 
       <section id="cta-bottom" className="py-20 bg-background">
         <div className="container mx-auto px-4">

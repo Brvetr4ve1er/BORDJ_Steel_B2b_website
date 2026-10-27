@@ -86,7 +86,9 @@ const DesktopNav = ({ transparent, pathname }: { transparent: boolean; pathname:
   return (
     // Keyed on pathname so the menu always resets to closed after navigation —
     // no more dropdowns that stay stuck open after a click.
-    <NavigationMenu key={pathname}>
+    // `aria-label` also overrides Radix's own hardcoded English "Main" on the
+    // underlying <nav>, which is one of three nav landmarks on every page.
+    <NavigationMenu key={pathname} aria-label="Navigation principale">
       <NavigationMenuList className="gap-1">
         {navigation.mainMenu.map((item) => {
           const active = isItemActive(item, pathname);
@@ -134,8 +136,12 @@ function DropdownLink({ child, pathname }: { child: ChildItem; pathname: string 
           href={child.href}
           aria-current={active ? 'page' : undefined}
           className={cn(
-            "group/link flex w-[260px] select-none items-center gap-3 rounded-lg p-3 leading-none no-underline outline-none transition-colors",
-            "hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none",
+            "group/link flex w-[260px] select-none items-center gap-3 rounded-lg p-3 leading-none no-underline transition-colors",
+            // `ring-inset`, not the global 2px-offset outline: Radix's
+            // NavigationMenuContent viewport clips overflow, so an outward ring
+            // on an edge item would be cut off. `focus-visible:bg-secondary`
+            // alone is a 1.07:1 change on the white popover — invisible.
+            "hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset",
             active && "bg-secondary",
           )}
         >
@@ -162,7 +168,7 @@ const MobileNav = ({ onNavigate }: { onNavigate: () => void }) => {
           <div key={item.name} className="w-full border-b border-border/60">
             {item.children ? (
               <AccordionItem value={`item-${index}`} className="border-b-0">
-                <AccordionTrigger className="flex w-full items-center justify-between py-4 font-headline text-lg text-foreground hover:text-accent hover:no-underline">
+                <AccordionTrigger className="flex min-h-[44px] w-full items-center justify-between py-4 font-headline text-lg text-foreground hover:text-accent hover:no-underline">
                   <span className="flex items-center gap-3">
                     {Icon && <Icon className="h-5 w-5 text-accent" />}
                     {item.name}
@@ -171,7 +177,7 @@ const MobileNav = ({ onNavigate }: { onNavigate: () => void }) => {
                 <AccordionContent>
                   <div className="mb-2 flex flex-col items-start gap-1 pl-9">
                     {item.children.map((child) => (
-                      <Link key={child.name} href={child.href} className="w-full rounded-md py-2.5 text-base text-muted-foreground transition-colors hover:text-accent" onClick={onNavigate}>
+                      <Link key={child.name} href={child.href} className="flex w-full items-center min-h-[44px] rounded-md py-2.5 text-base text-muted-foreground transition-colors hover:text-accent" onClick={onNavigate}>
                         {child.name}
                       </Link>
                     ))}
@@ -179,7 +185,7 @@ const MobileNav = ({ onNavigate }: { onNavigate: () => void }) => {
                 </AccordionContent>
               </AccordionItem>
             ) : (
-              <Link href={item.href} className="flex items-center gap-3 py-4 font-headline text-lg text-foreground transition-colors hover:text-accent" onClick={onNavigate}>
+              <Link href={item.href} className="flex min-h-[44px] items-center gap-3 py-4 font-headline text-lg text-foreground transition-colors hover:text-accent" onClick={onNavigate}>
                 {Icon && <Icon className="h-5 w-5 text-accent" />}
                 {item.name}
               </Link>
@@ -240,7 +246,11 @@ export function Navbar() {
         <p
           className={cn(
             'hidden max-w-[9rem] text-right text-[11px] font-semibold uppercase leading-tight tracking-wider transition-colors duration-200 lg:block',
-            transparent ? 'text-white/90 [text-shadow:0_1px_3px_rgba(0,0,0,0.55)]' : 'text-foreground/70',
+            // Solid bar: `text-muted-foreground` (42%), not `text-foreground/70`.
+            // 70% of #4B4B4B over white composites to 3.90:1 at 11px, and the
+            // bar is translucent so the backdrop only darkens it further. 42%
+            // was chosen in globals.css precisely to clear 4.5:1 (5.32:1 here).
+            transparent ? 'text-white/90 [text-shadow:0_1px_3px_rgba(0,0,0,0.55)]' : 'text-muted-foreground',
           )}
         >
           {siteMetadata.slogan}

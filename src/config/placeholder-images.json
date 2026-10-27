@@ -1,0 +1,157 @@
+{
+  "homepage": {
+    "hero": {
+      "src": "/media/d503286d2b91eaf2a17fe813878d-77bc4a92.webp",
+      "width": 1920,
+      "height": 1280,
+      "alt": "Soudeur au travail sur une pièce métallique",
+      "aiHint": "welding steel",
+      "blurDataUrl": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABwAgCdASoQAAsAAwBSJQBOj+AQUpiU3mHu+EXgAP6foc31zVPFA2aVXtpvsgc+k31DKHqmfv86lOpbH4XvOkdtkdFHhxaf92o4ipnikzPoQv/STdSdGPpEA1cAAA=="
+    },
+    "about": {
+      "src": "/media/7b2e0e0f355e7f114d5f981d2b14-5de15ef5.webp",
+      "width": 1274,
+      "height": 1370,
+      "alt": "Siège social de Bordj Steel",
+      "aiHint": "company building",
+      "blurDataUrl": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBACdASoQABEAPt1cpkyopSOiMAgBEBuJYwCpAiAAK/kvhPe2r00hsAD+ZeZnctzlCh9P0Bj9JjeGbxeD3mQHNvlyWP8b1jGpglJxRmG80+AVtCV+gmBiqtanA9PsTD9RASrF/0tmTOSyKLtdbDIPIJUGHoAA"
+    }
+  },
+  "facilities": {
+    "charpente": {
+      "src": "/media/unite-charpente-prs-1a9b8796.webp",
+      "width": 1872,
+      "height": 1248,
+      "aiHint": "steel fabrication",
+      "blurDataUrl": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABQAgCdASoQAAsAA4BaJZwAD4/NaOD+qyunaAAA/VNyll6AOBSrfqig1xV4o4lUu6zxrI78XaXQ/XodyMjbRgutAys98AkJhowbDEWvEMTboi0Pl4y8/wAA"
+    },
+    "panneaux": {
+      "src": "/media/ce227152b9fed3c117cbaad50450-8e0cc0ac.webp",
+      "width": 1920,
+      "height": 1280,
+      "aiHint": "sandwich panels",
+      "blurDataUrl": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwAgCdASoQAAsAAwBSJYgCdADpJ2eqnuVRAAD+lExwki9dd8td1WQQqXCYycRGZ3tp7Own3x3ubCrL5WE/VKvZaBvBeQWBKeLLlOZ2sdBN6XyMN2gm4Vix4IAAAA=="
+    },
+    "galvanisation": {
+      "src": "/media/1985950ad29ffbbe7662b2d9c3ba-89c60655.webp",
+      "width": 1920,
+      "height": 1080,
+      "alt": "Bain de galvanisation à chaud",
+      "aiHint": "hot-dip galvanization",
+      "blurDataUrl": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoQAAkAAwBSJZwAAv+P/Gr6CmgA/vW0yA2eQzC+qLTpdfFzaV3UO2l992Jnpj10UGajySLukUKXZnlmYbqVDY1o23T3hAAA"
+    },
+    "chaudronnerie": {
+      "src": "/media/1510900767338-f77df10d.webp",
+      "width": 1920,
+      "height": 1434,
+      "aiHint": "boiler making",
+      "blurDataUrl": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAAAQAgCdASoQAAwAAwBSJZACdAEPAiNvQnsAAP70HSvHJqg570cWNWKx7rog+IbEJb/iKGkdwo6AAA=="
+    }
+  },
+  "portfolio": {
+    "utec": {
+      "src": "/media/51f046b8f7f21a773a8975416bf8-48fd18b7.webp",
+      "width": 1920,
+      "height": 1280,
+      "aiHint": "industrial warehouse",
+      "blurDataUrl": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABQAgCdASoQAAsAAwBSJbACdDBLwZJdCEa2QgAA/a6+z00w63Wij1RnMov/5v8etd6wAljC/8nJH9LpgoW+b4UDT8nqYg/Gx8xOn3g6AAA="
+    },
+    "star-good": {
+      "src": "/media/ec93b8a90b0c088c23cdf817613d-9a4ab477.webp",
+      "width": 1920,
+      "height": 1453,
+      "aiHint": "commercial building",
+      "blurDataUrl": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoQAAwAAwBSJbACdAD0UOFX1u4AAP7Q2qQ2RzPmKhEECTWPYTGj/iWwuUIsgDTwDawLQf96eNHCQyjZBZRbsAAA"
+    },
+    "zenteck-bba": {
+      "src": "/media/8494248f88720de58234962edaf8-f3dc3efb.webp",
+      "width": 1920,
+      "height": 1080,
+      "aiHint": "industrial building",
+      "blurDataUrl": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAwAgCdASoQAAkAAwBSJYwCdH8AGBoCK1uQqAD1nZfo215R1gKLWFYKm13xEdLjSpg4YCNA+WkYZnpuU7VX1fkCFIniPhfZPHhVZohNOSKAAA=="
+    },
+    "base-logistique-condor": {
+      "src": "/media/007616ecbd431edcf76d88c251f3-0e16686e.webp",
+      "width": 1920,
+      "height": 1080,
+      "aiHint": "logistics warehouse",
+      "blurDataUrl": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAQCdASoQAAkAAwBSJQBOgCG5NzoFoAD+amK0wdfltgkxPlsz+DRv0VupJXtKf7CLk2KmjarhpGIVDUdF4yM9p93eULGEQQADfqAA"
+    },
+    "softal": {
+      "src": "/media/5f006fef04a5f7af462ba580abbb-51bd8e30.webp",
+      "width": 1920,
+      "height": 1433,
+      "aiHint": "industrial factory",
+      "blurDataUrl": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoQAAwAAwBSJYgCdAC2q0PAgAD+jftq3EZuSZoZm4p+Hu50AdmgG/fu4F6Ms+JBb+ev8Ja24NNzKi9f97tmgAAA"
+    },
+    "unité-duct-piping": {
+      "src": "/media/349ac528cf2b299e8e9d38dcf88e-7bd5bf8f.webp",
+      "width": 1920,
+      "height": 1280,
+      "aiHint": "piping system",
+      "blurDataUrl": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoQAAsAAwBSJYgCdADhYJ/iUWhAAP7pjl4xTsNrxFQJ5l7nkleaY4xwnt8ppv2dk/aUsVFNtDc94lxxq+W1U1AA"
+    }
+  },
+  "charpente-metallique": {
+    "main": {
+      "src": "/media/charpente-erection-7df1e2ae.webp",
+      "width": 1328,
+      "height": 1760,
+      "alt": "Charpente Métallique en construction",
+      "aiHint": "steel frame construction",
+      "blurDataUrl": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JYgCdOUAArfbN6NdTDPuiAP5TAmsB47Xfc+xrq9U5YujwOhvi5MLfeVYh6iIQE2xw2z/9LDRY0flPuynnhfam+1nDRv7dxCx3TiRfY/zmrTwGDY/ZTGTgIr045DkHrezlAAAA"
+    }
+  },
+  "chaudronnerie": {
+    "hero": {
+      "src": "/media/acf11d05445a30a0c57c86ab75fe-6202d984.webp",
+      "width": 1483,
+      "height": 1065,
+      "alt": "Opérateur à la console de commande d'une rouleuse, virole d'acier en cours de roulage dans l'atelier de chaudronnerie",
+      "aiHint": "plate rolling machine",
+      "blurDataUrl": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAABwAgCdASoQAAsAA4BaJZQC7AYwTzd/JX9wiygAAP7CkX07wty4uSb125P/A1JbNsMC1yV2SCn+at9lIGxgm7j4oM7IR7SME/W36i9j84BpuLGkunLNvHNMdalgozG141IVAAAA"
+    },
+    "silos": {
+      "src": "/media/cuves-reservoirs-818fcebc.webp",
+      "width": 1760,
+      "height": 1328,
+      "alt": "Cuves et réservoirs en acier de grande capacité",
+      "aiHint": "steel silo",
+      "blurDataUrl": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAABQAgCdASoQAAwAA4BaJYwC7AEPhlpNrUKi0gAA/vHQcnW//1acXrOb4hZGxZymd3pWZDGwUwWz/l4wBkDVwQMJ6LEyHEW9gAA="
+    },
+    "ducting": {
+      "src": "/media/gaines-conduites-61593140.webp",
+      "width": 1760,
+      "height": 1328,
+      "alt": "Gaines de ventilation industrielle",
+      "aiHint": "industrial ducting",
+      "blurDataUrl": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwAgCdASoQAAwAA4BaJZQAD4xujEOcKoc4AAD+W/zPRLSzXk/SkiuqhDK4XOB/0fBa+YOueWEJoo6XntrBnc8UooTT4kNnUk1LvlPp1UEjqVKCXcFuietXN2e6wAAA"
+    },
+    "meccano": {
+      "src": "/media/structure-mecano-soudee-563464d6.webp",
+      "width": 1760,
+      "height": 1328,
+      "alt": "Structure mécano-soudée complexe",
+      "aiHint": "welded structure",
+      "blurDataUrl": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoQAAwAA4BaJZwAD5PvuaMMvCgA/kuvz94l4xsFwFiEXY+zZad2YsWXi4oPpeCAxFcChWAnetyG39xn4CXzGigbTvLT8dtnqsFBVwJ7/ptJQI5yoaLV3lDnJl4AAA=="
+    },
+    "equipment": {
+      "src": "/media/equipement-industriel-75d75359.webp",
+      "width": 1760,
+      "height": 1328,
+      "alt": "Équipement industriel en acier",
+      "aiHint": "industrial equipment",
+      "blurDataUrl": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAwAA4BaJZQAAjxB5GKv0eAA/sIzfgBfo6qhlO67suesefWp6h0v2cFuU66lJ9Bx9Jg9kqi6p1zYEYImCH99gMTWZvFwAAA="
+    }
+  },
+  "galvanisation": {
+    "hero": {
+      "src": "/media/1985950ad29ffbbe7662b2d9c3ba-89c60655.webp",
+      "width": 1920,
+      "height": 1080,
+      "alt": "Bain de galvanisation à chaud",
+      "aiHint": "hot-dip galvanization",
+      "blurDataUrl": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoQAAkAAwBSJZwAAv+P/Gr6CmgA/vW0yA2eQzC+qLTpdfFzaV3UO2l992Jnpj10UGajySLukUKXZnlmYbqVDY1o23T3hAAA"
+    }
+  }
+}

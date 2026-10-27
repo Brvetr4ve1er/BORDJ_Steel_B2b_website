@@ -23,7 +23,9 @@ export function SocialButton({ href, children, className, 'aria-label': ariaLabe
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        'group relative flex h-14 w-14 items-center justify-center rounded-full border-2 border-primary-foreground/20 p-1',
+        // 44x44 in px: `h-14 w-14` is 39.2px at the 70% root font-size, just
+        // under the minimum tap target.
+        'group relative flex h-[44px] w-[44px] items-center justify-center rounded-full border-2 border-primary-foreground/20 p-1',
         'transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95',
         className
       )}

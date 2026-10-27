@@ -1,4 +1,4 @@
-import { AnimatedNumber } from '@/components/animated-number';
+import { HeroCountUp } from '@/components/sections/hero/HeroCountUp';
 import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { companyData } from '@/config/company-data';
 import { charpenteMetalliqueData } from '@/config/charpente-metallique-data';
@@ -68,19 +68,27 @@ export function StatsSection() {
     // foreign block between two light sections.)
     <section className="w-full bg-primary py-16">
       <div className="container mx-auto px-4">
-        <h2 className="mb-10 text-center text-sm font-semibold uppercase tracking-[0.2em] text-white/60">
+        <h2 className="mb-10 text-center text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
           Chiffres clés
         </h2>
         {/* Flex + dividers rather than a fixed column count, so the band stays
-            balanced whether config yields one figure or four. */}
-        <ul className="mx-auto flex max-w-4xl flex-col items-stretch justify-center divide-y divide-white/15 sm:flex-row sm:divide-x sm:divide-y-0">
+            balanced whether config yields one figure or four. The dividers carry
+            the brand red — see the figures below. */}
+        <ul className="mx-auto flex max-w-4xl flex-col items-stretch justify-center divide-y divide-accent sm:flex-row sm:divide-x sm:divide-y-0">
           {stats.map((stat, index) => (
             <li key={stat.label} className="flex-1 px-6 py-6 sm:py-0">
               <AnimatedWrapper animation="fade-in-stagger" staggerIndex={index + 1}>
                 <div className="text-center">
-                  <p className="font-headline text-5xl font-bold text-accent md:text-6xl">
+                  {/* Figures are WHITE and the accent lives on the RULE, exactly as
+                      the homepage hero already ships it. Not a colour preference:
+                      accent #C1272D on this `bg-primary` band (#4B4B4B) computes to
+                      1.49:1, half of the 3:1 large-text floor, while white reaches
+                      8.73:1. See `home-page-hero.tsx` (the `<dd>` cartouche). */}
+                  <p className="font-headline text-5xl font-bold text-white md:text-6xl">
                     {stat.prefix}
-                    <AnimatedNumber value={stat.value} />
+                    <HeroCountUp value={stat.value}>
+                      {new Intl.NumberFormat('fr-FR').format(stat.value)}
+                    </HeroCountUp>
                     {stat.suffix}
                   </p>
                   <p className="mt-2 text-sm uppercase tracking-widest text-white/70">

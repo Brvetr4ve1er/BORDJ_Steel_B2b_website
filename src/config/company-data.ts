@@ -1,8 +1,215 @@
 
-import images from '@/app/lib/placeholder-images.json';
+import images from '@/config/placeholder-images.json';
+
+/* -------------------------------------------------------------------------- */
+/* ISO certifications — single source for every surface that shows them        */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Stable identity of a certification. Deliberately a union rather than
+ * `string`: consumers resolve it through a total `Record<CertificationCode, …>`
+ * (see `ISO_PICTOGRAMS` in `components/sections/Certifications.tsx`), so adding
+ * a certification here without giving it artwork is a *compile* error rather
+ * than a seal that silently loses its figure.
+ */
+export type CertificationCode = 'iso-9001' | 'iso-14001' | 'iso-45001';
+
+export type Certification = {
+  readonly id: CertificationCode;
+  /** Short code as displayed, e.g. "ISO 9001". */
+  readonly code: string;
+  /** Standard revision year, e.g. "2015". */
+  readonly year: string;
+  /** Scope of the certificate, e.g. "Système de Management de la Qualité". */
+  readonly scope: string;
+  /** Scanned certificate preview supplied by the client. */
+  readonly image: string;
+  /** Badge shown on the card. */
+  readonly logo: string;
+  /**
+   * Public path to the signed certificate.
+   * Left unset while the client has not supplied the files: the card then shows a
+   * disabled "Bientôt disponible" control instead of a link that 404s.
+   * To re-enable a link, drop the PDF into `public/documents/` and set `pdf` here.
+   * Expected filenames: Bordj-Steel-ISO-9001.pdf, Bordj-Steel-ISO-14001.pdf,
+   * Bordj-Steel-ISO-45001.pdf.
+   */
+  readonly pdf?: string;
+};
+
+/**
+ * The three ISO certificates, stated once for the three surfaces that show
+ * them: the homepage seal band, "Nos certifications et engagements" on
+ * /about/history, and the ISO tab of the Media Center.
+ *
+ * Scope wording — SETTLED, do not "restore" the longer form. Two wordings were
+ * once live at the same time and contradicted each other: a formal one on the
+ * homepage ("Système de Management de la Qualité" / "Management
+ * Environnemental" / "Santé et Sécurité au Travail") and the shorter one kept
+ * below, which ran on /about/history and the Media Center ISO tab. The client
+ * chose the short form for every surface; the formal variant is retired.
+ */
+export const certifications: readonly Certification[] = [
+  {
+    id: 'iso-9001',
+    code: 'ISO 9001',
+    year: '2015',
+    scope: 'Management de la qualité',
+    image: '/media/f04b6287977e56982f6ccb2a9b65-3302f3b3.webp',
+    logo: '/media/f04b6287977e56982f6ccb2a9b65-3302f3b3.webp',
+  },
+  {
+    id: 'iso-14001',
+    code: 'ISO 14001',
+    year: '2015',
+    scope: 'Management environnemental',
+    image: '/media/856f3f85dd8452ba3580e8280f62-c1c1a5d2.webp',
+    logo: '/media/7901a543069366724bf173d772a1-977ee9e7.webp',
+  },
+  {
+    id: 'iso-45001',
+    code: 'ISO 45001',
+    year: '2018',
+    scope: 'Santé et sécurité au travail',
+    image: '/media/15a60ad54ea9e34e77b39205320b-b2c156e1.webp',
+    logo: '/media/5f6b696fc21fdd205c98c9fdb27b-60ae7005.webp',
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/* Galvanisation annual capacity — UNRESOLVED                                 */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * CLIENT NOTE — three different annual capacities for the galvanisation unit are
+ * published on this site, two of them on the same page. Nobody on the build side
+ * can say which is correct, so every value below is reproduced EXACTLY as it was
+ * already being displayed. This block changes nothing a visitor sees; it only
+ * gathers the figures into one place so the question can be closed with a single
+ * edit instead of hunting three files.
+ *
+ *   headlinePerYear     60 000 T/an   homepage hero stat AND the units list.
+ *                                     No basis stated.
+ *   annualCardTonnes    "25.000 tonnes"  the "Capacité annuelle" stat card on
+ *                                     /products/galvanisation-a-chaud.
+ *                                     No basis stated.
+ *   singleShiftPerYear  20 000 t/an   prose on that SAME page, and the only
+ *                                     figure anywhere with a stated basis:
+ *                                     "(8 h/jour) : 1 600 t/mois". 1 600 x 12 =
+ *                                     19 200, so ~20 000 is at least consistent
+ *                                     with its own arithmetic.
+ *
+ * The 25 000 card and the 20 000 prose render on the same page. That is the part
+ * a visitor can actually catch.
+ *
+ * Worth putting to the client in this exact form, because it may not be a
+ * contradiction at all: 20 000 x 3 = 60 000 precisely, and this site already
+ * states capacities on an 8-hour basis elsewhere (chaudronnerie "8h/j"; the
+ * charpente table is headed "CAPACITÉ DE PRODUCTION (EN 08 HEURES)"). If 60 000
+ * is simply the three-shift figure then 60 000 and 20 000 are both correct and
+ * only need their basis printed next to them. That reading still leaves 25 000
+ * unaccounted for.
+ *
+ * A SECOND conflict, found while consolidating the above and left as data
+ * because it is equally the client to settle: bath dimensions. The prose on the
+ * product page gives "13 x 1,8 x 3,5 m"; the units list in this file says "un
+ * bain de 13m de long"; and `galvanisationContent.hero.subtitle` says "12m x
+ * 1,5m x 3m". The bath length also drives the maximum treatable piece, quoted
+ * as 13 m in the prose and 15 m in the units description.
+ *
+ * NOTE that `hero.subtitle` is currently DEAD CONFIG — the galvanisation hero
+ * renders title, image, stats and the two CTAs, never the subtitle, so its
+ * figures reach nobody today. It is wired to this source anyway: it is exactly
+ * the kind of string someone displays later, reintroducing the contradiction.
+ *
+ * Guarded by tests/galvanisation-capacity.test.ts, which pins these three
+ * published figures by value and fails if a call site re-hardcodes one, so
+ * they stay the single source. Its sweep is per-figure, so it does NOT catch
+ * a newly introduced fourth figure — that still needs a human.
+ */
+export const galvanisationCapacity = {
+  /** Headline figure. Homepage hero + units list. Basis unknown. */
+  headlinePerYear: 60000,
+  /** Product-page stat card, verbatim including the dot separator. */
+  annualCardTonnes: '25.000 tonnes',
+  /** Product-page prose. The only figure with a stated basis (8 h/jour). */
+  singleShiftPerYear: 20000,
+  /** The monthly figure the 8 h/jour number is derived from. */
+  singleShiftPerMonth: 1600,
+} as const;
+
+/**
+ * CLIENT NOTE — charpente capacity, the second set of contradictory figures.
+ *
+ * Same situation as `galvanisationCapacity` above and the same treatment: every
+ * value below is reproduced EXACTLY as it was already being displayed, gathered
+ * here so the question can be closed with one edit. Nothing a visitor reads
+ * changes because of this block, with one exception noted at the bottom.
+ *
+ *   headlinePerYear   25 000 T/an  the /products/charpente-metallique hero stat
+ *                                  card, the HOMEPAGE hero stat, and the units
+ *                                  list. No basis stated anywhere.
+ *   headlinePerMonth   1 500 T/mois  units list only, inside the same sentence
+ *                                  as headlinePerYear.
+ *   prsPerYear         3 000 T/an  hero stat card + units list. No basis.
+ *   eightHourTable                 the "CAPACITE DE PRODUCTION (EN 08 HEURES)"
+ *                                  table further down that SAME product page.
+ *
+ * What is actually known, stated precisely because the arithmetic matters:
+ *
+ *   - The table is the only figure on the page that DECLARES its basis, and it
+ *     is internally consistent: 1 000 T/mois x 12 = 12 000 T/an exactly.
+ *   - The units sentence contradicts ITSELF: it reads "1500 T/mois (25000
+ *     T/an)", but 1 500 x 12 = 18 000, not 25 000. Neither half of that
+ *     sentence agrees with the table either.
+ *   - 25 000 has no stated basis and is not a clean multiple of the 8-hour
+ *     figure: 12 000 x 2 = 24 000, not 25 000.
+ *   - PRS is 3 000 in the headline and 2 000 in the 8-hour table.
+ *
+ * NOTE for whoever asks the client: the galvanisation reading does NOT carry
+ * over here. There, 20 000 x 3 = 60 000 exactly, so "single shift vs three
+ * shifts" explained the gap cleanly. Here no shift multiplier reproduces
+ * 25 000 from 12 000. Do not offer the client that explanation for charpente;
+ * the numbers have to be confirmed directly.
+ *
+ * The concrete question: the hero says 25 000 T/an and the table on the same
+ * page says 12 000 T/an in 8 hours. Is 25 000 a two-shift figure (in which case
+ * it should read 24 000), or is one of the two simply wrong?
+ *
+ * THE ONE VISIBLE CHANGE. Routing the table through this block reformats its
+ * numbers. It previously rendered three different ways in one table: "12000"
+ * (no separator), "1 000" and "2 000" (ASCII space). They now all go through
+ * Intl.NumberFormat("fr-FR") like every other number on the site, which emits
+ * U+202F. Digits and units are untouched; only the thousands separators are.
+ *
+ * Guarded by tests/charpente-capacity.test.ts.
+ */
+export const charpenteCapacity = {
+  /** Hero stat card, homepage hero stat, and units list. No basis stated. */
+  headlinePerYear: 25000,
+  /** Units list only, in the same sentence as headlinePerYear. 1 500 x 12 = 18 000. */
+  headlinePerMonth: 1500,
+  /** Hero stat card + units list. No basis stated. */
+  prsPerYear: 3000,
+  /**
+   * The product page's "CAPACITE DE PRODUCTION (EN 08 HEURES)" table. These are
+   * the only capacity figures on the site that declare what shift they assume.
+   * `perMonth` is null where the published table gives no monthly figure.
+   */
+  eightHourTable: [
+    { product: 'Charpente métallique', perYear: 12000, perMonth: 1000 },
+    { product: 'Ligne de profilés soudés (PRS)', perYear: 2000, perMonth: null },
+    { product: 'Mâts et autres produits', perYear: 5000, perMonth: null },
+  ],
+} as const;
 
 export const companyData = {
   siteMetadata: {
+    // The organisation's name on its own. `title` below is the name plus a
+    // positioning line, which is right for a <title> and wrong for anything
+    // that asks who the company is — structured data in particular, where it
+    // was previously published as the legal name.
+    name: 'Bordj Steel',
     title: 'Bordj Steel – Construction métallique en Algérie',
     description: 'Complexe métallurgique Bordj Steel, filiale du groupe Condor, 4 unités de production, projets phares en Algérie.',
     // Single source of truth for the canonical site URL (used by metadata,
@@ -72,9 +279,9 @@ export const companyData = {
           headline: "BÂTIR L'AVENIR, ENSEMBLE",
           subheadline: 'Leader de la construction métallique en Algérie',
           stats: [
-            { "value": 25000, "label": "Tonnes/an Charpente" },
+            { "value": charpenteCapacity.headlinePerYear, "label": "Tonnes/an Charpente" },
             { "value": 1500000, "label": "m²/an Panneaux Sandwich" },
-            { "value": 60000, "label": "Tonnes/an Galvanisation" }
+            { "value": galvanisationCapacity.headlinePerYear, "label": "Tonnes/an Galvanisation" }
           ]
         },
         introduction: 'La SPA BORDJ STEEL comprend 4 unités de production : Charpente Métallique, Panneaux Sandwichs et TN 40, Galvanisation à chaud, Chaudronnerie.'
@@ -84,13 +291,13 @@ export const companyData = {
       slug: '/a-propos',
       title: 'Qui sommes-nous',
       timelineEvents: [
-        { year: '2012', title: 'Création de Bordj Steel', description: 'Fondation de la SPA BORDJ STEEL dans le cadre de la stratégie de développement du groupe CONDOR.', icon: 'Lightbulb' },
-        { year: '2013', title: 'Début de la Construction', description: 'En juin, les travaux de construction de l\'unité de charpente métallique débutent.', icon: 'Cog' },
-        { year: '2014', title: 'Démarrage de la Production', description: 'Juillet voit le démarrage de la production de l\'unité de charpente métallique.', icon: 'Users' },
-        { year: '2015', title: 'Expansion des Capacités', description: 'Septembre est un mois charnière avec le démarrage de la production de panneaux sandwichs.', icon: 'BarChart' },
-        { year: '2016', title: 'Inauguration et Finalisation', description: 'En Décembre, le complexe est officiellement inauguré par le ministre de l’intérieur.', icon: 'Target' },
-        { year: '2019', title: 'Certification Qualité', description: 'Obtention de la prestigieuse certification ISO 9001 Version 2015.', icon: 'Award' },
-        { year: '2025', title: 'Leader Engagé', description: 'Nous continuons d\'innover, guidés par notre système de Management Intégré QSE.', icon: 'Search' }
+        { year: '2012', figure: 'parcelle', title: 'Création de Bordj Steel', description: 'Fondation de la SPA BORDJ STEEL dans le cadre de la stratégie de développement du groupe CONDOR.', milestone: true },
+        { year: '2013', figure: 'fondation', title: 'Début de la Construction', description: 'En juin, les travaux de construction de l\'unité de charpente métallique débutent.' },
+        { year: '2014', figure: 'prs', title: 'Démarrage de la Production', description: 'Juillet voit le démarrage de la production de l\'unité de charpente métallique.' },
+        { year: '2015', figure: 'panneau', title: 'Expansion des Capacités', description: 'Septembre est un mois charnière avec le démarrage de la production de panneaux sandwichs.' },
+        { year: '2016', figure: 'site', title: 'Inauguration et Finalisation', description: 'En Décembre, le complexe est officiellement inauguré par le ministre de l’intérieur.', milestone: true },
+        { year: '2019', figure: 'iso', title: 'Certification Qualité', description: 'Obtention de la prestigieuse certification ISO 9001 Version 2015.', milestone: true },
+        { year: '2025', figure: 'qse', title: 'Leader Engagé', description: 'Nous continuons d\'innover, guidés par notre système de Management Intégré QSE.' }
       ],
       content: {
         history: 'a été créée avec une mission claire : fournir des solutions en acier de haute qualité, conçues avec précision pour répondre aux exigences de l’industrie moderne. Aujourd’hui, nous sommes fiers d’être reconnus comme l’un des acteurs les plus fiables et respectés dans le domaine de la charpente métallique, de la galvanisation et des panneaux sandwichs isolants en Algérie. Grâce à notre engagement pour la durabilité, la performance technique et la satisfaction client, Bordj Steel accompagne les usines, projets agricoles et promoteurs industriels à travers tout le territoire national et au-delà.',
@@ -120,21 +327,24 @@ export const companyData = {
       items: [
         {
           title: 'Charpente Métallique',
-          description: `Capacité de 1500 T/mois (25000 T/an) et PRS 3000 T/an. Nous produisons des hangars, pylônes, et supports publicitaires.`,
+          description: `Capacité de ${charpenteCapacity.headlinePerMonth.toLocaleString('fr-FR')} T/mois (${charpenteCapacity.headlinePerYear.toLocaleString('fr-FR')} T/an) et PRS ${charpenteCapacity.prsPerYear.toLocaleString('fr-FR')} T/an. Nous produisons des hangars, pylônes, et supports publicitaires.`,
           icon: 'HardHat',
           href: '/products/charpente-metallique',
           imageKey: 'charpente'
         },
         {
           title: 'Panneaux Sandwichs',
-          description: `Capacité de 5000 m²/jour. Gamme d'épaisseur de 30-200 mm pour couverture, bardage, et chambres froides.`,
+          // The separator is U+202F, which is what Intl.NumberFormat("fr-FR")
+          // emits for the sibling cards above and below. Do not "normalize" it
+          // to a plain space: the card would then line-break mid-figure.
+          description: `Capacité de 5 000 m²/jour. Gamme d'épaisseur de 30-200 mm pour couverture, bardage, et chambres froides.`,
           icon: 'Layers',
           href: '/products/sandwich-panels',
           imageKey: 'panneaux'
         },
         {
           title: 'Galvanisation à Chaud',
-          description: `Capacité de 60000 T/an avec un bain de 13m de long pour des pièces jusqu'à 15m.`,
+          description: `Capacité de ${galvanisationCapacity.headlinePerYear.toLocaleString('fr-FR')} T/an avec un bain de 13m de long pour des pièces jusqu'à 15m.`,
           icon: 'Cog',
           href: '/products/galvanisation-a-chaud',
           imageKey: 'galvanisation'
@@ -221,11 +431,8 @@ export const companyData = {
     },
     certifications: {
       title: 'Agréments et Certifications',
-      items: [
-        'ISO 9001:2015 - Système de Management de la Qualité',
-        'ISO 14001:2015 - Management Environnemental',
-        'ISO 45001:2018 - Santé et Sécurité au Travail',
-      ]
+      // Structured, not strings: see `certifications` at the top of this file.
+      items: certifications,
     },
     clients: {
       title: "Nos Précieux Clients",
@@ -279,6 +486,12 @@ export const companyData = {
         },
         // Department directory rendered on /contact (ContactInfo component).
         // `icon` is a lucide-react icon name, resolved by the component.
+        // `figure` selects a technical illustration from
+        // components/contact/department-figures.tsx. It REPLACED an `image`
+        // per card: six AI-generated photographs of generic office meetings
+        // that showed nothing about the department they labelled (one had the
+        // letters "RH" floating in the room as an object). Real photography of
+        // these teams is still welcome and would belong here instead.
         // CLIENT NOTE: the primary number `phones[0]` (+213 770 35 66 86) is
         // deliberately on no department card — which number is canonical is
         // still an open client decision. Do not "correct" these without it.
@@ -286,46 +499,49 @@ export const companyData = {
           {
             icon: 'Building2',
             title: "Bureau Commercial",
+            figure: "devis", scene: "bureau",
             email: "commercial@bordjsteel.dz",
             phone: "+213 561 61 60 05",
-            image: "/media/85abf719f734e7c11defc2c680c1-8a19bd5f.webp",
           },
           {
             icon: 'HardHat',
             title: "Charpente Métallique",
+            figure: "portique", scene: "charpente",
             phone: "+213 770 98 43 14",
             email: "commercial@bordjsteel.dz",
-            image: "/media/e4e9e2933ed8fa9f0d49d50c4d61-ffd2b7e1.webp",
           },
           {
             icon: 'Package',
             title: "Panneaux Sandwich",
+            figure: "panneau", scene: "sandwich",
             phone: "+213 770 70 59 78",
             email: "commercial@bordjsteel.dz",
-            image: "/media/f482924f5237e9d9f98da4e26adf-a5890cd7.webp",
           },
           {
             icon: 'Zap',
             title: "Galvanisation",
+            figure: "bain", scene: "galva",
             phone: "+213 770 35 73 47",
             email: "commercial@bordjsteel.dz",
-            image: images.galvanisation.contactCard.src,
           },
           {
             icon: 'Headphones',
             title: "Écoute Client",
+            figure: "support", scene: "ecoute",
             phone: "+213 770 83 25 96",
-            // CLIENT NOTE: this address appears nowhere else on the site (see
-            // `emails` above). Kept verbatim; confirm with the client.
+            // CLIENT NOTE: this address is not in `emails` above, which lists
+            // only commercial@, but it is published verbatim in five blog
+            // bodies (blog-data.ts:6, :21, :35, :49, :63 — client social-media
+            // copy, not ours to edit). So correcting it here alone would leave
+            // five stale copies. Kept verbatim; confirm with the client.
             email: "marketing@bordjsteel.dz",
-            image: "/media/2c792262ee0e5c2f3a1290cd0682-610b04f1.webp",
           },
           {
             icon: 'Wrench',
             title: "Réalisation et Montage",
+            figure: "montage", scene: "montage",
             phone: "+213 770 98 01 48",
             email: "commercial@bordjsteel.dz",
-            image: "/media/a30d652c6e58b3aebe5ca3561af4-c5bd987d.webp",
           },
         ],
       }
@@ -351,6 +567,71 @@ export const companyData = {
 };
 
 /* -------------------------------------------------------------------------- */
+/* "Notre domaine d'activité" (/a-propos/histoire)                             */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Which bespoke product icon a given activity renders with. Deliberately a
+ * union rather than `string`: the component resolves it through a total
+ * `Record<ActivityIconKey, …>`, so adding a key here without adding the matching
+ * icon is a *compile* error rather than a card that silently loses its figure.
+ *
+ * These are semantic names, not lucide names. The older
+ * `PRODUCT_ICON_BY_CONFIG_KEY` map is keyed on legacy lucide strings
+ * (`Cog` → galvanisation, `Anchor` → chaudronnerie) purely because
+ * `pages.units.items` already used them; that indirection is not repeated here.
+ */
+export type ActivityIconKey = 'charpente' | 'galvanisation' | 'sandwich' | 'chaudronnerie';
+
+export type Activity = {
+  readonly icon: ActivityIconKey;
+  readonly title: string;
+  readonly description: string;
+};
+
+/**
+ * The four production families stated as *capabilities* — what each unit does.
+ * Distinct from `companyData.pages.units.items`, which names the same four
+ * families in terms of *capacity* figures; both are live and neither is
+ * derivable from the other.
+ */
+export const aboutActivities: {
+  readonly title: string;
+  readonly intro: string;
+  readonly items: readonly Activity[];
+} = {
+  title: "Notre domaine d'activité",
+  intro:
+    "Depuis sa création, BordjSteel s'est imposée comme un acteur majeur dans le domaine de la construction métallique en Algérie.",
+  items: [
+    {
+      icon: 'charpente',
+      title: "Charpente métallique",
+      description:
+        "Conception, fabrication et montage de structures adaptées à tous types de projets industriels, agricoles et logistiques.",
+    },
+    {
+      icon: 'galvanisation',
+      title: "Galvanisation à chaud",
+      description:
+        "Traitement de protection anticorrosion garantissant la longévité et la résistance des structures.",
+    },
+    {
+      icon: 'sandwich',
+      title: "Panneaux sandwich",
+      description:
+        "Production et fourniture de panneaux isolants destinés aux bâtiments industriels, frigorifiques et tertiaires.",
+    },
+    {
+      icon: 'chaudronnerie',
+      title: "Chaudronnerie",
+      description:
+        "Conception et réalisation d'équipements métalliques spécifiques selon les besoins des clients.",
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
 /* Image resolution                                                            */
 /* -------------------------------------------------------------------------- */
 
@@ -367,7 +648,11 @@ const portfolioImages = images.portfolio as unknown as Record<string, Placeholde
 const facilityImages = images.facilities as unknown as Record<string, PlaceholderImage>;
 
 const MISSING_IMAGE: PlaceholderImage = {
-  src: 'https://placehold.co/600x400',
+  // The .png suffix is load-bearing: the extensionless URL serves
+  // image/svg+xml, which next/image refuses without dangerouslyAllowSVG.
+  // Only bites under `next start` or off Netlify — Netlify's Image CDN
+  // passes SVG through regardless of that flag.
+  src: 'https://placehold.co/600x400.png',
   width: 600,
   height: 400,
   aiHint: 'placeholder',

@@ -4,28 +4,28 @@ import { AnimatedWrapper } from '@/components/animated-wrapper';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Award } from 'lucide-react';
 import Image from 'next/image';
+import { certifications, type Certification } from '@/config/company-data';
 
-const certifications = [
-  { name: "ISO 9001", description: "Management de la qualité", image: "/media/f04b6287977e56982f6ccb2a9b65-3302f3b3.webp" },
-  { name: "ISO 14001", description: "Management environnemental", image: "/media/856f3f85dd8452ba3580e8280f62-c1c1a5d2.webp" },
-  { name: "ISO 45001", description: "Santé et sécurité au travail", image: "/media/15a60ad54ea9e34e77b39205320b-b2c156e1.webp" }
-];
-
-
-function CertificationCard({ cert }: { cert: { name: string; description: string; image: string; } }) {
+/**
+ * "Nos certifications et engagements" — the certificate scans on
+ * /about/history. The certificates themselves live in `certifications`
+ * (src/config/company-data.ts), shared with the homepage seal band and the
+ * Media Center's ISO tab, so no two pages can claim different scopes.
+ */
+function CertificationCard({ cert }: { cert: Certification }) {
   return (
     <Card className="group overflow-hidden text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
       <CardHeader className="p-0">
         <div className="bg-secondary p-4">
-          <h3 className="text-xl font-bold text-primary">{cert.name}</h3>
-          <p className="text-muted-foreground">{cert.description}</p>
+          <h3 className="text-xl font-bold text-primary">{cert.code}</h3>
+          <p className="text-muted-foreground">{cert.scope}</p>
         </div>
       </CardHeader>
       <CardContent className="p-4 bg-background">
         <div className="aspect-[3/4] relative rounded-md overflow-hidden border-4 border-secondary shadow-inner">
           <Image
             src={cert.image}
-            alt={`Certification ${cert.name}`}
+            alt={`Certification ${cert.code}`}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -49,7 +49,7 @@ export function CertificationsSection() {
         </AnimatedWrapper>
         <div className="grid md:grid-cols-3 gap-8">
           {certifications.map((cert, index) => (
-            <AnimatedWrapper key={index} animation="fade-in-stagger" staggerIndex={index}>
+            <AnimatedWrapper key={cert.id} animation="fade-in-stagger" staggerIndex={index}>
               <CertificationCard cert={cert} />
             </AnimatedWrapper>
           ))}

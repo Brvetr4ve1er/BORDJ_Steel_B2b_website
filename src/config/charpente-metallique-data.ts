@@ -1,13 +1,14 @@
 
-import images from '@/app/lib/placeholder-images.json';
+import images from '@/config/placeholder-images.json';
+import { charpenteCapacity } from '@/config/company-data';
 
 export const charpenteMetalliqueData = {
   hero: {
     title: 'Charpente Métallique',
     subtitle: "Solutions d'ingénierie robustes pour les projets les plus ambitieux. Nous concevons, fabriquons et montons des structures en acier pour tous types de bâtiments.",
     stats: [
-      { title: 'Capacité de production', value: 25000, unit: ' T/an', icon: 'HardHat' },
-      { title: 'Capacité de PRS', value: 3000, unit: ' T/an', icon: 'Cog' },
+      { title: 'Capacité de production', value: charpenteCapacity.headlinePerYear, unit: ' T/an', icon: 'HardHat' },
+      { title: 'Capacité de PRS', value: charpenteCapacity.prsPerYear, unit: ' T/an', icon: 'Cog' },
       { title: "Surface de l'unité", value: 10000, unit: ' m²', icon: 'Layers' },
     ],
     image_url: images['charpente-metallique'].main.src,
@@ -20,11 +21,16 @@ export const charpenteMetalliqueData = {
   pillars: [
     {
       id: 'prs',
+      // `headlineSpec` is the one fact that qualifies a lead, surfaced on the
+      // card so a buyer does not have to click to learn whether their piece
+      // fits. Every one is a restatement of something already inside this same
+      // pillar's `specifications` — no new claim is introduced here.
+      headlineSpec: "350 – 2000 mm de largeur · 16 000 mm de longueur",
       iconName: 'HardHat',
       title: "PRS – Profils Reconstitués Soudés",
       description: "Fabrication sur mesure pour bâtiments industriels, ponts et charpentes lourdes.",
       galleryImages: [
-        "/media/f80539082e4b8be52b8e586116b3-58a4871b.webp",
+        "/media/unite-charpente-prs-1a9b8796.webp",
         "/media/charpente-85d5dfe8.webp",
         "/media/projet-charpente-3ecb0dcb.webp"
       ],
@@ -44,6 +50,7 @@ export const charpenteMetalliqueData = {
     },
     {
       id: 'supports',
+      headlineSpec: "Homologué SONELGAZ · types 9T et BS",
       iconName: 'TowerControl',
       title: "Supports de Transport d'Énergie",
       description: "Structures pour l’énergie, la communication et l’affichage.",
@@ -86,6 +93,7 @@ export const charpenteMetalliqueData = {
     },
     {
       id: 'ponts-roulants',
+      headlineSpec: "De 1 t à plus de 100 t · portée jusqu’à 40 m",
       iconName: 'Tractor',
       title: "Pont Roulant – Mono et Bipoutre",
       description: "Solutions de manutention lourde avec options mono-poutre et bi-poutre.",
@@ -120,6 +128,7 @@ export const charpenteMetalliqueData = {
     },
     {
       id: 'automobile',
+      headlineSpec: "Agréé par le ministère de l’Énergie et des Mines",
       iconName: 'Car',
       title: "Ligne de Fabrication Automobile",
       description: "Ligne complète pour la transformation métallique automobile de haute précision.",

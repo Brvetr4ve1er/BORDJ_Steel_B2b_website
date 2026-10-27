@@ -22,7 +22,7 @@ export const articles = [
         href: "/media-center/blog/article-2",
         lang: "fr",
         tag: "Projet",
-        imageUrl: "/media/1562088997-0a453513.webp",
+        imageUrl: "/media/charpente-erection-7df1e2ae.webp",
         date: "30 Jul 2025",
         author: {
             name: "Bordj Steel",
@@ -36,7 +36,7 @@ export const articles = [
         href: "/media-center/blog/article-3",
         lang: "fr",
         tag: "Qualité",
-        imageUrl: "/media/1558618666-82ac63dd.webp",
+        imageUrl: "/media/finition-u-de-sol-12d064f7.webp",
         date: "28 Jul 2025",
         author: {
             name: "Bordj Steel",
@@ -64,7 +64,7 @@ export const articles = [
         href: "/media-center/blog/article-5",
         lang: "ar",
         tag: "Innovation",
-        imageUrl: "/media/1510900767338-a0bca12f.webp",
+        imageUrl: "/media/1510900767338-f77df10d.webp",
         date: "26 Jul 2025",
         author: {
             name: "Bordj Steel",

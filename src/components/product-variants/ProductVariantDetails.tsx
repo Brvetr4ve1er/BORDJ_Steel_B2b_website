@@ -122,12 +122,19 @@ const ImageSection: React.FC<{ section: Extract<ProductVariantSection, { type: '
     {section.title && <h3 className="font-semibold text-lg mb-3">{section.title}</h3>}
     <div className="border-2 border-border bg-secondary/10 p-4">
       <div className="bg-white border border-border p-4 flex items-center justify-center">
-        <Image 
+        {/* The strips are wider than they are tall by anything from 3.4:1 to
+            6:1. The old hardcoded 800x250 matched none of them, so each one
+            sat letterboxed inside a box of the wrong shape. `h-auto` lets the
+            declared ratio drive the height instead of the 250 surviving as a
+            CSS value. The 800x250 fallback is kept for any image whose real
+            size is not recorded in config yet. */}
+        <Image
           src={section.image.src}
           alt={section.image.alt}
-          width={800}
-          height={250}
-          className="object-contain w-full"
+          sizes="(max-width: 768px) 100vw, 45vw"
+          width={section.image.width ?? 800}
+          height={section.image.height ?? 250}
+          className="object-contain w-full h-auto"
           data-ai-hint={section.image.aiHint}
         />
       </div>

@@ -1,5 +1,5 @@
 
-import images from '@/app/lib/placeholder-images.json';
+import images from '@/config/placeholder-images.json';
 
 export type ProductImage = {
   src: string;
@@ -39,14 +39,17 @@ export const chaudronnerieData = {
     aiHint: images.chaudronnerie.hero.aiHint,
     blurDataUrl: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nAFoAJf/AXV1df+vr6//i4uL/83NzeUAcnJy/3l5ef+3t7f/goKC/wB6enr/ioqK/9bW1v84ODj/PPO09K2pZSsAAAAASUVORK5CYII=",
     cta_primary: 'Explorer les produits',
-    cta_secondary: 'Notre expertise',
+    cta_secondary: 'Télécharger la brochure',
     stats: chaudronnerieHeroStats,
   },
   products: {
     silos: {
       title: 'Silos & Réservoirs de Stockage',
       galleryImages: [
-        { ...images.chaudronnerie.silos, alt: 'Silo en acier de grande capacité' },
+        // No local `alt` override here, unlike its siblings: this photo was
+        // replaced with one of cuves et réservoirs, and an override would have
+        // gone on describing a silo to the media-centre gallery.
+        { ...images.chaudronnerie.silos },
       ],
       features: {
         description: 'Nous concevons et fabriquons des silos et réservoirs de toutes tailles pour le stockage de produits pulvérulents (ciment, céréales), de liquides (eau, produits chimiques) et de gaz. Nos solutions sont optimisées pour garantir la sécurité, la durabilité et une conservation optimale du contenu.',

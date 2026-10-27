@@ -11,16 +11,19 @@ npm run dev         # dev server on http://localhost:9002 (Turbopack)
 npm run build       # production build — fails on type or lint errors
 npm run lint        # next lint
 npm run typecheck   # tsc --noEmit
+npm test            # vitest — config/asset integrity + render suite
 ```
 
-Run `typecheck`, `lint` and `build` before pushing — CI enforces all three.
+Run `typecheck`, `lint`, `test` and `build` before pushing — CI enforces all four.
 
 ## Conventions
 
 - **Next.js App Router.** Routes live in `src/app/**`; each `page.tsx` should be a
   thin wrapper that renders one component from `src/components/pages/**`.
-- **Component layers:** `ui/` = shadcn primitives; `sections/` = atomic page sections;
-  `pages/` = composition wrappers; `product-variants/` = the generic product renderer.
+- **Component layers:** `ui/` = shadcn primitives **and shared presentational
+  components reused across pages** (e.g. `steel-loader`, `ken-burns`);
+  `sections/` = atomic page sections; `pages/` = composition wrappers;
+  `product-variants/` = the generic product renderer.
 - **Content lives in `src/config/`** (`company-data.ts`, `*-data.ts`,
   `product-variants.config.ts`). Prefer editing config over hardcoding copy in JSX.
 - **Path alias:** import via `@/*` (→ `src/*`), not long relative paths.

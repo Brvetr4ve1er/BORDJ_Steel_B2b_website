@@ -49,17 +49,15 @@ Those were intentionally excluded to keep the system focused and robust.
 
 ## 🧠 Source of Truth
 
-> **Firebase Studio is the canonical source of truth for this project.**
+> **This repository is the canonical source of truth for this project.**
 
-All major refactors, layout decisions, and product system changes were done inside Firebase Studio first, then mirrored into this GitHub repository.
+The site was originally built in Firebase Studio, and through mid-2026 that workspace led while this repository mirrored it. That is no longer the case: the Firebase Studio workspace definition (`.idx/`) and the Firebase hosting configs (`firebase.json`, `apphosting.yaml`) were removed before delivery, because the site is not served from Firebase. Nothing outside this repository now defines the build.
 
-This repo exists to:
-- Track changes
-- Ensure build stability
-- Enable collaboration and review
-- Support long-term maintenance
-
-If something in this repo conflicts with Firebase Studio, **Firebase Studio wins**.
+Work here, and treat this tree as authoritative:
+- Changes are tracked in git
+- CI gates every push (build, lint, typecheck, test)
+- Review happens on pull requests
+- This is what gets deployed and maintained
 
 ---
 
@@ -77,10 +75,9 @@ This project uses a modern, production-ready stack:
   see that folder's components for why)
 - **Forms**: react-hook-form
 - **Testing**: Vitest
-- **Hosting**: currently served from **Netlify**. Firebase App Hosting config
-  (`apphosting.yaml`) and classic Firebase Hosting config (`firebase.json`) both
-  still exist in the repo — security headers are therefore declared in
-  `next.config.ts` so they apply regardless of which host actually serves.
+- **Hosting**: served from **Netlify**. No host-specific deploy config remains in
+  the repo — security headers are declared in `next.config.ts` so they apply
+  regardless of which host actually serves.
 
 The stack was chosen to balance:
 - Performance
@@ -179,34 +176,48 @@ npm run build       # next build (type + lint errors fail the build)
 
 ### The test suite
 
-`tests/` holds a fast (<1s) integrity suite that guards the failure modes this
-project has actually suffered, rather than chasing coverage:
+`tests/` holds **255 tests across 10 files** (`npx vitest run`, a few seconds)
+that guard the failure modes this project has actually suffered, rather than
+chasing coverage:
 
 | File | Guards against |
 |---|---|
-| `media-integrity.test.ts` | image paths pointing at nothing; new third-party image hotlinks creeping back in |
+| **Data integrity** — config and the `public/` asset tree, no DOM | |
+| `media-integrity.test.ts` | image paths pointing at nothing; files in `public/media` that nothing references; new third-party image hotlinks creeping back in |
 | `product-tables.test.ts` | spec-table header spans not matching the data (this once shipped an invalid `colSpan={0.5}`); two parts sharing one photo |
 | `navigation-and-config.test.ts` | menu links to non-existent routes; unresolvable image keys; malformed contact details |
+| `galvanisation-capacity.test.ts` | the three published galvanisation capacity figures drifting apart again, or a fourth appearing |
+| `charpente-capacity.test.ts` | the same, for the two charpente figures |
+| `chaudronnerie-cuve-geometry.test.ts` | the tank wireframe's cotes disagreeing with the table the page renders below it |
+| `route-manifest.test.ts` | the hand-maintained sitemap array and `src/app/**` drifting apart; a page shipping without a `metadata` export |
+| **Route** — the handler called directly, `fetch` stubbed, no network | |
+| `contact-route.test.ts` | every branch that must answer without sending mail actually sending none — a swallowed message looks exactly like a 200 |
+| **Component render** — jsdom | |
+| `product-variant-render.test.tsx` | the generic renderer turning valid product data into broken markup, across all six live section types |
+| `technical-hero.test.tsx` | the shared hero band losing its `<h1>`, its stat strip, or its media/no-media branches |
 
-They are pure Node — no DOM, no browser — which is why they cost one dev
-dependency and run in well under a second. Component and end-to-end tests are a
-reasonable next step but are not present today.
+Node is the default environment (`vitest.config.mts`). The two render suites opt
+into jsdom with a per-file `// @vitest-environment jsdom` pragma on line 1 and
+share their stubs in `tests/support/dom-env.ts`, so they cost the Node suites
+nothing. The price is four dev dependencies — `jsdom`,
+`@testing-library/dom`, `@testing-library/jest-dom`, `@testing-library/react`.
+End-to-end tests are a reasonable next step but are not present today.
 
 ---
 
 ## ☁️ Deployment
 
-The site is currently served from **Netlify**; the repo also still carries
-Firebase App Hosting (`apphosting.yaml`) and classic Firebase Hosting
-(`firebase.json`) configuration from an earlier setup.
+The site is served from **Netlify**. No Firebase or other host-specific
+configuration remains in the repo: the earlier `apphosting.yaml`, `firebase.json`
+and `.idx/` were removed when deployment was consolidated onto one host.
 
-Because those two Firebase products read different config and Netlify reads
-neither, **security and cache headers are declared in `next.config.ts`** so they
-ship with the application whatever the host. The `firebase.json` block is kept
-in sync deliberately: duplicated headers are harmless, missing ones are not.
+**Security and cache headers are declared in `next.config.ts`** so they ship with
+the application whatever the host — verified present on the live deploy. There is
+no second copy to keep in step, and `next.config.ts:7-15` asks that one not be
+re-introduced.
 
-> **Open decision:** consolidating on one host, and choosing the canonical
-> domain, are both outstanding (see *Honest Status* above).
+> **Open decision:** the canonical domain is still outstanding (see *Honest
+> Status* above).
 
 ---
 
@@ -218,7 +229,9 @@ test, build — 36 static pages), TypeScript runs `strict` plus
 `@ts-ignore`, and `npm audit` reports zero vulnerabilities. All 52 findings from
 the engineering audit are closed; see `KNOWN-ISSUES.md`.
 
-**What is genuinely still open is not code — it is content and decisions:**
+**What is genuinely still open is not code — it is content and decisions.** Every
+item below is put to the client as a numbered question in
+`docs/CLIENT-DECISIONS.md`, which is the document to send them:
 
 * **The live domain `bordjsteel.dz` serves an expired TLS certificate.** Visitors
   get a browser security warning before they see anything. This outranks
@@ -261,9 +274,11 @@ This is a **real client project**, not a sandbox.
 * `ARCHITECTURE.md` — technical structure and decisions
 * `CLAUDE.md` — contributor / agent guide (commands, conventions, editing rules)
 * `KNOWN-ISSUES.md` — the defect register: what was found, what was fixed, what is still blocked on the client
+* `docs/CLIENT-DECISIONS.md` — the questions the client must answer before launch (domain, fire class, capacity figures, files), written in French and addressed to them
 * `docs/MEDIA.md` — the image pipeline (self-hosting, AVIF, how to add a photo)
-* `TODO.md` — remaining cleanup roadmap
-* `docs/archive/` — historical point-in-time reports from June 2026. **Superseded and largely inaccurate** — they reference file paths that no longer exist. Kept for provenance only; do not treat them as current.
+* `docs/COPY-TYPOGRAPHY-REVIEW.md` — the apostrophe inventory behind `DELIVERY-PLAN.md` T4-5
+* `DELIVERY-PLAN.md` — the pre-delivery plan: what is done, what is blocked on the client
+* `docs/archive/` — point-in-time records, each kept only because it preserves a fact recorded nowhere else. **None of it is current guidance** — see `docs/archive/README.md`, which says per file what survives and why.
 
 ---
 
